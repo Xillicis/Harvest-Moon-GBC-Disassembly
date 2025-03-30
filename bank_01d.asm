@@ -96,7 +96,7 @@ Jump_01d_402a:
 Call_01d_40b4:
     ld a, [$c0a2]
     ld b, a
-    ld hl, $ff40
+    ld hl, rLCDC
 
 jr_01d_40bb:
     ldh a, [rSTAT]

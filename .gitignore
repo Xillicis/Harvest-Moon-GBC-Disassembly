@@ -1,0 +1,7 @@
+*.sym
+*.gbc
+*.map
+*.o
+*.rtc
+*.sav
+*.txt

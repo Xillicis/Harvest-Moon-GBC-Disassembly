@@ -7440,23 +7440,24 @@ jr_000_2256:
 
 
 Call_000_225a:
-    ld hl, $ff40
-    bit 7, [hl]
+    ld hl, rLCDC
+    bit rLCDC_ENABLE, [hl]
     ret z
 
+; if LCD is enabled, turn off vblank interrupt?
     ldh a, [rIE]
     push af
-    res 0, a
+    res rIE_VBLANK, a
     ldh [rIE], a
 
-jr_000_2267:
+Wait:
     ldh a, [rLY]
 
 Jump_000_2269:
-    cp $91
-    jr nz, jr_000_2267
+    cp LY_VBLANK
+    jr nz, Wait
 
-    res 7, [hl]
+    res rLCDC_ENABLE, [hl]
     pop af
     ldh [rIE], a
     ret
@@ -8298,7 +8299,7 @@ Call_000_2638:
 
 
 Call_000_263a:
-    ld a, [$4000]
+    ld a, [$4000] ; is this something like wBankToLoad?
     push af
     ld a, $1e
     ld [$2100], a
@@ -8695,7 +8696,7 @@ jr_000_282c:
     jp Jump_000_276c
 
 
-Jump_000_282f:
+Jump_000_282f: ; something with sound I think
     cp $a0
     jr nz, jr_000_2849
 
