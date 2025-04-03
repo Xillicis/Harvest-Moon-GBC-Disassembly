@@ -1,3 +1,8 @@
+; seems like they are using $2100 to change banks rather than the usual $2000.
+DEF MBC3RomBank  EQU $2100
+DEF MBC3SRamBank EQU $4000
+
+
 ; interrupt flags
 DEF VBLANK   EQU 0
 DEF LCD_STAT EQU 1

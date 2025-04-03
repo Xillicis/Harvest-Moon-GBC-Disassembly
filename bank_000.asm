@@ -433,7 +433,7 @@ Jump_000_0151:
     or a
     ld [$dff7], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, $01
     ld [$2000], a
     ld sp, $dfef
@@ -505,7 +505,7 @@ Jump_000_01c1:
     call Call_000_2282
     call Call_000_2242
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$dff7]
     cp $11
     jr nz, jr_000_01f9
@@ -751,7 +751,7 @@ Jump_000_030e:
     ld bc, $2140
     dec de
     ld d, b
-    ld [hl+], a
+    ld [hli], a
     ld bc, $2340
     ld bc, $2440
     ld bc, $2540
@@ -870,17 +870,17 @@ Call_000_039b:
     inc c
     ld b, $20
 
-jr_000_03a3:
-    ld a, [hl+]
+.loop
+    ld a, [hli]
     ldh [c], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [c], a
     dec b
-    jr nz, jr_000_03a3
+    jr nz, .loop
 
     ret
 
-
+; Why is the same function repeated?
 Call_000_03ab:
     ld c, $6a
     ld a, $80
@@ -888,13 +888,13 @@ Call_000_03ab:
     inc c
     ld b, $20
 
-jr_000_03b3:
-    ld a, [hl+]
+.loop
+    ld a, [hli]
     ldh [c], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [c], a
     dec b
-    jr nz, jr_000_03b3
+    jr nz, .loop
 
     ret
 
@@ -2110,28 +2110,28 @@ Call_000_0951:
 
 
 Call_000_095c:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, d
-    ld [$2100], a
+    ld [MBC3RomBank], a
     call Call_000_0994
 
 Call_000_0967:
     pop af
 
 Call_000_0968:
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_096c:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, d
-    ld [$2100], a
+    ld [MBC3RomBank], a
     call Call_000_097c
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -2508,13 +2508,13 @@ jr_000_0ad8:
     pop hl
     jr jr_000_0ac7
 
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, b
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld c, [hl]
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -3002,7 +3002,7 @@ Jump_000_0cda:
     ld a, $01
     ld [$6000], a
     ld a, $08
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     xor a
     ld [$a000], a
     nop
@@ -3010,7 +3010,7 @@ Jump_000_0cda:
     nop
     nop
     ld a, $09
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     xor a
 
 Call_000_0cf2:
@@ -3023,7 +3023,7 @@ Call_000_0cf6:
     nop
     nop
     ld a, $0a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     xor a
     ld [$a000], a
     nop
@@ -3035,7 +3035,7 @@ Call_000_0d03:
 Jump_000_0d05:
     nop
     ld a, $0b
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     xor a
     ld [$a000], a
     nop
@@ -3043,11 +3043,11 @@ Jump_000_0d05:
     nop
     nop
     ld a, $0c
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, $00
     ld [$a000], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ret
 
 
@@ -3059,7 +3059,7 @@ Call_000_0d22:
     inc a
     ld [$6000], a
     ld a, $08
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$a000]
     and $3f
     ld [$c905], a
@@ -3068,7 +3068,7 @@ Call_000_0d22:
     nop
     nop
     ld a, $09
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$a000]
     and $3f
     ld [$c904], a
@@ -3077,7 +3077,7 @@ Call_000_0d22:
     nop
     nop
     ld a, $0a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$a000]
     and $1f
     ld [$c903], a
@@ -3089,29 +3089,29 @@ Jump_000_0d60:
     nop
     nop
     ld a, $0b
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$a000]
     ld [$c902], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ret
 
 
     ld a, $0c
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, $40
     ld [$a000], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ret
 
 
     ld a, $0c
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, $00
     ld [$a000], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ret
 
 
@@ -3691,12 +3691,12 @@ Jump_000_10ee:
 
 
 Call_000_10f5:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
 
 Call_000_10fc:
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 Jump_000_10ff:
     ld a, [$b911]
@@ -3759,7 +3759,7 @@ Call_000_113f:
     jr nz, jr_000_112e
 
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -3856,10 +3856,10 @@ jr_000_11b3:
 
 
 Call_000_11c2:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, [$b911]
     cp $00
     jr z, jr_000_11e5
@@ -3889,63 +3889,63 @@ jr_000_11f3:
 Call_000_11ff:
 jr_000_11ff:
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_1205:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $73a5
     ld de, $d800
     ld bc, $0198
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_1221:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $753d
     ld de, $d800
     ld bc, $0154
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_123d:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $76b3
     ld de, $d800
     ld bc, $0154
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_1259:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $7954
     ld de, $d800
     ld bc, $0176
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 Call_000_1274:
     ret
@@ -3953,82 +3953,82 @@ Call_000_1274:
 
 Call_000_1275:
 Jump_000_1275:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
 
 Call_000_1278:
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $704c
     ld de, $d800
     ld bc, $01fe
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_1291:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $724a
     ld de, $d800
     ld bc, $0132
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_12ad:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $737c
     ld de, $d800
     ld bc, $01dc
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_12c9:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $7558
     ld de, $d800
     ld bc, $01fe
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_12e5:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $2f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $7756
     ld de, $d800
     ld bc, $01fe
     call Call_000_22ff
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
 Call_000_1301:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld hl, $a000
     ld de, $5001
     ld b, $31
@@ -4147,7 +4147,7 @@ jr_000_1376:
     jr nz, jr_000_1373
 
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -4161,10 +4161,10 @@ Call_000_1391:
     ld h, $00
     add hl, hl
     add hl, hl
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, b
     and $c0
     cp $80
@@ -4209,7 +4209,7 @@ jr_000_13bf:
     ld [de], a
     call Call_000_1f91
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop bc
     pop de
     pop hl
@@ -4225,10 +4225,10 @@ Call_000_13e7:
     ld h, $00
     add hl, hl
     add hl, hl
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, b
     and $c0
     cp $80
@@ -4320,7 +4320,7 @@ jr_000_1461:
     ld a, h
     ld [$cb1e], a
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop bc
     pop hl
     ret
@@ -4335,12 +4335,12 @@ Call_000_1471:
     ld h, $00
     add hl, hl
     add hl, hl
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
 
 Jump_000_147d:
     ldh [$ffa4], a
     ld a, $11
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, b
     and $c0
     cp $80
@@ -4427,7 +4427,7 @@ jr_000_14d3:
     ld a, h
     ld [$cb1e], a
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop bc
     pop hl
 
@@ -6531,10 +6531,10 @@ jr_000_1e50:
 
     xor a
     ld [$cc76], a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ldh a, [$ffab]
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 jr_000_1e6c:
     ld hl, $1f1c
@@ -6580,7 +6580,7 @@ Call_000_1ea0:
     xor a
     ld [$cc76], a
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, [$cc77]
     cp $00
     jr nz, jr_000_1ebe
@@ -6600,10 +6600,10 @@ Jump_000_1ec4:
 jr_000_1ec4:
     xor a
     ld [$cc78], a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ldh a, [$ffab]
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 jr_000_1ed2:
     ld hl, $1f40
@@ -6658,7 +6658,7 @@ Jump_000_1f0a:
     jr c, jr_000_1ed2
 
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -7294,16 +7294,16 @@ Call_000_2173:
 Call_000_217f:
     push bc
     ld b, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ld c, a
     ld a, b
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, c
     pop bc
     push af
     call Call_000_2194
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -7316,12 +7316,12 @@ Call_000_2195:
     or a
     jr z, jr_000_21d4
 
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa5], a
     ld a, [$cbf5]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, [$cbf4]
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$cbee]
     ld e, a
     ld a, [$cbef]
@@ -7339,9 +7339,9 @@ Call_000_2195:
     ld a, d
     ld [$cbef], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ldh a, [$ffa5]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     jr jr_000_222f
 
 jr_000_21d4:
@@ -7381,7 +7381,7 @@ Jump_000_2200:
     jr z, jr_000_222f
 
     ld a, $01
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, [$cbee]
     ld e, a
     ld a, [$cbef]
@@ -7396,7 +7396,7 @@ Jump_000_2200:
     ld a, h
     ld [$cbef], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
 
 jr_000_222f:
     ldh a, [$ffa4]
@@ -7638,33 +7638,33 @@ jr_000_22ff:
 Call_000_2308:
     push hl
     ld l, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ld h, a
     ld a, l
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, h
     pop hl
     push af
     call Call_000_22ff
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
     push hl
     ld l, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ld h, a
     ld a, l
     push hl
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop hl
     ld a, h
     pop hl
     push af
     call Call_000_2334
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -7808,7 +7808,7 @@ jr_000_239f:
     ld de, $c913
     add hl, de
     pop de
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ld b, a
     ld a, [$cb60]
     ld c, a
@@ -7825,7 +7825,7 @@ jr_000_23d6:
     add $38
 
 jr_000_23d9:
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld c, $10
 
 jr_000_23de:
@@ -7836,7 +7836,7 @@ jr_000_23de:
     jr nz, jr_000_23de
 
     ld a, b
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -8217,10 +8217,10 @@ Call_000_25ce:
     push hl
     ld [$d39e], a
     ld l, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, $1e
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 Call_000_25de:
     ld h, $00
@@ -8287,7 +8287,7 @@ jr_000_2613:
     xor a
     ld [hl], a
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, [$d39e]
     inc a
     pop hl
@@ -8299,10 +8299,10 @@ Call_000_2638:
 
 
 Call_000_263a:
-    ld a, [$4000] ; is this something like wBankToLoad?
+    ld a, [MBC3SRamBank] ; is this something like wBankToLoad?
     push af
     ld a, $1e
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, [$d3a3]
     ld [$d39d], a
     xor a
@@ -8434,7 +8434,7 @@ jr_000_26e3:
     ld a, [$d397]
     ldh [rNR51], a
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     call Call_000_258c
     ret
 
@@ -9983,7 +9983,7 @@ Call_000_2da4:
     dec b
 
 Call_000_2df2:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     push hl
     ld a, [hl+]
@@ -10181,7 +10181,7 @@ Jump_000_2ed1:
     ld a, [hl+]
     ld b, a
     ld a, [hl]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld l, c
     ld h, b
     ldh a, [$ffa5]
@@ -10281,7 +10281,7 @@ Jump_000_2f4e:
 
 Jump_000_2f4f:
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -10411,10 +10411,10 @@ jr_000_2fcc:
     inc hl
     inc hl
     ld d, [hl]
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, d
-    ld [$2100], a
+    ld [MBC3RomBank], a
     dec hl
     dec hl
     ld a, [hl+]
@@ -10449,7 +10449,7 @@ Jump_000_3001:
     ld l, a
     call Call_000_20e1
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -10469,11 +10469,11 @@ Jump_000_3017:
     inc hl
     inc hl
     ld d, [hl]
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, d
     inc a
-    ld [$2100], a
+    ld [MBC3RomBank], a
 
 Call_000_3033:
     dec hl
@@ -10506,7 +10506,7 @@ Call_000_3033:
     ld l, a
     call Call_000_20e1
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -10536,11 +10536,11 @@ jr_000_3070:
     inc hl
     inc hl
     ld d, [hl]
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, d
     add $fa
-    ld [$2100], a
+    ld [MBC3RomBank], a
     dec hl
     dec hl
     ld a, [hl+]
@@ -10571,7 +10571,7 @@ jr_000_3070:
     ld l, a
     call Call_000_20e1
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -10595,11 +10595,11 @@ Call_000_30cc:
 
 Call_000_30ce:
     ld d, [hl]
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     ld a, d
     add $fb
-    ld [$2100], a
+    ld [MBC3RomBank], a
     dec hl
     dec hl
 
@@ -10638,7 +10638,7 @@ Call_000_30fe:
     ld l, a
     call Call_000_20e1
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -10765,10 +10765,10 @@ jr_000_319e:
     scf
 
 Call_000_31a0:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, c
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld a, d
     ldh [$ffb9], a
     ld a, e
@@ -10911,7 +10911,7 @@ jr_000_3237:
 
 Jump_000_3238:
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -11121,15 +11121,15 @@ Jump_000_3311:
     ld e, a
     ld d, [hl]
     inc hl
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, [hl]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld l, e
     ld h, d
     call Call_000_3344
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop hl
     pop de
 
@@ -11137,10 +11137,10 @@ jr_000_3339:
     ldh a, [rLY]
     ld c, a
 
-jr_000_333c:
+.wait
     ldh a, [rLY]
     cp c
-    jr z, jr_000_333c
+    jr z, .wait
 
     pop bc
     pop af
@@ -11343,13 +11343,13 @@ Jump_000_3408:
     push bc
     push de
     push hl
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, $1f
-    ld [$2100], a
+    ld [MBC3RomBank], a
     call $67a7
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     pop hl
     pop de
     pop bc
@@ -12155,12 +12155,12 @@ jr_000_3730:
     ld h, a
     ld de, $3421
     add hl, de
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa4], a
     inc hl
     inc hl
     ld a, [hl-]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     dec hl
     ld a, [hl+]
     ld c, a
@@ -12258,7 +12258,7 @@ jr_000_37c4:
     ld hl, $cb55
     inc [hl]
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -12280,10 +12280,10 @@ jr_000_37e1:
     ld l, a
     ld a, [$cb6f]
     ld h, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     call Call_000_217f
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -12294,7 +12294,7 @@ Jump_000_3804:
 
     call Call_000_396d
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -12315,12 +12315,12 @@ Jump_000_3815:
     ld l, a
     ld a, [$cb6f]
     ld h, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     call Call_000_217f
 
 jr_000_3837:
     ldh a, [$ffa4]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -12624,7 +12624,7 @@ jr_000_3a09:
     ld l, a
     ld a, [$cb6f]
     ld h, a
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     call Call_000_217f
     ret
 
@@ -12653,7 +12653,7 @@ jr_000_3a21:
 jr_000_3a35:
     call Call_000_0da9
     ld a, c
-    ld [hl+], a
+    ld [hli], a
     ld [hl+], a
     call Call_000_0da9
     ld a, c
@@ -13384,10 +13384,10 @@ jr_000_3e73:
     ld b, a
     ld hl, $6ce2
     add hl, bc
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     ldh [$ffa5], a
     ld a, $08
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ld de, $8880
     ld b, $08
 
@@ -13425,7 +13425,7 @@ Call_000_3eb0:
     jr nz, jr_000_3ea8
 
     ldh a, [$ffa5]
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 
@@ -13572,15 +13572,15 @@ Call_000_3f52:
 
 
 Call_000_3f6c:
-    ld a, [$4000]
+    ld a, [MBC3SRamBank]
     push af
     ld a, d
 
 Jump_000_3f71:
-    ld [$2100], a
+    ld [MBC3RomBank], a
     call Call_000_3f7c
     pop af
-    ld [$2100], a
+    ld [MBC3RomBank], a
     ret
 
 

@@ -3,7 +3,7 @@
 ; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
 ; https://github.com/mattcurrie/mgbdis
 
-SECTION "ROM Bank $001", ROMX[$4000], BANK[$1]
+SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 
     ld bc, $4e7c
     add h
@@ -190,7 +190,7 @@ jr_001_4122:
     ld a, $80
     ld [$b90c], a
     xor a
-    ld [$4000], a
+    ld [MBC3SRamBank], a
     ld a, $a0
     ld [$b90d], a
     xor a
