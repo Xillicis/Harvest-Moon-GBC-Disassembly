@@ -1960,10 +1960,10 @@ jr_022_4adc:
 Call_022_4afc:
     ld hl, $6caa
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $6c85
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -3627,7 +3627,7 @@ Call_022_537d:
 
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -7204,13 +7204,13 @@ Call_022_669c:
 
     ld hl, $637f
     ld a, $23
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $6cfc
     ld a, $24
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $61d6
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
 
 jr_022_6766:
     call Call_022_6cda

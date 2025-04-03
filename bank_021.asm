@@ -6399,49 +6399,49 @@ jr_021_6859:
 Call_021_685d:
     ld hl, $582c
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_6866:
     ld hl, $58ce
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_686f:
     ld hl, $5974
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_6878:
     ld hl, $5a1e
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_6881:
     ld hl, $5ac8
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_688a:
     ld hl, $5d31
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_021_6893:
     ld hl, $4fca
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -9123,7 +9123,7 @@ jr_021_77ed:
     ld [$cb90], a
     ld hl, $5f2e
     ld a, $22
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$cb8d]
     cp $ff
     ret z
@@ -9963,7 +9963,7 @@ jr_021_7d72:
     ld [$b8f8], a
     ld hl, $45c5
     ld a, $28
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -9972,7 +9972,7 @@ jr_021_7d80:
     ld [$b8f9], a
     ld hl, $45c5
     ld a, $28
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 

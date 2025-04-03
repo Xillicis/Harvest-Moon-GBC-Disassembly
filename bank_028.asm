@@ -831,7 +831,7 @@ Jump_028_43f1:
     ld [hl], a
     ld hl, $456e
     ld a, $28
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -1272,7 +1272,7 @@ jr_028_4612:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     xor a
     ld [$cb45], a
     ret
@@ -1295,7 +1295,7 @@ jr_028_4658:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $06
     ld [$c611], a
     xor a
@@ -1331,7 +1331,7 @@ jr_028_468f:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $06
     ld [$c611], a
     xor a
@@ -1735,7 +1735,7 @@ jr_028_48e7:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     xor a
     ld [$cb45], a
     ret
@@ -1746,7 +1746,7 @@ jr_028_4921:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     xor a
     ld [$cb45], a
     ret
@@ -1776,7 +1776,7 @@ jr_028_4933:
     call $16d1
     ld hl, $6433
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     xor a
     ld [$cb45], a
     ld hl, $b938

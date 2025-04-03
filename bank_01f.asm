@@ -203,7 +203,7 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     ld l, $c6
     ld h, $6d
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_000_228a
@@ -317,7 +317,7 @@ Call_01f_416e:
     ld l, $bf
     ld h, $5c
     ld a, $1f
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_01f_43e1

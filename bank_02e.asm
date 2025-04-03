@@ -85,7 +85,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     call Call_000_1275
     ld hl, $629f
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $00
     call Call_000_1658
     ld a, [$ba0d]
@@ -980,7 +980,7 @@ jr_02e_45c8:
 jr_02e_4606:
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
 
 jr_02e_460e:
     ld a, [$cb4a]
@@ -1370,10 +1370,10 @@ Jump_02e_483f:
 jr_02e_4844:
     ld hl, $4001
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $410d
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$cc96]
     add $27
     ld [$cc96], a
@@ -2918,7 +2918,7 @@ jr_02e_5115:
 
     ld hl, $5fd1
     ld a, $2d
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $51e0
     ld de, $c880
     ld b, $10
@@ -3200,28 +3200,28 @@ Call_02e_5262:
 Call_02e_5296:
     ld hl, $606e
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_02e_529f:
     ld hl, $6122
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_02e_52a8:
     ld hl, $617c
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_02e_52b1:
     ld hl, $60c8
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -3240,32 +3240,32 @@ jr_02e_52c3:
     ld d, d
     ld hl, $712f
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
     ld hl, $71c3
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
     ld hl, $7259
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
     ld hl, $72ef
     ld a, $32
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_02e_52ea:
     ld hl, $6279
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -3293,7 +3293,7 @@ Call_02e_52ea:
 
     ld hl, $77c7
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -3302,7 +3302,7 @@ jr_02e_5318:
     ld [$cb90], a
     ld hl, $5f2e
     ld a, $22
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$cb8d]
     cp $ff
     ret z
@@ -3343,7 +3343,7 @@ jr_02e_5355:
 Call_02e_535c:
     ld hl, $4001
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$cb35]
     ld h, a
     ld a, [$cb36]
@@ -3358,14 +3358,14 @@ Call_02e_535c:
 Call_02e_5373:
     ld hl, $6254
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_02e_537c:
     ld hl, $6267
     ld a, $2f
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -3502,7 +3502,7 @@ Call_02e_5445:
 
     ld hl, $6a38
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -4647,10 +4647,10 @@ Call_02e_5aa2:
     call Call_000_18e6
     ld hl, $677a
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $748f
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     xor a
     ld [$cc9a], a
     ld [$cc72], a
@@ -5378,7 +5378,7 @@ jr_02e_5fb2:
 
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $01
     ld [$cc98], a
     ret
@@ -5707,10 +5707,10 @@ Call_02e_6121:
     call Call_000_22f8
     ld hl, $6793
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $74a5
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
@@ -6513,10 +6513,10 @@ jr_02e_6647:
     call Call_000_22f8
     ld hl, $6793
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $74a5
     ld a, $2e
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $40
     ldh [rSTAT], a
     ld a, $66

@@ -6017,7 +6017,7 @@ Call_00f_62dc:
     ld l, $99
     ld h, $6d
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld a, $01
@@ -6044,7 +6044,7 @@ Call_00f_62dc:
     call Call_000_323d
     ld hl, $5efb
     ld a, $0d
-    call Call_000_217f
+    call BankSwitchCallHL
     ld hl, $6de8
     ld c, $10
     ld de, $8800
@@ -6144,7 +6144,7 @@ jr_00f_64b0:
     call Call_000_36f4
     ld hl, $6ba5
     ld a, $01
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -6587,56 +6587,56 @@ jr_00f_6752:
 Call_00f_6761:
     ld hl, $573c
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_00f_676a:
     ld hl, $578a
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_00f_6773:
     ld hl, $57b8
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_00f_677c:
     ld hl, $5824
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_00f_6785:
     ld hl, $5729
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_00f_678e:
     ld hl, $5716
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_00f_6797:
     ld hl, $56f0
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_00f_67a0:
     ld hl, $5703
     ld a, $02
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -7557,7 +7557,7 @@ jr_00f_6c70:
     ld l, $d3
     ld h, $6d
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     xor a
@@ -7587,7 +7587,7 @@ jr_00f_6c70:
     call Call_000_31a0
     ld hl, $5fa1
     ld a, $0d
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $10
     ld [$cb5c], a
     ld a, $a8

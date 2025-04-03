@@ -11,7 +11,7 @@ SECTION "ROM Bank $009", ROMX[$4000], BANK[$9]
     ld l, $78
     ld h, $6d
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_000_228a
@@ -22,7 +22,7 @@ SECTION "ROM Bank $009", ROMX[$4000], BANK[$9]
     ld l, $6e
     ld h, $45
     ld a, $08
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $45e1
@@ -1428,7 +1428,7 @@ Call_009_46ed:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_484e
@@ -1599,7 +1599,7 @@ Call_009_4816:
     ld l, $20
     ld h, $57
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $4844
@@ -2488,7 +2488,7 @@ jr_009_4c93:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_4816
@@ -2732,7 +2732,7 @@ Call_009_4de0:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_484e
@@ -2948,7 +2948,7 @@ jr_009_4ef4:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_484e
@@ -3336,7 +3336,7 @@ jr_009_50e1:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_484e
@@ -3601,7 +3601,7 @@ jr_009_5260:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_009_484e
@@ -3956,7 +3956,7 @@ Call_009_5435:
     ld l, $6c
     ld h, $55
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $5618
@@ -4142,7 +4142,7 @@ jr_009_559c:
     ld l, $7b
     ld h, $56
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_000_228a
@@ -4230,7 +4230,7 @@ jr_009_55e0:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ret
@@ -7513,7 +7513,7 @@ jr_009_6654:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $66af
@@ -7874,7 +7874,7 @@ jr_009_67e5:
     ld l, $01
     ld h, $40
     ld a, $1b
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $6840

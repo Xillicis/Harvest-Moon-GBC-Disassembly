@@ -1633,7 +1633,7 @@ jr_03b_4762:
     ld l, $29
     ld h, $68
     ld a, $29
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     pop hl
@@ -1668,7 +1668,7 @@ jr_03b_47b1:
     ld l, $cb
     ld h, $69
     ld a, $29
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     pop hl

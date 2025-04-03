@@ -130,7 +130,7 @@ jr_027_40c6:
 Call_027_40db:
     ld hl, $4fca
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     call Call_027_40fb
     call Call_000_36f4
     pop hl
@@ -358,7 +358,7 @@ Jump_027_4237:
     ld [$cb4a], a
     ld hl, $5df1
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $00
     call Call_000_1658
     ld a, $3e
@@ -413,7 +413,7 @@ Call_027_428b:
     ld [$cb5e], a
     ld hl, $6d1e
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $15
     call Call_000_151d
     ld a, $01
@@ -452,7 +452,7 @@ Call_027_42e1:
     ld [$cb5e], a
     ld hl, $6d1e
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $4a
     call Call_000_151d
     ld a, $03
@@ -500,7 +500,7 @@ Call_027_432c:
     ldh [$ff95], a
     ld hl, $4486
     ld a, $25
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $4a
     call Call_000_151d
     ld a, $03

@@ -117,7 +117,7 @@ Call_03f_4092:
     ld l, $ae
     ld h, $5b
     ld a, $3f
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     call Call_03f_42e4

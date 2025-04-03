@@ -127,7 +127,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     call Call_000_36f4
     ld hl, $6a38
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     call Call_024_4240
     call Call_024_4254
     call Call_024_4268
@@ -2130,7 +2130,7 @@ jr_024_4d34:
 
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$b8fb]
     ld hl, $b8f8
     add l
@@ -2415,7 +2415,7 @@ Jump_024_4f48:
 
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $04
     ld [$cc20], a
     ret

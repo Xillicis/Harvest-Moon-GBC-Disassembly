@@ -11,7 +11,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld l, $da
     ld h, $6c
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     xor a
@@ -135,7 +135,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     call Call_000_36f4
     ld hl, $6ba5
     ld a, $01
-    call Call_000_217f
+    call BankSwitchCallHL
     call Call_004_424d
     call Call_004_4261
     call Call_004_4275
@@ -2132,7 +2132,7 @@ jr_004_4d41:
 
     ld hl, $527d
     ld a, $01
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, [$b8fb]
     ld hl, $b8f8
     add l
@@ -2417,7 +2417,7 @@ Jump_004_4f55:
 
     ld hl, $527d
     ld a, $01
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $04
     ld [$cc20], a
     ret

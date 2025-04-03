@@ -14,7 +14,7 @@ SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
     ld l, $f3
     ld h, $78
     ld a, $1f
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld hl, $6de8
@@ -3165,7 +3165,7 @@ jr_010_4fbe:
     ld l, $b3
     ld h, $71
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     xor a

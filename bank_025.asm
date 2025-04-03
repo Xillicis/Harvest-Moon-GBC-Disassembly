@@ -392,7 +392,7 @@ jr_025_426d:
 Jump_025_4295:
     ld hl, $5251
     ld a, $21
-    call Call_000_217f
+    call BankSwitchCallHL
     pop hl
     ret
 
@@ -567,7 +567,7 @@ Call_025_433d:
 Jump_025_4377:
     ld a, $22
     ld hl, $53e7
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
@@ -575,28 +575,28 @@ Call_025_4380:
 Jump_025_4380:
     ld a, $22
     ld hl, $542d
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_025_4389:
     ld a, $22
     ld hl, $5473
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Jump_025_4392:
     ld a, $22
     ld hl, $54b9
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 
 Call_025_439b:
     ld a, $22
     ld hl, $54ff
-    call Call_000_217f
+    call BankSwitchCallHL
     ret
 
 

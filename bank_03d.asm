@@ -3636,7 +3636,7 @@ Call_03d_51d9:
     call Call_000_2282
     ld hl, $75e4
     ld a, $23
-    call Call_000_217f
+    call BankSwitchCallHL
     ld a, $ff
     ld [$cb52], a
     ld [$cb4d], a
@@ -3706,7 +3706,7 @@ Call_03d_51d9:
     call Call_000_0f73
     ld hl, $456e
     ld a, $28
-    call Call_000_217f
+    call BankSwitchCallHL
     call Call_000_0fc7
     ld a, $00
     ld [$b89f], a

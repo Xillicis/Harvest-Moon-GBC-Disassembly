@@ -1668,7 +1668,7 @@ jr_006_4780:
     ld l, $f7
     ld h, $5b
     ld a, $20
-    call Call_000_217f
+    call BankSwitchCallHL
     pop af
     pop hl
     ld c, $4f
