@@ -14176,7 +14176,7 @@ jr_037_7ba1:
     ld a, [de]
     nop
     dec b
-    ld bc, $ff00
+    ld bc, rJOYP
     ldh a, [c]
     db $fd
     inc c

@@ -11829,7 +11829,7 @@ jr_03c_742b:
     inc bc
     rrca
     rlca
-    ld de, $ff00
+    ld de, rJOYP
     rst $38
     ld e, $ff
     nop
@@ -12043,7 +12043,7 @@ Call_03c_74ff:
     jr nc, @-$3d
 
     nop
-    ld hl, $ff00
+    ld hl, rJOYP
     rst $20
     nop
     db $fc

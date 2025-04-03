@@ -214,7 +214,7 @@ jr_01c_409b:
     ldh a, [$ff9f]
     rrca
     ldh a, [c]
-    ld hl, $ff00
+    ld hl, rJOYP
     ld h, d
     nop
     ld bc, $2809
@@ -395,7 +395,7 @@ jr_01c_41ad:
     ld a, a
     ld a, a
     cp a
-    ld hl, $ff00
+    ld hl, rJOYP
     jr c, jr_01c_41ad
 
     rst $38
@@ -4253,7 +4253,7 @@ jr_01c_508d:
     inc c
     ld [hl], b
     ld bc, $fc29
-    ld bc, $ff00
+    ld bc, rJOYP
     ld c, c
     db $fc
     nop
@@ -11173,7 +11173,7 @@ jr_01c_70c8:
     inc bc
     rrca
     rlca
-    ld de, $ff00
+    ld de, rJOYP
     rst $38
     ld e, $ff
     nop
@@ -11387,7 +11387,7 @@ jr_01c_7132:
     jr nc, @-$3d
 
     nop
-    ld hl, $ff00
+    ld hl, rJOYP
     rst $20
     nop
     db $fc

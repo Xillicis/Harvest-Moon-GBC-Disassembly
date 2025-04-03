@@ -5454,7 +5454,7 @@ jr_00d_5dc5:
     dec hl
     dec sp
     ldh [rIE], a
-    ld hl, $ff00
+    ld hl, rJOYP
     jp nc, Jump_00d_7fff
 
     cp a

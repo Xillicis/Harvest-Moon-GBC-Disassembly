@@ -1903,7 +1903,7 @@ Jump_02b_47ff:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]
@@ -4984,7 +4984,7 @@ jr_02b_551c:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]
@@ -8062,7 +8062,7 @@ jr_02b_6259:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]
@@ -11041,7 +11041,7 @@ jr_02b_6f17:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]

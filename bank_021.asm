@@ -7038,7 +7038,7 @@ jr_021_6c3a:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp

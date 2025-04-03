@@ -7363,7 +7363,7 @@ Call_00f_6bba:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -7811,7 +7811,7 @@ Call_00f_6e3b:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0000], sp

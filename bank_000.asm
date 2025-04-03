@@ -620,7 +620,7 @@ Call_000_0278:
     or a
     jr z, jr_000_028d
 
-    ld c, $4f
+    ld c, rVBK_c
 
 Jump_000_0280:
     ld a, $01
@@ -628,7 +628,7 @@ Jump_000_0280:
     xor a
     ldh [$ffa4], a
     call Call_000_229e
-    ld c, $4f
+    ld c, rVBK_c
     xor a
     ldh [c], a
 
@@ -866,8 +866,8 @@ jr_000_0387:
 Call_000_039b:
     ; Address $FF68 is for BCPS/BGPI
     ld c, rBGPI_c
-    ld a, %10000000
-    ldh [c], a ; this is 
+    ld a, 1 << rBGPI_AUTO_INCREMENT
+    ldh [c], a
     inc c
     ld b, 32
 
@@ -927,13 +927,13 @@ jr_000_03d3:
 
 
 Call_000_03dd:
-    ld b, %10011000
+    ld b, %10011000 ; address for start of 4th palette
     call Call_000_0407
     ret
 
 
 Call_000_03e3:
-    ld b, %10010000
+    ld b, %10010000 ; address for start of 3rd palette
     call Call_000_0407
 
 Call_000_03e8:
@@ -941,24 +941,24 @@ Call_000_03e8:
 
 
 Call_000_03e9:
-    ld b, %10101000
+    ld b, %10101000 ; address for start of 6th palette
     call Call_000_0407
     ret
 
 
 Call_000_03ef:
-    ld b, %10111000
+    ld b, %10111000 ; address for start of 8th palette
     call Call_000_0407
     ret
 
 
-    ld b, %10100000
+    ld b, %10100000 ; address for start of 5th palette
     call Call_000_0407
     ret
 
 
 Call_000_03fb:
-    ld b, %10110000
+    ld b, %10110000 ; address for start of 7th palette
     call Call_000_0407
 
 Jump_000_0400:
@@ -6815,7 +6815,7 @@ Call_000_1f91:
 
     push hl
     dec hl
-    ld c, $4f
+    ld c, rVBK_c
     ld a, $01
     ldh [c], a
     ld a, [hl]
@@ -6833,7 +6833,7 @@ jr_000_1fa7:
 
     ld a, [hl]
     ld [de], a
-    ld c, $4f
+    ld c, rVBK_c
     xor a
     ldh [c], a
     pop hl
@@ -6843,7 +6843,7 @@ jr_000_1fa7:
 Call_000_1fb5:
     ldh [$ffaa], a
     push hl
-    ld c, $4f
+    ld c, rVBK_c
     ld a, $01
     ldh [c], a
     call Call_000_0da9
@@ -6857,7 +6857,7 @@ Call_000_1fb5:
     ld a, [hl]
     pop hl
     ld [hl], a
-    ld c, $4f
+    ld c, rVBK_c
     xor a
     ldh [c], a
     call Call_000_0da9
@@ -7849,7 +7849,7 @@ Call_000_23e9:
     ret z
 
     ld b, a
-    ld c, $00
+    ld c, rJOYP_c
 
 jr_000_23f0:
     push bc

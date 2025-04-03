@@ -6440,7 +6440,7 @@ Jump_002_62d8:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0088], sp

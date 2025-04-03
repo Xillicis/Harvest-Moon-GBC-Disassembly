@@ -12879,7 +12879,7 @@ jr_032_7d55:
     sub b
     sbc a
     sub d
-    ld bc, $ff00
+    ld bc, rJOYP
     dec e
     ld [bc], a
     ccf

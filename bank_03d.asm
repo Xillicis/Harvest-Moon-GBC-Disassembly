@@ -10020,7 +10020,7 @@ jr_03d_7111:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0020], sp
@@ -10512,7 +10512,7 @@ jr_03d_7400:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0070], sp
@@ -11179,7 +11179,7 @@ jr_03d_76ee:
     ld a, a
     rst $38
     ld e, l
-    ld hl, $ff00
+    ld hl, rJOYP
     ld h, e
     ld bc, $40d0
     ldh a, [rLCDC]

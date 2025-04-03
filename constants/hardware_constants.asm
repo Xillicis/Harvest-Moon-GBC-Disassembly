@@ -27,7 +27,10 @@ DEF rIE_TIMER  EQU 2
 DEF rIE_SERIAL EQU 3
 DEF rIE_JOYPAD EQU 4
 
-; From Pokecrystal:
+; From Pokered/Pokecrystal:
+DEF rJOYP                EQU $ff00 ; Joypad (R/W)
+DEF rJOYP_c              EQU $00 ; Joypad (R/W)
+DEF rVBK_c               EQU $4f ; VRAM Bank switcher
 DEF rBGPI_c              EQU $68 ; CGB Mode Only - Background Palette Index
 DEF rBGPI_AUTO_INCREMENT EQU 7     ; increment rBGPI after write to rBGPD
 DEF rBGPD_c              EQU $69 ; CGB Mode Only - Background Palette Data

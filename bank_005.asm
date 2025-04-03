@@ -873,7 +873,7 @@ jr_005_4544:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0058], sp
@@ -899,7 +899,7 @@ jr_005_4544:
     nop
     nop
     nop
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0018], sp
@@ -925,7 +925,7 @@ jr_005_4544:
     nop
     nop
     nop
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0058], sp

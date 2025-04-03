@@ -12703,7 +12703,7 @@ jr_018_7588:
     nop
     ld bc, $0300
     ld bc, $0103
-    ld bc, $ff00
+    ld bc, rJOYP
     ld b, $ff
     rla
     ld e, a

@@ -12930,7 +12930,7 @@ jr_034_7add:
     ld sp, hl
     rrca
     ei
-    ld hl, $ff00
+    ld hl, rJOYP
     rst $38
     rlca
     xor a

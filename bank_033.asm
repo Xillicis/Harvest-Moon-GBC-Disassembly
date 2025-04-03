@@ -7013,7 +7013,7 @@ jr_033_5fde:
     dec b
     inc b
     ld b, $ff
-    ld [$ff00], sp
+    ld [rJOYP], sp
     rra
     nop
     cpl
@@ -12496,7 +12496,7 @@ jr_033_78cd:
 
     and l
     inc de
-    ld [$ff00], sp
+    ld [rJOYP], sp
     inc c
     nop
     inc d

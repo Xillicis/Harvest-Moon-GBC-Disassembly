@@ -769,7 +769,7 @@ Call_010_448d:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$00b0], sp
@@ -10004,7 +10004,7 @@ jr_010_6e3c:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]
@@ -13008,7 +13008,7 @@ jr_010_7a76:
 
 jr_010_7b5f:
     ld [$0100], sp
-    ld bc, $ff00
+    ld bc, rJOYP
     ld bc, $0202
     dec b
     dec b

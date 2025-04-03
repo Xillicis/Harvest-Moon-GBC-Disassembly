@@ -12098,7 +12098,7 @@ jr_012_7d45:
     sub b
     sbc a
     sub d
-    ld bc, $ff00
+    ld bc, rJOYP
     dec e
     ld [bc], a
     ccf

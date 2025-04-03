@@ -1154,7 +1154,7 @@ Call_024_4729:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0058], sp

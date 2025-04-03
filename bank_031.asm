@@ -13211,7 +13211,7 @@ jr_031_7d3f:
     ld d, e
     ld d, e
     cp $0f
-    ld bc, $ff00
+    ld bc, rJOYP
     ld d, c
     ld a, [hl]
     rlca

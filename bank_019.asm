@@ -6313,7 +6313,7 @@ jr_019_5b00:
     nop
     ld bc, $0300
     ld bc, $0103
-    ld bc, $ff00
+    ld bc, rJOYP
     dec hl
     rst $38
     scf
@@ -7914,7 +7914,7 @@ jr_019_61d1:
     nop
     nop
     nop
-    ld bc, $ff00
+    ld bc, rJOYP
     dec sp
     rst $38
     ld e, l
@@ -8119,7 +8119,7 @@ jr_019_62b9:
     rlca
     rlca
     nop
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     cp $80
     db $fc
@@ -8436,7 +8436,7 @@ Jump_019_642c:
     nop
     nop
     nop
-    ld bc, $ff00
+    ld bc, rJOYP
     dec bc
     rst $38
     dec de

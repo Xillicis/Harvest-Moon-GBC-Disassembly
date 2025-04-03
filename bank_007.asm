@@ -395,7 +395,7 @@ Call_007_4275:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     nop

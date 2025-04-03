@@ -2973,7 +2973,7 @@ jr_02e_5158:
     ret nz
 
     ld d, c
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -2996,7 +2996,7 @@ jr_02e_5158:
     ld d, b
     nop
     ld bc, $0001
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -4572,7 +4572,7 @@ Call_02e_5aa2:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0020], sp
@@ -5615,7 +5615,7 @@ Call_02e_6121:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -6408,7 +6408,7 @@ jr_02e_6616:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$00d0], sp
@@ -6419,7 +6419,7 @@ jr_02e_6616:
     ld h, b
     nop
     ld bc, $0001
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -6564,7 +6564,7 @@ Call_02e_6756:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp

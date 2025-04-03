@@ -7309,7 +7309,7 @@ Call_02f_6b64:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -7748,7 +7748,7 @@ Call_02f_6dd8:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0000], sp
@@ -10958,7 +10958,7 @@ jr_02f_7b57:
     ei
     db $fd
     ei
-    ld bc, $ff00
+    ld bc, rJOYP
     rlca
     nop
     dec c

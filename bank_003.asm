@@ -5665,7 +5665,7 @@ Call_003_6250:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -11050,7 +11050,7 @@ jr_003_7f56:
     dec h
     nop
     rst $38
-    ld bc, $ff00
+    ld bc, rJOYP
     rst $38
     rst $38
     rst $38

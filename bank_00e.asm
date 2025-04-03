@@ -2998,7 +2998,7 @@ jr_00e_517b:
     ld d, c
     db $e3
     ld d, c
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -3021,7 +3021,7 @@ jr_00e_517b:
     ld d, b
     nop
     ld bc, $0001
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -4612,7 +4612,7 @@ Call_00e_5ad2:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0020], sp
@@ -5670,7 +5670,7 @@ Call_00e_616c:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -6471,7 +6471,7 @@ jr_00e_666e:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$00d0], sp
@@ -6482,7 +6482,7 @@ jr_00e_666e:
     ld h, b
     nop
     ld bc, $0001
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp
@@ -6635,7 +6635,7 @@ Call_00e_67bb:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0078], sp

@@ -387,7 +387,7 @@ Call_027_4268:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     nop

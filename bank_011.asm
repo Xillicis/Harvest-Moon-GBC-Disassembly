@@ -13600,7 +13600,7 @@ jr_011_7ed8:
     ld l, l
     rrca
     ld [bc], a
-    ld hl, $ff00
+    ld hl, rJOYP
     sub l
     ld a, [bc]
     push hl

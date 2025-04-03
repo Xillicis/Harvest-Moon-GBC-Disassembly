@@ -747,7 +747,7 @@ Call_030_4472:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$00b0], sp
@@ -10002,7 +10002,7 @@ jr_030_6db0:
     ld h, e
     ld hl, $aa00
     ld l, e
-    ld hl, $ff00
+    ld hl, rJOYP
     xor [hl]
     ld l, a
     cp [hl]
@@ -13550,7 +13550,7 @@ jr_030_7d0e:
 
     ld b, c
     add c
-    ld bc, $ff00
+    ld bc, rJOYP
     add b
     sub b
     sub b

@@ -10295,7 +10295,7 @@ jr_01d_726e:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0020], sp
@@ -10791,7 +10791,7 @@ jr_01d_756a:
     ret
 
 
-    ld bc, $ff00
+    ld bc, rJOYP
     nop
     nop
     ld [$0070], sp

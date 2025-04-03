@@ -14076,7 +14076,7 @@ jr_017_7c02:
     ld b, b
     and d
     inc c
-    ld bc, $ff00
+    ld bc, rJOYP
 
 jr_017_7cca:
     inc bc

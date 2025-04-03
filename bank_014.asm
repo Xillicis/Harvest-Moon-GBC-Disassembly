@@ -12657,7 +12657,7 @@ jr_014_7ac3:
     ld sp, hl
     rrca
     ei
-    ld hl, $ff00
+    ld hl, rJOYP
     rst $38
     rlca
     xor a

@@ -2243,7 +2243,7 @@ jr_028_4c85:
     or a
     ret nz
 
-    ld bc, $ff00
+    ld bc, rJOYP
     ld de, $ff80
     jr jr_028_4cc2
 
@@ -2262,7 +2262,7 @@ jr_028_4c9d:
     ret nz
 
     ld bc, $fe00
-    ld de, $ff00
+    ld de, rJOYP
     jr jr_028_4cc2
 
     ret
