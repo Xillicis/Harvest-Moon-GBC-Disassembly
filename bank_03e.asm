@@ -9610,7 +9610,7 @@ jr_03e_6a3d:
     ld h, b
     ldh [$ff60], a
     cp a
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ldh a, [$ff03]
     rst $38
     inc bc
@@ -11472,7 +11472,7 @@ jr_03e_725b:
     rlca
     rlca
     rst $38
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     add hl, bc
     ld l, d
     and b

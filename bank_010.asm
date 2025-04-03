@@ -8255,7 +8255,7 @@ jr_010_65ea:
 
     ret nz
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     cp b
     ret c
 

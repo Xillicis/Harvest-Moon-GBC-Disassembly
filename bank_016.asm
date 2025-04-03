@@ -1075,7 +1075,7 @@ jr_016_44a5:
     ccf
     ld a, h
     ccf
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
 
 jr_016_44e3:
     jr nc, jr_016_44a5
@@ -2013,7 +2013,7 @@ Call_016_48bf:
     and b
     and b
     ldh a, [$fff0]
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     jr nc, jr_016_48bd
 
     ld [$48f0], sp
@@ -5909,7 +5909,7 @@ jr_016_59ee:
 jr_016_59f6:
     add b
     db $10
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ldh [$ff38], a
     ldh a, [$ffd8]
     ldh a, [$ff78]

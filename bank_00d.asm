@@ -5350,7 +5350,7 @@ jr_00d_5d5f:
     rrca
     ld a, l
     ld a, [bc]
-    ldh [$ff30], a
+    ldh [rWave_0], a
     rlca
     rrca
     dec a
@@ -8885,7 +8885,7 @@ jr_00d_6dd0:
     cp $cc
     inc e
     ldh [rNR10], a
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     ret nc
@@ -10374,7 +10374,7 @@ jr_00d_742c:
     ret nc
 
     ldh [$ffd0], a
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     add hl, bc
@@ -10572,7 +10572,7 @@ jr_00d_74fa:
     db $fc
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
 
 jr_00d_753a:
     ret nz
@@ -10679,7 +10679,7 @@ jr_00d_75a1:
     db $fc
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     db $fc

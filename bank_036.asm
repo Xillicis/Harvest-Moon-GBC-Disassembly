@@ -1073,7 +1073,7 @@ jr_036_4452:
     ccf
     ld a, h
     ccf
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
 
 jr_036_44e3:
     jr nc, @-$3e
@@ -5978,7 +5978,7 @@ jr_036_59ee:
 jr_036_59f6:
     add b
     db $10
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ldh [$ff38], a
     ldh a, [$ffd8]
     ldh a, [$ff78]

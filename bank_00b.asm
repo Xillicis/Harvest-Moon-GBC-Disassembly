@@ -78,7 +78,7 @@ SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
 
     ret nz
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     cp b
     ret c
 
@@ -2893,7 +2893,7 @@ jr_00b_4b92:
 
     ret nz
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     cp b
     ret c
 
@@ -6104,7 +6104,7 @@ jr_00b_5a36:
 
     ret nz
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     cp b
     ret c
 
@@ -8917,7 +8917,7 @@ jr_00b_658a:
 
     ret nz
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     cp b
     ret c
 

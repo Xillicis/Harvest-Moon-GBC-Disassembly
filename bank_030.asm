@@ -13195,7 +13195,7 @@ jr_030_7b91:
     jp nz, $10fe
 
     rst $38
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     rst $18
     jr nc, @-$1f
 

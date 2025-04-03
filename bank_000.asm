@@ -317,16 +317,16 @@ Call_000_00d5:
 Jump_000_00d5:
     jp c, Jump_000_003f
 
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     nop
 
 Jump_000_00db:
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     nop
     rst $18
     ccf
     nop
-    ldh [$ff3f], a
+    ldh [rWave_f], a
 
 Call_000_00e3:
     nop
@@ -8514,11 +8514,11 @@ jr_000_2756:
     swap e
     ld hl, $64fa
     add hl, de
-    ld de, $ff30
+    ld de, rWave_0
     ld b, $10
 
 jr_000_2764:
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
     dec b
@@ -8752,11 +8752,11 @@ jr_000_286f:
     swap e
     ld hl, $64fa
     add hl, de
-    ld de, $ff30
+    ld de, rWave_0
     ld b, $10
 
 jr_000_287f:
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
     dec b
@@ -9879,11 +9879,11 @@ Jump_000_2d53:
     ld d, a
     ld hl, $64fa
     add hl, de
-    ld de, $ff30
+    ld de, rWave_0
     ld b, $10
 
 jr_000_2d60:
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
     dec b

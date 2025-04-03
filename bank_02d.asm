@@ -8662,7 +8662,7 @@ jr_02d_6850:
     db $ec
     jr jr_02d_6850
 
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     ldh a, [$ffc0]
@@ -11289,7 +11289,7 @@ jr_02d_73b6:
     or b
     ret c
 
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
 jr_02d_73bb:
@@ -11458,7 +11458,7 @@ jr_02d_744c:
     ret nc
 
     ldh [$ffd0], a
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     rrca
@@ -11665,7 +11665,7 @@ jr_02d_7507:
     db $fc
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
 
 jr_02d_753a:
     ret nz
@@ -11787,7 +11787,7 @@ jr_02d_75a1:
 jr_02d_75b5:
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     db $fc
