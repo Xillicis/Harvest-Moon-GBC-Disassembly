@@ -865,7 +865,7 @@ jr_000_0387:
 ; Something with writing CGB color pallete
 Call_000_039b:
     ; Address $FF68 is for BCPS/BGPI
-    ld c, $68
+    ld c, rBGPI_c
     ld a, %10000000
     ldh [c], a ; this is 
     inc c
@@ -884,7 +884,7 @@ Call_000_039b:
 
 ; Why is the same function repeated?
 Call_000_03ab:
-    ld c, $6a
+    ld c, rOBPI_c
     ld a, $80
     ldh [c], a
     inc c
@@ -909,7 +909,7 @@ Call_000_03bb:
     ld [$cd22], a
     inc a
     ld [$cd23], a
-    ld c, $68
+    ld c, rBGPI_c
     ld a, $80
     ldh [c], a
     inc c
@@ -927,13 +927,13 @@ jr_000_03d3:
 
 
 Call_000_03dd:
-    ld b, $98
+    ld b, %10011000
     call Call_000_0407
     ret
 
 
 Call_000_03e3:
-    ld b, $90
+    ld b, %10010000
     call Call_000_0407
 
 Call_000_03e8:
@@ -941,24 +941,24 @@ Call_000_03e8:
 
 
 Call_000_03e9:
-    ld b, $a8
+    ld b, %10101000
     call Call_000_0407
     ret
 
 
 Call_000_03ef:
-    ld b, $b8
+    ld b, %10111000
     call Call_000_0407
     ret
 
 
-    ld b, $a0
+    ld b, %10100000
     call Call_000_0407
     ret
 
 
 Call_000_03fb:
-    ld b, $b0
+    ld b, %10110000
     call Call_000_0407
 
 Jump_000_0400:
@@ -974,16 +974,17 @@ Call_000_0403:
 
 
 Call_000_0407:
-    ld c, $6a
+; Address $FF6A is OCPS/OBPI
+    ld c, rOBPI_c
     ld a, b
     ldh [c], a
-    ld c, $6b
+    ld c, rOBPD_c
     ld d, $08
 
 Jump_000_040f:
 jr_000_040f:
     call Call_000_0da9
-    ld a, [hl+]
+    ld a, [hli]
     ldh [c], a
     dec d
     jr nz, jr_000_040f
@@ -992,10 +993,10 @@ jr_000_040f:
 
 
 Call_000_0418:
-    ld c, $68
+    ld c, rBGPI_c
     ld a, b
     ldh [c], a
-    ld c, $69
+    ld c, rBGPD_c
     ld d, $08
 
 jr_000_0420:

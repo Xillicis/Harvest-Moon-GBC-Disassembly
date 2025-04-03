@@ -10118,16 +10118,16 @@ jr_020_6c07:
     adc h
     ld h, a
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jp z, Jump_020_6e98
 
-    cp $0c
+    cp HOE
     jp z, Jump_020_6ebc
 
-    cp $0d
+    cp HAMMER
     jp z, Jump_020_6ec3
 
-    cp $0e
+    cp AX
     jp z, Jump_020_6ebc
 
     cp $13

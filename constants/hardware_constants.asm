@@ -2,7 +2,6 @@
 DEF MBC3RomBank  EQU $2100
 DEF MBC3SRamBank EQU $4000
 
-
 ; interrupt flags
 DEF VBLANK   EQU 0
 DEF LCD_STAT EQU 1
@@ -27,4 +26,14 @@ DEF rIE_LCD    EQU 1
 DEF rIE_TIMER  EQU 2
 DEF rIE_SERIAL EQU 3
 DEF rIE_JOYPAD EQU 4
+
+; From Pokecrystal:
+DEF rBGPI_c              EQU $68 ; CGB Mode Only - Background Palette Index
+DEF rBGPI_AUTO_INCREMENT EQU 7     ; increment rBGPI after write to rBGPD
+DEF rBGPD_c              EQU $69 ; CGB Mode Only - Background Palette Data
+DEF rOBPI_c              EQU $6a ; CGB Mode Only - Sprite Palette Index
+DEF rOBPI_AUTO_INCREMENT EQU 7     ; increment rOBPI after write to rOBPD
+DEF rOBPD_c              EQU $6b ; CGB Mode Only - Sprite Palette Data
+DEF rOPRI_c              EQU $6c ; CGB Mode Only - Object Priority Mode
+DEF rSVBK_c              EQU $70 ; CGB Mode Only - WRAM Bank
 

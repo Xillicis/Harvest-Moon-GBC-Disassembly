@@ -4779,16 +4779,16 @@ Jump_001_5f2a:
     adc h
     ld h, a
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jp z, Jump_001_5fd6
 
-    cp $0c
+    cp HOE
     jp z, Jump_001_6096
 
-    cp $0d
+    cp HAMMER
     jp z, Jump_001_60ac
 
-    cp $0e
+    cp AX
     jp z, Jump_001_6103
 
     cp $13
