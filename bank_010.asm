@@ -2523,7 +2523,7 @@ jr_010_4bc3:
 
 jr_010_4ce2:
     inc bc
-    ld [$ff02], sp
+    ld [rSC], sp
     cp $f7
     adc a
     db $fc

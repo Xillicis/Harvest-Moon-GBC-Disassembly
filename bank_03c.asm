@@ -1071,7 +1071,7 @@ jr_03c_4452:
     ld e, a
     ld h, b
     ld e, a
-    ld bc, $ff04
+    ld bc, rDIV
     cp a
     ld b, b
     db $fc
@@ -6606,7 +6606,7 @@ Call_03c_5c38:
     ld b, c
     ld [hl], d
     dec c
-    ld bc, $ff04
+    ld bc, rDIV
     ldh [$ff80], a
     ldh a, [$ffe0]
     adc b
@@ -12545,7 +12545,7 @@ jr_03c_7721:
     nop
     ld bc, $0020
     ld [bc], a
-    ld bc, $ff02
+    ld bc, rSC
     ld bc, $003f
     ld b, b
     jr nz, jr_03c_7721

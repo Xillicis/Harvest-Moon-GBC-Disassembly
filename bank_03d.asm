@@ -10693,7 +10693,7 @@ jr_03d_74f0:
     jr nz, jr_03d_7545
 
     ld b, c
-    ld hl, $ff01
+    ld hl, rSB
     ld bc, $0303
     rlca
     rlca

@@ -9945,7 +9945,7 @@ jr_017_695d:
     nop
     ld d, b
     and b
-    ld bc, $ff02
+    ld bc, rSC
     ret z
 
     ldh a, [$fff8]

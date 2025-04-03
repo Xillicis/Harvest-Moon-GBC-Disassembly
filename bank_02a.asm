@@ -8327,7 +8327,7 @@ jr_02a_62d7:
     rst $38
     rst $38
     nop
-    ld bc, $ff02
+    ld bc, rSC
     daa
     reti
 
@@ -11352,7 +11352,7 @@ Jump_02a_6fff:
     rst $38
     rst $38
     nop
-    ld bc, $ff02
+    ld bc, rSC
     daa
     reti
 

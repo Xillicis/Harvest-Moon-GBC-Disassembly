@@ -205,28 +205,28 @@ DEF SCB_SOURCE EQU 0
 ; -- DIV ($FF04)
 ; -- Divider register (R/W)
 ; --
-DEF rDIV EQU $FF04
+;DEF rDIV EQU $FF04
 
 
 ; --
 ; -- TIMA ($FF05)
 ; -- Timer counter (R/W)
 ; --
-DEF rTIMA EQU $FF05
+;DEF rTIMA EQU $FF05
 
 
 ; --
 ; -- TMA ($FF06)
 ; -- Timer modulo (R/W)
 ; --
-DEF rTMA EQU $FF06
+;DEF rTMA EQU $FF06
 
 
 ; --
 ; -- TAC ($FF07)
 ; -- Timer control (R/W)
 ; --
-DEF rTAC EQU $FF07
+;DEF rTAC EQU $FF07
 
 DEF TACF_START  EQU %00000100
 DEF TACF_STOP   EQU %00000000

@@ -12385,7 +12385,7 @@ jr_03f_7acc:
     or $f8
     ld hl, sp-$20
     ldh [rSB], a
-    ld bc, $ff06
+    ld bc, rTMA
     ld b, $a9
     rst $38
     or c

@@ -12538,7 +12538,7 @@ jr_007_75c5:
     inc d
     rrca
     ld [bc], a
-    ld bc, $ff01
+    ld bc, rSB
     rlca
     ld [$0101], sp
     ld b, c

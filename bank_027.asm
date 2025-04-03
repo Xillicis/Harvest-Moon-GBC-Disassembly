@@ -12462,7 +12462,7 @@ jr_027_7562:
     inc d
     rrca
     ld [bc], a
-    ld bc, $ff01
+    ld bc, rSB
     rlca
     ld [$0101], sp
     ld b, c

@@ -7629,7 +7629,7 @@ jr_005_6b49:
     ld b, b
     adc l
     ld [hl], b
-    ld hl, $ff05
+    ld hl, rTIMA
     nop
     rst $38
     ret nz
@@ -7801,7 +7801,7 @@ jr_005_6bf8:
     add b
 
 jr_005_6bff:
-    ld bc, $ff01
+    ld bc, rSB
     set 1, e
     dec d
     dec d
@@ -9977,7 +9977,7 @@ jr_005_7530:
     db $e3
     ldh [c], a
     dec b
-    ld hl, $ff06
+    ld hl, rTMA
     rst $38
     db $fc
     cp a

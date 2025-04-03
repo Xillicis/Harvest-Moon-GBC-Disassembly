@@ -10943,7 +10943,7 @@ jr_023_7da5:
     inc bc
     ld b, a
     cp c
-    ld a, [$ff05]
+    ld a, [rTIMA]
     cp l
     rst $38
     ld b, d

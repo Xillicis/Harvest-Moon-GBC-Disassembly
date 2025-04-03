@@ -1355,7 +1355,7 @@ jr_030_4746:
     ld a, e
     add [hl]
     rrca
-    ld [$ff02], sp
+    ld [rSC], sp
     ld l, a
     rst $18
     ld h, c
@@ -2453,7 +2453,7 @@ jr_030_4c54:
     inc c
     ld [bc], a
     inc bc
-    ld [$ff02], sp
+    ld [rSC], sp
     cp $07
     adc a
     db $fc
@@ -13375,7 +13375,7 @@ jr_030_7c43:
     db $fc
     add h
     add a
-    ld bc, $ff01
+    ld bc, rSB
     inc e
     ei
     ld [bc], a

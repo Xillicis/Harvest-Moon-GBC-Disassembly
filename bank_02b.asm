@@ -5456,7 +5456,7 @@ jr_02b_56e8:
     inc sp
     cp h
     ld e, $71
-    ld bc, $ff01
+    ld bc, rSB
     jp z, $a5ff
 
     rst $28

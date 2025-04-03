@@ -9318,7 +9318,7 @@ jr_01e_693e:
     ldh a, [rNR41]
     rst $38
     ld h, b
-    ld bc, $ff01
+    ld bc, rSB
     ccf
     adc $5e
     adc h
@@ -9978,7 +9978,7 @@ jr_01e_6bd3:
     ld bc, $f8ff
     jr nz, jr_01e_6c2e
 
-    ld bc, $ff01
+    ld bc, rSB
     ld [bc], a
     ld [bc], a
     ld d, l
@@ -10912,7 +10912,7 @@ jr_01e_6f64:
     dec b
     db $ed
     db $ed
-    ld bc, $ff05
+    ld bc, rTIMA
     pop hl
     push de
     pop hl

@@ -6204,7 +6204,7 @@ jr_01c_5971:
     ld b, c
     ld [hl], d
     dec c
-    ld bc, $ff04
+    ld bc, rDIV
     ldh [$ff80], a
     ldh a, [$ffe0]
     adc b
@@ -11840,7 +11840,7 @@ jr_01c_73c9:
     nop
     ld bc, $0020
     ld [bc], a
-    ld bc, $ff02
+    ld bc, rSC
     ld bc, $003f
     ld b, b
     jr nz, jr_01c_7369

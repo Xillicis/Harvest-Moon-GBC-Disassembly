@@ -5991,10 +5991,10 @@ jr_013_5c6e:
     inc d
     nop
     ld b, $01
-    ld bc, $ff02
+    ld bc, rSC
     ld [$1200], sp
     ld [bc], a
-    ld bc, $ff02
+    ld bc, rSC
     add hl, bc
     nop
     rst $38
@@ -6366,7 +6366,7 @@ jr_013_5e36:
     ld bc, $0208
     ld [$0803], sp
     inc b
-    ld [$ff05], sp
+    ld [rTIMA], sp
     rrca
     nop
     ld [$1801], sp

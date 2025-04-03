@@ -6141,7 +6141,7 @@ jr_02d_5c74:
     ld a, e
     add [hl]
     rrca
-    ld [$ff02], sp
+    ld [rSC], sp
     ld l, a
     rst $18
     ld h, c

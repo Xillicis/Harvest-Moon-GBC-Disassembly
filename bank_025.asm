@@ -7664,7 +7664,7 @@ jr_025_6aef:
 
     db $f4
     ldh [c], a
-    ld bc, $ff04
+    ld bc, rDIV
     cp $01
     inc hl
     call c, Call_000_22dd
@@ -9332,7 +9332,7 @@ jr_025_7235:
     nop
     db $fd
     cp [hl]
-    ld bc, $ff02
+    ld bc, rSC
     add b
     pop bc
     ld h, $71
@@ -10219,8 +10219,8 @@ jr_025_761d:
     dec h
     ld [bc], a
     inc b
-    ld bc, $ff02
-    ld a, [hl+]
+    ld bc, rSC
+    ld a, [hli]
     ld c, h
     ld [hl], d
     inc bc
@@ -10331,7 +10331,7 @@ jr_025_7692:
     db $e3
     ldh [c], a
     dec b
-    ld hl, $ff06
+    ld hl, rTMA
     rst $38
     ld a, a
     db $fc

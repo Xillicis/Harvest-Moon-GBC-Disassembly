@@ -10058,7 +10058,7 @@ jr_037_698e:
     inc b
     ld c, $05
     rlca
-    ld bc, $ff01
+    ld bc, rSB
     nop
     ld c, $f0
     ld b, $fc
@@ -14372,7 +14372,7 @@ jr_037_7cf1:
     add c
     nop
     inc bc
-    ld bc, $ff06
+    ld bc, rTMA
     rla
     jr jr_037_7d72
 

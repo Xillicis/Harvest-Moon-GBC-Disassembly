@@ -12056,7 +12056,7 @@ jr_01d_7b49:
     ld [hl], l
     xor c
     ld e, d
-    ld bc, $ff04
+    ld bc, rDIV
     ld l, $34
 
 jr_01d_7b52:
