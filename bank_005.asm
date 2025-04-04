@@ -7644,7 +7644,7 @@ jr_005_6b49:
     rlca
     call nz, Call_000_2103
     ld b, $0f
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     rst $38
     rst $08
     ccf
@@ -8553,7 +8553,7 @@ jr_005_6f32:
 jr_005_6f3c:
     ccf
     rst $38
-    ldh [$ff39], a
+    ldh [rWave_9], a
     rst $28
     ld [hl-], a
     rst $28
@@ -9657,7 +9657,7 @@ jr_005_73f4:
     db $fc
     inc de
     ld bc, $0f36
-    ldh a, [$ff3a]
+    ldh a, [rWave_a]
     ld a, a
     jp z, $d535
 
@@ -10820,7 +10820,7 @@ jr_005_78f4:
     inc b
     dec b
     ld d, b
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ld e, [hl]
     dec b
     dec b

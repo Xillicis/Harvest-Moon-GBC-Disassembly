@@ -405,7 +405,7 @@ jr_03a_417a:
     nop
     ldh [$ffc0], a
     ld [hl], b
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nz
 
     ld c, b
@@ -4041,7 +4041,7 @@ jr_03a_5015:
 
     ld d, b
     ldh [rBCPS], a
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ldh a, [rP1]
     nop
     nop
@@ -4257,7 +4257,7 @@ jr_03a_5134:
     db $ec
     and $18
     inc c
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ldh [rP1], a
@@ -7023,7 +7023,7 @@ jr_03a_5cc0:
     ret nc
 
     ldh [$ffd0], a
-    ldh [$ff36], a
+    ldh [rWave_6], a
     ret nz
 
     db $ed
@@ -7102,7 +7102,7 @@ jr_03a_5cc0:
     db $fc
     ld b, h
     ld hl, sp-$78
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     ret nz
@@ -7126,7 +7126,7 @@ jr_03a_5cc0:
     db $f4
     ld hl, sp-$1c
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     ret nz
@@ -7441,7 +7441,7 @@ jr_03a_5eae:
     nop
     ldh a, [rP1]
     ld l, b
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     ld hl, sp+$34
     ld hl, sp+$74
     ld hl, sp+$00
@@ -8179,7 +8179,7 @@ jr_03a_6215:
     nop
     ldh [rP1], a
     db $10
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     ret nc
@@ -8422,7 +8422,7 @@ jr_03a_6289:
     ldh [$ff90], a
     ld h, b
     db $10
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     ret nz
@@ -8885,7 +8885,7 @@ jr_03a_64db:
     cp $02
     db $fc
     inc c
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     jr nz, jr_03a_64db
@@ -10832,7 +10832,7 @@ jr_03a_6cd3:
 jr_03a_6d36:
     ld hl, sp+$0c
     ldh a, [rNR23]
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     ldh [rP1], a
@@ -10864,7 +10864,7 @@ jr_03a_6d4c:
 jr_03a_6d59:
     ld b, $f8
     ld c, h
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ldh [rP1], a
@@ -14053,7 +14053,7 @@ jr_03a_7ad1:
     ld a, [$f806]
     inc b
     ld hl, sp+$08
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
 
 jr_03a_7adc:
     ret nz
@@ -14079,7 +14079,7 @@ jr_03a_7adc:
     ld de, $02ee
     db $fc
     inc e
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ret nz
 
     ld h, b

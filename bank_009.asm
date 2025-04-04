@@ -8880,7 +8880,7 @@ jr_009_6c81:
     ei
     ret nz
 
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ret nz
 
     or b
@@ -9739,7 +9739,7 @@ Jump_009_6ff6:
     ld hl, $c000
     ret nz
 
-    ldh [$ff33], a
+    ldh [rWave_3], a
     rst $18
     dec [hl]
     rra
@@ -10034,7 +10034,7 @@ jr_009_71af:
     add c
     dec d
     db $10
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ret nz
 
     ret nz

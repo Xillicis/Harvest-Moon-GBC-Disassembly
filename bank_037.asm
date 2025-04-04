@@ -403,7 +403,7 @@ jr_037_41ad:
     adc a
     ld [hl], b
     rra
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $db
     cp b
     ld e, a
@@ -4652,7 +4652,7 @@ jr_037_52c5:
     sbc b
     ld [$98f0], sp
     ldh [$ffc8], a
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     ret nz
@@ -13956,7 +13956,7 @@ jr_037_7af2:
     rst $28
     dec b
     ld [bc], a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ccf
     ccf
     ret nz

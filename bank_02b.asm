@@ -2056,7 +2056,7 @@ jr_02b_489f:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -5139,7 +5139,7 @@ jr_02b_55dd:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -5634,7 +5634,7 @@ jr_02b_5818:
     db $e3
     and d
     cpl
-    ldh a, [$ff37]
+    ldh a, [rWave_7]
     add b
     nop
     ldh [$ffaf], a
@@ -8215,7 +8215,7 @@ jr_02b_631a:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -11194,7 +11194,7 @@ jr_02b_6fd8:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -11864,7 +11864,7 @@ jr_02b_72d6:
 
 jr_02b_72e4:
     cp $c6
-    ldh a, [$ff3a]
+    ldh a, [rWave_a]
     or c
     dec d
     ld h, [hl]
@@ -14199,7 +14199,7 @@ jr_02b_7c85:
     rst $38
     db $f4
     ld hl, sp-$34
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     inc sp

@@ -12763,7 +12763,7 @@ jr_011_7b28:
     pop hl
     ccf
     rst $38
-    ldh a, [$ff3b]
+    ldh a, [rWave_b]
     rst $00
     inc e
     rst $38

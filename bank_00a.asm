@@ -133,7 +133,7 @@ jr_00a_4091:
     ld hl, sp+$39
     inc de
     db $fc
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     inc de
     db $f4
     ld [$1337], sp
@@ -144,7 +144,7 @@ jr_00a_4091:
     ld hl, sp+$35
     inc de
     db $f4
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     inc de
     db $ec
     inc bc
@@ -7166,7 +7166,7 @@ jr_00a_5e4e:
 
 jr_00a_5e57:
     sub b
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nz
 
     add sp, -$10
@@ -7403,7 +7403,7 @@ jr_00a_5f4c:
     ld [hl], a
     db $10
     rst $38
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -8041,7 +8041,7 @@ jr_00a_61ab:
     inc c
     rla
     add sp, -$61
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     jp nz, $dfe7
 
     jr jr_00a_625f
@@ -10499,7 +10499,7 @@ jr_00a_6c95:
     ld [hl], a
     db $10
     rst $38
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -11131,7 +11131,7 @@ jr_00a_6ef4:
     inc c
     rla
     add sp, -$61
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     jp nz, $dfe7
 
     jr jr_00a_6fa8
@@ -11463,7 +11463,7 @@ jr_00a_7015:
     ld bc, $1f0c
     ldh [$ffbf], a
     ld c, a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     cp a
     ret
 
@@ -13609,7 +13609,7 @@ jr_00a_79ff:
     add [hl]
     ld [hl], a
     db $10
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -14141,7 +14141,7 @@ jr_00a_7c01:
     ld hl, sp+$38
     ld b, $80
     di
-    ldh a, [$ff3e]
+    ldh a, [rWave_e]
     ld hl, $f8f8
     dec a
     ld hl, $00f8

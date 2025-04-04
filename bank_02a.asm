@@ -133,7 +133,7 @@ jr_02a_4091:
     ld hl, sp+$39
     nop
     db $fc
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     nop
     db $f4
     ld [$0037], sp
@@ -144,7 +144,7 @@ jr_02a_4091:
     ld hl, sp+$35
     nop
     db $f4
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     nop
     db $ec
     inc bc
@@ -7432,7 +7432,7 @@ jr_02a_5f54:
     ld [hl], a
     db $10
     rst $38
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -7642,7 +7642,7 @@ Jump_02a_603f:
 
 
     cpl
-    ldh a, [$ff3b]
+    ldh a, [rWave_b]
     rst $38
     and h
     ld a, l
@@ -10459,7 +10459,7 @@ jr_02a_6c6c:
     ld [hl], a
     db $10
     rst $38
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -10665,7 +10665,7 @@ jr_02a_6d1f:
 
 
     cpl
-    ldh a, [$ff3b]
+    ldh a, [rWave_b]
     rst $38
     and h
     ld a, l
@@ -12065,7 +12065,7 @@ jr_02a_7382:
     ld h, b
     rst $38
     ldh [$ff60], a
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ld hl, sp-$21
     ccf
     ld c, l
@@ -13473,7 +13473,7 @@ Jump_02a_78ed:
 
     ldh [rIE], a
     and b
-    ldh [$ff31], a
+    ldh [rWave_1], a
     pop af
     sbc [hl]
     ld a, a
@@ -13664,7 +13664,7 @@ jr_02a_7a35:
     add [hl]
     ld [hl], a
     db $10
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     pop af
     sbc e
     db $fc
@@ -14233,7 +14233,7 @@ jr_02a_7ca9:
     di
 
 jr_02a_7cab:
-    ldh a, [$ff3e]
+    ldh a, [rWave_e]
     jr nz, jr_02a_7ca7
 
     ld hl, sp+$3d

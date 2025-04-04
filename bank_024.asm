@@ -8349,7 +8349,7 @@ jr_024_71c6:
     rst $38
     sub $ee
     rst $18
-    ldh [$ff33], a
+    ldh [rWave_3], a
     ld c, a
     ret c
 

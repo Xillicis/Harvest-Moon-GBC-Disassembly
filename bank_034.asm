@@ -3584,7 +3584,7 @@ jr_034_50a1:
     ld hl, sp+$39
     nop
     db $fc
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     nop
     db $f4
     ld [$0037], sp
@@ -3595,7 +3595,7 @@ jr_034_50a1:
     ld hl, sp+$35
     nop
     db $f4
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     nop
     db $ec
     inc bc

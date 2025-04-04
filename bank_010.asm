@@ -10157,7 +10157,7 @@ jr_010_6efd:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -10616,7 +10616,7 @@ jr_010_70fd:
     db $e3
     and d
     cpl
-    ldh a, [$ff37]
+    ldh a, [rWave_7]
     add b
     cp a
     nop
@@ -11528,7 +11528,7 @@ jr_010_74ed:
     ldh [$ffa0], a
     ld h, b
     and b
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     jr nz, jr_010_74ed
 
     ldh [$ff80], a

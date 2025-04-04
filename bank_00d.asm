@@ -7459,7 +7459,7 @@ jr_00d_6729:
     ld a, [de]
     db $e4
     ld [$fef4], a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ld d, $3f
     ld d, $3f
     ld b, $3f
@@ -8190,7 +8190,7 @@ jr_00d_6a06:
     ldh [rP1], a
     db $10
     ldh [$ffc8], a
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, h
@@ -10626,7 +10626,7 @@ jr_00d_7550:
     db $fc
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     db $fc

@@ -3624,7 +3624,7 @@ jr_00c_54ba:
     ld a, [$31f1]
     ldh a, [c]
     ld [bc], a
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     ld [$eefa], a
     ld sp, $02ea
     db $ed
@@ -3971,7 +3971,7 @@ jr_00c_56a4:
     jp hl
 
 
-    ldh a, [$ff3c]
+    ldh a, [rWave_c]
     ld [hl-], a
     add b
     di
@@ -5790,7 +5790,7 @@ jr_00c_60ce:
     ld [hl-], a
     db $f4
     add hl, bc
-    ldh [$ff32], a
+    ldh [rWave_2], a
     xor $f9
     and b
     ld sp, $f9f6

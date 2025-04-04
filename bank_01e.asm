@@ -9240,7 +9240,7 @@ jr_01e_6891:
     ld l, a
     cp $02
     ld [bc], a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ld [hl], b
     ccf
     ld a, a
@@ -9765,7 +9765,7 @@ jr_01e_6ac6:
     jr nz, jr_01e_6b73
 
     ld d, b
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     ld b, c
     nop
     sub b
@@ -9898,7 +9898,7 @@ jr_01e_6ba0:
     rst $38
     ld h, b
     ldh [$ff60], a
-    ldh [$ff30], a
+    ldh [rWave_0], a
     ldh a, [$ff03]
     rst $38
     ld e, l
@@ -11731,7 +11731,7 @@ jr_01e_7399:
     rlca
     rlca
     rst $38
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     add hl, bc
     ld l, d
     and b
@@ -12081,7 +12081,7 @@ jr_01e_7542:
     db $10
     add hl, hl
     ld sp, hl
-    ldh a, [$ff32]
+    ldh a, [rWave_2]
     ldh a, [$ff80]
     jr nz, @-$1e
 
@@ -12682,7 +12682,7 @@ jr_01e_77d3:
     rra
     push bc
     ccf
-    ld [$ff3f], a
+    ld [rWave_f], a
     push de
     ld a, a
     xor d
@@ -12808,7 +12808,7 @@ jr_01e_77d3:
     ldh [c], a
     dec e
     rrca
-    ldh a, [$ff37]
+    ldh a, [rWave_7]
     ret z
 
     adc $31
@@ -13877,7 +13877,7 @@ jr_01e_7d0e:
     cp h
     ld h, b
     ldh [rNR41], a
-    ldh [$ff37], a
+    ldh [rWave_7], a
     rst $30
     push af
     db $10

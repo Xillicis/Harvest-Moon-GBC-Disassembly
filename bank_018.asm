@@ -2828,7 +2828,7 @@ jr_018_4c36:
     cp $ec
     xor $1c
     inc c
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld e, $05
@@ -3233,7 +3233,7 @@ jr_018_4dbf:
 jr_018_4e03:
     inc e
     ldh [rNR34], a
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     ret nz
 
     cp $00
@@ -3953,7 +3953,7 @@ jr_018_5127:
     ldh [$fff0], a
     nop
     db $10
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nz
 
     call c, $fc20
@@ -5593,7 +5593,7 @@ jr_018_5814:
     db $10
     ldh [rNR10], a
     ldh [rNR23], a
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     ret nz
 
 jr_018_581d:
@@ -5724,7 +5724,7 @@ jr_018_5894:
     db $10
     ldh [rNR10], a
     ldh [rNR10], a
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     ret nz
 
     ld a, [hl]
@@ -6222,7 +6222,7 @@ jr_018_5ab5:
 jr_018_5ac5:
     rra
     add sp, $1f
-    ldh [$ff37], a
+    ldh [rWave_7], a
     ret c
 
     db $eb
@@ -7260,7 +7260,7 @@ jr_018_5ece:
 
     ld b, b
     rst $38
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ld a, a
     ld l, [hl]
     ld a, a
@@ -7792,7 +7792,7 @@ jr_018_612c:
     ld l, d
     ld d, l
     rst $38
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ld a, a
     ld l, [hl]
     ld a, a
@@ -8515,7 +8515,7 @@ jr_018_641c:
     inc bc
     rlca
     ld bc, $8c07
-    ldh a, [$ff3c]
+    ldh a, [rWave_c]
     ret nz
 
     inc h
@@ -9524,7 +9524,7 @@ jr_018_6835:
 
     ldh a, [rP1]
     inc c
-    ldh a, [$ff35]
+    ldh a, [rWave_5]
     dec de
     dec sp
     inc b
@@ -13904,7 +13904,7 @@ jr_018_7aaa:
     db $e4
     jr jr_018_7ac8
 
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
 
 jr_018_7abe:
     ret nz
@@ -14562,7 +14562,7 @@ jr_018_7dbd:
     jr c, @-$0e
 
     ld a, [hl]
-    ldh a, [$ff35]
+    ldh a, [rWave_5]
     rra
     dec a
     rra
@@ -14615,7 +14615,7 @@ jr_018_7df5:
     rst $38
     ldh [$fffe], a
     ldh [$ffec], a
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     ld a, a
     ld a, $3e
     ld a, $3e

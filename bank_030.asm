@@ -2796,7 +2796,7 @@ jr_030_4d9d:
 
     jr nz, @+$72
 
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ld e, a
     ccf
     ld a, $3f
@@ -10155,7 +10155,7 @@ jr_030_6e71:
     nop
     rra
     rst $28
-    ldh [$ff3d], a
+    ldh [rWave_d], a
     db $fc
     add hl, hl
     ld [hl+], a
@@ -13641,7 +13641,7 @@ jr_030_7d62:
     and c
     pop hl
     and b
-    ldh [$ff38], a
+    ldh [rWave_8], a
     rst $38
     jr c, jr_030_7d0e
 

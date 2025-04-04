@@ -8218,7 +8218,7 @@ jr_012_6973:
     ld [hl-], a
     ld de, $f8f0
     ld sp, $f012
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ld [de], a
     add sp, $00
     cpl
@@ -8243,7 +8243,7 @@ jr_012_6973:
     ld [hl-], a
     ld de, $f8ef
     ld sp, $ef12
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ld [de], a
     rst $20
     nop
@@ -8270,7 +8270,7 @@ jr_012_6973:
     ld [hl-], a
     ld de, $f8ef
     ld sp, $ef12
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ld [de], a
     rst $20
     nop
@@ -12159,7 +12159,7 @@ jr_012_7d7b:
     ld h, b
     nop
     inc e
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     rst $28
     nop
     rst $28

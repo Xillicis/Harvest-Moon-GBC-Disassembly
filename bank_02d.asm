@@ -6441,7 +6441,7 @@ jr_02d_5dee:
     ld h, b
     ld e, $00
     ld b, $0c
-    ldh [$ff32], a
+    ldh [rWave_2], a
     ld bc, $2b3b
     inc b
     ld hl, $295b
@@ -9189,7 +9189,7 @@ jr_02d_6a5e:
     ldh [rP1], a
     db $10
     ldh [$ffc8], a
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, h
@@ -11728,7 +11728,7 @@ jr_02d_7563:
 jr_02d_7575:
     ld b, h
     ld hl, sp+$08
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     db $f4

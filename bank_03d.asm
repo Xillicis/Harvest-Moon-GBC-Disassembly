@@ -4866,7 +4866,7 @@ jr_03d_5822:
     rst $30
     ldh [rIE], a
     ld b, $94
-    ld bc, $ff3f
+    ld bc, rWave_f
     rrca
     rst $38
     ld e, a
@@ -11386,7 +11386,7 @@ jr_03d_7820:
     jr nz, jr_03d_77c3
 
     inc d
-    ldh [$ff36], a
+    ldh [rWave_6], a
     ld [hl], h
     rst $08
     add hl, de

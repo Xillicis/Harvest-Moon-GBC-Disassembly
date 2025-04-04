@@ -10191,7 +10191,7 @@ jr_002_754b:
 
     ld [hl+], a
     nop
-    ldh [$ff34], a
+    ldh [rWave_4], a
     inc d
     add hl, sp
     cp $c3

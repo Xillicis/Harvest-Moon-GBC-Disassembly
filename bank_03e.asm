@@ -8683,7 +8683,7 @@ jr_03e_6651:
     or b
     rst $08
     ld e, e
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     rlca
     dec bc
     or b
@@ -8956,7 +8956,7 @@ jr_03e_673d:
     ld l, a
     ld [bc], a
     ld [bc], a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ld [hl], b
     ccf
     sbc a
@@ -11822,7 +11822,7 @@ jr_03e_7404:
     db $10
     add hl, hl
     ld sp, hl
-    ldh a, [$ff32]
+    ldh a, [rWave_2]
     ldh a, [$ff80]
     jr nz, @-$1e
 
@@ -12419,7 +12419,7 @@ jr_03e_7695:
     rra
     push bc
     ccf
-    ld [$ff3f], a
+    ld [rWave_f], a
     push de
     ld a, a
     xor d
@@ -12545,7 +12545,7 @@ jr_03e_7695:
     ldh [c], a
     dec e
     rrca
-    ldh a, [$ff37]
+    ldh a, [rWave_7]
     ret z
 
     adc $31
@@ -13614,7 +13614,7 @@ jr_03e_7bd0:
     cp h
     ld h, b
     ldh [rNR41], a
-    ldh [$ff37], a
+    ldh [rWave_7], a
     rst $30
     push af
     db $10

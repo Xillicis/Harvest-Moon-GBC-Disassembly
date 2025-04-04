@@ -8962,7 +8962,7 @@ jr_032_6971:
     ld hl, sp+$34
     nop
     ld sp, hl
-    ldh a, [$ff33]
+    ldh a, [rWave_3]
     nop
     pop af
     nop
@@ -8972,7 +8972,7 @@ jr_032_6971:
     ld hl, sp+$31
     nop
     pop af
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     nop
     jp hl
 
@@ -9004,7 +9004,7 @@ jr_032_6971:
     nop
     ldh a, [$fff8]
     ld sp, $f000
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     nop
     add sp, $00
     cpl
@@ -9030,7 +9030,7 @@ jr_032_6a0a:
     nop
     ldh a, [$fff8]
     ld sp, $f000
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     nop
     add sp, $00
     cpl
@@ -12940,7 +12940,7 @@ jr_032_7d8b:
     ld h, b
     nop
     inc e
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     rst $28
     nop
     rst $28

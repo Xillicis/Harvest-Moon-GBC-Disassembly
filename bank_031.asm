@@ -12807,7 +12807,7 @@ jr_031_7b95:
     pop hl
     ccf
     rst $38
-    ldh a, [$ff3a]
+    ldh a, [rWave_a]
     rst $18
     add $1c
     rst $38
@@ -13569,7 +13569,7 @@ jr_031_7ed3:
     ld [hl], c
     rst $38
     rrca
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     call z, Call_000_07f8
     rla
     jr jr_031_7ed3

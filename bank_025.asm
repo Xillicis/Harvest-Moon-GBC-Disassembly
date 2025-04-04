@@ -8589,7 +8589,7 @@ jr_025_6f17:
     ld sp, hl
     rlca
     ccf
-    ldh [$ff39], a
+    ldh [rWave_9], a
     rst $28
     ld [hl-], a
     rst $38
@@ -11141,7 +11141,7 @@ jr_025_7a2a:
     ld c, l
     jr nz, jr_025_7a75
 
-    ld hl, $ff34
+    ld hl, rWave_4
     rst $38
     sub l
     ei
@@ -11152,7 +11152,7 @@ jr_025_7a4d:
     and b
     jr c, jr_025_7aba
 
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ld bc, $bf39
     xor d
     nop
@@ -11167,7 +11167,7 @@ jr_025_7a4d:
     dec b
     ld d, b
     ld a, e
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     dec b
     dec b
     ccf

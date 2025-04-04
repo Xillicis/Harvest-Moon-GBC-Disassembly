@@ -733,7 +733,7 @@ jr_019_431d:
     ret nz
 
     ccf
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     jr nc, jr_019_42e5
 
     ld [$08f0], sp
@@ -863,7 +863,7 @@ jr_019_439a:
 
     jr nz, jr_019_43ba
 
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nc
 
     ld hl, sp+$10
@@ -918,7 +918,7 @@ jr_019_43ba:
 
     jr nz, @+$12
 
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nc
 
     ld hl, sp+$10
@@ -1290,7 +1290,7 @@ jr_019_457c:
     adc b
     ld [hl], b
     ld [$08f0], sp
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     ld e, $32
     dec e
     inc sp
@@ -2296,7 +2296,7 @@ jr_019_49e0:
     ldh [$fff8], a
     nop
     inc e
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     ret nc
 
     rst $38
@@ -3767,7 +3767,7 @@ jr_019_4fe9:
     jr nc, jr_019_4fe9
 
     ld [$08f0], sp
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, [hl]
@@ -3889,7 +3889,7 @@ jr_019_507c:
     jr nc, jr_019_5067
 
     ld [$08f0], sp
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, [hl]
@@ -6888,7 +6888,7 @@ jr_019_5d57:
     jr nc, jr_019_5d57
 
     ld [$08f0], sp
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, [hl]
@@ -8585,7 +8585,7 @@ jr_019_650b:
     jr nz, @+$0a
 
     ldh a, [$ff08]
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ret nz
 
     adc b
@@ -8619,7 +8619,7 @@ jr_019_653c:
     jr nc, jr_019_6505
 
     ld [$08f0], sp
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ld c, [hl]
@@ -8820,7 +8820,7 @@ jr_019_65d5:
     jr nc, jr_019_65d5
 
     ld [$08f0], sp
-    ldh a, [$ff3e]
+    ldh a, [rWave_e]
     ret nz
 
     ld c, a
@@ -8828,7 +8828,7 @@ jr_019_65d5:
     rst $38
     nop
     rst $38
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ld bc, $033f
     ld a, a
     inc sp
@@ -8999,7 +8999,7 @@ jr_019_66d2:
     ld a, [$d000]
     jr nz, jr_019_66f2
 
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nc
 
     ldh a, [rP1]
@@ -10473,7 +10473,7 @@ jr_019_6d0a:
     pop de
     jr nz, jr_019_6d2c
 
-    ldh [$ff38], a
+    ldh [rWave_8], a
     ret nc
 
     ld hl, sp+$10
@@ -10642,7 +10642,7 @@ jr_019_6d8c:
     inc e
 
 jr_019_6dd6:
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     ret nz
 
     db $fc
@@ -12340,7 +12340,7 @@ jr_019_746c:
     adc d
     ld a, $c4
     rra
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ret nc
 
     rst $38

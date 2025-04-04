@@ -3561,7 +3561,7 @@ jr_014_50a1:
     ld hl, sp+$39
     inc de
     db $fc
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     inc de
     db $f4
     ld [$1337], sp
@@ -3572,7 +3572,7 @@ jr_014_50a1:
     ld hl, sp+$35
     inc de
     db $f4
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     inc de
     db $ec
     inc bc
@@ -5176,7 +5176,7 @@ jr_014_543c:
     inc [hl]
     ld [bc], a
     nop
-    ldh a, [$ff35]
+    ldh a, [rWave_5]
     ld a, [$e1f8]
     inc [hl]
     ld a, [$e000]
@@ -5222,7 +5222,7 @@ jr_014_543c:
     inc [hl]
     ld [bc], a
     nop
-    ldh a, [$ff35]
+    ldh a, [rWave_5]
     ld a, [$e1f8]
     inc [hl]
     add b
@@ -5236,7 +5236,7 @@ jr_014_543c:
     inc [hl]
     ld [bc], a
     nop
-    ldh a, [$ff35]
+    ldh a, [rWave_5]
     ld a, [$e1f8]
     inc [hl]
     add b
@@ -8130,7 +8130,7 @@ jr_014_6316:
     inc [hl]
     nop
     nop
-    ldh [$ff35], a
+    ldh [rWave_5], a
     ld hl, sp+$00
     ret nc
 

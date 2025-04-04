@@ -426,7 +426,7 @@ jr_017_41ab:
     adc a
     ld [hl], b
     rra
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     db $db
     cp a
     ld e, [hl]

@@ -4845,7 +4845,7 @@ jr_02c_56a4:
     jp hl
 
 
-    ldh a, [$ff3c]
+    ldh a, [rWave_c]
     jr nz, jr_02c_564b
 
     di
@@ -5955,7 +5955,7 @@ jr_02c_5c1a:
     ld hl, sp+$35
     nop
     pop af
-    ldh a, [$ff34]
+    ldh a, [rWave_4]
     nop
     ld sp, hl
     nop
@@ -5965,7 +5965,7 @@ jr_02c_5c1a:
     ld hl, sp+$38
     nop
     ld sp, hl
-    ldh a, [$ff37]
+    ldh a, [rWave_7]
     nop
     jp hl
 

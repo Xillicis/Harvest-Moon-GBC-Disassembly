@@ -10856,7 +10856,7 @@ jr_02f_7b57:
 
     sub $ee
     rst $18
-    ldh [$ff33], a
+    ldh [rWave_3], a
     ld c, a
     ret c
 
@@ -11775,7 +11775,7 @@ jr_02f_7e9c:
     ld a, [bc]
     ld [hl], $7f
     nop
-    ld bc, $ff36
+    ld bc, rWave_6
     rst $38
     rst $38
     rst $38

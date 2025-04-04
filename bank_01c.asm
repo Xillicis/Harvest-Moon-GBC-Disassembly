@@ -2258,7 +2258,7 @@ jr_01c_4951:
     add h
     inc bc
     ld c, b
-    ld bc, $ff30
+    ld bc, rWave_0
     ld bc, $01d2
     sbc [hl]
     ld bc, $0164
@@ -3448,7 +3448,7 @@ jr_01c_4e9e:
     nop
     ldh a, [rP1]
     ld b, $30
-    ldh [$ff3b], a
+    ldh [rWave_b], a
     ld [$0409], a
     ccf
     db $dd
@@ -3475,7 +3475,7 @@ jr_01c_4ec5:
     ld h, b
     jr nc, jr_01c_4ed5
 
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     inc a
     ret nz
 
@@ -4892,7 +4892,7 @@ jr_01c_54c2:
     add b
     rst $18
     dec sp
-    ldh [$ff3b], a
+    ldh [rWave_b], a
     rlca
     inc bc
     rlca
@@ -4902,7 +4902,7 @@ jr_01c_54c2:
     ld bc, $0103
     ld bc, $e000
     ld a, [hl+]
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     adc $61
     inc bc
     cp $ff
@@ -4989,7 +4989,7 @@ jr_01c_5549:
 
     ld [hl+], a
     nop
-    ldh [$ff37], a
+    ldh [rWave_7], a
     ldh [c], a
     ld [bc], a
     add c
@@ -6943,7 +6943,7 @@ jr_01c_5ddb:
     ld a, a
     or $18
     db $ec
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     ldh [$ff64], a
@@ -7531,7 +7531,7 @@ jr_01c_609c:
     ld [$10f0], sp
 
 jr_01c_60d1:
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     db $10
     ldh [rNR41], a
     ret nz
@@ -8403,7 +8403,7 @@ jr_01c_646f:
     jr nz, jr_01c_646f
 
     db $10
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     db $10
     ldh [$ff08], a
     ldh a, [$ff08]
@@ -10956,7 +10956,7 @@ Jump_01c_6fc3:
     and b
     ld b, b
     db $10
-    ldh [$ff30], a
+    ldh [rWave_0], a
     di
     ret nz
 

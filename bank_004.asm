@@ -8661,7 +8661,7 @@ jr_004_739a:
     ld e, h
     call c, $f838
     ldh [$ffe7], a
-    ldh [$ff3a], a
+    ldh [rWave_a], a
     ld a, [$3b2f]
     dec bc
     inc a
@@ -9283,7 +9283,7 @@ jr_004_7639:
     ld [hl-], a
     and c
     ld h, a
-    ldh [$ff37], a
+    ldh [rWave_7], a
     ldh [$ff6d], a
     inc bc
     inc bc

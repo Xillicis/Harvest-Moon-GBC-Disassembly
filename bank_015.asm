@@ -7836,7 +7836,7 @@ jr_015_611c:
     ld h, b
     ld e, a
     rst $38
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ld a, a
     ld l, [hl]
     ld a, a
@@ -8687,7 +8687,7 @@ jr_015_64b0:
     ld h, b
     ld e, a
     rst $38
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ld a, a
     ld l, [hl]
     ld a, a
@@ -9569,8 +9569,8 @@ jr_015_68bc:
     inc bc
     rlca
     ld bc, $9807
-    ldh a, [$ff3c]
-    ldh a, [$ff38]
+    ldh a, [rWave_c]
+    ldh a, [rWave_8]
     ret nz
 
     jr jr_015_68a9

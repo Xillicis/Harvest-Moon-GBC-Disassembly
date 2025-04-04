@@ -5178,7 +5178,7 @@ jr_01d_59ce:
     nop
     ld sp, hl
     and e
-    ld bc, $ff3f
+    ld bc, rWave_f
     rrca
     ld a, a
     rst $38
@@ -5641,7 +5641,7 @@ jr_01d_5ca2:
     nop
     inc hl
     db $fd
-    ldh a, [$ff33]
+    ldh a, [rWave_3]
     ld b, c
     nop
     ld h, c
@@ -6069,7 +6069,7 @@ jr_01d_5e03:
     or a
     dec c
     dec c
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     xor a
     dec h
     jp c, $d4ff
@@ -7113,7 +7113,7 @@ jr_01d_62cb:
     ret nz
 
     ldh [$ffe0], a
-    ldh a, [$ff3f]
+    ldh a, [rWave_f]
     ldh a, [$fff8]
     ld hl, sp-$04
     db $fc
@@ -11029,7 +11029,7 @@ jr_01d_768a:
     ld a, a
     inc sp
     dec sp
-    ld de, $ff33
+    ld de, rWave_3
     ld bc, $0001
     add b
     add b
@@ -11695,7 +11695,7 @@ jr_01d_79a6:
     jr nz, jr_01d_7948
 
     inc d
-    ldh [$ff36], a
+    ldh [rWave_6], a
     rst $08
     add hl, de
     add sp, $52
@@ -11876,7 +11876,7 @@ jr_01d_7a2b:
     ld a, b
     jr @-$1e
 
-    ldh [$ff3c], a
+    ldh [rWave_c], a
     ld [bc], a
     ld h, h
     rrca

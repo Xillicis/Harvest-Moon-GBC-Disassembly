@@ -8904,7 +8904,7 @@ jr_035_64ca:
     ld a, b
     ld e, a
     rst $38
-    ldh [$ff3f], a
+    ldh [rWave_f], a
 
 Call_035_64da:
     ld a, a
@@ -9778,7 +9778,7 @@ jr_035_6868:
 
     ld d, $e3
     rrca
-    ldh a, [$ff36]
+    ldh a, [rWave_6]
     ei
     ei
     db $fc
@@ -9819,7 +9819,7 @@ jr_035_68bc:
     rlca
     ld bc, $9807
     ldh a, [$ff2c]
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ret nz
 
     jr z, jr_035_68b9

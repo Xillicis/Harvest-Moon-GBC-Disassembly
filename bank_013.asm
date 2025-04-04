@@ -2347,7 +2347,7 @@ jr_013_4be4:
     ld sp, $f8e8
     pop af
     ld sp, $00e8
-    ldh a, [$ff31]
+    ldh a, [rWave_1]
     ldh [$fff8], a
     rst $28
     jr nc, jr_013_4be4
@@ -8152,7 +8152,7 @@ jr_013_66a7:
     ld sp, $f8f1
     pop hl
     ld sp, $00f1
-    ldh [$ff31], a
+    ldh [rWave_1], a
     jp hl
 
 
@@ -10495,7 +10495,7 @@ jr_013_740b:
     or $fd
     ldh a, [c]
     ld [hl], b
-    ld bc, $ff38
+    ld bc, rWave_8
     db $fc
     ld e, b
     ld hl, sp+$50

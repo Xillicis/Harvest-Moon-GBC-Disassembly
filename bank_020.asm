@@ -7282,7 +7282,7 @@ jr_020_6048:
     ccf
     ldh [$fffb], a
     rst $38
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     ld h, e
     rra
     rra
@@ -7946,7 +7946,7 @@ jr_020_634b:
     inc b
     ld [bc], a
     ld [bc], a
-    ldh a, [$ff38]
+    ldh a, [rWave_8]
     ldh [rP1], a
     sbc [hl]
     ld sp, hl
@@ -8548,7 +8548,7 @@ jr_020_660f:
     ld c, e
     db $fc
     rra
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ret nz
 
     ld a, a
@@ -8973,7 +8973,7 @@ jr_020_67b0:
     ei
     ld b, b
     inc de
-    ldh [$ff3b], a
+    ldh [rWave_b], a
 
 jr_020_67f5:
     ld b, c

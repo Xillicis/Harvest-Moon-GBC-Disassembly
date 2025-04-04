@@ -9746,7 +9746,7 @@ jr_029_6fd1:
     ld c, $0c
     ldh a, [rNR23]
     rst $38
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     ret nz
 
     dec d
@@ -9775,7 +9775,7 @@ jr_029_6fd1:
     ld b, b
     add b
     ld hl, $c000
-    ldh [$ff33], a
+    ldh [rWave_3], a
     ret nz
 
     cp a
@@ -10082,7 +10082,7 @@ jr_029_7166:
     dec d
     ret nc
 
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     ret nz
 
     ld [hl], e
@@ -10289,7 +10289,7 @@ jr_029_723d:
     cp $b0
     dec de
     cp $fe
-    ld de, $ff37
+    ld de, rWave_7
     cp a
     ld a, a
     rst $38

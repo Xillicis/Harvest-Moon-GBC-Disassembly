@@ -723,7 +723,7 @@ jr_039_4306:
     ld l, a
     cp a
     ld a, a
-    ldh a, [$ff30]
+    ldh a, [rWave_0]
     or b
     ret nz
 
@@ -1301,7 +1301,7 @@ jr_039_452e:
     adc b
     ld [hl], b
     ld [$08f0], sp
-    ldh a, [$ff3d]
+    ldh a, [rWave_d]
     ld e, $3e
     dec e
     ccf
@@ -2403,7 +2403,7 @@ jr_039_4a30:
     adc b
     ld [hl], b
     ld [$08f0], sp
-    ldh a, [$ff3c]
+    ldh a, [rWave_c]
     rra
     ld e, $0f
     rrca
@@ -2932,7 +2932,7 @@ jr_039_4cdb:
     ret z
 
     call nc, $de28
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     call z, Call_000_3bfe
     ld sp, hl
     pop hl
@@ -3745,7 +3745,7 @@ jr_039_5046:
     jp nc, $dab5
 
     ld a, [$d0f0]
-    ldh [$ff3f], a
+    ldh [rWave_f], a
     inc c
     db $fc
     inc sp
@@ -4823,7 +4823,7 @@ jr_039_54f0:
     xor $b0
     cp a
     add $ee
-    ldh a, [$ff3a]
+    ldh a, [rWave_a]
     call z, $ccf6
     add hl, hl
     ld d, $37
@@ -5399,7 +5399,7 @@ jr_039_5708:
     ld a, a
     sub e
     rst $28
-    ldh a, [$ff3d]
+    ldh a, [rWave_d]
     adc $ff
     inc c
     inc c
@@ -6841,7 +6841,7 @@ jr_039_5d57:
     ret nc
 
     ldh [$fff0], a
-    ldh [$ff3e], a
+    ldh [rWave_e], a
     rlca
     ld a, a
     ld [hl-], a

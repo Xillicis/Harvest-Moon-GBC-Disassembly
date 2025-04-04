@@ -11364,7 +11364,7 @@ jr_01f_764d:
     ld c, [hl]
     add h
     nop
-    ld sp, $ff37
+    ld sp, rWave_7
     ld a, a
     nop
     nop
