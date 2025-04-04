@@ -388,7 +388,7 @@ Call_007_4275:
     ld hl, $4288
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     xor a
     ld [$c613], a
     ld [$c611], a

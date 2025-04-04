@@ -1301,7 +1301,7 @@ Call_01d_46a6:
     ld hl, $6e00
     ld de, $88c0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6810
     ld c, $1d
     ld de, $8000
@@ -10287,11 +10287,11 @@ jr_01d_726e:
     ld hl, $7285
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7295
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -10783,11 +10783,11 @@ jr_01d_756a:
     ld hl, $7581
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7591
     ld de, $c880
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

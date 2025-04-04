@@ -27,11 +27,11 @@ SECTION "ROM Bank $006", ROMX[$4000], BANK[$6]
     ld hl, $9980
     ld de, $9c00
     ld b, $c0
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $9820
     ld de, $9980
     ld b, $c0
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $45a4
     call Call_006_445e
     call Call_006_4376
@@ -3036,7 +3036,7 @@ jr_006_4e02:
     ld b, a
     push bc
     call Call_000_0930
-    call Call_000_22f8
+    call CopyHLtoDE
     pop bc
     ldh a, [$ff97]
     add b
@@ -5138,7 +5138,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5162,7 +5162,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5186,7 +5186,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5210,7 +5210,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5234,7 +5234,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5258,7 +5258,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5282,7 +5282,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5306,7 +5306,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5330,7 +5330,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5354,7 +5354,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5378,7 +5378,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $08
@@ -5402,7 +5402,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5426,7 +5426,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $07
@@ -5450,7 +5450,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5474,7 +5474,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5498,7 +5498,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -5528,7 +5528,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5552,7 +5552,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5576,7 +5576,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5600,7 +5600,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -5624,7 +5624,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $07
@@ -5648,7 +5648,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $07
@@ -5672,7 +5672,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $07
@@ -5696,7 +5696,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -5754,7 +5754,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -5786,7 +5786,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -5818,7 +5818,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -5848,7 +5848,7 @@ jr_006_56c5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6146,7 +6146,7 @@ jr_006_5ee2:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6243,7 +6243,7 @@ jr_006_5f97:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6340,7 +6340,7 @@ jr_006_604c:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6437,7 +6437,7 @@ jr_006_6101:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6534,7 +6534,7 @@ jr_006_61b6:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -6631,7 +6631,7 @@ jr_006_626b:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7400,7 +7400,7 @@ jr_006_67f1:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7497,7 +7497,7 @@ jr_006_68aa:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7527,7 +7527,7 @@ jr_006_68aa:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7557,7 +7557,7 @@ jr_006_68aa:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7733,7 +7733,7 @@ jr_006_69ca:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -7968,7 +7968,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -7992,7 +7992,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8016,7 +8016,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8040,7 +8040,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8068,7 +8068,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $07
@@ -8092,7 +8092,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8116,7 +8116,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8140,7 +8140,7 @@ jr_006_6c23:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8796,7 +8796,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8820,7 +8820,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8844,7 +8844,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8868,7 +8868,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8892,7 +8892,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8916,7 +8916,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c62a
     ld a, [$c60a]
     sub $06
@@ -8940,7 +8940,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -8970,7 +8970,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9000,7 +9000,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9030,7 +9030,7 @@ jr_006_722a:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9328,7 +9328,7 @@ jr_006_7606:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9425,7 +9425,7 @@ jr_006_76bb:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9455,7 +9455,7 @@ jr_006_76bb:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a
@@ -9485,7 +9485,7 @@ jr_006_76bb:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
     ld [hl+], a

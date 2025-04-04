@@ -190,21 +190,21 @@ jr_023_4150:
     ld de, $ba12
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c800
     ld de, $cc2a
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_023_66bc
     ld hl, $ba12
     ld de, $b949
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc2a
     ld de, $c800
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $01
     ld [$cb62], a
     ret
@@ -216,21 +216,21 @@ jr_023_4150:
     ld de, $ba12
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c820
     ld de, $cc2a
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_023_66bc
     ld hl, $ba12
     ld de, $b95f
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc2a
     ld de, $c820
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $02
     ld [$cb62], a
     ret
@@ -242,21 +242,21 @@ jr_023_4150:
     ld de, $ba12
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c840
     ld de, $cc2a
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_023_66bc
     ld hl, $ba12
     ld de, $b975
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc2a
     ld de, $c840
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $03
     ld [$cb62], a
     ret
@@ -268,21 +268,21 @@ jr_023_4150:
     ld de, $ba12
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c860
     ld de, $cc2a
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_023_66bc
     ld hl, $ba12
     ld de, $b98b
     ld a, $16
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc2a
     ld de, $c860
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $00
     ld [$cb62], a
     ret
@@ -5610,7 +5610,7 @@ Call_023_620a:
     ld hl, $6216
     ld de, $c600
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -5849,7 +5849,7 @@ Call_023_6334:
     ld e, l
     ld hl, $cd2c
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $ff
     ld [$b9a2], a
     ret

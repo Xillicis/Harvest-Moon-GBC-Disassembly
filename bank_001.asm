@@ -7171,7 +7171,7 @@ jr_001_6d18:
     ld h, a
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     xor a
     ld [$c800], a
     ld [$c820], a
@@ -7350,7 +7350,7 @@ Call_001_6e30:
     ld hl, $6e20
     ld de, $c780
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$c78d]
     ld b, a
     add $00
@@ -7364,7 +7364,7 @@ jr_001_6e56:
     ld hl, $6e10
     ld de, $c780
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$c78d]
     ld b, a
     add $00
@@ -7387,7 +7387,7 @@ jr_001_6e56:
     ld l, [hl]
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

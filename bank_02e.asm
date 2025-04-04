@@ -2907,11 +2907,11 @@ jr_02e_5115:
     call Call_000_0a3e
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $51d0
     ld de, $c820
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$b899]
     cp $01
     jr nz, jr_02e_5158
@@ -2922,7 +2922,7 @@ jr_02e_5115:
     ld hl, $51e0
     ld de, $c880
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_02e_5373
 
 jr_02e_5158:
@@ -4564,7 +4564,7 @@ Call_02e_5aa2:
     ld hl, $5ab6
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $08
     ldh [$ff93], a
     ld a, $40
@@ -5603,7 +5603,7 @@ Call_02e_6121:
     ld hl, $6140
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $28
     ldh [$ff93], a
     ld a, $60
@@ -5611,7 +5611,7 @@ Call_02e_6121:
     ld hl, $6150
     ld de, $c820
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -5704,7 +5704,7 @@ Call_02e_6121:
     ld hl, $b9dc
     ld de, $cc7c
     ld b, $16
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6793
     ld a, $2e
     call BankSwitchCallHL
@@ -6380,7 +6380,7 @@ Call_02e_65f0:
     ld hl, $664a
     ld de, $c820
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$cc7a]
     cp $00
     jr nz, jr_02e_6616
@@ -6388,7 +6388,7 @@ Call_02e_65f0:
     ld hl, $662a
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $58
     ldh [$ff93], a
     ld a, $70
@@ -6400,7 +6400,7 @@ jr_02e_6616:
     ld hl, $663a
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $28
     ldh [$ff93], a
     ld a, $00
@@ -6510,7 +6510,7 @@ jr_02e_6647:
     ld hl, $b9f2
     ld de, $cc7c
     ld b, $16
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6793
     ld a, $2e
     call BankSwitchCallHL
@@ -6556,7 +6556,7 @@ Call_02e_6756:
     ld hl, $676a
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $28
     ldh [$ff93], a
     ld a, $70

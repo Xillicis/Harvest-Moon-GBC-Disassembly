@@ -739,11 +739,11 @@ Call_030_4472:
     ld hl, $4489
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4499
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -3962,10 +3962,10 @@ Call_030_546d:
     ld h, a
     ld de, $cc9d
     ld b, $07
-    call Call_000_22f8
+    call CopyHLtoDE
     ld de, $ba5c
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -4181,7 +4181,7 @@ Call_030_55a7:
     ld hl, $55be
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

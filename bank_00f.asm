@@ -7238,7 +7238,7 @@ jr_00f_6ae5:
     ld hl, $6bd4
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $00
     call Call_000_1658
     ld a, [$ccb8]
@@ -7287,7 +7287,7 @@ Call_00f_6b52:
     ld hl, $6be4
     ld de, $c860
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $d800
     ld de, $0072
     add hl, de
@@ -7303,7 +7303,7 @@ Call_00f_6b6c:
     ld hl, $6bf4
     ld de, $c880
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $d800
     ld de, $00f4
     add hl, de
@@ -7319,7 +7319,7 @@ Call_00f_6b86:
     ld hl, $6c04
     ld de, $c8a0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $d800
     ld de, $00ae
     add hl, de
@@ -7335,7 +7335,7 @@ Call_00f_6ba0:
     ld hl, $6c14
     ld de, $c8c0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $d800
     ld de, $006c
     add hl, de
@@ -7351,7 +7351,7 @@ Call_00f_6bba:
     ld hl, $6c24
     ld de, $c8e0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $d800
     ld de, $00fa
     add hl, de
@@ -7660,7 +7660,7 @@ jr_00f_6d7c:
     ld hl, $cc04
     ld de, $cc00
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $e3
     jr jr_00f_6da7
 
@@ -7668,7 +7668,7 @@ jr_00f_6d8b:
     ld hl, $cc08
     ld de, $cc00
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $e4
     jr jr_00f_6da7
 
@@ -7676,7 +7676,7 @@ jr_00f_6d9a:
     ld hl, $cc0c
     ld de, $cc00
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $e5
 
 jr_00f_6da7:
@@ -7800,13 +7800,13 @@ Call_00f_6e3b:
     ld hl, $6e5f
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $00
     call Call_000_1658
     ld hl, $6e6f
     ld de, $c8c0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_00f_6e23
     ret
 
@@ -7960,7 +7960,7 @@ jr_00f_6eff:
 
 jr_00f_6f02:
     ld b, $03
-    call Call_000_22f8
+    call CopyHLtoDE
     ld bc, $ccbb
     ld a, [$ccba]
     cp $03
@@ -8012,7 +8012,7 @@ Call_00f_6f38:
     inc bc
     push bc
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     pop bc
     ret
 

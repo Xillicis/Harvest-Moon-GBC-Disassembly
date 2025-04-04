@@ -14156,7 +14156,7 @@ jr_03b_7bdc:
     ld hl, $cccd
     ld de, $cd87
     ld b, $05
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     inc hl
     inc hl
@@ -14173,7 +14173,7 @@ jr_03b_7bf7:
     ld h, a
     ld de, $cd72
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -14201,7 +14201,7 @@ jr_03b_7bf7:
     ld hl, $cccd
     ld de, $cd82
     ld b, $05
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -14365,7 +14365,7 @@ jr_03b_7d06:
     ld hl, $cccd
     ld de, $cd87
     ld b, $05
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     inc hl
     inc hl
@@ -14382,7 +14382,7 @@ jr_03b_7d1b:
     ld h, a
     ld de, $cd72
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -14417,7 +14417,7 @@ jr_03b_7d1b:
     ld hl, $cccd
     ld de, $cd82
     ld b, $05
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 

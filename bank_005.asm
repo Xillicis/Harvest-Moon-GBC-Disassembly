@@ -841,7 +841,7 @@ Call_005_44a2:
     ld hl, $4556
     ld de, $c600
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $24
     ldh [$ff91], a
     xor a
@@ -853,7 +853,7 @@ jr_005_4532:
     ld hl, $4576
     ld de, $c600
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     xor a
     ldh [$ff91], a
     xor a
@@ -865,7 +865,7 @@ jr_005_4544:
     ld hl, $4596
     ld de, $c600
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     xor a
     ldh [$ff91], a
     xor a

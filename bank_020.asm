@@ -9804,27 +9804,27 @@ jr_020_6aa9:
     ld hl, $4149
     ld de, $8ae0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4249
     ld de, $8be0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4169
     ld de, $8ce0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4269
     ld de, $8de0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4189
     ld de, $8ee0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $4289
     ld de, $8fe0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

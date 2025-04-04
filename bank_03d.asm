@@ -1303,7 +1303,7 @@ Call_03d_468c:
     ld hl, $6cb0
     ld de, $88c0
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $66a0
     ld c, $3d
     ld de, $8000
@@ -10012,11 +10012,11 @@ jr_03d_7111:
     ld hl, $7128
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7138
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -10504,11 +10504,11 @@ jr_03d_7400:
     ld hl, $7417
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7427
     ld de, $c880
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

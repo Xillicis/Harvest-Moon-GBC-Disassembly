@@ -904,7 +904,7 @@ Call_000_03ab:
 Call_000_03bb:
     ld de, $dd02
     ld b, $40
-    call Call_000_22f8
+    call CopyHLtoDE
     xor a
     ld [$cd22], a
     inc a
@@ -7614,13 +7614,14 @@ jr_000_22ea:
 
     jr jr_000_22d9
 
-Call_000_22f8:
-jr_000_22f8:
-    ld a, [hl+]
+CopyHLtoDE:
+; copy `b` bytes of data from address starting in `hl` to address starting at `de`.
+.loop
+    ld a, [hli]
     ld [de], a
     inc de
     dec b
-    jr nz, jr_000_22f8
+    jr nz, .loop
 
     ret
 

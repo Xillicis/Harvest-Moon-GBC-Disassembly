@@ -761,11 +761,11 @@ Call_010_448d:
     ld hl, $44a4
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $44b4
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -4085,10 +4085,10 @@ Call_010_5502:
     ld h, a
     ld de, $cc9d
     ld b, $07
-    call Call_000_22f8
+    call CopyHLtoDE
     ld de, $ba5c
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -4306,7 +4306,7 @@ Call_010_563c:
     ld hl, $5653
     ld de, $c800
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -7124,19 +7124,19 @@ jr_010_61cf:
     ld hl, $cc04
     ld de, $cc00
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     jr jr_010_6213
 
     ld hl, $cc08
     ld de, $cc00
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     jr jr_010_6213
 
     ld hl, $cc0c
     ld de, $cc00
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
 
 jr_010_6213:
     ld a, $02

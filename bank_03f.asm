@@ -735,7 +735,7 @@ Jump_03f_4402:
     ld hl, $cde1
     ld de, $ce0b
     ld b, $0b
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $09
     add e
     ld e, a
@@ -756,7 +756,7 @@ Jump_03f_4402:
     ld hl, $cde1
     ld de, $ce25
     ld b, $03
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$ce25]
     res 7, a
     ld [$ce25], a
@@ -766,14 +766,14 @@ Jump_03f_4402:
     ld hl, $cde1
     ld de, $ce31
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
     ld hl, $cde1
     ld de, $ce37
     ld b, $02
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -815,7 +815,7 @@ Jump_03f_4402:
     ld a, [hl]
     call $5015
     ld b, $0b
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $09
     add l
     ld l, a
@@ -848,7 +848,7 @@ Jump_03f_4402:
     ld a, [hl]
     call Call_03f_519f
     ld b, $03
-    call Call_000_22f8
+    call CopyHLtoDE
     ld b, $05
     ret
 
@@ -862,7 +862,7 @@ Jump_03f_4402:
     inc de
     ld hl, $cec8
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     ld b, $08
     ret
 
@@ -2269,7 +2269,7 @@ jr_03f_4ad3:
     ld d, a
     ld a, [hl+]
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     jr jr_03f_4ad3
 
 jr_03f_4ae1:
@@ -2361,7 +2361,7 @@ jr_03f_4b65:
     inc bc
     push bc
     ld b, $40
-    call Call_000_22f8
+    call CopyHLtoDE
     pop bc
     jr jr_03f_4b65
 
@@ -2391,10 +2391,10 @@ jr_03f_4b90:
     ld hl, $90a0
     ld de, $8000
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $91a0
     ld b, $40
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -2649,7 +2649,7 @@ Call_03f_4ca8:
     ld b, a
     push bc
     call Call_000_0930
-    call Call_000_22f8
+    call CopyHLtoDE
     pop bc
     ldh a, [$ff97]
     add b
@@ -3100,7 +3100,7 @@ jr_03f_4e93:
 jr_03f_4eed:
     call Call_000_0930
     ld b, $19
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $18
     ldh [$ff97], a
@@ -3381,7 +3381,7 @@ jr_03f_5078:
 jr_03f_5085:
     call Call_000_0930
     ld b, $05
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $04
     ldh [$ff97], a
@@ -3440,7 +3440,7 @@ jr_03f_5095:
     ld h, a
     call Call_000_0930
     ld b, $0d
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $0c
     ldh [$ff97], a
@@ -3452,7 +3452,7 @@ jr_03f_50ec:
     ld hl, $50ff
     call Call_000_0930
     ld b, $17
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $16
     ldh [$ff97], a
@@ -3545,7 +3545,7 @@ jr_03f_513e:
     ld h, a
     call Call_000_0930
     ld b, $0b
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $0a
     ldh [$ff97], a
@@ -3595,10 +3595,10 @@ Call_03f_519f:
     call Call_000_0930
     ld hl, $51e2
     ld b, $03
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cec9
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $51e5
     ld a, [$cec8]
     or a
@@ -3608,7 +3608,7 @@ Call_03f_519f:
 
 jr_03f_51d5:
     ld b, $08
-    call Call_000_22f8
+    call CopyHLtoDE
     ldh a, [$ff97]
     add $0e
     ldh [$ff97], a
@@ -4106,19 +4106,19 @@ jr_03f_540c:
     ld hl, $b949
     ld de, $ce40
     ld b, $58
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $b9a7
     ld de, $ce98
     ld b, $30
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $b8db
     ld de, $cec8
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $b8d2
     ld de, $cece
     ld b, $09
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -4145,7 +4145,7 @@ jr_03f_5463:
     ld hl, $ce40
     ld de, $b949
     ld b, $58
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$b949]
     cp $ff
     jr z, jr_03f_5490
@@ -4200,7 +4200,7 @@ jr_03f_54c2:
     ld hl, $ce98
     ld de, $b9a7
     ld b, $30
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, [$b9a7]
     cp $ff
     jr z, jr_03f_54e9
@@ -4237,11 +4237,11 @@ jr_03f_550d:
     ld hl, $cec8
     ld de, $b8db
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cece
     ld de, $b8d2
     ld b, $09
-    call Call_000_22f8
+    call CopyHLtoDE
     ld b, $09
     ld c, $00
 
@@ -4487,15 +4487,15 @@ jr_03f_5625:
     push hl
     ld de, $ce25
     ld b, $0c
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cebc
     pop de
     ld b, $0c
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $ce25
     ld de, $cebc
     ld b, $0c
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -5006,7 +5006,7 @@ jr_03f_5837:
     ld [de], a
     inc de
     ld b, $0b
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $09
     add l
     ld l, a
@@ -5165,7 +5165,7 @@ jr_03f_58fe:
     ld hl, $ce0b
     set 7, [hl]
     ld b, $16
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -5231,7 +5231,7 @@ jr_03f_594a:
     ld [de], a
     inc de
     ld b, $03
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $08
     ld b, $05
     call Call_03f_4553
@@ -5375,7 +5375,7 @@ jr_03f_5a06:
     ld hl, $ce25
     set 7, [hl]
     ld b, $0c
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -5390,7 +5390,7 @@ jr_03f_5a06:
     inc de
     ld hl, $cec8
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $08
     ld b, $08
     call Call_03f_4553
@@ -5428,7 +5428,7 @@ jr_03f_5a06:
     ld de, $cec8
     ld hl, $ce31
     ld b, $06
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -5967,7 +5967,7 @@ Call_03f_5d19:
     inc hl
     pop de
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
@@ -6002,7 +6002,7 @@ Call_03f_5d25:
     inc hl
     ld de, $cd72
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -6019,7 +6019,7 @@ Call_03f_5d25:
     ld h, a
     ld de, $cd72
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -6044,7 +6044,7 @@ Call_03f_5d25:
     ld h, a
     ld de, $cd72
     ld b, $0e
-    call Call_000_22f8
+    call CopyHLtoDE
     pop hl
     ret
 
@@ -6211,7 +6211,7 @@ jr_03f_5e52:
 
 Call_03f_5e54:
     ld b, $04
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

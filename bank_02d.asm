@@ -6679,81 +6679,81 @@ jr_02d_5ec2:
     ld hl, $6721
     ld de, $80e0
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6801
     ld de, $8140
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $68e1
     ld de, $81a0
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $69c1
     ld de, $8200
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6ae1
     ld de, $8260
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6be1
     ld de, $82c0
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6d01
     ld de, $8320
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6de1
     ld de, $8380
     ld b, $70
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $6f01
     ld de, $83f0
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7001
     ld de, $8450
     ld b, $80
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7131
     ld de, $84d0
     ld b, $70
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7231
     ld de, $8540
     ld b, $70
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7341
     ld de, $85b0
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7421
     ld de, $8610
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $7501
     ld de, $8670
     ld b, $60
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
     ld hl, $6001
     ld de, $8100
     ld b, $f0
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $60f1
     ld de, $81f0
     ld b, $b0
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
     ld hl, $7001
     ld de, $80a0
     ld b, $80
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 

@@ -155,21 +155,21 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld de, $ba28
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c880
     ld de, $cc4c
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_024_63d2
     ld hl, $ba28
     ld de, $b9a7
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc4c
     ld de, $c880
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $01
     ld [$cc1f], a
     ld a, $01
@@ -178,21 +178,21 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld de, $ba28
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c8a0
     ld de, $cc4c
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_024_63d2
     ld hl, $ba28
     ld de, $b9b3
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc4c
     ld de, $c8a0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $02
     ld [$cc1f], a
     ret
@@ -204,21 +204,21 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld de, $ba28
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c8c0
     ld de, $cc4c
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_024_63d2
     ld hl, $ba28
     ld de, $b9bf
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc4c
     ld de, $c8c0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $03
     ld [$cc1f], a
     ld a, $03
@@ -227,21 +227,21 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld de, $ba28
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $c8e0
     ld de, $cc4c
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     call Call_024_63d2
     ld hl, $ba28
     ld de, $b9cb
     ld a, $0c
     ld b, a
-    call Call_000_22f8
+    call CopyHLtoDE
     ld hl, $cc4c
     ld de, $c8e0
     ld b, $20
-    call Call_000_22f8
+    call CopyHLtoDE
     ld a, $00
     ld [$cc1f], a
     ret
@@ -1150,7 +1150,7 @@ Call_024_4729:
     ld hl, $4735
     ld de, $c600
     ld b, $10
-    call Call_000_22f8
+    call CopyHLtoDE
     ret
 
 
