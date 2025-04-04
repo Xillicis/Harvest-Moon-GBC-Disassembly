@@ -3680,12 +3680,12 @@ Call_03d_51d9:
     ld [$b907], a
     ld [$b904], a
     ld a, $ff
-    ld [$b8f8], a
+    ld [sInventory], a
     ld [$b8f9], a
     ld a, $ff
     ld [$b8fa], a
     ld a, $02
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $00
     ld [$b901], a
     ld a, $16

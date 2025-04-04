@@ -3198,7 +3198,7 @@ jr_002_5023:
     ld [$c8e0], a
     ld [$c8c0], a
     ld [$c820], a
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $16
     jr z, jr_002_50ec
 
@@ -3222,7 +3222,7 @@ jr_002_5023:
     or a
     jr nz, jr_002_50da
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $0d
     jr z, jr_002_50e0
 
@@ -3239,7 +3239,7 @@ jr_002_50da:
 
 jr_002_50e0:
     ld a, $ff
-    ld [$b8f8], a
+    ld [sInventory], a
     jr jr_002_50ec
 
 jr_002_50e7:
@@ -8626,7 +8626,7 @@ jr_002_6e53:
     cp $01
     ret z
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $12
     ret z
 
@@ -8820,7 +8820,7 @@ Call_002_6f34:
     or a
     jr nz, jr_002_6f75
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $0d
     jr z, jr_002_6f7a
 
@@ -8839,7 +8839,7 @@ jr_002_6f75:
 
 jr_002_6f7a:
     ld a, $ff
-    ld [$b8f8], a
+    ld [sInventory], a
     ld a, $10
     ld [$cb8f], a
     call $4341

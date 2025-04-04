@@ -13394,7 +13394,7 @@ jr_02c_7ca9:
     or a
     jr nz, jr_02c_7cce
 
-    ld hl, $b8f8
+    ld hl, sInventory
     ld a, [hl]
     cp $0c
     jr z, jr_02c_7cc0
@@ -13422,7 +13422,7 @@ jr_02c_7cce:
     ret
 
 
-    ld hl, $b8f8
+    ld hl, sInventory
     ld a, [hl]
     cp $0e
     jr z, jr_02c_7ce2

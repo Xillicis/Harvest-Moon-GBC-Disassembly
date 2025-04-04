@@ -5,6 +5,7 @@
 
 INCLUDE "hardware.inc"
 INCLUDE "constants/ram.asm"
+INCLUDE "constants/sram.asm"
 INCLUDE "constants/hardware_constants.asm"
 INCLUDE "constants/item_constants.asm"
 INCLUDE "bank_000.asm"

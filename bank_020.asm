@@ -10105,19 +10105,19 @@ jr_020_6c07:
     call Call_000_03fb
     ret
 
-
+SomeLabel_020_6df4:
     ld a, [$c0bb]
     or a
     ret z
 
-    ld hl, $b8f8
-    ld a, [$b8fb]
-    add l
-    ld l, a
+    ld hl, sInventory
+    ld a, [sHeldItem] ; seems to be some sort of address shift.
+    add l ; a + l
+    ld l, a ; l = a + l
     ld a, $00
-    adc h
+    adc h 
     ld h, a
-    ld a, [hl]
+    ld a, [hl] 
     cp SICKLE
     jp z, Jump_020_6e98
 

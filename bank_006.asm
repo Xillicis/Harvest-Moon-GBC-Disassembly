@@ -858,7 +858,7 @@ jr_006_4463:
     ld b, $03
     jr jr_006_4463
 
-    ld hl, $b8f8
+    ld hl, sInventory
     cp [hl]
     ret z
 

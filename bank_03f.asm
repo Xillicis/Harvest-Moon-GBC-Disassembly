@@ -4602,7 +4602,7 @@ jr_03f_566e:
     inc bc
 
 Call_03f_56aa:
-    ld hl, $b8f8
+    ld hl, sInventory
     cp [hl]
     ret z
 

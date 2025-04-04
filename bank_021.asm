@@ -2652,8 +2652,8 @@ Call_021_5251:
     jp nz, Jump_021_4f51
 
 jr_021_5273:
-    ld a, [$b8fb]
-    ld hl, $b8f8
+    ld a, [sHeldItem]
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -4602,8 +4602,8 @@ jr_021_5e0b:
 
 
 Jump_021_5e25:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -5255,8 +5255,8 @@ Jump_021_61bf:
     ld [$c912], a
     ld a, $5a
     call $16d1
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -5351,8 +5351,8 @@ Jump_021_6253:
     call Call_000_25ce
     ld a, $5a
     ld [$c912], a
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -9941,7 +9941,7 @@ jr_021_7d45:
     or a
     jr nz, jr_021_7d6d
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $0d
     jr z, jr_021_7d72
 
@@ -9960,7 +9960,7 @@ jr_021_7d6d:
 
 jr_021_7d72:
     ld a, $ff
-    ld [$b8f8], a
+    ld [sInventory], a
     ld hl, $45c5
     ld a, $28
     call BankSwitchCallHL

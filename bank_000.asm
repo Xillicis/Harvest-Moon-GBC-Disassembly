@@ -915,13 +915,13 @@ Call_000_03bb:
     inc c
     ld b, $20
 
-jr_000_03d3:
+.loop
     ld a, $ff
     ldh [c], a
     ld a, $7f
     ldh [c], a
     dec b
-    jr nz, jr_000_03d3
+    jr nz, .loop
 
     ret
 
@@ -982,12 +982,12 @@ Call_000_0407:
     ld d, $08
 
 Jump_000_040f:
-jr_000_040f:
+.loop
     call Call_000_0da9
     ld a, [hli]
     ldh [c], a
     dec d
-    jr nz, jr_000_040f
+    jr nz, .loop
 
     ret
 
@@ -999,12 +999,12 @@ Call_000_0418:
     ld c, rBGPD_c
     ld d, $08
 
-jr_000_0420:
+.loop
     call Call_000_0da9
     ld a, [hli]
     ldh [c], a
     dec d
-    jr nz, jr_000_0420
+    jr nz, .loop
 
     ret
 
@@ -2390,10 +2390,10 @@ Call_000_0a55:
 
 
 Call_000_0a62:
-jr_000_0a62:
+.loop
     call Call_000_0a69
     dec c
-    jr nz, jr_000_0a62
+    jr nz, .loop
 
     ret
 
@@ -5308,7 +5308,7 @@ Call_000_1923:
     ld [$c912], a
     ld a, $21
     call Call_000_151d
-    ld a, [$b8fb]
+    ld a, [sHeldItem]
     inc a
     cp $03
     jr nz, jr_000_194a
@@ -5316,8 +5316,8 @@ Call_000_1923:
     xor a
 
 jr_000_194a:
-    ld [$b8fb], a
-    ld hl, $b8f8
+    ld [sHeldItem], a
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -13346,8 +13346,8 @@ Jump_000_3e3d:
     call Call_000_0da9
     ld a, $9f
     ld [$9c72], a
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00

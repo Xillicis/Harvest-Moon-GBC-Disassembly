@@ -8060,7 +8060,7 @@ jr_02f_6f01:
     ret
 
 
-    ld hl, $b8f8
+    ld hl, sInventory
     ld a, [hl+]
     cp $10
     ret z

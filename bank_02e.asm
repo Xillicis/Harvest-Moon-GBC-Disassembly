@@ -913,8 +913,8 @@ jr_02e_4582:
     jp z, Jump_02e_4705
 
 jr_02e_45a7:
-    ld a, [$b8fb]
-    ld hl, $b8f8
+    ld a, [sHeldItem]
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -938,8 +938,8 @@ jr_02e_45c8:
     cp $00
     ret nz
 
-    ld a, [$b8fb]
-    ld hl, $b8f8
+    ld a, [sHeldItem]
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1013,8 +1013,8 @@ jr_02e_4628:
     cp $0a
     jp z, Jump_02e_4705
 
-    ld a, [$b8fb]
-    ld hl, $b8f8
+    ld a, [sHeldItem]
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1669,8 +1669,8 @@ Jump_02e_4a06:
     ld a, $08
     ld [$c912], a
     ld a, [$cc19]
-    ld [$b8fb], a
-    ld hl, $b8f8
+    ld [sHeldItem], a
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1698,8 +1698,8 @@ jr_02e_4a4a:
     ld [$b9d8], a
     call Call_02e_50f0
     ld a, [$cc19]
-    ld [$b8fb], a
-    ld hl, $b8f8
+    ld [sHeldItem], a
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1712,8 +1712,8 @@ jr_02e_4a4a:
 
 jr_02e_4a84:
     ld a, [$cc19]
-    ld [$b8fb], a
-    ld hl, $b8f8
+    ld [sHeldItem], a
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1745,8 +1745,8 @@ Jump_02e_4aa0:
     ld a, $08
     ld [$c912], a
     ld a, [$cc19]
-    ld [$b8fb], a
-    ld hl, $b8f8
+    ld [sHeldItem], a
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -5236,9 +5236,9 @@ Jump_02e_5ec0:
     ret
 
 
-    ld a, [$b8fb]
+    ld a, [sHeldItem]
     ld [$cc19], a
-    ld hl, $b8f8
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -5247,7 +5247,7 @@ Jump_02e_5ec0:
     ld a, [hl]
     ld [$cc1a], a
     ld a, $02
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $01
     ld [$c60d], a
     ld a, $03
@@ -5301,8 +5301,8 @@ Jump_02e_5f4a:
 
     call Call_000_191a
     call Call_000_1514
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -5352,8 +5352,8 @@ jr_02e_5fa7:
 
 
 jr_02e_5fb2:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00

@@ -4956,7 +4956,7 @@ jr_02a_549d:
     or a
     jr nz, jr_02a_54df
 
-    ld hl, $b8f8
+    ld hl, sInventory
     ld a, [hl]
     cp $0b
     jr z, jr_02a_54d1

@@ -1400,7 +1400,7 @@ jr_03b_4686:
     ld b, [hl]
 
 Call_03b_4699:
-    ld hl, $b8f8
+    ld hl, sInventory
     cp [hl]
     ret z
 

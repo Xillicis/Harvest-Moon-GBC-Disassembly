@@ -293,15 +293,15 @@ jr_005_41df:
     adc h
     ld h, a
     ld b, [hl]
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     cp $02
     jr z, jr_005_4255
 
     cp $01
     jr z, jr_005_4226
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $ff
     jr z, jr_005_4216
 
@@ -314,16 +314,16 @@ jr_005_41df:
     ld a, b
     ld [$b8f9], a
     ld a, $01
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 jr_005_4216:
-    ld a, [$b8f8]
+    ld a, [sInventory]
     call Call_005_42af
     ld a, b
-    ld [$b8f8], a
+    ld [sInventory], a
     xor a
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 jr_005_4226:
@@ -331,16 +331,16 @@ jr_005_4226:
     cp $ff
     jr z, jr_005_4244
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $ff
     jr nz, jr_005_4244
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     call Call_005_42af
     ld a, b
-    ld [$b8f8], a
+    ld [sInventory], a
     xor a
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 jr_005_4244:
@@ -349,20 +349,20 @@ jr_005_4244:
     ld a, b
     ld [$b8f9], a
     ld a, $01
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 jr_005_4255:
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $ff
     jr nz, jr_005_426c
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     call Call_005_42af
     ld a, b
-    ld [$b8f8], a
+    ld [sInventory], a
     xor a
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 jr_005_426c:
@@ -371,7 +371,7 @@ jr_005_426c:
     ld a, b
     ld [$b8f9], a
     ld a, $01
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_005_427d
 
 Jump_005_427d:

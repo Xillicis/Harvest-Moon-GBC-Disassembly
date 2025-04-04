@@ -610,8 +610,8 @@ Jump_028_42db:
 jr_028_42db:
     ld a, $01
     ld [$cb75], a
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -744,8 +744,8 @@ Jump_028_438d:
 jr_028_438d:
     ld a, $01
     ld [$cb75], a
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -820,8 +820,8 @@ jr_028_43b4:
 
 
 Jump_028_43f1:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -846,8 +846,8 @@ Jump_028_43f1:
     jr z, jr_028_4418
 
 jr_028_4418:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -911,8 +911,8 @@ Jump_028_446e:
 jr_028_446e:
     ld a, $01
     ld [$cb75], a
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -1101,8 +1101,8 @@ jr_028_4563:
 
 
 Call_028_456e:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -1176,8 +1176,8 @@ jr_028_45bb:
     ret
 
 
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00

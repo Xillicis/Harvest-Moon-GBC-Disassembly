@@ -4768,7 +4768,7 @@ jr_01f_577f:
     inc bc
 
 Call_01f_57bb:
-    ld hl, $b8f8
+    ld hl, sInventory
     cp [hl]
     ret z
 

@@ -12014,7 +12014,7 @@ jr_007_72d8:
     or a
     jr nz, jr_007_7301
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $0d
     jr z, jr_007_7306
 
@@ -12037,7 +12037,7 @@ jr_007_7301:
 
 jr_007_7306:
     ld a, $ff
-    ld [$b8f8], a
+    ld [sInventory], a
     ret
 
 

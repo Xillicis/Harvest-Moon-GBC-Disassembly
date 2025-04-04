@@ -797,7 +797,7 @@ jr_013_433c:
 
     ld a, [$b900]
     db $10
-    ld a, [$b8f8]
+    ld a, [sInventory]
     db $10
     ldh a, [c]
     nop

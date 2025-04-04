@@ -903,8 +903,8 @@ jr_023_4596:
 
 
 jr_023_45a0:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -1238,10 +1238,10 @@ jr_023_4781:
     ld [$cc17], a
     ld [$cc16], a
     ld [$cc19], a
-    ld a, [$b8fb]
+    ld a, [sHeldItem]
     ld [$cc1a], a
     ld a, $02
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, [$cc18]
     or a
     jr z, jr_023_47cd
@@ -1348,7 +1348,7 @@ Jump_023_482c:
     ld [hl], e
     ld c, b
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     xor a
@@ -1412,8 +1412,8 @@ Call_023_4893:
     jp z, Jump_023_4cfc
 
 jr_023_48bb:
-    ld a, [$b8fb]
-    ld hl, $b8f8
+    ld a, [sHeldItem]
+    ld hl, sInventory
     add l
     ld l, a
     ld a, $00
@@ -1426,11 +1426,11 @@ jr_023_48bb:
     ld hl, $5251
     ld a, $21
     call BankSwitchCallHL
-    ld a, [$b8fb]
+    ld a, [sHeldItem]
     cp $00
     jr nz, jr_023_48e1
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     jr jr_023_48e4
 
 jr_023_48e1:
@@ -1550,10 +1550,10 @@ jr_023_4952:
 
     set 1, a
     ld [hl], a
-    ld a, [$b8fb]
+    ld a, [sHeldItem]
     ld [$cc1a], a
     ld a, $02
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $ff
     ld [$cc19], a
     ldh a, [$ffaa]
@@ -2145,8 +2145,8 @@ Jump_023_4cfc:
 
 
 jr_023_4d07:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     cp $02
     jr z, jr_023_4d4f
 
@@ -2157,15 +2157,15 @@ jr_023_4d07:
     cp $ff
     jr z, jr_023_4d35
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     ld [$cc21], a
     ld hl, $63b0
     ld a, $24
     call BankSwitchCallHL
     ld a, $10
-    ld [$b8f8], a
+    ld [sInventory], a
     xor a
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_023_4d6d
 
 jr_023_4d35:
@@ -2177,23 +2177,23 @@ jr_023_4d35:
     ld a, $10
     ld [$b8f9], a
     ld a, $01
-    ld [$b8fb], a
+    ld [sHeldItem], a
     jr jr_023_4d6d
 
 jr_023_4d4f:
-    ld a, [$b8f8]
+    ld a, [sInventory]
     cp $ff
     jr nz, jr_023_4d35
 
-    ld a, [$b8f8]
+    ld a, [sInventory]
     ld [$cc21], a
     ld hl, $63b0
     ld a, $24
     call BankSwitchCallHL
     ld a, $10
-    ld [$b8f8], a
+    ld [sInventory], a
     xor a
-    ld [$b8fb], a
+    ld [sHeldItem], a
 
 jr_023_4d6d:
     xor a
@@ -2468,8 +2468,8 @@ jr_023_4ef7:
     ld [$b948], a
 
 jr_023_4f04:
-    ld hl, $b8f8
-    ld a, [$b8fb]
+    ld hl, sInventory
+    ld a, [sHeldItem]
     add l
     ld l, a
     ld a, $00
@@ -2513,7 +2513,7 @@ jr_023_4f38:
 
 
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     ld a, $15
@@ -2588,7 +2588,7 @@ jr_023_4f95:
 
 
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     ld a, $15
@@ -2659,7 +2659,7 @@ jr_023_500e:
 
 
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     ld a, $15
@@ -2730,7 +2730,7 @@ jr_023_5088:
 
 
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     ld a, $15
@@ -2767,7 +2767,7 @@ jr_023_50e4:
 
 
     ld a, [$cc1a]
-    ld [$b8fb], a
+    ld [sHeldItem], a
     ld a, $02
     ld [$cc1a], a
     ld a, $15

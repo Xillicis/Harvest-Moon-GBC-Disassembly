@@ -1684,7 +1684,7 @@ jr_009_4863:
     add b
 
 Call_009_4896:
-    ld hl, $b8f8
+    ld hl, sInventory
     cp [hl]
     ret z
 
