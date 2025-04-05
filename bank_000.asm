@@ -3873,21 +3873,21 @@ Call_000_11c2:
     ld hl, $6fa9
     ld de, $d800
     ld bc, $0154
-    call Call_000_22ff
+    call CopyHLtoDEBig
     jr jr_000_11ff
 
 jr_000_11e5:
     ld hl, $7251
     ld de, $d800
     ld bc, $0154
-    call Call_000_22ff
+    call CopyHLtoDEBig
     jr jr_000_11ff
 
 jr_000_11f3:
     ld hl, $70fd
     ld de, $d800
     ld bc, $0154
-    call Call_000_22ff
+    call CopyHLtoDEBig
 
 Call_000_11ff:
 jr_000_11ff:
@@ -3904,7 +3904,7 @@ Call_000_1205:
     ld hl, $73a5
     ld de, $d800
     ld bc, $0198
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -3918,7 +3918,7 @@ Call_000_1221:
     ld hl, $753d
     ld de, $d800
     ld bc, $0154
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -3932,7 +3932,7 @@ Call_000_123d:
     ld hl, $76b3
     ld de, $d800
     ld bc, $0154
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -3946,7 +3946,7 @@ Call_000_1259:
     ld hl, $7954
     ld de, $d800
     ld bc, $0176
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
 
@@ -3965,7 +3965,7 @@ Call_000_1278:
     ld hl, $704c
     ld de, $d800
     ld bc, $01fe
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -3979,7 +3979,7 @@ Call_000_1291:
     ld hl, $724a
     ld de, $d800
     ld bc, $0132
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -3993,7 +3993,7 @@ Call_000_12ad:
     ld hl, $737c
     ld de, $d800
     ld bc, $01dc
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -4007,7 +4007,7 @@ Call_000_12c9:
     ld hl, $7558
     ld de, $d800
     ld bc, $01fe
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -4021,7 +4021,7 @@ Call_000_12e5:
     ld hl, $7756
     ld de, $d800
     ld bc, $01fe
-    call Call_000_22ff
+    call CopyHLtoDEBig
     ldh a, [$ffa4]
     ld [MBC3RomBank], a
     ret
@@ -7627,15 +7627,16 @@ CopyHLtoDE:
     ret
 
 
-Call_000_22ff:
-jr_000_22ff:
-    ld a, [hl+]
+CopyHLtoDEBig:
+; copy `bc` bytes of data from address starting in `hl` to address starting at `de`.
+.loop
+    ld a, [hli]
     ld [de], a
     inc de
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_22ff
+    jr nz, .loop
 
     ret
 
@@ -7650,7 +7651,7 @@ Call_000_2308:
     ld a, h
     pop hl
     push af
-    call Call_000_22ff
+    call CopyHLtoDEBig
     pop af
     ld [MBC3RomBank], a
     ret
@@ -8008,7 +8009,7 @@ jr_000_2486:
     ld a, $e4
     ldh [rBGP], a
     ld de, $8800
-    call Call_000_22ff
+    call CopyHLtoDEBig
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
