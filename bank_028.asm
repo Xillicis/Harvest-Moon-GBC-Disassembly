@@ -611,7 +611,7 @@ jr_028_42db:
     ld a, $01
     ld [$cb75], a
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -745,7 +745,7 @@ jr_028_438d:
     ld a, $01
     ld [$cb75], a
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -821,7 +821,7 @@ jr_028_43b4:
 
 Jump_028_43f1:
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -847,7 +847,7 @@ Jump_028_43f1:
 
 jr_028_4418:
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -912,7 +912,7 @@ jr_028_446e:
     ld a, $01
     ld [$cb75], a
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -1102,7 +1102,7 @@ jr_028_4563:
 
 Call_028_456e:
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -1177,7 +1177,7 @@ jr_028_45bb:
 
 
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00

@@ -407,9 +407,9 @@ Jump_004_4313:
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_4347
@@ -420,7 +420,7 @@ Jump_004_4313:
     and $01
     jp z, Jump_004_4501
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_4514
 
@@ -443,9 +443,9 @@ Jump_004_434b:
     ret nz
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_437f
@@ -456,7 +456,7 @@ Jump_004_434b:
     and $01
     jp z, Jump_004_4501
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_4514
 
@@ -479,9 +479,9 @@ Jump_004_4383:
     ret nz
 
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_43b7
@@ -492,7 +492,7 @@ Jump_004_4383:
     and $01
     jp z, Jump_004_4527
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_453a
 
@@ -515,9 +515,9 @@ Jump_004_43bb:
     ret nz
 
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_43ef
@@ -528,7 +528,7 @@ Jump_004_43bb:
     and $01
     jp z, Jump_004_4527
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_453a
 
@@ -596,9 +596,9 @@ jr_004_441e:
     ret nz
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_445d
@@ -609,7 +609,7 @@ jr_004_441e:
     and $01
     jp z, Jump_004_4501
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_4514
 
@@ -631,9 +631,9 @@ jr_004_4464:
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_4492
@@ -644,7 +644,7 @@ jr_004_4464:
     and $01
     jr z, jr_004_4501
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_004_4514
 
@@ -666,9 +666,9 @@ jr_004_4499:
     ret nz
 
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_44c6
@@ -679,7 +679,7 @@ jr_004_4499:
     and $01
     jr z, jr_004_4527
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jr z, jr_004_453a
 
@@ -701,9 +701,9 @@ Jump_004_44cd:
     ret nz
 
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_004_44fa
@@ -714,7 +714,7 @@ Jump_004_44cd:
     and $01
     jr z, jr_004_4527
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jr z, jr_004_453a
 
@@ -2119,7 +2119,7 @@ jr_004_4d41:
     cp $1e
     jr z, jr_004_4dc4
 
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     ld hl, sInventory
     add l
     ld l, a
@@ -2133,7 +2133,7 @@ jr_004_4d41:
     ld hl, $527d
     ld a, $01
     call BankSwitchCallHL
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     ld hl, sInventory
     add l
     ld l, a
@@ -2188,7 +2188,7 @@ jr_004_4db9:
 
 jr_004_4dc4:
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     cp $02
     jr z, jr_004_4e02
 
@@ -2205,7 +2205,7 @@ jr_004_4dc4:
     ld a, $11
     ld [sInventory], a
     xor a
-    ld [sHeldItem], a
+    ld [sItemSlot], a
     jr jr_004_4e1b
 
 jr_004_4ded:
@@ -2215,7 +2215,7 @@ jr_004_4ded:
     ld a, $11
     ld [$b8f9], a
     ld a, $01
-    ld [sHeldItem], a
+    ld [sItemSlot], a
     jr jr_004_4e1b
 
 jr_004_4e02:
@@ -2229,7 +2229,7 @@ jr_004_4e02:
     ld a, $11
     ld [sInventory], a
     xor a
-    ld [sHeldItem], a
+    ld [sItemSlot], a
 
 jr_004_4e1b:
     xor a
@@ -2404,7 +2404,7 @@ Jump_004_4f1d:
 
 
 Jump_004_4f55:
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     ld hl, sInventory
     add l
     ld l, a
@@ -3862,7 +3862,7 @@ jr_004_57b4:
 
 jr_004_57be:
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -3956,7 +3956,7 @@ Jump_004_5828:
     ld l, c
     ld e, b
     ld a, [$cc1a]
-    ld [sHeldItem], a
+    ld [sItemSlot], a
     ld a, $02
     ld [$cc1a], a
     xor a

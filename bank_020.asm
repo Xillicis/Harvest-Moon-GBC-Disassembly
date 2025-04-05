@@ -10111,7 +10111,8 @@ SomeLabel_020_6df4:
     ret z
 
     ld hl, sInventory
-    ld a, [sHeldItem] ; seems to be some sort of address shift.
+    ld a, [sItemSlot]
+; make `hl` point to currently held item
     add l ; a + l
     ld l, a ; l = a + l
     ld a, $00

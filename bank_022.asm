@@ -3677,8 +3677,8 @@ jr_022_53c0:
 
 Jump_022_53e7:
     xor a
-    ld [$cb30], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb34], a
     ld a, $00
     ld [$c60d], a
@@ -3691,9 +3691,9 @@ Jump_022_53e7:
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_5429
@@ -3704,7 +3704,7 @@ Jump_022_53e7:
     and $01
     jp z, Jump_022_565d
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5670
 
@@ -3718,8 +3718,8 @@ jr_022_5429:
 
 Jump_022_542d:
     xor a
-    ld [$cb30], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb34], a
     ld a, $03
     ld [$c60d], a
@@ -3732,9 +3732,9 @@ Jump_022_542d:
     ret nz
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_546f
@@ -3745,7 +3745,7 @@ Jump_022_542d:
     and $01
     jp z, Jump_022_565d
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5670
 
@@ -3759,8 +3759,8 @@ jr_022_546f:
 
 Jump_022_5473:
     xor a
-    ld [$cb30], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb34], a
     ld a, $01
     ld [$c60d], a
@@ -3773,9 +3773,9 @@ Jump_022_5473:
     ret nz
 
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_54b5
@@ -3786,7 +3786,7 @@ Jump_022_5473:
     and $01
     jp z, Jump_022_5683
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5696
 
@@ -3800,8 +3800,8 @@ jr_022_54b5:
 
 Jump_022_54b9:
     xor a
-    ld [$cb30], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb34], a
     ld a, $02
     ld [$c60d], a
@@ -3814,9 +3814,9 @@ Jump_022_54b9:
     ret nz
 
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_54fb
@@ -3827,7 +3827,7 @@ Jump_022_54b9:
     and $01
     jp z, Jump_022_5683
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5696
 
@@ -3888,8 +3888,8 @@ jr_022_5538:
 jr_022_553a:
     ld [$c60d], a
     xor a
-    ld [$cb30], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb34], a
 
 jr_022_5547:
@@ -3916,9 +3916,9 @@ jr_022_5547:
     ret nz
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_5593
@@ -3929,7 +3929,7 @@ jr_022_5547:
     and $01
     jp z, Jump_022_565d
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5670
 
@@ -3956,9 +3956,9 @@ Jump_022_559a:
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_55d4
@@ -3969,7 +3969,7 @@ Jump_022_559a:
     and $01
     jp z, Jump_022_565d
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5670
 
@@ -3996,9 +3996,9 @@ Jump_022_55db:
     ret nz
 
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_5615
@@ -4009,7 +4009,7 @@ Jump_022_55db:
     and $01
     jp z, Jump_022_5683
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5696
 
@@ -4036,9 +4036,9 @@ Jump_022_561c:
     ret nz
 
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_022_5656
@@ -4049,7 +4049,7 @@ Jump_022_561c:
     and $01
     jp z, Jump_022_5683
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_022_5696
 

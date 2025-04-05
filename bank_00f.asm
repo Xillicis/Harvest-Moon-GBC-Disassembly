@@ -6302,9 +6302,9 @@ jr_00f_6586:
     jp z, Jump_00f_663c
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_65c0
@@ -6315,7 +6315,7 @@ jr_00f_6586:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6336,9 +6336,9 @@ jr_00f_65c0:
 
 Jump_00f_65d2:
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_65f5
@@ -6349,7 +6349,7 @@ Jump_00f_65d2:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6370,9 +6370,9 @@ jr_00f_65f5:
 
 Jump_00f_6607:
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_662a
@@ -6383,7 +6383,7 @@ Jump_00f_6607:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_6785
 
@@ -6404,9 +6404,9 @@ jr_00f_662a:
 
 Jump_00f_663c:
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_665f
@@ -6417,7 +6417,7 @@ Jump_00f_663c:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_6785
 
@@ -6442,9 +6442,9 @@ Jump_00f_6671:
     ld a, $01
     call Call_000_1658
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_669e
@@ -6455,7 +6455,7 @@ Jump_00f_6671:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6479,9 +6479,9 @@ Jump_00f_66ad:
     ld a, $01
     call Call_000_1658
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_66da
@@ -6492,7 +6492,7 @@ Jump_00f_66ad:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6516,9 +6516,9 @@ Jump_00f_66e9:
     ld a, $01
     call Call_000_1658
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_6716
@@ -6529,7 +6529,7 @@ Jump_00f_66e9:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_6785
 
@@ -6553,9 +6553,9 @@ Jump_00f_6725:
     ld a, $01
     call Call_000_1658
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_00f_6752
@@ -6566,7 +6566,7 @@ Jump_00f_6725:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_00f_6785
 

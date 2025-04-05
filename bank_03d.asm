@@ -3685,7 +3685,7 @@ Call_03d_51d9:
     ld a, $ff
     ld [$b8fa], a
     ld a, $02
-    ld [sHeldItem], a
+    ld [sItemSlot], a
     ld a, $00
     ld [$b901], a
     ld a, $16

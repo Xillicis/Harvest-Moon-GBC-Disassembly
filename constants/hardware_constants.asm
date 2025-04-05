@@ -53,6 +53,10 @@ DEF rWave_d              EQU $ff3d
 DEF rWave_e              EQU $ff3e
 DEF rWave_f              EQU $ff3f
 
+DEF rSTAT                EQU $ff41
+DEF rSTAT_PPU_MODE_0     EQU 0
+DEF rSTAT_PPU_MODE_1     EQU 1
+DEF rSTAT_LYC_LY         EQU 2
 DEF rVBK_c               EQU $4f ; VRAM Bank switcher
 DEF rBGPI_c              EQU $68 ; CGB Mode Only - Background Palette Index
 DEF rBGPI_AUTO_INCREMENT EQU 7     ; increment rBGPI after write to rBGPD

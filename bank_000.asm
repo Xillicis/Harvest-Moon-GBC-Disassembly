@@ -3133,52 +3133,52 @@ Call_000_0d90:
 Call_000_0da9:
     ldh a, [rLY]
     cp $66
-    jr z, jr_000_0dc9
+    jr z, .jr_000_0dc9
 
     cp $67
-    jr z, jr_000_0dc9
+    jr z, .jr_000_0dc9
 
     cp $68
-    jr z, jr_000_0dcf
+    jr z, .jr_000_0dcf
 
     cp $69
-    jr z, jr_000_0dd5
+    jr z, .jr_000_0dd5
 
     cp $6a
-    jr z, jr_000_0dd5
+    jr z, .jr_000_0dd5
 
     cp $6b
-    jr z, jr_000_0ddb
+    jr z, .jr_000_0ddb
 
     cp $8f
-    jr z, jr_000_0dd5
+    jr z, .jr_000_0dd5
 
-    jr jr_000_0de1
+    jr .PPU0ModeWait
 
-jr_000_0dc9:
+.jr_000_0dc9
     ldh a, [rSTAT]
-    and $02
-    jr nz, jr_000_0dc9
+    and 1 << rSTAT_PPU_MODE_1
+    jr nz, .jr_000_0dc9
 
-jr_000_0dcf:
+.jr_000_0dcf
     ldh a, [rSTAT]
-    and $02
-    jr nz, jr_000_0dcf
+    and 1 << rSTAT_PPU_MODE_1
+    jr nz, .jr_000_0dcf
 
-jr_000_0dd5:
+.jr_000_0dd5
     ldh a, [rSTAT]
-    and $02
-    jr nz, jr_000_0dd5
+    and 1 << rSTAT_PPU_MODE_1
+    jr nz, .jr_000_0dd5
 
-jr_000_0ddb:
+.jr_000_0ddb
     ldh a, [rSTAT]
-    and $02
-    jr nz, jr_000_0ddb
+    and 1 << rSTAT_PPU_MODE_1
+    jr nz, .jr_000_0ddb
 
-jr_000_0de1:
+.PPU0ModeWait:
     ldh a, [rSTAT]
-    and $02
-    jr nz, jr_000_0de1
+    and 1 << rSTAT_PPU_MODE_1
+    jr nz, .PPU0ModeWait
 
     ret
 
@@ -3402,9 +3402,9 @@ Call_000_0f10:
     ld [$cb2f], a
 
 Jump_000_0f13:
-    ld [$cb30], a
-    ld [$cb31], a
-    ld [$cb32], a
+    ld [wLeftOrDownSideFacingTile], a
+    ld [wLeftOrDownSideFacingTileID], a
+    ld [wRightOrUpSideFacingTile], a
     ld [$cb33], a
 
 Jump_000_0f1f:
@@ -5290,7 +5290,7 @@ jr_000_191a:
 
 
 Call_000_1923:
-    ld a, [$cb4a]
+    ld a, [wHeldItem]
     or a
     ret nz
 
@@ -5308,16 +5308,17 @@ Call_000_1923:
     ld [$c912], a
     ld a, $21
     call Call_000_151d
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     inc a
-    cp $03
+    cp $03 ; third item (always empty hands right?)
     jr nz, jr_000_194a
 
     xor a
 
 jr_000_194a:
-    ld [sHeldItem], a
+    ld [sItemSlot], a
     ld hl, sInventory
+; get inventory item
     add l
     ld l, a
     ld a, $00
@@ -5537,7 +5538,7 @@ jr_000_1a3a:
     ld a, $00
     adc h
     ld h, a
-    ld a, [hl+]
+    ld a, [hli]
     cp c
     jr z, jr_000_1a9c
 
@@ -5545,7 +5546,7 @@ jr_000_1a3a:
     cp c
     jr z, jr_000_1a9c
 
-    ld a, [hl+]
+    ld a, [hli]
     cp c
     jr z, jr_000_1aa2
 
@@ -10442,7 +10443,7 @@ Jump_000_3000:
 
 Jump_000_3001:
     ld [$cb60], a
-    ld a, [hl+]
+    ld a, [hli]
     ld h, [hl]
     ld l, a
     ld d, $00
@@ -13347,7 +13348,7 @@ Jump_000_3e3d:
     ld a, $9f
     ld [$9c72], a
     ld hl, sInventory
-    ld a, [sHeldItem]
+    ld a, [sItemSlot]
     add l
     ld l, a
     ld a, $00
@@ -13366,7 +13367,7 @@ jr_000_3e66:
     ld b, $00
 
 jr_000_3e6c:
-    ld a, [hl+]
+    ld a, [hli]
     cp c
     jr z, jr_000_3e73
 

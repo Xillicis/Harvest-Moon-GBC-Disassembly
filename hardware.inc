@@ -558,7 +558,7 @@ DEF LCDCB_BGON    EQU 0 ; BG Display
 ; -- STAT ($FF41)
 ; -- LCDC Status   (R/W)
 ; --
-DEF rSTAT EQU $FF41
+;DEF rSTAT EQU $FF41
 
 DEF STATF_LYC     EQU  %01000000 ; LYC=LY Coincidence (Selectable)
 DEF STATF_MODE10  EQU  %00100000 ; Mode 10

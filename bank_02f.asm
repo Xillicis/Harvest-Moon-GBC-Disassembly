@@ -5797,7 +5797,7 @@ jr_02f_624e:
     ld hl, $c88a
     ld a, [hl]
     ld b, a
-    ld a, [$cb5a]
+    ld a, [wPlayerMovementX]
     add b
     ld [hl+], a
     ld a, [hl]
@@ -6107,8 +6107,8 @@ Call_02f_62dd:
 
     call Call_000_0d90
     xor a
-    ld [$cb5a], a
-    ld [$cb5b], a
+    ld [wPlayerMovementX], a
+    ld [wPlayerMovementY], a
     call Call_02f_64b6
     call Call_02f_64be
     ld a, [$ccb7]
@@ -6295,9 +6295,9 @@ jr_02f_657a:
     jp z, Jump_02f_6630
 
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_65b4
@@ -6308,7 +6308,7 @@ jr_02f_657a:
     and $01
     jp z, Jump_02f_678b
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6794
 
@@ -6329,9 +6329,9 @@ jr_02f_65b4:
 
 Jump_02f_65c6:
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_65e9
@@ -6342,7 +6342,7 @@ Jump_02f_65c6:
     and $01
     jp z, Jump_02f_678b
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6794
 
@@ -6363,9 +6363,9 @@ jr_02f_65e9:
 
 Jump_02f_65fb:
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_661e
@@ -6376,7 +6376,7 @@ Jump_02f_65fb:
     and $01
     jp z, Jump_02f_6782
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6779
 
@@ -6397,9 +6397,9 @@ jr_02f_661e:
 
 Jump_02f_6630:
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_6653
@@ -6410,7 +6410,7 @@ Jump_02f_6630:
     and $01
     jp z, Jump_02f_6782
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6779
 
@@ -6435,9 +6435,9 @@ Jump_02f_6665:
     ld a, $01
     call Call_000_1658
     call Call_000_14f9
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_6692
@@ -6448,7 +6448,7 @@ Jump_02f_6665:
     and $01
     jp z, Jump_02f_678b
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6794
 
@@ -6472,9 +6472,9 @@ Jump_02f_66a1:
     ld a, $01
     call Call_000_1658
     call Call_000_1502
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_66ce
@@ -6485,7 +6485,7 @@ Jump_02f_66a1:
     and $01
     jp z, Jump_02f_678b
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6794
 
@@ -6509,9 +6509,9 @@ Jump_02f_66dd:
     ld a, $01
     call Call_000_1658
     call Call_000_150b
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_670a
@@ -6522,7 +6522,7 @@ Jump_02f_66dd:
     and $01
     jp z, Jump_02f_6782
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6779
 
@@ -6546,9 +6546,9 @@ Jump_02f_6719:
     ld a, $01
     call Call_000_1658
     call Call_000_1514
-    ld a, [$cb30]
+    ld a, [wLeftOrDownSideFacingTile]
     ld b, a
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     or b
     and $01
     jr z, jr_02f_6746
@@ -6559,7 +6559,7 @@ Jump_02f_6719:
     and $01
     jp z, Jump_02f_6782
 
-    ld a, [$cb32]
+    ld a, [wRightOrUpSideFacingTile]
     and $01
     jp z, Jump_02f_6779
 
@@ -7391,7 +7391,7 @@ Call_02f_6bde:
     call Call_000_0a62
     ret
 
-
+;;;;;;;;;;;;;;; SOME DATA
     and b
     and c
     and c
@@ -7497,7 +7497,9 @@ jr_02f_6c1a:
     ld e, e
     ld e, e
     ld e, e
+;;;;;;;; OR HERE?
     and h
+;;;;;;;;;;; END HERE?
     xor a
     ld [$c800], a
     ld [$c820], a
@@ -7559,8 +7561,8 @@ jr_02f_6c1a:
 
     call Call_000_0d90
     xor a
-    ld [$cb5a], a
-    ld [$cb5b], a
+    ld [wPlayerMovementX], a
+    ld [wPlayerMovementY], a
     call Call_02f_6cf5
     call Call_02f_6dc0
     call Call_000_2d67
