@@ -4032,7 +4032,7 @@ Call_000_1301:
     ldh [$ffa4], a
     ld a, $11
     ld [MBC3RomBank], a
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld de, $5001
     ld b, $31
 
@@ -4040,15 +4040,15 @@ jr_000_1313:
     push hl
     ld c, $10
 
-jr_000_1316:
+.loop
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     dec c
-    jr nz, jr_000_1316
+    jr nz, .loop
 
     pop hl
     ld a, $80

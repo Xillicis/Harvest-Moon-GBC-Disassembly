@@ -7,7 +7,7 @@ SECTION "ROM Bank $011", ROMX[MBC3SRamBank], BANK[$11]
 
     ld de, $0000
     jr c, jr_011_4005
-
+;;; MAP DATA??????
 jr_011_4005:
     ld l, h
     nop
@@ -3910,37 +3910,19 @@ jr_011_4f8e:
 
     rst $38
     nop
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    ld bc, $0103
+
+; First byte:  Something is in that coordinate
+; Second byte: The object tile ID.
+FarmMapObjectData:
+    db $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
+    db $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
+    db $01, $0e
+    db $01, $0e
+    db $01, $0e
+    db $01, $0e
+    db $01, $0e
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $03, $01, $03, $01
     nop
     nop
     nop

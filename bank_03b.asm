@@ -1288,10 +1288,10 @@ jr_03b_460d:
     ld d, $00
     push hl
     ld bc, $0c40
-    ld hl, $a000
+    ld hl, sMapObjectLocation
 
 jr_03b_4628:
-    ld a, [hl+]
+    ld a, [hli]
     and $f0
     cp $40
     jr nz, jr_03b_4639

@@ -3629,7 +3629,7 @@ Call_01d_521e:
     di
     call Call_000_0cd5
     di
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld bc, $1fff
     call Call_000_2282
     ld hl, $762a
