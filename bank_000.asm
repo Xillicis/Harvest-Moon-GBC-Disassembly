@@ -3405,7 +3405,7 @@ Jump_000_0f13:
     ld [wLeftOrDownSideFacingTile], a
     ld [wLeftOrDownSideFacingTileID], a
     ld [wRightOrUpSideFacingTile], a
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
 
 Jump_000_0f1f:
     ld [$cb34], a

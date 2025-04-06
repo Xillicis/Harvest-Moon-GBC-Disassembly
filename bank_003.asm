@@ -1438,7 +1438,7 @@ Call_003_48cc:
     and $01
     jr z, jr_003_48f4
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $05
     jp z, Jump_003_4d14
 
@@ -2150,11 +2150,11 @@ jr_003_4cff:
     or a
     ret z
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $1d
     jr z, jr_003_4d40
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $04
     jp z, Jump_003_4de5
 
@@ -2592,7 +2592,7 @@ Call_003_4f86:
     cp $21
     jr z, jr_003_4fd0
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jr z, jr_003_4fd0
 
@@ -2634,7 +2634,7 @@ jr_003_4fdb:
     cp $21
     jp z, Jump_003_519b
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jp z, Jump_003_5188
 
@@ -2663,7 +2663,7 @@ jr_003_4fdb:
     cp $21
     jr z, jr_003_5049
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jr z, jr_003_5049
 
@@ -2705,7 +2705,7 @@ jr_003_5054:
     cp $21
     jp z, Jump_003_519b
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jp z, Jump_003_5188
 
@@ -2734,7 +2734,7 @@ jr_003_5054:
     cp $21
     jr z, jr_003_50c3
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jr z, jr_003_50c3
 
@@ -2776,7 +2776,7 @@ jr_003_50ce:
     cp $21
     jp z, Jump_003_519b
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $20
     jp z, Jump_003_5188
 

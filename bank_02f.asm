@@ -5415,7 +5415,7 @@ Jump_02f_601b:
     xor a
     ld [$cc17], a
     xor a
-    ld hl, $cb33
+    ld hl, wRightOrUpSideFacingTileID
     ld [hl+], a
     ld [hl], a
     ld a, [$cc79]
@@ -6125,7 +6125,7 @@ Call_02f_62dd:
     jr nz, jr_02f_64a1
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     jr jr_02f_64a4
 
 jr_02f_64a1:
@@ -6228,7 +6228,7 @@ jr_02f_6527:
     and $01
     ret z
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $80
     call z, Call_02f_6929
     cp $81
@@ -6323,7 +6323,7 @@ jr_02f_65b4:
     ret nc
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6357,7 +6357,7 @@ jr_02f_65e9:
     ret c
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6391,7 +6391,7 @@ jr_02f_661e:
     ret nc
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6425,7 +6425,7 @@ jr_02f_6653:
     ret c
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6462,7 +6462,7 @@ jr_02f_6692:
     ret c
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6499,7 +6499,7 @@ jr_02f_66ce:
     ret nc
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6536,7 +6536,7 @@ jr_02f_670a:
     ret nc
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6573,7 +6573,7 @@ jr_02f_6746:
     ret c
 
     ld a, $0d
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ret
 
 
@@ -6644,7 +6644,7 @@ Call_02f_679d:
     or a
     jr nz, jr_02f_680b
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0d
     jr z, jr_02f_67e9
 

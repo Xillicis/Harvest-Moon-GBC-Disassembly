@@ -2101,7 +2101,7 @@ jr_024_4d34:
     or a
     jp z, Jump_024_4f48
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $05
     jr z, jr_024_4d8b
 
@@ -2262,7 +2262,7 @@ jr_024_4e0e:
 
 
 Jump_024_4e4d:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $10
     jr z, jr_024_4e99
 
@@ -2701,7 +2701,7 @@ jr_024_50e0:
     call Call_000_1658
     xor a
     ld [$cb4a], a
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     call Call_024_583c
     ld a, [de]
     cp $02
@@ -2746,7 +2746,7 @@ jr_024_5118:
     call Call_000_1658
     xor a
     ld [$cb4a], a
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     call Call_024_583c
     ld a, [de]
     cp $02

@@ -4492,7 +4492,7 @@ Call_022_5880:
     and $01
     ret z
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0a
     jr z, jr_022_58e5
 

@@ -164,7 +164,7 @@ Call_025_412b:
     and $01
     jp z, Jump_025_4295
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     or a
     jp z, Jump_025_4295
 
@@ -185,7 +185,7 @@ Call_025_412b:
     ld [hl], a
     ld a, $35
     call Call_000_25ce
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     dec a
     ld h, $00
     ld l, a
@@ -266,7 +266,7 @@ jr_025_418a:
     ld [hl+], a
     ld a, $01
     ld [hl], a
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     dec a
     cp $1d
     jr nz, jr_025_41cf
@@ -3441,7 +3441,7 @@ jr_025_501e:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret
@@ -3565,7 +3565,7 @@ Jump_025_516e:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ld a, [$cb84]
@@ -3790,7 +3790,7 @@ jr_025_5256:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret
@@ -3921,7 +3921,7 @@ jr_025_5256:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret

@@ -1118,7 +1118,7 @@ jr_021_46d7:
     and $01
     jp z, Jump_021_4991
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $01
     jr z, jr_021_4739
 
@@ -1219,7 +1219,7 @@ Jump_021_478e:
     and $01
     jp z, Jump_021_4991
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $01
     jr z, jr_021_47de
 
@@ -1319,7 +1319,7 @@ Jump_021_4830:
     and $01
     jp z, Jump_021_49c5
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $01
     jr z, jr_021_4880
 
@@ -1420,7 +1420,7 @@ Jump_021_48d5:
     and $01
     jp z, Jump_021_49c5
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $01
     jr z, jr_021_4925
 
@@ -1484,7 +1484,7 @@ jr_021_4973:
 
 
 Jump_021_4977:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0f
     jr z, jr_021_4984
 
@@ -1503,7 +1503,7 @@ jr_021_4984:
 
 
 Jump_021_4991:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0f
     jr z, jr_021_499e
 
@@ -1522,7 +1522,7 @@ jr_021_499e:
 
 
 Jump_021_49ab:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0f
     jr z, jr_021_49b8
 
@@ -1541,7 +1541,7 @@ jr_021_49b8:
 
 
 Jump_021_49c5:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $0f
     jr z, jr_021_49d2
 
@@ -2675,7 +2675,7 @@ jr_021_5273:
     or a
     ret z
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $6a
     jr c, jr_021_52ac
 
@@ -2690,7 +2690,7 @@ jr_021_5273:
 
 
 jr_021_52ac:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $02
     jr nz, jr_021_52c6
 
@@ -2735,7 +2735,7 @@ jr_021_52ee:
     and $40
     ret z
 
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $60
     jr z, jr_021_5318
 
@@ -3035,7 +3035,7 @@ Call_021_549e:
     ret nz
 
 jr_021_54c2:
-    ld a, [$cb33]
+    ld a, [wRightOrUpSideFacingTileID]
     cp $41
     jr z, jr_021_54df
 
@@ -4141,7 +4141,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $5c
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4172,7 +4172,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $82
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4203,7 +4203,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $11
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4234,7 +4234,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $11
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4265,7 +4265,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $11
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4296,7 +4296,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $11
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4327,7 +4327,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $11
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4358,7 +4358,7 @@ jr_021_5aef:
     xor a
     ld [wHeldItem], a
     ld a, $ec
-    ld [$cb33], a
+    ld [wRightOrUpSideFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
