@@ -22,3 +22,5 @@ const_skip 3
 const SOLID_FENCE_TILE            ; $0f
 const PATH_TILE                   ; $10
 const PLOWED_LAND_TILE            ; $11
+
+DEF PLANTED_SEEDS_TILE EQU $90 ; might be different for different seeds planted...

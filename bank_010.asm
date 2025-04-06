@@ -4249,7 +4249,7 @@ Call_010_55f3:
     ld [$ba4b], a
     ld b, a
     ld c, a
-    ld hl, $a000
+    ld hl, sMapObjectLocation
 
 jr_010_5604:
     inc hl

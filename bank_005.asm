@@ -354,7 +354,7 @@ jr_005_4244:
 
 jr_005_4255:
     ld a, [sInventory]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_005_426c
 
     ld a, [sInventory]
@@ -388,10 +388,10 @@ jr_005_427d:
     ld hl, $c62a
     ld a, [$c60a]
     sub $00
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c60b]
     sub $1c
-    ld [hl+], a
+    ld [hli], a
     ld a, $10
     ld [$c912], a
     pop hl

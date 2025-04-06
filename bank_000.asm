@@ -7281,6 +7281,7 @@ Call_000_216f:
     ld h, $00
     add hl, hl
 
+; looks like some kind of table jump thing
 Call_000_2173:
     add hl, de
     ld e, l

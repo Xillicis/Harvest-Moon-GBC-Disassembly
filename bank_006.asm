@@ -5692,31 +5692,31 @@ jr_006_56c5:
     ld [hl], a
     ret
 
-
+Jump_006_569e:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c607]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c608]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c609]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c60a]
     sub $01
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c60b]
     sub $1a
-    ld [hl+], a
+    ld [hli], a
     ld a, $17
     ld hl, $c622
-    ld [hl+], a
+    ld [hli], a
     ld a, $ff
-    ld [hl+], a
+    ld [hli], a
     inc hl
     xor a
     ld [hl], a

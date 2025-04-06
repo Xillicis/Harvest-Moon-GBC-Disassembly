@@ -4124,7 +4124,7 @@ Call_030_555e:
     ld [$ba4b], a
     ld b, a
     ld c, a
-    ld hl, $a000
+    ld hl, sMapObjectLocation
 
 jr_030_556f:
     inc hl
@@ -4136,7 +4136,7 @@ jr_030_556f:
     jr nz, jr_030_5585
 
     dec hl
-    ld a, [hl+]
+    ld a, [hli]
     cp $11
     jr z, jr_030_5584
 

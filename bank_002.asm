@@ -1833,13 +1833,13 @@ jr_002_4a61:
     xor a
     ldh [$ffa8], a
     push de
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld bc, $0c40
 
 Jump_002_4a6b:
-    ld a, [hl+]
+    ld a, [hli]
     ld e, a
-    ld a, [hl+]
+    ld a, [hli]
     ld d, a
     and $40
     jr z, jr_002_4aea
@@ -2837,13 +2837,13 @@ jr_002_4ecb:
 
 
 Call_002_4ee1:
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld bc, $0c40
 
 jr_002_4ee7:
-    ld a, [hl+]
+    ld a, [hli]
     ld e, a
-    ld a, [hl+]
+    ld a, [hli]
     ld d, a
     and $40
     jr z, jr_002_4f5d
@@ -7400,13 +7400,13 @@ jr_002_6882:
     call BankSwitchCallHL
     pop af
     pop hl
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld bc, $0c40
 
 jr_002_68a0:
-    ld a, [hl+]
+    ld a, [hli]
     ld e, a
-    ld a, [hl+]
+    ld a, [hli]
     ld d, a
     and $40
     jr z, jr_002_6916
@@ -8368,12 +8368,12 @@ jr_002_6cce:
 
 
 Call_002_6cd1:
-    ld hl, $a000
+    ld hl, sMapObjectLocation
     ld bc, $0c40
 
 jr_002_6cd7:
     inc hl
-    ld a, [hl-]
+    ld a, [hld]
     cp $00
     jr nz, jr_002_6cef
 
