@@ -3681,7 +3681,7 @@ Call_03d_51d9:
     ld [$b904], a
     ld a, $ff
     ld [sInventory], a
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $ff
     ld [$b8fa], a
     ld a, $02

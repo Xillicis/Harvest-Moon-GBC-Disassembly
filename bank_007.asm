@@ -12015,11 +12015,11 @@ jr_007_72d8:
     jr nz, jr_007_7301
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_007_7306
 
-    ld a, $ff
-    ld [$b8f9], a
+    ld a, NO_ITEM
+    ld [sInventory+1], a
     ret
 
 

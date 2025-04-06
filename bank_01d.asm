@@ -3677,9 +3677,9 @@ Call_01d_521e:
     xor a
     ld [$b907], a
     ld [$b904], a
-    ld a, $ff
+    ld a, NO_ITEM
     ld [sInventory], a
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $ff
     ld [$b8fa], a
     ld a, $02

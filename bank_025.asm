@@ -293,17 +293,17 @@ jr_025_41cf:
     jr z, jr_025_4216
 
     ld a, [sInventory]
-    cp $ff
+    cp NO_ITEM
     jr z, jr_025_4206
 
-    ld a, [$b8f9]
-    cp $ff
+    ld a, [sInventory+1]
+    cp NO_ITEM
     jr nz, jr_025_4206
 
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
     call Call_025_429f
     ld a, b
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
     jr jr_025_426d
@@ -318,12 +318,12 @@ jr_025_4206:
     jr jr_025_426d
 
 jr_025_4216:
-    ld a, [$b8f9]
-    cp $ff
+    ld a, [sInventory+1]
+    cp NO_ITEM
     jr z, jr_025_4234
 
     ld a, [sInventory]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_025_4234
 
     ld a, [sInventory]
@@ -335,10 +335,10 @@ jr_025_4216:
     jr jr_025_426d
 
 jr_025_4234:
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
     call Call_025_429f
     ld a, b
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
     jr jr_025_426d
@@ -357,10 +357,10 @@ jr_025_4245:
     jr jr_025_426d
 
 jr_025_425c:
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
     call Call_025_429f
     ld a, b
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
     jr jr_025_426d
@@ -398,7 +398,7 @@ Jump_025_4295:
 
 
 Call_025_429f:
-    cp $ff ; empty hand right?
+    cp NO_ITEM
     ret z
 
     push bc

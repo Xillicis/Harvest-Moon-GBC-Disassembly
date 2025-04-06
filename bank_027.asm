@@ -11939,11 +11939,11 @@ jr_027_7275:
     jr nz, jr_027_729e
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_027_72a3
 
-    ld a, $ff
-    ld [$b8f9], a
+    ld a, NO_ITEM
+    ld [sInventory+1], a
     ret
 
 

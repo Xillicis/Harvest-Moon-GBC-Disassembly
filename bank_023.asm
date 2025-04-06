@@ -1434,7 +1434,7 @@ jr_023_48bb:
     jr jr_023_48e4
 
 jr_023_48e1:
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
 
 jr_023_48e4:
     ldh [$ffab], a
@@ -2153,8 +2153,8 @@ jr_023_4d07:
     cp $01
     jr z, jr_023_4d35
 
-    ld a, [$b8f9]
-    cp $ff
+    ld a, [sInventory+1]
+    cp NO_ITEM
     jr z, jr_023_4d35
 
     ld a, [sInventory]
@@ -2169,13 +2169,13 @@ jr_023_4d07:
     jr jr_023_4d6d
 
 jr_023_4d35:
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
     ld [$cc21], a
     ld hl, $63b0
     ld a, $24
     call BankSwitchCallHL
     ld a, $10
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
     jr jr_023_4d6d

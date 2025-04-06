@@ -9942,11 +9942,11 @@ jr_021_7d45:
     jr nz, jr_021_7d6d
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_021_7d72
 
-    ld a, [$b8f9]
-    cp $0d
+    ld a, [sInventory+1]
+    cp HAMMER
     jr z, jr_021_7d80
 
     ret
@@ -9959,7 +9959,7 @@ jr_021_7d6d:
 
 
 jr_021_7d72:
-    ld a, $ff
+    ld a, NO_ITEM
     ld [sInventory], a
     ld hl, $45c5
     ld a, $28
@@ -9968,8 +9968,8 @@ jr_021_7d72:
 
 
 jr_021_7d80:
-    ld a, $ff
-    ld [$b8f9], a
+    ld a, NO_ITEM
+    ld [sInventory+1], a
     ld hl, $45c5
     ld a, $28
     call BankSwitchCallHL

@@ -2193,8 +2193,8 @@ jr_024_4db7:
     cp $01
     jr z, jr_024_4de0
 
-    ld a, [$b8f9]
-    cp $ff
+    ld a, [sInventory+1]
+    cp NO_ITEM
     jr z, jr_024_4de0
 
     ld a, [sInventory]
@@ -2207,18 +2207,18 @@ jr_024_4db7:
     jr jr_024_4e0e
 
 jr_024_4de0:
-    ld a, [$b8f9]
+    ld a, [sInventory+1]
     ld [$cc21], a
     call Call_024_63b0
     ld a, $11
-    ld [$b8f9], a
+    ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
     jr jr_024_4e0e
 
 jr_024_4df5:
     ld a, [sInventory]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_024_4de0
 
     ld a, [sInventory]

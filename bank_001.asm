@@ -10067,8 +10067,8 @@ jr_001_7e72:
     cp HAMMER
     jr z, jr_001_7e9f
 
-    ld a, [$b8f9]
-    cp $0d
+    ld a, [sInventory+1]
+    cp HAMMER
     jr z, jr_001_7ead
 
     ret
@@ -10090,8 +10090,8 @@ jr_001_7e9f:
 
 
 jr_001_7ead:
-    ld a, $ff
-    ld [$b8f9], a
+    ld a, NO_ITEM
+    ld [sInventory+1], a
     ld hl, $45c5
     ld a, $08
     call BankSwitchCallHL
