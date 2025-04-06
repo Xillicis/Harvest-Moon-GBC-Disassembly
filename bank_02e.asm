@@ -903,13 +903,13 @@ jr_02e_4582:
     jr nz, jr_02e_45a7
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $08
+    cp BIG_LOG_TOP_LEFT_TILE
     jp z, Jump_02e_46ef
 
-    cp $09
+    cp BIG_LOG_TOP_RIGHT_TILE
     jp z, Jump_02e_46fa
 
-    cp $0a
+    cp BIG_LOG_BOTTOM_LEFT_TILE
     jp z, Jump_02e_4705
 
 jr_02e_45a7:
@@ -1004,13 +1004,13 @@ jr_02e_460e:
 
 jr_02e_4628:
     ld a, [wRightOrUpSideFacingTileID]
-    cp $08
+    cp BIG_LOG_TOP_LEFT_TILE
     jp z, Jump_02e_46ef
 
-    cp $09
+    cp BIG_LOG_TOP_RIGHT_TILE
     jp z, Jump_02e_46fa
 
-    cp $0a
+    cp BIG_LOG_BOTTOM_LEFT_TILE
     jp z, Jump_02e_4705
 
     ld a, [sItemSlot]
@@ -5317,7 +5317,7 @@ Jump_02e_5f4a:
     jr nz, jr_02e_5fb2
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $01
+    cp FENCE_POST_TILE
     jr nz, jr_02e_5fb2
 
     ld a, [$cc72]

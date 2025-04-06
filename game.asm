@@ -4,6 +4,7 @@
 ; https://github.com/mattcurrie/mgbdis
 
 INCLUDE "hardware.inc"
+INCLUDE "macros/const.asm"
 INCLUDE "constants/ram.asm"
 INCLUDE "constants/sram.asm"
 INCLUDE "constants/hardware_constants.asm"

@@ -2104,16 +2104,16 @@ jr_004_4d41:
     jp z, Jump_004_4f55
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $05
+    cp BIG_STONE_TOP_RIGHT_TILE
     jr z, jr_004_4d98
 
-    cp $06
+    cp BIG_STONE_BOTTOM_LEFT_TILE
     jr z, jr_004_4da3
 
-    cp $07
+    cp BIG_STONE_BOTTOM_RIGHT_TILE
     jr z, jr_004_4dae
 
-    cp $08
+    cp BIG_LOG_TOP_LEFT_TILE
     jr z, jr_004_4db9
 
     cp $1e

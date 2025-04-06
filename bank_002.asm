@@ -4598,18 +4598,18 @@ Call_002_5913:
     ret z
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $0a
+    cp BIG_LOG_BOTTOM_LEFT_TILE
     jr z, jr_002_5978
 
-    cp $02
+    cp BUSH_TILE
     jr z, jr_002_5991
 
-    cp $03
+    cp STONE_TILE
     jr z, jr_002_599c
 
-    cp $04
+    cp BIG_STONE_TOP_LEFT_TILE
     jp z, Jump_002_59ee
-
+; programming mistake?
     ret z
 
     cp $05

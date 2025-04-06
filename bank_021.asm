@@ -1119,7 +1119,7 @@ jr_021_46d7:
     jp z, Jump_021_4991
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $01
+    cp FENCE_POST_TILE
     jr z, jr_021_4739
 
     cp $0f
@@ -1220,7 +1220,7 @@ Jump_021_478e:
     jp z, Jump_021_4991
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $01
+    cp FENCE_POST_TILE
     jr z, jr_021_47de
 
     cp $0f
@@ -1320,7 +1320,7 @@ Jump_021_4830:
     jp z, Jump_021_49c5
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $01
+    cp FENCE_POST_TILE
     jr z, jr_021_4880
 
     cp $0f
@@ -1421,7 +1421,7 @@ Jump_021_48d5:
     jp z, Jump_021_49c5
 
     ld a, [wRightOrUpSideFacingTileID]
-    cp $01
+    cp FENCE_POST_TILE
     jr z, jr_021_4925
 
     cp $0f
@@ -2691,7 +2691,7 @@ jr_021_5273:
 
 jr_021_52ac:
     ld a, [wRightOrUpSideFacingTileID]
-    cp $02
+    cp BUSH_TILE
     jr nz, jr_021_52c6
 
     ld a, BUSH
