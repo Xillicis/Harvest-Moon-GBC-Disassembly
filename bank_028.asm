@@ -618,7 +618,7 @@ jr_028_42db:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_028_42f5
 
     ld b, $1f
@@ -752,7 +752,7 @@ jr_028_438d:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_028_43a7
 
     ld b, $1f
@@ -827,7 +827,7 @@ Jump_028_43f1:
     ld a, $00
     adc h
     ld h, a
-    ld a, $ff
+    ld a, NO_ITEM
     ld [hl], a
     ld hl, $456e
     ld a, $28
@@ -919,7 +919,7 @@ jr_028_446e:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_028_4488
 
     ld b, $1f
@@ -1109,7 +1109,7 @@ Call_028_456e:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_028_4583
 
     ld b, $1f
@@ -1184,7 +1184,7 @@ jr_028_45bb:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_028_45da
 
     ld b, $1f

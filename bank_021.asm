@@ -2660,7 +2660,7 @@ jr_021_5273:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jp nz, Jump_021_5e25
 
     ld a, [$c0a7]
@@ -4610,16 +4610,16 @@ Jump_021_5e25:
     adc h
     ld h, a
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jp z, Jump_021_5ec4
 
-    cp $0c
+    cp HOE
     jp z, Jump_021_5f84
 
-    cp $0d
+    cp HAMMER
     jp z, Jump_021_5f9a
 
-    cp $0e
+    cp AX
     jp z, Jump_021_5ff1
 
     cp $13
@@ -4634,13 +4634,13 @@ Jump_021_5e25:
     cp $15
     jp z, Jump_021_60d8
 
-    cp $09
+    cp BRUSH
     jp z, Jump_021_6122
 
-    cp $0a
+    cp WATERING_CAN
     jp z, Jump_021_6132
 
-    cp $08
+    cp MILKER
     jp z, Jump_021_61af
 
     cp $00
@@ -4649,10 +4649,10 @@ Jump_021_5e25:
     cp $52
     jp z, Jump_021_61bf
 
-    cp $01
+    cp M_POTION
     jp z, Jump_021_61bf
 
-    cp $02
+    cp COW_BELL
     jp z, Jump_021_61fb
 
     cp $53
@@ -4670,19 +4670,19 @@ Jump_021_5e25:
     cp $11
     jp z, Jump_021_6253
 
-    cp $03
+    cp GRASS_SEEDS
     jp z, Jump_021_6293
 
-    cp $06
+    cp TOMATO_SEEDS
     jp z, Jump_021_62bc
 
-    cp $07
+    cp CORN_SEEDS
     jp z, Jump_021_62e6
 
-    cp $04
+    cp TURNIP_SEEDS
     jp z, Jump_021_6310
 
-    cp $05
+    cp POTATO_SEEDS
     jp z, Jump_021_6340
 
     cp $4e

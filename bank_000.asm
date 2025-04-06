@@ -5325,7 +5325,7 @@ jr_000_194a:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     ret z
 
     call $16d1
@@ -13356,7 +13356,7 @@ Jump_000_3e3d:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr nz, jr_000_3e66
 
     ld b, $1f

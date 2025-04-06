@@ -2713,7 +2713,7 @@ jr_001_529f:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jp nz, Jump_001_5f2a
 
     ld a, [$c0a7]
@@ -4803,13 +4803,13 @@ Jump_001_5f2a:
     cp $15
     jp z, Jump_001_61ea
 
-    cp $09
+    cp BRUSH
     jp z, Jump_001_6234
 
-    cp $0a
+    cp WATERING_CAN
     jp z, Jump_001_6244
 
-    cp $08
+    cp MILKER
     jp z, Jump_001_62c1
 
     cp $00
@@ -4818,10 +4818,10 @@ Jump_001_5f2a:
     cp $52
     jp z, Jump_001_62d1
 
-    cp $01
+    cp M_POTION
     jp z, Jump_001_62d1
 
-    cp $02
+    cp COW_BELL
     jp z, Jump_001_630d
 
     cp $53
@@ -4839,19 +4839,19 @@ Jump_001_5f2a:
     cp $11
     jp z, Jump_001_6365
 
-    cp $03
+    cp GRASS_SEEDS
     jp z, Jump_001_63a5
 
-    cp $06
+    cp TOMATO_SEEDS
     jp z, Jump_001_63ce
 
-    cp $07
+    cp CORN_SEEDS
     jp z, Jump_001_63f8
 
-    cp $04
+    cp TURNIP_SEEDS
     jp z, Jump_001_6422
 
-    cp $05
+    cp POTATO_SEEDS
     jp z, Jump_001_6452
 
     cp $4e
@@ -5435,7 +5435,7 @@ Jump_001_62d1:
     cp $00
     jr z, jr_001_62fd
 
-    cp $01
+    cp M_POTION
     jr z, jr_001_6305
 
     xor a
@@ -10064,7 +10064,7 @@ jr_001_7e72:
     jr nz, jr_001_7e9a
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_001_7e9f
 
     ld a, [$b8f9]
@@ -10081,7 +10081,7 @@ jr_001_7e9a:
 
 
 jr_001_7e9f:
-    ld a, $ff
+    ld a, NO_ITEM
     ld [sInventory], a
     ld hl, $45c5
     ld a, $08

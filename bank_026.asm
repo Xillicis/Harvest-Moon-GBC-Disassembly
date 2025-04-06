@@ -857,7 +857,7 @@ jr_026_4463:
     ld de, $99c1
     ld b, $03
     jr jr_026_4463
-
+; probably a label goes here...
     ld hl, sInventory
     cp [hl]
     ret z

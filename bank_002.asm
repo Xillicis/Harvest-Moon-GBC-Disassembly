@@ -3223,7 +3223,7 @@ jr_002_5023:
     jr nz, jr_002_50da
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_002_50e0
 
     ld a, [$b8f9]
@@ -3238,7 +3238,7 @@ jr_002_50da:
     jr jr_002_50ec
 
 jr_002_50e0:
-    ld a, $ff
+    ld a, NO_ITEM
     ld [sInventory], a
     jr jr_002_50ec
 
@@ -8821,7 +8821,7 @@ Call_002_6f34:
     jr nz, jr_002_6f75
 
     ld a, [sInventory]
-    cp $0d
+    cp HAMMER
     jr z, jr_002_6f7a
 
     ld a, [$b8f9]
@@ -8838,7 +8838,7 @@ jr_002_6f75:
 
 
 jr_002_6f7a:
-    ld a, $ff
+    ld a, NO_ITEM
     ld [sInventory], a
     ld a, $10
     ld [$cb8f], a

@@ -944,7 +944,7 @@ jr_00e_45ca:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jr z, jr_00e_4631
 
     ld a, [$b8ed]
@@ -969,16 +969,16 @@ jr_00e_45eb:
     adc h
     ld h, a
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jr z, jr_00e_4629
 
-    cp $0c
+    cp HOE
     jr z, jr_00e_4629
 
-    cp $0d
+    cp HAMMER
     jr z, jr_00e_4629
 
-    cp $0e
+    cp AX
     jr z, jr_00e_4629
 
     cp $13
@@ -1044,19 +1044,19 @@ jr_00e_464b:
     adc h
     ld h, a
     ld a, [hl]
-    cp $ff
+    cp NO_ITEM
     jp z, Jump_00e_48c7
 
-    cp $0b
+    cp SICKLE
     jr z, jr_00e_46c8
 
-    cp $0c
+    cp HOE
     jr z, jr_00e_46c8
 
-    cp $0d
+    cp HAMMER
     jr z, jr_00e_4694
 
-    cp $0e
+    cp AX
     jr z, jr_00e_46c8
 
     cp $13
@@ -5415,7 +5415,7 @@ jr_00e_5ffd:
     adc h
     ld h, a
     ld a, [hl]
-    cp $0e
+    cp AX
     jr nz, jr_00e_6034
 
     ld a, [$c60d]

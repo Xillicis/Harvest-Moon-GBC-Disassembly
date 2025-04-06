@@ -4958,12 +4958,12 @@ jr_02a_549d:
 
     ld hl, sInventory
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jr z, jr_02a_54d1
 
     inc hl
     ld a, [hl]
-    cp $0b
+    cp SICKLE
     jr nz, jr_02a_54d7
 
 jr_02a_54d1:
