@@ -3695,7 +3695,7 @@ Jump_000_10ee:
 
 Call_000_10f5:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
 
 Call_000_10fc:
@@ -3761,7 +3761,7 @@ Call_000_1132:
 Call_000_113f:
     jr nz, jr_000_112e
 
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -3860,7 +3860,7 @@ jr_000_11b3:
 
 Call_000_11c2:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld a, [$b911]
@@ -3891,63 +3891,63 @@ jr_000_11f3:
 
 Call_000_11ff:
 jr_000_11ff:
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_1205:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld hl, $73a5
     ld de, $d800
     ld bc, $0198
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_1221:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld hl, $753d
     ld de, $d800
     ld bc, $0154
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_123d:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld hl, $76b3
     ld de, $d800
     ld bc, $0154
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_1259:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $7954
     ld de, $d800
     ld bc, $0176
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
 
 Call_000_1274:
@@ -3959,88 +3959,88 @@ Jump_000_1275:
     ld a, [MBC3SRamBank]
 
 Call_000_1278:
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $704c
     ld de, $d800
     ld bc, $01fe
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_1291:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $724a
     ld de, $d800
     ld bc, $0132
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_12ad:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $737c
     ld de, $d800
     ld bc, $01dc
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_12c9:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $7558
     ld de, $d800
     ld bc, $01fe
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
 Call_000_12e5:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $2f
     ld [MBC3RomBank], a
     ld hl, $7756
     ld de, $d800
     ld bc, $01fe
     call CopyHLtoDEBig
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
 
-Call_000_1301:
+InitializeFarmMap:
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
-    ld a, $11
+    ldh [hROMBankTemp], a
+    ld a, BANK(FarmMapInitialData)
     ld [MBC3RomBank], a
     ld hl, sMapObjectLocation
-    ld de, $5001
+    ld de, FarmMapInitialData
     ld b, $31
 
-jr_000_1313:
+.outer_loop1
     push hl
     ld c, $10
 
-.loop
+.inner_loop1
     ld a, [de]
     inc de
     ld [hli], a
@@ -4048,7 +4048,7 @@ jr_000_1313:
     inc de
     ld [hli], a
     dec c
-    jr nz, .loop
+    jr nz, .inner_loop1
 
     pop hl
     ld a, $80
@@ -4058,25 +4058,25 @@ jr_000_1313:
     adc h
     ld h, a
     dec b
-    jr nz, jr_000_1313
+    jr nz, .outer_loop1
 
-    ld hl, $a020
+    ld hl, sMapObjectLocation + 32
     ld de, $5621
     ld b, $31
 
-jr_000_1333:
+Outer_loop2:
     push hl
     ld c, $10
 
-jr_000_1336:
+.inner_loop2
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     dec c
-    jr nz, jr_000_1336
+    jr nz, .inner_loop2
 
 Call_000_133f:
     pop hl
@@ -4089,25 +4089,25 @@ Call_000_133f:
 
 Call_000_1348:
     dec b
-    jr nz, jr_000_1333
+    jr nz, Outer_loop2
 
-    ld hl, $a040
+    ld hl, sMapObjectLocation + 64
     ld de, $5c41
     ld b, $31
 
-jr_000_1353:
+Outer_loop3:
     push hl
     ld c, $10
 
-jr_000_1356:
+.inner_loop3
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     dec c
-    jr nz, jr_000_1356
+    jr nz, .inner_loop3
 
     pop hl
 
@@ -4119,25 +4119,25 @@ Jump_000_1360:
     adc h
     ld h, a
     dec b
-    jr nz, jr_000_1353
+    jr nz, Outer_loop3
 
-    ld hl, $a060
+    ld hl, sMapObjectLocation + 96
     ld de, $6261
     ld b, $31
 
-jr_000_1373:
+.outer_loop4
     push hl
     ld c, $10
 
-jr_000_1376:
+.inner_loop4
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     dec c
-    jr nz, jr_000_1376
+    jr nz, .inner_loop4
 
     pop hl
     ld a, $80
@@ -4147,9 +4147,9 @@ jr_000_1376:
     adc h
     ld h, a
     dec b
-    jr nz, jr_000_1373
+    jr nz, .outer_loop4
 
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -4165,7 +4165,7 @@ Call_000_1391:
     add hl, hl
     add hl, hl
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld a, b
@@ -4211,7 +4211,7 @@ jr_000_13bf:
     ld a, [hl+]
     ld [de], a
     call Call_000_1f91
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     pop bc
     pop de
@@ -4229,7 +4229,7 @@ Call_000_13e7:
     add hl, hl
     add hl, hl
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld a, b
@@ -4322,7 +4322,7 @@ jr_000_1461:
     ld [$cb1d], a
     ld a, h
     ld [$cb1e], a
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     pop bc
     pop hl
@@ -4341,7 +4341,7 @@ Call_000_1471:
     ld a, [MBC3SRamBank]
 
 Jump_000_147d:
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld a, b
@@ -4429,7 +4429,7 @@ jr_000_14d3:
     ld [$cb1d], a
     ld a, h
     ld [$cb1e], a
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     pop bc
     pop hl
@@ -6536,7 +6536,7 @@ jr_000_1e50:
     xor a
     ld [$cc76], a
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ldh a, [$ffab]
     ld [MBC3RomBank], a
 
@@ -6583,7 +6583,7 @@ Call_000_1ea0:
 
     xor a
     ld [$cc76], a
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ld a, [$cc77]
     cp $00
@@ -6605,7 +6605,7 @@ jr_000_1ec4:
     xor a
     ld [$cc78], a
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ldh a, [$ffab]
     ld [MBC3RomBank], a
 
@@ -6661,7 +6661,7 @@ Jump_000_1f0a:
     cp $08
     jr c, jr_000_1ed2
 
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -7694,9 +7694,9 @@ Jump_000_233c:
 
 
 jr_000_2341:
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa4], a
-    ld a, [hl+]
+    ld a, [hli]
     push hl
 
 Call_000_2346:
@@ -9999,7 +9999,7 @@ Call_000_2df8:
     and $01
     jp z, Jump_000_2f4e
 
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa4], a
 
 Call_000_2e00:
@@ -10419,7 +10419,7 @@ jr_000_2fcc:
     inc hl
     ld d, [hl]
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, d
     ld [MBC3RomBank], a
     dec hl
@@ -10455,7 +10455,7 @@ Jump_000_3001:
     ld h, [hl]
     ld l, a
     call Call_000_20e1
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -10477,7 +10477,7 @@ Jump_000_3017:
     inc hl
     ld d, [hl]
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, d
     inc a
     ld [MBC3RomBank], a
@@ -10512,7 +10512,7 @@ Call_000_3033:
     ld h, [hl]
     ld l, a
     call Call_000_20e1
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -10544,7 +10544,7 @@ jr_000_3070:
     inc hl
     ld d, [hl]
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, d
     add $fa
     ld [MBC3RomBank], a
@@ -10577,7 +10577,7 @@ jr_000_3070:
     ld h, [hl]
     ld l, a
     call Call_000_20e1
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -10603,7 +10603,7 @@ Call_000_30cc:
 Call_000_30ce:
     ld d, [hl]
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     ld a, d
     add $fb
     ld [MBC3RomBank], a
@@ -10644,7 +10644,7 @@ Call_000_30fe:
     ld h, [hl]
     ld l, a
     call Call_000_20e1
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -12163,7 +12163,7 @@ jr_000_3730:
     ld de, $3421
     add hl, de
     ld a, [MBC3SRamBank]
-    ldh [$ffa4], a
+    ldh [hROMBankTemp], a
     inc hl
     inc hl
     ld a, [hl-]
@@ -12264,7 +12264,7 @@ jr_000_37c4:
     call Call_000_0cce
     ld hl, $cb55
     inc [hl]
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -12289,7 +12289,7 @@ jr_000_37e1:
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -12300,7 +12300,7 @@ Jump_000_3804:
     jr z, jr_000_3813
 
     call Call_000_396d
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 
@@ -12326,7 +12326,7 @@ Jump_000_3815:
     call BankSwitchCallHL
 
 jr_000_3837:
-    ldh a, [$ffa4]
+    ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
 

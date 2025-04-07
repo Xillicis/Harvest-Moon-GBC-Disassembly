@@ -3645,7 +3645,7 @@ Call_03d_51d9:
     ld [$cb54], a
     ld [$cb55], a
     ld [$cb5f], a
-    call Call_000_1301
+    call InitializeFarmMap
     ld a, $01
     ld [$cb81], a
     ld [$c910], a

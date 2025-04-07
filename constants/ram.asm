@@ -12,5 +12,7 @@ DEF wRightOrUpSideFacingTileID  EQU $cb33
 
 DEF wHeldItem EQU $cb4a
 
+DEF hROMBankTemp EQU $ffa4
+
 DEF hff80 EQU $ff80
 DEF hff8d EQU $ff8d
