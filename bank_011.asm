@@ -3914,878 +3914,591 @@ jr_011_4f8e:
 ; First byte:  Something is in that coordinate
 ; Second byte: The object tile ID.
 FarmMapObjectData:
-    db $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
-    db $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
-    db $01, $0e
-    db $01, $0e
-    db $01, $0e
-    db $01, $0e
-    db $01, $0e
-    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-    db $03, $01, $03, $01
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    ld c, $01
-    inc b
-    ld bc, $0105
-    ld [bc], a
-    ld bc, $0102
-    inc bc
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0103
-    ld [$0901], sp
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0102
-    ld c, $01
-    ld b, $01
-    rlca
-    ld bc, $0000
-    inc bc
-    ld bc, $0000
-    inc bc
-    ld bc, $0102
-    inc bc
-    ld bc, $010a
-    dec bc
-    ld bc, $0103
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    ld c, $01
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0103
-    inc bc
-    ld bc, $0102
-    nop
-    nop
-    inc b
-    ld bc, $0105
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    ld bc, $0103
-    nop
-    nop
-    ld c, $01
-    nop
-    nop
-    inc bc
-    ld bc, $0103
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld b, $01
-    rlca
-    ld bc, $0000
-    nop
-    nop
-    inc bc
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $010e
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc b
-    ld bc, $0105
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    nop
-    nop
-    ld c, $01
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0102
-    nop
-    nop
-    nop
-    nop
-    ld b, $01
-    rlca
-    ld bc, $0103
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    ld c, $01
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld c, $01
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    ld c, $01
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $000c
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $010e
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld c, $01
-    ld bc, $0201
-    ld bc, $0102
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $816a
-    ld l, e
-    add c
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $010e
-    ld bc, $0001
-    nop
-    ld [bc], a
-    ld bc, $010f
-    stop
-    stop
-    stop
-    stop
-    stop
-    rrca
-    ld bc, $816c
-    ld l, l
-    add c
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld c, $01
-    ld bc, $0001
-    nop
-    ld [bc], a
-    ld bc, $010f
-    stop
-    stop
-    stop
-    stop
-    stop
-    rrca
-    ld bc, $816e
-    ld l, a
-    add c
-    ld b, e
-    add c
-    nop
-    nop
-    nop
-    nop
-    ld c, $01
-    ld bc, $0001
-    nop
-    nop
-    nop
-    rrca
-    ld bc, $81bb
-    cp h
-    add c
-    cp h
-    add c
-    cp h
-    add c
-    cp l
-    add c
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld c, $01
-    ld bc, $0201
-    ld bc, $0000
-    rrca
-    ld bc, $81be
+    db      $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
+    db $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e, $01, $0e
+    db $01, $0e, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $03
+    db $01, $03, $01, $00, $00, $00, $00, $02, $01, $02, $01, $02, $01, $00, $00, $00
+    db $00, $0e, $01, $04, $01, $05, $01, $02, $01, $02, $01, $03, $01, $00, $00, $02
+    db $01, $03, $01, $08, $01, $09, $01, $00, $00, $02, $01, $02, $01, $02, $01, $02
+    db $01, $0e, $01, $06, $01, $07, $01, $00, $00, $03, $01, $00, $00, $03, $01, $02
+    db $01, $03, $01, $0a, $01, $0b, $01, $03, $01, $00, $00, $02, $01, $00, $00, $00
+    db $00, $0e, $01, $00, $00, $02, $01, $03, $01, $03, $01, $02, $01, $00, $00, $04
+    db $01, $05, $01, $00, $00, $00, $00, $00, $00, $00, $00, $03, $01, $03, $01, $00
+    db $00, $0e, $01, $00, $00, $03, $01, $03, $01, $00, $00, $00, $00, $00, $00, $06
+    db $01, $07, $01, $00, $00, $00, $00, $03, $01, $00, $00, $00, $00, $00, $00, $02
+    db $01, $0e, $01, $02, $01, $00, $00, $00, $00, $00, $00, $02, $01, $00, $00, $00
+    db $00, $00, $00, $00, $00, $04, $01, $05, $01, $00, $00, $02, $01, $02, $01, $00
+    db $00, $0e, $01, $00, $00, $02, $01, $00, $00, $02, $01, $02, $01, $02, $01, $02
+    db $01, $00, $00, $00, $00, $06, $01, $07, $01, $03, $01, $02, $01, $00, $00, $00
+    db $00, $0e, $01, $00, $00, $00, $00, $02, $01, $02, $01, $02, $01, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $0e, $01, $00, $00, $00, $00, $02, $01, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $02, $01, $02, $01, $00, $00, $00, $00, $00, $00, $02, $01, $00
+    db $00, $0e, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $02, $01, $0c, $00, $02, $01, $00, $00, $00, $00, $00, $00, $00, $00, $02
+    db $01, $0e, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01
+    db $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01
+    db $01, $0e, $01, $01, $01, $02, $01, $02, $01, $0f, $01, $0f, $01, $0f, $01, $0f
+    db $01, $0f, $01, $0f, $01, $0f, $01, $6a, $81, $6b, $81, $02, $01, $02, $01, $02
+    db $01, $0e, $01, $01, $01, $00, $00, $02, $01, $0f, $01, $10, $00, $10, $00, $10
+    db $00, $10, $00, $10, $00, $0f, $01, $6c, $81, $6d, $81, $00, $00, $00, $00, $00
+    db $00, $0e, $01, $01, $01, $00, $00, $02, $01, $0f, $01, $10, $00, $10, $00, $10
+    db $00, $10, $00, $10, $00, $0f, $01, $6e, $81, $6f, $81, $43, $81, $00, $00, $00
+    db $00, $0e, $01, $01, $01, $00, $00, $00, $00, $0f, $01, $bb, $81, $bc, $81, $bc
+    db $81, $bc, $81, $bd, $81, $0f, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $0e, $01, $01, $01, $02, $01, $00, $00, $0f, $01, $be, $81
     cp [hl]
-    add c
+    db $81
     cp [hl]
-    add c
+    db $81
     cp [hl]
-    add c
+    db $81
     cp a
-    add c
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $81
+    db $0f
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld [hl], b
-    add c
-    ld c, $01
-    ld bc, $0001
-    nop
-    nop
-    nop
-    rrca
-    ld bc, $81c0
+    db $81
+    db $0e, $01, $01, $01, $00
+    db $00
+    db $00
+    db $00
+    db $0f, $01, $c0, $81
     pop bc
-    add c
+    db $81
     jp nz, $c381
 
-    add c
+    db $81
     call nz, Call_000_0f81
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld [hl], c
-    add c
-    ld c, $01
-    ld bc, $0001
-    nop
-    nop
-    nop
-    rrca
-    ld bc, $81c5
+    db $81
+    db $0e, $01, $01, $01, $00
+    db $00
+    db $00
+    db $00
+    db $0f, $01, $c5, $81
     add $81
     rst $00
     add d
     ret z
 
-    add c
+    db $81
     ret
 
 
-    add c
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
+    db $81
+    db $0f
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld b, h
-    add c
+    db $81
     cp c
-    add c
+    db $81
     ld c, $01
-    ld bc, $0001
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $01, $01, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     dec a
     add b
-    nop
-    nop
-    rrca
+    db $00
+    db $00
+    db $0f
     ld bc, $010f
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
     ld bc, $0001
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    ld c, $01
+    db $01, $01, $00
+    db $00
+    db $02
+    db $01, $02, $01
+    db $00
+    db $00
+    db $00
+    db $00
+    db $10, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
     ld bc, $0001
-    nop
-    ld [bc], a
-    ld bc, $0102
-    nop
-    nop
-    nop
-    nop
-    stop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $10, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    ld bc, $0001
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    stop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld c, $01
-    rrca
+    db $0f
     ld bc, $010f
-    rrca
+    db $0f
     ld bc, $010f
-    stop
-    stop
-    stop
-    rrca
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $0f
     ld bc, $010f
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     inc de
-    nop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $0f
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     inc de
-    nop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $0f
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
     inc de
-    nop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
-    rrca
-    ld bc, $0000
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0000
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $0f
+    db $01, $00, $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $02
+    db $01, $00, $00
     inc de
-    nop
-    stop
-    stop
-    stop
-    stop
-    stop
-    stop
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
     add hl, sp
     add c
     ld a, [hl-]
     add c
-    rrca
+    db $0f
     ld bc, $0103
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     inc de
-    nop
-    stop
-    stop
-    stop
-    stop
+    db $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
+    db $10, $00
     ld b, d
     add c
-    stop
+    db $10, $00
     dec sp
     add c
     inc a
     add c
-    rrca
-    ld bc, $0000
-    inc bc
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $0f
+    db $01, $00, $00
+    db $03
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    rrca
+    db $0f
     ld bc, $010f
-    rrca
+    db $0f
     ld bc, $010f
-    rrca
+    db $0f
     ld bc, $010f
-    rrca
+    db $0f
     ld bc, $010f
-    rrca
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
+    db $0f
+    db $01, $01, $01
+    db $01, $01, $01
+    db $01, $01, $01
+    db $01, $01, $01
     ld bc, $010e
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
     inc b
     ld bc, $0105
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $02, $01
     ld [$0901], sp
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
     ld b, $01
     rlca
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
     ld bc, $010a
     dec bc
-    ld bc, $0000
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    nop
-    nop
+    db $01, $00, $00
+    db $00
+    db $00
+    db $02
+    db $01, $02, $01
+    db $00
+    db $00
     ld c, $01
-    nop
-    nop
-    inc bc
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $03
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
     inc b
     ld bc, $0105
-    nop
-    nop
-    nop
-    nop
-    inc bc
+    db $00
+    db $00
+    db $00
+    db $00
+    db $03
     ld bc, $0103
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
     ld bc, $010e
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld b, $01
     rlca
-    ld bc, $0000
-    inc bc
+    db $01, $00, $00
+    db $03
     ld bc, $0103
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
     ld bc, $010e
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0000
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $02, $01
+    db $02
+    db $01, $00, $00
     ld c, $01
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    ld bc, $0102
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
-    ld [bc], a
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0000
+    db $00
+    db $00
+    db $00
+    db $00
+    db $03
+    db $01, $02, $01
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $02, $01
+    db $02
+    db $01, $00, $00
+    db $02
+    db $01, $00, $00
     ld c, $01
-    inc bc
+    db $03
     ld bc, $0103
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    ld bc, $0102
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $03
+    db $01, $02, $01
+    db $00
+    db $00
     ld [$0901], sp
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0102
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $02, $01
     ld c, $01
-    nop
-    nop
-    inc bc
-    ld bc, $0000
-    inc bc
+    db $00
+    db $00
+    db $03
+    db $01, $00, $00
+    db $03
     ld bc, $0103
-    ld [bc], a
-    ld bc, $0000
+    db $02
+    db $01, $00, $00
     ld a, [bc]
     ld bc, $010b
-    nop
-    nop
+    db $00
+    db $00
     ld [$0901], sp
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
     ld c, $01
-    ld [bc], a
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld bc, $0000
-    ld [bc], a
-    ld bc, $0000
-    nop
-
+    db $02
+    db $01, $00, $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02
+    db $01, $00, $00
+    db $02
+    db $01, $00, $00
+    db $00
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 jr_011_5514:
     nop
     nop
@@ -4794,20 +4507,20 @@ jr_011_5514:
     ld bc, $010b
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0102
     ld c, $01
     nop
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0102
     nop
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0102
     nop
     nop
@@ -4817,7 +4530,7 @@ jr_011_5514:
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0102
     nop
     nop
@@ -4828,7 +4541,7 @@ jr_011_5514:
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -4844,12 +4557,12 @@ jr_011_5514:
     nop
     inc bc
     ld bc, $0000
-    ld [bc], a
+    db $02
     ld bc, $0102
     ld c, $01
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -4860,7 +4573,7 @@ jr_011_5514:
     add c
     ld l, $81
     ld c, $01
-    ld [bc], a
+    db $02
     ld bc, $0102
     nop
     nop
@@ -4868,13 +4581,13 @@ jr_011_5514:
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $010e
     nop
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -4886,7 +4599,7 @@ jr_011_5514:
     ld c, $01
     inc c
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -4974,11 +4687,11 @@ jr_011_5514:
     ld c, $01
     ld c, $01
     ld c, $01
-    ld [bc], a
+    db $02
     ld bc, $0102
-    ld [bc], a
+    db $02
     ld bc, $0102
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -4998,9 +4711,9 @@ jr_011_5514:
     ld bc, $0000
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0102
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -5028,7 +4741,7 @@ jr_011_5514:
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
@@ -5051,7 +4764,7 @@ jr_011_5514:
     ld bc, $0000
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     inc bc
     ld bc, $0103
@@ -5077,7 +4790,7 @@ jr_011_5514:
     nop
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     inc bc
     ld bc, $0000
@@ -5111,13 +4824,13 @@ jr_011_5514:
     ld bc, $0000
     nop
     nop
-    ld [bc], a
+    db $02
     ld bc, $0000
     nop
     nop
     nop
     nop
-    ld [bc], a
+    db $02
 
 jr_011_56f4:
     ld bc, $0000
