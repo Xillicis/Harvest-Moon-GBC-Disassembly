@@ -5325,7 +5325,7 @@ jr_029_5c3b:
     ld b, h
     ld b, h
     ld b, h
-    ld a, [$b8c5]
+    ld a, [sNumCroissant]
     call Call_000_3304
     ld hl, $ccd0
     ld a, [hl+]
@@ -5335,7 +5335,7 @@ jr_029_5c3b:
     ld [$9869], a
     ld a, h
     ld [$986a], a
-    ld a, [$b8c6]
+    ld a, [sNumRiceBall]
     call Call_000_3304
     ld hl, $ccd0
     ld a, [hl+]
@@ -5345,7 +5345,7 @@ jr_029_5c3b:
     ld [$98e9], a
     ld a, h
     ld [$98ea], a
-    ld a, [$b8c7]
+    ld a, [sNumMeatDumpling]
     call Call_000_3304
     ld hl, $ccd0
     ld a, [hl+]
@@ -5360,7 +5360,7 @@ jr_029_5c3b:
     ret
 
 
-    ld a, [$b8ca]
+    ld a, [sNumWildGrapeJuice]
     call Call_000_3304
     ld hl, $ccd0
     ld a, [hl+]
@@ -5370,7 +5370,7 @@ jr_029_5c3b:
     ld [$986b], a
     ld a, h
     ld [$986c], a
-    ld a, [$b8cb]
+    ld a, [sNumGreenTea]
     call Call_000_3304
     ld hl, $ccd0
     ld a, [hl+]

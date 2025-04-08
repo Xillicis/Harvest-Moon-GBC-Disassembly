@@ -4702,7 +4702,7 @@ Jump_021_5e25:
 
 Jump_021_5ec4:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $06
@@ -4858,7 +4858,7 @@ jr_021_5f7a:
 
 Jump_021_5f84:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $07
     call Call_000_1658
     ld a, $34
@@ -4870,7 +4870,7 @@ Jump_021_5f84:
 
 Jump_021_5f9a:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $08
@@ -4935,7 +4935,7 @@ jr_021_5feb:
 
 Jump_021_5ff1:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $09
@@ -4990,7 +4990,7 @@ jr_021_6035:
 
 Jump_021_603b:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $84
@@ -5004,7 +5004,7 @@ Jump_021_603b:
 
 Jump_021_6055:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0d
     call Call_000_1658
     ld a, $44
@@ -5016,7 +5016,7 @@ Jump_021_6055:
 
 Jump_021_606b:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $85
     call Call_000_151d
     ld a, $56
@@ -5028,7 +5028,7 @@ Jump_021_606b:
 
 Jump_021_6081:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $0f
@@ -5093,7 +5093,7 @@ jr_021_60d2:
 
 Jump_021_60d8:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $0e
@@ -5148,7 +5148,7 @@ jr_021_611c:
 
 Jump_021_6122:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0b
     call Call_000_1658
     ld a, $64
@@ -5158,10 +5158,10 @@ Jump_021_6122:
 
 Jump_021_6132:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0c
     call Call_000_1658
-    ld a, [$b908]
+    ld a, [sCurrentWaterInWateringCan]
     or a
     jr z, jr_021_6149
 
@@ -5240,7 +5240,7 @@ jr_021_619e:
 
 Jump_021_61af:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $14
     call Call_000_1658
     ld a, $32
@@ -5291,7 +5291,7 @@ jr_021_61f3:
 
 Jump_021_61fb:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0a
     call Call_000_1658
     ld a, $4c
@@ -5301,7 +5301,7 @@ Jump_021_61fb:
 
 Jump_021_620b:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $16
     call Call_000_1658
     ld a, $35
@@ -5311,7 +5311,7 @@ Jump_021_620b:
 
 Jump_021_621b:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $63
     call Call_000_151d
     ld a, $69
@@ -5336,7 +5336,7 @@ jr_021_623d:
 
 
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $63
     call Call_000_151d
     ld a, $60
@@ -5387,7 +5387,7 @@ jr_021_6283:
 
 Jump_021_6293:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5409,7 +5409,7 @@ Jump_021_6293:
 
 Jump_021_62bc:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5431,7 +5431,7 @@ Jump_021_62bc:
 
 Jump_021_62e6:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5453,7 +5453,7 @@ Jump_021_62e6:
 
 Jump_021_6310:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5481,7 +5481,7 @@ Call_021_633a:
 
 Jump_021_6340:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5490,9 +5490,9 @@ Jump_021_6340:
     call Call_000_191a
     ld a, $04
     ld [$cb74], a
-    ld a, [$b8d3]
+    ld a, [sNumPotatoSeeds]
     dec a
-    ld [$b8d3], a
+    ld [sNumPotatoSeeds], a
     or a
     ret nz
 
@@ -5503,7 +5503,7 @@ Jump_021_6340:
 
 Jump_021_636a:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5525,7 +5525,7 @@ Jump_021_636a:
 
 Jump_021_6394:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5547,7 +5547,7 @@ Jump_021_6394:
 
 Jump_021_63be:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5569,7 +5569,7 @@ Jump_021_63be:
 
 Jump_021_63e8:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55

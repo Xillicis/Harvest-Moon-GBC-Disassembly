@@ -10143,13 +10143,13 @@ SomeLabel_020_6df4:
     cp $15
     jp z, Jump_020_6efc
 
-    cp $09
+    cp BRUSH
     jp z, Jump_020_6f10
 
-    cp $0a
+    cp WATERING_CAN
     jp z, Jump_020_6f17
 
-    cp $08
+    cp MILKER
     jp z, Jump_020_6f2b
 
     cp $00
@@ -10158,10 +10158,10 @@ SomeLabel_020_6df4:
     cp $52
     jp z, Jump_020_6f24
 
-    cp $01
+    cp M_POTION
     jp z, Jump_020_6f24
 
-    cp $02
+    cp COW_BELL
     jp z, Jump_020_6f32
 
     cp $53
@@ -10176,19 +10176,19 @@ SomeLabel_020_6df4:
     cp $11
     jp z, Jump_020_6f46
 
-    cp $03
+    cp GRASS_SEEDS
     jp z, Jump_020_6f4d
 
-    cp $06
+    cp TOMATO_SEEDS
     jp z, Jump_020_6f6b
 
-    cp $07
+    cp CORN_SEEDS
     jp z, Jump_020_6f72
 
-    cp $04
+    cp TURNIP_SEEDS
     jp z, Jump_020_6f79
 
-    cp $05
+    cp POTATO_SEEDS
     jp z, Jump_020_6ed0
 
     cp $4e

@@ -5462,25 +5462,25 @@ jr_000_19f2:
     ret
 
 
-Call_000_19f7:
-    ld a, [$b8ed]
+CheckIfNoEnergy:
+    ld a, [sPlayerEnergy]
     or a
     jp z, Jump_000_1aae
 
     sub b
 
 Call_000_19ff:
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     jr nc, jr_000_1a08
 
 Jump_000_1a04:
     xor a
 
 Call_000_1a05:
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
 
 jr_000_1a08:
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     ld c, a
     ld a, b
     cp $01
@@ -5705,7 +5705,7 @@ Jump_000_1ae7:
     add b
     jr c, jr_000_1af7
 
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
 
 Jump_000_1aef:
     ld b, a
@@ -5720,7 +5720,7 @@ Call_000_1af3:
 
 jr_000_1af7:
     ld a, [$b8ee]
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ret
 
 

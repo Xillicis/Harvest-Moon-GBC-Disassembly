@@ -924,14 +924,14 @@ jr_02e_45a7:
     cp NO_ITEM
     jr z, jr_02e_460e
 
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     or a
     jr nz, jr_02e_45c8
 
     ld a, $01
     ld [$c912], a
     ld b, $00
-    call Call_000_19f7
+    call CheckIfNoEnergy
 
 jr_02e_45c8:
     ld a, [$cc1b]
@@ -5324,7 +5324,7 @@ Jump_02e_5f4a:
     or a
     jr nz, jr_02e_5fed
 
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     or a
     jr z, jr_02e_5fa7
 
@@ -5337,9 +5337,9 @@ Jump_02e_5f4a:
     ld a, $01
     ld [$cc72], a
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ret
 
 
@@ -5347,7 +5347,7 @@ jr_02e_5fa7:
     ld a, $01
     ld [$c912], a
     ld b, $00
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ret
 
 

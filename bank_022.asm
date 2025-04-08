@@ -1553,7 +1553,7 @@ Call_022_490b:
 
 jr_022_4915:
     ld a, [$b8ee]
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ret
 
 
@@ -5837,12 +5837,12 @@ Call_022_5f2e:
 
 Jump_022_5f55:
 jr_022_5f55:
-    ld a, [$b8c5]
+    ld a, [sNumCroissant]
     or a
     jr z, jr_022_5fb5
 
     dec a
-    ld [$b8c5], a
+    ld [sNumCroissant], a
     ld a, $00
     ld [$cb8d], a
     ret
@@ -5850,12 +5850,12 @@ jr_022_5f55:
 
 Jump_022_5f65:
 jr_022_5f65:
-    ld a, [$b8ca]
+    ld a, [sNumWildGrapeJuice]
     or a
     jr z, jr_022_5fb5
 
     dec a
-    ld [$b8ca], a
+    ld [sNumWildGrapeJuice], a
     ld a, $01
     ld [$cb8d], a
     ret
@@ -5863,12 +5863,12 @@ jr_022_5f65:
 
 Jump_022_5f75:
 jr_022_5f75:
-    ld a, [$b8c6]
+    ld a, [sNumRiceBall]
     or a
     jr z, jr_022_5fb5
 
     dec a
-    ld [$b8c6], a
+    ld [sNumRiceBall], a
     ld a, $02
     ld [$cb8d], a
     ret
@@ -5876,12 +5876,12 @@ jr_022_5f75:
 
 Jump_022_5f85:
 jr_022_5f85:
-    ld a, [$b8cb]
+    ld a, [sNumGreenTea]
     or a
     jr z, jr_022_5fb5
 
     dec a
-    ld [$b8cb], a
+    ld [sNumGreenTea], a
     ld a, $03
     ld [$cb8d], a
     ret
@@ -5889,12 +5889,12 @@ jr_022_5f85:
 
 Jump_022_5f95:
 jr_022_5f95:
-    ld a, [$b8c7]
+    ld a, [sNumMeatDumpling]
     or a
     jr z, jr_022_5fb5
 
     dec a
-    ld [$b8c7], a
+    ld [sNumMeatDumpling], a
     ld a, $04
     ld [$cb8d], a
     ret
@@ -5914,7 +5914,7 @@ jr_022_5fa5:
 
 
 jr_022_5fb5:
-    ld a, [$b8c5]
+    ld a, [sNumCroissant]
     or a
     jr z, jr_022_5fbe
 
@@ -5922,7 +5922,7 @@ jr_022_5fb5:
 
 
 jr_022_5fbe:
-    ld a, [$b8ca]
+    ld a, [sNumWildGrapeJuice]
     or a
     jr z, jr_022_5fc7
 
@@ -5930,7 +5930,7 @@ jr_022_5fbe:
 
 
 jr_022_5fc7:
-    ld a, [$b8c6]
+    ld a, [sNumRiceBall]
     or a
     jr z, jr_022_5fd0
 
@@ -5938,7 +5938,7 @@ jr_022_5fc7:
 
 
 jr_022_5fd0:
-    ld a, [$b8cb]
+    ld a, [sNumGreenTea]
     or a
     jr z, jr_022_5fd9
 
@@ -5946,7 +5946,7 @@ jr_022_5fd0:
 
 
 jr_022_5fd9:
-    ld a, [$b8c7]
+    ld a, [sNumMeatDumpling]
     or a
     jr z, jr_022_5fe2
 

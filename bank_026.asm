@@ -654,7 +654,7 @@ Call_026_4376:
     ld a, [$b8d2]
     ld hl, $986c
     call Call_026_43d7
-    ld a, [$b8d3]
+    ld a, [sNumPotatoSeeds]
     ld hl, $98ac
     call Call_026_43d7
     ld a, [$b8d4]

@@ -1129,7 +1129,7 @@ jr_01b_453b:
     push bc
     ld a, [$b8ee]
     ld d, a
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     add $0a
     cp d
     jr c, jr_01b_457e
@@ -1137,7 +1137,7 @@ jr_01b_453b:
     ld a, d
 
 jr_01b_457e:
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ld a, [$b8f2]
     add $0a
     jr nc, jr_01b_458a
@@ -1156,14 +1156,14 @@ jr_01b_458a:
 
 
     push bc
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     sub $0a
     jr nc, jr_01b_459b
 
     xor a
 
 jr_01b_459b:
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ld a, [$b8f2]
     sub $0a
     jr nc, jr_01b_45a6
@@ -1230,7 +1230,7 @@ jr_01b_45e1:
     jr nz, jr_01b_45e1
 
 jr_01b_45e6:
-    ld a, [$b8ed]
+    ld a, [sPlayerEnergy]
     add e
     cp d
     jr c, jr_01b_45ee
@@ -1238,7 +1238,7 @@ jr_01b_45e6:
     ld a, d
 
 jr_01b_45ee:
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ret
 
 

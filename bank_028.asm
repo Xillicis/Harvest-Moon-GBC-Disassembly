@@ -2761,7 +2761,7 @@ jr_028_4f23:
     ret
 
 
-    ld a, [$b908]
+    ld a, [sCurrentWaterInWateringCan]
     or a
     ret z
 
@@ -2769,9 +2769,9 @@ jr_028_4f23:
     cp $40
     ret nz
 
-    ld a, [$b908]
+    ld a, [sCurrentWaterInWateringCan]
     dec a
-    ld [$b908], a
+    ld [sCurrentWaterInWateringCan], a
     ld a, $32
     call Call_000_25ce
     ld a, $35
@@ -3044,7 +3044,7 @@ Jump_028_5083:
 
 
     ld a, $1e
-    ld [$b908], a
+    ld [sCurrentWaterInWateringCan], a
     ld a, [$c912]
     cp $0a
     ret nz

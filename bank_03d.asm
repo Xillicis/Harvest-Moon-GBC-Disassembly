@@ -3586,7 +3586,7 @@ jr_03d_5118:
     ld [$b8b5], a
     ld [$b8d2], a
     ld [$b8b6], a
-    ld [$b8d3], a
+    ld [sNumPotatoSeeds], a
     ld [$b8b4], a
     ld [$b8da], a
     ld [$b8ae], a
@@ -3598,7 +3598,7 @@ jr_03d_519a:
     ld de, $b8dc
     call Call_03d_496c
     ld a, $0a
-    ld hl, $b8c5
+    ld hl, sNumCroissant
     ld [hl+], a
     ld [hl+], a
     ld [hl+], a
@@ -3662,17 +3662,17 @@ Call_03d_51d9:
     ld [$ba4c], a
     ld [$ba4d], a
     ld a, $0a
-    ld [$b8c5], a
-    ld [$b8c6], a
-    ld [$b8c7], a
-    ld [$b8ca], a
-    ld [$b8cb], a
+    ld [sNumCroissant], a
+    ld [sNumRiceBall], a
+    ld [sNumMeatDumpling], a
+    ld [sNumWildGrapeJuice], a
+    ld [sNumGreenTea], a
     xor a
     ld [$b8cc], a
     ld a, $80
     ld [$b8eb], a
     ld a, $64
-    ld [$b8ed], a
+    ld [sPlayerEnergy], a
     ld [$b8ee], a
     ld a, $01
     ld [$b906], a

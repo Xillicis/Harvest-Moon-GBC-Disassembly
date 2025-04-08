@@ -4807,7 +4807,7 @@ Jump_001_5f2a:
     jp z, Jump_001_6234
 
     cp WATERING_CAN
-    jp z, Jump_001_6244
+    jp z, UseWateringCan
 
     cp MILKER
     jp z, Jump_001_62c1
@@ -4840,19 +4840,19 @@ Jump_001_5f2a:
     jp z, Jump_001_6365
 
     cp GRASS_SEEDS
-    jp z, Jump_001_63a5
+    jp z, UseGrassSeeds
 
     cp TOMATO_SEEDS
-    jp z, Jump_001_63ce
+    jp z, UseTomatoSeeds
 
     cp CORN_SEEDS
-    jp z, Jump_001_63f8
+    jp z, UseCornSeeds
 
     cp TURNIP_SEEDS
-    jp z, Jump_001_6422
+    jp z, UseTurnipSeeds
 
     cp POTATO_SEEDS
-    jp z, Jump_001_6452
+    jp z, UsePotatoSeeds
 
     cp $4e
     jp z, Jump_001_647c
@@ -4871,7 +4871,7 @@ Jump_001_5f2a:
 
 UseSickle:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $06
@@ -5027,7 +5027,7 @@ jr_001_608c:
 
 UseHoe:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $07
     call Call_000_1658
     ld a, $34
@@ -5039,7 +5039,7 @@ UseHoe:
 
 UseHammer:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $08
@@ -5104,7 +5104,7 @@ jr_001_60fd:
 
 UseAx:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $09
@@ -5159,7 +5159,7 @@ jr_001_6147:
 
 Jump_001_614d:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $84
@@ -5173,7 +5173,7 @@ Jump_001_614d:
 
 Jump_001_6167:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0d
     call Call_000_1658
     ld a, $44
@@ -5185,7 +5185,7 @@ Jump_001_6167:
 
 Jump_001_617d:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $85
     call Call_000_151d
     ld a, $56
@@ -5197,7 +5197,7 @@ Jump_001_617d:
 
 Jump_001_6193:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $0f
@@ -5262,7 +5262,7 @@ jr_001_61e4:
 
 Jump_001_61ea:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     xor a
     ld [$cb45], a
     ld a, $0e
@@ -5317,7 +5317,7 @@ jr_001_622e:
 
 Jump_001_6234:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0b
     call Call_000_1658
     ld a, $64
@@ -5325,12 +5325,12 @@ Jump_001_6234:
     ret
 
 
-Jump_001_6244:
+UseWateringCan:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0c
     call Call_000_1658
-    ld a, [$b908]
+    ld a, [sCurrentWaterInWateringCan]
     or a
     jr z, jr_001_625b
 
@@ -5409,7 +5409,7 @@ jr_001_62b0:
 
 Jump_001_62c1:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $14
     call Call_000_1658
     ld a, $32
@@ -5460,7 +5460,7 @@ jr_001_6305:
 
 Jump_001_630d:
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $0a
     call Call_000_1658
     ld a, $4c
@@ -5470,7 +5470,7 @@ Jump_001_630d:
 
 Jump_001_631d:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $16
     call Call_000_1658
     ld a, $35
@@ -5480,7 +5480,7 @@ Jump_001_631d:
 
 Jump_001_632d:
     ld b, $03
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $63
     call Call_000_151d
     ld a, $69
@@ -5505,7 +5505,7 @@ jr_001_634f:
 
 
     ld b, $02
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $63
     call Call_000_151d
     ld a, $60
@@ -5554,9 +5554,9 @@ jr_001_6395:
     ret
 
 
-Jump_001_63a5:
+UseGrassSeeds:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5576,9 +5576,9 @@ Jump_001_63a5:
     ret
 
 
-Jump_001_63ce:
+UseTomatoSeeds:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5598,9 +5598,9 @@ Jump_001_63ce:
     ret
 
 
-Jump_001_63f8:
+UseCornSeeds:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5620,9 +5620,9 @@ Jump_001_63f8:
     ret
 
 
-Jump_001_6422:
+UseTurnipSeeds:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5648,9 +5648,9 @@ Call_001_644c:
     ret
 
 
-Jump_001_6452:
+UsePotatoSeeds:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5659,9 +5659,9 @@ Jump_001_6452:
     call Call_000_191a
     ld a, $04
     ld [$cb74], a
-    ld a, [$b8d3]
+    ld a, [sNumPotatoSeeds]
     dec a
-    ld [$b8d3], a
+    ld [sNumPotatoSeeds], a
     or a
     ret nz
 
@@ -5672,7 +5672,7 @@ Jump_001_6452:
 
 Jump_001_647c:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5694,7 +5694,7 @@ Jump_001_647c:
 
 Jump_001_64a6:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5716,7 +5716,7 @@ Jump_001_64a6:
 
 Jump_001_64d0:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5738,7 +5738,7 @@ Jump_001_64d0:
 
 Jump_001_64fa:
     ld b, $01
-    call Call_000_19f7
+    call CheckIfNoEnergy
     ld a, $3e
     call Call_000_151d
     ld a, $55
