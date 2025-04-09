@@ -5334,12 +5334,12 @@ UseWateringCan:
     or a
     jr z, jr_001_625b
 
-    ld a, $56
+    ld a, $56 ; animation ID?
     ld [$c912], a
     jr jr_001_6260
 
 jr_001_625b:
-    ld a, $10
+    ld a, $10 ; no water animation ID?
     ld [$c912], a
 
 jr_001_6260:

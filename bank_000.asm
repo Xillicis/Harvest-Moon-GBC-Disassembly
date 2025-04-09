@@ -5461,17 +5461,17 @@ jr_000_19f2:
     ld [$cb89], a
     ret
 
-
+; A lot of these labels are fake and the result of data --> assembly instructions.
 CheckIfNoEnergy:
     ld a, [sPlayerEnergy]
     or a
     jp z, Jump_000_1aae
-
+; Still have energy
     sub b
 
 Call_000_19ff:
     ld [sPlayerEnergy], a
-    jr nc, jr_000_1a08
+    jr nc, StillHaveEnergy
 
 Jump_000_1a04:
     xor a
@@ -5479,7 +5479,7 @@ Jump_000_1a04:
 Call_000_1a05:
     ld [sPlayerEnergy], a
 
-jr_000_1a08:
+StillHaveEnergy:
     ld a, [sPlayerEnergy]
     ld c, a
     ld a, b

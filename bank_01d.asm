@@ -3624,7 +3624,7 @@ jr_01d_51df:
 
     ret
 
-
+; Looks like some initialization
 Call_01d_521e:
     di
     call Call_000_0cd5

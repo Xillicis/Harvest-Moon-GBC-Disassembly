@@ -5815,31 +5815,23 @@ Call_022_5f2e:
     ld h, a
     ld a, [hl]
     cp $00
-    jr z, jr_022_5f55
-
+    jr z, .eatCroissant
     cp $01
-    jr z, jr_022_5f65
-
+    jr z, .drinkGrapeJuice
     cp $02
-    jr z, jr_022_5f75
-
+    jr z, .eatRiceBall
     cp $03
-    jr z, jr_022_5f85
-
+    jr z, .drinkGreenTea
     cp $04
-    jr z, jr_022_5f95
-
+    jr z, .eatMeatDumpling
     cp $05
-    jr z, jr_022_5fa5
-
+    jr z, .jr_022_5fa5
     ret
 
-
-Jump_022_5f55:
-jr_022_5f55:
+.eatCroissant:
     ld a, [sNumCroissant]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [sNumCroissant], a
@@ -5847,12 +5839,10 @@ jr_022_5f55:
     ld [$cb8d], a
     ret
 
-
-Jump_022_5f65:
-jr_022_5f65:
+.drinkGrapeJuice:
     ld a, [sNumWildGrapeJuice]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [sNumWildGrapeJuice], a
@@ -5860,12 +5850,10 @@ jr_022_5f65:
     ld [$cb8d], a
     ret
 
-
-Jump_022_5f75:
-jr_022_5f75:
+.eatRiceBall:
     ld a, [sNumRiceBall]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [sNumRiceBall], a
@@ -5873,12 +5861,10 @@ jr_022_5f75:
     ld [$cb8d], a
     ret
 
-
-Jump_022_5f85:
-jr_022_5f85:
+.drinkGreenTea:
     ld a, [sNumGreenTea]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [sNumGreenTea], a
@@ -5886,12 +5872,10 @@ jr_022_5f85:
     ld [$cb8d], a
     ret
 
-
-Jump_022_5f95:
-jr_022_5f95:
+.eatMeatDumpling:
     ld a, [sNumMeatDumpling]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [sNumMeatDumpling], a
@@ -5899,12 +5883,11 @@ jr_022_5f95:
     ld [$cb8d], a
     ret
 
-
-Jump_022_5fa5:
-jr_022_5fa5:
+.Jump_022_5fa5
+.jr_022_5fa5
     ld a, [$b8cc]
     or a
-    jr z, jr_022_5fb5
+    jr z, .checkForOtherConsumables
 
     dec a
     ld [$b8cc], a
@@ -5912,56 +5895,43 @@ jr_022_5fa5:
     ld [$cb8d], a
     ret
 
-
-jr_022_5fb5:
+.checkForOtherConsumables
     ld a, [sNumCroissant]
     or a
-    jr z, jr_022_5fbe
+    jr z, .checkForWildGrapeJuice
+    jp .eatCroissant
 
-    jp Jump_022_5f55
-
-
-jr_022_5fbe:
+.checkForWildGrapeJuice
     ld a, [sNumWildGrapeJuice]
     or a
-    jr z, jr_022_5fc7
+    jr z, .checkForRiceBall
+    jp .drinkGrapeJuice
 
-    jp Jump_022_5f65
-
-
-jr_022_5fc7:
+.checkForRiceBall
     ld a, [sNumRiceBall]
     or a
-    jr z, jr_022_5fd0
+    jr z, .checkForGreenTea
+    jp .eatRiceBall
 
-    jp Jump_022_5f75
-
-
-jr_022_5fd0:
+.checkForGreenTea:
     ld a, [sNumGreenTea]
     or a
-    jr z, jr_022_5fd9
+    jr z, .checkForMeatDumpling
+    jp .drinkGreenTea
 
-    jp Jump_022_5f85
-
-
-jr_022_5fd9:
+.checkForMeatDumpling
     ld a, [sNumMeatDumpling]
     or a
-    jr z, jr_022_5fe2
+    jr z, .jr_022_5fe2
+    jp .eatMeatDumpling
 
-    jp Jump_022_5f95
-
-
-jr_022_5fe2:
+.jr_022_5fe2
     ld a, [$b8cc]
     or a
-    jr z, jr_022_5feb
+    jr z, .noConsumables
+    jp .Jump_022_5fa5
 
-    jp Jump_022_5fa5
-
-
-jr_022_5feb:
+.noConsumables
     ld a, $ff
     ld [$cb8d], a
     ret

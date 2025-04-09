@@ -18,9 +18,12 @@ const BIG_LOG_TOP_LEFT_TILE       ; $08
 const BIG_LOG_TOP_RIGHT_TILE      ; $09
 const BIG_LOG_BOTTOM_LEFT_TILE    ; $0a
 const BIG_LOG_BOTTOM_RIGHT_TILE   ; $0b
-const_skip 3
-const SOLID_FENCE_TILE            ; $0f
+const_skip 2
+const SOLID_FENCE_TILE            ; $0e
+const_skip
 const PATH_TILE                   ; $10
 const PLOWED_LAND_TILE            ; $11
+
+DEF SIGN_TILE EQU $44
 
 DEF PLANTED_SEEDS_TILE EQU $90 ; might be different for different seeds planted...
