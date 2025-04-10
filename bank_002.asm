@@ -5995,7 +5995,6 @@ UseConsumable:
     ld [$cb8d], a
     ret
 
-
 .jr_002_6038
     ld a, [$b8cc]
     or a
@@ -6007,22 +6006,17 @@ UseConsumable:
     ld [$cb8d], a
     ret
 
-
 .checkForCroissant
     ld a, [sNumCroissant]
     or a
     jr z, .checkForWildGrapeJuice
-
     jp .eatCroissant
-
 
 .checkForWildGrapeJuice
     ld a, [sNumWildGrapeJuice]
     or a
     jr z, .checkForRiceBall
-
     jp .drinkWildGrapeJuice
-
 
 .checkForRiceBall
     ld a, [sNumRiceBall]
@@ -6030,30 +6024,23 @@ UseConsumable:
     jr z, .checkForGreenTea
     jp .eatRiceBall
 
-
 .checkForGreenTea
     ld a, [sNumGreenTea]
     or a
     jr z, .checkForMeatDumpling
-
     jp .drinkGreenTea
-
 
 .checkForMeatDumpling
     ld a, [sNumMeatDumpling]
     or a
     jr z, .jr_002_6075
-
     jp .eatMeatDumpling
-
 
 .jr_002_6075
     ld a, [$b8cc]
     or a
     jr z, .noConsumables
-
     jp .jr_002_6038
-
 
 .noConsumables
     ld a, $ff
@@ -6082,7 +6069,7 @@ jr_002_609e:
     jr nz, jr_002_60ab
 
     call UseConsumable
-    call $67a1
+    call Call_002_67a1
 
 jr_002_60ab:
     ld a, [$b911]
@@ -6430,241 +6417,241 @@ Jump_002_62d8:
 
 
     ld bc, rJOYP
-    nop
-    nop
+    db $00
+    db $00
     ld [$0088], sp
     add b
-    nop
+    db $00
     ld d, b
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     ld b, b
-    nop
+    db $00
     ld b, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$00f6], sp
     ld c, l
-    nop
+    db $00
     adc [hl]
     ld d, l
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     ld b, b
-    nop
+    db $00
     ld b, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$00a8], sp
     ld l, l
-    nop
+    db $00
     ld d, b
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0078], sp
     add b
-    nop
+    db $00
     ld d, b
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0078], sp
     ld b, b
-    nop
+    db $00
     ld d, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0088], sp
     ld l, l
-    nop
+    db $00
     ld d, b
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     ld b, b
-    nop
+    db $00
     ld b, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     dec a
-    nop
+    db $00
     ld b, b
     ld b, l
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0058], sp
     add b
-    nop
+    db $00
     ld d, b
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0080], sp
     ld b, b
-    nop
+    db $00
     ld a, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0086], sp
     ld l, l
-    nop
+    db $00
     ld a, [hl]
     ld h, h
-    nop
+    db $00
     inc bc
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     ld b, b
-    nop
+    db $00
     ld b, b
     ld c, b
-    nop
-    nop
+    db $00
+    db $00
     ld bc, $0100
-    nop
+    db $00
     rst $38
-    nop
-    nop
+    db $00
+    db $00
     ld [$0048], sp
     dec a
-    nop
+    db $00
     ld b, b
     ld b, l
-    nop
+    db $00
     inc bc
     ld bc, $0100
     dec b
     ld [bc], a
-    nop
-    nop
+    db $00
+    db $00
     ld [$002d], sp
     add b
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
     ld [bc], a
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $2205
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $01, $05, $22
+    db $00
+    db $00
     ld [$002d], sp
     add b
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
     ld [bc], a
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
+    db $00
 
 Call_002_6421:
     ld a, [$b8e1]
@@ -7246,7 +7233,6 @@ Call_002_672f:
     xor a
     jp hl
 
-
     db $fc
     db $fd
     db $fd
@@ -7266,7 +7252,12 @@ Call_002_672f:
     db $fd
     db $fd
     db $fd
-    cp $cd
+
+    db $fe
+; Seems like some kind of bug by defining $cd...
+Call_002_67a1:
+    ;cp $cd ; This is `db $fe, $cd`
+    db $cd
     ld hl, $cd69
     ld sp, hl
     ld l, h
