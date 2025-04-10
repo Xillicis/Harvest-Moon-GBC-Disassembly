@@ -5129,14 +5129,14 @@ Call_02e_5e28:
     ld a, $27
     call Call_000_1658
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $04
     ret nc
 
     ld a, $03
     ld [$cc72], a
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld l, a
     ld a, $00
     ld h, a

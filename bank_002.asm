@@ -5917,7 +5917,7 @@ ConsumableIndex: ; $002_5fae
     db $00
 
 UseConsumable:
-    ldh a, [$ff9c] ; get random number
+    ldh a, [hRandomNumber] ; get random number
     and %00001111 ; reduce to number between 0 and 15
     ld hl, ConsumableIndex
     add l

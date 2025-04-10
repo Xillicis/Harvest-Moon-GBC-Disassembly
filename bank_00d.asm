@@ -7626,7 +7626,7 @@ jr_00d_67d5:
     jr nc, jr_00d_67d5
 
     ld [$18f0], sp
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld a, b
     db $fc
     cp b

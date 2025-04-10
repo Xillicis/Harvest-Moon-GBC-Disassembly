@@ -193,7 +193,7 @@ jr_030_412f:
     jr z, jr_030_4169
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $64

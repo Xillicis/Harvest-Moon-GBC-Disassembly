@@ -6316,7 +6316,7 @@ Jump_003_65d1:
     jr nz, jr_003_661b
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $10
     jr nc, jr_003_661b
 
@@ -6356,7 +6356,7 @@ jr_003_661b:
     jr nz, jr_003_6665
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $02
     jr nc, jr_003_6665
 
@@ -6396,7 +6396,7 @@ jr_003_6665:
     jr nz, jr_003_66af
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $02
     jr nc, jr_003_66af
 
@@ -6436,7 +6436,7 @@ jr_003_66af:
     jp nz, Jump_003_64e9
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $02
     jp nc, Jump_003_64e9
 
@@ -6538,7 +6538,7 @@ jr_003_6760:
 
     ld h, a
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $04
@@ -6553,7 +6553,7 @@ jr_003_67a5:
     jr jr_003_67f0
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $04
@@ -6568,7 +6568,7 @@ jr_003_67bd:
     jr jr_003_67f0
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $04
@@ -6583,7 +6583,7 @@ jr_003_67d5:
     jr jr_003_67f0
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $04
@@ -6598,7 +6598,7 @@ jr_003_67ed:
 
 jr_003_67f0:
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $f8
     ld b, a
     cp $60
@@ -6611,7 +6611,7 @@ jr_003_67ff:
     sub $30
     ld [$ba1e], a
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $64
@@ -8131,7 +8131,7 @@ jr_003_713b:
     jr nz, jr_003_7180
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $08
     jr nc, jr_003_7181
 
@@ -8250,7 +8250,7 @@ jr_003_719b:
     jr nz, jr_003_7220
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $08
     jr nc, jr_003_7220
 
@@ -8341,7 +8341,7 @@ jr_003_725d:
     ret nz
 
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     cp $08
     ret nc
 
@@ -8496,7 +8496,7 @@ jr_003_734f:
 jr_003_7352:
     inc de
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $64
@@ -8523,7 +8523,7 @@ jr_003_7372:
 jr_003_7375:
     inc de
     call Call_000_0b1d
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
     ld a, $64

@@ -2560,20 +2560,20 @@ Jump_000_0b08:
     jr jr_000_0aef
 
 Call_000_0b0e:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     sla a
     sla a
     ld b, a
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     add b
     add $11
-    ldh [$ff9c], a
+    ldh [hRandomNumber], a
     ret
 
 
 Call_000_0b1d:
     ld hl, $0b46
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     add l
     ld l, a
     ld a, $00
@@ -2584,11 +2584,11 @@ Call_000_0b1d:
     ld a, [$c0a8]
     or $01
     ld b, a
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
 
 Jump_000_0b32:
     adc b
-    ldh [$ff9c], a
+    ldh [hRandomNumber], a
     pop af
     ret
 

@@ -6786,7 +6786,7 @@ jr_021_6a71:
     cp $02
     jr z, jr_021_6af7
 
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_021_6ab4
 
@@ -6806,7 +6806,7 @@ jr_021_6ab4:
 
 
 jr_021_6abf:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_021_6ad0
 
@@ -6826,7 +6826,7 @@ jr_021_6ad0:
 
 
 jr_021_6adb:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_021_6aec
 
@@ -6846,7 +6846,7 @@ jr_021_6aec:
 
 
 jr_021_6af7:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_021_6b08
 
@@ -7957,7 +7957,7 @@ Call_021_7032:
     or a
     ret nz
 
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $0f
     cp $0f
     jr z, jr_021_7066

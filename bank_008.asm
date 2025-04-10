@@ -4251,7 +4251,7 @@ Jump_008_56cc:
 
 
 Jump_008_56ff:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $0f
     ld hl, $55ef
     add l
@@ -8039,7 +8039,7 @@ Call_008_6c0b:
     or a
     ret nz
 
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $07
     cp $07
     ret nz

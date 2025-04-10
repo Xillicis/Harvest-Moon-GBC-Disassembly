@@ -6985,7 +6985,7 @@ jr_001_6bde:
     cp $02
     jr z, jr_001_6c64
 
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_001_6c21
 
@@ -7005,7 +7005,7 @@ jr_001_6c21:
 
 
 jr_001_6c2c:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_001_6c3d
 
@@ -7025,7 +7025,7 @@ jr_001_6c3d:
 
 
 jr_001_6c48:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_001_6c59
 
@@ -7045,7 +7045,7 @@ jr_001_6c59:
 
 
 jr_001_6c64:
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $01
     jr z, jr_001_6c75
 
@@ -8055,7 +8055,7 @@ Call_001_712d:
     call BankSwitchCallHL
     pop af
     pop hl
-    ldh a, [$ff9c]
+    ldh a, [hRandomNumber]
     and $0f
     cp $0f
     jr z, jr_001_716e
