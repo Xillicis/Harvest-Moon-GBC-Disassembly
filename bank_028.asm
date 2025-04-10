@@ -4338,7 +4338,7 @@ Jump_028_577f:
     jp nz, Jump_028_57c0
 
 jr_028_578c:
-    ld hl, $0b46
+    ld hl, RandomTableData
     ld a, [$c0a8]
     add l
     ld l, a
@@ -5296,7 +5296,7 @@ Jump_028_5cc7:
 Jump_028_5ce2:
 jr_028_5ce2:
     call Call_000_0b37
-    ld hl, $0b46
+    ld hl, RandomTableData
     ld a, [$c0a8]
     add l
     ld l, a
@@ -6009,7 +6009,7 @@ Jump_028_6140:
 Jump_028_615b:
 jr_028_615b:
     call Call_000_0b37
-    ld hl, $0b46
+    ld hl, RandomTableData
     ld a, [$c0a8]
     add l
     ld l, a

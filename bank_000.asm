@@ -1198,7 +1198,7 @@ Call_000_04c7:
     ld [$c0a9], a
 
 jr_000_0509:
-    call Call_000_0b0e
+    call LinearCongruentialGenerator
     call Call_000_2195
     ld hl, $c0ba
     inc [hl]
@@ -2559,7 +2559,11 @@ Jump_000_0b08:
     rst $38
     jr jr_000_0aef
 
-Call_000_0b0e:
+; Linear Congruential Generator (LCG)
+; Pseudo random number generator which computes based on the formula:
+;        X_{n+1} = (5 X_n + 17) mod 256
+; This method does cycle through every possible value (0 - 255).
+LinearCongruentialGenerator:
     ldh a, [hRandomNumber]
     sla a
     sla a
@@ -2572,7 +2576,7 @@ Call_000_0b0e:
 
 
 Call_000_0b1d:
-    ld hl, $0b46
+    ld hl, RandomTableData
     ldh a, [hRandomNumber]
     add l
     ld l, a
@@ -2585,7 +2589,6 @@ Call_000_0b1d:
     or $01
     ld b, a
     ldh a, [hRandomNumber]
-
 Jump_000_0b32:
     adc b
     ldh [hRandomNumber], a
@@ -2594,7 +2597,7 @@ Jump_000_0b32:
 
 
 Call_000_0b37:
-    ld hl, $0b46
+    ld hl, RandomTableData
     ldh a, [$ff9d]
 
 Call_000_0b3c:
@@ -2609,42 +2612,12 @@ Call_000_0b43:
     ldh [$ff9d], a
     ret
 
-
-    daa
-    ld a, [hl]
-    db $db
-    call z, Call_000_1430
-    ld c, a
-    sbc h
-    adc b
-    jp nc, $7290
-
-    add hl, hl
-    pop bc
+RandomTableData:
+    db $27, $7e, $db, $cc, $30, $14, $4f, $9c, $88, $d2, $90, $72, $29, $c1
 
 Jump_000_0b54:
-    ld a, $7a
-    add d
-    inc l
-    ld b, h
-    ld d, d
-    ld h, b
-    ret
-
-
-    adc c
-    dec b
-    inc de
-    ld h, a
-    ld a, [bc]
-    or d
-    ldh [c], a
-    rst $00
-    ld l, b
-    db $dd
-    ld h, l
-    ld l, l
-    jp nz, $8366
+    db $3e, $7a, $82, $2c, $44, $52, $60, $c9, $89, $05, $13, $67, $0a, $b2, $e2, $c7, $68
+    db $dd, $65, $6d, $c2, $66, $83
 
     sub a
     ld d, e
