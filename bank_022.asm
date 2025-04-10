@@ -5804,7 +5804,7 @@ Jump_022_5f15:
     dec b
     nop
 
-Call_022_5f2e:
+UnusedUseConsumable:
     ldh a, [$ff9c]
     and $0f
     ld hl, $5f1b
@@ -5957,7 +5957,7 @@ jr_022_600b:
     cp $01
     jr nz, jr_022_6018
 
-    call Call_022_5f2e
+    call UnusedUseConsumable
     call $670e
 
 jr_022_6018:

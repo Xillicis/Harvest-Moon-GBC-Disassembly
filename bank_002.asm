@@ -5894,25 +5894,32 @@ Jump_002_5fa8:
     call Call_000_3f52
     ret
 
+; a random number is selected from this list which decides what food/drink will be consumed.
+ConsumableIndex: ; $002_5fae
+    db $00
+    db $01
+    db $02
+    db $03
+    db $04
+    db $05
+    db $00
+    db $01
+    db $02
+    db $03
+    db $04
+    db $05
+    db $00
+    db $01
+    db $02
+    db $03
+    db $04
+    db $05
+    db $00
 
-    nop
-    ld bc, $0302
-    inc b
-    dec b
-    nop
-    ld bc, $0302
-    inc b
-    dec b
-    nop
-    ld bc, $0302
-    inc b
-    dec b
-    nop
-
-Call_002_5fc1:
-    ldh a, [$ff9c]
-    and $0f
-    ld hl, $5fae
+UseConsumable:
+    ldh a, [$ff9c] ; get random number
+    and %00001111 ; reduce to number between 0 and 15
+    ld hl, ConsumableIndex
     add l
     ld l, a
     ld a, $00
@@ -5920,31 +5927,23 @@ Call_002_5fc1:
     ld h, a
     ld a, [hl]
     cp $00
-    jr z, jr_002_5fe8
-
+    jr z, .eatCroissant
     cp $01
-    jr z, jr_002_5ff8
-
+    jr z, .drinkWildGrapeJuice
     cp $02
-    jr z, jr_002_6008
-
+    jr z, .eatRiceBall
     cp $03
-    jr z, jr_002_6018
-
+    jr z, .drinkGreenTea
     cp $04
-    jr z, jr_002_6028
-
+    jr z, .eatMeatDumpling
     cp $05
-    jr z, jr_002_6038
-
+    jr z, .jr_002_6038
     ret
 
-
-Jump_002_5fe8:
-jr_002_5fe8:
+.eatCroissant
     ld a, [sNumCroissant]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [sNumCroissant], a
@@ -5952,12 +5951,10 @@ jr_002_5fe8:
     ld [$cb8d], a
     ret
 
-
-Jump_002_5ff8:
-jr_002_5ff8:
+.drinkWildGrapeJuice
     ld a, [sNumWildGrapeJuice]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [sNumWildGrapeJuice], a
@@ -5965,12 +5962,10 @@ jr_002_5ff8:
     ld [$cb8d], a
     ret
 
-
-Jump_002_6008:
-jr_002_6008:
+.eatRiceBall
     ld a, [sNumRiceBall]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [sNumRiceBall], a
@@ -5978,12 +5973,10 @@ jr_002_6008:
     ld [$cb8d], a
     ret
 
-
-Jump_002_6018:
-jr_002_6018:
+.drinkGreenTea
     ld a, [sNumGreenTea]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [sNumGreenTea], a
@@ -5991,12 +5984,10 @@ jr_002_6018:
     ld [$cb8d], a
     ret
 
-
-Jump_002_6028:
-jr_002_6028:
+.eatMeatDumpling
     ld a, [sNumMeatDumpling]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [sNumMeatDumpling], a
@@ -6005,11 +5996,10 @@ jr_002_6028:
     ret
 
 
-Jump_002_6038:
-jr_002_6038:
+.jr_002_6038
     ld a, [$b8cc]
     or a
-    jr z, jr_002_6048
+    jr z, .checkForCroissant
 
     dec a
     ld [$b8cc], a
@@ -6018,55 +6008,54 @@ jr_002_6038:
     ret
 
 
-jr_002_6048:
+.checkForCroissant
     ld a, [sNumCroissant]
     or a
-    jr z, jr_002_6051
+    jr z, .checkForWildGrapeJuice
 
-    jp Jump_002_5fe8
+    jp .eatCroissant
 
 
-jr_002_6051:
+.checkForWildGrapeJuice
     ld a, [sNumWildGrapeJuice]
     or a
-    jr z, jr_002_605a
+    jr z, .checkForRiceBall
 
-    jp Jump_002_5ff8
+    jp .drinkWildGrapeJuice
 
 
-jr_002_605a:
+.checkForRiceBall
     ld a, [sNumRiceBall]
     or a
-    jr z, jr_002_6063
+    jr z, .checkForGreenTea
+    jp .eatRiceBall
 
-    jp Jump_002_6008
 
-
-jr_002_6063:
+.checkForGreenTea
     ld a, [sNumGreenTea]
     or a
-    jr z, jr_002_606c
+    jr z, .checkForMeatDumpling
 
-    jp Jump_002_6018
+    jp .drinkGreenTea
 
 
-jr_002_606c:
+.checkForMeatDumpling
     ld a, [sNumMeatDumpling]
     or a
-    jr z, jr_002_6075
+    jr z, .jr_002_6075
 
-    jp Jump_002_6028
+    jp .eatMeatDumpling
 
 
-jr_002_6075:
+.jr_002_6075
     ld a, [$b8cc]
     or a
-    jr z, jr_002_607e
+    jr z, .noConsumables
 
-    jp Jump_002_6038
+    jp .jr_002_6038
 
 
-jr_002_607e:
+.noConsumables
     ld a, $ff
     ld [$cb8d], a
     ret
@@ -6092,7 +6081,7 @@ jr_002_609e:
     cp $01
     jr nz, jr_002_60ab
 
-    call Call_002_5fc1
+    call UseConsumable
     call $67a1
 
 jr_002_60ab:
