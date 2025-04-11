@@ -2559,229 +2559,33 @@ Jump_000_0b08:
     rst $38
     jr jr_000_0aef
 
-; Linear Congruential Generator (LCG)
-; Pseudo random number generator which computes based on the formula:
-;        X_{n+1} = (5 X_n + 17) mod 256
-; This method does cycle through every possible value (0 - 255).
-LinearCongruentialGenerator:
-    ldh a, [hRandomNumber]
-    sla a
-    sla a
-    ld b, a
-    ldh a, [hRandomNumber]
-    add b
-    add $11
-    ldh [hRandomNumber], a
-    ret
 
+INCLUDE "home/random.asm"
 
-Call_000_0b1d:
-    ld hl, RandomTableData
-    ldh a, [hRandomNumber]
-    add l
-    ld l, a
-    ld a, $00
-    adc h
-    ld h, a
-    ld a, [hl]
-    push af
-    ld a, [$c0a8]
-    or $01
-    ld b, a
-    ldh a, [hRandomNumber]
-Jump_000_0b32:
-    adc b
-    ldh [hRandomNumber], a
-    pop af
-    ret
-
-
-Call_000_0b37:
-    ld hl, RandomTableData
-    ldh a, [$ff9d]
-
-Call_000_0b3c:
-    add l
-    ld l, a
-    ld a, $00
-    adc h
-    ld h, a
-    ld a, [hl]
-
-Call_000_0b43:
-    ldh [$ff9d], a
-    ret
 
 RandomTableData:
     db $27, $7e, $db, $cc, $30, $14, $4f, $9c, $88, $d2, $90, $72, $29, $c1
 
 Jump_000_0b54:
-    db $3e, $7a, $82, $2c, $44, $52, $60, $c9, $89, $05, $13, $67, $0a, $b2, $e2, $c7, $68
-    db $dd, $65, $6d, $c2, $66, $83
-
-    sub a
-    ld d, e
-    ld d, h
-    ld [hl-], a
-    and a
-    ldh a, [$ffe0]
-    pop de
-    ret z
-
-    ld [$2476], sp
-    or $a3
-    or a
-    ld d, a
-    ld h, d
-    ld [hl], l
-    ei
-    ld e, h
-    add c
-    or [hl]
-    rlca
-    sub $b5
-    jp c, $cea9
-
-    call c, $7139
-    call $5977
-    xor h
-    add b
-    add a
-    ld c, c
-    sub c
-    add h
-    ld e, d
-    db $e4
-    ld [hl+], a
-
-jr_000_0b96:
-    db $d3
-    dec e
-    ld c, l
-    jp $0112
-
-
-    ld hl, sp-$65
-    adc [hl]
-    db $eb
-    adc l
-    ld d, c
-    ld h, c
-    and b
-    cp e
-    pop hl
-    ld a, [de]
-    bit 4, h
-    push bc
-    ret c
-
-    ld l, e
-    ld e, a
-    ld e, e
-    jp z, $02a5
-
-    jr jr_000_0bd2
-
-    db $fd
-    sub d
-    sbc d
-    ret nz
-
-    dec l
-    ccf
-    ld [hl], h
-    ld a, [hl+]
-    ld h, $3a
-    xor a
-    inc c
-    ld a, c
-    db $f4
-    ld c, h
-    nop
+    db $3e, $7a, $82, $2c, $44, $52, $60, $c9, $89, $05, $13, $67, $0a, $b2, $e2, $c7
+    db $68, $dd, $65, $6d, $c2, $66, $83, $97, $53, $54, $32, $a7, $f0, $e0, $d1, $c8
+    db $08, $76, $24, $f6, $a3, $b7, $57, $62, $75, $fb, $5c, $81, $b6, $07, $d6, $b5
+    db $da, $a9, $ce, $dc, $39, $71, $cd, $77, $59, $ac, $80, $87, $49, $91, $84, $5a
+    db $e4, $22, $d3, $1d, $4d, $c3, $12, $01, $f8, $9b, $8e, $eb, $8d, $51, $61, $a0
+    db $bb, $e1, $1a, $cb, $64, $c5, $d8, $6b, $5f, $5b, $ca, $a5, $02, $18, $1f, $fd
+    db $92, $9a, $c0, $2d, $3f, $74, $2a, $26, $3a, $af, $0c, $79, $f4, $4c, $00
 
 Jump_000_0bc3:
-    ld b, a
-    ld a, a
-    rla
-    rst $28
-    rst $30
-    or h
-    ld e, l
-    cp c
-    dec h
-    sbc a
-    ld c, d
-    rrca
-
+    db $47, $7f, $17, $ef, $f7, $b4, $5d, $b9, $25, $9f, $4a, $0f
 Jump_000_0bcf:
-    cp h
-    ld l, [hl]
-    sbc b
-
-jr_000_0bd2:
-    db $ed
-    ld d, [hl]
-    ld [hl], $ec
-    ld b, c
-    inc hl
-    cp d
-    add sp, $2b
-    ld [$9dee], a
-    dec c
-    ld e, $0e
-    sbc [hl]
-    cp $4e
-    ld a, b
-    add $8f
-    xor l
-
-jr_000_0be8:
-    ld sp, $1b2e
-    cpl
-    ldh a, [c]
-
-jr_000_0bed:
-    push af
-    pop af
-    add [hl]
-    adc d
-    scf
-    ld b, $4b
-    sub h
-    dec bc
-    and $de
-    ld [hl], e
-    ld [hl], b
-    rst $38
-    and c
-    db $10
-    jr c, jr_000_0be8
-
-    sub [hl]
+    db $bc, $6e, $98, $ed, $56, $36, $ec, $41, $23, $ba, $e8, $2b, $ea, $ee, $9d, $0d
+    db $1e, $0e, $9e, $fe, $4e, $78, $c6, $8f, $ad, $31, $2e, $1b, $2f, $f2, $f5, $f1
+    db $86, $8a, $37, $06, $4b, $94, $0b, $e6, $de, $73, $70, $ff, $a1, $10, $38, $e9
+    db $96
 
 Call_000_0c00:
-    dec [hl]
-    ld d, l
-    ld l, d
-    ld h, e
-    db $fc
-    ld a, h
-    xor b
-    push hl
-    jr nz, jr_000_0b96
-
-    ld a, [$bdb0]
-    ld e, b
-    ld de, $a248
-    ld b, l
-    jr z, jr_000_0bed
-
-    ld b, b
-    dec d
-    or e
-    and h
-    add hl, de
-    db $e3
+    db $35, $55, $6a, $63, $fc, $7c, $a8, $e5, $20, $8c, $fa, $b0, $bd, $58, $11, $48
+    db $a2, $45, $28, $d9, $40, $15, $b3, $a4, $19, $e3
     ld e, [hl]
     rst $20
     ld b, e
