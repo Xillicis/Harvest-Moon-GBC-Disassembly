@@ -3791,7 +3791,7 @@ jr_002_5476:
     ret nz
 
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -3800,7 +3800,7 @@ Jump_002_549d:
     ld a, $00
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
     ld a, [$cb89]
@@ -3838,7 +3838,7 @@ Jump_002_54dc:
     ld a, $03
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
     ld a, [$cb89]
@@ -3876,7 +3876,7 @@ Jump_002_551b:
     ld a, $01
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
     ld a, [$cb89]
@@ -3914,7 +3914,7 @@ Jump_002_555a:
     ld a, $02
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
     ld a, [$cb89]
@@ -4013,7 +4013,7 @@ jr_002_55da:
     jp nz, Jump_002_54dc
 
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
     ld a, [$cb89]
@@ -4053,7 +4053,7 @@ Jump_002_562d:
     jp nz, Jump_002_549d
 
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
     ld a, [$cb89]
@@ -4093,7 +4093,7 @@ Jump_002_566e:
     jp nz, Jump_002_551b
 
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
     ld a, [$cb89]
@@ -4133,7 +4133,7 @@ Jump_002_56af:
     jp nz, Jump_002_555a
 
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
     ld a, [$cb89]
@@ -4278,7 +4278,7 @@ jr_002_577f:
     ld a, $44
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4650,7 +4650,7 @@ jr_002_5978:
     ld a, $05
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4667,7 +4667,7 @@ jr_002_5991:
     ld a, $07
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4684,7 +4684,7 @@ jr_002_599c:
     ld a, $1d
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4693,7 +4693,7 @@ jr_002_59bd:
     ld a, $08
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4717,13 +4717,13 @@ jr_002_59e3:
 jr_002_59e5:
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
 Jump_002_59ee:
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$cb78]
     or a
     ret nz
@@ -4751,7 +4751,7 @@ jr_002_5a12:
 jr_002_5a14:
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -4763,7 +4763,7 @@ Jump_002_5a1d:
     ld a, $52
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6103,7 +6103,7 @@ jr_002_60ab:
     ld a, $1e
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6146,7 +6146,7 @@ jr_002_6120:
     ldh [$ff91], a
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6160,7 +6160,7 @@ jr_002_6136:
     ld a, $50
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6183,7 +6183,7 @@ Jump_002_615e:
     ld b, $10
     call CopyHLtoDE
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $24
     ldh [$ff91], a
     ld a, $30
@@ -6216,7 +6216,7 @@ Jump_002_6177:
     ld a, $1e
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6259,7 +6259,7 @@ jr_002_61df:
     ldh [$ff91], a
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6272,7 +6272,7 @@ jr_002_61f5:
     ldh [$ff91], a
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6295,7 +6295,7 @@ Jump_002_621a:
     ld b, $10
     call CopyHLtoDE
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $24
     ldh [$ff91], a
     ld a, $00
@@ -6328,7 +6328,7 @@ Jump_002_6233:
     ld a, $1e
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6373,7 +6373,7 @@ jr_002_629e:
     ld a, $20
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6386,7 +6386,7 @@ jr_002_62b6:
     ldh [$ff91], a
     ldh [$ff93], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6408,7 +6408,7 @@ Jump_002_62d8:
     ld b, $10
     call CopyHLtoDE
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $24
     ldh [$ff91], a
     ld a, $20

@@ -341,7 +341,7 @@ Jump_027_421e:
     xor a
     ld [$c611], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $01
     ld [$cb80], a
     ld a, $08
@@ -360,7 +360,7 @@ Jump_027_4237:
     ld a, $21
     call BankSwitchCallHL
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $3e
     call Call_000_3f52
     ret

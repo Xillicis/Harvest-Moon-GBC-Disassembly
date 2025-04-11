@@ -6,7 +6,7 @@
 SECTION "ROM Bank $000", ROM0[$0]
 
 RST_00::
-    jp Jump_000_2160
+    jp JumpToFunctionInTable
 
 
 Call_000_0003:
@@ -19,7 +19,7 @@ Jump_000_0004:
     rst $38
 
 RST_08::
-    jp Jump_000_216c
+    jp TableJumpBankSwitch
 
 
     ret
@@ -4472,8 +4472,10 @@ jr_000_1649:
     ret
 
 
-Call_000_1658:
+RST_TableJumpBankSwitch: ; 0x1658
     rst $08
+
+Data_000_1659:
     db $e4
     ld d, l
     ld b, $30
@@ -7003,28 +7005,28 @@ jr_000_2157:
     inc hl
     jr jr_000_210f
 
-Jump_000_2160:
+JumpToFunctionInTable:
     ld l, a
     ld h, $00
     add hl, hl
     ld e, l
-    ld d, h
+    ld d, h ; de = 2*a
     pop hl
     add hl, de
-    ld a, [hl+]
+    ld a, [hli]
     ld h, [hl]
     ld l, a
     jp hl
 
 
-Jump_000_216c:
+TableJumpBankSwitch:
     ld e, a
     ld d, $00
 
 Call_000_216f:
     ld l, a
     ld h, $00
-    add hl, hl
+    add hl, hl ; 2*a
 
 ; looks like some kind of table jump thing
 Call_000_2173:
@@ -7037,7 +7039,7 @@ Call_000_2173:
     inc hl
     ld d, [hl]
     inc hl
-    ld a, [hl]
+    ld a, [hl] ; looks like `a` will have a bank number...
     ld l, e
     ld h, d
 
@@ -12807,7 +12809,7 @@ jr_000_3c6d:
     xor a
     ld [$c908], a
     ld a, $13
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $3e
     ld [$c912], a
     ld a, [$c620]
@@ -12838,7 +12840,7 @@ jr_000_3cb2:
     xor a
     ld [$c908], a
     ld a, $13
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $3e
     ld [$c912], a
     ld a, [$c620]
@@ -12971,7 +12973,7 @@ jr_000_3d7b:
     ld [$cb15], a
     ld [$cb16], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_000_3f0b
     ld a, $00
     ld [$cb52], a

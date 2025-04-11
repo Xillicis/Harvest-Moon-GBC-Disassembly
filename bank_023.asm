@@ -60,7 +60,7 @@ SECTION "ROM Bank $023", ROMX[$4000], BANK[$23]
     call Call_000_1205
     call Call_023_6198
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld hl, $6fad
     ld a, $2f
     call BankSwitchCallHL
@@ -1026,7 +1026,7 @@ jr_023_463e:
     ld a, $06
     ld [$cc16], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jp Jump_023_456a
 
 
@@ -1257,7 +1257,7 @@ jr_023_4781:
     ld a, $1a
     ld [$c912], a
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jp Jump_023_456a
 
 
@@ -1280,7 +1280,7 @@ jr_023_47cd:
     ld a, $1a
     ld [$c912], a
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jp Jump_023_456a
 
 
@@ -1379,7 +1379,7 @@ jr_023_487d:
     ld a, $1a
     ld [$c912], a
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cc19], a
     jp Jump_023_456a
@@ -1932,14 +1932,14 @@ jr_023_4b74:
     ld a, $a6
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jr jr_023_4bcc
 
 jr_023_4bc2:
     ld a, $aa
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
 
 jr_023_4bcc:
     ld hl, $5196
@@ -2000,14 +2000,14 @@ jr_023_4bcc:
     ld a, $a7
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jr jr_023_4c3e
 
 jr_023_4c34:
     ld a, $ab
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
 
 jr_023_4c3e:
     ld hl, $5196
@@ -2056,14 +2056,14 @@ jr_023_4c3e:
     ld a, $a8
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     jr jr_023_4c9c
 
 jr_023_4c92:
     ld a, $ac
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
 
 jr_023_4c9c:
     ld hl, $5196
@@ -2116,7 +2116,7 @@ Jump_023_4cdb:
     ld a, $a2
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2124,7 +2124,7 @@ Jump_023_4ce6:
     ld a, $a0
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2132,7 +2132,7 @@ Jump_023_4cf1:
     ld a, $a3
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2140,7 +2140,7 @@ Jump_023_4cfc:
     ld a, $a1
     call Call_000_3f52
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2200,7 +2200,7 @@ jr_023_4d6d:
     ld [$b8c0], a
     ld [$cb34], a
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $10
     call $16d1
     ld hl, $c62a
@@ -2250,7 +2250,7 @@ Jump_023_4dac:
     ld a, $1a
     ld [$c912], a
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2350,7 +2350,7 @@ Call_023_4de0:
 
 
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     ld a, $33
@@ -2366,7 +2366,7 @@ Call_023_4de0:
 
 
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_565f
     ld a, [de]
     cp $0b
@@ -2517,7 +2517,7 @@ jr_023_4f38:
     ld a, $02
     ld [$cc1a], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     call Call_023_565f
@@ -2592,7 +2592,7 @@ jr_023_4f95:
     ld a, $02
     ld [$cc1a], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     call Call_023_565f
@@ -2663,7 +2663,7 @@ jr_023_500e:
     ld a, $02
     ld [$cc1a], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     call Call_023_565f
@@ -2734,7 +2734,7 @@ jr_023_5088:
     ld a, $02
     ld [$cc1a], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     call Call_023_565f
@@ -2771,7 +2771,7 @@ jr_023_50e4:
     ld a, $02
     ld [$cc1a], a
     ld a, $15
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
     call Call_023_565f
@@ -2971,7 +2971,7 @@ jr_023_51fb:
     ret nz
 
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -2979,7 +2979,7 @@ jr_023_5220:
     ld a, $00
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_59b0
     ldh a, [$ffa4]
     or a
@@ -3017,7 +3017,7 @@ jr_023_525e:
     ld a, $03
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5baa
     ldh a, [$ffa4]
     or a
@@ -3055,7 +3055,7 @@ Jump_023_529c:
     ld a, $01
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5da4
     ldh a, [$ffa4]
     or a
@@ -3093,7 +3093,7 @@ Jump_023_52d9:
     ld a, $02
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5f9e
     ldh a, [$ffa4]
     or a
@@ -3251,7 +3251,7 @@ jr_023_53ab:
     jp z, Jump_023_546d
 
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5baa
     ldh a, [$ffa4]
     or a
@@ -3288,7 +3288,7 @@ jr_023_53f0:
 
 jr_023_53f7:
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_59b0
     ldh a, [$ffa4]
     or a
@@ -3325,7 +3325,7 @@ jr_023_542c:
 
 jr_023_5433:
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5da4
     ldh a, [$ffa4]
     or a
@@ -3362,7 +3362,7 @@ jr_023_5466:
 
 Jump_023_546d:
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_023_5f9e
     ldh a, [$ffa4]
     or a

@@ -13453,7 +13453,7 @@ jr_02c_7ce8:
     ld a, $07
     ld [$cb8d], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$b904]
     inc a
     ld [$b904], a

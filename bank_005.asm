@@ -73,7 +73,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     call Call_005_45b6
     call $4514
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $83
     ld [$c0a2], a
     ld a, $40
@@ -160,7 +160,7 @@ jr_005_4114:
     ret nz
 
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -381,7 +381,7 @@ jr_005_427d:
     ld [$cb34], a
     push bc
     ld a, $03
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     pop bc
     ld a, b
     call $16d1
@@ -6321,7 +6321,7 @@ Call_005_63c5:
     inc a
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c802]
     cp $10
     call z, Call_005_653f
@@ -6427,7 +6427,7 @@ Jump_005_6472:
     inc a
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c802]
     cp $10
     call z, Call_005_653f
@@ -6912,7 +6912,7 @@ Jump_005_677f:
     inc a
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c831]
     cp $59
     jr nc, jr_005_67cc
@@ -7017,7 +7017,7 @@ Jump_005_6814:
     inc a
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c822]
     add $04
     cp $08
@@ -7100,7 +7100,7 @@ Jump_005_68a1:
     inc a
     ld [$c912], a
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c822]
     add $04
     cp $08

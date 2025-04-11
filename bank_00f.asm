@@ -6226,7 +6226,7 @@ jr_00f_650c:
     ret nz
 
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6247,7 +6247,7 @@ jr_00f_6533:
     cp $84
     call z, Call_00f_6aad
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ret
 
 
@@ -6290,7 +6290,7 @@ jr_00f_6583:
 
 jr_00f_6586:
     ld a, $02
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$c60d]
     cp $00
     jp z, Jump_00f_65d2
@@ -6440,7 +6440,7 @@ Jump_00f_6671:
     ld a, $00
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_000_14f9
     ld a, [wLeftOrDownSideFacingTile]
     ld b, a
@@ -6477,7 +6477,7 @@ Jump_00f_66ad:
     ld a, $03
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_000_1502
     ld a, [wLeftOrDownSideFacingTile]
     ld b, a
@@ -6514,7 +6514,7 @@ Jump_00f_66e9:
     ld a, $01
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_000_150b
     ld a, [wLeftOrDownSideFacingTile]
     ld b, a
@@ -6551,7 +6551,7 @@ Jump_00f_6725:
     ld a, $02
     ld [$c60d], a
     ld a, $01
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     call Call_000_1514
     ld a, [wLeftOrDownSideFacingTile]
     ld b, a
@@ -6699,7 +6699,7 @@ jr_00f_67e8:
 
 jr_00f_67f5:
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, $f0
     ld [$cc27], a
     ld a, [$ccb8]
@@ -7240,7 +7240,7 @@ jr_00f_6ae5:
     ld b, $10
     call CopyHLtoDE
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld a, [$ccb8]
     cp $00
     jr z, jr_00f_6b13
@@ -7802,7 +7802,7 @@ Call_00f_6e3b:
     ld b, $10
     call CopyHLtoDE
     ld a, $00
-    call Call_000_1658
+    call RST_TableJumpBankSwitch
     ld hl, $6e6f
     ld de, $c8c0
     ld b, $10
