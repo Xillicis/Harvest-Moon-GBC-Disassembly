@@ -5008,7 +5008,7 @@ jr_006_56c5:
     call Call_000_151d
     ret
 
-
+Call_006_570d: ; watering can goes here...
     ld a, [$c60d]
     add $3a
     call Call_000_151d

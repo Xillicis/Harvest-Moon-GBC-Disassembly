@@ -2585,49 +2585,17 @@ Jump_000_0bcf:
 
 Call_000_0c00:
     db $35, $55, $6a, $63, $fc, $7c, $a8, $e5, $20, $8c, $fa, $b0, $bd, $58, $11, $48
-    db $a2, $45, $28, $d9, $40, $15, $b3, $a4, $19, $e3
-    ld e, [hl]
-    rst $20
-    ld b, e
-    cp [hl]
-    inc b
+    db $a2, $45, $28, $d9, $40, $15, $b3, $a4, $19, $e3, $5e, $e7, $43, $be, $04
 
 Jump_000_0c1f:
-    add l
-    rst $10
-    di
-    adc e
-    ld l, h
-    dec sp
-    ld d, $a6
-    push de
-    rst $08
-    inc a
-    ld hl, $33ab
-    sub e
-    ld a, e
-    inc bc
-    ld b, [hl]
-    cp b
-    inc [hl]
+    db $85, $d7, $f3, $8b, $6c, $3b, $16, $a6, $d5, $cf, $3c, $21, $ab, $33, $93, $7b
+    db $03, $46, $b8, $34
 
 Call_000_0c33:
-    call nz, $b142
-    inc e
-    xor [hl]
-    ld d, b
-    ld sp, hl
-    xor d
-    ld l, a
-    dec a
-    ret nc
+    db $c4, $42, $b1, $1c, $ae, $50, $f9, $aa, $6f, $3d, $d0, $69, $99, $bf, $d4, $7d
+    db $df, $95, $09
+;;;;;;;;;;;;;; End of random data I think
 
-    ld l, c
-    sbc c
-    cp a
-    call nc, $df7d
-    sub l
-    add hl, bc
 
 Call_000_0c46:
     ldh [$ffa4], a
@@ -7281,7 +7249,7 @@ jr_000_228d:
 
 jr_000_2290:
     ld a, $00
-    ld [hl-], a
+    ld [hld], a
     dec bc
     ld a, b
     or c
