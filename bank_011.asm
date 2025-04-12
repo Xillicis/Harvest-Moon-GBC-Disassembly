@@ -3911,7 +3911,7 @@ jr_011_4f8e:
     rst $38
     nop
 
-; First byte:  Something is in that coordinate
+; First byte:  Some kind of inforamtion about the tile
 ; Second byte: The object tile ID.
 ; Seems like it goes 16 tiles from the left to the right, then down to the next row.
 FarmMapInitialData:
@@ -4111,25 +4111,10 @@ FarmMapInitialData:
     db $0e, $01
     db $0e, $01
     db $0e, $01
-    db $0e, $01
-    db $02
-    db $01, $02, $01
-    db $02
-    db $01, $02, $01
-    db $02
-    db $01, $00, $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
+    db $0e, $01, $02
+    db $01, $02, $01, $02
+    db $01, $02, $01, $02
+    db $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     inc bc
     db $01, $03, $01
     inc bc
@@ -4137,54 +4122,13 @@ FarmMapInitialData:
     db $00
     db $00
     db $02
-    db $01, $02, $01
-    db $02
-    db $01, $00, $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
+    db $01, $02, $01, $02, $01, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     inc b
-    db $01, $05, $01
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $02
+    db $01, $05, $01, $00, $00, $00, $00, $00, $00, $00, $00, $02
     db $01, $00, $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    ld b, $01
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $06, $01
     rlca
     db $01, $00, $00
     db $00
@@ -4193,69 +4137,14 @@ FarmMapInitialData:
     db $01, $00, $00
     inc bc
     db $01, $03, $01
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $02
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $02
     db $01, $00, $00
     inc bc
     db $01, $00, $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     ld [$0901], sp
-    db $01, $00, $00
-    db $00
-    db $00
-    db $02
-    db $01, $00, $00
-    db $00
-    db $00
-    db $00
-    db $00
-    db $02
+    db $01, $00, $00, $00, $00, $02
+    db $01, $00, $00, $00, $00, $00, $00, $02
 
 jr_011_56f4:
     db $01, $00, $00
