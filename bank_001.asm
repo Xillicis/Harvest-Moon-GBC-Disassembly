@@ -2714,7 +2714,7 @@ jr_001_529f:
     ld h, a
     ld a, [hl]
     cp NO_ITEM
-    jp nz, Jump_001_5f2a
+    jp nz, UseItem
 
     ld a, [$c0a7]
     cp $02
@@ -4762,12 +4762,13 @@ jr_001_5f10:
     ret
 
 
-Jump_001_5f2a:
+UseItem:
     push hl
     push af
     ld l, $f4
     ld h, $6d
     ld a, $20
+; calls an almost identitcal function?
     call BankSwitchCallHL
     pop af
     pop hl
@@ -4781,91 +4782,62 @@ Jump_001_5f2a:
     ld a, [hl]
     cp SICKLE
     jp z, UseSickle
-
     cp HOE
     jp z, UseHoe
-
     cp HAMMER
     jp z, UseHammer
-
     cp AX
     jp z, UseAx
-
     cp $13
     jp z, Jump_001_614d
-
     cp $14
     jp z, Jump_001_6167
-
     cp $16
     jp z, Jump_001_6193
-
     cp $15
     jp z, Jump_001_61ea
-
     cp BRUSH
-    jp z, Jump_001_6234
-
+    jp z, UseBrush
     cp WATERING_CAN
     jp z, UseWateringCan
-
     cp MILKER
-    jp z, Jump_001_62c1
-
+    jp z, UseMilker
     cp $00
     jp z, Jump_001_62d1
-
     cp $52
     jp z, Jump_001_62d1
-
     cp M_POTION
     jp z, Jump_001_62d1
-
     cp COW_BELL
-    jp z, Jump_001_630d
-
+    jp z, UseCowBell
     cp $53
     jp z, Jump_001_631d
-
     cp $54
     jp z, Jump_001_632d
-
     cp $12
     jp z, Jump_001_617d
-
     cp $10
     jp z, Jump_001_6365
-
     cp $11
     jp z, Jump_001_6365
-
     cp GRASS_SEEDS
     jp z, UseGrassSeeds
-
     cp TOMATO_SEEDS
     jp z, UseTomatoSeeds
-
     cp CORN_SEEDS
     jp z, UseCornSeeds
-
     cp TURNIP_SEEDS
     jp z, UseTurnipSeeds
-
     cp POTATO_SEEDS
     jp z, UsePotatoSeeds
-
     cp $4e
     jp z, Jump_001_647c
-
     cp $4f
     jp z, Jump_001_64a6
-
     cp $50
     jp z, Jump_001_64d0
-
     cp $51
     jp z, Jump_001_64fa
-
     ret
 
 
@@ -5315,7 +5287,7 @@ jr_001_622e:
     ret
 
 
-Jump_001_6234:
+UseBrush:
     ld b, MEDIUM_ENERGY
     call CheckIfNoEnergy
     ld a, $0b
@@ -5407,7 +5379,7 @@ jr_001_62b0:
     ret
 
 
-Jump_001_62c1:
+UseMilker:
     ld b, MEDIUM_ENERGY
     call CheckIfNoEnergy
     ld a, $14
@@ -5458,7 +5430,7 @@ jr_001_6305:
     ret
 
 
-Jump_001_630d:
+UseCowBell:
     ld b, MEDIUM_ENERGY
     call CheckIfNoEnergy
     ld a, $0a
