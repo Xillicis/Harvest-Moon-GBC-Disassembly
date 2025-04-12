@@ -1553,7 +1553,7 @@ jr_011_46a1:
 jr_011_46c5:
     inc c
     nop
-    call z, Call_000_0c00
+    call z, $0c00
     nop
     inc c
     nop

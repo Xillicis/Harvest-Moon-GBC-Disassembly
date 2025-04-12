@@ -2064,7 +2064,7 @@ jr_006_49db:
     ld d, l
     cp a
     ld d, l
-    jp nc, Jump_000_0b54
+    jp nc, $0b54 ;Jump_000_0b54
 
     ld d, l
     jp nc, $4054

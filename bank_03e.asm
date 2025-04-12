@@ -13172,7 +13172,7 @@ jr_03e_79ed:
     cp $fd
     rst $38
     ld [bc], a
-    call z, Call_000_0c33
+    call z, $0c33
     di
     inc hl
 

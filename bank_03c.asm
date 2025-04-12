@@ -5974,7 +5974,7 @@ jr_03c_59d3:
     inc c
     nop
     inc c
-    call nz, Call_000_0c00
+    call nz, $0c00
     ld [hl+], a
     call c, $bf02
     db $fc

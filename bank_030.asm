@@ -11929,7 +11929,7 @@ Call_030_75ff:
     ld [hl], e
     add b
     ld b, h
-    jp nz, Jump_000_0bcf
+    jp nz, $0bcf
 
     ld [hl], c
     rst $30

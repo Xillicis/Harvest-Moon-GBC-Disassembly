@@ -6708,7 +6708,7 @@ jr_03d_60f7:
     call z, $4a41
     dec b
     ld e, b
-    jp Jump_000_0bc3
+    jp $0bc3
 
 
     ld e, c

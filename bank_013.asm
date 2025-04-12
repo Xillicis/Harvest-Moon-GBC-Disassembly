@@ -11805,7 +11805,7 @@ jr_013_7a6b:
     ld h, b
     ld l, l
     sub d
-    jp nc, Jump_000_0c1f
+    jp nc, $0c1f
 
     inc a
     ret nz

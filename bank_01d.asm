@@ -6970,7 +6970,7 @@ jr_01d_625c:
     call z, Call_01d_4a41
     dec b
     ld e, b
-    jp Jump_000_0bc3
+    jp $0bc3
 
 
     ld e, c
