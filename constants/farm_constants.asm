@@ -23,6 +23,13 @@ const SOLID_FENCE_TILE            ; $0e
 const_skip
 const PATH_TILE                   ; $10
 const PLOWED_LAND_TILE            ; $11
+const WATERED_LAND_TILE           ; $12
+
+DEF WATER_BOTTOM_LEFT_TILE   EQU $2a
+DEF WATER_BOTTOM_CENTER_TILE EQU $2b
+DEF WATER_BOTTOM_RIGHT_TILE  EQU $2c
+
+
 
 DEF SIGN_TILE EQU $44
 

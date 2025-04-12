@@ -4219,9 +4219,9 @@ Call_000_1520:
     ret z
 
 Call_000_1522:
-    ld [hl+], a
+    ld [hli], a
     ld a, $ff
-    ld [hl+], a
+    ld [hli], a
     inc hl
     xor a
 
@@ -4476,86 +4476,46 @@ RST_TableJumpBankSwitch: ; 0x1658
     rst $08
 
 Data_000_1659:
-    db $e4
-    ld d, l
-    ld b, $30
-    ld d, [hl]
-    ld b, $77
-    ld d, [hl]
-    ld b, $9e
-    ld d, [hl]
-    ld b, $a7
-    ld d, [hl]
-    ld b, $ce
-    ld d, [hl]
-    ld b, $d7
-    ld d, [hl]
-    ld b, $e0
-    ld d, [hl]
-    ld b, $e9
-    ld d, [hl]
-    ld b, $f2
-    ld d, [hl]
-    ld b, $fb
-    ld d, [hl]
-    ld b, $04
-    ld d, a
-    ld b, $0d
-    ld d, a
-    ld b, $16
-    ld d, a
-    ld b, $1f
-    ld d, a
-    ld b, $28
-    ld d, a
-    ld b, $31
-    ld d, a
-    ld b, $3a
-    ld d, a
-    ld b, $43
-    ld d, a
-    ld b, $4c
-    ld d, a
-    ld b, $55
-    ld d, a
-    ld b, $5e
-    ld d, a
-    ld b, $67
-    ld d, a
-    ld b, $70
-    ld d, a
-    ld b, $79
-    ld d, a
-    ld b, $82
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $8b
-    ld d, a
-    ld b, $94
-    ld d, a
-    ld b, $9d
-    ld d, a
-    ld b, $a3
-    ld d, a
-    ld b, $a9
-    ld d, a
-    ld b, $af
-    ld d, a
-    ld b, $b5
-    ld d, a
-    ld b, $bb
-    ld d, a
+    db $e4, $55, $06
+    db $30, $56, $06
+    db $77, $56, $06
+    db $9e, $56, $06
+    db $a7, $56, $06
+    db $ce, $56, $06
+    db $d7, $56, $06
+    db $e0, $56, $06
+    db $e9, $56, $06
+    db $f2, $56, $06
+    db $fb, $56, $06
+    db $04, $57, $06 
+    db $0d, $57, $06
+    db $16, $57, $06 
+    db $1f, $57, $06
+    db $28, $57, $06
+    db $31, $57, $06
+    db $3a, $57, $06
+    db $43, $57, $06
+    db $4c, $57, $06
+    db $55, $57, $06
+    db $5e, $57, $06
+    db $67, $57, $06
+    db $70, $57, $06
+    db $79, $57, $06
+    db $82, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $8b, $57, $06
+    db $94, $57, $06
+    db $9d, $57, $06
+    db $a3, $57, $06
+    db $a9, $57, $06
+    db $af, $57, $06
+    db $b5, $57, $06
+    db $bb, $57
 
 Call_000_16d0:
     ld b, $ea
@@ -7019,7 +6979,7 @@ JumpToFunctionInTable:
     jp hl
 
 
-TableJumpBankSwitch:
+TableJumpBankSwitch: ; 0x216c
     ld e, a
     ld d, $00
 

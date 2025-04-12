@@ -5334,7 +5334,7 @@ jr_001_6260:
     ld bc, $ff80
     add hl, bc
     ld a, [hl]
-    jr jr_001_62b0
+    jr CheckForFillingWateringCan
 
 jr_001_6285:
     ld a, [$cb48]
@@ -5344,7 +5344,7 @@ jr_001_6285:
     ld bc, $0080
     add hl, bc
     ld a, [hl]
-    jr jr_001_62b0
+    jr CheckForFillingWateringCan
 
 jr_001_6294:
     ld a, [$cb48]
@@ -5354,10 +5354,11 @@ jr_001_6294:
     ld bc, $fffe
     add hl, bc
     ld a, [hl]
-    jr jr_001_62b0
+    jr CheckForFillingWateringCan
 
-Jump_001_62a3:
-    ld a, [$cb48]
+; Seems like it gets the tile type. Something like what we are watering...
+Jump_001_62a3: ; 01x62a3
+    ld a, [$cb48] ; contains the sram address for the tile we are looking at I think...
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -5365,7 +5366,8 @@ Jump_001_62a3:
     add hl, bc
     ld a, [hl]
 
-jr_001_62b0:
+CheckForFillingWateringCan:
+; look at tiles between $20 and $38 (probably all types of water tiles).
     cp $20
     ret c
 
