@@ -4646,13 +4646,13 @@ jr_026_543f:
     ld [$e200], sp
     rst $38
     ld b, $00
-    jp nc, Jump_000_040f
+    jp nc, $040f
 
     nop
-    jp nc, Jump_000_0207
+    jp nc, $0207
 
     nop
-    jp nc, Jump_000_00ff
+    jp nc, $00ff
 
     nop
     add b

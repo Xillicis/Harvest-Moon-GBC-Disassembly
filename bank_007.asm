@@ -13352,7 +13352,7 @@ Jump_007_79cc:
     nop
     dec bc
     add hl, sp
-    call Call_000_0c48
+    call $0c48
     ret nc
 
     inc [hl]
@@ -13399,7 +13399,7 @@ Jump_007_79cc:
 
     ld b, a
     ld [$0b00], sp
-    call nz, Call_000_16d0
+    call nz, $16d0
     and l
     set 1, c
     dec b

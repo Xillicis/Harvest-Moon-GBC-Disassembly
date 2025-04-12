@@ -8814,7 +8814,7 @@ jr_031_5f84:
     jp nz, $c381
 
     add c
-    call nz, Call_000_0e81
+    call nz, $0e81
     ld bc, $010e
     push bc
     add c

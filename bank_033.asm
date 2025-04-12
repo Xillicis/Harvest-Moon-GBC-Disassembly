@@ -7334,7 +7334,7 @@ jr_033_6099:
     ld h, d
     push af
     ld h, c
-    call c, Call_000_0e61
+    call c, $0e61
     ld h, d
     call c, Call_033_4061
     ld h, d

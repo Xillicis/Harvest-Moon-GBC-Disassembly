@@ -534,7 +534,6 @@ jr_000_0202:
     ld [$c0a7], a
 
 Call_000_0207:
-Jump_000_0207:
     call Call_000_225a
     push hl
     push af
@@ -870,7 +869,6 @@ Call_000_039b:
     ldh [c], a
     inc c
     ld b, 32
-
 .loop ; iterate 20 times. Why?
     ; what does `hl` have?
     ld a, [hli]
@@ -879,7 +877,6 @@ Call_000_039b:
     ldh [c], a
     dec b
     jr nz, .loop
-
     ret
 
 ; Why is the same function repeated?
@@ -889,7 +886,6 @@ Call_000_03ab:
     ldh [c], a
     inc c
     ld b, $20
-
 .loop
     ld a, [hli]
     ldh [c], a
@@ -897,7 +893,6 @@ Call_000_03ab:
     ldh [c], a
     dec b
     jr nz, .loop
-
     ret
 
 
@@ -980,8 +975,6 @@ Call_000_0407:
     ldh [c], a
     ld c, rOBPD_c
     ld d, $08
-
-Jump_000_040f:
 .loop
     call Call_000_0da9
     ld a, [hli]
@@ -2565,8 +2558,6 @@ INCLUDE "home/random.asm"
 
 Call_000_0c46:
     ldh [$ffa4], a
-
-Call_000_0c48:
     xor a
     ldh [$ffa6], a
     bit 7, h
@@ -2642,7 +2633,7 @@ jr_000_0c72:
 jr_000_0c97:
     ret
 
-
+Label_000_0c98:
     push hl
     push de
     ld a, d
@@ -2845,25 +2836,18 @@ Call_000_0da9:
     ldh a, [rLY]
     cp $66
     jr z, .jr_000_0dc9
-
     cp $67
     jr z, .jr_000_0dc9
-
     cp $68
     jr z, .jr_000_0dcf
-
     cp $69
     jr z, .jr_000_0dd5
-
     cp $6a
     jr z, .jr_000_0dd5
-
     cp $6b
     jr z, .jr_000_0ddb
-
     cp $8f
     jr z, .jr_000_0dd5
-
     jr .PPU0ModeWait
 
 .jr_000_0dc9
@@ -2951,8 +2935,6 @@ Call_000_0e54:
     ld [$c912], a
     cp $26
     jr z, jr_000_0e66
-
-Call_000_0e61:
     or a
     jr z, jr_000_0e81
 
@@ -2984,8 +2966,6 @@ jr_000_0e7b:
     call $16d1
     ret
 
-
-Call_000_0e81:
 jr_000_0e81:
     ld a, [$cb91]
     or a
@@ -4481,10 +4461,8 @@ Data_000_1659:
     db $a9, $57, $06
     db $af, $57, $06
     db $b5, $57, $06
-    db $bb, $57
-
-Call_000_16d0:
-    ld b, $ea
+    db $bb, $57, $06
+    db $ea
     inc a
     cp c
     push hl
@@ -5134,39 +5112,27 @@ jr_000_19f2:
     ld [$cb89], a
     ret
 
-; A lot of these labels are fake and the result of data --> assembly instructions.
 CheckIfNoEnergy:
     ld a, [sPlayerEnergy]
     or a
     jp z, Jump_000_1aae
 ; Still have energy
     sub b
-
-Call_000_19ff:
     ld [sPlayerEnergy], a
-    jr nc, StillHaveEnergy
-
-Jump_000_1a04:
+    jr nc, .stillHaveEnergy
     xor a
-
-Call_000_1a05:
     ld [sPlayerEnergy], a
-
-StillHaveEnergy:
+.stillHaveEnergy:
     ld a, [sPlayerEnergy]
     ld c, a
     ld a, b
-    cp $01
+    cp SMALL_ENERGY
     jr z, jr_000_1a19
-
-    cp $02
+    cp MEDIUM_ENERGY
     jr z, jr_000_1a3a
-
     jp Jump_000_1a65
 
-
-    ret
-
+    ret ; ???
 
 jr_000_1a19:
     ld hl, $1aba
@@ -5178,11 +5144,7 @@ jr_000_1a19:
     ld a, $00
     adc h
     ld h, a
-
-Jump_000_1a27:
-    ld a, [hl+]
-
-Call_000_1a28:
+    ld a, [hli]
     cp c
     jr z, jr_000_1a9c
 

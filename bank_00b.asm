@@ -10237,7 +10237,7 @@ jr_00b_6b6a:
     ld c, h
     or e
     inc hl
-    call c, Call_000_19ff
+    call c, $19ff
     rst $38
     add [hl]
     ei

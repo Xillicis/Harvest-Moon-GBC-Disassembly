@@ -10207,7 +10207,7 @@ jr_00a_6b38:
     sbc c
     dec hl
     rst $38
-    call c, Call_000_1a05
+    call c, $1a05 
     dec c
     ld [de], a
     dec de

@@ -4964,7 +4964,7 @@ jr_019_554c:
     db $ec
     ret nc
 
-    call nc, Call_000_1a28
+    call nc, $1a28
     db $e4
     cp $00
     sbc a
@@ -5021,7 +5021,7 @@ jr_019_5569:
     db $ec
     ret nc
 
-    call nc, Call_000_1a28
+    call nc, $1a28
     db $e4
     cp $00
     rlca

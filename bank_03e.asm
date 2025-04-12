@@ -10619,7 +10619,7 @@ jr_03e_6e75:
     ld c, e
 
 jr_03e_6eb0:
-    jp Jump_000_1a04
+    jp $1a04
 
 
     stop

@@ -10301,7 +10301,7 @@ jr_028_7202:
     ld b, a
     ld a, [hl-]
     rst $20
-    jp c, Jump_000_1a27
+    jp c, $1a27
 
     rst $20
     jp c, $5a67
