@@ -5809,7 +5809,7 @@ jr_024_63bc:
 
 jr_024_63c3:
     ld a, b
-    ld hl, $b8a3
+    ld hl, sShedItemFlagList
     add l
     ld l, a
     ld a, $00

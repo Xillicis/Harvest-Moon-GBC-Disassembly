@@ -3604,8 +3604,9 @@ jr_01d_51df:
     inc hl
     ld [hl+], a
     ld [hl+], a
+; player begins with first 4 basic tools tools
     ld a, $01
-    ld [$b8a3], a
+    ld [sShedItemFlagList], a
     ld [$b8a4], a
     ld [$b8a5], a
     ld [$b8a6], a

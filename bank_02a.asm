@@ -4973,7 +4973,7 @@ jr_02a_54d1:
 
 jr_02a_54d7:
     xor a
-    ld [$b8a3], a
+    ld [sShedItemFlagList], a
     ld [$ba38], a
     ret
 

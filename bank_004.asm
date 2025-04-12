@@ -5872,7 +5872,7 @@ Call_004_6443:
     ret z
 
     ld c, a
-    ld hl, $1b20
+    ld hl, Data_000_1b20
     ld b, $00
 
 jr_004_644f:
@@ -5885,7 +5885,7 @@ jr_004_644f:
 
 jr_004_6456:
     ld a, b
-    ld hl, $b8a3
+    ld hl, sShedItemFlagList
     add l
     ld l, a
     ld a, $00

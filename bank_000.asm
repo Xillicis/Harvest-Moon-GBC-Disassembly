@@ -5388,9 +5388,10 @@ jr_000_1b14:
 jr_000_1b1a:
     ld b, $0a
     call $1ae6
+
     ret
 
-
+Data_000_1b20:
     dec bc
     inc c
     dec c

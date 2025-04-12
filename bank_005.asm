@@ -183,7 +183,7 @@ Call_005_413b:
     push af
     call $446b
     pop af
-    ld hl, $b8a3
+    ld hl, sShedItemFlagList
     dec a
     add l
     ld l, a
@@ -427,7 +427,7 @@ jr_005_42c0:
     ld a, b
     ldh [$ffa4], a
     push bc
-    ld hl, $b8a3
+    ld hl, sShedItemFlagList
     add l
     ld l, a
     ld a, $00
@@ -954,7 +954,7 @@ jr_005_4544:
 
 Call_005_45b6:
     ld b, $00
-    ld hl, $b8a3
+    ld hl, sShedItemFlagList
 
 jr_005_45bb:
     ld a, [hl+]
