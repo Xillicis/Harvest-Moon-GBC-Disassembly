@@ -3,6 +3,8 @@ DEF sMapObjectLocation EQU $a000
 
 DEF sTimeElapsed EQU $b889
 
+DEF sShedItemFlagList EQU $b8a3
+
 DEF sNumCroissant EQU $b8c5
 DEF sNumRiceBall EQU $b8c6
 DEF sNumMeatDumpling EQU $b8c7

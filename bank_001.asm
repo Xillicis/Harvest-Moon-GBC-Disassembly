@@ -4768,7 +4768,7 @@ UseItem:
     ld l, $f4
     ld h, $6d
     ld a, $20
-; calls an almost identitcal function?
+; calls an almost identitcal function that does something with colors or graphics maybe?
     call BankSwitchCallHL
     pop af
     pop hl
@@ -4788,23 +4788,23 @@ UseItem:
     jp z, UseHammer
     cp AX
     jp z, UseAx
-    cp $13
-    jp z, Jump_001_614d
-    cp $14
-    jp z, Jump_001_6167
-    cp $16
-    jp z, Jump_001_6193
-    cp $15
-    jp z, Jump_001_61ea
+    cp SUPER_SICKLE
+    jp z, UseSuperSickle
+    cp SUPER_HOE
+    jp z, UseSuperHoe
+    cp SUPER_HAMMER
+    jp z, UseSuperHammer
+    cp SUPER_AX
+    jp z, UseSuperAx
     cp BRUSH
     jp z, UseBrush
     cp WATERING_CAN
     jp z, UseWateringCan
     cp MILKER
     jp z, UseMilker
-    cp $00
+    cp COW_MEDICINE
     jp z, Jump_001_62d1
-    cp $52
+    cp P_MEDICINE
     jp z, Jump_001_62d1
     cp M_POTION
     jp z, Jump_001_62d1
@@ -4814,8 +4814,8 @@ UseItem:
     jp z, Jump_001_631d
     cp $54
     jp z, Jump_001_632d
-    cp $12
-    jp z, Jump_001_617d
+    cp SPRINKLER
+    jp z, UseSprinkler
     cp $10
     jp z, Jump_001_6365
     cp $11
@@ -4830,16 +4830,15 @@ UseItem:
     jp z, UseTurnipSeeds
     cp POTATO_SEEDS
     jp z, UsePotatoSeeds
-    cp $4e
-    jp z, Jump_001_647c
-    cp $4f
+    cp EGGPLANT_SEEDS
+    jp z, UseEggplantSeeds
+    cp PEANUT_SEEDS
     jp z, Jump_001_64a6
-    cp $50
+    cp CARROT_SEEDS
     jp z, Jump_001_64d0
-    cp $51
+    cp BROCOLLI_SEEDS
     jp z, Jump_001_64fa
     ret
-
 
 UseSickle:
     ld b, MEDIUM_ENERGY
@@ -4871,51 +4870,37 @@ UseSickle:
     and $f0
     cp $49
     jr z, jr_001_6040
-
     cp $50
     jr z, jr_001_6046
-
     cp $60
     jr z, jr_001_6046
-
     cp $70
     jr z, jr_001_6050
-
     cp $80
     jr z, jr_001_6050
-
     cp $90
     jr z, jr_001_605a
-
     cp $a0
     jr z, jr_001_6064
-
     cp $b0
     jr z, jr_001_606e
-
     cp $c0
     jr z, jr_001_6078
-
     cp $d0
     jr z, jr_001_6082
-
     cp $e0
     jr z, jr_001_608c
-
     ret
-
 
 jr_001_603a:
     ld a, $01
     ld [$cb45], a
     ret
 
-
 jr_001_6040:
     ld a, $02
     ld [$cb45], a
     ret
-
 
 jr_001_6046:
     ld a, b
@@ -4926,7 +4911,6 @@ jr_001_6046:
     ld [$cb45], a
     ret
 
-
 jr_001_6050:
     ld a, b
     cp $76
@@ -4935,7 +4919,6 @@ jr_001_6050:
     ld a, $04
     ld [$cb45], a
     ret
-
 
 jr_001_605a:
     ld a, b
@@ -4946,7 +4929,6 @@ jr_001_605a:
     ld [$cb45], a
     ret
 
-
 jr_001_6064:
     ld a, b
     cp $a6
@@ -4955,7 +4937,6 @@ jr_001_6064:
     ld a, $06
     ld [$cb45], a
     ret
-
 
 jr_001_606e:
     ld a, b
@@ -4966,7 +4947,6 @@ jr_001_606e:
     ld [$cb45], a
     ret
 
-
 jr_001_6078:
     ld a, b
     cp $c6
@@ -4975,7 +4955,6 @@ jr_001_6078:
     ld a, $08
     ld [$cb45], a
     ret
-
 
 jr_001_6082:
     ld a, b
@@ -4986,7 +4965,6 @@ jr_001_6082:
     ld [$cb45], a
     ret
 
-
 jr_001_608c:
     ld a, b
     cp $e4
@@ -4995,7 +4973,6 @@ jr_001_608c:
     ld a, $0a
     ld [$cb45], a
     ret
-
 
 UseHoe:
     ld b, MEDIUM_ENERGY
@@ -5007,7 +4984,6 @@ UseHoe:
     ld a, [$c60d]
     call Call_000_191a
     ret
-
 
 UseHammer:
     ld b, MEDIUM_ENERGY
@@ -5037,42 +5013,33 @@ jr_001_60d7:
     ld a, [$cb41]
     cp $04
     jr z, jr_001_60eb
-
     cp $05
     jr z, jr_001_60f1
-
     cp $06
     jr z, jr_001_60f7
-
     cp $07
     jr z, jr_001_60fd
-
     ret
-
 
 jr_001_60eb:
     ld a, $02
     ld [$cb45], a
     ret
 
-
 jr_001_60f1:
     ld a, $03
     ld [$cb45], a
     ret
-
 
 jr_001_60f7:
     ld a, $04
     ld [$cb45], a
     ret
 
-
 jr_001_60fd:
     ld a, $05
     ld [$cb45], a
     ret
-
 
 UseAx:
     ld b, MEDIUM_ENERGY
@@ -5088,48 +5055,38 @@ UseAx:
     ld a, [$cb42]
     or a
     ret z
-
     ld a, [$cb41]
     cp $08
     jr z, jr_001_6135
-
     cp $09
     jr z, jr_001_613b
-
     cp $0a
     jr z, jr_001_6141
-
     cp $0b
     jr z, jr_001_6147
-
     ret
-
 
 jr_001_6135:
     ld a, $02
     ld [$cb45], a
     ret
 
-
 jr_001_613b:
     ld a, $03
     ld [$cb45], a
     ret
-
 
 jr_001_6141:
     ld a, $04
     ld [$cb45], a
     ret
 
-
 jr_001_6147:
     ld a, $05
     ld [$cb45], a
     ret
 
-
-Jump_001_614d:
+UseSuperSickle:
     ld b, LARGE_ENERGY
     call CheckIfNoEnergy
     xor a
@@ -5142,8 +5099,7 @@ Jump_001_614d:
     call Call_000_191a
     ret
 
-
-Jump_001_6167:
+UseSuperHoe:
     ld b, LARGE_ENERGY
     call CheckIfNoEnergy
     ld a, $0d
@@ -5154,8 +5110,7 @@ Jump_001_6167:
     call Call_000_191a
     ret
 
-
-Jump_001_617d:
+UseSprinkler:
     ld b, LARGE_ENERGY
     call CheckIfNoEnergy
     ld a, $85
@@ -5166,8 +5121,7 @@ Jump_001_617d:
     call Call_000_191a
     ret
 
-
-Jump_001_6193:
+UseSuperHammer:
     ld b, LARGE_ENERGY
     call CheckIfNoEnergy
     xor a
@@ -5185,54 +5139,43 @@ Jump_001_6193:
     ld a, [$cb41]
     cp $03
     jr nz, jr_001_61be
-
     ld a, $01
     ld [$cb45], a
     ret
-
 
 jr_001_61be:
     ld a, [$cb41]
     cp $04
     jr z, jr_001_61d2
-
     cp $05
     jr z, jr_001_61d8
-
     cp $06
     jr z, jr_001_61de
-
     cp $07
     jr z, jr_001_61e4
-
     ret
-
 
 jr_001_61d2:
     ld a, $02
     ld [$cb45], a
     ret
 
-
 jr_001_61d8:
     ld a, $03
     ld [$cb45], a
     ret
-
 
 jr_001_61de:
     ld a, $04
     ld [$cb45], a
     ret
 
-
 jr_001_61e4:
     ld a, $05
     ld [$cb45], a
     ret
 
-
-Jump_001_61ea:
+UseSuperAx:
     ld b, LARGE_ENERGY
     call CheckIfNoEnergy
     xor a
@@ -5644,7 +5587,7 @@ UsePotatoSeeds:
     ret
 
 
-Jump_001_647c:
+UseEggplantSeeds:
     ld b, SMALL_ENERGY
     call CheckIfNoEnergy
     ld a, $3e
