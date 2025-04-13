@@ -4803,11 +4803,11 @@ UseItem:
     cp MILKER
     jp z, UseMilker
     cp COW_MEDICINE
-    jp z, Jump_001_62d1
+    jp z, UseMedicine
     cp P_MEDICINE
-    jp z, Jump_001_62d1
+    jp z, UseMedicine
     cp M_POTION
-    jp z, Jump_001_62d1
+    jp z, UseMedicine
     cp COW_BELL
     jp z, UseCowBell
     cp $53
@@ -5334,7 +5334,7 @@ UseMilker:
     ret
 
 
-Jump_001_62d1:
+UseMedicine:
     ld a, $17
     call RST_TableJumpBankSwitch
     ld a, $40
@@ -5349,28 +5349,25 @@ Jump_001_62d1:
     adc h
     ld h, a
     ld a, [hl]
-    cp $00
-    jr z, jr_001_62fd
-
+    cp COW_MEDICINE
+    jr z, .usedUpCowMedicine
     cp M_POTION
-    jr z, jr_001_6305
-
+    jr z, .usedUpMPotion
     xor a
-    ld [$b8b1], a
+    ld [sShedPMedicineFlag], a
+    call Call_001_644c
+    ret
+
+.usedUpCowMedicine
+    xor a
+    ld [sShedCowMedicineFlag], a
     call Call_001_644c
     ret
 
 
-jr_001_62fd:
+.usedUpMPotion
     xor a
-    ld [$b8ab], a
-    call Call_001_644c
-    ret
-
-
-jr_001_6305:
-    xor a
-    ld [$b8b2], a
+    ld [sShedMPotionFlag], a
     call Call_001_644c
     ret
 
