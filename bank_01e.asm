@@ -11347,7 +11347,7 @@ jr_01e_7180:
     cp $09
     inc b
     or b
-    call z, Call_000_1ce0
+    call z, $1ce0
     add h
     ld a, [hl]
 

@@ -8007,7 +8007,7 @@ jr_024_6ff5:
     rst $38
     ld c, [hl]
     db $ed
-    call c, Call_000_1c2d
+    call c, $1c2d
     dec l
     inc e
 

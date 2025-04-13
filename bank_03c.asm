@@ -4208,7 +4208,7 @@ jr_03c_515f:
 
     jp z, $cbfb
 
-    call z, Call_000_1be7
+    call z, $1be7
     sbc $df
     call $cfce
     rst $38

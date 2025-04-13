@@ -9116,7 +9116,7 @@ jr_029_6d2a:
     db $ec
     jr nc, jr_029_6da6
 
-    call nc, Call_000_16f9
+    call nc, $16f9
     dec l
     cp a
     jp nc, Jump_029_6f96
@@ -10416,7 +10416,7 @@ jr_029_7287:
     ldh [c], a
     inc e
     call nz, $b8ff
-    call nz, Call_000_17b8
+    call nz, $17b8
 
 jr_029_72f8:
     dec bc

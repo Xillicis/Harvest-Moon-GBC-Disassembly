@@ -3148,7 +3148,7 @@ Jump_030_4ff7:
     ld d, c
     xor a
     ld d, c
-    jp nz, Jump_000_1c51
+    jp nz, $1c51
 
     ld d, d
     dec e
@@ -8425,7 +8425,7 @@ jr_030_671a:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df

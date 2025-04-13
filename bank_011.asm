@@ -11421,7 +11421,7 @@ jr_011_79d4:
     ret c
 
     nop
-    call c, Call_000_1e00
+    call c, $1e00
     rst $38
     dec de
     rlca

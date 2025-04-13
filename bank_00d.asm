@@ -7480,7 +7480,7 @@ jr_00d_6729:
     cp b
     or $78
     xor d
-    call nc, Call_000_1c2b
+    call nc, $1c2b
     dec sp
     inc e
     dec e
@@ -12054,7 +12054,7 @@ jr_00d_7bcc:
     rlca
     ld bc, $0207
     ld [hl+], a
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b
@@ -12106,7 +12106,7 @@ jr_00d_7bcc:
     ccf
     ld bc, $1a3f
     ld [hl+], a
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b
@@ -12162,7 +12162,7 @@ jr_00d_7c3d:
     rrca
     inc bc
     ld [hl+], a
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b

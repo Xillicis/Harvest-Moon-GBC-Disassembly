@@ -1410,7 +1410,7 @@ Call_009_46ed:
     rrca
     ld h, e
     inc e
-    call Call_000_1c65
+    call $1c65
     and c
     ld c, b
     call Call_000_0d90
@@ -2469,7 +2469,7 @@ jr_009_4c93:
 
     ld e, [hl]
     inc e
-    jp c, Jump_000_1c61
+    jp c, $1c61
 
     ld bc, $cd4d
     sub b
@@ -3312,7 +3312,7 @@ jr_009_50e1:
     ret
 
 
-    call c, Call_000_1c5b
+    call c, $1c5b
     inc h
     ld h, a
     inc e

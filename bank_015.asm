@@ -629,7 +629,7 @@ jr_015_4297:
 jr_015_42be:
     db $fc
     xor [hl]
-    call c, Call_000_1d23
+    call c, $1d23
 
 jr_015_42c3:
     scf

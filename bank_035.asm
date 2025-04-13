@@ -681,7 +681,7 @@ Call_035_42ad:
 jr_035_42be:
     db $fc
     xor [hl]
-    call c, Call_000_1d23
+    call c, $1d23
     scf
     ld [$163d], sp
     rra

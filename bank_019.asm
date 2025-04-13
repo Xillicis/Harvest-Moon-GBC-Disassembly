@@ -12055,7 +12055,7 @@ jr_019_739a:
     inc b
     rst $38
     ld [$08ff], sp
-    jp c, Jump_000_1c20
+    jp c, $1c20
 
     add sp, -$04
     jr @+$3a

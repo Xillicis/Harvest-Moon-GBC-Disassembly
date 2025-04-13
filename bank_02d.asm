@@ -13156,7 +13156,7 @@ jr_02d_7bcc:
     dec b
     ld [bc], a
     ld [hl], d
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b
@@ -13212,7 +13212,7 @@ jr_02d_7bcc:
     dec [hl]
     ld a, [de]
     ld [hl], d
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b
@@ -13268,7 +13268,7 @@ jr_02d_7bcc:
     inc c
     inc bc
     ld [hl], d
-    call c, Call_000_1ce2
+    call c, $1ce2
     jp nz, $e43c
 
     ld e, b

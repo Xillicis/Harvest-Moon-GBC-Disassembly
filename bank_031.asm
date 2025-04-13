@@ -12432,8 +12432,8 @@ jr_031_7a0d:
     rst $38
     add hl, sp
     db $eb
-    call c, Call_000_1c2a
-    jp c, Jump_000_273c
+    call c, $1c2a
+    jp c, $273c
 
     rst $30
     add hl, hl

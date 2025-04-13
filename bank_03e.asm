@@ -8750,7 +8750,7 @@ jr_03e_6689:
     ld l, [hl]
     ld a, a
     rst $18
-    jp Jump_000_1c3c
+    jp $1c3c
 
 
     db $e3
@@ -11100,7 +11100,7 @@ jr_03e_70b0:
     cp $0b
     inc b
     or b
-    call z, Call_000_1ce0
+    call z, $1ce0
     add h
     ld a, [hl]
     ld a, [hl+]

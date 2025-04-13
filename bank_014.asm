@@ -11956,7 +11956,7 @@ jr_014_77ab:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df

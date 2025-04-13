@@ -5876,7 +5876,7 @@ Call_004_6443:
     ld b, $00
 
 jr_004_644f:
-    ld a, [hl+]
+    ld a, [hli]
     cp c
     jr z, jr_004_6456
 
@@ -8110,7 +8110,7 @@ jr_004_70fc:
     rst $38
     ld c, [hl]
     db $ed
-    call c, Call_000_1c2d
+    call c, $1c2d
     dec l
     inc e
 

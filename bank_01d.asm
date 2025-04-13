@@ -3606,10 +3606,10 @@ jr_01d_51df:
     ld [hl+], a
 ; player begins with first 4 basic tools tools
     ld a, $01
-    ld [sShedItemFlagList], a
-    ld [$b8a4], a
-    ld [$b8a5], a
-    ld [$b8a6], a
+    ld [sShedSickleFlag], a
+    ld [sShedHoeFlag], a
+    ld [sShedHammerFlag], a
+    ld [sShedAxFlag], a
     ld h, b
     ld l, c
     xor a

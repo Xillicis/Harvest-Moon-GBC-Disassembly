@@ -11017,7 +11017,7 @@ jr_01f_74a8:
     rst $10
     ld hl, $1f3f
     ldh [rP1], a
-    jp nz, Jump_000_170a
+    jp nz, $170a
 
     ld [de], a
     rla
@@ -11030,7 +11030,7 @@ jr_01f_74a8:
     ccf
     rra
     ldh [rP1], a
-    jp nz, Jump_000_170a
+    jp nz, $170a
 
     ld [de], a
     ccf
@@ -11071,7 +11071,7 @@ jr_01f_74a8:
     rst $10
     ld hl, $1f3f
     ldh [rP1], a
-    jp nz, Jump_000_170a
+    jp nz, $170a
 
     ld [de], a
     rla
@@ -11129,7 +11129,7 @@ jr_01f_75b9:
     rst $10
     ld hl, $1f3f
     ldh [rP1], a
-    jp nz, Jump_000_170a
+    jp nz, $170a
 
     ld [de], a
     rla

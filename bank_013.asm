@@ -10741,7 +10741,7 @@ jr_013_755b:
     inc [hl]
     ret c
 
-    call nc, Call_000_1c08
+    call nc, $1c08
     add $1a
     cp a
     ld bc, $0300
@@ -10970,7 +10970,7 @@ jr_013_7692:
     and e
     inc e
     rra
-    jp nz, Jump_000_1c09
+    jp nz, $1c09
 
     ld [$3618], sp
     and h
@@ -11030,7 +11030,7 @@ jr_013_76f5:
     db $fc
     jr nc, jr_013_7733
 
-    call nc, Call_000_16f9
+    call nc, $16f9
     dec a
     rst $38
     jp nc, Jump_013_6ff6
@@ -11606,7 +11606,7 @@ jr_013_7957:
     or b
     rra
     ld l, [hl]
-    jp nz, Jump_000_1c09
+    jp nz, $1c09
 
     ld [$a418], sp
     dec sp

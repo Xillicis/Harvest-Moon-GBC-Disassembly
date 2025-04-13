@@ -73,7 +73,7 @@ Jump_020_4003:
     ld c, [hl]
     and l
     nop
-    jp nz, Jump_000_1d0a
+    jp nz, $1d0a
 
     nop
     ld a, h

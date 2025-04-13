@@ -322,7 +322,7 @@ jr_02b_4148:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df
@@ -3200,7 +3200,7 @@ jr_02b_4d95:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df
@@ -6484,7 +6484,7 @@ jr_02b_5bbc:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df
@@ -9357,7 +9357,7 @@ jr_02b_6810:
     sbc [hl]
     pop hl
     cp $ff
-    jp nz, Jump_000_1cfd
+    jp nz, $1cfd
 
     db $e3
     ld hl, $c6df

@@ -317,7 +317,7 @@ jr_01c_410a:
     ld bc, $0118
     ld b, b
     inc bc
-    call nc, Call_000_1b65
+    call nc, $1b65
     add h
     ld bc, $437b
     ld d, $65

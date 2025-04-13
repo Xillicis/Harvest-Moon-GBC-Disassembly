@@ -10135,7 +10135,7 @@ jr_005_75f2:
     jr nz, jr_005_7638
 
 jr_005_7638:
-    call c, Call_000_1bff
+    call c, $1bff
     ld b, b
     nop
     cp a

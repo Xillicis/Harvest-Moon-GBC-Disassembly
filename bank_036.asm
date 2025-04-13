@@ -2850,7 +2850,7 @@ jr_036_4c2b:
     add b
     nop
     cp d
-    call nz, Call_000_1cfa
+    call nz, $1cfa
     cp d
     ld b, h
     ld [hl], h
@@ -5312,7 +5312,7 @@ jr_036_56fe:
     ld l, [hl]
     db $fc
     or [hl]
-    call c, Call_000_1ce2
+    call c, $1ce2
     or $e8
     xor $94
     call c, $eeb0
@@ -11900,7 +11900,7 @@ jr_036_7315:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_1d23
+    call c, $1d23
     scf
     ld [$163d], sp
     rra

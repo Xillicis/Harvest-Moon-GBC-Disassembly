@@ -5256,7 +5256,7 @@ jr_016_56fc:
     ld l, [hl]
     db $fc
     or [hl]
-    call c, Call_000_1ce2
+    call c, $1ce2
     or $e8
     cp $94
     db $fc
@@ -5375,7 +5375,7 @@ jr_016_5779:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_1d23
+    call c, $1d23
     daa
     ld a, [de]
     ccf
@@ -11736,7 +11736,7 @@ jr_016_7315:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_1d23
+    call c, $1d23
     scf
     ld [$163f], sp
     rra

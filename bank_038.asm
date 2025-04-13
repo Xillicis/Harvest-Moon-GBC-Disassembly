@@ -4331,7 +4331,7 @@ jr_038_52ae:
     ldh a, [rP1]
     add sp, -$10
     call nc, Call_000_2a38
-    call c, Call_000_1ce2
+    call c, $1ce2
     ldh a, [c]
     ld c, h
     rst $18
@@ -4415,7 +4415,7 @@ jr_038_52c8:
     ldh a, [rP1]
     add sp, -$10
     call nc, Call_000_2a38
-    call c, Call_000_1ce2
+    call c, $1ce2
     ldh a, [c]
     ld c, h
     rst $18

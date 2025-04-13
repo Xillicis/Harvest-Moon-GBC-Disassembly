@@ -4313,7 +4313,7 @@ jr_018_52a6:
 jr_018_52b6:
     jr c, jr_018_52da
 
-    call c, Call_000_1ce2
+    call c, $1ce2
     ldh a, [c]
     ld c, h
     rst $38
@@ -4399,7 +4399,7 @@ jr_018_52f0:
     ld [$c4f0], sp
     jr c, jr_018_533c
 
-    call c, Call_000_1ce2
+    call c, $1ce2
     ldh a, [c]
     ld c, h
     rst $38
@@ -5112,7 +5112,7 @@ jr_018_557c:
     nop
     ld c, c
     or c
-    jp c, Jump_000_1c62
+    jp c, $1c62
 
     db $fc
     ld hl, sp-$20
@@ -9230,7 +9230,7 @@ jr_018_6720:
     jr c, jr_018_6720
 
     db $10
-    call c, Call_000_1e28
+    call c, $1e28
     db $e4
     xor $14
     inc l
