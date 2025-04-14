@@ -9449,7 +9449,7 @@ jr_025_7250:
     ld h, e
     sbc h
     rst $38
-    call z, Call_000_1af3
+    call z, $1af3
     rst $38
     rst $38
     db $fd

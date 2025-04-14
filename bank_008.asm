@@ -8371,7 +8371,7 @@ Jump_008_6cb7:
     and a
     sbc d
     rst $20
-    jp c, Jump_000_1ae7
+    jp c, $1ae7
 
     rlca
     ld a, [$fa07]
@@ -10682,7 +10682,7 @@ jr_008_7206:
     rst $00
     ld a, [hl-]
     rst $20
-    jp c, Jump_000_1ae7
+    jp c, $1ae7
 
     ld h, a
     ld e, d

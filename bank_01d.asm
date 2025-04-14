@@ -3670,7 +3670,7 @@ Call_01d_521e:
     ld [$b8cc], a
     ld a, $80
     ld [$b8eb], a
-    ld a, $64
+    ld a, MAX_ENERGY
     ld [sPlayerEnergy], a
     ld [$b8ee], a
     ld a, $01

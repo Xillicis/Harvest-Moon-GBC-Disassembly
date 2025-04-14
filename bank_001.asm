@@ -3365,7 +3365,7 @@ Call_001_56a6:
     jp c, $da56
 
     ld d, [hl]
-    jp c, Jump_000_1a56
+    jp c, $1a56
 
     ld e, h
     ld d, [hl]

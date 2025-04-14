@@ -5109,7 +5109,7 @@ jr_000_19f2:
 CheckIfNoEnergy:
     ld a, [sPlayerEnergy]
     or a
-    jp z, Jump_000_1aae
+    jp z, SetDizzyCollapseAnimation
 ; Still have energy
     sub b
     ld [sPlayerEnergy], a
@@ -5121,15 +5121,15 @@ CheckIfNoEnergy:
     ld c, a
     ld a, b
     cp SMALL_ENERGY
-    jr z, jr_000_1a19
+    jr z, .useSmallEnergy
     cp MEDIUM_ENERGY
-    jr z, jr_000_1a3a
-    jp Jump_000_1a65
+    jr z, .useMediumEnergy
+    jp .useLargeEnergy
 
     ret ; ???
 
-jr_000_1a19:
-    ld hl, $1aba
+.useSmallEnergy
+    ld hl, Data_000_1aba
     ld a, [$b904]
     add a
     add a
@@ -5140,25 +5140,20 @@ jr_000_1a19:
     ld h, a
     ld a, [hli]
     cp c
-    jr z, jr_000_1a9c
-
-    ld a, [hl+]
+    jr z, SetWipeSweatAnimation
+    ld a, [hli]
     cp c
-    jr z, jr_000_1aa2
-
-    ld a, [hl+]
+    jr z, SetExhaustedAnimation
+    ld a, [hli]
     cp c
-    jp z, Jump_000_1aa8
-
+    jp z, SetFallDownAnimation
     ld a, [hl]
     cp c
     jp z, Jump_000_1ab4
-
     ret
 
-
-jr_000_1a3a:
-    ld hl, $1aba
+.useMediumEnergy
+    ld hl, Data_000_1aba
     ld a, [$b904]
     add a
     add a
@@ -5169,39 +5164,29 @@ jr_000_1a3a:
     ld h, a
     ld a, [hli]
     cp c
-    jr z, jr_000_1a9c
-
+    jr z, SetWipeSweatAnimation
     dec a
     cp c
-    jr z, jr_000_1a9c
-
+    jr z, SetWipeSweatAnimation
     ld a, [hli]
     cp c
-    jr z, jr_000_1aa2
-
+    jr z, SetExhaustedAnimation
     dec a
     cp c
-
-Jump_000_1a56:
-    jr z, jr_000_1aa2
-
-    ld a, [hl+]
+    jr z, SetExhaustedAnimation
+    ld a, [hli]
     cp c
-    jr z, jr_000_1aa8
-
+    jr z, SetFallDownAnimation
     dec a
     cp c
-    jr z, jr_000_1aa8
-
+    jr z, SetFallDownAnimation
     ld a, [hl]
     cp c
     jr z, jr_000_1ab4
-
     ret
 
-
-Jump_000_1a65:
-    ld hl, $1aba
+.useLargeEnergy
+    ld hl, Data_000_1aba
     ld a, [$b904]
     add a
     add a
@@ -5210,69 +5195,54 @@ Jump_000_1a65:
     ld a, $00
     adc h
     ld h, a
-    ld a, [hl+]
+    ld a, [hli]
     cp c
-    jr z, jr_000_1a9c
-
+    jr z, SetWipeSweatAnimation
     dec a
     cp c
-    jr z, jr_000_1a9c
-
+    jr z, SetWipeSweatAnimation
     dec a
     cp c
-    jr z, jr_000_1a9c
-
-    ld a, [hl+]
+    jr z, SetWipeSweatAnimation
+    ld a, [hli]
     cp c
-    jr z, jr_000_1aa2
-
+    jr z, SetExhaustedAnimation
     dec a
     cp c
-    jr z, jr_000_1aa2
-
+    jr z, SetExhaustedAnimation
     dec a
     cp c
-    jr z, jr_000_1aa2
-
-    ld a, [hl+]
+    jr z, SetExhaustedAnimation
+    ld a, [hli]
     cp c
-    jr z, jr_000_1aa8
-
+    jr z, SetFallDownAnimation
     dec a
     cp c
-    jr z, jr_000_1aa8
-
+    jr z, SetFallDownAnimation
     dec a
     cp c
-    jr z, jr_000_1aa8
-
+    jr z, SetFallDownAnimation
     ld a, [hl]
     cp c
     jr z, jr_000_1ab4
-
     ret
 
-
-jr_000_1a9c:
+SetWipeSweatAnimation:
     ld a, $b4
     ld [$cb91], a
     ret
 
-
-jr_000_1aa2:
+SetExhaustedAnimation:
     ld a, $6e
     ld [$cb91], a
     ret
 
-
-Jump_000_1aa8:
-jr_000_1aa8:
+SetFallDownAnimation:
     ld a, $50
     ld [$cb91], a
     ret
 
-
-Jump_000_1aae:
+SetDizzyCollapseAnimation:
     pop hl
     ld a, $01
     ld [$c912], a
@@ -5283,69 +5253,30 @@ jr_000_1ab4:
     ld [$cb91], a
     ret
 
+Data_000_1aba:
+    db $32, $21, $11, $00
+    db $37, $25, $12, $00
+    db $3C, $28, $14, $00
+    db $41, $2B, $16, $00
+    db $46, $2F, $18, $00
+    db $4B, $32, $19, $00
+    db $50, $35, $1B, $00
+    db $55, $39, $1C, $00
+    db $5A, $3C, $1E, $00
+    db $5F, $3F, $20, $00
+    db $64, $43, $21, $00
 
-    ld [hl-], a
-    ld hl, $0011
-    scf
-    dec h
-    ld [de], a
-    nop
-    inc a
-    jr z, jr_000_1ad9
+; Separate data???
+    db $FA, $ED, $B8, $80
 
-    nop
-    ld b, c
-    dec hl
-    ld d, $00
-    ld b, [hl]
-    cpl
-    jr jr_000_1ace
-
-jr_000_1ace:
-    ld c, e
-    ld [hl-], a
-    add hl, de
-    nop
-    ld d, b
-    dec [hl]
-    dec de
-    nop
-    ld d, l
-    add hl, sp
-    inc e
-
-jr_000_1ad9:
-    nop
-    ld e, d
-    inc a
-    ld e, $00
-    ld e, a
-    ccf
-    jr nz, jr_000_1ae2
-
-jr_000_1ae2:
-    ld h, h
-    ld b, e
-    ld hl, $fa00
-
-Jump_000_1ae7:
-    db $ed
-    cp b
-    add b
+;;;;; Is this actual code? somehow jumps here?
     jr c, jr_000_1af7
-
     ld [sPlayerEnergy], a
-
-Jump_000_1aef:
     ld b, a
     ld a, [$b8ee]
-
-Call_000_1af3:
     cp b
     jr c, jr_000_1af7
-
     ret
-
 
 jr_000_1af7:
     ld a, [$b8ee]

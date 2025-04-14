@@ -5590,7 +5590,7 @@ jr_039_5840:
     ld d, a
     rst $28
     xor a
-    jp c, Jump_000_1aef
+    jp c, $1aef
 
     ld b, b
     rst $38
