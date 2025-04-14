@@ -5609,7 +5609,7 @@ jr_03d_5b99:
     or l
     xor b
     ld d, a
-    call c, Call_000_00ef
+    call c, $00ef
     ld [hl-], a
     call z, Call_000_2033
     nop

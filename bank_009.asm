@@ -8544,7 +8544,7 @@ jr_009_6a59:
 jr_009_6b30:
     add d
     ld a, h
-    jp c, Jump_000_0024
+    jp c, $0024
 
     nop
     inc bc

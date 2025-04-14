@@ -10085,7 +10085,7 @@ jr_005_75f2:
     rst $38
     rst $38
     rst $38
-    jp c, Jump_000_0024
+    jp c, $0024
 
     ld sp, hl
     and $c0

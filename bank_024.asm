@@ -8488,7 +8488,7 @@ jr_024_7289:
     ret nc
 
     ld c, a
-    jp nc, Jump_000_0024
+    jp nc, $0024
 
     pop de
     jr nz, jr_024_72bb

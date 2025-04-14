@@ -10656,7 +10656,7 @@ jr_03e_6ebd:
     xor l
     rst $38
     rst $38
-    jp Jump_000_0026
+    jp $0026
 
 
     or e

@@ -4477,7 +4477,7 @@ jr_02b_5240:
     sbc [hl]
     ldh [c], a
     dec hl
-    call Call_000_0033
+    call $0033
     ld a, [hl-]
     rst $38
     sub d

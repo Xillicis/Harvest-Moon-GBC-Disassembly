@@ -3048,7 +3048,7 @@ jr_010_4f00:
 
     ld b, b
     add b
-    call c, Call_000_001a
+    call c, $001a
     ld d, d
     ld [hl-], a
     add sp, $58

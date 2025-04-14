@@ -13465,7 +13465,7 @@ jr_034_7c45:
     sbc [hl]
     ldh [c], a
     dec hl
-    call Call_000_0033
+    call $0033
     ld a, [hl-]
     sub d
     add sp, -$01

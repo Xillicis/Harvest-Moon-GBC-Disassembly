@@ -10231,7 +10231,7 @@ jr_00d_738a:
     or b
     inc [hl]
     ld hl, sp+$76
-    call z, Call_000_001f
+    call z, $001f
     rrca
     rlca
     ld [$0f07], sp
@@ -10287,7 +10287,7 @@ jr_00d_73f5:
     call c, Call_000_3eb0
     db $ec
     ld a, [hl]
-    call z, Call_000_001f
+    call z, $001f
     ld c, $07
     ld c, $01
     rra

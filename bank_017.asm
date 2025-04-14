@@ -9399,7 +9399,7 @@ jr_017_6780:
 jr_017_6792:
     add d
     ld a, h
-    jp c, Jump_000_0024
+    jp c, $0024
 
     nop
     inc bc
@@ -13893,7 +13893,7 @@ jr_017_7b78:
     add hl, hl
     ld h, e
     ld [de], a
-    jp nz, Jump_000_0013
+    jp nz, $0013
 
     ld de, $7ffd
     ld h, h

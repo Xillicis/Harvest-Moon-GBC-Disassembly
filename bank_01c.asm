@@ -10547,7 +10547,7 @@ jr_01c_6e28:
     ldh [$ffe0], a
     ld bc, $fa40
     scf
-    jp nc, Jump_000_0034
+    jp nc, $0034
 
     inc b
     rst $38

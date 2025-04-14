@@ -8573,7 +8573,7 @@ jr_004_72e4:
     ret nc
 
     ld c, a
-    jp nc, Jump_000_0024
+    jp nc, $0024
 
     pop de
     cp $20
@@ -8907,7 +8907,7 @@ jr_004_74a8:
     xor l
     db $fd
     rst $30
-    jp nz, Jump_000_0025
+    jp nz, $0025
 
     ld [bc], a
     ld bc, $0305

@@ -21,9 +21,7 @@ Jump_000_0004:
 RST_08::
     jp TableJumpBankSwitch
 
-
     ret
-
 
 Jump_000_000c:
     rst $38
@@ -34,18 +32,10 @@ Jump_000_000c:
 RST_10::
     ret
 
-
     rst $38
     rst $38
-
-Jump_000_0013:
     rst $38
-
-Call_000_0014:
-Jump_000_0014:
     rst $38
-
-Jump_000_0015:
     rst $38
     rst $38
     rst $38
@@ -53,71 +43,45 @@ Jump_000_0015:
 RST_18::
     ret
 
-
-    rst $38
-
-Call_000_001a:
     rst $38
     rst $38
     rst $38
     rst $38
     rst $38
-
-Call_000_001f:
+    rst $38
     rst $38
 
 RST_20::
     ret
 
-
 Jump_000_0021:
     rst $38
     rst $38
-
-Call_000_0023:
     rst $38
-
-Jump_000_0024:
     rst $38
-
-Jump_000_0025:
     rst $38
-
-Jump_000_0026:
     rst $38
     rst $38
 
 RST_28::
     ret
 
-
     rst $38
     rst $38
     rst $38
-
-Jump_000_002c:
     rst $38
     rst $38
     rst $38
-
-Jump_000_002f:
     rst $38
 
 RST_30::
     ret
 
-
     rst $38
 
 Call_000_0032:
     rst $38
-
-Call_000_0033:
-Jump_000_0033:
     rst $38
-
-Call_000_0034:
-Jump_000_0034:
     rst $38
     rst $38
     rst $38
@@ -127,12 +91,9 @@ RST_38::
     add l
     ld l, a
     ld a, $00
-
-Jump_000_003c:
     adc h
     ld h, a
     ret
-
 
 Jump_000_003f:
     rst $38
@@ -143,7 +104,6 @@ VBlankInterrupt::
 Call_000_0043:
     reti
 
-
 Jump_000_0044:
     rst $38
     rst $38
@@ -153,13 +113,9 @@ Jump_000_0044:
 LCDCInterrupt::
     jp Jump_000_3311
 
-
     rst $38
     rst $38
     rst $38
-
-Call_000_004e:
-Jump_000_004e:
     rst $38
     rst $38
 
@@ -343,9 +299,6 @@ Call_000_00ec:
     rst $38
     rst $38
     rst $38
-
-Call_000_00ef:
-Jump_000_00ef:
     rst $38
     rst $38
     rst $38
@@ -10052,7 +10005,7 @@ Call_000_3344:
     jp hl
 
 
-    jp Jump_000_0033
+    jp $0033
 
 
     ld d, l
@@ -10092,12 +10045,8 @@ Call_000_335f:
     ld d, l
     ld a, b
     rra
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
+    jp $0033
+    jp $0033
     ld d, l
     ld a, b
     rra
@@ -10107,79 +10056,38 @@ Call_000_335f:
     ld [hl], l
     ld b, [hl]
     dec e
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
     and [hl]
     ld c, [hl]
     ld b, $c3
     inc sp
     nop
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
-    jp Jump_000_0033
-
-
+    jp $0033
+    jp $0033
+    jp $0033
+    jp $0033
     ld d, l
     ld a, b
     rra
-    jp Jump_000_0033
-
-
+    jp $0033
     ld d, l
     ld a, b
     rra
     ret
-
 
 Call_000_33c4:
     ldh a, [$ff8a]

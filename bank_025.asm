@@ -1670,10 +1670,10 @@ jr_025_45f7:
     ld c, [hl]
     nop
     nop
-    jp nz, Jump_000_004e
+    jp nz, $004e
 
     nop
-    call nz, Call_000_004e
+    call nz, $004e
     nop
     add $4e
     ld [bc], a
@@ -10430,7 +10430,7 @@ jr_025_771b:
     rst $38
     rst $38
     rst $38
-    jp c, Jump_000_0024
+    jp c, $0024
 
     ld sp, hl
     and $c0

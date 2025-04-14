@@ -9231,7 +9231,7 @@ jr_01e_6891:
     db $fd
     jp nz, $ffe5
 
-    jp nz, Jump_000_00ef
+    jp nz, $00ef
 
     ld l, [hl]
     nop

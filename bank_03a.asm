@@ -6888,7 +6888,7 @@ jr_03a_5c2a:
     ld hl, sp+$40
     ld h, h
     sbc b
-    jp c, Jump_000_003c
+    jp c, $003c
 
     nop
     ld c, $00

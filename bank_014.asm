@@ -5338,7 +5338,7 @@ jr_014_543c:
     add b
     nop
     nop
-    jp Jump_000_0015
+    jp $0015
 
 
     ld hl, sp-$3e
@@ -7382,7 +7382,7 @@ jr_014_6181:
     add b
     nop
     dec b
-    jp c, Jump_000_0014
+    jp c, $0014
 
     db $fd
     reti
@@ -7458,7 +7458,7 @@ jr_014_6316:
     add b
     nop
     di
-    jp c, Jump_000_0034
+    jp c, $0034
 
     ei
     reti
@@ -8156,7 +8156,7 @@ jr_014_6316:
     ld hl, sp-$1c
     dec d
     ld hl, sp-$08
-    call nc, Call_000_0014
+    call nc, $0014
     nop
     push hl
     dec d
@@ -8182,7 +8182,7 @@ jr_014_6316:
     db $e4
     dec [hl]
     ld hl, sp+$00
-    call nc, Call_000_0034
+    call nc, $0034
     ld hl, sp-$1b
     dec [hl]
     add b
@@ -13192,7 +13192,7 @@ jr_014_7c2b:
     sbc [hl]
     ldh [c], a
     dec hl
-    call Call_000_0033
+    call $0033
     ld a, [hl-]
     sub d
     add sp, -$01

@@ -13953,7 +13953,7 @@ jr_035_7a1a:
     jr z, jr_035_7a1a
 
     ld h, b
-    jp c, Jump_000_002c
+    jp c, $002c
 
     nop
     nop
@@ -15081,7 +15081,7 @@ jr_035_7f2a:
     db $fc
     ret nz
 
-    jp nc, Jump_000_002c
+    jp nc, $002c
 
     nop
     nop

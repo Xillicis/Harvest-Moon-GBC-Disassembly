@@ -5483,7 +5483,7 @@ jr_01d_5bda:
     add e
     add b
     db $10
-    call c, Call_000_0023
+    call c, $0023
     pop hl
     db $10
     rrca
@@ -8356,7 +8356,7 @@ jr_01d_6880:
 
 jr_01d_689e:
     ld a, h
-    jp c, Jump_000_0024
+    jp c, $0024
 
     ld a, a
     nop

@@ -5020,7 +5020,7 @@ jr_03c_554a:
 
 jr_03c_55c4:
     nop
-    jp nc, Jump_000_002f
+    jp nc, $002f
 
     rst $38
     db $10
@@ -11154,7 +11154,7 @@ jr_03c_7136:
     ldh [$ffe0], a
     ld bc, $fa40
     scf
-    jp nc, Jump_000_0034
+    jp nc, $0034
 
     inc b
     rst $38
