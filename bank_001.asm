@@ -47,7 +47,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     call Call_000_03dd
     ld a, [$b884]
     ld [$c0bd], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     or a
     jr nz, jr_001_4062
 
@@ -4021,7 +4021,7 @@ Call_001_5a58:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -4073,7 +4073,7 @@ Call_001_5a58:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4126,7 +4126,7 @@ Call_001_5a58:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4842,7 +4842,7 @@ UseItem:
 
 UseSickle:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $06
@@ -4976,7 +4976,7 @@ jr_001_608c:
 
 UseHoe:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $07
     call RST_TableJumpBankSwitch
     ld a, $34
@@ -4987,7 +4987,7 @@ UseHoe:
 
 UseHammer:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $08
@@ -5043,7 +5043,7 @@ jr_001_60fd:
 
 UseAx:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $09
@@ -5088,7 +5088,7 @@ jr_001_6147:
 
 UseSuperSickle:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $84
@@ -5101,7 +5101,7 @@ UseSuperSickle:
 
 UseSuperHoe:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $0d
     call RST_TableJumpBankSwitch
     ld a, $44
@@ -5112,7 +5112,7 @@ UseSuperHoe:
 
 UseSprinkler:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $85
     call Call_000_151d
     ld a, $56
@@ -5123,7 +5123,7 @@ UseSprinkler:
 
 UseSuperHammer:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $0f
@@ -5177,7 +5177,7 @@ jr_001_61e4:
 
 UseSuperAx:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
     ld a, $0e
@@ -5232,7 +5232,7 @@ jr_001_622e:
 
 UseBrush:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $0b
     call RST_TableJumpBankSwitch
     ld a, $64
@@ -5242,7 +5242,7 @@ UseBrush:
 
 UseWateringCan:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $0c
     call RST_TableJumpBankSwitch
     ld a, [sCurrentWaterInWateringCan]
@@ -5326,7 +5326,7 @@ CheckForFillingWateringCan:
 
 UseMilker:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $14
     call RST_TableJumpBankSwitch
     ld a, $32
@@ -5374,7 +5374,7 @@ UseMedicine:
 
 UseCowBell:
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $0a
     call RST_TableJumpBankSwitch
     ld a, $4c
@@ -5384,7 +5384,7 @@ UseCowBell:
 
 Jump_001_631d:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $16
     call RST_TableJumpBankSwitch
     ld a, $35
@@ -5394,7 +5394,7 @@ Jump_001_631d:
 
 Jump_001_632d:
     ld b, LARGE_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $63
     call Call_000_151d
     ld a, $69
@@ -5419,7 +5419,7 @@ jr_001_634f:
 
 
     ld b, MEDIUM_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $63
     call Call_000_151d
     ld a, $60
@@ -5470,7 +5470,7 @@ jr_001_6395:
 
 UseGrassSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5492,7 +5492,7 @@ UseGrassSeeds:
 
 UseTomatoSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5514,7 +5514,7 @@ UseTomatoSeeds:
 
 UseCornSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5536,7 +5536,7 @@ UseCornSeeds:
 
 UseTurnipSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5564,7 +5564,7 @@ Call_001_644c:
 
 UsePotatoSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5586,7 +5586,7 @@ UsePotatoSeeds:
 
 UseEggplantSeeds:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5608,7 +5608,7 @@ UseEggplantSeeds:
 
 Jump_001_64a6:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5630,7 +5630,7 @@ Jump_001_64a6:
 
 Jump_001_64d0:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -5652,7 +5652,7 @@ Jump_001_64d0:
 
 Jump_001_64fa:
     ld b, SMALL_ENERGY
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld a, $3e
     call Call_000_151d
     ld a, $55
@@ -8103,7 +8103,7 @@ Call_001_7231:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -8294,7 +8294,7 @@ Call_001_737f:
     ldh [$ff91], a
     ld c, l
     ld a, $80
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -8771,7 +8771,7 @@ Jump_001_76a4:
     ld [$b8ea], a
     call Call_001_6e30
     call Call_001_77ff
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$b8eb], a
     ret
 
@@ -8890,7 +8890,7 @@ Jump_001_7769:
     add $14
     call Call_000_152a
     call Call_001_77ff
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$ba3b], a
     ld a, [$b884]
     ld [$ba3c], a
@@ -8929,7 +8929,7 @@ Jump_001_77ab:
     add $0c
     call Call_000_152a
     call Call_001_77ff
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$b89b], a
     ret
 
@@ -9064,7 +9064,7 @@ Call_001_7895:
     cp $01
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $13
     ret nz
 
@@ -9092,7 +9092,7 @@ Call_001_78be:
     cp $03
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $17
     ret nz
 

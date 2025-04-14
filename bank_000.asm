@@ -885,7 +885,7 @@ Call_000_03ab:
     ld a, $80
     ldh [c], a
     inc c
-    ld b, $20
+    ld b, 32
 .loop
     ld a, [hli]
     ldh [c], a
@@ -1580,9 +1580,9 @@ jr_000_06c2:
     xor a
     ld [$b882], a
     call Call_000_070b
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     cp $1e
     jr nc, jr_000_06db
 
@@ -1593,7 +1593,7 @@ jr_000_06c2:
 
 jr_000_06db:
     xor a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, [$b884]
     inc a
     ld [$b884], a
@@ -1756,7 +1756,7 @@ jr_000_07a6:
     dec [hl]
 
 Call_000_07ab:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld l, a
     ld h, $00
     add hl, hl
@@ -1768,8 +1768,8 @@ Call_000_07ab:
     ld [$ba53], a
     ld a, [$b884]
     ld c, $1e
-    call Call_000_0a19
-    ld a, [$b883]
+    call Multiply8Bit
+    ld a, [sCurrentDayCounter]
     add l
     ld l, a
     ld a, $00
@@ -2069,7 +2069,6 @@ Call_000_0930:
     rst $30
     ret
 
-
     set 7, e
     jr jr_000_093b
 
@@ -2093,7 +2092,6 @@ Jump_000_094c:
     ldh [$ff97], a
     ret
 
-
 Call_000_0951:
     push de
     ld d, a
@@ -2103,7 +2101,6 @@ Call_000_0951:
     call Call_000_093b
     pop de
     ret
-
 
 Call_000_095c:
     ld a, [MBC3SRamBank]
@@ -2119,7 +2116,6 @@ Call_000_0968:
     ld [MBC3RomBank], a
     ret
 
-
 Call_000_096c:
     ld a, [MBC3SRamBank]
     push af
@@ -2129,7 +2125,6 @@ Call_000_096c:
     pop af
     ld [MBC3RomBank], a
     ret
-
 
 Call_000_097c:
     ld a, c
@@ -2269,10 +2264,7 @@ Jump_000_09f6:
     ld a, b
     rla
     jr c, jr_000_0a00
-
     cp e
-
-Jump_000_09fe:
     jr c, jr_000_0a02
 
 Call_000_0a00:
@@ -2307,28 +2299,23 @@ Jump_000_0a15:
     ldh [$ffa5], a
     ret
 
-
-Call_000_0a19:
+; This function multiplies `c` by `a` and stores the value in `hl`.
+Multiply8Bit:
     push de
     ld hl, $0000
     ld b, l
-    ld d, $08
-
-jr_000_0a20:
-    rrca
-    jr nc, jr_000_0a24
-
+    ld d, $08 ; counting the 8 bits
+.bit_loop
+    rrca ; this loop adds `bc` to `hl` for the number of bits that are set
+    jr nc, .binary_digit_skip
     add hl, bc
-
-jr_000_0a24:
+.binary_digit_skip
     sla c
     rl b
     dec d
-    jr nz, jr_000_0a20
-
+    jr nz, .bit_loop
     pop de
     ret
-
 
 Call_000_0a2d:
     ldh a, [$ff91]
@@ -2914,12 +2901,12 @@ Call_000_0de8:
     ld [$cb5f], a
     ld a, $01
     ld [$cb81], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter] ; $ff happens in the intro cut scene
     cp $ff
     ret nz
 
     xor a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
 
 Call_000_0e50:
     call Call_000_07ab
@@ -3418,7 +3405,7 @@ jr_000_1114:
 jr_000_1119:
     ld a, $0d
     ld c, $80
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $a000
     add hl, bc
     ld a, $08
@@ -5006,7 +4993,7 @@ Call_000_195e:
     srl a
     srl a
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld de, $9800
     add hl, de
     pop af
@@ -5106,7 +5093,7 @@ jr_000_19f2:
     ld [$cb89], a
     ret
 
-CheckIfNoEnergy:
+CheckForNoEnergyAnimation:
     ld a, [sPlayerEnergy]
     or a
     jp z, SetDizzyCollapseAnimation
@@ -6885,7 +6872,6 @@ jr_000_2486:
     scf
     ret
 
-
     adc c
     nop
     nop
@@ -6955,7 +6941,6 @@ Jump_000_24e3:
     call Call_000_2424
     ret
 
-
 Call_000_24ea:
     push de
     push af
@@ -6999,9 +6984,7 @@ jr_000_250e:
     call Call_000_2424
     ret
 
-
     ret
-
 
 Call_000_2527:
     ld bc, $0000
@@ -11527,7 +11510,7 @@ Jump_000_39e8:
     jr z, jr_000_3a09
 
     ld c, $2b
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, l
     ld [$cb53], a
     ld a, h

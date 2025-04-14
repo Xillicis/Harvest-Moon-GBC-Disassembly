@@ -954,7 +954,7 @@ jr_00e_45ca:
     ld a, $01
     ld [$c912], a
     ld b, $00
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
 
 jr_00e_45eb:
     ld a, [$cc1b]
@@ -1805,12 +1805,12 @@ Call_00e_4b1b:
     ld a, [$cc95]
     dec a
     ld c, $40
-    call Call_000_0a19
+    call Multiply8Bit
     ld d, h
     ld e, l
     ld a, [$cc94]
     ld c, $02
-    call Call_000_0a19
+    call Multiply8Bit
     add hl, de
     ld de, $9800
     add hl, de
@@ -1825,12 +1825,12 @@ jr_00e_4b43:
     ld a, [$cc95]
     add $03
     ld c, $40
-    call Call_000_0a19
+    call Multiply8Bit
     ld d, h
     ld e, l
     ld a, [$cc94]
     ld c, $02
-    call Call_000_0a19
+    call Multiply8Bit
     add hl, de
     ld de, $9800
     add hl, de
@@ -5392,9 +5392,9 @@ Jump_00e_5f95:
     ld a, $01
     ld [$cc72], a
     ld b, $02
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ld b, $03
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ret
 
 
@@ -5402,7 +5402,7 @@ jr_00e_5ff2:
     ld a, $01
     ld [$c912], a
     ld b, $00
-    call CheckIfNoEnergy
+    call CheckForNoEnergyAnimation
     ret
 
 

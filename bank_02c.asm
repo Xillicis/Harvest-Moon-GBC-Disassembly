@@ -13531,7 +13531,7 @@ jr_02c_7d1e:
 
     ld a, [$cbe8]
     ld c, $2b
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, [$cb54]
     ld d, a
     ld a, [$cb53]

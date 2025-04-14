@@ -4009,7 +4009,7 @@ Call_024_583c:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -4043,7 +4043,7 @@ Call_024_583c:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -4098,7 +4098,7 @@ Call_024_583c:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4131,7 +4131,7 @@ Call_024_583c:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4185,7 +4185,7 @@ Call_024_583c:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4218,7 +4218,7 @@ Call_024_583c:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -4272,7 +4272,7 @@ Call_024_583c:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -4308,7 +4308,7 @@ Call_024_583c:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -4356,7 +4356,7 @@ Call_024_5aa5:
     srl a
     srl a
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld de, $9800
     add hl, de
     pop af
@@ -5472,7 +5472,7 @@ Call_024_6147:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -5506,7 +5506,7 @@ Call_024_6147:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -5561,7 +5561,7 @@ Call_024_6147:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -5594,7 +5594,7 @@ Call_024_6147:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -5648,7 +5648,7 @@ Call_024_6147:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -5681,7 +5681,7 @@ Call_024_6147:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -5735,7 +5735,7 @@ Call_024_6147:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -5771,7 +5771,7 @@ Call_024_6147:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l
@@ -6159,7 +6159,7 @@ jr_024_65c5:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     push hl
     ldh a, [$ffa4]
     sla a
@@ -6277,7 +6277,7 @@ jr_024_65c5:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     push af
     add l
@@ -6294,7 +6294,7 @@ jr_024_65c5:
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     push af
     add l
@@ -6311,7 +6311,7 @@ jr_024_65c5:
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -6396,7 +6396,7 @@ jr_024_65c5:
     ldh a, [$ffa4]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     push af
     add l
@@ -6413,7 +6413,7 @@ jr_024_65c5:
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     push af
     add l
@@ -6430,7 +6430,7 @@ jr_024_65c5:
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
-    call Call_000_0a19
+    call Multiply8Bit
     pop af
     add l
     ld l, a
@@ -6511,7 +6511,7 @@ jr_024_65c5:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     push hl
     ldh a, [$ffa4]
     sla a

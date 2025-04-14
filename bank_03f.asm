@@ -9729,7 +9729,7 @@ jr_03f_6c89:
     ld [$ccd3], a
     ld a, [$b884]
     ld [$ccd4], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$ccd5], a
     ld a, $01
     ld [$ccd6], a
@@ -9818,7 +9818,7 @@ jr_03f_6f2f:
     ld a, [$ccd4]
     ld [$b884], a
     ld a, [$ccd5]
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     call Call_000_07ab
     call Call_000_08b7
     ret
@@ -10167,7 +10167,7 @@ Call_03f_7116:
 
     ld a, [$ccd2]
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $9800
     add hl, bc
     jr jr_03f_7139
@@ -10176,7 +10176,7 @@ jr_03f_712b:
     ld a, [$ccd2]
     sub $12
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $988a
     add hl, bc
 
@@ -10193,7 +10193,7 @@ jr_03f_7139:
 
     ld a, [$ccd6]
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $9800
     add hl, bc
     jr jr_03f_7165
@@ -10202,7 +10202,7 @@ jr_03f_7157:
     ld a, [$ccd6]
     sub $12
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $988a
     add hl, bc
 

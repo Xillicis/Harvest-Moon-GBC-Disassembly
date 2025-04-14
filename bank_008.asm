@@ -4472,7 +4472,7 @@ Call_008_59d2:
     rr l
     ld a, [$b90c]
     ld c, l
-    call Call_000_0a19
+    call Multiply8Bit
     ldh a, [$ffa4]
     sla a
     add l

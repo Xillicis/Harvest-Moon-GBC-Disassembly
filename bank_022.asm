@@ -94,7 +94,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [hl], a
     ld a, [$b884]
     ld [$cbde], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$cbdf], a
     ld a, [$b882]
     ld [$cbe0], a
@@ -125,7 +125,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     call Call_022_42fc
     call Call_022_4364
     ld hl, $9863
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
     call Call_022_4216
     ld a, [$b884]
@@ -427,8 +427,8 @@ Call_022_42aa:
     push de
     ld a, [$b884]
     ld c, $1e
-    call Call_000_0a19
-    ld a, [$b883]
+    call Multiply8Bit
+    ld a, [sCurrentDayCounter]
     add l
     ld l, a
     ld a, $00
@@ -683,9 +683,9 @@ Call_022_43f1:
     ld a, $18
     call Call_000_09c9
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     add l
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, [$b882]
     add b
     ld [$b882], a
@@ -694,17 +694,17 @@ Call_022_43f1:
 
     sub $18
     ld [$b882], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
 
 jr_022_4420:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld l, a
     ld h, $00
     ld a, $1e
     call Call_000_09c9
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, [$b884]
     add l
     ld [$b884], a
@@ -740,7 +740,7 @@ Call_022_4456:
     cp $03
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1d
     ret nz
 
@@ -755,9 +755,9 @@ jr_022_4474:
     ld hl, $02d0
     call Call_000_0c46
     push hl
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld c, $18
-    call Call_000_0a19
+    call Multiply8Bit
     pop de
     add hl, de
     ld a, [$b882]
@@ -785,7 +785,7 @@ jr_022_4474:
     ld a, $03
     ld [$b884], a
     ld a, $1d
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, $06
     ld [$b882], a
     xor a
@@ -845,7 +845,7 @@ jr_022_44f8:
 
     ld a, [$b8eb]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     ret c
 
@@ -862,7 +862,7 @@ Call_022_4525:
     cp $03
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1d
     ret nz
 
@@ -1182,7 +1182,7 @@ jr_022_46d6:
 jr_022_46e2:
     ld a, [$b8a2]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_022_46fb
 
@@ -1192,7 +1192,7 @@ jr_022_46e2:
 
 
 jr_022_46ef:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1d
     ret nz
 
@@ -1268,7 +1268,7 @@ jr_022_4758:
 jr_022_476e:
     ld a, [$b8a1]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_022_4791
 
@@ -1278,7 +1278,7 @@ jr_022_476e:
 
 
 jr_022_477b:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1d
     ret nz
 
@@ -1330,14 +1330,14 @@ jr_022_47bb:
 jr_022_47ca:
     ld a, [$ba4c]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     ret z
 
     ld a, [$ba4c]
     inc a
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_022_47e0
 
@@ -1365,13 +1365,13 @@ jr_022_47e6:
 jr_022_4801:
     ld a, [$ba4d]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     ret z
 
     ld a, [$ba4c]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_022_4815
 
@@ -1410,7 +1410,7 @@ Call_022_483a:
     ldh [$ffb0], a
     ld a, [$b887]
     ld c, $3c
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, [$b888]
     add l
     ld l, a
@@ -1432,7 +1432,7 @@ Call_022_483a:
     ldh [$ffb4], a
     ld a, [$c903]
     ld c, $3c
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, [$c904]
     add l
     ld l, a
@@ -3589,7 +3589,7 @@ Jump_022_5356:
     ld [$c910], a
     ld a, $01
     ld [$c60d], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$b901], a
     ld a, [$b882]
     ld [$b902], a
@@ -4828,11 +4828,11 @@ jr_022_59de:
 
 Call_022_5a6e:
     call Call_022_5b94
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$b88b], a
     ld a, [$b884]
     ld [$b88a], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
     ld [$b88b], a
     cp $1e
@@ -4875,7 +4875,7 @@ jr_022_5aa5:
 jr_022_5abc:
     ld a, [$b8a2]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     jr nz, jr_022_5acc
 
@@ -4933,7 +4933,7 @@ Jump_022_5b08:
 
     ld a, $03
     ld [$b89f], a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld [$ba4d], a
     ld a, $80
     ld [$b8a1], a
@@ -5037,10 +5037,10 @@ Call_022_5b94:
     or a
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1b
     call z, Call_022_5bab
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1c
     call z, Call_022_5bc1
     ret
@@ -6725,7 +6725,7 @@ jr_022_645f:
     ld a, [$b89b]
     add $03
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     ret nz
 
@@ -6976,7 +6976,7 @@ Call_022_6601:
     cp $00
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld b, a
     ld a, [$b8a2]
     cp b
@@ -7168,7 +7168,7 @@ Call_022_669c:
     ld [$b8fd], a
     ld a, [$b884]
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     or b
     jr z, jr_022_6766
 
@@ -7389,9 +7389,9 @@ jr_022_6876:
     ld a, $06
     ld [$b882], a
     call Call_000_070b
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     cp $1e
     jr nc, jr_022_68ac
 
@@ -7401,7 +7401,7 @@ jr_022_6876:
 
 jr_022_68ac:
     xor a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, [$b884]
     inc a
     ld [$b884], a
@@ -8342,7 +8342,7 @@ jr_022_6cc1:
 
 jr_022_6cc3:
     ldh a, [$ffa4]
-    call Call_000_0a19
+    call Multiply8Bit
     ld b, l
     call $1ae6
     ret
@@ -8376,7 +8376,7 @@ jr_022_6ced:
     cp $01
     jr nz, jr_022_6cfb
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $13
     jr c, jr_022_6cff
 
@@ -8391,7 +8391,7 @@ jr_022_6cff:
     ld a, [$b893]
     or a
     call nz, Call_022_6e41
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld b, a
     ld a, [$b8a2]
     cp b
@@ -8417,17 +8417,17 @@ jr_022_6cff:
 
 
 Call_022_6d48:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $00
     call z, Call_022_6fb5
     call Call_022_6ded
     ld a, [$b91a]
     cp $6a
     call z, Call_022_6e32
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $09
     call z, Call_022_6e94
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $0e
     call z, Call_022_6ef6
     ret
@@ -8442,20 +8442,20 @@ Call_022_6d6c:
 
 
 Call_022_6d78:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $00
     call z, Call_022_6f03
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $09
     call z, Call_022_6e62
     ret
 
 
 Call_022_6d89:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $13
     call z, Call_022_6e70
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $1d
     call z, Call_022_6f63
     ret
@@ -8526,11 +8526,11 @@ Call_022_6ded:
     or a
     ret nz
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $09
     ret c
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp $13
     ret nc
 
@@ -8556,7 +8556,7 @@ Call_022_6e0a:
     or a
     ret z
 
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld b, a
     ld a, [$b8eb]
     cp b
@@ -8572,7 +8572,7 @@ Call_022_6e0a:
 
 
 Call_022_6e32:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     add $07
     cp $1e
     ret c
@@ -8584,7 +8584,7 @@ Call_022_6e32:
 
 
 Call_022_6e41:
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     ld b, a
     ld a, [$b894]
     cp b
@@ -8747,7 +8747,7 @@ Call_022_6f1a:
     ld a, [$b89b]
     add $03
     ld b, a
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     cp b
     ret nz
 

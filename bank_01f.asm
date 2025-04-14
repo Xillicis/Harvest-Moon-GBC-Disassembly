@@ -10432,7 +10432,7 @@ Call_01f_723f:
 
     ld a, [$ccd2]
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $9800
     add hl, bc
     jr jr_01f_7262
@@ -10441,7 +10441,7 @@ jr_01f_7254:
     ld a, [$ccd2]
     sub $12
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $988a
     add hl, bc
 
@@ -10458,7 +10458,7 @@ jr_01f_7262:
 
     ld a, [$ccd6]
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $9800
     add hl, bc
     jr jr_01f_728e
@@ -10467,7 +10467,7 @@ jr_01f_7280:
     ld a, [$ccd6]
     sub $12
     ld c, $20
-    call Call_000_0a19
+    call Multiply8Bit
     ld bc, $988a
     add hl, bc
 

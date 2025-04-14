@@ -9698,7 +9698,7 @@ Call_035_6828:
     ret nz
 
     cpl
-    jp nz, Jump_000_09fe
+    jp nz, $09fe
 
     ld c, l
     or a

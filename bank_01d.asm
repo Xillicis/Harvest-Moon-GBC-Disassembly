@@ -3626,7 +3626,7 @@ jr_01d_51df:
     ret
 
 ; Looks like some initialization
-Call_01d_521e:
+Call_01d_521e: ; 1dx521e
     di
     call Call_000_0cd5
     di
@@ -3651,7 +3651,7 @@ Call_01d_521e:
     ld a, $06
     ld [$b882], a
     ld a, $ff
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, $80
     ld [$b892], a
     ld [$b89b], a

@@ -3652,7 +3652,7 @@ Call_03d_51d9:
     ld a, $06
     ld [$b882], a
     ld a, $ff
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     ld a, $80
     ld [$b892], a
     ld [$b89b], a

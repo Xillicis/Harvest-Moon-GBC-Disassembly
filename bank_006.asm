@@ -4984,7 +4984,7 @@ jr_006_56c5:
     call Call_000_151d
     ret
 
-
+; Exhausted Animation goes here
     ld a, [$c60d]
     add $2a
     call Call_000_151d

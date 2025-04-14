@@ -1,5 +1,7 @@
 DEF sMapObjectLocation EQU $a000
 
+; Starts at Day 0
+DEF sCurrentDayCounter EQU $b883
 
 DEF sTimeElapsed EQU $b889
 

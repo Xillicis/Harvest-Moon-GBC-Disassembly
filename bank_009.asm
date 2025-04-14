@@ -636,9 +636,9 @@ jr_009_4379:
     xor a
     ld [$b882], a
     call Call_000_070b
-    ld a, [$b883]
+    ld a, [sCurrentDayCounter]
     inc a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     cp $1e
     jr nc, jr_009_438f
 
@@ -648,7 +648,7 @@ jr_009_4379:
 
 jr_009_438f:
     xor a
-    ld [$b883], a
+    ld [sCurrentDayCounter], a
     call Call_000_07ab
     ld a, [$b884]
     inc a
@@ -3250,7 +3250,7 @@ jr_009_50aa:
     ld e, l
     ld a, [$ba3c]
     ld c, $1e
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, [$ba3b]
     add l
     ld l, a
@@ -3294,8 +3294,8 @@ jr_009_50e1:
     ld e, l
     ld a, [$b884]
     ld c, $1e
-    call Call_000_0a19
-    ld a, [$b883]
+    call Multiply8Bit
+    ld a, [sCurrentDayCounter]
     add l
     ld l, a
     ld a, $00
@@ -4745,7 +4745,7 @@ Jump_009_5953:
     ld hl, $0000
     call Call_009_642d
     ld c, $16
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, h
     ld b, a
     ld a, l
@@ -5096,7 +5096,7 @@ jr_009_5b31:
 Jump_009_5b37:
     call Call_009_642d
     ld c, $0c
-    call Call_000_0a19
+    call Multiply8Bit
     ld a, l
     ld c, a
     ld a, h
