@@ -10,7 +10,7 @@ SECTION "ROM Bank $030", ROMX[$4000], BANK[$30]
 Jump_030_4002:
     adc d
     ld [hl+], a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $6d5c
     ld c, $30
@@ -3040,7 +3040,7 @@ Call_030_4ebd:
 
 jr_030_4f2d:
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$c600], a
@@ -11757,7 +11757,7 @@ jr_030_756c:
     add c
     db $10
     ld h, a
-    jp c, Jump_000_00ff
+    jp c, $00ff
 
     db $eb
     and d
@@ -11796,7 +11796,7 @@ jr_030_756c:
     dec bc
     ld d, c
     daa
-    call c, Call_000_00ff
+    call c, $00ff
     rst $38
     sub a
     sbc d
@@ -12212,7 +12212,7 @@ jr_030_7730:
     ld c, $fd
     cp $02
     db $fc
-    jp Jump_000_00fc
+    jp $00fc
 
 
     ld h, e

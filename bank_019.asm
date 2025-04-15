@@ -5085,7 +5085,7 @@ jr_019_55c8:
     sub h
     ld l, b
     ld a, [hl-]
-    call nz, Call_000_00fe
+    call nz, $00fe
     sbc a
     ld h, b
     cp h
@@ -13357,7 +13357,7 @@ jr_019_7925:
     ld b, $3f
 
 jr_019_793e:
-    call nz, Call_000_00fe
+    call nz, $00fe
     jp c, $8aa4
 
     ld [hl], h

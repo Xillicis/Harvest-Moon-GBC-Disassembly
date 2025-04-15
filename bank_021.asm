@@ -7,7 +7,7 @@ SECTION "ROM Bank $021", ROMX[$4000], BANK[$21]
 
     ld hl, $8acd
     ld [hl+], a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld a, [$b884]
     ld [$c0bd], a

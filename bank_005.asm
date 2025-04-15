@@ -25,7 +25,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ld [$cb81], a
     call Call_000_0f0f
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $717e
     ld c, $05
@@ -8797,7 +8797,7 @@ jr_005_701a:
     ret nc
 
     ei
-    jp z, Jump_000_00ff
+    jp z, $00ff
 
     rst $38
     ld b, a

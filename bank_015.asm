@@ -1867,7 +1867,7 @@ jr_015_47e8:
     db $e4
     sbc b
     ldh a, [c]
-    call z, Call_000_00fc
+    call z, $00fc
     rrca
     inc b
     rlca
@@ -3936,7 +3936,7 @@ jr_015_50c8:
     db $e4
     sbc b
     ldh a, [c]
-    call z, Call_000_00fc
+    call z, $00fc
     rrca
     inc b
     rlca
@@ -8679,7 +8679,7 @@ jr_015_64b0:
 
     ld e, b
     ldh a, [c]
-    call z, Call_000_00fc
+    call z, $00fc
     jr nc, jr_015_64f2
 
     jr nz, jr_015_6534

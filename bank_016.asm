@@ -469,7 +469,7 @@ jr_016_4217:
     db $e4
     ld e, b
     ldh a, [c]
-    call z, Call_000_00ec
+    call z, $00ec
     rrca
     inc b
     add hl, bc
@@ -4749,7 +4749,7 @@ jr_016_54c4:
     ret c
 
     call c, $2220
-    call c, Call_000_00fc
+    call c, $00fc
     ccf
     db $10
     ccf

@@ -10435,7 +10435,7 @@ jr_02c_70b4:
     nop
     nop
     nop
-    call nc, Call_000_007c
+    call nc, $007c
     nop
     ld d, $28
     jr nc, jr_02c_710c

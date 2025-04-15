@@ -11558,7 +11558,7 @@ jr_028_7202:
     ld a, [hl]
     cp l
     inc a
-    jp Jump_000_00ff
+    jp $00ff
 
 
     rst $38

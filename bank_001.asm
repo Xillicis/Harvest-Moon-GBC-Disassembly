@@ -29,7 +29,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     ld a, a
     ld b, a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     push hl
     push af

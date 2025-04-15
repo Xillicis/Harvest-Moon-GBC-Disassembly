@@ -122,7 +122,6 @@ LCDCInterrupt::
 TimerOverflowInterrupt::
     jp Jump_000_33f9
 
-
     rst $38
     rst $38
     rst $38
@@ -132,199 +131,74 @@ TimerOverflowInterrupt::
 SerialTransferCompleteInterrupt::
     jp Jump_000_3408
 
-
     rst $38
     rst $38
     rst $38
-
-Call_000_005e:
     rst $38
     rst $38
 
 JoypadTransitionInterrupt::
     reti
 
-
 Call_000_0061:
 Jump_000_0061:
     ld a, [$c0a7]
-
-Jump_000_0064:
     or a
     rst $08
-    rst $18
 
-Jump_000_0067:
-    ccf
-
-Call_000_0068:
-Jump_000_0068:
-    nop
-    adc $0e
-    nop
-    adc $0e
-    nop
-    adc $0e
-
-Jump_000_0071:
-    nop
-
-Call_000_0072:
-    adc $0e
-    nop
-    adc $0e
-    nop
-    cp d
-    ccf
-    nop
-
-Call_000_007b:
-Jump_000_007b:
-    cp [hl]
-
-Call_000_007c:
-    ccf
-
-Call_000_007d:
-Jump_000_007d:
-    nop
-    jp nz, Jump_000_003f
-
-    jp nz, Jump_000_003f
-
-    jp nz, Jump_000_003f
-
-    jp nz, Jump_000_003f
-
-    jp nz, Jump_000_003f
-
-    rst $18
-    ccf
-    nop
-
-Jump_000_0090:
-    rst $18
-    ccf
-    nop
-    add $3f
-    nop
-    jp z, Jump_000_003f
-
-    jp z, Jump_000_003f
-
-    adc $3f
-    nop
-
-Jump_000_009f:
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-Call_000_00a8:
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-    jp nc, Jump_000_003f
-
-    cp d
-    ccf
-    nop
-    adc $3f
-    nop
-    adc $3f
-    nop
-
-Call_000_00c0:
-    cp d
-    ccf
-    nop
-    cp d
-    ccf
-    nop
-    rst $18
-    ccf
-    nop
-    rst $18
-
-Jump_000_00ca:
-    ccf
-    nop
-
-Call_000_00cc:
-    cp d
-    ccf
-    nop
-    adc $3f
-    nop
-    rst $18
-    ccf
-
-Jump_000_00d4:
-    nop
-
-Call_000_00d5:
-Jump_000_00d5:
-    jp c, Jump_000_003f
-
-    ldh [rWave_f], a
-    nop
-
-Jump_000_00db:
-    ldh [rWave_f], a
-    nop
-    rst $18
-    ccf
-    nop
-    ldh [rWave_f], a
-
-Call_000_00e3:
-    nop
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_00ec:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_00fc:
-Jump_000_00fc:
-    rst $38
-    rst $38
-
-Call_000_00fe:
-Jump_000_00fe:
-    rst $38
-
-Call_000_00ff:
-Jump_000_00ff:
-    rst $38
+Data_000_0066:
+    db $df, $3f, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ba, $3f, $00
+    db $be, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $df, $3f, $00
+    db $df, $3f, $00
+    db $c6, $3f, $00
+    db $ca, $3f, $00
+    db $ca, $3f, $00
+    db $ce, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $ba, $3f, $00
+    db $ce, $3f, $00
+    db $ce, $3f, $00
+    db $ba, $3f, $00
+    db $ba, $3f, $00
+    db $df, $3f, $00
+    db $df, $3f, $00
+    db $ba, $3f, $00
+    db $ce, $3f, $00
+    db $df, $3f, $00
+    db $da, $3f, $00
+    db $e0, $3f, $00
+    db $e0, $3f, $00
+    db $df, $3f, $00
+    db $e0, $3f, $00
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff, $ff, $ff
+    db $ff
 
 Boot::
     nop
@@ -380,7 +254,7 @@ HeaderGlobalChecksum::
 Jump_000_0150:
     nop
 
-Jump_000_0151:
+Start:
     nop
     di
     or a
@@ -392,10 +266,10 @@ Jump_000_0151:
     ld sp, $dfef
     ld hl, $ff80
     ld bc, $007f
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $dd00
     ld bc, $00ff
-    call Call_000_2282
+    call ZeroOutHL
     call Call_000_2242
     xor a
     ldh [rBGP], a
@@ -440,7 +314,7 @@ Jump_000_01b1:
 Jump_000_01b8:
     ld hl, $ff80
     ld bc, $007f
-    call Call_000_2282
+    call ZeroOutHL
 
 Call_000_01c1:
 Jump_000_01c1:
@@ -452,10 +326,10 @@ Jump_000_01c1:
     ldh [rSCX], a
     ld hl, $8000
     ld bc, $1fff
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $c000
     ld bc, $1cff
-    call Call_000_2282
+    call ZeroOutHL
     call Call_000_2242
     xor a
     ld [MBC3SRamBank], a
@@ -2002,7 +1876,7 @@ jr_000_0916:
 
     ld hl, $ffa4
     ld bc, $0014
-    jp Jump_000_2282
+    jp ZeroOutHL
 
 
 Call_000_0924:
@@ -6320,55 +6194,45 @@ Jump_000_2269:
     ldh [rIE], a
     ret
 
-
 Call_000_2273:
     ld a, [$c0a2]
     ldh [rLCDC], a
-
-Jump_000_2278:
     ret
 
-
+Label_000_2279:
     xor a
     ldh [rIF], a
     ld a, [$c0a0]
     ldh [rIE], a
     ret
 
-
-Call_000_2282:
-Jump_000_2282:
-jr_000_2282:
+ZeroOutHL:
+.loop
     xor a
-    ld [hl+], a
+    ld [hli], a
     dec bc
     ld a, c
     or b
-    jr nz, jr_000_2282
-
+    jr nz, .loop
     ret
-
 
 Call_000_228a:
     ld hl, $9bff
 
-jr_000_228d:
+BeginZeroing:
     ld bc, $0400
-
-jr_000_2290:
+.loop
     ld a, $00
     ld [hld], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_2290
-
+    jr nz, .loop
     ret
 
-
-Call_000_2299:
+ZeroOutVRAM:
     ld hl, $9fff
-    jr jr_000_228d
+    jr BeginZeroing
 
 Call_000_229e:
     ld hl, $9bff

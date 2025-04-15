@@ -11346,7 +11346,7 @@ jr_017_6f5d:
     ld [hl], c
     rst $18
     ld [hl], c
-    jp z, Jump_000_0071
+    jp z, $0071
 
     nop
     ld e, d

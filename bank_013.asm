@@ -12243,7 +12243,7 @@ Jump_013_7c23:
     reti
 
 
-    jp c, Jump_000_00d4
+    jp c, $00d4
 
     ld e, d
     nop

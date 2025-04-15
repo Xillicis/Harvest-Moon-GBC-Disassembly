@@ -39,7 +39,7 @@ jr_00e_4022:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld hl, $cb2f
@@ -2643,7 +2643,7 @@ jr_00e_4f7b:
     reti
 
 
-    jp c, Jump_000_00db
+    jp c, $00db
 
     sbc e
     ld b, $04
@@ -3660,7 +3660,7 @@ jr_00e_5507:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -4645,7 +4645,7 @@ Call_00e_5ad2:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -5710,7 +5710,7 @@ Call_00e_616c:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -6524,7 +6524,7 @@ jr_00e_669f:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a

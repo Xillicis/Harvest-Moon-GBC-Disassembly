@@ -406,7 +406,7 @@ SECTION "ROM Bank $012", ROMX[$4000], BANK[$12]
     ld l, b
     nop
     ld [bc], a
-    jp Jump_000_0068
+    jp $0068
 
 
     ld [bc], a

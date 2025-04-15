@@ -13318,7 +13318,7 @@ jr_033_7c5c:
     reti
 
 
-    jp c, Jump_000_00d4
+    jp c, $00d4
 
     ld e, d
     nop

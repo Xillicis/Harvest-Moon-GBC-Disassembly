@@ -8119,7 +8119,7 @@ jr_03a_61b0:
     dec e
     xor $19
     xor $32
-    call z, Call_000_00cc
+    call z, $00cc
     nop
     nop
     nop

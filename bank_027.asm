@@ -15,7 +15,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
     xor a
     ldh [$ff91], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ldh [$ff93], a
@@ -4774,7 +4774,7 @@ jr_027_548b:
     nop
     nop
     nop
-    jp c, Jump_000_0071
+    jp c, $0071
 
     nop
     ld h, $1e
@@ -12958,10 +12958,10 @@ jr_027_77cf:
     ldh [rOBP1], a
     ld hl, $9000
     ld bc, $0010
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $9800
     ld bc, $0400
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $7a56
     ld a, [$c0a7]
     cp $01
@@ -13048,12 +13048,12 @@ jr_027_787f:
     ldh [rOBP1], a
     ld hl, $9000
     ld bc, $0010
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $9800
     ld bc, $0400
     ld a, $83
     ld [$c0a2], a
-    call Call_000_2282
+    call ZeroOutHL
     call Call_000_2273
     call Call_000_2424
     call Call_000_225a
@@ -13092,10 +13092,10 @@ jr_027_7912:
     call Call_000_225a
     ld hl, $9000
     ld bc, $0010
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $9800
     ld bc, $0400
-    call Call_000_2282
+    call ZeroOutHL
     xor a
     ldh [rBGP], a
     ldh [rOBP0], a

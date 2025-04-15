@@ -6033,7 +6033,7 @@ Call_02f_62dd:
     ld [$c800], a
     ld [$c820], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $5f14
     ld a, $2d
@@ -7511,7 +7511,7 @@ jr_02f_6c1a:
     ld [$c800], a
     ld [$c820], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $76dc
     ld c, $30
@@ -10841,7 +10841,7 @@ jr_02f_7b1e:
     ld c, $fd
     cp $02
     db $fc
-    jp Jump_000_00fc
+    jp $00fc
 
 
     ld h, e

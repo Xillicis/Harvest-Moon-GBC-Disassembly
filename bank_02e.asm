@@ -14,7 +14,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     call z, $79ea
     call z, $8acd
     ld [hl+], a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld hl, $cb2f
@@ -2617,7 +2617,7 @@ jr_02e_4f58:
     reti
 
 
-    jp c, Jump_000_00db
+    jp c, $00db
 
     sbc e
     ld b, $04
@@ -3620,7 +3620,7 @@ jr_02e_54e4:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -4591,7 +4591,7 @@ Call_02e_5aa2:
     call z, $79ea
     call z, $8acd
     ld [hl+], a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -5647,7 +5647,7 @@ Call_02e_6121:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -6453,7 +6453,7 @@ jr_02e_6647:
     ld a, [$cc7b]
     ld [$cc79], a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     xor a
     ld [$cc6c], a

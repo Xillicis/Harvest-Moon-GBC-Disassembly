@@ -6475,7 +6475,7 @@ jr_00d_62aa:
 
     db $ec
     ldh [c], a
-    call c, Call_000_00fc
+    call c, $00fc
     ldh a, [rP1]
     ld [hl], b
     add b

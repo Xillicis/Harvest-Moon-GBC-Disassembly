@@ -1069,7 +1069,7 @@ jr_038_449d:
     ld e, h
     xor b
     halt
-    call z, Call_000_00c0
+    call z, $00c0
     jr nc, jr_038_4465
 
     ld [$08f0], sp
@@ -10381,7 +10381,7 @@ Jump_038_6c24:
     ld [$0ff0], sp
     ldh a, [$ff0e]
     rst $30
-    call c, Call_000_00e3
+    call c, $00e3
     nop
     nop
     nop

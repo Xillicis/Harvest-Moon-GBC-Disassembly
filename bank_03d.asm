@@ -7,7 +7,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
 
     dec a
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $5e7e
     ld c, $3d
@@ -56,7 +56,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     ld [$cb56], a
     ld hl, $c000
     ld bc, $00a0
-    call Call_000_2282
+    call ZeroOutHL
     ld a, $00
     call Call_000_25c5
     ld a, $83
@@ -653,7 +653,7 @@ Call_03d_433e:
 
     call Call_03d_43f2
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $6b51
     ld c, $3e
@@ -709,7 +709,7 @@ Call_03d_433e:
 jr_03d_43cf:
     ld hl, $c000
     ld bc, $00a0
-    call Call_000_2282
+    call ZeroOutHL
     ld a, $00
     call Call_000_25c5
     ld a, $83
@@ -1276,7 +1276,7 @@ jr_03d_467e:
 
 Call_03d_468c:
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
     ld a, $31
@@ -1390,7 +1390,7 @@ jr_03d_4726:
     ld [$cb4e], a
     ld hl, $c000
     ld bc, $00a0
-    call Call_000_2282
+    call ZeroOutHL
     ld a, $04
     call Call_000_25c5
     ld a, $83
@@ -3633,7 +3633,7 @@ Call_03d_51d9:
     di
     ld hl, sMapObjectLocation
     ld bc, $1fff
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $75e4
     ld a, $23
     call BankSwitchCallHL
@@ -4428,7 +4428,7 @@ jr_03d_565b:
     nop
     add b
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $7a68
     ld c, $32
@@ -4496,7 +4496,7 @@ jr_03d_571c:
     ldh [$ff93], a
     ld hl, $c000
     ld bc, $00a0
-    call Call_000_2282
+    call ZeroOutHL
     ld a, $4d
     call Call_000_25c5
     ld a, $83
@@ -5175,7 +5175,7 @@ jr_03d_59d3:
     jr z, jr_03d_5a70
 
     ld a, a
-    call Call_000_00ff
+    call $00ff
     call nz, $d23b
     cpl
     add a
@@ -9386,7 +9386,7 @@ jr_03d_6d1c:
     add b
     rst $38
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $7aca
     ld c, $2f
@@ -10161,7 +10161,7 @@ jr_03d_7174:
     and h
     and l
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $769e
     ld c, $24
@@ -11258,7 +11258,7 @@ jr_03d_7784:
     ldh a, [$fff8]
     ld [hl], b
     add sp, $70
-    jp Jump_000_0090
+    jp $0090
 
 
     ld hl, $a534

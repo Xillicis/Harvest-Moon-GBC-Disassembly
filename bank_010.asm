@@ -7,7 +7,7 @@ SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
 
     db $10
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     push hl
     push af
@@ -3158,7 +3158,7 @@ jr_010_4f00:
 
 jr_010_4fbe:
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     push hl
     push af
@@ -11633,7 +11633,7 @@ jr_010_7544:
 
 
     rst $38
-    jp Jump_000_00ff
+    jp $00ff
 
 
     db $dd
@@ -11679,7 +11679,7 @@ jr_010_75a8:
     db $10
     ld e, a
     ld h, a
-    jp c, Jump_000_00ff
+    jp c, $00ff
 
     db $eb
     and d
@@ -11718,7 +11718,7 @@ jr_010_75a8:
     ld d, c
     rst $38
     daa
-    call c, Call_000_00ff
+    call c, $00ff
     sub a
     sbc d
     rst $28
@@ -12145,7 +12145,7 @@ jr_010_777d:
     ld c, $fd
     cp $02
     db $fc
-    jp Jump_000_00fc
+    jp $00fc
 
 
     ld h, e

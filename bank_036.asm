@@ -474,7 +474,7 @@ jr_036_4217:
     ret c
 
     cp [hl]
-    call z, Call_000_00ec
+    call z, $00ec
     rla
     dec bc
     rrca

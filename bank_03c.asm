@@ -4586,7 +4586,7 @@ jr_03c_52ff:
     adc c
     nop
     inc b
-    jp nz, Jump_000_009f
+    jp nz, $009f
 
     ld b, b
     db $e4

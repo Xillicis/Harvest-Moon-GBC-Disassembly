@@ -13213,7 +13213,7 @@ jr_02b_7885:
     add b
     ld b, b
     ld a, c
-    jp Jump_000_2278
+    jp $2278
 
 
     ld a, d

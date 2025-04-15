@@ -13844,10 +13844,10 @@ jr_00a_7a7f:
     ld a, e
     nop
     nop
-    jp z, Jump_000_007b
+    jp z, $007b
 
     nop
-    call z, Call_000_007b
+    call z, $007b
     nop
     adc $7b
     nop

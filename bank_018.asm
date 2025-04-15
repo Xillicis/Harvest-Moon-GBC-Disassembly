@@ -6539,7 +6539,7 @@ jr_018_5bdf:
     db $e4
     jr jr_018_5c3f
 
-    call z, Call_000_00fc
+    call z, $00fc
     db $fc
     ret c
 
@@ -10042,7 +10042,7 @@ jr_018_6a69:
     xor $9f
     ld l, a
     ccf
-    jp Jump_000_00fe
+    jp $00fe
 
 
     db $fc

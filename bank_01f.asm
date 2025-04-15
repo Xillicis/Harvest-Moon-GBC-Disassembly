@@ -207,7 +207,7 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     pop af
     pop hl
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     call Call_01f_416e
     ld hl, $7614
@@ -241,7 +241,7 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     ld [$cdb6], a
     ld hl, $cdbf
     ld bc, $0121
-    call Call_000_2282
+    call ZeroOutHL
     xor a
     ld hl, $cb14
     ld [hl+], a
@@ -9971,7 +9971,7 @@ jr_01f_6961:
     db $10
     add b
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
     ld a, $11

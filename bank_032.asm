@@ -402,7 +402,7 @@ SECTION "ROM Bank $032", ROMX[$4000], BANK[$32]
     ld l, b
     nop
     ld [bc], a
-    call Call_000_0068
+    call $0068
     ld [bc], a
     rst $08
     ld l, b

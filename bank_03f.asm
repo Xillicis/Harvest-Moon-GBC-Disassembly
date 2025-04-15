@@ -7,7 +7,7 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
 
     ccf
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     call Call_03f_4092
     ld hl, $74aa
@@ -41,7 +41,7 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ld [$cdb6], a
     ld hl, $cdbf
     ld bc, $0121
-    call Call_000_2282
+    call ZeroOutHL
     xor a
     ld hl, $cb14
     ld [hl+], a
@@ -9702,7 +9702,7 @@ jr_03f_6c89:
     nop
     add b
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
     ld a, $31

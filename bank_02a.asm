@@ -13970,10 +13970,10 @@ jr_02a_7b67:
     ld a, l
     nop
     nop
-    jp nc, Jump_000_007d
+    jp nc, $007d
 
     nop
-    call nc, Call_000_007d
+    call nc, $007d
     nop
     sub $7d
     nop

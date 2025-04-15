@@ -8048,7 +8048,7 @@ jr_034_64c3:
     ld h, a
     nop
     nop
-    jp Jump_000_0067
+    jp $0067
 
 
     nop
@@ -8888,7 +8888,7 @@ jr_034_683a:
     nop
     add b
     rst $20
-    call z, Call_000_00d5
+    call z, $00d5
     add sp, $02
     push de
     nop
@@ -9027,7 +9027,7 @@ jr_034_689e:
     push de
     nop
     rst $18
-    jp z, Jump_000_00d5
+    jp z, $00d5
 
     inc de
     ret nz
@@ -9142,7 +9142,7 @@ jr_034_698a:
     push de
     nop
     inc hl
-    call Call_000_00d5
+    call $00d5
     adc $bf
     push de
 
@@ -9154,13 +9154,13 @@ jr_034_6994:
     push de
     nop
     dec c
-    jp Jump_000_00d5
+    jp $00d5
 
 
     call c, $d5c7
     nop
     scf
-    call nc, Call_000_00d5
+    call nc, $00d5
     ldh [c], a
     db $ec
     push de
@@ -9205,7 +9205,7 @@ jr_034_69d0:
     cp $d5
     nop
     cp e
-    jp nc, Jump_000_00d5
+    jp nc, $00d5
 
     inc hl
     cp e

@@ -8,7 +8,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld h, $cd
     adc d
     ld [hl+], a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
     ld a, $31
@@ -695,7 +695,7 @@ Call_026_43d7:
 Call_026_43e5:
     ld hl, $cd6f
     ld bc, $000a
-    call Call_000_2282
+    call ZeroOutHL
     ret
 
 
@@ -1661,7 +1661,7 @@ jr_026_4780:
     nop
     nop
     call Call_000_228a
-    call Call_000_2299
+    call ZeroOutVRAM
     call Call_000_323d
     ld hl, $6dd4
     ld c, $29
@@ -1684,7 +1684,7 @@ jr_026_4780:
     call Call_000_22d9
     ld hl, $99c0
     ld bc, $0060
-    call Call_000_2282
+    call ZeroOutHL
     ld hl, $495c
     ld a, l
     ld [$cd28], a

@@ -9212,7 +9212,7 @@ jr_035_65b1:
 
 jr_035_6631:
     call nc, $fa68
-    call c, Call_000_00fc
+    call c, $00fc
     ld [hl], h
     sbc b
     ld a, [$de9c]
@@ -11008,7 +11008,7 @@ jr_035_6dc2:
     ld b, b
     db $f4
     ld [$dcee], sp
-    call nc, Call_000_00a8
+    call nc, $00a8
 
 jr_035_6df2:
     nop

@@ -172,7 +172,7 @@ SECTION "ROM Bank $01e", ROMX[$4000], BANK[$1e]
     ld e, [hl]
     nop
     inc bc
-    call z, Call_000_005e
+    call z, $005e
     nop
     ei
     ld e, [hl]
@@ -320,7 +320,7 @@ jr_01e_415a:
 jr_01e_4161:
     nop
     inc bc
-    jp c, Jump_000_0064
+    jp c, $0064
 
 jr_01e_4166:
     inc bc
@@ -12514,7 +12514,7 @@ jr_01e_7720:
     sub b
     ld e, e
     rrca
-    jp nz, Jump_000_0151
+    jp nz, $0151
 
     ld d, d
     db $fd
