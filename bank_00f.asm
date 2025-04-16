@@ -5727,10 +5727,10 @@ jr_00f_6202:
     ld [$ba4e], a
     ld a, [sSpriteDailyHappiness]
     bit 0, a
-    call nz, Call_00f_622e
+    call nz, SmallHappinessIncrease
     ld a, [sSpriteDailyHappiness]
     bit 1, a
-    call nz, Call_00f_6236
+    call nz, MediumHappinessIncrease
     ld a, [sSpriteDailyHappiness]
     bit 1, a
     call z, Call_00f_6240
@@ -5744,22 +5744,19 @@ jr_00f_6202:
     ld [sSpriteTotalHappiness], a
     ret
 
-
-Call_00f_622e:
+SmallHappinessIncrease:
     ld a, [sSpriteTotalHappiness]
     inc a
     ld [sSpriteTotalHappiness], a
     ret
 
-
-Call_00f_6236:
+MediumHappinessIncrease:
     ld a, [sSpriteTotalHappiness]
     inc a
     inc a
     inc a
     ld [sSpriteTotalHappiness], a
     ret
-
 
 Call_00f_6240:
     ld a, [sSpriteTotalHappiness]

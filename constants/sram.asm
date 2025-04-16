@@ -40,3 +40,4 @@ DEF sCurrentWaterInWateringCan EQU $b908
 
 DEF sSpriteTotalHappiness EQU $b9d7
 DEF sSpriteDailyHappiness EQU $b9d8
+DEF sSpriteDailyAnger EQU $b9d9

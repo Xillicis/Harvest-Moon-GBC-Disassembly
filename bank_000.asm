@@ -2769,7 +2769,7 @@ jr_000_0e66:
 
 jr_000_0e7b:
     ld a, $1c
-    call $16d1
+    call Call_000_16d1
     ret
 
 jr_000_0e81:
@@ -4267,9 +4267,9 @@ Data_000_1659: ; 0x1659
     db $af, $57, $06
     db $b5, $57, $06
     db $bb, $57, $06
-    db $ea
-    inc a
-    cp c
+
+Call_000_16d1:
+    ld [$b93c], a
     push hl
     push af
     ld l, $8e
@@ -4778,7 +4778,7 @@ jr_000_194a:
     cp NO_ITEM
     ret z
 
-    call $16d1
+    call Call_000_16d1
     ret
 
 
@@ -6854,7 +6854,7 @@ Call_000_25ce:
     push af
     ld a, $1e
     ld [MBC3RomBank], a
-
+; Check for data in bank 1e starting somewhere around $4001
 Call_000_25de:
     ld h, $00
     add hl, hl

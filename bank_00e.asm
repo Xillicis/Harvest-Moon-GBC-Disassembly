@@ -971,31 +971,22 @@ jr_00e_45eb:
     ld a, [hl]
     cp SICKLE
     jr z, jr_00e_4629
-
     cp HOE
     jr z, jr_00e_4629
-
     cp HAMMER
     jr z, jr_00e_4629
-
     cp AX
     jr z, jr_00e_4629
-
-    cp $13
+    cp SUPER_SICKLE
     jr z, jr_00e_4629
-
-    cp $14
+    cp SUPER_HOE
     jr z, jr_00e_4629
-
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_00e_4629
-
-    cp $15
+    cp SUPER_AX
     jr z, jr_00e_4629
-
     cp $53
     jr z, jr_00e_4629
-
     ld a, [$cc75]
     or a
     jp nz, Jump_00e_4733
@@ -1024,7 +1015,7 @@ jr_00e_4631:
 
     ret
 
-
+; Something with interacting with the Sprites, but I'm not completely sure
 jr_00e_464b:
     ld a, [wRightOrUpSideFacingTileID]
     cp $08
@@ -1046,34 +1037,24 @@ jr_00e_464b:
     ld a, [hl]
     cp NO_ITEM
     jp z, Jump_00e_48c7
-
     cp SICKLE
     jr z, jr_00e_46c8
-
     cp HOE
     jr z, jr_00e_46c8
-
     cp HAMMER
     jr z, jr_00e_4694
-
     cp AX
     jr z, jr_00e_46c8
-
-    cp $13
+    cp SUPER_SICKLE
     jr z, jr_00e_46c8
-
-    cp $14
+    cp SUPER_HOE
     jr z, jr_00e_46c8
-
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_00e_4694
-
-    cp $15
+    cp SUPER_AX
     jr z, jr_00e_46c8
-
     cp $53
     jr z, jr_00e_46f0
-
     ret
 
 
@@ -1084,17 +1065,17 @@ jr_00e_4694:
 
     ld a, [$ba0d]
     bit 0, a
-    jr z, jr_00e_46cf
+    jr z, ManageSpriteAnger
 
     bit 2, a
-    jr nz, jr_00e_46cf
+    jr nz, ManageSpriteAnger
 
     bit 1, a
-    jr nz, jr_00e_46cf
+    jr nz, ManageSpriteAnger
 
     ld a, [$cc79]
     cp $00
-    jr nz, jr_00e_46cf
+    jr nz, ManageSpriteAnger
 
     ld a, [sSpriteTotalHappiness]
     add $0a
@@ -1111,26 +1092,23 @@ jr_00e_46ba:
     ld [$ba0e], a
     ret
 
-
 jr_00e_46c8:
     ld a, [$cc75]
     or a
-    jr nz, jr_00e_46cf
-
+    jr nz, ManageSpriteAnger
     ret
 
-
-jr_00e_46cf:
+ManageSpriteAnger:
     ld a, $01
     ld [$cc6e], a
-    ld a, [$b9d9]
+    ld a, [sSpriteDailyAnger]
     inc a
-    ld [$b9d9], a
+    ld [sSpriteDailyAnger], a
     cp $05
     ret c
 
     xor a
-    ld [$b9d9], a
+    ld [sSpriteDailyAnger], a
     ld a, [sSpriteTotalHappiness]
     sub $0a
     ld [sSpriteTotalHappiness], a
@@ -1140,11 +1118,10 @@ jr_00e_46cf:
     ld [sSpriteTotalHappiness], a
     ret
 
-
 jr_00e_46f0:
     ld a, [$cc75]
     or a
-    jr nz, jr_00e_46cf
+    jr nz, ManageSpriteAnger
 
     ld a, [wRightOrUpSideFacingTileID]
     cp $62
@@ -1224,7 +1201,6 @@ Jump_00e_4749:
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_00e_4770:
     ld a, [$cc79]
@@ -1623,7 +1599,7 @@ jr_00e_49d6:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $3c
-    call $16d1
+    call Call_000_16d1
     xor a
     ld [$cb4a], a
     ld [$c620], a
