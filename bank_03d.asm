@@ -1886,7 +1886,7 @@ Call_03d_4995:
     call Call_000_23e9
 
 jr_03d_49ca:
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld a, [hl+]
     ldh [$ff93], a

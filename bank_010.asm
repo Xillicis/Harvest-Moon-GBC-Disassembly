@@ -10145,7 +10145,7 @@ jr_010_6efd:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a
@@ -11252,7 +11252,7 @@ jr_010_73d1:
     ret
 
 
-    jp nc, Jump_000_2269
+    jp nc, $2269
 
     ld hl, $0bff
     ld [$d1d6], sp

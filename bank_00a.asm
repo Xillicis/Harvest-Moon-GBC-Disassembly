@@ -5129,7 +5129,7 @@ jr_00a_556d:
     nop
     inc c
     inc b
-    call nz, Call_000_22c3
+    call nz, $22c3
     nop
     xor a
     push bc

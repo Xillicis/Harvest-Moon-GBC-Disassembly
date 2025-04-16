@@ -2383,7 +2383,7 @@ Call_01f_4b85:
 
 
     push bc
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld b, $0b
     ld hl, $9822
 

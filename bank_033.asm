@@ -1265,7 +1265,7 @@ jr_033_4621:
     ld b, [hl]
     ld a, [bc]
     ld b, a
-    call nc, Call_000_2346
+    call nc, $2346
     ld b, a
     ld d, l
     ld b, a

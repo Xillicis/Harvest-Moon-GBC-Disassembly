@@ -353,7 +353,7 @@ jr_01a_4161:
     db $fc
     nop
     ld a, [hl-]
-    jp nz, Jump_000_22da
+    jp nz, $22da
 
     ld [hl], h
     ld [$80fe], sp

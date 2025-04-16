@@ -9450,7 +9450,7 @@ jr_022_7191:
     db $eb
     dec c
     ldh a, [c]
-    call c, Call_000_23ff
+    call c, $23ff
     db $dd
     ldh a, [c]
     inc e

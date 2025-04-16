@@ -300,7 +300,7 @@ Call_006_41a5:
     ld l, a
     ld h, d
     push hl
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld de, $9821
     call Call_006_4463

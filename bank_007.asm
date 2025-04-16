@@ -13039,7 +13039,7 @@ jr_007_7832:
     call ZeroOutHL
     call Call_000_2273
     call Call_000_2424
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld hl, $79f9
     call Call_000_23e9
     call Call_000_2424
@@ -13137,7 +13137,7 @@ jr_007_78f0:
     call ZeroOutHL
     call Call_000_2273
     call Call_000_2424
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld hl, $79f9
     call Call_000_23e9
     call Call_000_2424
@@ -13170,7 +13170,7 @@ jr_007_78f0:
     call Call_000_24ea
 
 jr_007_7983:
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld hl, $9000
     ld bc, $0010
     call ZeroOutHL
@@ -13183,7 +13183,7 @@ jr_007_7983:
     ldh [rOBP1], a
     call Call_000_2273
     call Call_000_2424
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld hl, $7a19
     call Call_000_23e9
     call Call_000_2424

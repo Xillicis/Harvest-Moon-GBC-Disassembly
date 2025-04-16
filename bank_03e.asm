@@ -11599,7 +11599,7 @@ jr_03e_72e8:
     and l
     ld a, [de]
     inc bc
-    jp nz, Jump_000_2403
+    jp nz, $2403
 
     pop de
     inc e
@@ -13731,7 +13731,7 @@ jr_03e_7c16:
 
     cp d
     nop
-    jp Jump_000_01ef
+    jp $01ef
 
 
     ld a, a

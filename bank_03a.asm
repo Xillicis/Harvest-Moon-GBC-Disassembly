@@ -348,7 +348,7 @@ jr_03a_417a:
     add b
     sub $a8
     call z, $fa30
-    jp nz, Jump_000_22da
+    jp nz, $22da
 
     ld [hl], h
     jr jr_03a_417a

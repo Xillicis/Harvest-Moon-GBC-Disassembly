@@ -1834,7 +1834,7 @@ Call_009_4896:
     ret
 
 
-    jp nc, Jump_000_01b8
+    jp nc, $01b8
 
     rra
     add hl, de
@@ -5485,7 +5485,7 @@ Call_009_5d78:
     call Call_000_23e9
 
 jr_009_5d8d:
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld de, $9821
     ld b, $0b
@@ -7425,7 +7425,7 @@ jr_009_6593:
     ld [$cd67], a
     ld bc, $662b
     call Call_009_5d78
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     ld a, $af
     ld hl, $9922
     ld b, $10

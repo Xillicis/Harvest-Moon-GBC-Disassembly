@@ -1098,7 +1098,7 @@ jr_00d_45f3:
     ld b, [hl]
     ld a, [bc]
     ld b, a
-    call nc, Call_000_2346
+    call nc, $2346
     ld b, a
     ld d, l
     ld b, a
@@ -11837,7 +11837,7 @@ jr_00d_7ac3:
     cp b
     cp [hl]
     ld a, h
-    jp c, Jump_000_233c
+    jp c, $233c
 
     dec e
     inc hl
@@ -11862,7 +11862,7 @@ jr_00d_7ac3:
     di
     xor $f9
     ld d, $fd
-    jp nc, Jump_000_153e
+    jp nc, $153e
 
     inc a
     inc de

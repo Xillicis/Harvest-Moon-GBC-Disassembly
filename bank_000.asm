@@ -270,7 +270,7 @@ Start:
     ld hl, $dd00
     ld bc, $00ff
     call ZeroOutHL
-    call Call_000_2242
+    call InitializeHRAM
     xor a
     ldh [rBGP], a
     xor a
@@ -280,7 +280,7 @@ Start:
     call Call_000_2527
     ld a, $02
     ldh [$ff8d], a
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
@@ -310,17 +310,12 @@ Jump_000_01b1:
     xor a
     ldh [rIE], a
     ld sp, $dfef
-
-Jump_000_01b8:
     ld hl, $ff80
     ld bc, $007f
     call ZeroOutHL
-
-Call_000_01c1:
-Jump_000_01c1:
     ld a, $02
     ldh [$ff8d], a
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
@@ -330,16 +325,13 @@ Jump_000_01c1:
     ld hl, $c000
     ld bc, $1cff
     call ZeroOutHL
-    call Call_000_2242
+    call InitializeHRAM
     xor a
     ld [MBC3SRamBank], a
     ld a, [$dff7]
     cp $11
     jr nz, jr_000_01f9
-
     ld a, $01
-
-Jump_000_01ef:
     ld [$c0bb], a
     ld a, $00
     ld [$c0bc], a
@@ -361,7 +353,7 @@ jr_000_0202:
     ld [$c0a7], a
 
 Call_000_0207:
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     push hl
     push af
     ld l, $27
@@ -375,7 +367,7 @@ Jump_000_0210:
 
 Jump_000_0217:
     di
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     push hl
     push af
     ld l, $27
@@ -4231,11 +4223,10 @@ jr_000_1649:
     ld [hl], a
     ret
 
-
 RST_TableJumpBankSwitch: ; 0x1658
     rst $08
 
-Data_000_1659:
+Data_000_1659: ; 0x1659
     db $e4, $55, $06
     db $30, $56, $06
     db $77, $56, $06
@@ -6002,8 +5993,6 @@ JumpToFunctionInTable:
 TableJumpBankSwitch: ; 0x216c
     ld e, a
     ld d, $00
-
-Call_000_216f:
     ld l, a
     ld h, $00
     add hl, hl ; 2*a
@@ -6145,33 +6134,22 @@ jr_000_222f:
     ret
 
 
-Call_000_2242:
+InitializeHRAM: ; 0x2242
     ld c, $80
-    ld b, $0a
-    ld hl, $2250
-
-jr_000_2249:
+    ld b, 10
+    ld hl, Data_000_2250
+.loop
     ld a, [hl+]
     ldh [c], a
     inc c
     dec b
-    jr nz, jr_000_2249
-
+    jr nz, .loop
     ret
 
+Data_000_2250:
+    db $3e, $c0, $e0, $46, $3e, $28, $3d, $20, $fd, $c9
 
-    ld a, $c0
-    ldh [rDMA], a
-    ld a, $28
-
-jr_000_2256:
-    dec a
-    jr nz, jr_000_2256
-
-    ret
-
-
-Call_000_225a:
+SafeTurnOffLCDDuringVBlank:
     ld hl, rLCDC
     bit rLCDC_ENABLE, [hl]
     ret z
@@ -6184,8 +6162,6 @@ Call_000_225a:
 
 Wait:
     ldh a, [rLY]
-
-Jump_000_2269:
     cp LY_VBLANK
     jr nz, Wait
 
@@ -6245,9 +6221,7 @@ jr_000_22a4:
     ld a, b
     or c
     jr nz, jr_000_22a4
-
     ret
-
 
 jr_000_22ad:
     inc de
@@ -6265,13 +6239,9 @@ jr_000_22ad:
     rlca
     and $03
     jr z, jr_000_22d3
-
     dec a
     jr z, jr_000_22e2
-
     dec a
-
-Call_000_22c3:
     jr z, jr_000_22ea
 
 jr_000_22c5:
@@ -6297,17 +6267,11 @@ jr_000_22d3:
 Call_000_22d9:
 jr_000_22d9:
     xor a
-
-Jump_000_22da:
     ld [$cb75], a
-
-Call_000_22dd:
     ld a, [de]
     or a
     jr nz, jr_000_22ad
-
     ret
-
 
 jr_000_22e2:
     ld a, [de]
@@ -6330,7 +6294,6 @@ jr_000_22ea:
     ld b, a
     dec b
     jr nz, jr_000_22ea
-
     jr jr_000_22d9
 
 CopyHLtoDE:
@@ -6341,9 +6304,7 @@ CopyHLtoDE:
     inc de
     dec b
     jr nz, .loop
-
     ret
-
 
 CopyHLtoDEBig:
 ; copy `bc` bytes of data from address starting in `hl` to address starting at `de`.
@@ -6355,9 +6316,7 @@ CopyHLtoDEBig:
     ld a, b
     or c
     jr nz, .loop
-
     ret
-
 
 Call_000_2308:
     push hl
@@ -6391,32 +6350,24 @@ Call_000_2308:
     ld [MBC3RomBank], a
     ret
 
-
 Call_000_2334:
 jr_000_2334:
-    ld a, [hl+]
+    ld a, [hli]
     cp $ff
     jr z, jr_000_2341
-
     ld [de], a
     inc de
     dec bc
-
-Jump_000_233c:
     ld a, b
     or c
     jr nz, jr_000_2334
-
     ret
-
 
 jr_000_2341:
     ld a, [hli]
     ldh [$ffa4], a
     ld a, [hli]
     push hl
-
-Call_000_2346:
     ld h, a
     ldh a, [$ffa4]
     ld l, a
@@ -6451,22 +6402,16 @@ Call_000_235e:
     ld a, [$cb1c]
     cp $00
     jr z, jr_000_237a
-
     cp $01
     jr z, jr_000_2381
-
     cp $02
     jr z, jr_000_2388
-
     cp $03
     jr z, jr_000_238e
-
     cp $04
     jr z, jr_000_2394
-
     cp $05
     jr z, jr_000_239a
-
     ret
 
 
@@ -6587,12 +6532,8 @@ jr_000_23f9:
 
 jr_000_23fd:
     bit 0, d
-
-Call_000_23ff:
     ld a, $10
     jr nz, jr_000_2405
-
-Jump_000_2403:
     ld a, $20
 
 jr_000_2405:
@@ -6721,7 +6662,7 @@ jr_000_2486:
     nop
     push de
     push hl
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld a, $e4
     ldh [rBGP], a
@@ -6762,7 +6703,7 @@ Call_000_24ea:
     push de
     push af
     push hl
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld a, $e4
     ldh [rBGP], a

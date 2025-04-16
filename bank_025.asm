@@ -7667,7 +7667,7 @@ jr_025_6aef:
     ld bc, rDIV
     cp $01
     inc hl
-    call c, Call_000_22dd
+    call c, $22dd
     ld c, a
     jr nc, @+$01
 

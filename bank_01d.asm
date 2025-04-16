@@ -1869,7 +1869,7 @@ Call_01d_49c7:
     call Call_000_23e9
 
 jr_01d_49fc:
-    call Call_000_225a
+    call SafeTurnOffLCDDuringVBlank
     pop hl
     ld a, [hl+]
     ldh [$ff93], a

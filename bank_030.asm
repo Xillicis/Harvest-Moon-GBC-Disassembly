@@ -10143,7 +10143,7 @@ jr_030_6e71:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a

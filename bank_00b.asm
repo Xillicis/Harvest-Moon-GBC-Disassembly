@@ -1973,7 +1973,7 @@ jr_00b_486d:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a
@@ -4988,7 +4988,7 @@ jr_00b_556c:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a
@@ -7997,7 +7997,7 @@ jr_00b_6265:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a
@@ -10920,7 +10920,7 @@ jr_00b_6edd:
     ret z
 
     push de
-    call nz, Call_000_01c1
+    call nz, $01c1
     push de
     call nz, $cadb
     cp a
