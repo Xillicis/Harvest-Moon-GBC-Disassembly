@@ -526,18 +526,18 @@ jr_022_4329:
     ld a, [$ba0d]
     set 2, a
     ld [$ba0d], a
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $0a
     jr c, jr_022_433e
 
     sub $0a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
 jr_022_433e:
     xor a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
@@ -3095,7 +3095,7 @@ jr_022_4fe9:
 
 
 Call_022_4ff4:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $5a
     jr nc, jr_022_5008
 

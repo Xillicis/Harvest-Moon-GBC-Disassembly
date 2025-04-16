@@ -6154,16 +6154,14 @@ SafeTurnOffLCDDuringVBlank:
     bit rLCDC_ENABLE, [hl]
     ret z
 
-; if LCD is enabled, turn off vblank interrupt?
     ldh a, [rIE]
     push af
     res rIE_VBLANK, a
     ldh [rIE], a
-
-Wait:
+.wait
     ldh a, [rLY]
     cp LY_VBLANK
-    jr nz, Wait
+    jr nz, .wait
 
     res rLCDC_ENABLE, [hl]
     pop af
@@ -6585,7 +6583,6 @@ Call_000_2430:
     and $03
     cp $03
     jr nz, jr_000_2486
-
     ld a, $20
     ldh [rP1], a
     ldh a, [rP1]
@@ -6601,8 +6598,6 @@ Call_000_2430:
     ldh a, [rP1]
     ldh a, [rP1]
     ldh a, [rP1]
-
-Jump_000_2461:
     ldh a, [rP1]
     call Call_000_2424
     ld a, $30
@@ -6622,7 +6617,6 @@ Jump_000_2461:
     sub a
     ret
 
-
 jr_000_2486:
     ld hl, $2491
     call Call_000_23e9
@@ -6630,36 +6624,14 @@ jr_000_2486:
     scf
     ret
 
-    adc c
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    adc c
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+    db $89
+    db $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00, $00
+    db $89
+    db $01
+    db $00, $00, $00, $00, $00, $00, $00, $00
+    db $00, $00, $00, $00, $00, $00
+
     push de
     push hl
     call SafeTurnOffLCDDuringVBlank

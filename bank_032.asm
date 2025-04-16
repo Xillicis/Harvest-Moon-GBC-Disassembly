@@ -9541,7 +9541,7 @@ jr_032_6c06:
     or l
     jr z, jr_032_6ca9
 
-    ld de, $b9d7
+    ld de, sSpriteTotalHappiness
     ld b, $0a
 
 jr_032_6c96:
@@ -9859,7 +9859,7 @@ jr_032_6e1d:
 
 
 Call_032_6e1e:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $5a
     jr nc, jr_032_6e32
 

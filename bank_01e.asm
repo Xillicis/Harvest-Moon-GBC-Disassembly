@@ -9598,7 +9598,7 @@ jr_01e_6a49:
 
     ld [de], a
     ccf
-    jp nz, Jump_000_2461
+    jp nz, $2461
 
     ld c, d
     rst $28

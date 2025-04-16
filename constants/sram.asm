@@ -37,3 +37,6 @@ DEF sInventory EQU $b8f8
 DEF sItemSlot  EQU $b8fb
 
 DEF sCurrentWaterInWateringCan EQU $b908
+
+DEF sSpriteTotalHappiness EQU $b9d7
+DEF sSpriteDailyHappiness EQU $b9d8

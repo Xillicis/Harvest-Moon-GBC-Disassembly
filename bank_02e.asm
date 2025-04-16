@@ -1073,7 +1073,7 @@ jr_02e_4671:
     cp $00
     jr nz, jr_02e_46ac
 
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     add $0a
     cp $64
     jr c, jr_02e_4697
@@ -1081,7 +1081,7 @@ jr_02e_4671:
     ld a, $63
 
 jr_02e_4697:
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ld a, $0a
     call Call_000_0f47
     ld a, $01
@@ -1108,13 +1108,13 @@ jr_02e_46ac:
 
     xor a
     ld [$b9d9], a
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     sub $0a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret nc
 
     xor a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
@@ -1179,14 +1179,14 @@ Jump_02e_4710:
 
 Jump_02e_471e:
 jr_02e_471e:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $0a
     jp nc, Jump_02e_47da
 
 Jump_02e_4726:
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     set 0, a
-    ld [$b9d8], a
+    ld [sSpriteDailyHappiness], a
     call Call_02e_50f0
     ld a, [$ba0c]
     bit 0, a
@@ -1314,7 +1314,7 @@ Jump_02e_47da:
 
 
 jr_02e_47f4:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $1e
     jp c, Jump_02e_4726
 
@@ -1335,7 +1335,7 @@ jr_02e_47f4:
 
 
 jr_02e_4816:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $32
     jp c, Jump_02e_4726
 
@@ -1533,7 +1533,7 @@ Call_02e_4945:
 
 
 jr_02e_4955:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $3c
     jr nc, jr_02e_4967
 
@@ -1608,9 +1608,9 @@ jr_02e_49b3:
     call Call_000_25ce
     ld a, $08
     ld [$c912], a
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     set 1, a
-    ld [$b9d8], a
+    ld [sSpriteDailyHappiness], a
     call Call_02e_50f0
     ret
 
@@ -1693,9 +1693,9 @@ jr_02e_4a4a:
     call Call_000_25ce
     ld a, $08
     ld [$c912], a
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     set 1, a
-    ld [$b9d8], a
+    ld [sSpriteDailyHappiness], a
     call Call_02e_50f0
     ld a, [$cc19]
     ld [sItemSlot], a

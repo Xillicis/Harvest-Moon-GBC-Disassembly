@@ -5709,72 +5709,72 @@ jr_02f_61d0:
     bit 1, a
     jr nz, jr_02f_6202
 
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $0a
     jr c, jr_02f_61fc
 
     sub $0a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     jr jr_02f_6202
 
 jr_02f_61fc:
     xor a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     jr jr_02f_6202
 
 jr_02f_6202:
     xor a
     ld [$ba4e], a
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     bit 0, a
     call nz, Call_02f_622e
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     bit 1, a
     call nz, Call_02f_6236
-    ld a, [$b9d8]
+    ld a, [sSpriteDailyHappiness]
     bit 1, a
     call z, Call_02f_6240
     xor a
-    ld [$b9d8], a
-    ld a, [$b9d7]
+    ld [sSpriteDailyHappiness], a
+    ld a, [sSpriteTotalHappiness]
     cp $64
     ret c
 
     ld a, $63
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
 Call_02f_622e:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     inc a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
 Call_02f_6236:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     inc a
     inc a
     inc a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
 Call_02f_6240:
-    ld a, [$b9d7]
+    ld a, [sSpriteTotalHappiness]
     cp $03
     jr c, jr_02f_624e
 
     dec a
     dec a
     dec a
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret nc
 
 jr_02f_624e:
     ld a, $00
-    ld [$b9d7], a
+    ld [sSpriteTotalHappiness], a
     ret
 
 
