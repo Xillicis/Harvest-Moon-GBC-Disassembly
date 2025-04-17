@@ -377,7 +377,7 @@ jr_005_426c:
 Jump_005_427d:
 jr_005_427d:
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld [$cb34], a
     push bc
     ld a, $03
@@ -3459,7 +3459,7 @@ jr_005_50b5:
     ld a, [hl+]
     ld [$cb2f], a
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -3477,7 +3477,7 @@ jr_005_50b5:
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb32], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -3581,7 +3581,7 @@ jr_005_50b5:
     ld a, [hl+]
     ld [$cb2f], a
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -3599,7 +3599,7 @@ jr_005_50b5:
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb32], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -3634,7 +3634,7 @@ jr_005_50b5:
 
 
 Call_005_5296:
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     and $80
     ret z
 
@@ -3643,7 +3643,7 @@ Call_005_5296:
     jr nz, jr_005_52a9
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3652,7 +3652,7 @@ jr_005_52a9:
     jr nz, jr_005_52b3
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3661,7 +3661,7 @@ jr_005_52b3:
     jr nz, jr_005_52bd
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3670,7 +3670,7 @@ jr_005_52bd:
     jr nz, jr_005_52c7
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3679,12 +3679,12 @@ jr_005_52c7:
     ret nz
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
 Call_005_52d0:
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     and $80
     ret z
 
@@ -3693,7 +3693,7 @@ Call_005_52d0:
     jr nz, jr_005_52e3
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3702,7 +3702,7 @@ jr_005_52e3:
     jr nz, jr_005_52ed
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3711,7 +3711,7 @@ jr_005_52ed:
     ret nz
 
     ld a, $01
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ret
 
 
@@ -3802,7 +3802,7 @@ jr_005_52ed:
     ld a, [hl+]
     ld [$cb2f], a
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3822,7 +3822,7 @@ jr_005_52ed:
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb32], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
@@ -3933,7 +3933,7 @@ jr_005_52ed:
     ld a, [hl+]
     ld [$cb2f], a
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3953,7 +3953,7 @@ jr_005_52ed:
     ld a, [hl+]
     ld [$cb31], a
     ld a, [hl+]
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb32], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]

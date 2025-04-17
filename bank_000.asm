@@ -2704,7 +2704,7 @@ Call_000_0de8:
     ld [$cb1c], a
     ld [$c90d], a
     ld [$c912], a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld [$c910], a
     ld [$c90f], a
     ld [$c911], a
@@ -2899,9 +2899,9 @@ Call_000_0f10:
     ld [$cb2f], a
 
 Jump_000_0f13:
-    ld [wLeftOrDownSideFacingTile], a
+    ld [wcb30], a
     ld [wLeftOrDownSideFacingTileID], a
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb32], a
     ld [wRightOrUpSideFacingTileID], a
 
 Jump_000_0f1f:

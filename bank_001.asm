@@ -31,6 +31,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     call Call_000_228a
     call ZeroOutVRAM
     call Call_000_323d
+
     push hl
     push af
     ld l, $8d
@@ -857,20 +858,20 @@ Jump_001_453f:
 Call_001_456f:
 jr_001_456f:
     call Call_000_14f9
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4592
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_499d
 
@@ -911,20 +912,20 @@ Jump_001_4596:
 Call_001_45c6:
 jr_001_45c6:
     call Call_000_1502
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_45e9
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_499d
 
@@ -966,20 +967,20 @@ Jump_001_45f0:
 Call_001_4620:
 jr_001_4620:
     call Call_000_150b
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4643
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_49d1
 
@@ -1021,20 +1022,20 @@ Jump_001_464a:
 Call_001_467a:
 jr_001_467a:
     call Call_000_1514
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_469d
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_49d1
 
@@ -1128,20 +1129,20 @@ jr_001_46e3:
     ret nz
 
     call Call_000_1502
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4780
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_499d
 
@@ -1194,9 +1195,9 @@ jr_001_4780:
     call Call_001_6a09
     call Call_001_67d1
     call Call_000_1502
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4796
@@ -1229,20 +1230,20 @@ Jump_001_479a:
     ret nz
 
     call Call_000_14f9
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4825
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_499d
 
@@ -1294,9 +1295,9 @@ jr_001_47ea:
 jr_001_4825:
     call Call_001_6775
     call Call_000_14f9
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_4838
@@ -1329,20 +1330,20 @@ Jump_001_483c:
     ret nz
 
     call Call_000_150b
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_48c7
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_49d1
 
@@ -1395,9 +1396,9 @@ jr_001_48c7:
     call Call_001_6ad5
     call Call_001_682d
     call Call_000_150b
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_48dd
@@ -1430,20 +1431,20 @@ Jump_001_48e1:
     ret nz
 
     call Call_000_1514
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_496c
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_001_49d1
 
@@ -1495,9 +1496,9 @@ jr_001_4931:
 jr_001_496c:
     call Call_001_689f
     call Call_000_1514
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_001_497f
@@ -1892,9 +1893,9 @@ jr_001_4be2:
     ld hl, $c608
     ld bc, $fff8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -1906,9 +1907,9 @@ jr_001_4be2:
     ld hl, $c608
     ld bc, $fff0
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -1920,9 +1921,9 @@ jr_001_4be2:
     ld hl, $c608
     ld bc, $ffe8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -1955,9 +1956,9 @@ jr_001_4c6e:
     ld hl, $c608
     ld bc, $0008
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -1969,9 +1970,9 @@ jr_001_4c6e:
     ld hl, $c608
     ld bc, $0010
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -1983,9 +1984,9 @@ jr_001_4c6e:
     ld hl, $c608
     ld bc, $0018
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2018,9 +2019,9 @@ Jump_001_4cf5:
     ld hl, $c606
     ld bc, $fff8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -2032,9 +2033,9 @@ Jump_001_4cf5:
     ld hl, $c606
     ld bc, $fff0
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -2046,9 +2047,9 @@ Jump_001_4cf5:
     ld hl, $c606
     ld bc, $ffe8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -2080,9 +2081,9 @@ jr_001_4d7e:
     ld hl, $c606
     ld bc, $0008
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2094,9 +2095,9 @@ jr_001_4d7e:
     ld hl, $c606
     ld bc, $0010
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2108,9 +2109,9 @@ jr_001_4d7e:
     ld hl, $c606
     ld bc, $0018
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2142,9 +2143,9 @@ Jump_001_4e03:
     ld hl, $c606
     ld bc, $0008
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -2156,9 +2157,9 @@ Jump_001_4e03:
     ld hl, $c606
     ld bc, $0010
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -2170,9 +2171,9 @@ Jump_001_4e03:
     ld hl, $c606
     ld bc, $0018
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -2204,9 +2205,9 @@ jr_001_4e8c:
     ld hl, $c606
     ld bc, $fff8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2218,9 +2219,9 @@ jr_001_4e8c:
     ld hl, $c606
     ld bc, $fff0
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2232,9 +2233,9 @@ jr_001_4e8c:
     ld hl, $c606
     ld bc, $ffe8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2334,9 +2335,9 @@ jr_001_4f94:
     ld hl, $c606
     ld bc, $0008
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2348,9 +2349,9 @@ jr_001_4f94:
     ld hl, $c606
     ld bc, $000e
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2405,9 +2406,9 @@ Jump_001_502c:
     ld hl, $c606
     ld bc, $fff8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2419,9 +2420,9 @@ Jump_001_502c:
     ld hl, $c606
     ld bc, $fff2
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2468,16 +2469,16 @@ Jump_001_50ba:
     ld hl, $c608
     ld bc, $0008
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
 
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $02
     ret nz
@@ -2489,16 +2490,16 @@ Jump_001_50ba:
     ld hl, $c608
     ld bc, $000e
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
 
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $02
     ret nz
@@ -2510,16 +2511,16 @@ Jump_001_50ba:
     ld hl, $c608
     ld bc, $0018
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
 
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $02
     ret nz
@@ -2566,9 +2567,9 @@ Jump_001_5189:
     ld hl, $c608
     ld bc, $fffc
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2592,9 +2593,9 @@ jr_001_51b8:
     ld hl, $c608
     ld bc, $fff8
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2618,9 +2619,9 @@ jr_001_51e7:
     ld hl, $c608
     ld bc, $fff2
     call Call_000_0cce
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     ret nz
@@ -2724,7 +2725,7 @@ jr_001_529f:
     or a
     jp nz, Jump_001_56a2
 
-    ld a, [$c90e]
+    ld a, [wCollisionNoMovement]
     or a
     ret z
 
@@ -2760,7 +2761,7 @@ jr_001_52d8:
     ld a, $18
     call $16d1
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ldh [$ffa4], a
     jp Jump_001_5458
 
@@ -3114,7 +3115,7 @@ Jump_001_5517:
     ld a, $17
     call $16d1
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $1a
@@ -3176,7 +3177,7 @@ Call_001_557f:
     or a
     ret nz
 
-    ld a, [$c90e]
+    ld a, [wCollisionNoMovement]
     or a
     ret z
 
@@ -6092,7 +6093,7 @@ Call_001_6775:
     ld a, $05
     ld [$c611], a
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c609]
     cp $02
     jr nz, jr_001_678b
@@ -6154,7 +6155,7 @@ Call_001_67d1:
     ld a, $05
     ld [$c611], a
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c609]
     cp $00
     jr nz, jr_001_67e7
@@ -6216,7 +6217,7 @@ Call_001_682d:
     ld a, $05
     ld [$c611], a
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c607]
     cp $00
     jr nz, jr_001_6843
@@ -6293,7 +6294,7 @@ Call_001_689f:
     ld a, $05
     ld [$c611], a
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$b90b]
     or a
     jr z, jr_001_68cb
@@ -6616,11 +6617,11 @@ jr_001_6a3e:
 
 
 jr_001_6a53:
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     and $40
     ret nz
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $40
     ret nz
 
@@ -6721,7 +6722,7 @@ Call_001_6ad5:
     cp $13
     ret nz
 
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     cp $00
     ret nz
 
@@ -8235,7 +8236,7 @@ Call_001_7336:
     ld [$cb1c], a
     ld [$c90d], a
     ld [$c912], a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld [$c910], a
     ld [$c90f], a
     ld [$c911], a
@@ -8255,8 +8256,8 @@ Call_001_7336:
 
 Call_001_7374:
     xor a
-    ld [wLeftOrDownSideFacingTile], a
-    ld [wRightOrUpSideFacingTile], a
+    ld [wcb30], a
+    ld [wcb32], a
     ld [$cb34], a
     ret
 

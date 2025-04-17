@@ -2097,7 +2097,7 @@ Jump_023_4cbe:
 
 
 jr_023_4cc6:
-    ld a, [$c90e]
+    ld a, [wCollisionNoMovement]
     or a
     ret z
 
@@ -2218,7 +2218,7 @@ jr_023_4d6d:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld hl, $d800
     ld de, $015a
     add hl, de
@@ -2988,20 +2988,20 @@ jr_023_5220:
     xor a
     ld [$cc29], a
     call Call_000_14f9
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_525a
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54a7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54ba
 
@@ -3026,20 +3026,20 @@ jr_023_525e:
     xor a
     ld [$cc29], a
     call Call_000_1502
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_5298
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54a7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54ba
 
@@ -3064,20 +3064,20 @@ Jump_023_529c:
     xor a
     ld [$cc29], a
     call Call_000_150b
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_52d5
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54cd
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54e0
 
@@ -3102,20 +3102,20 @@ Jump_023_52d9:
     xor a
     ld [$cc29], a
     call Call_000_1514
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_5312
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54cd
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54e0
 
@@ -3260,20 +3260,20 @@ jr_023_53ab:
     xor a
     ld [$cc29], a
     call Call_000_1502
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_53f0
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54a7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54ba
 
@@ -3297,20 +3297,20 @@ jr_023_53f7:
     xor a
     ld [$cc29], a
     call Call_000_14f9
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_542c
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jp z, Jump_023_54a7
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jp z, Jump_023_54ba
 
@@ -3334,20 +3334,20 @@ jr_023_5433:
     xor a
     ld [$cc29], a
     call Call_000_150b
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_5466
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jr z, jr_023_54cd
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jr z, jr_023_54e0
 
@@ -3371,20 +3371,20 @@ Jump_023_546d:
     xor a
     ld [$cc29], a
     call Call_000_1514
-    ld a, [wLeftOrDownSideFacingTile]
+    ld a, [wcb30]
     ld b, a
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     or b
     and $01
     jr z, jr_023_54a0
 
     ld a, $01
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, b
     and $01
     jr z, jr_023_54cd
 
-    ld a, [wRightOrUpSideFacingTile]
+    ld a, [wcb32]
     and $01
     jr z, jr_023_54e0
 
@@ -3457,7 +3457,7 @@ jr_023_54e0:
 
 Call_023_54f3:
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c608]
     cp $a3
     jr nc, jr_023_551b
@@ -3500,7 +3500,7 @@ jr_023_551b:
 
 Call_023_5526:
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c608]
     cp $0e
     ret c
@@ -3537,7 +3537,7 @@ jr_023_554d:
 
 Call_023_5554:
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c606]
     cp $18
     ret c
@@ -3624,7 +3624,7 @@ jr_023_55bd:
 
 Call_023_55c4:
     xor a
-    ld [$c90e], a
+    ld [wCollisionNoMovement], a
     ld a, [$c606]
     cp $f8
     ret nc
