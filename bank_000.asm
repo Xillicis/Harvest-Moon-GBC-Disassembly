@@ -800,7 +800,6 @@ Call_000_0407:
     ldh [c], a
     dec d
     jr nz, .loop
-
     ret
 
 

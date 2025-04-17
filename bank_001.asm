@@ -5,33 +5,18 @@
 
 SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 
-    ld bc, $4e7c
-    add h
-    nop
-    or d
-    add hl, sp
-    ld a, a
-    ld b, a
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    halt
-    dec c
-    ld a, a
-    ld b, a
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    ld a, a
-    dec b
-    ld a, a
-    ld b, a
+; OBJ Color Palette data
+    db $01
+; 0x4001
+    RGB 28,19,19, 4,4,0, 18,13,14, 31,27,17
+; 0x4009
+    RGB 28,19,19, 4,4,0, 22,11,3, 31,27,17
+; 0x4011
+    RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
+
     call Call_000_228a
     call ZeroOutVRAM
     call Call_000_323d
-
     push hl
     push af
     ld l, $8d

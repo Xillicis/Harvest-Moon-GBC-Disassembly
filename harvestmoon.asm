@@ -5,6 +5,7 @@
 
 INCLUDE "hardware.inc"
 INCLUDE "macros/const.asm"
+INCLUDE "macros/gfx.asm"
 INCLUDE "constants/ram.asm"
 INCLUDE "constants/sram.asm"
 INCLUDE "constants/hardware_constants.asm"
