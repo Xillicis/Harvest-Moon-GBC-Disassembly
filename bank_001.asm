@@ -69,6 +69,7 @@ jr_001_4062:
     ld c, $0b
     ld de, $8800
     call Call_000_31a0
+; loads the dirt tile into the BGMap1 I think...
     ld hl, $4001
     ld c, $0b
     ld de, $9000

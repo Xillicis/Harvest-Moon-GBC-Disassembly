@@ -11621,7 +11621,7 @@ jr_01d_7948:
     db $f4
     ld hl, sp+$7a
     db $fc
-    jp c, Jump_000_3238
+    jp c, $3238
 
     pop af
 

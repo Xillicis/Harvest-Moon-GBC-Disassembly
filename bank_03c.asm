@@ -4782,7 +4782,7 @@ jr_03c_549f:
 
 
     ld h, $a4
-    call c, Call_000_31ff
+    call c, $31ff
     pop af
     sub d
     xor [hl]

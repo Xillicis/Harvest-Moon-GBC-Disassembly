@@ -11244,7 +11244,7 @@ jr_025_7ab2:
     ld c, c
 
 jr_025_7aba:
-    call z, Call_000_044e
+    call z, $044e
     ld d, d
     dec hl
     rst $38

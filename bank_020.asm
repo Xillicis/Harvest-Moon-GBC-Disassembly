@@ -7527,7 +7527,7 @@ jr_020_6123:
     ld a, a
     ld bc, $3afe
     rst $38
-    call nz, Call_000_04c0
+    call nz, $04c0
     inc b
     nop
     ld l, b

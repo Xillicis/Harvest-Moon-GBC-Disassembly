@@ -14338,7 +14338,7 @@ jr_019_7d45:
     nop
     ld b, $00
     ldh a, [$ffc0]
-    call z, Call_000_3230
+    call z, $3230
     db $fc
     add hl, sp
     cp $19

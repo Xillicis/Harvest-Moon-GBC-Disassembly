@@ -9148,7 +9148,7 @@ Jump_028_6cb3:
     rst $38
     rlca
     ld hl, sp+$3e
-    jp nz, Jump_000_31f1
+    jp nz, $31f1
 
     nop
     nop

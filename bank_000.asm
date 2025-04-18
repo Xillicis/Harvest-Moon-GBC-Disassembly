@@ -688,7 +688,7 @@ Call_000_039b:
     ldh [c], a
     inc c
     ld b, 32
-.loop ; iterate 20 times. Why?
+.loop ; iterate 32 times. Why?
     ; what does `hl` have?
     ld a, [hli]
     ldh [c], a
@@ -813,32 +813,12 @@ Call_000_0436:
     call SyncLoadSpritePalette8
     ret
 
-
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    ld l, a
-    dec l
-    ld a, a
-    ld b, a
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    ld l, a
-    dec l
-    ld a, a
-    ld b, a
-    ld a, h
-
-Call_000_044e:
-    ld c, [hl]
-    add h
-    nop
-    nop
-    dec de
-    ld hl, sp+$03
+; 00x043d
+    RGB 28,19,19, 4,4,0, 15,11,11, 31,27,17
+; 00x0445
+    RGB 28,19,19, 4,4,0, 15,11,11, 31,27,17
+; 00x044d
+    RGB 28,19,19, 4,4,0,  0,24,6,  24,31,0
 
 Call_000_0455:
     ld hl, $9c00
@@ -942,8 +922,6 @@ Call_000_0455:
     ld e, e
     ld e, e
     ld e, e
-
-Call_000_04c0:
     ld e, e
     ld e, e
     ld e, e
@@ -9372,6 +9350,10 @@ jr_000_319e:
     ld h, h
     scf
 
+; Something very complicated...
+; `hl` points to some data
+; `de` looks like pointing to some VRAM memory
+; `c` is the bank to load the data from
 Call_000_31a0:
     ld a, [MBC3SRamBank]
     push af
@@ -9396,7 +9378,7 @@ jr_000_31bc:
     and a
     jr nz, jr_000_31c4
 
-    ld a, [hl+]
+    ld a, [hli]
     ld b, a
     ld c, $08
 
@@ -9436,25 +9418,17 @@ jr_000_31cf:
     ld a, d
     sbc b
     ld b, a
-
-Jump_000_31f1:
     ldh a, [$ffb9]
     cp b
     jr c, jr_000_3218
-
     jr nz, jr_000_31ff
-
     ldh a, [$ffb8]
     cp c
     jr c, jr_000_3218
-
     jr z, jr_000_3218
 
-Call_000_31ff:
 jr_000_31ff:
     ld a, c
-
-Call_000_3200:
     xor $ff
     inc a
     ld b, a
@@ -9504,8 +9478,6 @@ jr_000_3224:
 
     ldh a, [$ffbc]
     ld c, a
-
-Call_000_3230:
     ld a, e
     cp c
     jr nc, jr_000_3237
@@ -9516,12 +9488,9 @@ jr_000_3234:
 
 jr_000_3237:
     pop bc
-
-Jump_000_3238:
     pop af
     ld [MBC3RomBank], a
     ret
-
 
 Call_000_323d:
     ld b, $a0

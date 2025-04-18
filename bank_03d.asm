@@ -11312,7 +11312,7 @@ jr_03d_77c8:
     ld hl, sp+$7a
     db $fc
     adc a
-    jp c, Jump_000_3238
+    jp c, $3238
 
 jr_03d_77d6:
     nop
