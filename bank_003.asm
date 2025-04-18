@@ -826,7 +826,7 @@ jr_003_4522:
     ld a, [hl+]
     ld l, [hl]
     ld h, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $04
     ld [hl+], a
     ld [hl], a
@@ -836,7 +836,7 @@ jr_003_4522:
     ld a, $00
     adc h
     ld h, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $04
     ld [hl+], a
     ld [hl], a

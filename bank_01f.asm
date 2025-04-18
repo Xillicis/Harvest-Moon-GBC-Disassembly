@@ -485,7 +485,7 @@ jr_01f_42a8:
     ld b, $40
 
 jr_01f_42ce:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     ld [hl+], a
     dec b

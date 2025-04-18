@@ -3301,7 +3301,7 @@ jr_025_500a:
     ld b, $08
 
 jr_025_501e:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de

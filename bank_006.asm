@@ -1956,7 +1956,7 @@ jr_006_4989:
     ld d, $08
 
 jr_006_4993:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ldh [c], a
     dec d

@@ -331,7 +331,7 @@ jr_001_423d:
     ld b, $fa
     ld c, $e0
     call Call_000_195e
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $a9
     call Call_000_1fb5
     ld [hl+], a
@@ -344,7 +344,7 @@ jr_001_423d:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $a9
     call Call_000_1fb5
     ld [hl+], a
@@ -357,7 +357,7 @@ jr_001_423d:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $a9
     call Call_000_1fb5
     ld [hl+], a
@@ -3051,11 +3051,11 @@ jr_001_54d3:
     call Call_000_195e
 
 jr_001_54e0:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffa6]
     call Call_000_1fb5
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffa7]
     call Call_000_1fb5
     ld [hl], a
@@ -3065,11 +3065,11 @@ jr_001_54e0:
     ld a, $00
     adc h
     ld h, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffa8]
     call Call_000_1fb5
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffa9]
     call Call_000_1fb5
     ld [hl], a
@@ -3491,7 +3491,7 @@ jr_001_5748:
     ld [hl], a
     call Call_001_691e
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $03
     call Call_000_1fb5
     ld [hl+], a
@@ -3505,7 +3505,7 @@ jr_001_5748:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $13
     call Call_000_1fb5
     ld [hl+], a
@@ -3641,7 +3641,7 @@ jr_001_5811:
     ld [hl], a
     call Call_001_691e
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $20
     call Call_000_1fb5
     ld [hl+], a
@@ -3655,7 +3655,7 @@ jr_001_5811:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $30
     call Call_000_1fb5
     ld [hl+], a
@@ -5907,7 +5907,7 @@ jr_001_6668:
     jr nz, jr_001_6696
 
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5920,7 +5920,7 @@ jr_001_6668:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5937,7 +5937,7 @@ jr_001_6696:
 Jump_001_669e:
     push hl
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5945,7 +5945,7 @@ Jump_001_669e:
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5960,7 +5960,7 @@ Jump_001_669e:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5968,7 +5968,7 @@ Jump_001_669e:
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5983,7 +5983,7 @@ Jump_001_669e:
     ld h, a
     push hl
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -5991,7 +5991,7 @@ Jump_001_669e:
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -6005,7 +6005,7 @@ Jump_001_669e:
     adc h
     ld h, a
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a
@@ -6013,7 +6013,7 @@ Jump_001_669e:
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     xor a
     call Call_000_1fb5
     ld [hl+], a

@@ -1496,7 +1496,7 @@ Call_005_47ed:
     pop hl
     push hl
     ld c, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld [hl], a
@@ -1506,7 +1506,7 @@ Call_005_47ed:
     ld a, $00
     adc h
     ld h, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld [hl], a
@@ -3356,7 +3356,7 @@ jr_005_50a1:
     ld b, $08
 
 jr_005_50b5:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de

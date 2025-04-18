@@ -5277,11 +5277,11 @@ jr_020_56ad:
     ldh a, [$ffab]
     ld hl, $5716
     call Call_000_0a3e
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $02
     ld [hl+], a
     ld [hl], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $1f
     add l
     ld l, a
@@ -5297,11 +5297,11 @@ jr_020_5750:
     ldh [$ffab], a
     ld hl, $5716
     call Call_000_0a3e
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $07
     ld [hl+], a
     ld [hl], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $1f
     add l
     ld l, a
@@ -6316,7 +6316,7 @@ jr_020_5c48:
     ld b, $04
 
 jr_020_5c4a:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     ld [hl+], a
     inc de
@@ -6334,7 +6334,7 @@ jr_020_5c60:
     ld b, $04
 
 jr_020_5c62:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     ld [hl+], a
     inc de

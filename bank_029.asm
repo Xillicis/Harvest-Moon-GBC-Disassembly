@@ -4612,7 +4612,7 @@ jr_029_5876:
     ld b, $09
 
 jr_029_587e:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     ld [hl+], a
     inc de
@@ -4641,7 +4641,7 @@ jr_029_5890:
     ld b, $09
 
 jr_029_58a1:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $af
     ld [hl+], a
     dec b

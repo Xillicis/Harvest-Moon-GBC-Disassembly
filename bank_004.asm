@@ -3585,7 +3585,7 @@ jr_004_5616:
     ld a, $04
     ld [hl+], a
     ld [hl], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $1f
     add l
     ld l, a
@@ -3709,7 +3709,7 @@ jr_004_56dc:
     ld c, $4f
     ld a, $01
     ldh [c], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $04
     ld hl, $99d1
     ld [hl+], a

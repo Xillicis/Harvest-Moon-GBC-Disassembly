@@ -8271,7 +8271,7 @@ Call_00f_70b2:
     ld c, $4f
     ld a, $01
     ldh [c], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $04
     ld [hl+], a
     ld [hl], a
@@ -8281,7 +8281,7 @@ Call_00f_70b2:
     ld a, $00
     adc h
     ld h, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $04
     ld [hl+], a
     ld [hl], a
@@ -8555,7 +8555,7 @@ jr_00f_71e1:
     push bc
     pop de
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld c, $68
     ld a, $80
     ldh [c], a
@@ -8565,7 +8565,7 @@ jr_00f_71e1:
 
 jr_00f_722d:
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     or e
     ldh [c], a
@@ -8579,7 +8579,7 @@ jr_00f_722d:
     inc c
     ld hl, $dd42
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $80
     ldh [c], a
     ei
@@ -8588,7 +8588,7 @@ jr_00f_722d:
 
 jr_00f_724a:
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     or e
     ldh [c], a
@@ -8885,7 +8885,7 @@ jr_00f_7382:
     push bc
     pop de
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld c, $68
     ld a, $80
     ldh [c], a
@@ -8895,7 +8895,7 @@ jr_00f_7382:
 
 jr_00f_73d2:
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     or e
     ldh [c], a
@@ -8909,7 +8909,7 @@ jr_00f_73d2:
     inc c
     ld hl, $dd42
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $80
     ldh [c], a
     ei
@@ -8918,7 +8918,7 @@ jr_00f_73d2:
 
 jr_00f_73ef:
     di
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     or e
     ldh [c], a

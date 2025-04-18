@@ -779,7 +779,7 @@ Call_000_0407:
     ld c, rOBPD_c
     ld d, $08
 .loop
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hli]
     ldh [c], a
     dec d
@@ -793,7 +793,7 @@ Call_000_0418:
     ld c, rBGPD_c
     ld d, $08
 .loop
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hli]
     ldh [c], a
     dec d
@@ -2616,51 +2616,49 @@ Call_000_0d90:
     ret
 
 
-Call_000_0da9:
+SyncToBlankPeriod:
     ldh a, [rLY]
-    cp $66
-    jr z, .jr_000_0dc9
-    cp $67
-    jr z, .jr_000_0dc9
-    cp $68
-    jr z, .jr_000_0dcf
-    cp $69
-    jr z, .jr_000_0dd5
-    cp $6a
-    jr z, .jr_000_0dd5
-    cp $6b
-    jr z, .jr_000_0ddb
-    cp $8f
-    jr z, .jr_000_0dd5
-    jr .PPU0ModeWait
+    cp 102
+    jr z, .hBlankSync_102_103
+    cp 103
+    jr z, .hBlankSync_102_103
+    cp 104
+    jr z, .hBlankSync_104
+    cp 105
+    jr z, .hBlankSync_105_106
+    cp 106
+    jr z, .hBlankSync_105_106
+    cp 107
+    jr z, .hBlankSync_107
+    cp 143
+    jr z, .hBlankSync_105_106
+    jr .vBlankSync_143
 
-.jr_000_0dc9
+.hBlankSync_102_103
     ldh a, [rSTAT]
     and 1 << rSTAT_PPU_MODE_1
-    jr nz, .jr_000_0dc9
+    jr nz, .hBlankSync_102_103
 
-.jr_000_0dcf
+.hBlankSync_104
     ldh a, [rSTAT]
     and 1 << rSTAT_PPU_MODE_1
-    jr nz, .jr_000_0dcf
+    jr nz, .hBlankSync_104
 
-.jr_000_0dd5
+.hBlankSync_105_106
     ldh a, [rSTAT]
     and 1 << rSTAT_PPU_MODE_1
-    jr nz, .jr_000_0dd5
+    jr nz, .hBlankSync_105_106
 
-.jr_000_0ddb
+.hBlankSync_107
     ldh a, [rSTAT]
     and 1 << rSTAT_PPU_MODE_1
-    jr nz, .jr_000_0ddb
+    jr nz, .hBlankSync_107
 
-.PPU0ModeWait:
+.vBlankSync_143
     ldh a, [rSTAT]
     and 1 << rSTAT_PPU_MODE_1
-    jr nz, .PPU0ModeWait
-
+    jr nz, .vBlankSync_143
     ret
-
 
 Call_000_0de8:
     di
@@ -5543,7 +5541,7 @@ Call_000_1fb5:
     ld c, rVBK_c
     ld a, $01
     ldh [c], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffaa]
     ld hl, $1fd8
     add l
@@ -5557,7 +5555,7 @@ Call_000_1fb5:
     ld c, rVBK_c
     xor a
     ldh [c], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ldh a, [$ffaa]
     ret
 
@@ -11069,7 +11067,7 @@ Jump_000_393c:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [de], a
     ld a, [$cb6c]
@@ -11079,7 +11077,7 @@ Jump_000_393c:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [de], a
     ret
@@ -11099,7 +11097,7 @@ Call_000_396d:
 
 Call_000_397f:
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [de], a
     ld a, [$cb6c]
@@ -11109,7 +11107,7 @@ Call_000_397f:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [de], a
     ldh a, [$ff8b]
@@ -11130,7 +11128,7 @@ jr_000_39a9:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [de], a
     ld a, [$cb6d]
@@ -11142,7 +11140,7 @@ jr_000_39a9:
 Call_000_39c6:
     adc d
     ld d, a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [de], a
     ldh a, [$ff8b]
@@ -11200,11 +11198,11 @@ Call_000_3a18:
     ld b, $04
 
 jr_000_3a21:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld [hl+], a
@@ -11215,11 +11213,11 @@ jr_000_3a21:
     ld b, $04
 
 jr_000_3a35:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hli], a
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld [hl+], a
@@ -11227,21 +11225,21 @@ jr_000_3a35:
     jr nz, jr_000_3a35
 
     ld hl, $9c32
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl], a
     ld hl, $9c50
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ld hl, $9c72
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, c
     ld [hl+], a
     ret
@@ -11279,20 +11277,20 @@ Call_000_3a6f:
     cp $00
     jr z, jr_000_3aa6
 
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [$9c6d], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [$9c62], a
     ret
 
 
 jr_000_3aa6:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [$9c62], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [$9c6d], a
     ret
@@ -11354,20 +11352,20 @@ Jump_000_3aed:
     cp $00
     jr z, jr_000_3b19
 
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [$9c6d], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [$9c62], a
     ret
 
 
 jr_000_3b19:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [$9c62], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
 
 Call_000_3b28:
@@ -11457,7 +11455,7 @@ Jump_000_3b88:
     ld a, [hl]
     ld h, a
     ld l, e
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [hl], a
     ldh a, [$ff8b]
@@ -11573,7 +11571,7 @@ Call_000_3c38:
     ld l, e
 
 Jump_000_3c3c:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [hl], a
     ret
@@ -11877,33 +11875,33 @@ Call_000_3e00:
 
 Call_000_3e1a:
     ld hl, $9c30
-    call Call_000_0da9
+    call SyncToBlankPeriod
 
 Call_000_3e20:
     ld a, $88
     ld [hl+], a
     inc a
     ld [hl], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
 
 Call_000_3e28:
     ld a, $8a
     ld [$9c32], a
     inc a
     ld [$9c50], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $8c
     ld [$9c51], a
     inc a
     ld [$9c52], a
 
 Jump_000_3e3d:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $8e
     ld [$9c70], a
     inc a
     ld [$9c71], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $9f
     ld [$9c72], a
     ld hl, sInventory
@@ -11959,7 +11957,7 @@ jr_000_3e95:
     ld c, $10
 
 jr_000_3e97:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de
@@ -11976,7 +11974,7 @@ jr_000_3ea8:
     ld c, $10
 
 jr_000_3eaa:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de
@@ -12062,7 +12060,7 @@ jr_000_3ef6:
 
 Call_000_3efc:
 jr_000_3efc:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $c3
 
 Jump_000_3f01:
@@ -12083,7 +12081,7 @@ Call_000_3f0b:
     ldh [$ff96], a
     ld a, $68
     ldh [$ff95], a
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, $e3
     ld [$c0a2], a
     ldh [rLCDC], a
@@ -12178,7 +12176,7 @@ Jump_000_3f87:
     ld c, $10
 
 jr_000_3f98:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de

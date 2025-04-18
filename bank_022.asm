@@ -5671,7 +5671,7 @@ jr_022_5e6b:
     ld b, $10
 
 jr_022_5e8d:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [hl+]
     ld [de], a
     inc de
@@ -6824,7 +6824,7 @@ jr_022_6556:
     ld c, $10
 
 jr_022_655e:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6837,7 +6837,7 @@ jr_022_6567:
     ld c, $10
 
 jr_022_656f:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6850,7 +6850,7 @@ jr_022_6578:
     ld c, $10
 
 jr_022_6580:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6863,7 +6863,7 @@ jr_022_6589:
     ld c, $10
 
 jr_022_6591:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6876,7 +6876,7 @@ jr_022_659a:
     ld c, $10
 
 jr_022_65a2:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6889,7 +6889,7 @@ Jump_022_65ab:
     ld c, $10
 
 jr_022_65b3:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6902,7 +6902,7 @@ Jump_022_65bc:
     ld c, $10
 
 jr_022_65c4:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6915,7 +6915,7 @@ Jump_022_65cd:
     ld c, $10
 
 jr_022_65d5:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6928,7 +6928,7 @@ Jump_022_65de:
     ld c, $10
 
 jr_022_65e6:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
@@ -6941,7 +6941,7 @@ Jump_022_65ef:
     ld c, $10
 
 jr_022_65f7:
-    call Call_000_0da9
+    call SyncToBlankPeriod
     ld a, [de]
     inc de
     ld [hl+], a
