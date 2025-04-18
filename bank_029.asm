@@ -7,7 +7,7 @@ SECTION "ROM Bank $029", ROMX[$4000], BANK[$29]
 
     add hl, hl
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     push hl
     push af
@@ -3955,7 +3955,7 @@ jr_029_53d5:
 Call_029_5404:
     push hl
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $57a0
     ld c, $3c
@@ -4136,7 +4136,7 @@ jr_029_555e:
 
 
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $76b8
     ld c, $26
@@ -4243,7 +4243,7 @@ Call_029_5614:
 
 Call_029_5627:
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $4001
     ld a, $31

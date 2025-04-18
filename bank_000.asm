@@ -6182,21 +6182,20 @@ BeginZeroing:
     jr nz, .loop
     ret
 
-ZeroOutVRAM:
+ClearBGMap1:
     ld hl, $9fff
     jr BeginZeroing
 
 Call_000_229e:
     ld hl, $9bff
     ld bc, $0400
-
-jr_000_22a4:
+.loop
     ldh a, [$ffa4]
-    ld [hl-], a
+    ld [hld], a
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_22a4
+    jr nz, .loop
     ret
 
 jr_000_22ad:

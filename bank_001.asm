@@ -15,7 +15,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
 
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     push hl
     push af

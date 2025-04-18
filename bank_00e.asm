@@ -39,7 +39,7 @@ jr_00e_4022:
     ld a, [$cc7b]
     ld [$cc79], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld hl, $cb2f
@@ -3636,7 +3636,7 @@ jr_00e_5507:
     ld a, [$cc7b]
     ld [$cc79], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -4621,7 +4621,7 @@ Call_00e_5ad2:
     ld a, [$cc7b]
     ld [$cc79], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -5686,7 +5686,7 @@ Call_00e_616c:
     ld a, [$cc7b]
     ld [$cc79], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld [$cc6c], a
@@ -6500,7 +6500,7 @@ jr_00e_669f:
     ld a, [$cc7b]
     ld [$cc79], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld [$cc6c], a

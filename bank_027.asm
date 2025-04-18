@@ -15,7 +15,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
     xor a
     ldh [$ff91], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ldh [$ff93], a

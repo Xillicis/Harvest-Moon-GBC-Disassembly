@@ -16,7 +16,7 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
     ld [$cb81], a
     call Call_000_0f0f
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $71b9
     ld c, $25

@@ -15,7 +15,7 @@ SECTION "ROM Bank $01d", ROMX[$4000], BANK[$1d]
     pop af
     pop hl
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $5fe3
     ld c, $1d
@@ -675,7 +675,7 @@ Call_01d_434b:
     pop hl
     call Call_01d_440c
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $6cb4
     ld c, $1e
@@ -1266,7 +1266,7 @@ jr_01d_4698:
 
 Call_01d_46a6:
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     push hl
     push af
@@ -3555,7 +3555,7 @@ jr_01d_514a:
 
 
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $9000
 
@@ -4418,7 +4418,7 @@ jr_01d_56b1:
     pop af
     pop hl
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $7a58
     ld c, $12
@@ -9656,7 +9656,7 @@ jr_01d_6e6c:
     rst $38
     rst $38
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     push hl
     push af
@@ -10437,7 +10437,7 @@ jr_01d_72d1:
     and h
     and l
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     push hl
     push af

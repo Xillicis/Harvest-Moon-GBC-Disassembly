@@ -6037,7 +6037,7 @@ Call_00f_62dc:
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $5efb
     ld a, $0d
@@ -7568,7 +7568,7 @@ jr_00f_6c70:
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $7729
     ld c, $10

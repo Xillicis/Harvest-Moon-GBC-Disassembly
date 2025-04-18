@@ -10,7 +10,7 @@ SECTION "ROM Bank $030", ROMX[$4000], BANK[$30]
 Jump_030_4002:
     adc d
     ld [hl+], a
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     ld hl, $6d5c
     ld c, $30
@@ -3040,7 +3040,7 @@ Call_030_4ebd:
 
 jr_030_4f2d:
     call ClearBGMap0
-    call ZeroOutVRAM
+    call ClearBGMap1
     call Call_000_323d
     xor a
     ld [$c600], a
