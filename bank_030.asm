@@ -4451,11 +4451,11 @@ Call_030_55ce:
     nop
     inc b
     inc b
-    jp Jump_000_0400
+    jp $0400
 
 
     db $fc
-    jp nz, Jump_000_0400
+    jp nz, $0400
 
     db $f4
     pop bc

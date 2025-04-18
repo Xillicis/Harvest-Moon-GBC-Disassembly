@@ -13234,13 +13234,13 @@ jr_036_786d:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$eef4], a
     sub b
     sbc $b4
     db $fc
     sub b
-    call nc, Call_000_03e8
+    call nc, $03e8
     nop
     inc c
     inc bc

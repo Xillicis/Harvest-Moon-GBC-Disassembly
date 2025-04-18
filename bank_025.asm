@@ -7859,7 +7859,7 @@ jr_025_6bc2:
     cp $06
     nop
     inc b
-    call nz, Call_000_0403
+    call nz, $0403
     rst $38
     db $10
     ld h, $4c

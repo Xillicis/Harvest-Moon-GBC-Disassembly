@@ -714,7 +714,6 @@ Call_000_03ab:
     jr nz, .loop
     ret
 
-
 Call_000_03bb:
     ld de, $dd02
     ld b, $40
@@ -728,7 +727,6 @@ Call_000_03bb:
     ldh [c], a
     inc c
     ld b, $20
-
 .loop
     ld a, $ff
     ldh [c], a
@@ -736,56 +734,42 @@ Call_000_03bb:
     ldh [c], a
     dec b
     jr nz, .loop
-
     ret
-
 
 Call_000_03dd:
     ld b, %10011000 ; address for start of 4th palette
     call Call_000_0407
     ret
 
-
 Call_000_03e3:
     ld b, %10010000 ; address for start of 3rd palette
     call Call_000_0407
-
-Call_000_03e8:
     ret
-
 
 Call_000_03e9:
     ld b, %10101000 ; address for start of 6th palette
     call Call_000_0407
     ret
 
-
 Call_000_03ef:
     ld b, %10111000 ; address for start of 8th palette
     call Call_000_0407
     ret
 
-
+Call_000_03f5:
     ld b, %10100000 ; address for start of 5th palette
     call Call_000_0407
     ret
 
-
 Call_000_03fb:
     ld b, %10110000 ; address for start of 7th palette
     call Call_000_0407
-
-Jump_000_0400:
     ret
-
 
 Call_000_0401:
     ld b, $b8
-
-Call_000_0403:
     call Call_000_0418
     ret
-
 
 Call_000_0407:
 ; Address $FF6A is OCPS/OBPI
@@ -802,23 +786,19 @@ Call_000_0407:
     jr nz, .loop
     ret
 
-
 Call_000_0418:
     ld c, rBGPI_c
     ld a, b
     ldh [c], a
     ld c, rBGPD_c
     ld d, $08
-
 .loop
     call Call_000_0da9
     ld a, [hli]
     ldh [c], a
     dec d
     jr nz, .loop
-
     ret
-
 
 Call_000_0429:
     ld hl, $043d
@@ -826,7 +806,6 @@ Call_000_0429:
     ld hl, $0445
     call Call_000_03dd
     ret
-
 
 Call_000_0436:
     ld hl, $044d

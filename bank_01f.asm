@@ -30,7 +30,7 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     nop
     rra
     nop
-    jp Jump_000_0400
+    jp $0400
 
 
     dec c
