@@ -3039,7 +3039,7 @@ Call_030_4ebd:
     ld [$ba49], a
 
 jr_030_4f2d:
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a

@@ -38,7 +38,7 @@ jr_00e_4022:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -3635,7 +3635,7 @@ jr_00e_5507:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -4613,14 +4613,14 @@ Call_00e_5ad2:
     pop af
     pop hl
     ld hl, $5af6
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld a, $01
     ld [$c625], a
     ld a, [$cc79]
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -5685,7 +5685,7 @@ Call_00e_616c:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -6499,7 +6499,7 @@ jr_00e_669f:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a

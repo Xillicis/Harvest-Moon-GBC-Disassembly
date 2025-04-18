@@ -14,7 +14,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 ; 0x4011
     RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
 
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     push hl
@@ -26,11 +26,11 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     pop af
     pop hl
     ld hl, $4001
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld hl, $4009
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ld hl, $4011
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ld a, [$b884]
     ld [$c0bd], a
     ld a, [sCurrentDayCounter]
@@ -2274,7 +2274,7 @@ Jump_001_4f50:
     ld hl, $4f75
 
 jr_001_4f69:
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 

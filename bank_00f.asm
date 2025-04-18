@@ -6036,7 +6036,7 @@ Call_00f_62dc:
     ld [$c7a0], a
     ld [$c800], a
     ld [$c820], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     ld hl, $5efb
@@ -6896,11 +6896,11 @@ jr_00f_6904:
     call Call_00f_687d
     call Call_00f_689b
     ld hl, $6957
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ld hl, $695f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $6967
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ret
 
 
@@ -6908,7 +6908,7 @@ jr_00f_6920:
     call Call_00f_68b9
     call Call_00f_68d7
     ld hl, $6957
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
@@ -6919,11 +6919,11 @@ jr_00f_692d:
     call Call_00f_68b9
     call Call_00f_68d7
     ld hl, $6957
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ld hl, $695f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $6967
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ret
 
 
@@ -7567,7 +7567,7 @@ jr_00f_6c70:
     ld [$c7a0], a
     ld [$c800], a
     ld [$c820], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     ld hl, $7729

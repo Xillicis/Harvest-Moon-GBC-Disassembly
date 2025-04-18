@@ -11,7 +11,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     cp $ff
     call z, Call_000_0de8
     call Call_000_0d22
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
@@ -3172,10 +3172,10 @@ jr_002_5023:
     pop af
     pop hl
     ld hl, $5029
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld hl, $5031
-    call Call_000_03fb
-    call Call_000_228a
+    call SyncLoadSpritePalette7
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     di

@@ -3560,7 +3560,7 @@ jr_020_4f68:
     rra
     nop
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -3569,58 +3569,58 @@ jr_020_4f68:
     jr nc, jr_020_4fc1
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_4fc1:
     ld hl, $4089
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4131
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40f1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4069
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4041
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4109
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40d1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4139
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40a1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4101
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -3640,36 +3640,36 @@ jr_020_4fc1:
 
 jr_020_5019:
     ld hl, $4029
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
 jr_020_5020:
     ld hl, $4021
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
 Jump_020_5027:
     ld hl, $4031
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
     ld hl, $4001
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ld hl, $4009
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4011
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
     ld hl, $4039
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
@@ -5575,7 +5575,7 @@ Jump_020_57f1:
 
 Jump_020_58d0:
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
@@ -5585,13 +5585,13 @@ Jump_020_58d7:
     jr z, jr_020_58e5
 
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 jr_020_58e5:
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
@@ -5605,81 +5605,81 @@ jr_020_58e5:
 
 Jump_020_58f4:
     ld hl, $58ec
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_58fb:
     ld hl, $585f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
 Jump_020_5902:
     ld hl, $585f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $5857
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_5915:
     ld hl, $4011
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_5922:
     ld hl, $5847
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_5929:
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_5930:
     ld hl, $5857
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld hl, $4011
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
 Jump_020_593d:
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_5944:
     ld hl, $5857
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_594b:
     ld hl, $5847
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_5952:
     ld hl, $5857
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_5959:
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 
@@ -9897,7 +9897,7 @@ jr_020_6c07:
     ld hl, $4526
     call Call_000_039b
     ld hl, $585f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
@@ -10072,13 +10072,13 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ld hl, $585f
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $5857
-    call Call_000_03e9
+    call SyncLoadSpritePalette6
     ld hl, $5847
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10102,7 +10102,7 @@ jr_020_6c07:
     ld hl, $4edd
     call Call_000_039b
     ld hl, $584f
-    call Call_000_03fb
+    call SyncLoadSpritePalette7
     ret
 
 SomeLabel_020_6df4:
@@ -10211,7 +10211,7 @@ SomeLabel_020_6df4:
 
 Jump_020_6e98:
     ld hl, $4049
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld a, [$b884]
     cp $02
     jr z, jr_020_6eae
@@ -10219,45 +10219,45 @@ Jump_020_6e98:
     jr nc, jr_020_6eb5
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6eae:
     ld hl, $4089
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6eb5:
     ld hl, $4081
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6ebc:
     ld hl, $4049
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
 Jump_020_6ec3:
     ld hl, $4049
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $40f9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6ed0:
     ld hl, $4049
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6ed7:
     ld hl, $4121
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld a, [$b884]
     cp $02
     jr z, jr_020_6eed
@@ -10265,19 +10265,19 @@ Jump_020_6ed7:
     jr nc, jr_020_6ef4
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6eed:
     ld hl, $4089
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6ef4:
     ld hl, $4081
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10286,61 +10286,61 @@ jr_020_6ef4:
 
 Jump_020_6efc:
     ld hl, $4121
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
 Jump_020_6f03:
     ld hl, $4121
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $40f9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f10:
     ld hl, $4111
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f17:
     ld hl, $4059
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $4129
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f24:
     ld hl, $4119
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f2b:
     ld hl, $4079
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f32:
     ld hl, $4119
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f39:
     ld hl, $40c9
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ld hl, $4129
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f46:
     ld hl, $4069
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10352,49 +10352,49 @@ Jump_020_6f4d:
     jr nc, jr_020_6f64
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6f5d:
     ld hl, $4089
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_6f64:
     ld hl, $4081
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f6b:
     ld hl, $40e1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f72:
     ld hl, $4101
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f79:
     ld hl, $40f1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f80:
     ld hl, $4041
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 Jump_020_6f87:
     ld hl, $40d9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10639,59 +10639,59 @@ Jump_020_6f87:
     xor h
     ld [hl], c
     ld hl, $4119
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4129
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4119
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4051
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4049
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40e1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4101
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4059
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
 
 Jump_020_70c2:
     ret
 
 
     ld hl, $4111
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4119
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10700,22 +10700,22 @@ Jump_020_70c2:
     ret z
 
     ld hl, $4131
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40c9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4121
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4069
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10723,102 +10723,102 @@ Jump_020_70c2:
 
 
     ld hl, $4079
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40f9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40c1
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
     ld hl, $4099
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
     ld hl, $4101
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4051
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4059
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40f1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4049
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4049
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4109
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40d9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40b1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4061
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40a9
-    call Call_000_03e3
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4101
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4059
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4041
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40e1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4141
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
@@ -10829,34 +10829,34 @@ Jump_020_70c2:
     jr nc, jr_020_7197
 
     ld hl, $40e9
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_7190:
     ld hl, $4111
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
 jr_020_7197:
     ld hl, $4081
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $40e1
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4071
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 
     ld hl, $4121
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 

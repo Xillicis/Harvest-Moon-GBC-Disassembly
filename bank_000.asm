@@ -736,43 +736,44 @@ Call_000_03bb:
     jr nz, .loop
     ret
 
-Call_000_03dd:
+SyncLoadSpritePalette4:
     ld b, %10011000 ; address for start of 4th palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
-Call_000_03e3:
+SyncLoadSpritePalette3:
     ld b, %10010000 ; address for start of 3rd palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
-Call_000_03e9:
+SyncLoadSpritePalette6:
     ld b, %10101000 ; address for start of 6th palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
-Call_000_03ef:
+SyncLoadSpritePalette8:
     ld b, %10111000 ; address for start of 8th palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
-Call_000_03f5:
+SyncLoadSpritePalette5:
     ld b, %10100000 ; address for start of 5th palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
-Call_000_03fb:
+SyncLoadSpritePalette7:
     ld b, %10110000 ; address for start of 7th palette
-    call Call_000_0407
+    call SyncLoadOBJPalette
     ret
 
 Call_000_0401:
     ld b, $b8
-    call Call_000_0418
+    call SyncLoadBGPPalette
     ret
 
-Call_000_0407:
-; Address $FF6A is OCPS/OBPI
+; b contains some kind of palette address
+; hl points to palette data
+SyncLoadOBJPalette:
     ld c, rOBPI_c
     ld a, b
     ldh [c], a
@@ -786,7 +787,7 @@ Call_000_0407:
     jr nz, .loop
     ret
 
-Call_000_0418:
+SyncLoadBGPPalette:
     ld c, rBGPI_c
     ld a, b
     ldh [c], a
@@ -802,14 +803,14 @@ Call_000_0418:
 
 Call_000_0429:
     ld hl, $043d
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ld hl, $0445
-    call Call_000_03dd
+    call SyncLoadSpritePalette4
     ret
 
 Call_000_0436:
     ld hl, $044d
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
@@ -6166,7 +6167,8 @@ ZeroOutHL:
     jr nz, .loop
     ret
 
-Call_000_228a:
+; Clear the first BG tile‑map (0x9800–0x9BFF) by filling it with tile 0
+ClearBGMap0:
     ld hl, $9bff
 
 BeginZeroing:
@@ -9526,12 +9528,10 @@ Call_000_323d:
     ld b, $a0
     ld a, $00
     ld hl, $c000
-
-jr_000_3244:
-    ld [hl+], a
+.loop
+    ld [hli], a
     dec b
-    jr nz, jr_000_3244
-
+    jr nz, .loop
     ret
 
 

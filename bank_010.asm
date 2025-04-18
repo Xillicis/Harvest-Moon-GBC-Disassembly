@@ -6,7 +6,7 @@
 SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
 
     db $10
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     push hl
@@ -111,7 +111,7 @@ jr_010_40c6:
     ld a, $2a
     call Call_000_25c5
     ld hl, $40e2
-    call Call_000_03ef
+    call SyncLoadSpritePalette8
     ret
 
 
@@ -3157,7 +3157,7 @@ jr_010_4f00:
     ld [$ba49], a
 
 jr_010_4fbe:
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     push hl

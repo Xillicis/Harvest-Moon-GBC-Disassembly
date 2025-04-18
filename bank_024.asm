@@ -9,7 +9,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     xor a
     ld [$c7a0], a
     ld [$c780], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     ld hl, $769e

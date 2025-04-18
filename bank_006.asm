@@ -1660,7 +1660,7 @@ jr_006_4780:
     nop
     nop
     nop
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     push hl

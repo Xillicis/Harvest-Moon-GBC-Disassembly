@@ -3619,7 +3619,7 @@ jr_02e_54e4:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -5646,7 +5646,7 @@ Call_02e_6121:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a
@@ -6452,7 +6452,7 @@ jr_02e_6647:
     ld [$cc7a], a
     ld a, [$cc7b]
     ld [$cc79], a
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     xor a

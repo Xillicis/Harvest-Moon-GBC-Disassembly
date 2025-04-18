@@ -6,7 +6,7 @@
 SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
 
     ccf
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     call Call_03f_4092
@@ -9701,7 +9701,7 @@ jr_03f_6c89:
     ldh a, [$ff8c]
     nop
     add b
-    call Call_000_228a
+    call ClearBGMap0
     call ZeroOutVRAM
     call Call_000_323d
     ld hl, $4001
