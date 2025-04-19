@@ -10574,14 +10574,14 @@ jr_01f_72ef:
     inc sp
     cpl
     nop
-    jp Jump_000_0300
+    jp $0300
 
 
     inc b
     ld h, e
     db $10
     ld de, $002f
-    jp Jump_000_0300
+    jp $0300
 
 
     inc b

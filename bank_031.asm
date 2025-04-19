@@ -1486,7 +1486,7 @@ jr_031_4655:
     nop
     inc bc
     nop
-    jp Jump_000_0300
+    jp $0300
 
 
     nop

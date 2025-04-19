@@ -2486,9 +2486,9 @@ jr_038_4a47:
     ld h, h
     ld h, h
     sbc b
-    jp z, Jump_000_35f4
+    jp z, $35f4
 
-    jp z, Jump_000_0cda
+    jp z, $0cda
 
     inc c
     nop

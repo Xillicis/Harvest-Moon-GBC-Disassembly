@@ -1723,7 +1723,7 @@ jr_020_467a:
     nop
     rra
     nop
-    jp nc, Jump_000_0300
+    jp nc, $0300
 
     inc bc
     adc e

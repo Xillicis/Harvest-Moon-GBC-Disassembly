@@ -1433,7 +1433,7 @@ jr_025_45f7:
     nop
     and l
     sbc b
-    call nc, Call_000_0300
+    call nc, $0300
     nop
     inc bc
     nop
@@ -10545,7 +10545,7 @@ jr_025_777a:
     nop
     rlca
     adc e
-    jp z, Jump_000_0ac0
+    jp z, $0ac0
 
     rst $28
     jr nz, jr_025_77ac

@@ -6663,7 +6663,7 @@ jr_00a_5c0f:
     db $ec
     add b
     add b
-    call z, Call_000_0ccc
+    call z, $0ccc
     inc c
     cp $05
     ld c, b

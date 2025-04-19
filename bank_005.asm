@@ -1449,7 +1449,7 @@ jr_005_4616:
     nop
     and l
     sbc b
-    call nc, Call_000_0300
+    call nc, $0300
     nop
     inc bc
     nop

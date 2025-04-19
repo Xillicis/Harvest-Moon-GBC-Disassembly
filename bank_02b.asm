@@ -14083,7 +14083,7 @@ jr_02b_7c1e:
     ld [$c0bc], sp
     ld a, [$befc]
     db $fc
-    call z, Call_000_0cc0
+    call z, $0cc0
     ld [$0fc3], sp
     pop bc
     ld c, $c9
