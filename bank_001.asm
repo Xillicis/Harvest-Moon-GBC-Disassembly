@@ -31,7 +31,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     call SyncLoadSpritePalette8
     ld hl, $4011
     call SyncLoadSpritePalette4
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$c0bd], a
     ld a, [sCurrentDayCounter]
     or a
@@ -8863,7 +8863,7 @@ Jump_001_7769:
     call Call_001_77ff
     ld a, [sCurrentDayCounter]
     ld [$ba3b], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$ba3c], a
     ld a, [$b885]
     ld [$ba3d], a
@@ -9031,7 +9031,7 @@ Call_001_7878:
 
 
 Call_001_7895:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     ret nz
 
@@ -9059,7 +9059,7 @@ Call_001_7895:
 
 
 Call_001_78be:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     ret nz
 

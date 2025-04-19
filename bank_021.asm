@@ -9,7 +9,7 @@ SECTION "ROM Bank $021", ROMX[$4000], BANK[$21]
     ld [hl+], a
     call ClearBGMap1
     call Call_000_323d
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$c0bd], a
     ld a, [sCurrentDayCounter]
     or a
@@ -8864,7 +8864,7 @@ Jump_021_7649:
     call Call_021_76df
     ld a, [sCurrentDayCounter]
     ld [$ba3b], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$ba3c], a
     ld a, [$b885]
     ld [$ba3d], a
@@ -9032,7 +9032,7 @@ Call_021_7758:
 
 
 Call_021_7775:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     ret nz
 
@@ -9060,7 +9060,7 @@ Call_021_7775:
 
 
 Call_021_779e:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     ret nz
 

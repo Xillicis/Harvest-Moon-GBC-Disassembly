@@ -79,8 +79,11 @@ PickedUpStonePalette:
     db $7C, $4E, $A5, $00, $29, $25, $31, $46
 PickedUpPotatoPalette: 
     db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
-    db $7C, $4E, $E7, $00, $17, $12, $FF, $7F, $00, $00, $1C, $00, $23, $1C, $5C
-    db $23, $A3, $40, $45, $02, $05, $03, $0B, $07, $00, $00, $00, $00, $00, $00, $C0
+Data_020_4141:
+    db $7C, $4E, $E7, $00, $17, $12, $FF, $7F
+Data_020_4149:
+    db $00, $00, $1C, $00, $23, $1C, $5C, $23
+    db $A3, $40, $45, $02, $05, $03, $0B, $07, $00, $00, $00, $00, $00, $00, $C0
     db $00, $60, $80, $D0, $A0, $D0, $60, $E8, $F0, $00, $00, $00, $00, $16, $00, $2D
     db $12, $14, $0B, $14, $0B, $0A, $05, $0B, $04, $00, $00, $00, $00, $30, $00, $50
     db $20, $90, $60, $10, $E0, $10, $E0, $50, $A0, $06, $00, $05, $02, $04, $03, $04
@@ -317,8 +320,8 @@ Label_020_4fac:
     ret
 
 Label_020_4fb3:
-    ld a, [$b884]
-    cp $02
+    ld a, [sCurrentSeason]
+    cp AUTUMN
     jr nc, jr_020_4fc1
 
 Label_020_4fba:
@@ -6873,175 +6876,128 @@ SomeLabel_020_6df4:
     ld h, a
     ld a, [hl] 
     cp SICKLE
-    jp z, Jump_020_6e98
-
+    jp z, .loadSickleAndGrassPalette
     cp HOE
-    jp z, Jump_020_6ebc
-
+    jp z, .Jump_020_6ebc
     cp HAMMER
-    jp z, Jump_020_6ec3
-
+    jp z, .Jump_020_6ec3
     cp AX
-    jp z, Jump_020_6ebc
-
-    cp $13
-    jp z, Jump_020_6ed7
-
-    cp $14
+    jp z, .Jump_020_6ebc
+    cp SUPER_SICKLE
+    jp z, .loadSuperSickleAndGrassPalette
+    cp SUPER_HOE
     jp z, Jump_020_6f03
-
-    cp $16
+    cp SUPER_HAMMER
     jp z, Jump_020_6f03
-
-    cp $15
+    cp SUPER_AX
     jp z, Jump_020_6efc
-
     cp BRUSH
     jp z, Jump_020_6f10
-
     cp WATERING_CAN
     jp z, Jump_020_6f17
-
     cp MILKER
     jp z, Jump_020_6f2b
-
-    cp $00
+    cp COW_MEDICINE
     jp z, Jump_020_6f24
-
-    cp $52
+    cp P_MEDICINE
     jp z, Jump_020_6f24
-
     cp M_POTION
     jp z, Jump_020_6f24
-
     cp COW_BELL
     jp z, Jump_020_6f32
-
     cp $53
-    jp z, Jump_020_6ed0
-
-    cp $12
+    jp z, .Jump_020_6ed0
+    cp SPRINKLER
     jp z, Jump_020_6f39
-
     cp $10
     jp z, Jump_020_6f46
-
     cp $11
     jp z, Jump_020_6f46
-
     cp GRASS_SEEDS
     jp z, Jump_020_6f4d
-
     cp TOMATO_SEEDS
     jp z, Jump_020_6f6b
-
     cp CORN_SEEDS
     jp z, Jump_020_6f72
-
     cp TURNIP_SEEDS
     jp z, Jump_020_6f79
-
     cp POTATO_SEEDS
-    jp z, Jump_020_6ed0
-
-    cp $4e
+    jp z, .Jump_020_6ed0
+    cp EGGPLANT_SEEDS
     jp z, Jump_020_6f6b
-
-    cp $4f
+    cp PEANUT_SEEDS
     jp z, Jump_020_6f72
-
-    cp $50
+    cp CARROT_SEEDS
     jp z, Jump_020_6f80
-
-    cp $51
+    cp BROCOLLI_SEEDS
     jp z, Jump_020_6f87
-
     cp $54
-    jp z, Jump_020_6e98
-
+    jp z, .loadSickleAndGrassPalette
     ret
 
-
-Jump_020_6e98:
+.loadSickleAndGrassPalette
     ld hl, $4049
     call SyncLoadSpritePalette3
-    ld a, [$b884]
-    cp $02
-    jr z, jr_020_6eae
-
-    jr nc, jr_020_6eb5
-
+    ld a, [sCurrentSeason]
+    cp AUTUMN
+    jr z, .loadAutumnGrassPalette
+    jr nc, .loadWinterGrassPalette
     ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
-
-
-jr_020_6eae:
+.loadAutumnGrassPalette
     ld hl, $4089
     call SyncLoadSpritePalette4
     ret
-
-
-jr_020_6eb5:
+.loadWinterGrassPalette
     ld hl, $4081
     call SyncLoadSpritePalette4
     ret
 
-
-Jump_020_6ebc:
+.Jump_020_6ebc
     ld hl, $4049
     call SyncLoadSpritePalette3
     ret
 
-
-Jump_020_6ec3:
+.Jump_020_6ec3
     ld hl, $4049
     call SyncLoadSpritePalette3
     ld hl, $40f9
     call SyncLoadSpritePalette4
     ret
 
-
-Jump_020_6ed0:
+.Jump_020_6ed0
     ld hl, $4049
     call SyncLoadSpritePalette4
     ret
 
-
-Jump_020_6ed7:
+.loadSuperSickleAndGrassPalette
     ld hl, $4121
     call SyncLoadSpritePalette3
-    ld a, [$b884]
-    cp $02
+    ld a, [sCurrentSeason]
+    cp AUTUMN
     jr z, jr_020_6eed
-
     jr nc, jr_020_6ef4
-
     ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
-
 
 jr_020_6eed:
     ld hl, $4089
     call SyncLoadSpritePalette4
     ret
 
-
 jr_020_6ef4:
     ld hl, $4081
     call SyncLoadSpritePalette4
     ret
 
-
     ret
-
 
 Jump_020_6efc:
     ld hl, $4121
     call SyncLoadSpritePalette3
     ret
-
 
 Jump_020_6f03:
     ld hl, $4121
@@ -7049,7 +7005,6 @@ Jump_020_6f03:
     ld hl, $40f9
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f10:
     ld hl, $4111
@@ -7064,24 +7019,20 @@ Jump_020_6f17:
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f24:
     ld hl, $4119
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f2b:
     ld hl, $4079
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f32:
     ld hl, $4119
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f39:
     ld hl, $40c9
@@ -7090,69 +7041,61 @@ Jump_020_6f39:
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f46:
     ld hl, $4069
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f4d:
-    ld a, [$b884]
-    cp $02
+    ld a, [sCurrentSeason]
+    cp AUTUMN
     jr z, jr_020_6f5d
-
     jr nc, jr_020_6f64
-
     ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
-
 
 jr_020_6f5d:
     ld hl, $4089
     call SyncLoadSpritePalette4
     ret
 
-
 jr_020_6f64:
     ld hl, $4081
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f6b:
     ld hl, $40e1
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f72:
     ld hl, $4101
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f79:
     ld hl, PickedUpFencePostPalette
     call SyncLoadSpritePalette4
     ret
 
-
 Jump_020_6f80:
     ld hl, Data_020_4041
     call SyncLoadSpritePalette4
     ret
-
 
 Jump_020_6f87:
     ld hl, $40d9
     call SyncLoadSpritePalette4
     ret
 
-
+Label_020_6f8e:
     ld a, [$b93c]
     rst $00
+
+
+
     adc e
     ld [hl], b
     add h
@@ -7574,17 +7517,13 @@ Jump_020_70c2:
     call SyncLoadSpritePalette4
     ret
 
-
-    ld a, [$b884]
-    cp $02
+    ld a, [sCurrentSeason]
+    cp AUTUMN
     jr z, jr_020_7190
-
     jr nc, jr_020_7197
-
     ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
-
 
 jr_020_7190:
     ld hl, $4111

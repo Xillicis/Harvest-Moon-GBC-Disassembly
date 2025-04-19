@@ -9996,7 +9996,7 @@ jr_01f_6961:
     ld [$cb68], a
     ld a, [$b885]
     ld [$ccd3], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$ccd4], a
     ld a, [$b883]
     ld [$ccd5], a
@@ -10085,7 +10085,7 @@ jr_01f_7058:
     ld a, [$ccd3]
     ld [$b885], a
     ld a, [$ccd4]
-    ld [$b884], a
+    ld [sCurrentSeason], a
     ld a, [$ccd5]
     ld [$b883], a
     call Call_000_07ab
@@ -11810,7 +11810,7 @@ jr_01f_78ef:
     ld c, $4f
     xor a
     ldh [c], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     jr z, jr_01f_791b
 

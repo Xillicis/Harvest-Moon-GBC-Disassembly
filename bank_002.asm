@@ -92,7 +92,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld hl, $98b3
     ld a, $f3
     ld [hl], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$cbde], a
     ld a, [sCurrentDayCounter]
     ld [$cbdf], a
@@ -128,7 +128,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld a, [sCurrentDayCounter]
     inc a
     call Call_002_4224
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld hl, $9865
     call Call_002_41e6
     ld a, [$b882]
@@ -436,7 +436,7 @@ jr_002_42ac:
 
 Call_002_42b8:
     push de
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld c, $1e
     call Multiply8Bit
     ld a, [sCurrentDayCounter]
@@ -716,14 +716,14 @@ jr_002_442e:
     ld a, $1e
     call Call_000_09c9
     ld [sCurrentDayCounter], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     add l
-    ld [$b884], a
+    ld [sCurrentSeason], a
     ld l, a
     ld h, $00
     ld a, $04
     call Call_000_09c9
-    ld [$b884], a
+    ld [sCurrentSeason], a
     ld a, [$b885]
     add l
     ld l, a
@@ -747,7 +747,7 @@ Call_002_4464:
     cp b
     jr nz, jr_002_4482
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     ret nz
 
@@ -762,7 +762,7 @@ Call_002_4464:
     jr jr_002_44d5
 
 jr_002_4482:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld hl, $02d0
     call Call_000_0c46
     push hl
@@ -794,7 +794,7 @@ jr_002_4482:
     dec a
     ld [$b885], a
     ld a, $03
-    ld [$b884], a
+    ld [sCurrentSeason], a
     ld a, $1d
     ld [sCurrentDayCounter], a
     ld a, $06
@@ -847,7 +847,7 @@ jr_002_4506:
     cp $01
     ret nz
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     ret z
 
@@ -869,7 +869,7 @@ jr_002_4528:
 
 
 Call_002_4533:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     ret nz
 
@@ -1160,11 +1160,11 @@ Call_002_46bb:
     or a
     jr nz, jr_002_4729
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jr z, jr_002_4729
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jr z, jr_002_4729
 
@@ -1176,14 +1176,14 @@ Call_002_46bb:
     cp $ff
     jr z, jr_002_46e4
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     ret z
 
     jr jr_002_46f0
 
 jr_002_46e4:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jr z, jr_002_46fd
 
@@ -1242,11 +1242,11 @@ jr_002_4729:
 
 
 Call_002_4742:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jr z, jr_002_47c3
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jr z, jr_002_47c3
 
@@ -1258,14 +1258,14 @@ Call_002_4742:
     cp $ff
     jr z, jr_002_4766
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     ret z
 
     jr jr_002_477c
 
 jr_002_4766:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jr z, jr_002_4789
 
@@ -3006,7 +3006,7 @@ jr_002_4f98:
 
 
 Call_002_4f9b:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jr z, jr_002_4fa3
 
@@ -3028,7 +3028,7 @@ jr_002_4fa3:
 
 
 Call_002_4fb0:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     jr nz, jr_002_4ff7
 
@@ -3036,7 +3036,7 @@ Call_002_4fb0:
 
 
 Call_002_4fb8:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     jp nz, Jump_002_4ff7
 
@@ -3044,7 +3044,7 @@ Call_002_4fb8:
 
 
 Call_002_4fc1:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jp nz, Jump_002_4ff7
 
@@ -3052,7 +3052,7 @@ Call_002_4fc1:
 
 
 Call_002_4fca:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jp nz, Jump_002_4ff7
 
@@ -3060,7 +3060,7 @@ Call_002_4fca:
 
 
 Call_002_4fd3:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jp nz, Jump_002_4ff7
 
@@ -3068,7 +3068,7 @@ Call_002_4fd3:
 
 
 Call_002_4fdc:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jp nz, Jump_002_4ff7
 
@@ -3076,7 +3076,7 @@ Call_002_4fdc:
 
 
 Call_002_4fe5:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jp nz, Jump_002_4ff7
 
@@ -3084,7 +3084,7 @@ Call_002_4fe5:
 
 
 Call_002_4fee:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jp nz, Jump_002_4ff7
 
@@ -4935,7 +4935,7 @@ Call_002_5b01:
     call Call_002_5c27
     ld a, [sCurrentDayCounter]
     ld [$b88b], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$b88a], a
     ld a, [sCurrentDayCounter]
     inc a
@@ -5138,7 +5138,7 @@ jr_002_5c20:
 
 
 Call_002_5c27:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     or a
     ret nz
 
@@ -7071,7 +7071,7 @@ Call_002_6694:
     or a
     ret nz
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     ret nz
 
@@ -7281,7 +7281,7 @@ Call_002_67a1:
     ld [$b93e], a
     ld [$b8fc], a
     ld [$b8fd], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld b, a
     ld a, [sCurrentDayCounter]
     or b
@@ -7525,12 +7525,12 @@ jr_002_6916:
 jr_002_694c:
     xor a
     ld [sCurrentDayCounter], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     inc a
-    ld [$b884], a
+    ld [sCurrentSeason], a
     call Call_000_07ab
     call Call_000_08b7
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $04
     jr nc, jr_002_6965
 
@@ -7539,7 +7539,7 @@ jr_002_694c:
 
 jr_002_6965:
     xor a
-    ld [$b884], a
+    ld [sCurrentSeason], a
     call Call_000_08b7
     ld a, [$b885]
     inc a
@@ -7610,7 +7610,7 @@ jr_002_69b8:
 
 
 Call_002_69bb:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jp z, Jump_002_69d1
 
@@ -7646,7 +7646,7 @@ Jump_002_69d1:
 
 
 Call_002_69de:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     jp nz, Jump_002_6a49
 
@@ -7881,7 +7881,7 @@ Jump_002_6a49:
     nop
 
 Call_002_6ad4:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     jp nz, Jump_002_6a49
 
@@ -7976,7 +7976,7 @@ jr_002_6b1a:
 
 
 Call_002_6b3f:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jp nz, Jump_002_6a49
 
@@ -8038,7 +8038,7 @@ jr_002_6b7f:
 
 
 Call_002_6b82:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jp nz, Jump_002_6a49
 
@@ -8100,7 +8100,7 @@ jr_002_6bc2:
 
 
 Call_002_6bc5:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jp nz, Jump_002_6a49
 
@@ -8162,7 +8162,7 @@ jr_002_6c05:
 
 
 Call_002_6c08:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     jp nz, Jump_002_6a49
 
@@ -8224,7 +8224,7 @@ jr_002_6c48:
 
 
 Call_002_6c4b:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jp nz, Jump_002_6a49
 
@@ -8286,7 +8286,7 @@ jr_002_6c8b:
 
 
 Call_002_6c8e:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     jp nz, Jump_002_6a49
 
@@ -8518,16 +8518,16 @@ jr_002_6d9f:
     ld a, [$b8a2]
     cp b
     call z, Call_002_6f09
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     call z, Call_002_6de8
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     call z, Call_002_6e0c
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $02
     call z, Call_002_6e18
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $03
     call z, Call_002_6e29
     call Call_002_6e3a
@@ -8670,7 +8670,7 @@ Call_002_6eaa:
     or a
     ret nz
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $01
     ret nz
 
@@ -8712,7 +8712,7 @@ Call_002_6ee1:
     cp b
     ret nz
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld b, a
     ld a, [$b895]
     cp b
@@ -8986,7 +8986,7 @@ Call_002_7055:
     cp $00
     ret z
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     ret nz
 

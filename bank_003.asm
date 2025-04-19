@@ -8297,7 +8297,7 @@ jr_003_7220:
     ld [hl], d
     ld d, c
     ld [hl], d
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     ret z
 

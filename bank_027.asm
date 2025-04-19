@@ -12978,7 +12978,7 @@ jr_027_77cf:
 
 jr_027_7854:
     ld hl, $7b52
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
 
 jr_027_785a:
     ld c, l

@@ -1126,12 +1126,12 @@ jr_000_06c2:
 jr_000_06db:
     xor a
     ld [sCurrentDayCounter], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     inc a
-    ld [$b884], a
+    ld [sCurrentSeason], a
     call Call_000_07ab
     call Call_000_08b7
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $04
     jr nc, jr_000_06f4
 
@@ -1140,7 +1140,7 @@ jr_000_06db:
 
 jr_000_06f4:
     xor a
-    ld [$b884], a
+    ld [sCurrentSeason], a
 
 Call_000_06f8:
     call Call_000_08b7
@@ -1298,7 +1298,7 @@ Call_000_07ab:
     ld [$b914], a
     ld a, [hl+]
     ld [$ba53], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld c, $1e
     call Multiply8Bit
     ld a, [sCurrentDayCounter]
@@ -1481,7 +1481,7 @@ jr_000_0850:
     inc [hl]
 
 Call_000_08b7:
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld l, a
     ld h, $00
     add hl, hl
@@ -2529,7 +2529,7 @@ Call_000_0ece:
     cp $03
     jr z, jr_000_0f09
 
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     cp $00
     jr z, jr_000_0ef1
 
@@ -3965,6 +3965,8 @@ Call_000_16d1:
     pop hl
     ld a, [$b93c]
     rst $08
+
+
     pop bc
     ld d, a
     ld b, $ed

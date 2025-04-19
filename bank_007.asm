@@ -13059,7 +13059,7 @@ jr_007_7832:
 
 jr_007_78c5:
     ld hl, $7bd5
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
 
 jr_007_78cb:
     ld c, l

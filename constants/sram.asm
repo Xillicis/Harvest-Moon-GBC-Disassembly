@@ -2,6 +2,8 @@ DEF sMapObjectLocation EQU $a000
 
 ; Starts at Day 0
 DEF sCurrentDayCounter EQU $b883
+; Spring = 0, Summer = 1, Fall = 2, Winter = 3
+DEF sCurrentSeason     EQU $b884
 
 DEF sTimeElapsed EQU $b889
 

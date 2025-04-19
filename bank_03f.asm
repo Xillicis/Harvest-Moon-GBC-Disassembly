@@ -9727,7 +9727,7 @@ jr_03f_6c89:
     ld [$cb68], a
     ld a, [$b885]
     ld [$ccd3], a
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld [$ccd4], a
     ld a, [sCurrentDayCounter]
     ld [$ccd5], a
@@ -9816,7 +9816,7 @@ jr_03f_6f2f:
     ld a, [$ccd3]
     ld [$b885], a
     ld a, [$ccd4]
-    ld [$b884], a
+    ld [sCurrentSeason], a
     ld a, [$ccd5]
     ld [sCurrentDayCounter], a
     call Call_000_07ab

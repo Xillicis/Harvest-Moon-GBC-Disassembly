@@ -649,9 +649,9 @@ jr_029_4382:
     xor a
     ld [sCurrentDayCounter], a
     call Call_000_07ab
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     inc a
-    ld [$b884], a
+    ld [sCurrentSeason], a
     cp $04
     jr nc, jr_029_4398
 
@@ -661,7 +661,7 @@ jr_029_4382:
 
 jr_029_4398:
     xor a
-    ld [$b884], a
+    ld [sCurrentSeason], a
     call Call_000_08b7
     ld a, [$b885]
     inc a
@@ -1959,7 +1959,7 @@ Call_029_4991:
 
 Call_029_49c6:
     push hl
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld hl, $49d7
     add l
     ld l, a
@@ -3289,7 +3289,7 @@ jr_029_50b4:
 jr_029_50b8:
     ld d, h
     ld e, l
-    ld a, [$b884]
+    ld a, [sCurrentSeason]
     ld c, $1e
     call Multiply8Bit
     ld a, [sCurrentDayCounter]
