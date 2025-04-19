@@ -3221,7 +3221,7 @@ jr_01c_4d68:
     ld b, $9b
     inc b
     ld [de], a
-    jp c, Jump_000_0b00
+    jp c, $0b00
 
     ld hl, $6600
     nop

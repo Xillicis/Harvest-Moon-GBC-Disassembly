@@ -686,7 +686,7 @@ jr_02f_43f0:
     ld b, h
     sub a
     ld b, h
-    call Call_000_0344
+    call $0344
     ld b, l
     add hl, sp
     ld b, l
@@ -1664,7 +1664,7 @@ jr_02f_49ac:
     ld c, e
     sub a
     ld c, e
-    call Call_000_034b
+    call $034b
     ld c, h
     add hl, sp
     ld c, h

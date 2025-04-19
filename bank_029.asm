@@ -3720,7 +3720,7 @@ jr_029_50b8:
     ld c, h
     ld a, c
     ld c, h
-    call Call_000_0a52
+    call $0a52
     ld c, e
     sbc c
     ld b, e

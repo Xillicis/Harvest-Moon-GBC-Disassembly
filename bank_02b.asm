@@ -803,7 +803,7 @@ jr_02b_4148:
     ld b, a
     ld h, l
     adc a
-    jp nc, Jump_000_3fef
+    jp nc, $3fef
 
     db $ed
     rst $30

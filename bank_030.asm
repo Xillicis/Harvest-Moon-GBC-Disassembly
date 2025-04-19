@@ -2481,7 +2481,7 @@ jr_030_4c54:
     jr nz, jr_030_4ca2
 
 jr_030_4ca2:
-    jp Jump_000_0304
+    jp $0304
 
 
     ld de, $e100
@@ -8908,7 +8908,7 @@ Jump_030_679a:
     ld b, a
     ld h, l
     adc a
-    jp nc, Jump_000_3fef
+    jp nc, $3fef
 
     db $ed
     rst $30
@@ -11961,7 +11961,7 @@ Call_030_75ff:
     nop
     ld d, c
     rst $28
-    jp nz, Jump_000_030e
+    jp nz, $030e
 
     ld d, $01
     ld e, h

@@ -11889,7 +11889,7 @@ jr_010_75a8:
     rra
     ld e, $00
     rst $28
-    jp nz, Jump_000_030e
+    jp nz, $030e
 
     ld d, $01
     ld e, h
@@ -13032,7 +13032,7 @@ jr_010_7b7c:
     nop
     sbc a
     dec b
-    jp nz, Jump_000_0304
+    jp nz, $0304
 
     dec b
     ldh [rSB], a
@@ -13840,7 +13840,7 @@ jr_010_7eed:
     ld a, l
     rst $38
     ld e, $ff
-    jp Jump_000_3fff
+    jp $3fff
 
 
     cp b

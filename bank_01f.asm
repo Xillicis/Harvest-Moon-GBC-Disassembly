@@ -3652,7 +3652,7 @@ jr_01f_51fd:
     sbc b
     ld c, d
     add hl, bc
-    call c, Call_000_02dc
+    call c, $02dc
     ld hl, $1c22
     inc h
     call c, $00dc
@@ -6567,7 +6567,7 @@ jr_01f_5ff7:
 
 jr_01f_6025:
     adc $72
-    call Call_000_0b00
+    call $0b00
     ld e, [hl]
     rst $18
     ld e, h

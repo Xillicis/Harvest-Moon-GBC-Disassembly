@@ -9428,7 +9428,7 @@ jr_020_69a7:
     ld b, $0f
     ld [bc], a
     nop
-    jp Jump_000_0b08
+    jp $0b08
 
 
     ld [bc], a

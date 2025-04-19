@@ -8496,11 +8496,11 @@ jr_025_6e63:
     ld a, a
     add c
     ld a, [hl]
-    jp nz, Jump_000_033d
+    jp nz, $033d
 
     inc b
     inc hl
-    call c, Call_000_1cff
+    call c, $1cff
     db $e3
     ld a, [de]
     rst $28

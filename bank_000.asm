@@ -367,7 +367,6 @@ Call_000_0278:
     ld c, rVBK_c
     xor a
     ldh [c], a
-
 .jr_000_028d
     ld a, [$c0bc]
     ld b, a
@@ -377,93 +376,20 @@ Call_000_0278:
     rst $08
 
 ; Data I think...
-    ld l, [hl]
-    ld l, a
-    rra
-    add hl, de
-    ld b, b
-    ld bc, $5039
-    ld [bc], a
-    ld bc, $0340
-    ld bc, $0440
-    ld bc, $0540
-    ld bc, $0640
-    ld bc, $1040
-    add hl, bc
-    ld b, b
-    ld c, $0d
-    ld d, l
-    ld c, $fe
-    ld e, d
-    ld c, $ab
-    ld h, c
-    ld c, $b2
-    ld h, [hl]
-    ld c, $a8
-    ld c, a
-    db $10
-    cp [hl]
-    ld c, a
-    db $10
-    adc l
-    ld h, e
-    rrca
-    ld bc, $1d40
-    ld e, l
-    ld b, e
-    dec e
-    and [hl]
-    ld b, [hl]
-    dec e
-    ld bc, $0940
-    add hl, bc
-    ld b, a
-    add hl, bc
-    jp nz, Jump_000_094c
-
-    di
-    ld c, l
-    add hl, bc
-
-Call_000_02dc:
-    nop
-    ld c, a
-    add hl, bc
-    or $50
-    add hl, bc
-    cp $51
-    add hl, bc
-    and c
-    ld d, l
-    add hl, bc
-
-Call_000_02e8:
-    ld l, l
-    ld d, [hl]
-    add hl, bc
-    ld c, $53
-    dec e
-    ld c, $53
-    dec e
-    call $0965
-    call nc, Call_000_0967
-    db $ec
-    ld d, [hl]
-    dec e
-    call z, $0647
-    ret nc
-
-Call_000_02fe:
-    ld b, b
-    rra
+Data_000_0297:
+    db $6E, $6F, $1F, $19, $40, $01, $39, $50, $02, $01, $40, $03, $01, $40, $04, $01
+    db $40, $05, $01, $40, $06, $01, $40, $10, $09, $40, $0E, $0D, $55, $0E, $FE, $5A
+    db $0E, $AB, $61, $0E, $B2, $66, $0E, $A8, $4F, $10, $BE, $4F, $10, $8D, $63, $0F
+    db $01, $40, $1D, $5D, $43, $1D, $A6, $46, $1D, $01, $40, $09, $09, $47, $09, $C2
+    db $4C, $09, $F3, $4D, $09, $00, $4F, $09, $F6, $50, $09, $FE, $51, $09, $A1, $55
+    db $09, $6D, $56, $09, $0E, $53, $1D, $0E, $53, $1D, $CD, $65, $09, $D4, $67, $09
+    db $EC, $56, $1D, $CC, $47, $06, $D0, $40, $1f
 
 Call_000_0300:
 Jump_000_0300:
     ld c, $53
     dec e
     sub d
-
-Jump_000_0304:
     ld d, c
     dec e
     and [hl]
@@ -472,12 +398,9 @@ Jump_000_0304:
     ld bc, $0740
     add b
     ld l, [hl]
-
-Jump_000_030e:
     dec e
     ld bc, $0240
     jr jr_000_0387
-
     dec e
     ld b, l
     ld l, [hl]
@@ -499,24 +422,16 @@ Jump_000_030e:
     ld l, $5a
     ld h, [hl]
     ld l, $17
-
-Jump_000_033d:
     ld c, a
     jr nc, jr_000_036d
-
     ld c, a
     jr nc, @-$70
-
     ld h, e
-
-Call_000_0344:
     cpl
     ld bc, $3d40
     ld d, b
     ld b, e
     dec a
-
-Call_000_034b:
     adc h
     ld b, [hl]
     dec a
@@ -528,7 +443,6 @@ Call_000_034b:
     ld c, h
     add hl, hl
     jp nc, $294d
-
     db $db
     ld c, [hl]
     add hl, hl
@@ -543,12 +457,9 @@ Call_000_034b:
     ld d, [hl]
     add hl, hl
     ret
-
-
     ld d, d
     dec a
     ret
-
 
 jr_000_036d:
     ld d, d
@@ -596,16 +507,14 @@ jr_000_0387:
     pop af
     ret
 
-; Something with writing CGB color pallete
+; hl points to a list of palette data
 CGBBackgroundPaletteUpload:
-    ; Address $FF68 is for BCPS/BGPI
     ld c, rBGPI_c
     ld a, 1 << rBGPI_AUTO_INCREMENT
     ldh [c], a
     inc c
     ld b, 32
-.loop ; iterate 32 times. Why?
-    ; what does `hl` have?
+.loop
     ld a, [hli]
     ldh [c], a
     ld a, [hli]
@@ -2031,7 +1940,6 @@ Call_000_0a3e:
     ld l, a
     ret
 
-
 Call_000_0a47:
     ld c, a
     ld b, $00
@@ -2043,50 +1951,41 @@ Call_000_0a47:
     ld b, [hl]
     inc hl
     ld a, [hl]
-
-Call_000_0a52:
     ld l, c
     ld h, b
     ret
 
-
 Call_000_0a55:
     ld hl, $c0a3
-    ld a, [hl+]
+    ld a, [hli]
     ldh [rBGP], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [rOBP0], a
     ld a, [hl]
     ldh [rOBP1], a
     ret
-
 
 Call_000_0a62:
 .loop
     call Call_000_0a69
     dec c
     jr nz, .loop
-
     ret
-
 
 Call_000_0a69:
     push bc
     push hl
-
-jr_000_0a6b:
+.loop
     ld a, [de]
     inc de
     ld [hl+], a
     dec b
-    jr nz, jr_000_0a6b
-
+    jr nz, .loop
     pop hl
     ld bc, $0020
     add hl, bc
     pop bc
     ret
-
 
 jr_000_0a78:
     ld a, [de]
@@ -2203,29 +2102,22 @@ jr_000_0aef:
 
 Call_000_0af5:
     ld c, a
-    ld a, [hl+]
+    ld a, [hli]
     ld b, a
     push bc
-    ld a, [hl+]
+    ld a, [hli]
     ld c, a
-    ld a, [hl+]
-
-Jump_000_0afc:
+    ld a, [hli]
     ld b, a
     push bc
-    ld a, [hl+]
+    ld a, [hli]
     ld c, a
-
-Call_000_0b00:
-Jump_000_0b00:
-    ld a, [hl+]
+    ld a, [hli]
     ld b, a
-    ld a, [hl+]
+    ld a, [hli]
     pop de
     pop hl
     call Call_000_2308
-
-Jump_000_0b08:
     pop hl
     ld a, $07
     rst $38
@@ -12133,39 +12025,4 @@ jr_000_3fdc:
     call Call_000_25c8
     ret
 
-
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Jump_000_3fef:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_3ff8:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Jump_000_3ffc:
-    rst $38
-    rst $38
-    rst $38
-
-Call_000_3fff:
-Jump_000_3fff:
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff,

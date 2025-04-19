@@ -3406,7 +3406,7 @@ jr_03c_4e6a:
     inc b
     ld [de], a
     xor c
-    jp c, Jump_000_0b00
+    jp c, $0b00
 
     ld hl, $6600
     sub b

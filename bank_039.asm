@@ -4903,7 +4903,7 @@ jr_039_5550:
     dec c
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -4965,7 +4965,7 @@ jr_039_558a:
     rrca
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -8694,7 +8694,7 @@ jr_039_65d5:
     inc [hl]
     ret z
 
-    call c, Call_000_02e8
+    call c, $02e8
     ld bc, $0205
     dec b
     ld [bc], a
@@ -13755,7 +13755,7 @@ jr_039_7b58:
     dec c
     dec hl
     rla
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -13873,7 +13873,7 @@ jr_039_7bd8:
     dec c
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -13977,7 +13977,7 @@ jr_039_7c48:
     dec c
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h

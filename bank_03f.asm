@@ -3485,7 +3485,7 @@ jr_03f_50ec:
     sbc b
     ld c, d
     add hl, bc
-    call c, Call_000_02dc
+    call c, $02dc
     ld hl, $1c22
     inc h
     call c, $00dc

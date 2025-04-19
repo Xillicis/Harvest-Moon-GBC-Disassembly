@@ -6577,7 +6577,7 @@ Call_02e_6756:
     inc bc
     ld bc, $fa00
     ld a, c
-    call z, Call_000_02fe
+    call z, $02fe
     ret nz
 
     ld a, [$ba0a]

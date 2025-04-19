@@ -13510,7 +13510,7 @@ jr_017_7a2f:
     nop
     cpl
     nop
-    jp Jump_000_0b00
+    jp $0b00
 
 
     inc b

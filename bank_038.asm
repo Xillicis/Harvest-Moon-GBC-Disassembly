@@ -4682,7 +4682,7 @@ jr_038_5436:
     db $f4
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -11663,7 +11663,7 @@ jr_038_7145:
     db $f4
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -11696,7 +11696,7 @@ jr_038_7198:
     ld a, [$6604]
     ld hl, sp-$0e
     adc h
-    jp nz, Jump_000_3ffc
+    jp nz, $3ffc
 
     ld de, $0d7b
     ld [hl], d
@@ -11737,7 +11737,7 @@ jr_038_71d6:
     db $f4
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub a
@@ -12223,7 +12223,7 @@ jr_038_73f8:
     db $f4
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     sub h
@@ -13079,7 +13079,7 @@ jr_038_7768:
     db $f4
     ld a, [bc]
     db $f4
-    jp nz, Jump_000_0afc
+    jp nz, $0afc
 
     db $f4
     ret c
