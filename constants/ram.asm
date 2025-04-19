@@ -11,7 +11,8 @@ DEF wLeftOrDownSideFacingTileID EQU $cb31
 DEF wcb32    EQU $cb32
 DEF wRightOrUpSideFacingTileID  EQU $cb33
 
-DEF wHeldItem EQU $cb4a
+; The item you hold above your head
+DEF wHeldObject EQU $cb4a
 
 DEF hROMBankTemp EQU $ffa4
 

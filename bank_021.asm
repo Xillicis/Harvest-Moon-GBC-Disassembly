@@ -452,7 +452,7 @@ Jump_021_4325:
     ld [$c7a0], a
     ld [$c800], a
     ld [$c620], a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld [$cb84], a
     ld [$cb82], a
     ld [$cb8b], a
@@ -479,7 +479,7 @@ Jump_021_436b:
     ld [$c7a0], a
     ld [$c800], a
     ld [$c620], a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld [$cb84], a
     ld [$cb82], a
     ld [$cb8b], a
@@ -2631,7 +2631,7 @@ Call_021_5238:
 
 
 Call_021_5251:
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_021_5273
 
@@ -2667,7 +2667,7 @@ jr_021_5273:
     cp $02
     ret z
 
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     jp nz, Jump_021_55c1
 
@@ -2695,7 +2695,7 @@ jr_021_52ac:
     jr nz, jr_021_52c6
 
     ld a, BUSH
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $18
     call $16d1
     xor a
@@ -2709,7 +2709,7 @@ jr_021_52c6:
     jr nz, jr_021_52da
 
     ld a, STONE
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $0f
     call $16d1
     xor a
@@ -2722,7 +2722,7 @@ jr_021_52da:
     jr nz, jr_021_52ee
 
     ld a, FENCE_POST
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $17
     call $16d1
     xor a
@@ -2765,7 +2765,7 @@ jr_021_52ee:
 
 jr_021_5318:
     ld a, $10
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $1b
     call $16d1
     ld a, $02
@@ -2774,7 +2774,7 @@ jr_021_5318:
 
 jr_021_5328:
     ld a, $11
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $1a
     call $16d1
     ld a, $04
@@ -2783,7 +2783,7 @@ jr_021_5328:
 
 jr_021_5338:
     ld a, $12
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $1f
     call $16d1
     ld a, $01
@@ -2792,7 +2792,7 @@ jr_021_5338:
 
 jr_021_5348:
     ld a, $13
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $21
     call $16d1
     ld a, $01
@@ -2801,7 +2801,7 @@ jr_021_5348:
 
 jr_021_5358:
     ld a, $14
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $6a
     call $16d1
     ld a, $01
@@ -2810,7 +2810,7 @@ jr_021_5358:
 
 jr_021_5368:
     ld a, $15
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $6b
     call $16d1
     ld a, $01
@@ -2819,7 +2819,7 @@ jr_021_5368:
 
 jr_021_5378:
     ld a, $16
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $6c
     call $16d1
     ld a, $01
@@ -2828,7 +2828,7 @@ jr_021_5378:
 
 jr_021_5388:
     ld a, $17
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $69
     call $16d1
     ld a, $03
@@ -2952,7 +2952,7 @@ Jump_021_5443:
     ret z
 
     ld a, $03
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $17
     call $16d1
     xor a
@@ -3006,7 +3006,7 @@ jr_021_548d:
     nop
 
 Call_021_549e:
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -3182,7 +3182,7 @@ Jump_021_55c1:
 
 
 Call_021_55c5:
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     rst $00
     ld sp, hl
     ld d, l
@@ -3241,7 +3241,7 @@ Call_021_55c5:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $33
     call $16d1
     ld a, $36
@@ -3347,7 +3347,7 @@ jr_021_5667:
     call RST_TableJumpBankSwitch
     pop hl
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $03
     ld [hl+], a
     ld a, $01
@@ -3491,7 +3491,7 @@ jr_021_571e:
     call RST_TableJumpBankSwitch
     pop hl
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $01
     ld [hli], a
     ld a, $01
@@ -4108,7 +4108,7 @@ jr_021_5aef:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $1c
     call $16d1
     ld a, $36
@@ -4139,7 +4139,7 @@ jr_021_5aef:
     ld a, $1e
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $5c
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4170,7 +4170,7 @@ jr_021_5aef:
     ld a, $1d
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $82
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4201,7 +4201,7 @@ jr_021_5aef:
     ld a, $20
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $11
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4232,7 +4232,7 @@ jr_021_5aef:
     ld a, $22
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $11
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4263,7 +4263,7 @@ jr_021_5aef:
     ld a, $6e
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $11
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4294,7 +4294,7 @@ jr_021_5aef:
     ld a, $6f
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $11
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4325,7 +4325,7 @@ jr_021_5aef:
     ld a, $70
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $11
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4356,7 +4356,7 @@ jr_021_5aef:
     ld a, $6d
     call $16d1
     xor a
-    ld [wHeldItem], a
+    ld [wHeldObject], a
     ld a, $ec
     ld [wRightOrUpSideFacingTileID], a
     ld a, $36
@@ -4557,7 +4557,7 @@ jr_021_5dd3:
     cp $11
     jr nc, jr_021_5def
 
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     call Call_000_1cff
     ld a, $36
     call Call_000_25ce
@@ -4596,7 +4596,7 @@ jr_021_5e0b:
     cp $11
     ret nc
 
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     call Call_000_1cff
     ret
 
@@ -6446,7 +6446,7 @@ Call_021_6893:
 
 
 Call_021_689c:
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -6599,7 +6599,7 @@ Call_021_6968:
     or a
     ret nz
 
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -6719,7 +6719,7 @@ Call_021_6a38:
     or a
     ret nz
 
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     ret nz
 

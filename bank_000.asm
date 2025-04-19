@@ -4425,7 +4425,7 @@ jr_000_191a:
 
 
 Call_000_1923:
-    ld a, [wHeldItem]
+    ld a, [wHeldObject]
     or a
     ret nz
 
