@@ -19,23 +19,67 @@ Data_020_4041:
     RGB 28,19,19, 5,5,0, 2,22,2, 29,0,0
 Data_020_4049:
     db $7C, $4E, $A5, $00, $79, $1E, $7F, $3B
-
-    db $7C, $4E, $A5, $00, $1F, $00, $FF, $7F, $7C, $4E, $A5, $00, $40, $7E, $FF
-    db $7F, $7C, $4E, $A5, $00, $D8, $42, $FF, $7F, $7C, $4E, $84, $00, $2E, $01, $F7
-    db $0D, $7C, $4E, $A5, $00, $A5, $07, $5F, $00, $7C, $4E, $A5, $00, $5F, $42, $FF
-    db $7F, $7C, $4E, $A5, $00, $D0, $29, $F8, $3E, $7C, $4E, $EC, $00, $96, $09, $BF
-    db $06, $7C, $4E, $A5, $00, $B4, $1D, $7F, $1B, $7C, $4E, $A5, $00, $DF, $02, $FF
-    db $53, $7C, $4E, $A5, $00, $14, $4C, $14, $7E, $7C, $4E, $A5, $00, $75, $09, $7D
-    db $06, $7C, $4E, $A5, $00, $5F, $06, $7F, $E0, $7C, $4E, $A5, $00, $B3, $11, $9A
-    db $0E, $7C, $4E, $A5, $00, $B3, $11, $9A, $0E, $7C, $4E, $A5, $00, $DB, $02, $9F
-    db $1B, $7C, $4E, $A5, $00, $40, $0A, $FF, $7F, $7C, $4E, $A5, $00, $E1, $05, $AA
-    db $07, $7C, $4E, $86, $00, $1F, $00, $DF, $3A, $7C, $4E, $E2, $00, $E1, $05, $67
-    db $07, $7C, $4E, $A6, $0C, $B4, $05, $BC, $2E, $7C, $4E, $A5, $00, $1F, $03, $FF
-    db $7F, $7C, $4E, $A5, $00, $DF, $02, $FF, $53, $7C, $4E, $A5, $00, $C2, $0A, $5F
-    db $13, $7C, $4E, $A5, $00, $30, $11, $16, $12, $7C, $4E, $A5, $00, $B4, $1D, $FF
-    db $7F, $7C, $4E, $C6, $00, $DB, $02, $FF, $03, $7C, $4E, $A5, $00, $C7, $7F, $FF
-    db $7F, $7C, $4E, $A5, $00, $29, $25, $31, $46, $7C, $4E, $A5, $00, $B3, $11, $9A
-    db $0E, $7C, $4E, $E7, $00, $17, $12, $FF, $7F, $00, $00, $1C, $00, $23, $1C, $5C
+Data_020_4051:
+    db $7C, $4E, $A5, $00, $1F, $00, $FF, $7F
+Data_020_4059:
+    db $7C, $4E, $A5, $00, $40, $7E, $FF, $7F
+Data_020_4061:
+    db $7C, $4E, $A5, $00, $D8, $42, $FF, $7F
+Data_020_4069:
+    db $7C, $4E, $84, $00, $2E, $01, $F7, $0D
+Data_020_4071:
+    db $7C, $4E, $A5, $00, $A5, $07, $5F, $00
+Data_020_4079:
+    db $7C, $4E, $A5, $00, $5F, $42, $FF, $7F
+Data_020_4081:
+    db $7C, $4E, $A5, $00, $D0, $29, $F8, $3E
+Data_020_4089:
+    db $7C, $4E, $EC, $00, $96, $09, $BF, $06
+Data_020_4091:
+    db $7C, $4E, $A5, $00, $B4, $1D, $7F, $1B
+Data_020_4099:
+    db $7C, $4E, $A5, $00, $DF, $02, $FF, $53
+Data_020_40a1:
+    db $7C, $4E, $A5, $00, $14, $4C, $14, $7E
+Data_020_40a9:
+    db $7C, $4E, $A5, $00, $75, $09, $7D, $06
+Data_020_40b1:
+    db $7C, $4E, $A5, $00, $5F, $06, $7F, $E0
+Data_020_40b9:
+    db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
+Data_020_40c1:
+    db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
+Data_020_40c9:
+    db $7C, $4E, $A5, $00, $DB, $02, $9F, $1B
+PickedUpTurnipPalette:
+    db $7C, $4E, $A5, $00, $40, $0A, $FF, $7F
+Data_020_40d9:
+    db $7C, $4E, $A5, $00, $E1, $05, $AA, $07
+Data_020_40e1:
+    db $7C, $4E, $86, $00, $1F, $00, $DF, $3A
+PickedUpGrassPalette:
+    db $7C, $4E, $E2, $00, $E1, $05, $67, $07
+PickedUpFencePostPalette:
+    db $7C, $4E, $A6, $0C, $B4, $05, $BC, $2E
+Data_020_40f9:
+    db $7C, $4E, $A5, $00, $1F, $03, $FF, $7F
+Data_020_4101:
+    db $7C, $4E, $A5, $00, $DF, $02, $FF, $53
+Data_020_4109:
+    db $7C, $4E, $A5, $00, $C2, $0A, $5F, $13
+Data_020_4111:
+    db $7C, $4E, $A5, $00, $30, $11, $16, $12
+Data_020_4119:
+    db $7C, $4E, $A5, $00, $B4, $1D, $FF, $7F
+Data_020_4121:
+    db $7C, $4E, $C6, $00, $DB, $02, $FF, $03
+Data_020_4129:
+    db $7C, $4E, $A5, $00, $C7, $7F, $FF, $7F
+PickedUpStonePalette:
+    db $7C, $4E, $A5, $00, $29, $25, $31, $46
+PickedUpPotatoPalette: 
+    db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
+    db $7C, $4E, $E7, $00, $17, $12, $FF, $7F, $00, $00, $1C, $00, $23, $1C, $5C
     db $23, $A3, $40, $45, $02, $05, $03, $0B, $07, $00, $00, $00, $00, $00, $00, $C0
     db $00, $60, $80, $D0, $A0, $D0, $60, $E8, $F0, $00, $00, $00, $00, $16, $00, $2D
     db $12, $14, $0B, $14, $0B, $0A, $05, $0B, $04, $00, $00, $00, $00, $30, $00, $50
@@ -268,7 +312,7 @@ Data_020_4049:
     db $00, $00, $1f, $00, $1f, $00, $1f, $00, $1f, $00, $1f, $00
 
 Label_020_4fac:
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -278,7 +322,7 @@ Label_020_4fb3:
     jr nc, jr_020_4fc1
 
 Label_020_4fba:
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -288,12 +332,12 @@ jr_020_4fc1:
     ret
 
 Label_020_4fc8:
-    ld hl, $4131
+    ld hl, PickedUpStonePalette
     call SyncLoadSpritePalette4
     ret
 
 Label_020_4fcf:
-    ld hl, $40f1
+    ld hl, PickedUpFencePostPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -6927,7 +6971,7 @@ Jump_020_6e98:
 
     jr nc, jr_020_6eb5
 
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -6973,7 +7017,7 @@ Jump_020_6ed7:
 
     jr nc, jr_020_6ef4
 
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7060,7 +7104,7 @@ Jump_020_6f4d:
 
     jr nc, jr_020_6f64
 
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7090,7 +7134,7 @@ Jump_020_6f72:
 
 
 Jump_020_6f79:
-    ld hl, $40f1
+    ld hl, PickedUpFencePostPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7362,7 +7406,7 @@ Jump_020_6f87:
     ret
 
 
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7408,7 +7452,7 @@ Jump_020_70c2:
     cp $08
     ret z
 
-    ld hl, $4131
+    ld hl, PickedUpStonePalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7466,7 +7510,7 @@ Jump_020_70c2:
     ret
 
 
-    ld hl, $40f1
+    ld hl, PickedUpFencePostPalette
     call SyncLoadSpritePalette4
     ret
 
@@ -7537,7 +7581,7 @@ Jump_020_70c2:
 
     jr nc, jr_020_7197
 
-    ld hl, $40e9
+    ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 

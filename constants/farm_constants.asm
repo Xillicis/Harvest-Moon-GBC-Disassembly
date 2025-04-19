@@ -3,6 +3,8 @@ const_def 1
 const BUSH       ; $01
 const STONE      ; $02
 const FENCE_POST ; $03
+const_skip 15
+const POTATO     ; $13
 const MUSHROOM   ; $30
 
 ; Tile IDs
@@ -34,3 +36,7 @@ DEF WATER_BOTTOM_RIGHT_TILE  EQU $2c
 DEF SIGN_TILE EQU $44
 
 DEF PLANTED_SEEDS_TILE EQU $90 ; might be different for different seeds planted...
+
+DEF FULLY_GROWN_TURNIP_TILE EQU $98
+
+DEF FULLY_GROWN_POTATO_TILE EQU $ac

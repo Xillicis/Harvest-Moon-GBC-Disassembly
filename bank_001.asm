@@ -2798,30 +2798,21 @@ jr_001_5341:
     ld a, [wRightOrUpSideFacingTileID]
     cp $60
     jr z, jr_001_536f
-
     cp $88
     jr z, jr_001_538d
-
-    cp $98
-    jr z, jr_001_53ab
-
-    cp $ac
-    jr z, jr_001_53c9
-
+    cp FULLY_GROWN_TURNIP_TILE
+    jr z, PickUpTurnip
+    cp FULLY_GROWN_POTATO_TILE
+    jr z, PickUpPotato
     cp $b8
     jp z, Jump_001_53e6
-
     cp $cc
     jp z, Jump_001_5403
-
     cp $dc
     jp z, Jump_001_5420
-
     cp $f0
     jp z, Jump_001_543d
-
     ret
-
 
 jr_001_536f:
     push hl
@@ -2840,7 +2831,6 @@ jr_001_536f:
     ldh [$ffa4], a
     jp Jump_001_5458
 
-
 jr_001_538d:
     push hl
     push af
@@ -2858,8 +2848,7 @@ jr_001_538d:
     ldh [$ffa4], a
     jp Jump_001_5458
 
-
-jr_001_53ab:
+PickUpTurnip:
     push hl
     push af
     ld l, $eb
@@ -2876,8 +2865,7 @@ jr_001_53ab:
     ldh [$ffa4], a
     jp Jump_001_5458
 
-
-jr_001_53c9:
+PickUpPotato:
     push hl
     push af
     ld l, $f2
@@ -2886,7 +2874,7 @@ jr_001_53c9:
     call BankSwitchCallHL
     pop af
     pop hl
-    ld a, $13
+    ld a, POTATO
     ld [wHeldObject], a
     ld a, $21
     call $16d1
