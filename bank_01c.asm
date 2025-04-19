@@ -163,7 +163,7 @@ jr_01c_409b:
     push bc
     ld a, [de]
     ei
-    jp z, Jump_000_0290
+    jp z, $0290
 
     ld [bc], a
     rrca
@@ -578,7 +578,7 @@ jr_01c_422f:
 
     sub a
     dec bc
-    jp nz, Jump_000_0021
+    jp nz, $0021
 
     rst $30
     ld h, d

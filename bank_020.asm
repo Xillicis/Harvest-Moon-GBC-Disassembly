@@ -4900,7 +4900,7 @@ Jump_020_5501:
     ldh a, [$ffa4]
     ld hl, $5554
     call Call_000_0a3e
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -5123,7 +5123,7 @@ Call_020_567f:
     xor a
     ldh [c], a
     ld hl, $563b
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -6268,7 +6268,7 @@ jr_020_5b4f:
     ld hl, $5aec
     call Call_000_03ab
     ld hl, $5b2c
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld c, $4f
     ld a, $01
     ldh [c], a
@@ -9846,12 +9846,12 @@ jr_020_6aa9:
     ld hl, $4329
 
 jr_020_6c07:
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
     ld hl, $4369
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $43a9
     call Call_000_03ab
     ld c, $4f
@@ -9878,7 +9878,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $43e9
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $44e6
     call Call_000_03ab
     ret
@@ -9895,7 +9895,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4526
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $585f
     call SyncLoadSpritePalette3
     ret
@@ -9912,7 +9912,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4526
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -9927,7 +9927,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4526
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -9942,7 +9942,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4526
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -9957,7 +9957,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4526
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -9972,7 +9972,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $488a
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $4977
     call Call_000_03ab
     ret
@@ -9989,7 +9989,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4a88
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $4b08
     call Call_000_03ab
     ret
@@ -10010,7 +10010,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4a48
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $4ac8
     call Call_000_03ab
     ret
@@ -10032,7 +10032,7 @@ jr_020_6c07:
 
 
     ld hl, $6d70
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $4c93
     call Call_000_03ab
     ret
@@ -10057,7 +10057,7 @@ jr_020_6c07:
     ld hl, $4d93
     call Call_000_03ab
     ld hl, $4dd3
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -10083,7 +10083,7 @@ jr_020_6c07:
 
 
     ld hl, $5c80
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $4e9d
     call Call_000_03ab
     ret
@@ -10100,7 +10100,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4edd
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $584f
     call SyncLoadSpritePalette7
     ret
@@ -10863,7 +10863,7 @@ jr_020_7197:
     ld hl, $5aac
     call Call_000_03ab
     ld hl, $5a6c
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld c, $4f
     ld a, $01
     ldh [c], a

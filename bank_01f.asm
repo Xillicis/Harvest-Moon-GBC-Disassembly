@@ -11637,7 +11637,7 @@ jr_01f_764d:
     ld hl, $7811
     call SyncLoadSpritePalette4
     ld hl, $751a
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld c, $4f
     ld a, $01
     ldh [c], a
@@ -11654,7 +11654,7 @@ jr_01f_782a:
 
 
     ld hl, $751a
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld c, $4f
     ld a, $01
     ldh [c], a
@@ -11766,7 +11766,7 @@ jr_01f_78c7:
     ld hl, $75da
 
 jr_01f_78ca:
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -11796,7 +11796,7 @@ jr_01f_78ec:
     ld hl, $74da
 
 jr_01f_78ef:
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ret
 
 
@@ -11835,7 +11835,7 @@ jr_01f_7925:
     ld hl, $75da
 
 jr_01f_7928:
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $76a8
     call Call_000_03ab
     ret

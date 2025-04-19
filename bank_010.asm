@@ -2007,7 +2007,7 @@ jr_010_4a71:
     inc bc
     ld [bc], a
     rrca
-    jp nc, Jump_000_0202
+    jp nc, $0202
 
     rlca
     ldh [rNR50], a

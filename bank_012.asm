@@ -11851,7 +11851,7 @@ jr_012_7c25:
     inc e
     db $e3
     ld hl, $a1e0
-    jp Jump_000_02bf
+    jp $02bf
 
 
     pop bc

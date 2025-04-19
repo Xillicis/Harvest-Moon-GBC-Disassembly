@@ -8413,7 +8413,7 @@ jr_01d_68a6:
     ld a, $6f
     ld bc, $040b
     dec b
-    jp nz, Jump_000_0210
+    jp nz, $0210
 
     db $fc
     inc hl

@@ -8,84 +8,38 @@ SECTION "ROM Bank $000", ROM0[$0]
 RST_00::
     jp JumpToFunctionInTable
 
-
-Call_000_0003:
-    rst $38
-
-Jump_000_0004:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff
 
 RST_08::
     jp TableJumpBankSwitch
-
     ret
 
-Jump_000_000c:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff
 
 RST_10::
     ret
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 RST_18::
     ret
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 RST_20::
     ret
 
-Jump_000_0021:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 RST_28::
     ret
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 RST_30::
     ret
 
-    rst $38
-
-Call_000_0032:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 RST_38::
     add l
@@ -95,8 +49,7 @@ RST_38::
     ld h, a
     ret
 
-Jump_000_003f:
-    rst $38
+    db $ff
 
 VBlankInterrupt::
     call Call_000_04c7
@@ -104,38 +57,22 @@ VBlankInterrupt::
 Call_000_0043:
     reti
 
-Jump_000_0044:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff
 
 LCDCInterrupt::
     jp Jump_000_3311
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff
 
 TimerOverflowInterrupt::
     jp Jump_000_33f9
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff
 
 SerialTransferCompleteInterrupt::
     jp Jump_000_3408
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $ff, $ff, $ff, $ff, $ff
 
 JoypadTransitionInterrupt::
     reti
@@ -330,25 +267,20 @@ Jump_000_01b1:
     ld [MBC3SRamBank], a
     ld a, [$dff7]
     cp $11
-    jr nz, jr_000_01f9
+    jr nz, .jr_000_01f9
     ld a, $01
     ld [$c0bb], a
     ld a, $00
     ld [$c0bc], a
-    jr jr_000_0202
+    jr .jr_000_0202
 
-jr_000_01f9:
+.jr_000_01f9
     xor a
     ld [$c0bb], a
-
-Jump_000_01fd:
     ld a, $2a
-
-Jump_000_01ff:
     ld [$c0bc], a
 
-Jump_000_0202:
-jr_000_0202:
+.jr_000_0202
     ld a, $20
     ld [$c0a7], a
 
@@ -358,8 +290,6 @@ Call_000_0207:
     push af
     ld l, $27
     ld h, $25
-
-Jump_000_0210:
     ld a, $00
     call BankSwitchCallHL
     pop af
@@ -405,17 +335,12 @@ Jump_000_0217:
     ld [$c500], a
     xor a
     ldh [$ff97], a
-
-Jump_000_0259:
     push hl
     push af
     ld l, $cd
     ld h, $79
     ld a, $07
     call BankSwitchCallHL
-
-Call_000_0264:
-Jump_000_0264:
     pop af
     pop hl
     call Call_000_0061
@@ -424,23 +349,16 @@ Jump_000_0264:
 
 Jump_000_026d:
     ld a, [$c0a6]
-
-Jump_000_0270:
     or a
     or a
     jp z, Jump_000_026d
-
     jp Jump_000_0217
-
 
 Call_000_0278:
     ld a, [$c0bb]
     or a
-    jr z, jr_000_028d
-
+    jr z, .jr_000_028d
     ld c, rVBK_c
-
-Jump_000_0280:
     ld a, $01
     ldh [c], a
     xor a
@@ -450,15 +368,15 @@ Jump_000_0280:
     xor a
     ldh [c], a
 
-jr_000_028d:
+.jr_000_028d
     ld a, [$c0bc]
-
-Jump_000_0290:
     ld b, a
     ld a, [$c0a7]
     or a
     add b
     rst $08
+
+; Data I think...
     ld l, [hl]
     ld l, a
     rra
@@ -482,8 +400,6 @@ Jump_000_0290:
     ld c, $b2
     ld h, [hl]
     ld c, $a8
-
-Jump_000_02bf:
     ld c, a
     db $10
     cp [hl]
@@ -681,7 +597,7 @@ jr_000_0387:
     ret
 
 ; Something with writing CGB color pallete
-Call_000_039b:
+CGBBackgroundPaletteUpload:
     ; Address $FF68 is for BCPS/BGPI
     ld c, rBGPI_c
     ld a, 1 << rBGPI_AUTO_INCREMENT

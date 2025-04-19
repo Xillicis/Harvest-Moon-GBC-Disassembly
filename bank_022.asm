@@ -12271,7 +12271,7 @@ jr_022_7e0d:
     rst $38
     jr nz, jr_022_7e65
 
-    call Call_000_0032
+    call $0032
     or a
     ld [hl], d
     adc l

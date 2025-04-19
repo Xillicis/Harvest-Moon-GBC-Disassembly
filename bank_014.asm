@@ -13452,7 +13452,7 @@ jr_014_7c2b:
     nop
     ldh [$ff71], a
     ld a, a
-    jp nz, Jump_000_01fd
+    jp nz, $01fd
 
     ld b, c
     db $10

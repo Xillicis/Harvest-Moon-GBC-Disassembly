@@ -4755,7 +4755,7 @@ jr_02b_535d:
     nop
     ldh [$ff71], a
     ld a, a
-    jp nz, Jump_000_01fd
+    jp nz, $01fd
 
     ld b, c
     db $10

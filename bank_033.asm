@@ -7122,10 +7122,10 @@ Call_033_6056:
     ld h, h
     ld [bc], a
     push af
-    jp nz, Jump_000_0264
+    jp nz, $0264
 
     push af
-    call nz, Call_000_0264
+    call nz, $0264
     push af
     add $64
     ld [bc], a
@@ -10682,7 +10682,7 @@ jr_033_6f28:
     ld [hl], b
     ld [bc], a
     push af
-    jp Jump_000_0270
+    jp $0270
 
 
     push af

@@ -7504,7 +7504,7 @@ jr_018_6003:
     ld h, d
     sbc a
     ld [hl-], a
-    call Call_000_0003
+    call $0003
     inc b
     inc bc
     ld [$3c07], sp

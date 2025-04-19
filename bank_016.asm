@@ -14063,7 +14063,7 @@ jr_016_7d76:
     rst $38
     inc l
     rst $38
-    jp nz, Jump_000_01ff
+    jp nz, $01ff
 
     nop
     nop

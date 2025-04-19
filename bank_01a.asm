@@ -7915,7 +7915,7 @@ jr_01a_6061:
     ldh a, [rNR10]
     ldh [$ff64], a
     add b
-    jp z, Jump_000_0004
+    jp z, $0004
 
     nop
     nop
@@ -9764,7 +9764,7 @@ jr_01a_68b4:
     jr jr_01a_68fa
 
     nop
-    jp c, Jump_000_000c
+    jp c, $000c
 
     nop
     nop

@@ -4912,7 +4912,7 @@ jr_03d_5822:
     ld d, h
     rst $38
     xor d
-    jp nz, Jump_000_0004
+    jp nz, $0004
 
     rst $28
     rst $38
@@ -6037,7 +6037,7 @@ jr_03d_5e00:
     nop
     rst $38
     dec [hl]
-    jp z, Jump_000_0280
+    jp z, $0280
 
     inc de
     nop
@@ -8138,7 +8138,7 @@ jr_03d_6737:
     db $db
     inc b
     dec b
-    jp nz, Jump_000_0210
+    jp nz, $0210
 
     db $fc
     inc hl

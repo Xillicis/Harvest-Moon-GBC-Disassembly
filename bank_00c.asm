@@ -168,7 +168,7 @@ SECTION "ROM Bank $00c", ROMX[$4000], BANK[$c]
     ld e, c
     ld [bc], a
     db $fd
-    jp z, Jump_000_0259
+    jp z, $0259
 
     db $fd
     ret c
@@ -264,7 +264,7 @@ SECTION "ROM Bank $00c", ROMX[$4000], BANK[$c]
     ld b, h
     nop
     db $fd
-    jp Jump_000_0044
+    jp $0044
 
 
     db $fd

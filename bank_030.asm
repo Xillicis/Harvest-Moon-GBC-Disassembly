@@ -1937,7 +1937,7 @@ jr_030_4a0b:
     inc bc
     ld [bc], a
     rrca
-    jp nc, Jump_000_0202
+    jp nc, $0202
 
     rlca
     ldh [rNR50], a
@@ -13260,7 +13260,7 @@ jr_030_7bbb:
     di
     db $10
     inc sp
-    jp nc, Jump_000_0021
+    jp nc, $0021
 
     or e
     ld d, d

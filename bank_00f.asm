@@ -5694,7 +5694,7 @@ jr_00f_61d0:
     ld [$cc75], a
     ret
 
-
+Label_00f_61d5:
     xor a
     ld [$ba3f], a
     ld a, [$ba0d]
@@ -8604,7 +8604,7 @@ jr_00f_724a:
 
 jr_00f_7259:
     ld hl, $dd02
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $dd42
     call Call_000_03ab
     ret
@@ -8934,7 +8934,7 @@ jr_00f_73ef:
 
 Call_00f_73fe:
     ld hl, $dd02
-    call Call_000_039b
+    call CGBBackgroundPaletteUpload
     ld hl, $dd42
     call Call_000_03ab
     ret

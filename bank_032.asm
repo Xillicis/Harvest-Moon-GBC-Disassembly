@@ -12632,7 +12632,7 @@ jr_032_7c35:
     inc e
     db $e3
     ld hl, $a1e0
-    jp Jump_000_02bf
+    jp $02bf
 
 
     pop bc
