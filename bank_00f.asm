@@ -7435,11 +7435,11 @@ jr_00f_6c1e:
     nop
 
 Call_00f_6c34:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $6c42
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 
@@ -7834,11 +7834,11 @@ Call_00f_6e3b:
     nop
 
 Call_00f_6e7f:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $6e8d
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

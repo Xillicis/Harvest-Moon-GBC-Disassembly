@@ -27,7 +27,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     call Call_000_31a0
     ld hl, $63af
     ld c, $3d
-    ld de, $9c00
+    ld de, vBGMap1
     call Call_000_31a0
     ld a, $60
     ldh [$ff93], a
@@ -1359,7 +1359,7 @@ jr_03d_4726:
     ld bc, $0400
     ld a, $e0
     call Call_03d_5108
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld bc, $0400
     ld a, $e0
     call Call_03d_5108
@@ -4440,7 +4440,7 @@ jr_03d_565b:
     call Call_000_31a0
     ld hl, $7ee9
     ld c, $32
-    ld de, $9c00
+    ld de, vBGMap1
     call Call_000_31a0
     ld a, $60
     ldh [$ff93], a
@@ -10048,11 +10048,11 @@ jr_03d_7111:
 
 
 Call_03d_7149:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $7157
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 
@@ -10540,11 +10540,11 @@ jr_03d_7400:
 
 
 Call_03d_7438:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $7446
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

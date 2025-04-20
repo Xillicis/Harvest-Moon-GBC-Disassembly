@@ -6748,7 +6748,7 @@ jr_020_6c07:
     call Call_000_31a0
     ld hl, $49b7
     ld c, $20
-    ld de, $9c00
+    ld de, vBGMap1
     call Call_000_31a0
     ld c, $4f
     xor a

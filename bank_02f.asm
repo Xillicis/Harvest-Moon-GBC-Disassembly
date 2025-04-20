@@ -7384,11 +7384,11 @@ jr_02f_6bc8:
     nop
 
 Call_02f_6bde:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $6bec
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 ;;;;;;;;;;;;;;; SOME DATA
@@ -7776,11 +7776,11 @@ Call_02f_6dd8:
     nop
 
 Call_02f_6e1c:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $6e2a
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

@@ -7041,11 +7041,11 @@ jr_022_6677:
 
 
 Call_022_669c:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $66aa
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

@@ -4200,11 +4200,11 @@ Call_030_55a7:
     nop
 
 Call_030_55ce:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $55dc
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

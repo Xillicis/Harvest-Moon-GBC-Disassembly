@@ -3051,11 +3051,11 @@ jr_00e_5210:
     nop
 
 Call_00e_5213:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $5221
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

@@ -1,0 +1,2 @@
+DEF vBGMap0 EQU $9800
+DEF vBGMap1 EQU $9c00

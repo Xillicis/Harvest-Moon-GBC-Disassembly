@@ -7152,11 +7152,11 @@ jr_002_670a:
 
 
 Call_002_672f:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $673d
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

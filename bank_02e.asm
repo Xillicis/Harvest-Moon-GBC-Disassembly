@@ -38,7 +38,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     call Call_000_31a0
     ld hl, $54e5
     ld c, $2a
-    ld de, $9800
+    ld de, vBGMap0
     call Call_000_31a0
     ld a, $3c
     ld [$cb5c], a
@@ -1789,7 +1789,7 @@ Call_02e_4af8:
     ld c, $02
     call Multiply8Bit
     add hl, de
-    ld de, $9800
+    ld de, vBGMap0
     add hl, de
     ld a, h
     ld [$cc92], a
@@ -1809,7 +1809,7 @@ jr_02e_4b20:
     ld c, $02
     call Multiply8Bit
     add hl, de
-    ld de, $9800
+    ld de, vBGMap0
     add hl, de
     ld a, h
     ld [$cc92], a
@@ -3050,11 +3050,11 @@ jr_02e_51ed:
     nop
 
 Call_02e_51f0:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $51fe
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

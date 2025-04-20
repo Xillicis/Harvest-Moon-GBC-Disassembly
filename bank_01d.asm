@@ -37,7 +37,7 @@ Jump_01d_402a:
     call Call_000_31a0
     ld hl, $651f
     ld c, $1d
-    ld de, $9c00
+    ld de, vBGMap1
     call Call_000_31a0
     ld a, $60
     ldh [$ff93], a
@@ -1357,7 +1357,7 @@ jr_01d_474d:
     ld bc, $0400
     ld a, $e0
     call Call_01d_513a
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld bc, $0400
     ld a, $e0
     call Call_01d_513a
@@ -4430,7 +4430,7 @@ jr_01d_56b1:
     call Call_000_31a0
     ld hl, $7ed9
     ld c, $12
-    ld de, $9c00
+    ld de, vBGMap1
     call Call_000_31a0
     ld a, $60
     ldh [$ff93], a
@@ -10324,11 +10324,11 @@ jr_01d_726e:
 
 
 Call_01d_72a6:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $72b4
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 
@@ -10822,11 +10822,11 @@ jr_01d_7593:
 
 
 Call_01d_75a2:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $75b0
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

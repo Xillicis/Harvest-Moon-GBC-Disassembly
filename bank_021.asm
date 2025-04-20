@@ -7193,11 +7193,11 @@ jr_021_6ce9:
 
 
 Call_021_6d1e:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $6d2c
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

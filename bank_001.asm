@@ -191,7 +191,7 @@ jr_001_4122:
     ld a, $00
     call RST_TableJumpBankSwitch
     call Call_001_737f
-    call Call_000_0455
+    call LoadTextBoxTilesIntoBGMap1
     call Call_000_0ece
     ld a, [$b89c]
     cp $01
@@ -4704,7 +4704,7 @@ Jump_001_5ef6:
     call Call_000_25ce
     ld a, $01
     ld [$cb80], a
-    ld hl, $9800
+    ld hl, vBGMap0
     ld bc, $0400
 
 jr_001_5f06:

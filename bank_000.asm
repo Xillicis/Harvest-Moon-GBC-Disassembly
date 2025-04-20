@@ -537,22 +537,22 @@ Call_000_0436:
 ; 00x044d
     RGB 28,19,19, 4,4,0,  0,24,6,  24,31,0
 
-Call_000_0455:
-    ld hl, $9c00
-    ld de, $0463
-    ld b, $14
-    ld c, $05
-    call Call_000_0a62
+LoadTextBoxTilesIntoBGMap1: ; 00x0455
+    ld hl, vBGMap1
+    ld de, TextBoxTileData
+    ld b, $14 ; length
+    ld c, $05 ; height
+    call CopyTileDataToBGMap
     ret
 
-Data_000_0463: ; 00x0463
+TextBoxTileData: ; 00x0463
     db $A0, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1
     db $A1, $A1, $A1, $A2, $F9, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8
     db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5, $F9, $A8, $A8, $A8, $A8, $A8, $A8, $A8
     db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5, $F9, $A8, $A8, $A8
     db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5
     db $A3, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B
-    db $5B, $5B, $5B, $A4, 
+    db $5B, $5B, $5B, $A4
 
 Call_000_04c7:
     push af
@@ -1764,22 +1764,22 @@ Call_000_0a55:
     ldh [rOBP1], a
     ret
 
-Call_000_0a62:
-.loop
-    call Call_000_0a69
+CopyTileDataToBGMap: ; 00x0a62
+.outerLoop
+    call .loadRow
     dec c
-    jr nz, .loop
+    jr nz, .outerLoop
     ret
 
-Call_000_0a69:
+.loadRow
     push bc
     push hl
-.loop
+.innerLoop
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     dec b
-    jr nz, .loop
+    jr nz, .innerLoop
     pop hl
     ld bc, $0020
     add hl, bc
@@ -4367,7 +4367,7 @@ Call_000_195e:
     srl a
     ld c, $20
     call Multiply8Bit
-    ld de, $9800
+    ld de, vBGMap0
     add hl, de
     pop af
     add l
@@ -6198,7 +6198,7 @@ jr_000_2486:
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
-    ld hl, $9800
+    ld hl, vBGMap0
     ld de, $000c
     ld a, $80
     ld c, $0d
@@ -6243,7 +6243,7 @@ Call_000_24fa:
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
-    ld hl, $9800
+    ld hl, vBGMap0
     ld de, $000c
     ld a, $80
     ld c, $0d

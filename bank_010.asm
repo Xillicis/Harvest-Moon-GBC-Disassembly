@@ -4325,11 +4325,11 @@ Call_010_563c:
     nop
 
 Call_010_5663:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $5671
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

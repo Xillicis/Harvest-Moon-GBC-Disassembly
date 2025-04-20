@@ -769,11 +769,11 @@ jr_005_446c:
 
 
 Call_005_44a2:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $44b0
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 

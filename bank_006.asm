@@ -25,7 +25,7 @@ SECTION "ROM Bank $006", ROMX[$4000], BANK[$6]
     ld de, $9800
     call Call_000_31a0
     ld hl, $9980
-    ld de, $9c00
+    ld de, vBGMap1
     ld b, $c0
     call CopyHLtoDE
     ld hl, $9820

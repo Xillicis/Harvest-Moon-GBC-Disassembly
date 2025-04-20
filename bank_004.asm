@@ -1075,16 +1075,15 @@ jr_004_46b1:
     ld [$c910], a
     ret
 
-
 Call_004_46c4:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $46d2
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
-
+; DATA
     and b
     and c
     and c

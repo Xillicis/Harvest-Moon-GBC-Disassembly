@@ -4002,7 +4002,7 @@ Call_029_5404:
     ld de, $9800
     call Call_000_31a0
     ld hl, $99a0
-    ld de, $9c00
+    ld de, vBGMap1
     ld b, $c0
     call CopyHLtoDE
     ld hl, $9c22
@@ -4264,7 +4264,7 @@ Call_029_5627:
     ld de, $9800
     call Call_000_31a0
     ld hl, $9980
-    ld de, $9c00
+    ld de, vBGMap1
     ld b, $c0
     call CopyHLtoDE
     ld hl, $9820

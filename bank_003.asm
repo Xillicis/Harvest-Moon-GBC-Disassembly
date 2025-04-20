@@ -5548,11 +5548,11 @@ jr_003_61d9:
 
 
 Call_003_61de:
-    ld hl, $9c00
+    ld hl, vBGMap1
     ld de, $61ec
     ld b, $14
     ld c, $05
-    call Call_000_0a62
+    call CopyTileDataToBGMap
     ret
 
 
