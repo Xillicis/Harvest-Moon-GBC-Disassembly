@@ -91,6 +91,7 @@ Data_020_4189: ; 20x4189
     db $06, $00, $05, $02, $04, $03, $04, $03, $0C, $03, $0C, $03, $0A, $05, $04, $03
     db $30, $00, $50, $20, $90, $60, $10, $E0, $18, $E0, $18, $E0, $28, $D0, $90, $60
 ; padding
+Padding_000_41a9:
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
@@ -102,11 +103,13 @@ Data_020_4189: ; 20x4189
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 
 ; end padding
+Data_020_4249:
     db $1B, $0E, $1E, $09, $0D, $02, $07, $02, $07, $02, $03, $00, $00, $00, $00, $00
-    db $EC, $B8, $3C, $C8, $D8, $20, $70
-    db $A0, $F0, $20, $60, $00, $00, $00, $00, $00, $05, $02, $06, $01, $05, $02, $05
-    db $03, $05, $03, $07, $02, $0D, $06, $06, $00, $B0, $40, $50, $A0, $D0, $60, $D0
-    db $E0, $D0, $60, $70, $20, $58, $30, $30, $00, $05, $02, $1D, $02, $66, $19, $99
+    db $EC, $B8, $3C, $C8, $D8, $20, $70, $A0, $F0, $20, $60, $00, $00, $00, $00, $00
+Data_020_4269:
+    db $05, $02, $06, $01, $05, $02, $05, $03, $05, $03, $07, $02, $0D, $06, $06, $00
+    db $B0, $40, $50, $A0, $D0, $60, $D0, $E0, $D0, $60, $70, $20, $58, $30, $30, $00
+    db $05, $02, $1D, $02, $66, $19, $99
     db $66, $6F, $01, $0D, $06, $0E, $04, $04, $00, $50, $A0, $50, $A0, $D0, $60, $C8
     db $F0, $F8, $60, $58, $30, $38, $10, $10, $00, $5F, $37, $23, $00, $72, $05, $79
     db $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25, $DF, $6F, $23, $0C, $0C, $0D, $34,
@@ -320,7 +323,7 @@ Data_020_4189: ; 20x4189
 
 Label_020_4fac:
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 Label_020_4fb3:
@@ -330,57 +333,57 @@ Label_020_4fb3:
 
 Label_020_4fba:
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 jr_020_4fc1:
     ld hl, CutAutumnGrassOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 Label_020_4fc8:
     ld hl, PickedUpStonePalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 Label_020_4fcf:
     ld hl, PickedUpFencePostPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4069
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, Data_020_4041
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4109
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40d1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4139
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40a1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4101
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
@@ -400,36 +403,36 @@ Label_020_4fcf:
 
 jr_020_5019:
     ld hl, $4029
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
 jr_020_5020:
     ld hl, $4021
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_5027:
     ld hl, $4031
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
     ld hl, $4001
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ld hl, $4009
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4011
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
     ld hl, $4039
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 ; Data
@@ -2319,7 +2322,7 @@ Jump_020_57f1:
 
 Jump_020_58d0:
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
@@ -2329,13 +2332,13 @@ Jump_020_58d7:
     jr z, jr_020_58e5
 
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
 jr_020_58e5:
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 ; Data?
@@ -2349,81 +2352,81 @@ jr_020_58e5:
 
 Jump_020_58f4:
     ld hl, $58ec
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_58fb:
     ld hl, $585f
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 
 Jump_020_5902:
     ld hl, $585f
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld hl, $5857
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_5915:
     ld hl, $4011
-    call SyncLoadSpritePalette8
-    ld hl, $584f
     call SyncLoadSpritePalette7
+    ld hl, $584f
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_5922:
     ld hl, $5847
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
 Jump_020_5929:
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_5930:
     ld hl, $5857
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ld hl, $4011
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
 Jump_020_593d:
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
 Jump_020_5944:
     ld hl, $5857
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ret
 
 
 Jump_020_594b:
     ld hl, $5847
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
 Jump_020_5952:
     ld hl, $5857
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ret
 
 
 Jump_020_5959:
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
@@ -6549,7 +6552,7 @@ jr_020_6aa9:
     ld de, $8ae0
     ld b, $20
     call CopyHLtoDE
-    ld hl, $4249
+    ld hl, Data_020_4249
     ld de, $8be0
     ld b, $20
     call CopyHLtoDE
@@ -6641,7 +6644,7 @@ jr_020_6c07:
     ld hl, $4526
     call CGBBackgroundPaletteUpload
     ld hl, $585f
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 
@@ -6816,13 +6819,13 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $584f
-    call SyncLoadSpritePalette7
-    ld hl, $585f
-    call SyncLoadSpritePalette3
-    ld hl, $5857
     call SyncLoadSpritePalette6
+    ld hl, $585f
+    call SyncLoadSpritePalette2
+    ld hl, $5857
+    call SyncLoadSpritePalette5
     ld hl, $5847
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
@@ -6846,10 +6849,10 @@ jr_020_6c07:
     ld hl, $4edd
     call CGBBackgroundPaletteUpload
     ld hl, $584f
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
-LoadUsedItemOBJPalette:
+LoadUsedItemOBJPalette: ; 20x6df4
     ld a, [$c0bb]
     or a
     ret z
@@ -6925,112 +6928,112 @@ LoadUsedItemOBJPalette:
 
 .loadSickleAndGrassOBJPalette
     ld hl, $4049
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld a, [sCurrentSeason]
     cp AUTUMN
     jr z, .loadAutumnGrassOBJPalette
     jr nc, .loadWinterGrassOBJPalette
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 .loadAutumnGrassOBJPalette
     ld hl, CutAutumnGrassOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 .loadWinterGrassOBJPalette
     ld hl, $4081
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadHoeOrAxOBJPalette
     ld hl, $4049
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 .loadHammerOBJPalette
     ld hl, $4049
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld hl, $40f9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6ed0
     ld hl, $4049
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadSuperSickleAndGrassOBJPalette
     ld hl, $4121
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld a, [sCurrentSeason]
     cp AUTUMN
-    jr z, .loadAutumnGrassOBJPalette2
-    jr nc, .loadWinterGrassOBJPalette2
+    jr z, .loadAutumnGrassOBJPalette_2
+    jr nc, .loadWinterGrassOBJPalette_2
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
-.loadAutumnGrassOBJPalette2
+.loadAutumnGrassOBJPalette_2
     ld hl, CutAutumnGrassOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
-.loadWinterGrassOBJPalette2
+.loadWinterGrassOBJPalette_2
     ld hl, $4081
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
     ret
 
 .loadSuperAxOBJPalette
     ld hl, $4121
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 .Jump_020_6f03
     ld hl, $4121
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld hl, $40f9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadBrushOBJPalette
     ld hl, $4111
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadWateringCanOBJPalette
     ld hl, $4059
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld hl, $4129
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadMedicineOBJPalette
     ld hl, $4119
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadMilkerOBJPalette
     ld hl, MilkerOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f32
     ld hl, $4119
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadSprinklerOBJPalette
     ld hl, $40c9
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ld hl, $4129
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f46
     ld hl, $4069
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f4d
@@ -7039,42 +7042,42 @@ LoadUsedItemOBJPalette:
     jr z, .jr_020_6f5d
     jr nc, .jr_020_6f64
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .jr_020_6f5d
     ld hl, CutAutumnGrassOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .jr_020_6f64
     ld hl, $4081
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f6b
     ld hl, $40e1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f72
     ld hl, $4101
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f79
     ld hl, PickedUpFencePostPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .loadCarrotSeedsOBJPalette
     ld hl, Data_020_4041
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 .Jump_020_6f87
     ld hl, $40d9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 Label_020_6f8e:
@@ -7322,59 +7325,59 @@ Label_020_6f8e:
     xor h
     ld [hl], c
     ld hl, $4119
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4129
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4119
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4051
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4049
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40e1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4101
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4059
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
 
 Jump_020_70c2:
     ret
 
 
     ld hl, $4111
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4119
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
@@ -7383,22 +7386,22 @@ Jump_020_70c2:
     ret z
 
     ld hl, PickedUpStonePalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40c9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4121
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4069
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
@@ -7406,102 +7409,102 @@ Jump_020_70c2:
 
 
     ld hl, MilkerOBJPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40f9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40c1
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
     ld hl, $4099
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
     ld hl, $4101
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4051
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4059
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, PickedUpFencePostPalette
-    call SyncLoadSpritePalette4
-    ret
-
-
-    ld hl, $4049
     call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4049
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette2
+    ret
+
+
+    ld hl, $4049
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4109
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40d9
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40b1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4061
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 
     ld hl, $40a9
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 
     ld hl, $4101
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4059
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, Data_020_4041
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40e1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4141
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
     ld a, [sCurrentSeason]
@@ -7509,33 +7512,33 @@ Jump_020_70c2:
     jr z, jr_020_7190
     jr nc, jr_020_7197
     ld hl, PickedUpGrassPalette
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 jr_020_7190:
     ld hl, $4111
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
 jr_020_7197:
     ld hl, $4081
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $40e1
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4071
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 
     ld hl, $4121
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 

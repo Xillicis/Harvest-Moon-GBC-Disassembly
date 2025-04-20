@@ -111,7 +111,7 @@ jr_010_40c6:
     ld a, $2a
     call Call_000_25c5
     ld hl, $40e2
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 
@@ -4623,7 +4623,7 @@ jr_010_5734:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc de
@@ -4662,7 +4662,7 @@ jr_010_5734:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$1cef], sp
@@ -4703,7 +4703,7 @@ jr_010_57db:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc e
@@ -4748,7 +4748,7 @@ jr_010_5815:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld c, $2b
@@ -4786,7 +4786,7 @@ jr_010_582c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld a, [de]
@@ -4827,7 +4827,7 @@ jr_010_582c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$272c], sp
@@ -4863,7 +4863,7 @@ jr_010_582c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     rra
@@ -4903,7 +4903,7 @@ jr_010_582c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [de], a
@@ -4945,7 +4945,7 @@ jr_010_58eb:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc l
@@ -4989,7 +4989,7 @@ jr_010_590b:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
 
@@ -5032,7 +5032,7 @@ jr_010_5941:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$1bef], sp
@@ -5105,7 +5105,7 @@ jr_010_5941:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc de
@@ -5185,7 +5185,7 @@ jr_010_59f6:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     rlca
@@ -5224,7 +5224,7 @@ jr_010_5a05:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc c
@@ -5264,7 +5264,7 @@ jr_010_5a3b:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc bc
@@ -5304,7 +5304,7 @@ jr_010_5a3b:
 jr_010_5a7a:
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld bc, $ef1e
@@ -5339,7 +5339,7 @@ jr_010_5a7a:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld c, $21
@@ -5385,7 +5385,7 @@ jr_010_5ace:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc e
@@ -5427,7 +5427,7 @@ jr_010_5af8:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld e, $2f
@@ -5465,7 +5465,7 @@ jr_010_5b0c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
 
@@ -5501,7 +5501,7 @@ jr_010_5b2c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc l
@@ -5543,7 +5543,7 @@ Call_010_5b75:
 jr_010_5b7c:
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     jr z, jr_010_5bad
@@ -5580,7 +5580,7 @@ jr_010_5b7c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
 
@@ -5629,7 +5629,7 @@ jr_010_5bd0:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc e
@@ -5673,7 +5673,7 @@ jr_010_5bfa:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld e, $2f
@@ -5711,7 +5711,7 @@ jr_010_5c0e:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
 
@@ -5753,7 +5753,7 @@ jr_010_5c2e:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
 jr_010_5c58:
     nop
@@ -5787,7 +5787,7 @@ jr_010_5c58:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld c, $2e
@@ -5822,7 +5822,7 @@ jr_010_5c58:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     rrca
@@ -5859,7 +5859,7 @@ jr_010_5c58:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     nop
@@ -5900,7 +5900,7 @@ jr_010_5cde:
 jr_010_5cff:
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc de
@@ -5939,7 +5939,7 @@ jr_010_5d0c:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec bc
@@ -6018,7 +6018,7 @@ jr_010_5d75:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec bc
@@ -6104,7 +6104,7 @@ jr_010_5dcb:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec bc
@@ -6186,7 +6186,7 @@ jr_010_5e21:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec bc
@@ -6270,7 +6270,7 @@ jr_010_5e77:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     or c
@@ -6366,7 +6366,7 @@ jr_010_5ecf:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     nop
@@ -6404,7 +6404,7 @@ jr_010_5efe:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec e
@@ -6448,7 +6448,7 @@ jr_010_5f28:
 jr_010_5f2e:
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$2def], sp
@@ -6485,7 +6485,7 @@ jr_010_5f2e:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     rra
@@ -6529,7 +6529,7 @@ jr_010_5f70:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec l
@@ -6570,7 +6570,7 @@ jr_010_5f9b:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld d, $21
@@ -6612,7 +6612,7 @@ jr_010_5fbf:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld h, $1e
@@ -6651,7 +6651,7 @@ jr_010_5ffe:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     rra
@@ -6692,7 +6692,7 @@ jr_010_601f:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     jr z, jr_010_6067
@@ -6729,7 +6729,7 @@ jr_010_601f:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld hl, $2b2e
@@ -6767,7 +6767,7 @@ jr_010_6067:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld c, $21
@@ -6807,7 +6807,7 @@ jr_010_60a6:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld c, $21
@@ -6852,7 +6852,7 @@ jr_010_60ca:
     nop
 
 jr_010_60de:
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld bc, $2e2b
@@ -6892,7 +6892,7 @@ jr_010_60fd:
     nop
 
 jr_010_6109:
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     dec h
@@ -6937,7 +6937,7 @@ jr_010_6120:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     inc l
@@ -6983,7 +6983,7 @@ jr_010_6156:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$30ef], sp
@@ -7030,7 +7030,7 @@ jr_010_6183:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     ld [$30ef], sp
@@ -7071,7 +7071,7 @@ jr_010_6194:
     nop
     nop
     nop
-    jp c, Jump_000_0061
+    jp c, $0061
 
     nop
     jr nc, @+$2a

@@ -26,11 +26,11 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     pop af
     pop hl
     ld hl, $4001
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ld hl, $4009
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ld hl, $4011
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ld a, [sCurrentSeason]
     ld [$c0bd], a
     ld a, [sCurrentDayCounter]
@@ -2275,7 +2275,7 @@ Jump_001_4f50:
     ld hl, $4f75
 
 jr_001_4f69:
-    call SyncLoadSpritePalette3
+    call SyncLoadSpritePalette2
     ret
 
 

@@ -3172,9 +3172,9 @@ jr_002_5023:
     pop af
     pop hl
     ld hl, $5029
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ld hl, $5031
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     call ClearBGMap0
     call ClearBGMap1
     call Call_000_323d

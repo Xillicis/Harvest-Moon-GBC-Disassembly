@@ -78,7 +78,6 @@ JoypadTransitionInterrupt::
     reti
 
 Call_000_0061:
-Jump_000_0061:
     ld a, [$c0a7]
     or a
     rst $08
@@ -453,33 +452,33 @@ Call_000_03bb:
     jr nz, .loop
     ret
 
-SyncLoadSpritePalette4:
-    ld b, %10011000 ; address for start of 4th palette
-    call SyncLoadOBJPalette
-    ret
-
 SyncLoadSpritePalette3:
-    ld b, %10010000 ; address for start of 3rd palette
+    ld b, %10011000 ; address for start of 3rd palette
     call SyncLoadOBJPalette
     ret
 
-SyncLoadSpritePalette6:
-    ld b, %10101000 ; address for start of 6th palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette8:
-    ld b, %10111000 ; address for start of 8th palette
+SyncLoadSpritePalette2:
+    ld b, %10010000 ; address for start of 2nd palette
     call SyncLoadOBJPalette
     ret
 
 SyncLoadSpritePalette5:
-    ld b, %10100000 ; address for start of 5th palette
+    ld b, %10101000 ; address for start of 5th palette
     call SyncLoadOBJPalette
     ret
 
 SyncLoadSpritePalette7:
-    ld b, %10110000 ; address for start of 7th palette
+    ld b, %10111000 ; address for start of 7th palette
+    call SyncLoadOBJPalette
+    ret
+
+SyncLoadSpritePalette4:
+    ld b, %10100000 ; address for start of 4th palette
+    call SyncLoadOBJPalette
+    ret
+
+SyncLoadSpritePalette6:
+    ld b, %10110000 ; address for start of 6th palette
     call SyncLoadOBJPalette
     ret
 
@@ -520,14 +519,14 @@ SyncLoadBGPPalette:
 
 Call_000_0429:
     ld hl, $043d
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ld hl, $0445
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ret
 
 Call_000_0436:
     ld hl, $044d
-    call SyncLoadSpritePalette8
+    call SyncLoadSpritePalette7
     ret
 
 ; 00x043d

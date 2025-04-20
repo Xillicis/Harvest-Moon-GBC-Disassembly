@@ -6896,11 +6896,11 @@ jr_00f_6904:
     call Call_00f_687d
     call Call_00f_689b
     ld hl, $6957
-    call SyncLoadSpritePalette7
-    ld hl, $695f
-    call SyncLoadSpritePalette3
-    ld hl, $6967
     call SyncLoadSpritePalette6
+    ld hl, $695f
+    call SyncLoadSpritePalette2
+    ld hl, $6967
+    call SyncLoadSpritePalette5
     ret
 
 
@@ -6908,7 +6908,7 @@ jr_00f_6920:
     call Call_00f_68b9
     call Call_00f_68d7
     ld hl, $6957
-    call SyncLoadSpritePalette7
+    call SyncLoadSpritePalette6
     ret
 
 
@@ -6919,11 +6919,11 @@ jr_00f_692d:
     call Call_00f_68b9
     call Call_00f_68d7
     ld hl, $6957
-    call SyncLoadSpritePalette7
-    ld hl, $695f
-    call SyncLoadSpritePalette3
-    ld hl, $6967
     call SyncLoadSpritePalette6
+    ld hl, $695f
+    call SyncLoadSpritePalette2
+    ld hl, $6967
+    call SyncLoadSpritePalette5
     ret
 
 

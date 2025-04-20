@@ -11635,7 +11635,7 @@ jr_01f_764d:
     rst $38
     ld a, a
     ld hl, $7811
-    call SyncLoadSpritePalette4
+    call SyncLoadSpritePalette3
     ld hl, $751a
     call CGBBackgroundPaletteUpload
     ld c, $4f

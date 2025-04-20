@@ -4613,7 +4613,7 @@ Call_00e_5ad2:
     pop af
     pop hl
     ld hl, $5af6
-    call SyncLoadSpritePalette6
+    call SyncLoadSpritePalette5
     ld a, $01
     ld [$c625], a
     ld a, [$cc79]
