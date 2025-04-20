@@ -13481,7 +13481,7 @@ jr_037_78ea:
     or e
     ldh [c], a
     inc b
-    call nc, Call_000_0376
+    call nc, $0376
     inc b
     ld a, [de]
     dec de

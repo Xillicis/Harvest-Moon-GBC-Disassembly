@@ -375,7 +375,7 @@ Call_000_0278:
     add b
     rst $08
 
-Data_000_0297:
+Data_000_0297: ; 00x0297
     db $6E, $6F, $1F, $19, $40, $01, $39, $50, $02, $01, $40, $03, $01, $40, $04, $01
     db $40, $05, $01, $40, $06, $01, $40, $10, $09, $40, $0E, $0D, $55, $0E, $FE, $5A
     db $0E, $AB, $61, $0E, $B2, $66, $0E, $A8, $4F, $10, $BE, $4F, $10, $8D, $63, $0F
@@ -389,49 +389,11 @@ Data_000_0297:
     db $61, $2E, $5A, $66, $2E, $17, $4F, $30, $2D, $4F, $30, $8E, $63, $2F, $01, $40
     db $3D, $50, $43, $3D, $8C, $46, $3D, $01, $40, $29, $FC, $46, $29, $A5, $4C, $29
     db $D2, $4D, $29, $DB, $4E, $29, $CD, $50, $29, $D1, $51, $29, $63, $55, $29, $14
-    db $56, $29, $C9, $52, $3D, $C9
+    db $56, $29, $C9, $52, $3D, $C9, $52, $3D, $74, $65, $29, $7B, $67, $29, $A7, $56
+    db $3D, $CC, $47, $26, $01, $40, $3F, $C9, $52, $3D, $60, $51, $3D, $50, $6C, $2F
+    db $01, $40, $27, $30, $6D, $3D, $01, $40, $22, $BB, $71, $3D, $C9
 
-; Data
-jr_000_036d:
-    ld d, d
-    dec a
-    ld [hl], h
-    ld h, l
-    add hl, hl
-    ld a, e
-    ld h, a
-    add hl, hl
-    and a
-
-Call_000_0376:
-    ld d, [hl]
-    dec a
-    call z, $2647
-    ld bc, $3f40
-    ret
-
-
-    ld d, d
-    dec a
-    ld h, b
-    ld d, c
-    dec a
-    ld d, b
-    ld l, h
-    cpl
-
-jr_000_0387:
-    ld bc, $2740
-    jr nc, @+$6f
-
-    dec a
-    ld bc, $2240
-    cp e
-    ld [hl], c
-    dec a
-    ret
-
-
+; Some function?
     push af
     ld a, $f0
     ldh [rBGP], a
@@ -454,8 +416,7 @@ CGBBackgroundPaletteUpload:
     jr nz, .loop
     ret
 
-; Why is the same function repeated?
-Call_000_03ab:
+Call_000_03ab: ; 00x03ab
     ld c, rOBPI_c
     ld a, $80
     ldh [c], a
@@ -584,107 +545,14 @@ Call_000_0455:
     call Call_000_0a62
     ret
 
-
-    and b
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and c
-    and d
-    ld sp, hl
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    and l
-    ld sp, hl
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    and l
-    ld sp, hl
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    xor b
-    and l
-    and e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    ld e, e
-    and h
+Data_000_0463: ; 00x0463
+    db $A0, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1, $A1
+    db $A1, $A1, $A1, $A2, $F9, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8
+    db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5, $F9, $A8, $A8, $A8, $A8, $A8, $A8, $A8
+    db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5, $F9, $A8, $A8, $A8
+    db $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A8, $A5
+    db $A3, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B, $5B
+    db $5B, $5B, $5B, $A4, 
 
 Call_000_04c7:
     push af

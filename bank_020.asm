@@ -29,11 +29,11 @@ Data_020_4069:
     db $7C, $4E, $84, $00, $2E, $01, $F7, $0D
 Data_020_4071:
     db $7C, $4E, $A5, $00, $A5, $07, $5F, $00
-Data_020_4079:
+MilkerOBJPalette: ; 20x4079
     db $7C, $4E, $A5, $00, $5F, $42, $FF, $7F
 Data_020_4081:
     db $7C, $4E, $A5, $00, $D0, $29, $F8, $3E
-CutAutumnGrassOBJPalette:
+CutAutumnGrassOBJPalette: ; 20x4089
     db $7C, $4E, $EC, $00, $96, $09, $BF, $06
 Data_020_4091:
     db $7C, $4E, $A5, $00, $B4, $1D, $7F, $1B
@@ -51,15 +51,15 @@ Data_020_40c1:
     db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
 Data_020_40c9:
     db $7C, $4E, $A5, $00, $DB, $02, $9F, $1B
-PickedUpTurnipPalette:
+PickedUpTurnipPalette: ; 20x40d1
     db $7C, $4E, $A5, $00, $40, $0A, $FF, $7F
 Data_020_40d9:
     db $7C, $4E, $A5, $00, $E1, $05, $AA, $07
 Data_020_40e1:
     db $7C, $4E, $86, $00, $1F, $00, $DF, $3A
-PickedUpGrassPalette:
+PickedUpGrassPalette: ; 20x40e9
     db $7C, $4E, $E2, $00, $E1, $05, $67, $07
-PickedUpFencePostPalette:
+PickedUpFencePostPalette: ; 20x40f1
     db $7C, $4E, $A6, $0C, $B4, $05, $BC, $2E
 Data_020_40f9:
     db $7C, $4E, $A5, $00, $1F, $03, $FF, $7F
@@ -75,20 +75,22 @@ Data_020_4121:
     db $7C, $4E, $C6, $00, $DB, $02, $FF, $03
 Data_020_4129:
     db $7C, $4E, $A5, $00, $C7, $7F, $FF, $7F
-PickedUpStonePalette:
+PickedUpStonePalette: ; 20x4131
     db $7C, $4E, $A5, $00, $29, $25, $31, $46
-PickedUpPotatoPalette: 
+PickedUpPotatoPalette: ; 20x4139
     db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
 Data_020_4141:
     db $7C, $4E, $E7, $00, $17, $12, $FF, $7F
-Data_020_4149:
-    db $00, $00, $1C, $00, $23, $1C, $5C, $23
-    db $A3, $40, $45, $02, $05, $03, $0B, $07, $00, $00, $00, $00, $00, $00, $C0
-    db $00, $60, $80, $D0, $A0, $D0, $60, $E8, $F0, $00, $00, $00, $00, $16, $00, $2D
-    db $12, $14, $0B, $14, $0B, $0A, $05, $0B, $04, $00, $00, $00, $00, $30, $00, $50
-    db $20, $90, $60, $10, $E0, $10, $E0, $50, $A0, $06, $00, $05, $02, $04, $03, $04
-    db $03, $0C, $03, $0C, $03, $0A, $05, $04, $03, $30, $00, $50, $20, $90, $60, $10
-    db $E0, $18, $E0, $18, $E0, $28, $D0, $90, $60, $00, $00, $00, $00, $00, $00, $00
+Data_020_4149: ; 20x4149
+    db $00, $00, $1C, $00, $23, $1C, $5C, $23, $A3, $40, $45, $02, $05, $03, $0B, $07
+    db $00, $00, $00, $00, $00, $00, $C0, $00, $60, $80, $D0, $A0, $D0, $60, $E8, $F0
+Data_020_4169: ; 20x4169
+    db $00, $00, $00, $00, $16, $00, $2D, $12, $14, $0B, $14, $0B, $0A, $05, $0B, $04
+    db $00, $00, $00, $00, $30, $00, $50, $20, $90, $60, $10, $E0, $10, $E0, $50, $A0,
+Data_020_4189: ; 20x4189
+    db $06, $00, $05, $02, $04, $03, $04, $03, $0C, $03, $0C, $03, $0A, $05, $04, $03
+    db $30, $00, $50, $20, $90, $60, $10, $E0, $18, $E0, $18, $E0, $28, $D0, $90, $60
+; padding
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
@@ -98,8 +100,10 @@ Data_020_4149:
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $1B, $0E, $1E, $09, $0D, $02, $07
-    db $02, $07, $02, $03, $00, $00, $00, $00, $00, $EC, $B8, $3C, $C8, $D8, $20, $70
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 
+; end padding
+    db $1B, $0E, $1E, $09, $0D, $02, $07, $02, $07, $02, $03, $00, $00, $00, $00, $00
+    db $EC, $B8, $3C, $C8, $D8, $20, $70
     db $A0, $F0, $20, $60, $00, $00, $00, $00, $00, $05, $02, $06, $01, $05, $02, $05
     db $03, $05, $03, $07, $02, $0D, $06, $06, $00, $B0, $40, $50, $A0, $D0, $60, $D0
     db $E0, $D0, $60, $70, $20, $58, $30, $30, $00, $05, $02, $1D, $02, $66, $19, $99
@@ -428,7 +432,7 @@ Jump_020_5027:
     call SyncLoadSpritePalette8
     ret
 
-
+; Data
     nop
     inc b
     ld [bc], a
@@ -5774,7 +5778,7 @@ jr_020_67ff:
     ld [bc], a
     dec c
     add hl, bc
-    jr nc, jr_020_6883
+    jr nc, $6883
 
     ld [hl-], a
     ldh [c], a
@@ -6541,7 +6545,7 @@ jr_020_6aa9:
     ld c, $13
     ld de, $85a0
     call Call_000_31a0
-    ld hl, $4149
+    ld hl, Data_020_4149
     ld de, $8ae0
     ld b, $20
     call CopyHLtoDE
@@ -6549,7 +6553,7 @@ jr_020_6aa9:
     ld de, $8be0
     ld b, $20
     call CopyHLtoDE
-    ld hl, $4169
+    ld hl, Data_020_4169
     ld de, $8ce0
     ld b, $20
     call CopyHLtoDE
@@ -6874,47 +6878,47 @@ LoadUsedItemOBJPalette:
     cp SUPER_HAMMER
     jp z, .Jump_020_6f03
     cp SUPER_AX
-    jp z, .Jump_020_6efc
+    jp z, .loadSuperAxOBJPalette
     cp BRUSH
     jp z, .loadBrushOBJPalette
     cp WATERING_CAN
-    jp z, Jump_020_6f17
+    jp z, .loadWateringCanOBJPalette
     cp MILKER
-    jp z, Jump_020_6f2b
+    jp z, .loadMilkerOBJPalette
     cp COW_MEDICINE
-    jp z, Jump_020_6f24
+    jp z, .loadMedicineOBJPalette
     cp P_MEDICINE
-    jp z, Jump_020_6f24
+    jp z, .loadMedicineOBJPalette
     cp M_POTION
-    jp z, Jump_020_6f24
+    jp z, .loadMedicineOBJPalette
     cp COW_BELL
-    jp z, Jump_020_6f32
+    jp z, .Jump_020_6f32
     cp $53
     jp z, .Jump_020_6ed0
     cp SPRINKLER
-    jp z, Jump_020_6f39
+    jp z, .loadSprinklerOBJPalette
     cp $10
-    jp z, Jump_020_6f46
+    jp z, .Jump_020_6f46
     cp $11
-    jp z, Jump_020_6f46
+    jp z, .Jump_020_6f46
     cp GRASS_SEEDS
-    jp z, Jump_020_6f4d
+    jp z, .Jump_020_6f4d
     cp TOMATO_SEEDS
-    jp z, Jump_020_6f6b
+    jp z, .Jump_020_6f6b
     cp CORN_SEEDS
-    jp z, Jump_020_6f72
+    jp z, .Jump_020_6f72
     cp TURNIP_SEEDS
-    jp z, Jump_020_6f79
+    jp z, .Jump_020_6f79
     cp POTATO_SEEDS
     jp z, .Jump_020_6ed0
     cp EGGPLANT_SEEDS
-    jp z, Jump_020_6f6b
+    jp z, .Jump_020_6f6b
     cp PEANUT_SEEDS
-    jp z, Jump_020_6f72
+    jp z, .Jump_020_6f72
     cp CARROT_SEEDS
-    jp z, Jump_020_6f80
+    jp z, .loadCarrotSeedsOBJPalette
     cp BROCOLLI_SEEDS
-    jp z, Jump_020_6f87
+    jp z, .Jump_020_6f87
     cp $54
     jp z, .loadSickleAndGrassOBJPalette
     ret
@@ -6978,12 +6982,12 @@ LoadUsedItemOBJPalette:
 
     ret
 
-.Jump_020_6efc:
+.loadSuperAxOBJPalette
     ld hl, $4121
     call SyncLoadSpritePalette3
     ret
 
-.Jump_020_6f03:
+.Jump_020_6f03
     ld hl, $4121
     call SyncLoadSpritePalette3
     ld hl, $40f9
@@ -6995,81 +6999,80 @@ LoadUsedItemOBJPalette:
     call SyncLoadSpritePalette4
     ret
 
-
-Jump_020_6f17:
+.loadWateringCanOBJPalette
     ld hl, $4059
     call SyncLoadSpritePalette3
     ld hl, $4129
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f24:
+.loadMedicineOBJPalette
     ld hl, $4119
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f2b:
-    ld hl, $4079
+.loadMilkerOBJPalette
+    ld hl, MilkerOBJPalette
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f32:
+.Jump_020_6f32
     ld hl, $4119
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f39:
+.loadSprinklerOBJPalette
     ld hl, $40c9
     call SyncLoadSpritePalette3
     ld hl, $4129
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f46:
+.Jump_020_6f46
     ld hl, $4069
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f4d:
+.Jump_020_6f4d
     ld a, [sCurrentSeason]
     cp AUTUMN
-    jr z, jr_020_6f5d
-    jr nc, jr_020_6f64
+    jr z, .jr_020_6f5d
+    jr nc, .jr_020_6f64
     ld hl, PickedUpGrassPalette
     call SyncLoadSpritePalette4
     ret
 
-jr_020_6f5d:
+.jr_020_6f5d
     ld hl, CutAutumnGrassOBJPalette
     call SyncLoadSpritePalette4
     ret
 
-jr_020_6f64:
+.jr_020_6f64
     ld hl, $4081
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f6b:
+.Jump_020_6f6b
     ld hl, $40e1
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f72:
+.Jump_020_6f72
     ld hl, $4101
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f79:
+.Jump_020_6f79
     ld hl, PickedUpFencePostPalette
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f80:
+.loadCarrotSeedsOBJPalette
     ld hl, Data_020_4041
     call SyncLoadSpritePalette4
     ret
 
-Jump_020_6f87:
+.Jump_020_6f87
     ld hl, $40d9
     call SyncLoadSpritePalette4
     ret
@@ -7402,7 +7405,7 @@ Jump_020_70c2:
     ret
 
 
-    ld hl, $4079
+    ld hl, MilkerOBJPalette
     call SyncLoadSpritePalette4
     ret
 
