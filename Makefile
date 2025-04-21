@@ -6,7 +6,7 @@
 .SECONDARY:
 
 ROM := harvestmoon.gbc
-OBJS := harvestmoon.o #sram.o
+OBJS := main.o sram.o
 
 ifeq (,$(shell which md5sum))
 MD5 := md5sum
@@ -28,8 +28,11 @@ $(ROM): $(OBJS) contents.link
 	rgblink -n $(ROM:.gbc=.sym) -m $(ROM:.gbc=.map) -l contents.link -o $@ $(OBJS)
 	rgbfix -jsvc -k E9 -l 0x33 -m 0x10 -p 0 -r 02 -t "HARVEST-MOO" -i "N GB" $@
 
-#harvestmoon.o: harvestmoon.asm bank_*.asm
-#	rgbasm -o harvestmoon.o harvestmoon.asm
+#main.o: main.asm bank_*.asm
+#	rgbasm -o main.o main.asm
+#
+#sram.o: sram.asm
+#	rgbasm -o sram.o sram.asm
 
 #game.gbc: game.o
 #	rgblink -n game.sym -m game.map -o $@ $<
