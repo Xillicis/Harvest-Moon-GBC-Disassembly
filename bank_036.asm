@@ -10264,7 +10264,7 @@ Call_036_6c28:
 
     ldh [$ffbc], a
     ld e, b
-    call z, $ba30
+    call z, sNumShipments
     inc e
     sbc [hl]
     nop

@@ -11753,7 +11753,7 @@ jr_01e_74b5:
     ld e, b
     sub c
     and b
-    jp Jump_000_10df
+    jp $10df
 
 
 jr_01e_74d7:

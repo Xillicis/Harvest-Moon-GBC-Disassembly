@@ -2717,7 +2717,6 @@ jr_000_1097:
     ld [$b92c], a
     ret
 
-
 Call_000_10cb:
     ld a, [$b93d]
     ld l, a
@@ -2727,8 +2726,6 @@ Call_000_10cb:
     ld a, [$cccd]
     ld [$b933], a
     ld a, [$ccce]
-
-Jump_000_10df:
     ld [$b934], a
     ld a, [$cccf]
     ld [$b935], a

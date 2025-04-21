@@ -6186,7 +6186,7 @@ jr_024_65c5:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [$ba30], a
+    ld [sNumShipments], a
     ld a, [hl+]
     ld [$ba31], a
     pop hl
@@ -6305,7 +6305,7 @@ jr_024_65c5:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [$ba30], a
+    ld [sNumShipments], a
     ld a, [hl+]
     ld [$ba31], a
     ldh a, [$ffa6]
@@ -6424,7 +6424,7 @@ jr_024_65c5:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [$ba30], a
+    ld [sNumShipments], a
     ld a, [hl+]
     ld [$ba31], a
     ldh a, [$ffa6]
@@ -6538,7 +6538,7 @@ jr_024_65c5:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [$ba30], a
+    ld [sNumShipments], a
     ld a, [hl+]
     ld [$ba31], a
     pop hl
