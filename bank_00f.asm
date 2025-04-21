@@ -8606,7 +8606,7 @@ jr_00f_7259:
     ld hl, $dd02
     call CGBBackgroundPaletteUpload
     ld hl, $dd42
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -8936,7 +8936,7 @@ Call_00f_73fe:
     ld hl, $dd02
     call CGBBackgroundPaletteUpload
     ld hl, $dd42
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 

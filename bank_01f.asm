@@ -11730,7 +11730,7 @@ jr_01f_787c:
     ld hl, $73da
 
 jr_01f_789a:
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -11837,7 +11837,7 @@ jr_01f_7925:
 jr_01f_7928:
     call CGBBackgroundPaletteUpload
     ld hl, $76a8
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 

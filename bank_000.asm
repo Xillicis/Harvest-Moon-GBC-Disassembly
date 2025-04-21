@@ -415,9 +415,9 @@ CGBBackgroundPaletteUpload:
     jr nz, .loop
     ret
 
-Call_000_03ab: ; 00x03ab
+BGPBackgroundPaletteUpload: ; 00x03ab
     ld c, rOBPI_c
-    ld a, $80
+    ld a, 1 << rBGPI_AUTO_INCREMENT
     ldh [c], a
     inc c
     ld b, 32

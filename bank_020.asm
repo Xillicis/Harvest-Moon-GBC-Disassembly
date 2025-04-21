@@ -112,25 +112,28 @@ Data_020_4269:
 Data_020_4289:
     db $05, $02, $1D, $02, $66, $19, $99, $66, $6F, $01, $0D, $06, $0E, $04, $04, $00
     db $50, $A0, $50, $A0, $D0, $60, $C8, $F0, $F8, $60, $58, $30, $38, $10, $10, $00
-Data_020_42a9:
+Data_020_42a9: ; 20x42a9
     db $5F, $37, $23, $00, $72, $05, $79, $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25
     db $DF, $6F, $23, $0C, $0C, $0D, $34, $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E
     db $00, $34, $84, $04, $0C, $0D, $C4, $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E
     db $7F, $47, $84, $04, $0C, $0D, $C4, $69, $DF, $6F, $00, $00, $0C, $0D, $1F, $00
-Data_020_42e9:
+Data_020_42e9: ; 20x42e9
     db $5F, $37, $23, $00, $72, $05, $79, $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25
-    db $DF, $6F, $23, $0C, $0C, $0D, $34,
-    db $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E, $00, $34, $84, $04, $0C, $0D, $C4,
-    db $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E, $7F, $47, $84, $04, $0C, $0D, $C4,
-    db $69, $DF, $6F, $00, $00, $0C, $0D, $31, $46, $5F, $37, $23, $00, $72, $05, $79,
-    db $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25, $DF, $6F, $23, $0C, $0C, $0D, $34,
-    db $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E, $00, $34, $84, $04, $0C, $0D, $C4,
-    db $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E, $7F, $47, $84, $04, $0C, $0D, $C4,
-    db $69, $73, $4E, $00, $00, $0C, $0D, $4A, $29, $7F, $3B, $60, $04, $6E, $11, $77,
-    db $26, $7F, $3B, $44, $00, $0A, $0D, $12, $2E, $7F, $3B, $00, $00, $72, $05, $79,
-    db $1E, $FF, $7F, $00, $00, $72, $05, $1F, $00, $1F, $03, $00, $00, $72, $05, $79,
-    db $1E, $FF, $7F, $00, $00, $72, $05, $40, $7E, $EC, $03, $00, $00, $72, $05, $E1,
-    db $05, $00, $00, $E0, $7F, $E0, $7F, $E0, $7F, $7C, $4E, $84, $00, $A0, $5D, $7F,
+    db $DF, $6F, $23, $0C, $0C, $0D, $34, $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E
+    db $00, $34, $84, $04, $0C, $0D, $C4, $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E
+    db $7F, $47, $84, $04, $0C, $0D, $C4, $69, $DF, $6F, $00, $00, $0C, $0D, $31, $46
+Data_020_4329: ; 20x4329
+    db $5F, $37, $23, $00, $72, $05, $79, $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25
+    db $DF, $6F, $23, $0C, $0C, $0D, $34, $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E
+    db $00, $34, $84, $04, $0C, $0D, $C4, $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E
+    db $7F, $47, $84, $04, $0C, $0D, $C4, $69, $73, $4E, $00, $00, $0C, $0D, $4A, $29
+Data_020_4369: ; 20x4369
+    db $7F, $3B, $60, $04, $6E, $11, $77, $26, $7F, $3B, $44, $00, $0A, $0D, $12, $2E
+    db $7F, $3B, $00, $00, $72, $05, $79, $1E, $FF, $7F, $00, $00, $72, $05, $1F, $00
+    db $1F, $03, $00, $00, $72, $05, $79, $1E, $FF, $7F, $00, $00, $72, $05, $40, $7E
+    db $EC, $03, $00, $00, $72, $05, $E1, $05, $00, $00, $E0, $7F, $E0, $7F, $E0, $7F
+Data_020_43a9: ; 20x43a9
+    db $7C, $4E, $84, $00, $A0, $5D, $7F,
     db $47, $7C, $4E, $84, $00, $1F, $00, $7F, $47, $7C, $4E, $84, $00, $3F, $02, $7F,
     db $47, $00, $00, $E0, $7F, $E0, $7F, $E0, $7F, $7C, $4E, $84, $00, $79, $1E, $FF,
     db $7F, $00, $00, $E0, $7F, $E0, $7F, $E0, $7F, $7C, $4E, $84, $00, $E0, $60, $7F,
@@ -1036,7 +1039,7 @@ Jump_020_5959:
 
 ; Code?
     ld hl, $5aec
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ld hl, $5b2c
     call CGBBackgroundPaletteUpload
     ld c, $4f
@@ -4603,7 +4606,7 @@ jr_020_6aa9:
     cp $00
     jr z, jr_020_6c07
 
-    ld hl, $42e9
+    ld hl, Data_020_42e9
     cp $01
     jr z, jr_020_6c07
 
@@ -4613,17 +4616,17 @@ jr_020_6aa9:
     cp $04
     jr z, jr_020_6c07
 
-    ld hl, $4329
+    ld hl, Data_020_4329
 
 jr_020_6c07:
     call CGBBackgroundPaletteUpload
     ret
 
 
-    ld hl, $4369
+    ld hl, Data_020_4369
     call CGBBackgroundPaletteUpload
-    ld hl, $43a9
-    call Call_000_03ab
+    ld hl, Data_020_43a9
+    call BGPBackgroundPaletteUpload
     ld c, $4f
     ld a, $01
     ldh [c], a
@@ -4650,7 +4653,7 @@ jr_020_6c07:
     ld hl, $43e9
     call CGBBackgroundPaletteUpload
     ld hl, $44e6
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -4744,7 +4747,7 @@ jr_020_6c07:
     ld hl, $488a
     call CGBBackgroundPaletteUpload
     ld hl, $4977
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -4761,7 +4764,7 @@ jr_020_6c07:
     ld hl, $4a88
     call CGBBackgroundPaletteUpload
     ld hl, $4b08
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -4782,7 +4785,7 @@ jr_020_6c07:
     ld hl, $4a48
     call CGBBackgroundPaletteUpload
     ld hl, $4ac8
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -4804,7 +4807,7 @@ jr_020_6c07:
     ld hl, $6d70
     call CGBBackgroundPaletteUpload
     ld hl, $4c93
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -4825,7 +4828,7 @@ jr_020_6c07:
     xor a
     ldh [c], a
     ld hl, $4d93
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ld hl, $4dd3
     call CGBBackgroundPaletteUpload
     ret
@@ -4855,7 +4858,7 @@ jr_020_6c07:
     ld hl, $5c80
     call CGBBackgroundPaletteUpload
     ld hl, $4e9d
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ret
 
 
@@ -5569,7 +5572,7 @@ jr_020_7197:
 
 
     ld hl, $5aac
-    call Call_000_03ab
+    call BGPBackgroundPaletteUpload
     ld hl, $5a6c
     call CGBBackgroundPaletteUpload
     ld c, $4f
