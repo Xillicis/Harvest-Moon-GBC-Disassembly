@@ -4600,7 +4600,6 @@ jr_021_5e0b:
     call Call_000_1cff
     ret
 
-
 Jump_021_5e25:
     ld hl, sInventory
     ld a, [sItemSlot]
@@ -4612,93 +4611,63 @@ Jump_021_5e25:
     ld a, [hl]
     cp SICKLE
     jp z, Jump_021_5ec4
-
     cp HOE
     jp z, Jump_021_5f84
-
     cp HAMMER
     jp z, Jump_021_5f9a
-
     cp AX
     jp z, Jump_021_5ff1
-
-    cp $13
+    cp SUPER_SICKLE
     jp z, Jump_021_603b
-
-    cp $14
+    cp SUPER_HOE
     jp z, Jump_021_6055
-
-    cp $16
+    cp SUPER_HAMMER
     jp z, Jump_021_6081
-
-    cp $15
+    cp SUPER_AX
     jp z, Jump_021_60d8
-
     cp BRUSH
     jp z, Jump_021_6122
-
     cp WATERING_CAN
     jp z, Jump_021_6132
-
     cp MILKER
     jp z, Jump_021_61af
-
-    cp $00
+    cp COW_MEDICINE
     jp z, Jump_021_61bf
-
-    cp $52
+    cp P_MEDICINE
     jp z, Jump_021_61bf
-
     cp M_POTION
     jp z, Jump_021_61bf
-
     cp COW_BELL
     jp z, Jump_021_61fb
-
-    cp $53
+    cp PICK_AX
     jp z, Jump_021_620b
-
-    cp $54
+    cp UMBRELLA
     jp z, Jump_021_621b
-
-    cp $12
+    cp SPRINKLER
     jp z, Jump_021_606b
-
     cp $10
     jp z, Jump_021_6253
-
     cp $11
     jp z, Jump_021_6253
-
     cp GRASS_SEEDS
     jp z, Jump_021_6293
-
     cp TOMATO_SEEDS
     jp z, Jump_021_62bc
-
     cp CORN_SEEDS
     jp z, Jump_021_62e6
-
     cp TURNIP_SEEDS
     jp z, Jump_021_6310
-
     cp POTATO_SEEDS
     jp z, Jump_021_6340
-
-    cp $4e
+    cp EGGPLANT_SEEDS
     jp z, Jump_021_636a
-
-    cp $4f
+    cp PEANUT_SEEDS
     jp z, Jump_021_6394
-
-    cp $50
+    cp CARROT_SEEDS
     jp z, Jump_021_63be
-
-    cp $51
+    cp BROCOLLI_SEEDS
     jp z, Jump_021_63e8
-
     ret
-
 
 Jump_021_5ec4:
     ld b, $02

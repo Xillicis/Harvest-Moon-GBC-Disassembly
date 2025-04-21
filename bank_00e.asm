@@ -985,7 +985,7 @@ jr_00e_45eb:
     jr z, jr_00e_4629
     cp SUPER_AX
     jr z, jr_00e_4629
-    cp $53
+    cp PICK_AX
     jr z, jr_00e_4629
     ld a, [$cc75]
     or a
@@ -1053,7 +1053,7 @@ jr_00e_464b:
     jr z, jr_00e_4694
     cp SUPER_AX
     jr z, jr_00e_46c8
-    cp $53
+    cp PICK_AX
     jr z, jr_00e_46f0
     ret
 

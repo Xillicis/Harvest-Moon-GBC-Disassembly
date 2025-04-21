@@ -4919,7 +4919,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     jp z, .loadMedicineOBJPalette
     cp COW_BELL
     jp z, .Jump_020_6f32
-    cp $53
+    cp PICK_AX
     jp z, .Jump_020_6ed0
     cp SPRINKLER
     jp z, .loadSprinklerOBJPalette
@@ -4945,7 +4945,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     jp z, .loadCarrotSeedsOBJPalette
     cp BROCOLLI_SEEDS
     jp z, .Jump_020_6f87
-    cp $54
+    cp UMBRELLA
     jp z, .loadSickleAndGrassOBJPalette
     ret
 

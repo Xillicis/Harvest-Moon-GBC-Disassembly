@@ -948,29 +948,21 @@ jr_02e_45c8:
     ld a, [hl]
     cp SICKLE
     jr z, jr_02e_4606
-
     cp HOE
     jr z, jr_02e_4606
-
     cp HAMMER
     jr z, jr_02e_4606
-
     cp AX
     jr z, jr_02e_4606
-
-    cp $13
+    cp SUPER_SICKLE
     jr z, jr_02e_4606
-
-    cp $14
+    cp SUPER_HOE
     jr z, jr_02e_4606
-
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_02e_4606
-
-    cp $15
+    cp SUPER_AX
     jr z, jr_02e_4606
-
-    cp $53
+    cp PICK_AX
     jr z, jr_02e_4606
 
     ld a, [$cc75]
@@ -1023,36 +1015,25 @@ jr_02e_4628:
     ld a, [hl]
     cp NO_ITEM
     jp z, Jump_02e_48a4
-
     cp SICKLE
     jr z, jr_02e_46a5
-
     cp HOE
     jr z, jr_02e_46a5
-
     cp HAMMER
     jr z, jr_02e_4671
-
     cp AX
     jr z, jr_02e_46a5
-
-    cp $13
+    cp SUPER_SICKLE
     jr z, jr_02e_46a5
-
-    cp $14
+    cp SUPER_HOE
     jr z, jr_02e_46a5
-
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_02e_4671
-
-    cp $15
+    cp SUPER_AX
     jr z, jr_02e_46a5
-
-    cp $53
+    cp PICK_AX
     jr z, jr_02e_46cd
-
     ret
-
 
 jr_02e_4671:
     ld a, [$cc75]

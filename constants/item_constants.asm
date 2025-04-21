@@ -26,5 +26,7 @@ const PEANUT_SEEDS   ; $4f
 const CARROT_SEEDS   ; $50
 const BROCOLLI_SEEDS ; $51
 const P_MEDICINE     ; $52
+const PICK_AX        ; $53
+const UMBRELLA       ; $54
 
 DEF NO_ITEM EQU $ff
