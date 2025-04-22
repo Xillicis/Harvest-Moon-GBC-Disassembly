@@ -436,8 +436,9 @@ jr_002_42ac:
 
 Call_002_42b8:
     push de
+; compute total number of days passed
     ld a, [sCurrentSeason]
-    ld c, $1e
+    ld c, 30
     call Multiply8Bit
     ld a, [sCurrentDayCounter]
     add l
@@ -748,11 +749,11 @@ Call_002_4464:
     jr nz, jr_002_4482
 
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     ret nz
 
     ld a, [sCurrentDayCounter]
-    cp $1d
+    cp 29
     ret nz
 
     ld a, [$b882]
@@ -848,10 +849,10 @@ jr_002_4506:
     ret nz
 
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     ret z
 
-    cp $02
+    cp AUTUMN
     jr nc, jr_002_4528
 
     ld a, [$b8eb]
@@ -870,11 +871,11 @@ jr_002_4528:
 
 Call_002_4533:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     ret nz
 
     ld a, [sCurrentDayCounter]
-    cp $1d
+    cp 29
     ret nz
 
     ld a, [$b882]
@@ -1159,15 +1160,12 @@ Call_002_46bb:
     ld a, [$b885]
     or a
     jr nz, jr_002_4729
-
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jr z, jr_002_4729
-
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jr z, jr_002_4729
-
     ld a, [$b8a2]
     cp $80
     ret z
@@ -1175,16 +1173,15 @@ Call_002_46bb:
     ld a, [$b8a2]
     cp $ff
     jr z, jr_002_46e4
-
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     ret z
 
     jr jr_002_46f0
 
 jr_002_46e4:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jr z, jr_002_46fd
 
     ld a, $09
@@ -1243,11 +1240,11 @@ jr_002_4729:
 
 Call_002_4742:
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jr z, jr_002_47c3
 
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jr z, jr_002_47c3
 
     ld a, [$b8a1]
@@ -1259,14 +1256,14 @@ Call_002_4742:
     jr z, jr_002_4766
 
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     ret z
 
     jr jr_002_477c
 
 jr_002_4766:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jr z, jr_002_4789
 
     ld a, $18
@@ -3007,7 +3004,7 @@ jr_002_4f98:
 
 Call_002_4f9b:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jr z, jr_002_4fa3
 
     ret
@@ -3029,67 +3026,51 @@ jr_002_4fa3:
 
 Call_002_4fb0:
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     jr nz, jr_002_4ff7
-
     ret
-
 
 Call_002_4fb8:
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fc1:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fca:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fd3:
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fdc:
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fe5:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Call_002_4fee:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jp nz, Jump_002_4ff7
-
     ret
-
 
 Jump_002_4ff7:
 jr_002_4ff7:
@@ -3097,7 +3078,7 @@ jr_002_4ff7:
     push bc
     dec hl
     xor a
-    ld [hl-], a
+    ld [hld], a
     ld a, $11
     ld [hl], a
     pop bc
@@ -5143,10 +5124,10 @@ Call_002_5c27:
     ret nz
 
     ld a, [sCurrentDayCounter]
-    cp $1b
+    cp 27
     call z, Call_002_5c3e
     ld a, [sCurrentDayCounter]
-    cp $1c
+    cp 28
     call z, Call_002_5c54
     ret
 
@@ -7072,7 +7053,7 @@ Call_002_6694:
     ret nz
 
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     ret nz
 
     ld a, [$b882]
@@ -7611,7 +7592,7 @@ jr_002_69b8:
 
 Call_002_69bb:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jp z, Jump_002_69d1
 
     push hl
@@ -7647,7 +7628,7 @@ Jump_002_69d1:
 
 Call_002_69de:
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -7882,7 +7863,7 @@ Jump_002_6a49:
 
 Call_002_6ad4:
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -7977,7 +7958,7 @@ jr_002_6b1a:
 
 Call_002_6b3f:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8039,7 +8020,7 @@ jr_002_6b7f:
 
 Call_002_6b82:
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8101,7 +8082,7 @@ jr_002_6bc2:
 
 Call_002_6bc5:
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8163,7 +8144,7 @@ jr_002_6c05:
 
 Call_002_6c08:
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8225,7 +8206,7 @@ jr_002_6c48:
 
 Call_002_6c4b:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8287,7 +8268,7 @@ jr_002_6c8b:
 
 Call_002_6c8e:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     jp nz, Jump_002_6a49
 
     ld a, d
@@ -8519,16 +8500,16 @@ jr_002_6d9f:
     cp b
     call z, Call_002_6f09
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     call z, Call_002_6de8
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     call z, Call_002_6e0c
     ld a, [sCurrentSeason]
-    cp $02
+    cp AUTUMN
     call z, Call_002_6e18
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     call z, Call_002_6e29
     call Call_002_6e3a
     call Call_002_6e70
@@ -8671,7 +8652,7 @@ Call_002_6eaa:
     ret nz
 
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     ret nz
 
     ld a, [$b8ea]
@@ -8987,7 +8968,7 @@ Call_002_7055:
     ret z
 
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     ret nz
 
     ld a, $13
