@@ -3963,7 +3963,7 @@ jr_010_546e:
     or a
     jr z, jr_010_5497
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_010_5499
 
@@ -4019,7 +4019,7 @@ Call_010_54ac:
     or a
     jr nz, jr_010_54ed
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_010_54dd
 

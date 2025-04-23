@@ -114,7 +114,8 @@ sb8e8::  db
 sb8e9::  db 
 sb8ea::  db 
 sb8eb::  db 
-sb8ec::  db 
+; 0 = Male, 1 = Female
+sPlayerGender::  db  ; 0xb8ec
 sPlayerEnergy::  db 
 sPlayerMaxEnergy::  db 
 sb8ef::  db 

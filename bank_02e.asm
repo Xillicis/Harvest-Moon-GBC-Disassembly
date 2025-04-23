@@ -207,7 +207,7 @@ Call_02e_417d:
     cp $0e
     ret nz
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $16
     add b

@@ -1866,7 +1866,7 @@ Call_026_4907:
     ret z
 
     ld hl, $4944
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_026_4918
 

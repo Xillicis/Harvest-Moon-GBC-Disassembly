@@ -231,7 +231,7 @@ Call_00e_41a1:
     cp $0e
     ret nz
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $16
     add b

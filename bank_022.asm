@@ -8733,7 +8733,7 @@ Call_022_6f03:
     or a
     ret z
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     ret z
 

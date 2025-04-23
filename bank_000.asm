@@ -8564,7 +8564,7 @@ jr_000_2fae:
     or a
     jr nz, jr_000_2fcc
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jp nz, Jump_000_3063
 

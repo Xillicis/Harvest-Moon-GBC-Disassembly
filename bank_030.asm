@@ -3840,7 +3840,7 @@ jr_030_53d9:
     or a
     jr z, jr_030_5402
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_030_5404
 
@@ -3896,7 +3896,7 @@ Call_030_5417:
     or a
     jr nz, jr_030_5458
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_030_5448
 

@@ -268,7 +268,7 @@ Call_009_416a:
     inc hl
     ld b, [hl]
     ld hl, $41cd
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_009_4194
 

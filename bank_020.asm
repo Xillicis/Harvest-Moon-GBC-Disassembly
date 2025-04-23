@@ -892,7 +892,7 @@ Jump_020_58d0:
 
 
 Jump_020_58d7:
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     cp $00
     jr z, jr_020_58e5
 

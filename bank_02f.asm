@@ -7104,7 +7104,7 @@ jr_02f_6a27:
 
     set 4, a
     ld [$ccb7], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_02f_6a3f
 
@@ -7120,7 +7120,7 @@ jr_02f_6a3f:
 
 
 jr_02f_6a45:
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_02f_6a51
 
@@ -7887,7 +7887,7 @@ Call_02f_6e1c:
 
 Call_02f_6e8e:
     ld de, $cc10
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_02f_6e9c
 

@@ -3553,18 +3553,17 @@ jr_01d_514a:
 
     ret
 
-
+Label_01d_5192:
     call ClearBGMap0
     call ClearBGMap1
     call Call_000_323d
     ld hl, $9000
-
-jr_01d_519e:
+.loop
     xor a
     ld [hl+], a
     ld a, l
     cp $10
-    jr nz, jr_01d_519e
+    jr nz, .loop
 
     call Call_01d_521e
     ld hl, $4438
@@ -3576,7 +3575,7 @@ jr_01d_519e:
     ld de, $b8f4
     call Call_01d_499e
     ld a, [$cd79]
-    ld [$b8ec], a
+    ld [sPlayerGender], a
     or a
     jr z, jr_01d_51df
 

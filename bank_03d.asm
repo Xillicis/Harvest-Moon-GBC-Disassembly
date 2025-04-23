@@ -3578,7 +3578,7 @@ jr_03d_5118:
     ld de, $b8f4
     call Call_03d_496c
     ld a, [$cd79]
-    ld [$b8ec], a
+    ld [sPlayerGender], a
     or a
     jr z, jr_03d_519a
 

@@ -6784,7 +6784,7 @@ Call_001_6b67:
     call RST_TableJumpBankSwitch
     ld a, $01
     ld [$b900], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $16
     add b
@@ -8783,7 +8783,7 @@ Jump_001_76e2:
 
 Jump_001_76f2:
     call $6e7f
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     cp $00
     jr z, jr_001_7709
 
@@ -9406,7 +9406,7 @@ Jump_001_7af3:
     ld [$b88c], a
     ld [$cbf6], a
     ld a, $01
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_001_7b21
 
@@ -9824,7 +9824,7 @@ Jump_001_7dcf:
 
 
 Jump_001_7dd5:
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $24
     add b

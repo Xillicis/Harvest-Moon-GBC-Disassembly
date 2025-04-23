@@ -8836,7 +8836,7 @@ Call_002_6fa3:
     or a
     ret z
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     ret z
 

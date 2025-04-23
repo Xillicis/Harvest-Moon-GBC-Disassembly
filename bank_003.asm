@@ -311,7 +311,7 @@ Call_003_4285:
     or a
     jr nz, jr_003_42ae
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_003_42a2
 
@@ -366,7 +366,7 @@ Call_003_42d7:
     or a
     jr nz, jr_003_4307
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_003_42fb
 
@@ -1974,7 +1974,7 @@ jr_003_4bad:
     ld [$cc02], a
     ld a, [hl]
     ld [$cc03], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_003_4bfb
 
@@ -2042,7 +2042,7 @@ jr_003_4c05:
     ld [$cc13], a
     ld a, [hl]
     ld [$cc14], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_003_4c6d
 
@@ -2098,7 +2098,7 @@ jr_003_4c77:
     ld [$cc02], a
     ld a, [hl]
     ld [$cc03], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr nz, jr_003_4ccb
 

@@ -2767,7 +2767,7 @@ jr_021_5318:
     ld a, $10
     ld [wHeldObject], a
     ld a, $1b
-    call $16d1
+    call Call_000_16d1
     ld a, $02
     ldh [$ffa4], a
     jr jr_021_5396
@@ -6669,7 +6669,7 @@ Call_021_69fa:
     call RST_TableJumpBankSwitch
     ld a, $01
     ld [$b900], a
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $16
     add b
@@ -8753,7 +8753,7 @@ Jump_021_75c2:
 
 Jump_021_75d2:
     call $6d12
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     cp $00
     jr z, jr_021_75e9
 
@@ -9376,7 +9376,7 @@ Jump_021_79d3:
     ld [$b88c], a
     ld [$cbf6], a
     ld a, $01
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_021_7a01
 
@@ -9786,7 +9786,7 @@ Jump_021_7ca2:
 
 
 Jump_021_7ca8:
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     ld b, a
     ld a, $24
     add b

@@ -727,7 +727,7 @@ jr_007_44ae:
     dec b
     jr nz, jr_007_44ae
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     ret z
 

@@ -260,7 +260,7 @@ Call_029_415d:
     inc hl
     ld b, [hl]
     ld hl, $41c0
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_029_4187
 

@@ -666,7 +666,7 @@ jr_027_444b:
     dec b
     jr nz, jr_027_444b
 
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     ret z
 

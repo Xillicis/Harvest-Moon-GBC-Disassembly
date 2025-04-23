@@ -2009,7 +2009,7 @@ Call_006_49c0:
     ret z
 
     ld hl, $49fd
-    ld a, [$b8ec]
+    ld a, [sPlayerGender]
     or a
     jr z, jr_006_49d1
 
