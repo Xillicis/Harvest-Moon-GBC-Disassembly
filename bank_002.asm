@@ -184,14 +184,14 @@ jr_002_4170:
     call Call_000_08b7
     ld a, [$ccc2]
     ld b, a
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     add b
-    ld [$b8ef], a
+    ld [sPlayerMoney], a
     ld a, [$ccc3]
     ld b, a
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     adc b
-    ld [$b8f0], a
+    ld [sPlayerMoney+1], a
     ld a, [$ccc4]
     ld b, a
     ld a, [$b8f1]
@@ -1428,7 +1428,7 @@ Call_002_4848:
     ld b, h
     ld c, l
     ld hl, $ffae
-    call Call_000_0cbb
+    call AddSignedBCToHL
     ld a, [$c902]
     ld hl, $05a0
     call Call_000_0c46
@@ -1450,7 +1450,7 @@ Call_002_4848:
     ld b, h
     ld c, l
     ld hl, $ffb2
-    call Call_000_0cbb
+    call AddSignedBCToHL
     ldh a, [$ffae]
     ld b, a
     ldh a, [$ffb2]
@@ -2825,8 +2825,8 @@ jr_002_4ecb:
     ld c, a
     ld a, [$b93e]
     ld b, a
-    ld hl, $b8ef
-    call Call_000_0cbb
+    ld hl, sPlayerMoney
+    call AddSignedBCToHL
     xor a
     ld [$b93d], a
     ld [$b93e], a
@@ -4685,9 +4685,9 @@ Jump_002_59c8:
 
     ld a, $01
     ld [$b8ff], a
-    ld hl, $b8ef
-    ld bc, $03e8
-    call Call_000_0cbb
+    ld hl, sPlayerMoney
+    ld bc, 1000
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $09
     jr jr_002_59e5
@@ -7244,18 +7244,18 @@ Call_002_67a1:
     ld l, h
     xor a
     ld [$b900], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [$b8fc]
     ld c, a
     ld a, [$b8fd]
     ld b, a
-    call Call_000_0cbb
-    ld hl, $b8ef
+    call AddSignedBCToHL
+    ld hl, sPlayerMoney
     ld a, [$b93d]
     ld c, a
     ld a, [$b93e]
     ld b, a
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     xor a
     ld [$b93d], a

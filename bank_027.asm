@@ -11991,14 +11991,14 @@ jr_027_72cb:
     cp $00
     jr nz, jr_027_7324
 
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     cp $14
     jr nc, jr_027_7324
 
     cp $13
     jr c, jr_027_7310
 
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     cp $88
     jr nc, jr_027_7324
 
@@ -12020,14 +12020,14 @@ jr_027_72f5:
     cp $00
     jr nz, jr_027_7324
 
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     cp $0a
     jr nc, jr_027_7324
 
     cp $09
     jr c, jr_027_7310
 
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     cp $c4
     jr nc, jr_027_7324
 
@@ -12054,9 +12054,9 @@ jr_027_7324:
     ld hl, $b938
     ld bc, $fed4
     call Call_000_0cce
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $ec78
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_0f73
     call Call_000_1056
     ret
@@ -12066,9 +12066,9 @@ jr_027_7349:
     ld hl, $b938
     ld bc, $ff9c
     call Call_000_0cce
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $f63c
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_0f73
     call Call_000_1056
     ret
@@ -12209,9 +12209,9 @@ jr_027_7413:
 
     ld a, $01
     ld [$b88e], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $004b
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $ff
     ld [$cb52], a
@@ -12259,9 +12259,9 @@ jr_027_7483:
     ld a, $01
     xor a
     ld [$b88e], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $fffb
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $14
     call Call_000_0f47

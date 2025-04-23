@@ -1453,7 +1453,7 @@ Call_029_4737:
     bit 5, a
     ret z
 
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld de, $ccca
     ld a, [hl+]
     ld [de], a
@@ -4559,7 +4559,7 @@ Call_029_580e:
     ld de, $9821
     ld b, $04
     call CopyHLtoDE
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld de, $ccca
     ld b, $03
     call CopyHLtoDE

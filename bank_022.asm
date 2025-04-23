@@ -173,14 +173,14 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     call Call_000_08b7
     ld a, [$ccc2]
     ld b, a
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     add b
-    ld [$b8ef], a
+    ld [sPlayerMoney], a
     ld a, [$ccc3]
     ld b, a
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     adc b
-    ld [$b8f0], a
+    ld [sPlayerMoney+1], a
     ld a, [$ccc4]
     ld b, a
     ld a, [$b8f1]
@@ -1420,7 +1420,7 @@ Call_022_483a:
     ld b, h
     ld c, l
     ld hl, $ffae
-    call Call_000_0cbb
+    call AddSignedBCToHL
     ld a, [$c902]
     ld hl, $05a0
     call Call_000_0c46
@@ -1442,7 +1442,7 @@ Call_022_483a:
     ld b, h
     ld c, l
     ld hl, $ffb2
-    call Call_000_0cbb
+    call AddSignedBCToHL
     ldh a, [$ffae]
     ld b, a
     ldh a, [$ffb2]
@@ -2817,8 +2817,8 @@ jr_022_4ebd:
     ld c, a
     ld a, [$b93e]
     ld b, a
-    ld hl, $b8ef
-    call Call_000_0cbb
+    ld hl, sPlayerMoney
+    call AddSignedBCToHL
     xor a
     ld [$b93d], a
     ld [$b93e], a
@@ -4599,9 +4599,9 @@ Jump_022_5935:
 
     ld a, $01
     ld [$b8ff], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $03e8
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $09
     jr jr_022_5952
@@ -7148,18 +7148,18 @@ Call_022_669c:
     call Call_022_6c59
     xor a
     ld [$b900], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [$b8fc]
     ld c, a
     ld a, [$b8fd]
     ld b, a
-    call Call_000_0cbb
-    ld hl, $b8ef
+    call AddSignedBCToHL
+    ld hl, sPlayerMoney
     ld a, [$b93d]
     ld c, a
     ld a, [$b93e]
     ld b, a
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     xor a
     ld [$b93d], a

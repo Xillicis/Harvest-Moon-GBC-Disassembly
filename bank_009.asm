@@ -1445,7 +1445,7 @@ Call_009_4747:
     bit 5, a
     ret z
 
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld de, $ccca
     ld a, [hl+]
     ld [de], a
@@ -4608,7 +4608,7 @@ Call_009_5867:
     ld de, $9821
     ld b, $04
     call CopyHLtoDE
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld de, $ccca
     ld b, $03
     call CopyHLtoDE

@@ -1415,7 +1415,7 @@ Call_01b_4699:
 
 Call_01b_46a4:
     push bc
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [hl+]
     sub e
     ld a, [hl+]
@@ -1429,7 +1429,7 @@ Call_01b_46a4:
 Call_01b_46b1:
     push bc
     ld b, $00
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [hl]
     sub e
     ld [hl+], a
@@ -14226,13 +14226,13 @@ jr_01b_7bf7:
 Call_01b_7c4b:
     ld b, h
     ld c, l
-    ld hl, $b8ef
-    call Call_000_0cbb
+    ld hl, sPlayerMoney
+    call AddSignedBCToHL
     ld a, [$b8f1]
     or a
     ret z
 
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -14245,9 +14245,9 @@ Call_01b_7c4b:
 
     ld hl, $869f
     ld a, l
-    ld [$b8ef], a
+    ld [sPlayerMoney], a
     ld a, h
-    ld [$b8f0], a
+    ld [sPlayerMoney+1], a
     ret
 
 

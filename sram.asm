@@ -119,8 +119,8 @@ sb8eb::  db
 sPlayerGender::  db  ; 0xb8ec
 sPlayerEnergy::  db 
 sPlayerMaxEnergy::  db 
-sb8ef::  db 
-sb8f0::  db 
+; little endian
+sPlayerMoney:: dw
 sb8f1::  db 
 sb8f2::  db 
 sb8f3::  db 

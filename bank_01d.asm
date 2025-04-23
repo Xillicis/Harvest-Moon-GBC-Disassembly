@@ -3688,10 +3688,11 @@ Call_01d_521e: ; 1dx521e
     ld [$b902], a
     ld a, $00
     ld [$b903], a
+    ; loads 500 money
     ld a, $f4
-    ld [$b8ef], a
+    ld [sPlayerMoney], a
     ld a, $01
-    ld [$b8f0], a
+    ld [sPlayerMoney+1], a
     xor a
     ld [$b8f1], a
     call Call_000_1056
@@ -3841,7 +3842,7 @@ jr_01d_53d7:
     ld de, $1388
     push bc
     ld b, $00
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld a, [hl]
     sub e
     ld [hl+], a

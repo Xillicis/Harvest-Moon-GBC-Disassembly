@@ -2027,29 +2027,34 @@ Label_000_0c98:
     ld b, a
     ret
 
+;  Credit to ChatGPT:
+;  input : HL → 3-byte little-endian value  (low, mid, high)
+;          BC = 16-bit signed delta to add
+;  result: value := value + BC
+;  flags : preserved (only the routine itself relies on C flag)
 
-Call_000_0cbb:
-    ld a, c
-    add [hl]
-    ld [hl+], a
-    inc bc
-    ld a, b
-    bit 7, a
-    jr nz, jr_000_0cc9
+AddSignedBCToHL: ; 00x0cbb
+    ld   a,c          ; A = low 8 bits of delta
+    add  [hl]         ; add to low byte
+    ld   [hli],a      ; store and  HL++
+    inc  bc           ; sneak the low-byte carry into B
+                      ;   (if C was 0xFF, B is now B+1)
+    ld   a,b          ; A = high 8 bits of (delta + carry-from-low)
+    bit  7,a          ; test sign of that high byte
+    jr   nz, .neg     ; if it’s ≥$80 we’re adding a negative value
 
-    adc [hl]
-    ld [hl+], a
-    ret nc
-
-    inc [hl]
+.pos                  ; --------  positive (or zero) delta --------
+    adc  [hl]         ; add high byte  + original ADD’s carry
+    ld   [hl+],a      ; store, HL++
+    ret  nc           ; if no overflow into the third byte, we’re done
+    inc  [hl]         ; otherwise bump the 3rd byte
     ret
 
-
-jr_000_0cc9:
-    adc [hl]
-    ld [hli], a
-    ret c
-    dec [hl]
+.neg                  ; --------  negative delta (subtract) -------
+    adc  [hl]         ; same, but A is two’s-complement negative
+    ld   [hli],a
+    ret  c            ; if we *borrowed* (carry = 1), all done
+    dec  [hl]         ; otherwise we had a net borrow → fix 3rd byte
     ret
 
 Call_000_0cce:
@@ -2669,14 +2674,14 @@ Jump_000_105d:
     cp $01
     jr c, jr_000_1097
 
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     cp $87
     jr nc, jr_000_107c
 
     cp $86
     jr c, jr_000_1097
 
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     cp $a0
     jr nc, jr_000_107c
 
@@ -2684,25 +2689,25 @@ Jump_000_105d:
 
 jr_000_107c:
     ld a, $9f
-    ld [$b8ef], a
+    ld [sPlayerMoney], a
     ld a, $86
-    ld [$b8f0], a
+    ld [sPlayerMoney+1], a
     ld a, $01
     ld [$b8f1], a
     jr jr_000_1097
 
 jr_000_108d:
     xor a
-    ld [$b8ef], a
-    ld [$b8f0], a
+    ld [sPlayerMoney], a
+    ld [sPlayerMoney+1], a
     ld [$b8f1], a
 
 jr_000_1097:
     ld a, [$b8f1]
     ld [$cccc], a
-    ld a, [$b8f0]
+    ld a, [sPlayerMoney+1]
     ld [$cccb], a
-    ld a, [$b8ef]
+    ld a, [sPlayerMoney]
     ld [$ccca], a
     call Call_000_3268
     ld a, [$cccd]

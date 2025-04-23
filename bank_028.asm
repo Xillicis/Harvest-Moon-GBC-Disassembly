@@ -7923,9 +7923,9 @@ jr_028_6b2e:
 
 
 jr_028_6b46:
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $0032
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $3c
     ld [$c912], a
@@ -7946,9 +7946,9 @@ jr_028_6b68:
 
 
 jr_028_6b6e:
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $0064
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $3c
     ld [$c912], a

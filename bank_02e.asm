@@ -833,9 +833,9 @@ Call_02e_4503:
     call $16d1
     ld a, $1e
     ld [$c912], a
-    ld hl, $b8ef
+    ld hl, sPlayerMoney
     ld bc, $0064
-    call Call_000_0cbb
+    call AddSignedBCToHL
     call Call_000_1056
     ld a, $00
     call RST_TableJumpBankSwitch
