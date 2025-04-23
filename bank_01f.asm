@@ -4280,7 +4280,7 @@ jr_01f_551d:
     ld de, $cec8
     ld b, $06
     call CopyHLtoDE
-    ld hl, $b8d2
+    ld hl, sNumTurnipSeeds
     ld de, $cece
     ld b, $09
     call CopyHLtoDE
@@ -4403,7 +4403,7 @@ jr_01f_561e:
     ld b, $06
     call CopyHLtoDE
     ld hl, $cece
-    ld de, $b8d2
+    ld de, sNumTurnipSeeds
     ld b, $09
     call CopyHLtoDE
     ld b, $09
@@ -5352,7 +5352,7 @@ jr_01f_5a44:
     ret
 
 
-    ld hl, $b8d2
+    ld hl, sNumTurnipSeeds
     ld e, $09
 
 jr_01f_5a4d:

@@ -5365,13 +5365,13 @@ Jump_021_6293:
     call Call_000_191a
     xor a
     ld [$cb74], a
-    ld a, [$b8da]
+    ld a, [sNumGrassSeeds]
     dec a
-    ld [$b8da], a
+    ld [sNumGrassSeeds], a
     or a
     ret nz
 
-    ld [$b8b4], a
+    ld [sShedGrassSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -5431,13 +5431,13 @@ Jump_021_6310:
     call Call_000_191a
     ld a, $03
     ld [$cb74], a
-    ld a, [$b8d2]
+    ld a, [sNumTurnipSeeds]
     dec a
-    ld [$b8d2], a
+    ld [sNumTurnipSeeds], a
     or a
     ret nz
 
-    ld [$b8b5], a
+    ld [sShedTurnipSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -5465,7 +5465,7 @@ Jump_021_6340:
     or a
     ret nz
 
-    ld [$b8b6], a
+    ld [sShedPotatoSeedsFlag], a
     call Call_021_633a
     ret
 

@@ -651,7 +651,7 @@ Call_026_4376:
     ld [$cd6b], a
     ld a, $01
     ld [$cd63], a
-    ld a, [$b8d2]
+    ld a, [sNumTurnipSeeds]
     ld hl, $986c
     call Call_026_43d7
     ld a, [sNumPotatoSeeds]
@@ -675,7 +675,7 @@ Call_026_4376:
     ld a, [$b8d9]
     ld hl, $9a2c
     call Call_026_43d7
-    ld a, [$b8da]
+    ld a, [sNumGrassSeeds]
     ld hl, $9a6c
     call Call_026_43d7
     ret

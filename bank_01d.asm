@@ -3577,18 +3577,17 @@ Label_01d_5192:
     ld a, [wPlayerGenderSelection]
     ld [sPlayerGender], a
     or a
-    jr z, jr_01d_51df
-
+    jr z, .genderSelected
+; Start with watering can and some seeds if chose Girl
     ld a, $01
-    ld [$b8b5], a
-    ld [$b8d2], a
-    ld [$b8b6], a
+    ld [sShedTurnipSeedsFlag], a
+    ld [sNumTurnipSeeds], a
+    ld [sShedPotatoSeedsFlag], a
     ld [sNumPotatoSeeds], a
-    ld [$b8b4], a
-    ld [$b8da], a
-    ld [$b8ae], a
-
-jr_01d_51df:
+    ld [sShedGrassSeedsFlag], a
+    ld [sNumGrassSeeds], a
+    ld [sShedWateringCanFlag], a
+.genderSelected
     ld a, [$cd7a]
     ld [$b8db], a
     ld hl, $cd7b

@@ -3583,13 +3583,13 @@ jr_03d_5118:
     jr z, jr_03d_519a
 
     ld a, $01
-    ld [$b8b5], a
-    ld [$b8d2], a
-    ld [$b8b6], a
+    ld [sShedTurnipSeedsFlag], a
+    ld [sNumTurnipSeeds], a
+    ld [sShedPotatoSeedsFlag], a
     ld [sNumPotatoSeeds], a
-    ld [$b8b4], a
-    ld [$b8da], a
-    ld [$b8ae], a
+    ld [sShedGrassSeedsFlag], a
+    ld [sNumGrassSeeds], a
+    ld [sShedWateringCanFlag], a
 
 jr_03d_519a:
     ld a, [$cd7a]

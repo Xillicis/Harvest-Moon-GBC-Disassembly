@@ -52,15 +52,15 @@ sb8aa::  db
 sShedCowMedicineFlag::  db 
 sShedMilkerFlag::  db 
 sb8ad::  db 
-sb8ae::  db 
+sShedWateringCanFlag::  db ; 0xb8ae
 sb8af::  db 
 sb8b0::  db 
-sShedPMedicineFlag::  db 
-sShedMPotionFlag::  db 
+sShedPMedicineFlag::  db ; 0xb8b1
+sShedMPotionFlag::  db ; 0xb8b2
 sb8b3::  db 
-sb8b4::  db 
-sb8b5::  db 
-sb8b6::  db 
+sShedGrassSeedsFlag::  db ; 0xb8b4
+sShedTurnipSeedsFlag::  db ; 0xb8b5
+sShedPotatoSeedsFlag::  db ; 0xb8b6
 sb8b7::  db 
 sb8b8::  db 
 sb8b9::  db 
@@ -88,15 +88,15 @@ sb8ce::  db
 sb8cf::  db 
 sb8d0::  db 
 sb8d1::  db 
-sb8d2::  db 
-sNumPotatoSeeds::  db 
+sNumTurnipSeeds::  db ; 0xb8d2
+sNumPotatoSeeds::  db ; 0xb8d3
 sb8d4::  db 
 sb8d5::  db 
 sb8d6::  db 
 sb8d7::  db 
 sb8d8::  db 
 sb8d9::  db 
-sb8da::  db 
+sNumGrassSeeds::  db ; 0xb8da
 sb8db::  db 
 sb8dc::  db 
 sb8dd::  db 
