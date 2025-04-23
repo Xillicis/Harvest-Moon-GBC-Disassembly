@@ -11795,7 +11795,7 @@ jr_027_7111:
     call Call_000_3f26
     ld a, $01
     ld [$cbf6], a
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     srl a
     srl a
     ld b, a

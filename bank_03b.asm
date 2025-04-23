@@ -1127,7 +1127,7 @@ jr_03b_453b:
     ld [bc], a
     inc b
     push bc
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld d, a
     ld a, [sPlayerEnergy]
     add $0a
@@ -1217,7 +1217,7 @@ jr_03b_45d1:
 
     ld h, b
     ld l, c
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld e, a
     ld d, a
     ld a, [hl+]

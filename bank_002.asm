@@ -756,7 +756,7 @@ Call_002_4464:
     cp 29
     ret nz
 
-    ld a, [$b882]
+    ld a, [$b882] ; this might be the year
     cp $06
     ret c
 
@@ -794,7 +794,7 @@ jr_002_4482:
     ld a, [$b885]
     dec a
     ld [$b885], a
-    ld a, $03
+    ld a, WINTER
     ld [sCurrentSeason], a
     ld a, $1d
     ld [sCurrentDayCounter], a
@@ -1560,7 +1560,7 @@ Call_002_4919:
 
 
 jr_002_4923:
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld [sPlayerEnergy], a
     ret
 
@@ -8367,14 +8367,14 @@ jr_002_6cef:
     or a
     jp nz, Jump_002_6d6d
 
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $05
     call Call_000_09c9
     ld b, l
     call $1ae6
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $0a

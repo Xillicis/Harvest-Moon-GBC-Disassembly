@@ -3672,7 +3672,7 @@ Call_01d_521e: ; 1dx521e
     ld [$b8eb], a
     ld a, MAX_ENERGY
     ld [sPlayerEnergy], a
-    ld [$b8ee], a
+    ld [sPlayerMaxEnergy], a
     ld a, $01
     ld [$b906], a
     xor a
@@ -3682,7 +3682,7 @@ Call_01d_521e: ; 1dx521e
     ld [sInventory], a
     ld [sInventory+1], a
     ld a, $ff
-    ld [$b8fa], a
+    ld [sInventory+2], a
     ld a, $02
     ld [sItemSlot], a
     ld a, $00

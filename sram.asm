@@ -116,7 +116,7 @@ sb8ea::  db
 sb8eb::  db 
 sb8ec::  db 
 sPlayerEnergy::  db 
-sb8ee::  db 
+sPlayerMaxEnergy::  db 
 sb8ef::  db 
 sb8f0::  db 
 sb8f1::  db 
@@ -126,8 +126,8 @@ sb8f4::  db
 sb8f5::  db 
 sb8f6::  db 
 sb8f7::  db 
-sInventory::  ds 3
-sItemSlot::  db 
+sInventory::  ds 3 ; 0xb8f8
+sItemSlot::  db  ; 0xb8fb
 sb8fc::  db 
 sb8fd::  db 
 sb8fe::  db 

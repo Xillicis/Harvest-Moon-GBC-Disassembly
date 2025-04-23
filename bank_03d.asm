@@ -3673,7 +3673,7 @@ Call_03d_51d9:
     ld [$b8eb], a
     ld a, $64
     ld [sPlayerEnergy], a
-    ld [$b8ee], a
+    ld [sPlayerMaxEnergy], a
     ld a, $01
     ld [$b906], a
     xor a

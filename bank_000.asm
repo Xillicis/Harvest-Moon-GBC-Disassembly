@@ -4629,13 +4629,13 @@ Data_000_1aba:
     jr c, jr_000_1af7
     ld [sPlayerEnergy], a
     ld b, a
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     cp b
     jr c, jr_000_1af7
     ret
 
 jr_000_1af7:
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld [sPlayerEnergy], a
     ret
 

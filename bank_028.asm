@@ -1698,9 +1698,9 @@ Call_028_48ba:
 
     inc a
     ld [$b904], a
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     add $0a
-    ld [$b8ee], a
+    ld [sPlayerMaxEnergy], a
 
 jr_028_48e7:
     pop hl

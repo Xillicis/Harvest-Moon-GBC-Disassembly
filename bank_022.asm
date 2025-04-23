@@ -1552,7 +1552,7 @@ Call_022_490b:
 
 
 jr_022_4915:
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld [sPlayerEnergy], a
     ret
 
@@ -8264,14 +8264,14 @@ Call_022_6c59:
     or a
     jp nz, Jump_022_6ccd
 
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $05
     call Call_000_09c9
     ld b, l
     call $1ae6
-    ld a, [$b8ee]
+    ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $0a
