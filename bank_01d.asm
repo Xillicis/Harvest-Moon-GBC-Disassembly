@@ -3135,7 +3135,7 @@ jr_01d_4fa1:
 
 
     ld a, [$cd64]
-    ld [$cd79], a
+    ld [wPlayerGenderSelection], a
     ld h, b
     ld l, c
     ret
@@ -3574,7 +3574,7 @@ Label_01d_5192:
     ld hl, $cd75
     ld de, $b8f4
     call Call_01d_499e
-    ld a, [$cd79]
+    ld a, [wPlayerGenderSelection]
     ld [sPlayerGender], a
     or a
     jr z, jr_01d_51df

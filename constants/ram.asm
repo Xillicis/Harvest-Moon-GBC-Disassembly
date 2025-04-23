@@ -14,6 +14,8 @@ DEF wRightOrUpSideFacingTileID  EQU $cb33
 ; The item you hold above your head
 DEF wHeldObject EQU $cb4a
 
+DEF wPlayerGenderSelection EQU $cd79
+
 DEF hROMBankTemp EQU $ffa4
 
 DEF hff80 EQU $ff80
