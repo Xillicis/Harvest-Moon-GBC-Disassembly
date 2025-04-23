@@ -4276,7 +4276,7 @@ jr_01f_551d:
     ld de, $ce98
     ld b, $30
     call CopyHLtoDE
-    ld hl, $b8db
+    ld hl, sCatOrDog
     ld de, $cec8
     ld b, $06
     call CopyHLtoDE
@@ -4399,7 +4399,7 @@ jr_01f_5612:
 
 jr_01f_561e:
     ld hl, $cec8
-    ld de, $b8db
+    ld de, sCatOrDog
     ld b, $06
     call CopyHLtoDE
     ld hl, $cece
@@ -11723,7 +11723,7 @@ jr_01f_787c:
 
 
     ld hl, $739a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $01
     jr z, jr_01f_789a
 

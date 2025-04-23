@@ -15,6 +15,7 @@ DEF wRightOrUpSideFacingTileID  EQU $cb33
 DEF wHeldObject EQU $cb4a
 
 DEF wPlayerGenderSelection EQU $cd79
+DEF wCatOrDogSelection EQU $cd7a
 
 DEF hROMBankTemp EQU $ffa4
 

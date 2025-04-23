@@ -3277,7 +3277,7 @@ Call_03d_4fe1:
 
     ld a, [$cd64]
     xor $01
-    ld [$cd7a], a
+    ld [wCatOrDogSelection], a
     ld h, b
     ld l, c
     ret
@@ -3592,8 +3592,8 @@ jr_03d_5118:
     ld [sShedWateringCanFlag], a
 
 jr_03d_519a:
-    ld a, [$cd7a]
-    ld [$b8db], a
+    ld a, [wCatOrDogSelection]
+    ld [sCatOrDog], a
     ld hl, $cd7b
     ld de, $b8dc
     call Call_03d_496c

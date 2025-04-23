@@ -1008,7 +1008,7 @@ jr_028_44e0:
     ld [$c908], a
 
 jr_028_44f0:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jr z, jr_028_44fd
 
@@ -4838,7 +4838,7 @@ Call_028_59cb:
     or a
     ret z
 
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_028_5a41
 
@@ -5630,7 +5630,7 @@ jr_028_5ef2:
 
 jr_028_5f02:
     ld b, a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_028_5f11
 
@@ -5651,7 +5651,7 @@ jr_028_5f17:
     ld [$cbff], a
     ld a, $01
     ld [$c908], a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jr z, jr_028_5f32
 
@@ -6318,7 +6318,7 @@ jr_028_6343:
 
 
 jr_028_634e:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jr z, jr_028_636b
 
@@ -6468,7 +6468,7 @@ jr_028_63fe:
     ld [$cb83], a
 
 Jump_028_6406:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jr z, jr_028_6423
 

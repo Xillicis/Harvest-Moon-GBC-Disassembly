@@ -4421,7 +4421,7 @@ Call_009_5793:
     call z, Call_009_5ed0
     ld bc, $3868
     ld hl, $57f3
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_009_57b5
 
@@ -4618,7 +4618,7 @@ Call_009_5867:
     ld b, $05
     call CopyHLtoDE
     ld hl, $1a02
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_009_5897
 
@@ -4630,7 +4630,7 @@ jr_009_5897:
     ld a, h
     ld [$98a7], a
     ld hl, $af2d
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_009_58ab
 

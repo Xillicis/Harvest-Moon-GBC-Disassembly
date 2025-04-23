@@ -6551,7 +6551,7 @@ Call_022_638e:
     or a
     jr nz, jr_022_63ca
 
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_022_63b5
 

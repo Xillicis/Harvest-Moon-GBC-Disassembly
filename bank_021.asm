@@ -116,7 +116,7 @@ jr_021_40c1:
     call Call_000_31a0
 
 jr_021_40cc:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $01
     jr z, jr_021_4120
 
@@ -2325,7 +2325,7 @@ jr_021_4f68:
     ld [$c7a0], a
     xor a
     ld [$cb8b], a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
@@ -2396,7 +2396,7 @@ Jump_021_5000:
     ld [$c7a0], a
     xor a
     ld [$cb8b], a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
@@ -2494,7 +2494,7 @@ Jump_021_508e:
     ld [$c7a0], a
     xor a
     ld [$cb8b], a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
@@ -2607,7 +2607,7 @@ jr_021_51ea:
     ld [$c7a0], a
     xor a
     ld [$cb8b], a
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 

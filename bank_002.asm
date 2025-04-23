@@ -6643,7 +6643,7 @@ Call_002_6421:
     or a
     jr nz, jr_002_645d
 
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr z, jr_002_6448
 

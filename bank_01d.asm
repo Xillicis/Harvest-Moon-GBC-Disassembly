@@ -3263,7 +3263,7 @@ Call_01d_5013:
 
     ld a, [$cd64]
     xor $01
-    ld [$cd7a], a
+    ld [wCatOrDogSelection], a
     ld h, b
     ld l, c
     ret
@@ -3564,7 +3564,6 @@ Label_01d_5192:
     ld a, l
     cp $10
     jr nz, .loop
-
     call Call_01d_521e
     ld hl, $4438
     ld a, $1d
@@ -3588,8 +3587,8 @@ Label_01d_5192:
     ld [sNumGrassSeeds], a
     ld [sShedWateringCanFlag], a
 .genderSelected
-    ld a, [$cd7a]
-    ld [$b8db], a
+    ld a, [wCatOrDogSelection]
+    ld [sCatOrDog], a
     ld hl, $cd7b
     ld de, $b8dc
     call Call_01d_499e

@@ -4763,7 +4763,7 @@ jr_026_554d:
 
 
 jr_026_5556:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr nz, jr_026_5565
 
@@ -4816,7 +4816,7 @@ jr_026_5594:
 
 
 jr_026_559d:
-    ld a, [$b8db]
+    ld a, [sCatOrDog]
     or a
     jr nz, jr_026_55ac
 

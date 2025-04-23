@@ -97,7 +97,8 @@ sb8d7::  db
 sb8d8::  db 
 sb8d9::  db 
 sNumGrassSeeds::  db ; 0xb8da
-sb8db::  db 
+; 0 = Cat, 1 = Dog
+sCatOrDog::  db ; 0xb8db
 sb8dc::  db 
 sb8dd::  db 
 sb8de::  db 
