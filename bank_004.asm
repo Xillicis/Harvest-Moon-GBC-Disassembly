@@ -2116,7 +2116,7 @@ jr_004_4d41:
     jr z, jr_004_4db9
 
     cp $1e
-    jr z, jr_004_4dc4
+    jr z, PickUpChickenFeed
 
     ld a, [sItemSlot]
     ld hl, sInventory
@@ -2184,8 +2184,7 @@ jr_004_4db9:
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4dc4:
+PickUpChickenFeed:
     ld hl, sInventory
     ld a, [sItemSlot]
     cp $02
@@ -2201,7 +2200,7 @@ jr_004_4dc4:
     ld a, [sInventory]
     ld [$cc21], a
     call Call_004_6443
-    ld a, $11
+    ld a, CHICKEN_FEED
     ld [sInventory], a
     xor a
     ld [sItemSlot], a
@@ -2211,7 +2210,7 @@ jr_004_4ded:
     ld a, [sInventory+1]
     ld [$cc21], a
     call Call_004_6443
-    ld a, $11
+    ld a, CHICKEN_FEED
     ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
@@ -4751,19 +4750,19 @@ jr_004_5cec:
 
 Call_004_5d01:
     ld hl, sInventory
-    ld a, [hl+]
-    cp $11
+    ld a, [hli]
+    cp CHICKEN_FEED
     ret z
 
     ld a, [hl]
-    cp $11
+    cp CHICKEN_FEED
     ret z
 
     ld hl, $9931
     ld a, $66
-    ld [hl+], a
+    ld [hli], a
     ld a, $67
-    ld [hl+], a
+    ld [hli], a
     ld a, $1e
     add l
     ld l, a
@@ -4783,7 +4782,6 @@ Call_004_5d01:
     ld a, b
     ld [hl], a
     ret
-
 
 Call_004_5d32:
     ld a, [$c606]
