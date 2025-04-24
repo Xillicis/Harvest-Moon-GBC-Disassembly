@@ -89,7 +89,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld a, [$b9a5]
     cp $00
     call nz, Call_024_5c3a
-    ld a, [$b8c1]
+    ld a, [sChickenFeedFlag]
     or a
     call nz, Call_024_5c6e
     xor a
@@ -2231,7 +2231,7 @@ jr_024_4df5:
 
 jr_024_4e0e:
     xor a
-    ld [$b8c1], a
+    ld [sChickenFeedFlag], a
     ld [$cb34], a
     ld a, $03
     call RST_TableJumpBankSwitch

@@ -1924,57 +1924,54 @@ Call_000_0af5:
 INCLUDE "home/random.asm"
 
 
-Call_000_0c46:
+MultiplyHLByA_ReturnHigh:
     ldh [$ffa4], a
     xor a
     ldh [$ffa6], a
     bit 7, h
-    jr z, jr_000_0c59
-
+    jr z, .L_pos
     inc a
-    ldh [$ffa6], a
+    ldh [$ffa6], a ; mark sign = 1
     ld a, l
     cpl
     ld l, a
     ld a, h
     cpl
     ld h, a
-    inc hl
+    inc hl         ; HL = -HL (two’s-complement)
+.L_pos
 
-jr_000_0c59:
     ld e, l
-    ld d, h
+    ld d, h        ; DE = |original HL|
     xor a
-    ldh [$ffa5], a
-    ld c, a
+    ldh [$ffa5], a ; high-8 accumulator = 0
+    ld c, a        ; low-8 accumulator = 0 (we’ll return C)
     ld h, a
-    ld l, a
-    ldh a, [$ffa4]
-    ld b, $08
+    ld l, a        ; HL = mid-16 accumulator = 0
 
-jr_000_0c65:
-    rrca
-    jr nc, jr_000_0c72
-
-    add hl, de
-    ldh [$ffa4], a
+    ldh a, [$ffa4] ; reload multiplier
+    ld b, $08      ; 8 bits to process
+.loop
+    rrca           ; rotate LSB → carry, shift A right
+    jr nc, .skip   ; if bit was 0, skip addition
+    add hl, de     ; mid-16 += DE
+    ldh [$ffa4], a ; keep rotating A for next iteration
     ldh a, [$ffa5]
-    adc c
+    adc c          ; high-8 += carry from mid-16 add
     ldh [$ffa5], a
-    ldh a, [$ffa4]
-
-jr_000_0c72:
-    sla e
+    ldh a, [$ffa4] ; restore A = rotated multiplier
+.skip
+    sla e          ; DE <<= 1   (prepare next bit weight)
     rl d
-    rl c
+    rl c           ; rotate low-8 accumulator through carry
     dec b
-    jr nz, jr_000_0c65
+    jr nz, .loop
 
     ldh a, [$ffa5]
     ld c, a
     ret
 
-
+; Data?
     ldh a, [$ffa6]
     or a
     jr z, jr_000_0c97
@@ -2005,7 +2002,7 @@ Label_000_0c98:
     push hl
     push de
     ld a, d
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ld a, l
     ldh [$ffa6], a
     ld a, h
@@ -2015,7 +2012,7 @@ Label_000_0c98:
     pop de
     pop hl
     ld a, e
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ldh a, [$ffa6]
     add h
     ld h, a

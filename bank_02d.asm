@@ -1390,7 +1390,7 @@ jr_02d_45e3:
     ld b, a
     and b
     ld b, a
-    jp nc, $b947
+    jp nc, sNumChickenFeed
 
     ld b, a
     add a

@@ -4787,10 +4787,10 @@ UseItem:
     jp z, Jump_001_632d
     cp SPRINKLER
     jp z, UseSprinkler
-    cp $10
-    jp z, Jump_001_6365
-    cp $11
-    jp z, Jump_001_6365
+    cp COW_FEED
+    jp z, UseAnimalFeed
+    cp CHICKEN_FEED
+    jp z, UseAnimalFeed
     cp GRASS_SEEDS
     jp z, UseGrassSeeds
     cp TOMATO_SEEDS
@@ -5397,8 +5397,7 @@ jr_001_634f:
     ld [$c912], a
     ret
 
-
-Jump_001_6365:
+UseAnimalFeed:
     ld a, $18
     call RST_TableJumpBankSwitch
     ld a, $36
@@ -5416,25 +5415,24 @@ Jump_001_6365:
     cp $10
     jr z, jr_001_6395
 
-    ld a, [$b947]
+    ld a, [sNumChickenFeed]
     dec a
-    ld [$b947], a
+    ld [sNumChickenFeed], a
     ret nz
 
     xor a
-    ld [$b8c1], a
+    ld [sChickenFeedFlag], a
     call Call_001_644c
     ret
 
-
 jr_001_6395:
-    ld a, [$b946]
+    ld a, [sNumCowFeed]
     dec a
-    ld [$b946], a
+    ld [sNumCowFeed], a
     ret nz
 
     xor a
-    ld [$b8c0], a
+    ld [sCowFeedFlag], a
     call Call_001_644c
     ret
 

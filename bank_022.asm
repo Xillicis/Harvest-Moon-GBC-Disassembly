@@ -753,7 +753,7 @@ Call_022_4456:
 jr_022_4474:
     ld a, [sCurrentSeason]
     ld hl, $02d0
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     push hl
     ld a, [sCurrentDayCounter]
     ld c, $18
@@ -1401,7 +1401,7 @@ jr_022_4815:
 Call_022_483a:
     ld a, [$b886]
     ld hl, $05a0
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ld a, l
     ldh [$ffae], a
     ld a, h
@@ -1423,7 +1423,7 @@ Call_022_483a:
     call AddSignedBCToHL
     ld a, [$c902]
     ld hl, $05a0
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ld a, l
     ldh [$ffb2], a
     ld a, h

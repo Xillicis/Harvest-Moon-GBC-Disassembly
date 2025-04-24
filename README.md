@@ -23,6 +23,9 @@ Other disassembly projects:
 - [**Pokémon Ruby**][pokeruby]
 - [**Pokémon FireRed**][pokefirered]
 - [**Pokémon Emerald**][pokeemerald]
+- [**Pokémon Pinball**][pokepinball]
+- [**Kirby's Dreamland**][kirbydreamland]
+- [**Looney Tunes: Carrot Crazy**][carrotcrazy]
 
 [pokered]: https://github.com/pret/pokered
 [pokeyellow]: https://github.com/pret/pokeyellow
@@ -32,6 +35,9 @@ Other disassembly projects:
 [pokeruby]: https://github.com/pret/pokeruby
 [pokefirered]: https://github.com/pret/pokefirered
 [pokeemerald]: https://github.com/pret/pokeemerald
+[pokepinball]: https://github.com/pret/pokepinball
+[kirbydreamland]: https://github.com/huderlem/kirbydreamland
+[carrotcrazy]: https://github.com/huderlem/carrotcrazy
 [discord]: https://discord.gg/d5dubZ3
 [irc]: https://web.libera.chat/?#pret
 

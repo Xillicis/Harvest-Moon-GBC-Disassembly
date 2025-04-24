@@ -1058,7 +1058,6 @@ jr_02e_4671:
     add $0a
     cp $64
     jr c, jr_02e_4697
-
     ld a, $63
 
 jr_02e_4697:
@@ -1069,14 +1068,11 @@ jr_02e_4697:
     ld [$ba0e], a
     ret
 
-
 jr_02e_46a5:
     ld a, [$cc75]
     or a
     jr nz, jr_02e_46ac
-
     ret
-
 
 jr_02e_46ac:
     ld a, $01

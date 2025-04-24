@@ -4928,7 +4928,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     jp z, .loadSprinklerOBJPalette
     cp $10
     jp z, .Jump_020_6f46
-    cp $11
+    cp CHICKEN_FEED
     jp z, .Jump_020_6f46
     cp GRASS_SEEDS
     jp z, .Jump_020_6f4d

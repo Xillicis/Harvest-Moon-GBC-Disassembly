@@ -764,11 +764,11 @@ Call_002_4464:
 
 jr_002_4482:
     ld a, [sCurrentSeason]
-    ld hl, $02d0
-    call Call_000_0c46
+    ld hl, $02d0 ; 720
+    call MultiplyHLByA_ReturnHigh
     push hl
     ld a, [sCurrentDayCounter]
-    ld c, $18
+    ld c, 24
     call Multiply8Bit
     pop de
     add hl, de
@@ -1409,7 +1409,7 @@ jr_002_4823:
 Call_002_4848:
     ld a, [$b886]
     ld hl, $05a0
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ld a, l
     ldh [$ffae], a
     ld a, h
@@ -1431,7 +1431,7 @@ Call_002_4848:
     call AddSignedBCToHL
     ld a, [$c902]
     ld hl, $05a0
-    call Call_000_0c46
+    call MultiplyHLByA_ReturnHigh
     ld a, l
     ldh [$ffb2], a
     ld a, h
@@ -7233,15 +7233,12 @@ Call_002_672f:
     db $fd
     db $fd
     db $fd
-
     db $fe
-; Seems like some kind of bug by defining $cd...
+
+; New day initialization?
 Call_002_67a1:
-    ;cp $cd ; This is `db $fe, $cd`
-    db $cd
-    ld hl, $cd69
-    ld sp, hl
-    ld l, h
+    call Call_002_6921
+    call Call_002_6cf9
     xor a
     ld [$b900], a
     ld hl, sPlayerMoney
@@ -7478,7 +7475,7 @@ jr_002_6916:
 
     ret
 
-
+Call_002_6921:
     ld a, [$b900]
     or a
     jr nz, jr_002_6974
@@ -8362,7 +8359,7 @@ jr_002_6cef:
 
     ret
 
-
+Call_002_6cf9:
     ld a, [$b900]
     or a
     jp nz, Jump_002_6d6d

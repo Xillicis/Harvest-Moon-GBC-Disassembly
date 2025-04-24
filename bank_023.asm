@@ -100,7 +100,7 @@ SECTION "ROM Bank $023", ROMX[$4000], BANK[$23]
     ld a, $03
     ldh [rIE], a
     call Call_000_0ece
-    ld a, [$b8c0]
+    ld a, [sCowFeedFlag]
     or a
     call nz, Call_023_632b
     ld a, [$b9a1]
@@ -2197,7 +2197,7 @@ jr_023_4d4f:
 
 jr_023_4d6d:
     xor a
-    ld [$b8c0], a
+    ld [sCowFeedFlag], a
     ld [$cb34], a
     ld a, $03
     call RST_TableJumpBankSwitch

@@ -3773,7 +3773,7 @@ jr_029_50b8:
     ld de, $cd34
     ld b, $0a
     call CopyHLtoDE
-    ld a, [$b8c0]
+    ld a, [sCowFeedFlag]
     or a
     jr nz, jr_029_532c
 
@@ -3787,7 +3787,7 @@ jr_029_50b8:
     call Call_029_5065
 
 jr_029_532c:
-    ld a, [$b8c1]
+    ld a, [sChickenFeedFlag]
     or a
     jr nz, jr_029_5344
 

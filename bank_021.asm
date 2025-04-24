@@ -4645,9 +4645,9 @@ Jump_021_5e25:
     jp z, Jump_021_621b
     cp SPRINKLER
     jp z, Jump_021_606b
-    cp $10
+    cp COW_FEED
     jp z, Jump_021_6253
-    cp $11
+    cp CHICKEN_FEED
     jp z, Jump_021_6253
     cp GRASS_SEEDS
     jp z, Jump_021_6293
@@ -5328,28 +5328,27 @@ Jump_021_6253:
     adc h
     ld h, a
     ld a, [hl]
-    cp $10
-    jr z, jr_021_6283
+    cp COW_FEED
+    jr z, .usedCowFeed
 
-    ld a, [$b947]
+    ld a, [sNumChickenFeed]
     dec a
-    ld [$b947], a
+    ld [sNumChickenFeed], a
     ret nz
 
     xor a
-    ld [$b8c1], a
+    ld [sChickenFeedFlag], a
     call Call_021_633a
     ret
 
-
-jr_021_6283:
-    ld a, [$b946]
+.usedCowFeed
+    ld a, [sNumCowFeed]
     dec a
-    ld [$b946], a
+    ld [sNumCowFeed], a
     ret nz
 
     xor a
-    ld [$b8c0], a
+    ld [sCowFeedFlag], a
     call Call_021_633a
     ret
 

@@ -70,8 +70,8 @@ sb8bc::  db
 sb8bd::  db 
 sb8be::  db 
 sb8bf::  db 
-sb8c0::  db 
-sb8c1::  db 
+sCowFeedFlag::  db ; 0xb8c0
+sChickenFeedFlag::  db  ; 0xb8c1
 sb8c2::  db 
 sb8c3::  db 
 sb8c4::  db 
@@ -80,8 +80,8 @@ sNumRiceBall::  db
 sNumMeatDumpling::  db 
 sb8c8::  db 
 sb8c9::  db 
-sNumWildGrapeJuice::  db 
-sNumGreenTea::  db 
+sNumWildGrapeJuice::  db ; 0xb8ca
+sNumGreenTea::  db ; 0xb8cb
 sb8cc::  db 
 sb8cd::  db 
 sb8ce::  db 
@@ -204,8 +204,8 @@ sb942::  db
 sb943::  db 
 sb944::  db 
 sb945::  db 
-sb946::  db 
-sb947::  db 
+sNumCowFeed::  db 
+sNumChickenFeed::  db 
 sb948::  db 
 sb949::  db 
 sb94a::  db 

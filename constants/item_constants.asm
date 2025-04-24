@@ -14,7 +14,9 @@ const SICKLE         ; $0b
 const HOE            ; $0c
 const HAMMER         ; $0d
 const AX             ; $0e
-const_skip 3
+const_skip
+const COW_FEED       ; $10
+const CHICKEN_FEED   ; $11
 const SPRINKLER      ; $12
 const SUPER_SICKLE   ; $13
 const SUPER_HOE      ; $14

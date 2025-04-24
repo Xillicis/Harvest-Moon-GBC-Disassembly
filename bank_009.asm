@@ -3767,7 +3767,7 @@ jr_009_5260:
     ld de, $cd34
     ld b, $0a
     call CopyHLtoDE
-    ld a, [$b8c0]
+    ld a, [sCowFeedFlag]
     or a
     jr nz, jr_009_535d
 
@@ -3781,7 +3781,7 @@ jr_009_5260:
     call Call_009_508e
 
 jr_009_535d:
-    ld a, [$b8c1]
+    ld a, [sChickenFeedFlag]
     or a
     jr nz, jr_009_5375
 
