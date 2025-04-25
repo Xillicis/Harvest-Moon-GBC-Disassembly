@@ -4794,9 +4794,11 @@ jr_006_55d3:
     ld [bc], a
     ld de, $ffd1
     nop
-    ld de, $fa80
-    ld c, d
-    res 6, a
+    db $11, $80
+
+Label_006_55e4:
+    ld a, [$cb4a]
+    or a
     jr nz, jr_006_5627
 
     ld a, [$cb7c]
