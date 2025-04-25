@@ -2150,9 +2150,6 @@ Call_000_0d22:
     ld [$c903], a
     nop
     nop
-
-Call_000_0d60:
-Jump_000_0d60:
     nop
     nop
     ld a, $0b
@@ -5432,26 +5429,17 @@ jr_000_20ef:
     ld d, a
     ld a, [de]
 
-Jump_000_20fc:
 jr_000_20fc:
     ld [$cb13], a
-
-Jump_000_20ff:
     ld a, $10
     add b
     ld b, a
-
-Call_000_2103:
-Jump_000_2103:
     ld a, $08
-
-Jump_000_2105:
     add c
     ld c, a
     ldh a, [$ff99]
     cp $a0
     ret z
-
     ld e, a
     ld d, $c0
 
@@ -8120,9 +8108,7 @@ jr_000_2d98:
     ld de, $0020
     add hl, de
     jr jr_000_2d6c
-
     ret
-
 
 Call_000_2da4:
     inc hl
@@ -8141,30 +8127,26 @@ Call_000_2df2:
     push af
     push hl
     ld a, [hl+]
-
-Call_000_2df8:
     and $01
     jp z, Jump_000_2f4e
 
     ld a, [hli]
     ldh [$ffa4], a
-
-Call_000_2e00:
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa5], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa6], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa7], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa8], a
     inc hl
     inc hl
     inc hl
     inc hl
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffa9], a
-    ld a, [hl+]
+    ld a, [hli]
     ldh [$ffaa], a
     ldh a, [$ffa4]
     cp $02
@@ -8418,7 +8400,6 @@ Jump_000_2f31:
     ldh a, [$ffa8]
     ld [hl], a
 
-Call_000_2f3f:
 Jump_000_2f3f:
     ldh a, [$ffa7]
     ld e, a
@@ -8432,8 +8413,6 @@ Jump_000_2f3f:
 
 Jump_000_2f4e:
     pop hl
-
-Jump_000_2f4f:
     pop af
     ld [MBC3RomBank], a
     ret
@@ -10330,7 +10309,7 @@ jr_000_3785:
     and $10
     sla a
     sla a
-    ld hl, $9c22
+    ld hl, vBGMap1 + $22
     add l
     ld l, a
     ld a, $00
@@ -10597,7 +10576,7 @@ Jump_000_393c:
     xor a
     ld [$cb72], a
     ld a, [$cb6d]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
@@ -10607,7 +10586,7 @@ Jump_000_393c:
     ld a, [$cb5c]
     ld [de], a
     ld a, [$cb6c]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
@@ -10625,19 +10604,17 @@ Call_000_396d:
     jr z, jr_000_39a9
 
     ld a, [$cb6d]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
     adc d
-
-Call_000_397f:
     ld d, a
     call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [de], a
     ld a, [$cb6c]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
@@ -10649,8 +10626,6 @@ Call_000_397f:
     ldh a, [$ff8b]
     and $20
     jr z, jr_000_39dd
-
-Call_000_39a0:
     call Call_000_3fae
     xor a
     ld [$cb72], a
@@ -10658,7 +10633,7 @@ Call_000_39a0:
 
 jr_000_39a9:
     ld a, [$cb6c]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
@@ -10668,7 +10643,7 @@ jr_000_39a9:
     ld a, [$cb5d]
     ld [de], a
     ld a, [$cb6d]
-    ld de, $9c22
+    ld de, vBGMap1 + $22
     add e
     ld e, a
     ld a, $00
@@ -11402,34 +11377,28 @@ Call_000_3e00:
 Call_000_3e1a:
     ld hl, $9c30
     call SyncToBlankPeriod
-
-Call_000_3e20:
     ld a, $88
     ld [hl+], a
     inc a
     ld [hl], a
     call SyncToBlankPeriod
-
-Call_000_3e28:
     ld a, $8a
-    ld [$9c32], a
+    ld [vBGMap1 + $32], a
     inc a
-    ld [$9c50], a
+    ld [vBGMap1 + $50], a
     call SyncToBlankPeriod
     ld a, $8c
-    ld [$9c51], a
+    ld [vBGMap1 + $51], a
     inc a
-    ld [$9c52], a
-
-Jump_000_3e3d:
+    ld [vBGMap1 + $52], a
     call SyncToBlankPeriod
     ld a, $8e
-    ld [$9c70], a
+    ld [vBGMap1 + $70], a
     inc a
-    ld [$9c71], a
+    ld [vBGMap1 + $71], a
     call SyncToBlankPeriod
     ld a, $9f
-    ld [$9c72], a
+    ld [vBGMap1 + $72], a
     ld hl, sInventory
     ld a, [sItemSlot]
     add l

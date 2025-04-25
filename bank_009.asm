@@ -9988,7 +9988,7 @@ jr_009_70e2:
     ld hl, $1f00
     ld a, [$fcfc]
     ld hl, sp-$04
-    jp nz, Jump_000_2103
+    jp nz, $2103
 
     nop
     inc bc

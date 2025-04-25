@@ -5,581 +5,51 @@
 
 SECTION "ROM Bank $012", ROMX[$4000], BANK[$12]
 
-    ld [de], a
-    nop
-    nop
-    ld bc, $0042
-    nop
-    add hl, bc
-    ld b, d
-    nop
-    nop
-    ld de, $0042
-    nop
-    add hl, de
-    ld b, d
-    nop
-    nop
-    ld d, l
-    ld b, e
-    nop
-    nop
-    ld e, l
-    ld b, e
-    nop
-    nop
-    ld h, l
-    ld b, e
-    nop
-    nop
-    ld l, l
-    ld b, e
-    nop
-    nop
-    sbc c
-    ld b, h
-    nop
-    nop
-    sbc a
-    ld b, h
-    nop
-    nop
-    and l
-    ld b, h
-    nop
-    nop
-    xor e
-    ld b, h
-    nop
-    nop
-    push hl
-    ld b, l
-    nop
-    nop
-    di
-    ld b, l
-    nop
-    nop
-    ld bc, $0046
-    nop
-    rrca
-    ld b, [hl]
-    nop
-    nop
-    dec e
-    ld c, c
-    nop
-    nop
-    dec hl
-    ld c, c
-    nop
-    nop
-    add hl, sp
-    ld c, c
-    nop
-    nop
-    ld b, a
-    ld c, c
-    nop
-    nop
-    pop hl
-    ld c, e
-    nop
-    nop
-    jp hl
-
-
-    ld c, e
-    nop
-    nop
-    pop af
-    ld c, e
-    nop
-    nop
-    ld sp, hl
-    ld c, e
-    nop
-    nop
-    dec [hl]
-    ld c, l
-    nop
-    nop
-    dec a
-    ld c, l
-    nop
-    nop
-    ld b, l
-    ld c, l
-    nop
-    nop
-    ld c, l
-    ld c, l
-    ld bc, $7900
-    ld c, [hl]
-    ld bc, $8100
-    ld c, [hl]
-    ld bc, $8900
-    ld c, [hl]
-    ld bc, $9100
-    ld c, [hl]
-    ld bc, $c500
-    ld c, a
-    ld bc, $3b00
-    ld d, b
-    ld bc, $5600
-    ld d, b
-    ld bc, $5e00
-    ld d, b
-    ld bc, $6600
-    ld d, b
-    ld bc, $6e00
-    ld d, b
-    ld bc, $7200
-    ld d, d
-    ld bc, $7a00
-    ld d, d
-    ld bc, $8200
-    ld d, d
-    ld bc, $8a00
-    ld d, d
-    ld bc, $7600
-    ld d, h
-    ld [bc], a
-    nop
-    cp $54
-    ld [bc], a
-    nop
-    ld b, $55
-    ld [bc], a
-    nop
-    ld c, $55
-    ld [bc], a
-    nop
-    sub d
-    ld d, [hl]
-    ld [bc], a
-    nop
-    sbc d
-    ld d, [hl]
-    ld [bc], a
-    nop
-    and d
-    ld d, [hl]
-    ld [bc], a
-    nop
-    xor d
-    ld d, [hl]
-    ld [bc], a
-    nop
-    sbc d
-    ld e, b
-    ld [bc], a
-    nop
-    xor b
-    ld e, b
-    ld [bc], a
-    nop
-    or [hl]
-    ld e, b
-    ld [bc], a
-    nop
-    call nz, $0258
-    nop
-    ld e, d
-    ld e, d
-    ld [bc], a
-    nop
-    ld l, b
-    ld e, d
-    ld [bc], a
-    nop
-    halt
-    ld e, d
-    inc bc
-    nop
-    sub l
-    ld e, e
-    inc bc
-    nop
-    ld b, $5c
-    inc bc
-    nop
-    ld a, [bc]
-    ld e, h
-    inc bc
-    nop
-    ld c, $5c
-    inc bc
-    nop
-    ld [de], a
-    ld e, h
-    inc bc
-    nop
-    ld d, $5d
-    inc bc
-    nop
-    rst $38
-    ld e, l
-    inc bc
-    nop
-    add hl, bc
-    ld e, [hl]
-    inc bc
-    nop
-    inc de
-    ld e, [hl]
-    inc bc
-    nop
-    dec e
-    ld e, [hl]
-    inc bc
-    nop
-    xor a
-    ld h, b
-    nop
-    ld bc, $6152
-    nop
-    ld bc, $615c
-    nop
-    ld bc, $6166
-    nop
-    nop
-    ld hl, $0042
-    nop
-    inc hl
-    ld b, d
-    nop
-    nop
-    dec h
-    ld b, d
-    nop
-    nop
-    daa
-    ld b, d
-    nop
-    nop
-    ld bc, $004c
-    nop
-    inc bc
-    ld c, h
-    nop
-    nop
-    dec b
-    ld c, h
-    nop
-    nop
-    rlca
-    ld c, h
-    nop
-    nop
-    or c
-    ld b, h
-    nop
-    nop
-    or e
-    ld b, h
-    nop
-    nop
-    or l
-    ld b, h
-    nop
-    nop
-    or a
-    ld b, h
-    inc bc
-    ld bc, $6347
-    inc bc
-    ld bc, $634f
-    inc bc
-    ld bc, $6355
-    inc bc
-    ld bc, $6357
-    inc bc
-    ld bc, $63bf
-    inc bc
-    ld bc, $63c7
-    inc bc
-    ld bc, $63cf
-    inc bc
-    ld bc, $63d7
-    inc bc
-    ld bc, $65db
-    inc bc
-    ld bc, $65dd
-    inc bc
-    ld bc, $65df
-    inc bc
-    ld bc, $65e1
-    inc bc
-    ld bc, $6647
-    inc bc
-    ld bc, $6655
-    inc bc
-    ld bc, $6663
-    inc bc
-    ld bc, $6671
-    nop
-    ld [bc], a
-    ld h, a
-    ld l, b
-    inc bc
-    nop
-    ld d, $5c
-    inc bc
-    nop
-    ld a, [de]
-    ld e, h
-    inc bc
-    nop
-    ld e, $5c
-    inc bc
-    nop
-    ld [hl+], a
-    ld e, h
-    nop
-    nop
-    dec e
-    ld b, [hl]
-    nop
-    nop
-    dec hl
-    ld b, [hl]
-    nop
-    nop
-    add hl, sp
-    ld b, [hl]
-    nop
-    nop
-    ld b, a
-    ld b, [hl]
-    nop
-    ld [bc], a
-    ld a, c
-    ld l, b
-    nop
-    ld [bc], a
-    add c
-    ld l, b
-    nop
-    ld [bc], a
-    adc c
-    ld l, b
-    nop
-    ld [bc], a
-    sub c
-    ld l, b
-    nop
-    ld [bc], a
-    sbc c
-    ld l, b
-    nop
-    ld [bc], a
-    sbc e
-    ld l, b
-    nop
-    ld [bc], a
-    sbc l
-    ld l, b
-    nop
-    ld [bc], a
-    sbc a
-    ld l, b
-    nop
-    ld [bc], a
-    and c
-    ld l, b
-    nop
-    ld [bc], a
-    xor c
-    ld l, b
-    nop
-    ld [bc], a
-    or c
-    ld l, b
-    nop
-    ld [bc], a
-    cp c
-    ld l, b
-    nop
-    ld [bc], a
-    pop bc
-    ld l, b
-    nop
-    ld [bc], a
-    jp $0068
-
-
-    ld [bc], a
-    push bc
-    ld l, b
-    nop
-    ld [bc], a
-    rst $00
-    ld l, b
-    nop
-    nop
-    ld [hl], l
-    ld l, h
-    nop
-    nop
-    ld [hl], l
-    ld l, h
-    nop
-    nop
-    ld [hl], l
-    ld l, h
-    nop
-    nop
-    ld [hl], l
-    ld l, h
-    add hl, hl
-    ld b, d
-    ld b, d
-    ld b, d
-    add hl, hl
-    ld b, d
-    ld e, e
-    ld b, d
-    ld [hl], h
-    ld b, d
-    adc l
-    ld b, d
-    ld [hl], h
-    ld b, d
-    and [hl]
-    ld b, d
-    cp a
-    ld b, d
-    ret c
-
-    ld b, d
-    cp a
-    ld b, d
-    pop af
-    ld b, d
-    ld a, [bc]
-    ld b, e
-    inc hl
-    ld b, e
-    ld a, [bc]
-    ld b, e
-    inc a
-    ld b, e
-    add hl, hl
-    ld b, d
-    ld [hl], h
-    ld b, d
-    cp a
-    ld b, d
-    ld a, [bc]
-    ld b, e
-    ld hl, sp+$00
-    dec b
-    db $10
-    ld hl, sp-$08
-    inc b
-    db $10
-    ldh a, [rP1]
-    inc bc
-    ld de, $f8f0
-    ld [bc], a
-    ld de, $00e8
-    ld bc, $e810
-    ld hl, sp+$00
-    db $10
-    add b
-    rst $30
-    nop
-    add hl, bc
-    db $10
-    rst $30
-    ld hl, sp+$08
-    db $10
-    rst $28
-    nop
-    rlca
-    ld de, $f8ef
-    ld b, $11
-    rst $20
-    nop
-    ld bc, $e710
-    ld hl, sp+$00
-    db $10
-    add b
-    rst $28
-    nop
-    dec bc
-    ld de, $f8ef
-    ld a, [bc]
-    ld de, $00e7
-    ld bc, $e710
-    ld hl, sp+$00
-    db $10
-    rst $30
-    nop
-    dec c
-    db $10
-    rst $30
-    ld hl, sp+$0c
-    db $10
-    add b
-    ldh a, [rP1]
-    ld de, $f011
-    ld hl, sp+$10
-    ld de, $00f8
-    inc de
-    db $10
-    ld hl, sp-$08
-    ld [de], a
-    db $10
-    add sp, $00
-    rrca
-    db $10
-    add sp, -$08
-    ld c, $10
-    add b
-    rst $28
-    nop
-    dec d
-    ld de, $f8ef
-    inc d
-    ld de, $00f7
-    rla
-    db $10
-    rst $30
-    ld hl, sp+$16
-    db $10
-    rst $20
-    nop
-    rrca
-    db $10
-    rst $20
-    ld hl, sp+$0e
-    db $10
-    add b
-    rst $28
-    nop
-    add hl, de
-    ld de, $f8ef
-    jr jr_012_42bf
-
-    rst $30
-    nop
-    dec de
-    db $10
-    rst $30
-    ld hl, sp+$1a
-    db $10
-    rst $20
-    nop
-
-jr_012_42b8:
-    rrca
-    db $10
-    rst $20
-    ld hl, sp+$0e
-    db $10
-    add b
+    db $12, $00, $00, $01, $42, $00, $00, $09, $42, $00, $00, $11, $42, $00, $00, $19
+    db $42, $00, $00, $55, $43, $00, $00, $5D, $43, $00, $00, $65, $43, $00, $00, $6D
+    db $43, $00, $00, $99, $44, $00, $00, $9F, $44, $00, $00, $A5, $44, $00, $00, $AB
+    db $44, $00, $00, $E5, $45, $00, $00, $F3, $45, $00, $00, $01, $46, $00, $00, $0F
+    db $46, $00, $00, $1D, $49, $00, $00, $2B, $49, $00, $00, $39, $49, $00, $00, $47
+    db $49, $00, $00, $E1, $4B, $00, $00, $E9, $4B, $00, $00, $F1, $4B, $00, $00, $F9
+    db $4B, $00, $00, $35, $4D, $00, $00, $3D, $4D, $00, $00, $45, $4D, $00, $00, $4D
+    db $4D, $01, $00, $79, $4E, $01, $00, $81, $4E, $01, $00, $89, $4E, $01, $00, $91
+    db $4E, $01, $00, $C5, $4F, $01, $00, $3B, $50, $01, $00, $56, $50, $01, $00, $5E
+    db $50, $01, $00, $66, $50, $01, $00, $6E, $50, $01, $00, $72, $52, $01, $00, $7A
+    db $52, $01, $00, $82, $52, $01, $00, $8A, $52, $01, $00, $76, $54, $02, $00, $FE
+    db $54, $02, $00, $06, $55, $02, $00, $0E, $55, $02, $00, $92, $56, $02, $00, $9A
+    db $56, $02, $00, $A2, $56, $02, $00, $AA, $56, $02, $00, $9A, $58, $02, $00, $A8
+    db $58, $02, $00, $B6, $58, $02, $00, $C4, $58, $02, $00, $5A, $5A, $02, $00, $68
+    db $5A, $02, $00, $76, $5A, $03, $00, $95, $5B, $03, $00, $06, $5C, $03, $00, $0A
+    db $5C, $03, $00, $0E, $5C, $03, $00, $12, $5C, $03, $00, $16, $5D, $03, $00, $FF
+    db $5D, $03, $00, $09, $5E, $03, $00, $13, $5E, $03, $00, $1D, $5E, $03, $00, $AF
+    db $60, $00, $01, $52, $61, $00, $01, $5C, $61, $00, $01, $66, $61, $00, $00, $21
+    db $42, $00, $00, $23, $42, $00, $00, $25, $42, $00, $00, $27, $42, $00, $00, $01
+    db $4C, $00, $00, $03, $4C, $00, $00, $05, $4C, $00, $00, $07, $4C, $00, $00, $B1
+    db $44, $00, $00, $B3, $44, $00, $00, $B5, $44, $00, $00, $B7, $44, $03, $01, $47
+    db $63, $03, $01, $4F, $63, $03, $01, $55, $63, $03, $01, $57, $63, $03, $01, $BF
+    db $63, $03, $01, $C7, $63, $03, $01, $CF, $63, $03, $01, $D7, $63, $03, $01, $DB
+    db $65, $03, $01, $DD, $65, $03, $01, $DF, $65, $03, $01, $E1, $65, $03, $01, $47
+    db $66, $03, $01, $55, $66, $03, $01, $63, $66, $03, $01, $71, $66, $00, $02, $67
+    db $68, $03, $00, $16, $5C, $03, $00, $1A, $5C, $03, $00, $1E, $5C, $03, $00, $22
+    db $5C, $00, $00, $1D, $46, $00, $00, $2B, $46, $00, $00, $39, $46, $00, $00, $47
+    db $46, $00, $02, $79, $68, $00, $02, $81, $68, $00, $02, $89, $68, $00, $02, $91
+    db $68, $00, $02, $99, $68, $00, $02, $9B, $68, $00, $02, $9D, $68, $00, $02, $9F
+    db $68, $00, $02, $A1, $68, $00, $02, $A9, $68, $00, $02, $B1, $68, $00, $02, $B9
+    db $68, $00, $02, $C1, $68, $00, $02, $C3, $68, $00, $02, $C5, $68, $00, $02, $C7
+    db $68, $00, $00, $75, $6C, $00, $00, $75, $6C, $00, $00, $75, $6C, $00, $00, $75
+    db $6C, $29, $42, $42, $42, $29, $42, $5B, $42, $74, $42, $8D, $42, $74, $42, $A6
+    db $42, $BF, $42, $D8, $42, $BF, $42, $F1, $42, $0A, $43, $23, $43, $0A, $43, $3C
+    db $43, $29, $42, $74, $42, $BF, $42, $0A, $43, $F8, $00, $05, $10, $F8, $F8, $04
+    db $10, $F0, $00, $03, $11, $F0, $F8, $02, $11, $E8, $00, $01, $10, $E8, $F8, $00
+    db $10, $80, $F7, $00, $09, $10, $F7, $F8, $08, $10, $EF, $00, $07, $11, $EF, $F8
+    db $06, $11, $E7, $00, $01, $10, $E7, $F8, $00, $10, $80, $EF, $00, $0B, $11, $EF
+    db $F8, $0A, $11, $E7, $00, $01, $10, $E7, $F8, $00, $10, $F7, $00, $0D, $10, $F7
+    db $F8, $0C, $10, $80, $F0, $00, $11, $11, $F0, $F8, $10, $11, $F8, $00, $13, $10
+Data_012_4280:
+    db $F8, $F8, $12, $10, $E8, $00, $0F, $10, $E8, $F8, $0E, $10, $80, $EF, $00, $15
+    db $11, $EF, $F8, $14, $11, $F7, $00, $17, $10, $F7, $F8, $16, $10, $E7, $00, $0F
+    db $10, $E7, $F8, $0E, $10, $80, $EF, $00, $19, $11, $EF, $F8, $18, $11, $F7, $00
+    db $1B, $10, $F7, $F8, $1A, $10, $E7, $00, $0F, $10, $E7, $F8, $0E, $10, $80
 
 jr_012_42bf:
     ld hl, sp-$08
@@ -588,7 +58,7 @@ jr_012_42bf:
 
     nop
     ld [de], a
-    jr nc, jr_012_42b8
+    jr nc, $42b8
 
     ld hl, sp+$11
     ld sp, $00f0
@@ -12123,7 +11593,7 @@ jr_012_7d45:
     scf
     sbc c
     nop
-    call nc, Call_000_2e00
+    call nc, $2e00
     nop
     ld e, a
     db $e4

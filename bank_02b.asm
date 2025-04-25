@@ -9864,7 +9864,7 @@ Jump_02b_69ff:
     rst $10
     rst $08
     ld h, $de
-    call Call_000_2f3f
+    call $2f3f
     inc bc
     dec bc
     dec a

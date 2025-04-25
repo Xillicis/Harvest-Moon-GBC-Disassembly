@@ -1483,12 +1483,12 @@ jr_01b_46e8:
     ld l, c
     ld a, [hl+]
     ld b, a
-    ld a, [$ba3f]
+    ld a, [sPrayedFlag]
     or a
     jr nz, jr_01b_4701
 
     ld a, $01
-    ld [$ba3f], a
+    ld [sPrayedFlag], a
     ld a, [$cd98]
     and b
     jr z, jr_01b_4703

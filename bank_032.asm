@@ -12904,7 +12904,7 @@ jr_032_7d55:
     scf
     sbc c
     nop
-    call nc, Call_000_2e00
+    call nc, $2e00
     nop
     ld e, a
     db $e4

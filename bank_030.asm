@@ -13142,7 +13142,7 @@ jr_030_7b47:
 jr_030_7b5c:
     add d
     ld b, d
-    jp Jump_000_20ff
+    jp $20ff
 
 
     pop hl

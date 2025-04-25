@@ -2587,7 +2587,7 @@ jr_018_4b22:
     inc l
     ret c
 
-    call nc, Call_000_3e28
+    call nc, $3e28
     call z, Call_018_64ff
     ld [hl], b
     rrca

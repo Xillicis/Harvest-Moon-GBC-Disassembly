@@ -1,3 +1,7 @@
+VRAM 0
+        org $8000
+        "VRAM 0"
+
 SRAM 0	
 	org $a000
 	"SRAM 0"

@@ -7046,7 +7046,7 @@ jr_03c_5e92:
 
     ld d, $0f
     dec a
-    call c, Call_000_0d60
+    call c, $0d60
     ld h, c
     inc c
     cpl

@@ -1832,7 +1832,7 @@ jr_035_4788:
     ld e, b
     ld d, [hl]
     xor h
-    call c, Call_000_39a0
+    call c, $39a0
     rra
     rra
     nop
@@ -5017,7 +5017,7 @@ jr_035_54e8:
     ld e, b
     ld d, [hl]
     xor h
-    call c, Call_000_39a0
+    call c, $39a0
     rra
     rra
     nop
@@ -7574,7 +7574,7 @@ jr_035_5f6f:
 
     ld l, b
     sub b
-    call c, Call_000_3e20
+    call c, $3e20
     call c, $c0be
     ldh [rP1], a
     xor b

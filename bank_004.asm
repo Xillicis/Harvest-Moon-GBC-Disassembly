@@ -2093,14 +2093,12 @@ jr_004_4d39:
     ld a, [$cc1b]
     cp $00
     jr z, jr_004_4d41
-
     ret
-
 
 jr_004_4d41:
     ld a, [wCollisionNoMovement]
     or a
-    jp z, Jump_004_4f55
+    jp z, NoObjectInteraction
 
     ld a, [wRightOrUpSideFacingTileID]
     cp BIG_STONE_TOP_RIGHT_TILE
@@ -2392,8 +2390,7 @@ Jump_004_4f1d:
     call RST_TableJumpBankSwitch
     ret
 
-
-Jump_004_4f55:
+NoObjectInteraction:
     ld a, [sItemSlot]
     ld hl, sInventory
     add l
@@ -2405,6 +2402,7 @@ Jump_004_4f55:
     cp $ff
     jp z, Jump_004_4e5a
 
+; use current item
     ld hl, $527d
     ld a, $01
     call BankSwitchCallHL
@@ -9888,7 +9886,7 @@ jr_004_78e4:
     db $fc
     ldh a, [$fff4]
     ld [$0008], sp
-    jp z, Jump_000_0d60
+    jp z, $0d60
 
     ccf
     db $e3

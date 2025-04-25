@@ -6644,7 +6644,7 @@ jr_01c_5ca9:
 
     ld d, $0f
     dec a
-    call c, Call_000_0d60
+    call c, $0d60
     ld h, c
     inc c
     cpl

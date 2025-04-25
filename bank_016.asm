@@ -12412,7 +12412,7 @@ jr_016_763b:
     db $fc
     or [hl]
     db $fc
-    jp c, Jump_000_20fc
+    jp c, $20fc
 
     rra
     inc sp

@@ -5696,7 +5696,7 @@ jr_00f_61d0:
 
 Label_00f_61d5:
     xor a
-    ld [$ba3f], a
+    ld [sPrayedFlag], a
     ld a, [$ba0d]
     bit 0, a
     jr z, jr_00f_6202

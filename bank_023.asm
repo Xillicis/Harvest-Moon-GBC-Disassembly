@@ -10948,7 +10948,7 @@ jr_023_7da5:
     rst $38
     ld b, d
     cp l
-    jp nz, Jump_000_3e3d
+    jp nz, $3e3d
 
     jp nz, $ff80
 

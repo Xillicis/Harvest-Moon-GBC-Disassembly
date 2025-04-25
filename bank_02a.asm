@@ -168,7 +168,7 @@ jr_02a_40ca:
     db $e4
     di
     ld l, $00
-    call c, Call_000_2df8
+    call c, $2df8
     nop
     add b
     cp $08

@@ -10036,7 +10036,7 @@ jr_029_7100:
     db $fc
     db $fc
     ld hl, sp-$04
-    jp nz, Jump_000_2103
+    jp nz, $2103
 
     nop
     inc bc

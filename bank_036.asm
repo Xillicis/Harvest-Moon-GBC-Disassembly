@@ -10657,7 +10657,7 @@ jr_036_6de0:
     jp Jump_036_6680
 
 
-    jp Jump_000_20ff
+    jp $20ff
 
 
     jr c, jr_036_6def

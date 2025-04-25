@@ -3140,10 +3140,10 @@ jr_034_4da1:
     ld d, b
     cp b
     ld c, a
-    jp c, Jump_000_2f4f
+    jp c, $2f4f
 
     ld d, b
-    jp c, Jump_000_2f4f
+    jp c, $2f4f
 
     ld d, b
     jp c, $fc4f
@@ -3621,7 +3621,7 @@ jr_034_50c9:
     db $e4
     di
     ld l, $00
-    call c, Call_000_2df8
+    call c, $2df8
     nop
     add b
     cp $08
@@ -11197,7 +11197,7 @@ jr_034_730a:
     ldh a, [$ffd4]
     jr c, jr_034_7385
 
-    call c, Call_000_397f
+    call c, $397f
     call nz, $0339
     nop
     ld [bc], a

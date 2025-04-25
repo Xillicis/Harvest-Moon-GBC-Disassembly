@@ -1341,7 +1341,7 @@ jr_020_5d54:
     rlca
     ld b, c
     ld [de], a
-    jp Jump_000_2105
+    jp $2105
 
 
     ld b, $27

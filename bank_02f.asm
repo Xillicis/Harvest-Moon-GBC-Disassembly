@@ -5696,7 +5696,7 @@ jr_02f_61d0:
 
 
     xor a
-    ld [$ba3f], a
+    ld [sPrayedFlag], a
     ld a, [$ba0d]
     bit 0, a
     jr z, jr_02f_6202

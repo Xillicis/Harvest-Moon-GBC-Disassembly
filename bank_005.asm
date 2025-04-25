@@ -7648,7 +7648,7 @@ jr_005_6b49:
     rst $28
     sbc b
     rlca
-    call nz, Call_000_2103
+    call nz, $2103
     ld b, $0f
     ldh a, [rWave_f]
     rst $38
