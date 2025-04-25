@@ -10433,7 +10433,7 @@ Jump_000_3815:
     and $01
     jr z, jr_000_3837
 
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0001
     call Call_000_0cce
@@ -10742,7 +10742,7 @@ Jump_000_39e8:
     ld [$cb53], a
     ld a, h
     ld [$cb54], a
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     xor a
     ld [$cb55], a
 
@@ -10756,69 +10756,59 @@ jr_000_3a09:
     call BankSwitchCallHL
     ret
 
-
-Call_000_3a18:
+ClearOldTextOnTextBox:
     ld a, [$cb5c]
     ld c, a
-    ld hl, $9c22
-    ld b, $04
-
-jr_000_3a21:
-    call SyncToBlankPeriod
-    ld a, c
-    ld [hl+], a
-    ld [hl+], a
-    call SyncToBlankPeriod
-    ld a, c
-    ld [hl+], a
-    ld [hl+], a
-    dec b
-    jr nz, jr_000_3a21
-
-    ld hl, $9c62
-    ld b, $04
-
-jr_000_3a35:
+    ld hl, vBGMap1 + $22
+    ld b, 4
+.loop
     call SyncToBlankPeriod
     ld a, c
     ld [hli], a
-    ld [hl+], a
+    ld [hli], a
     call SyncToBlankPeriod
     ld a, c
-    ld [hl+], a
-    ld [hl+], a
+    ld [hli], a
+    ld [hli], a
     dec b
-    jr nz, jr_000_3a35
+    jr nz, .loop
 
-    ld hl, $9c32
+    ld hl, vBGMap1 + $62
+    ld b, 4
+.loop2
+    call SyncToBlankPeriod
+    ld a, c
+    ld [hli], a
+    ld [hli], a
+    call SyncToBlankPeriod
+    ld a, c
+    ld [hli], a
+    ld [hli], a
+    dec b
+    jr nz, .loop2
+
+    ld hl, vBGMap1 + $32
     call SyncToBlankPeriod
     ld a, c
     ld [hl], a
-    ld hl, $9c50
+    ld hl, vBGMap1 + $50
     call SyncToBlankPeriod
     ld a, c
-    ld [hl+], a
+    ld [hli], a
     call SyncToBlankPeriod
     ld a, c
-    ld [hl+], a
+    ld [hli], a
     call SyncToBlankPeriod
     ld a, c
-    ld [hl+], a
-    ld hl, $9c72
+    ld [hli], a
+    ld hl, vBGMap1 + $72
     call SyncToBlankPeriod
     ld a, c
-    ld [hl+], a
+    ld [hli], a
     ret
 
-
-    ld [hl+], a
-    sbc h
-    inc l
-    sbc h
-    ld h, d
-    sbc h
-    ld l, h
-    sbc h
+Data_000_3a67:
+    db $22, $9c, $2c, $9c, $62, $9c, $6c, $9c
 
 Call_000_3a6f:
     ld a, [$cb57]
@@ -11642,7 +11632,7 @@ Jump_000_3f0a:
 
 
 Call_000_3f0b:
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld a, $07
     ldh [$ff96], a
     ld a, $68

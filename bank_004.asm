@@ -2104,17 +2104,13 @@ jr_004_4d41:
 
     ld a, [wRightOrUpSideFacingTileID]
     cp BIG_STONE_TOP_RIGHT_TILE
-    jr z, jr_004_4d98
-
+    jr z, .topSignChickenCoup
     cp BIG_STONE_BOTTOM_LEFT_TILE
-    jr z, jr_004_4da3
-
+    jr z, .bottomLeftSignChickenCoup
     cp BIG_STONE_BOTTOM_RIGHT_TILE
-    jr z, jr_004_4dae
-
+    jr z, .middleSignChickenCoup
     cp BIG_LOG_TOP_LEFT_TILE
-    jr z, jr_004_4db9
-
+    jr z, .rightSignChickenCoup
     cp $1e
     jr z, PickUpChickenFeed
 
@@ -2152,32 +2148,28 @@ jr_004_4d41:
     ld [$cc20], a
     ret
 
-
-jr_004_4d98:
+.topSignChickenCoup
     ld a, $a2
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4da3:
+.bottomLeftSignChickenCoup
     ld a, $a4
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4dae:
+.middleSignChickenCoup
     ld a, $a3
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4db9:
+.rightSignChickenCoup
     ld a, $a5
     call Call_000_3f52
     ld a, $00

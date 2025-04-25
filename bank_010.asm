@@ -3589,7 +3589,7 @@ jr_010_523a:
 
     ld a, $09
     ld [$cca6], a
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ret
 
 
@@ -4170,7 +4170,7 @@ Call_010_554f:
 
     ld a, $05
     ld [$cca6], a
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ret
 
 

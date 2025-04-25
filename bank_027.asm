@@ -12034,7 +12034,7 @@ jr_027_72f5:
     jr jr_027_7310
 
 jr_027_7310:
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0056
     call Call_000_0cce
@@ -12292,7 +12292,7 @@ jr_027_74b3:
     or a
     jr z, jr_027_7522
 
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0081
     call Call_000_0cce
@@ -12311,7 +12311,7 @@ Jump_027_74ea:
     or a
     jr nz, jr_027_751a
 
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld a, $01
     ld [$cb52], a
     ld [$cb57], a
@@ -12350,7 +12350,7 @@ jr_027_752a:
     ret
 
 
-    call Call_000_3a18
+    call ClearOldTextOnTextBox
     ld a, $01
     ld [$cb52], a
     ld [$cb57], a

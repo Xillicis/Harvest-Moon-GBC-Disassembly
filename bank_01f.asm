@@ -11721,12 +11721,11 @@ jr_01f_787c:
     ldh [rLYC], a
     ret
 
-
+Label_01f_788d:
     ld hl, $739a
     ld a, [sCatOrDog]
     cp $01
     jr z, jr_01f_789a
-
     ld hl, $73da
 
 jr_01f_789a:
