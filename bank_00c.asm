@@ -11741,9 +11741,9 @@ jr_00c_7d3e:
     ld [$cb8d], a
     ld a, $00
     call RST_TableJumpBankSwitch
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     inc a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ret
 
 
@@ -11894,7 +11894,7 @@ jr_00c_7d74:
     ret
 
 
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     call Call_000_3304
     ld a, [$ccd0]
     ld [$ccad], a

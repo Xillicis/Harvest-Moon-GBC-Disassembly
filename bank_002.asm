@@ -3384,7 +3384,7 @@ jr_002_5211:
     ld a, $01
     ldh [c], a
     ld d, $99
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     cp $00
     jr z, jr_002_5264
 
@@ -4719,7 +4719,7 @@ Jump_002_59ee:
 
 
 Jump_002_5a08:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     or a
     jr nz, jr_002_5a12
 
@@ -6873,7 +6873,7 @@ jr_002_659a:
 
 
 Call_002_65b6:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     or a
     ret z
 

@@ -865,9 +865,9 @@ Call_00e_4526:
     ret
 
 
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     inc a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ld a, $37
     call $16d1
     ld a, $3c
@@ -3930,7 +3930,7 @@ jr_00e_5719:
     or a
     ret nz
 
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     ld hl, $5737
     add l
     ld l, a

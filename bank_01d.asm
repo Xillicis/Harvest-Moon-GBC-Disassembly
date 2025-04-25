@@ -3674,7 +3674,7 @@ Call_01d_521e: ; 1dx521e
     ld [$b906], a
     xor a
     ld [$b907], a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ld a, NO_ITEM
     ld [sInventory], a
     ld [sInventory+1], a

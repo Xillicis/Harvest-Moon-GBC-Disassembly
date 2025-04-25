@@ -1692,12 +1692,12 @@ Call_028_48ba:
     ld [$cb8d], a
     ld a, $00
     call RST_TableJumpBankSwitch
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     cp $0a
     jr z, jr_028_48e7
 
     inc a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ld a, [sPlayerMaxEnergy]
     add $0a
     ld [sPlayerMaxEnergy], a

@@ -3678,7 +3678,7 @@ Call_03d_51d9:
     ld [$b906], a
     xor a
     ld [$b907], a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ld a, $ff
     ld [sInventory], a
     ld [sInventory+1], a

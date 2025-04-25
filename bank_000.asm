@@ -4484,8 +4484,8 @@ CheckForNoEnergyAnimation:
     ret ; ???
 
 .useSmallEnergy
-    ld hl, Data_000_1aba
-    ld a, [$b904]
+    ld hl, EnergyScaleForTirednessAnimations
+    ld a, [sNumPowerBerriesEaten]
     add a
     add a
     add l
@@ -4508,8 +4508,8 @@ CheckForNoEnergyAnimation:
     ret
 
 .useMediumEnergy
-    ld hl, Data_000_1aba
-    ld a, [$b904]
+    ld hl, EnergyScaleForTirednessAnimations
+    ld a, [sNumPowerBerriesEaten]
     add a
     add a
     add l
@@ -4541,8 +4541,8 @@ CheckForNoEnergyAnimation:
     ret
 
 .useLargeEnergy
-    ld hl, Data_000_1aba
-    ld a, [$b904]
+    ld hl, EnergyScaleForTirednessAnimations
+    ld a, [sNumPowerBerriesEaten]
     add a
     add a
     add l
@@ -4608,7 +4608,9 @@ jr_000_1ab4:
     ld [$cb91], a
     ret
 
-Data_000_1aba:
+; Scales the timing for when the out of energy animations play as the player gets stronger.
+; Makes it more evenly spaced as you get stronger.
+EnergyScaleForTirednessAnimations:
     db $32, $21, $11, $00
     db $37, $25, $12, $00
     db $3C, $28, $14, $00

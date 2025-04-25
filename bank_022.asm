@@ -4633,7 +4633,7 @@ Jump_022_595b:
 
 
 Jump_022_5975:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     or a
     jr nz, jr_022_597f
 
@@ -6781,7 +6781,7 @@ jr_022_6507:
 
 
 Call_022_6523:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     or a
     ret z
 

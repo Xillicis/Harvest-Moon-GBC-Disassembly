@@ -1359,17 +1359,15 @@ Call_008_48b6:
     ld [$cb8d], a
     ld a, $00
     call RST_TableJumpBankSwitch
-    ld a, [$b904]
-    cp $0a
-    jr z, jr_008_48e3
-
+    ld a, [sNumPowerBerriesEaten]
+    cp 10
+    jr z, .done
     inc a
-    ld [$b904], a
+    ld [sNumPowerBerriesEaten], a
     ld a, [sPlayerMaxEnergy]
-    add $0a
+    add MAX_ENERGY_INCREASE_VAL
     ld [sPlayerMaxEnergy], a
-
-jr_008_48e3:
+.done
     pop hl
     pop de
     pop bc

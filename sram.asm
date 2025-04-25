@@ -138,7 +138,9 @@ sb900::  db
 sb901::  db 
 sb902::  db 
 sb903::  db 
-sb904::  db 
+; This determines the number of flowers that are loaded in the house
+; Max energy gets increases once a berry is eaten.
+sNumPowerBerriesEaten::  db 
 sb905::  db 
 sb906::  db 
 sb907::  db 

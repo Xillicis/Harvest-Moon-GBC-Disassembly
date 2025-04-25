@@ -3820,7 +3820,7 @@ jr_030_53bb:
     jr jr_030_5412
 
 jr_030_53d9:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     cp $06
     jr c, jr_030_5402
 
@@ -3872,7 +3872,7 @@ jr_030_5414:
 
 
 Call_030_5417:
-    ld a, [$b904]
+    ld a, [sNumPowerBerriesEaten]
     cp $06
     jr c, jr_030_5446
 
