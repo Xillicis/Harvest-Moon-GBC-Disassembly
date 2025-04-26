@@ -5429,11 +5429,12 @@ Jump_020_70c2:
     ret
 
 
-    ld hl, $4069
+    ld hl, Data_020_4069
     call SyncLoadSpritePalette3
     ret
 
-
+; picking up stones comes here
+Label_020_70f3:
     ret
 
 

@@ -5136,7 +5136,7 @@ Call_006_570d: ; watering can goes here...
     call Call_000_151d
     ret
 
-
+Label_006_57c1:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5160,7 +5160,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_57ed:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5184,7 +5184,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5819:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5208,7 +5208,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5845:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5232,7 +5232,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5871:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5256,7 +5256,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_589d:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5280,7 +5280,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_58c9:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5304,7 +5304,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_58f5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5328,7 +5328,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5921:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5352,7 +5352,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_594d:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5376,7 +5376,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5979:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5400,7 +5400,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_59a5:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5424,7 +5424,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_59d1:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5448,7 +5448,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_59fd:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5472,7 +5472,7 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5a29:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
@@ -5496,31 +5496,31 @@ Call_006_570d: ; watering can goes here...
     ld [hl], a
     ret
 
-
+Label_006_5a55:
     ld de, $c620
-    ld hl, $5bf7
+    ld hl, Data_006_5bf7
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
     ld a, [$c606]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c607]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c608]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c609]
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c60a]
     sub $01
-    ld [hl+], a
+    ld [hli], a
     ld a, [$c60b]
     sub $1a
-    ld [hl+], a
+    ld [hli], a
     ld a, $0f
     ld hl, $c622
-    ld [hl+], a
+    ld [hli], a
     ld a, $ff
-    ld [hl+], a
+    ld [hli], a
     inc hl
     xor a
     ld [hl], a
@@ -5724,35 +5724,11 @@ Jump_006_569e:
     ld [hl], a
     ret
 
+Data_006_5bf7:
+    db $01, $01, $00, $ff, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $01, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-    ld bc, $0001
-    rst $38
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+Label_006_5c17:
     ld de, $c620
     ld hl, $5bf7
     ld b, $20
