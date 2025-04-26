@@ -12068,7 +12068,7 @@ jr_032_793a:
     or a
     jp nz, Jump_032_7a28
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_032_7988
 

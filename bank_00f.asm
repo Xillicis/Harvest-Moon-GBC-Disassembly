@@ -6,7 +6,7 @@
 SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
 
     rrca
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     dec c
     ld b, b
@@ -6283,12 +6283,12 @@ jr_00f_6581:
     ld a, $03
 
 jr_00f_6583:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_00f_6586:
     ld a, $02
     call RST_TableJumpBankSwitch
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_00f_65d2
 
@@ -6435,7 +6435,7 @@ jr_00f_665f:
 
 Jump_00f_6671:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_14f9
@@ -6472,7 +6472,7 @@ jr_00f_669e:
 
 Jump_00f_66ad:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1502
@@ -6509,7 +6509,7 @@ jr_00f_66da:
 
 Jump_00f_66e9:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_150b
@@ -6546,7 +6546,7 @@ jr_00f_6716:
 
 Jump_00f_6725:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1514
@@ -6977,7 +6977,7 @@ Call_00f_696f:
 
 Call_00f_697f:
     ld hl, $c86d
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6aeb
     add e
     ld e, a
@@ -7018,7 +7018,7 @@ jr_00f_69b7:
 
 Call_00f_69bd:
     ld hl, $c88d
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6aeb
     add e
     ld e, a
@@ -7068,7 +7068,7 @@ jr_00f_69ff:
 
 Call_00f_6a05:
     ld hl, $c8ad
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6aeb
     add e
     ld e, a
@@ -7118,7 +7118,7 @@ jr_00f_6a47:
 
 Call_00f_6a4d:
     ld hl, $c8cd
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6aeb
     add e
     ld e, a
@@ -7188,7 +7188,7 @@ jr_00f_6aa7:
 
 Call_00f_6aad:
     ld hl, $c8ed
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6aeb
     add e
     ld e, a

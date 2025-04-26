@@ -234,7 +234,7 @@ jr_010_4189:
     xor a
     ld [$cc1c], a
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ld hl, $40ea
@@ -318,7 +318,7 @@ jr_010_4207:
     xor a
     ld [$cc1c], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ret
@@ -398,7 +398,7 @@ jr_010_4279:
     ld [$cc1c], a
     ld [$c800], a
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ret
@@ -438,7 +438,7 @@ jr_010_42b2:
     ld [$cc1c], a
     ld [$c800], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $02
     call RST_TableJumpBankSwitch
     ret
@@ -454,7 +454,7 @@ jr_010_42c9:
 
 jr_010_42d2:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -462,7 +462,7 @@ jr_010_42d2:
 
 jr_010_42dd:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -656,7 +656,7 @@ jr_010_4362:
     xor a
     ld [$cc1c], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld hl, $40ea

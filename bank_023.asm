@@ -1488,7 +1488,7 @@ jr_023_48e4:
 
 jr_023_4931:
     ld hl, $4938
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld b, b
     ld c, c
@@ -1565,7 +1565,7 @@ jr_023_4952:
 
 Jump_023_49a9:
     ld hl, $49b0
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     cp b
     ld c, c
@@ -1614,7 +1614,7 @@ jr_023_49ca:
 
 Jump_023_49f0:
     ld hl, $49f7
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     rst $38
     ld c, c
@@ -1678,7 +1678,7 @@ Jump_023_4a46:
     ret nz
 
     ld hl, $4a52
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld e, d
     ld c, d
@@ -1757,7 +1757,7 @@ jr_023_4a92:
 
 Jump_023_4ab7:
     ld hl, $4abe
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     add $4a
     bit 1, d
@@ -1806,7 +1806,7 @@ jr_023_4ad8:
 
 Jump_023_4aff:
     ld hl, $4b06
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld c, $4b
     inc de
@@ -1866,7 +1866,7 @@ Jump_023_4b4c:
     jp nz, Jump_023_4ddc
 
     ld hl, $4b5a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld h, d
     ld c, e
@@ -2977,7 +2977,7 @@ jr_023_51fb:
 
 jr_023_5220:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_023_59b0
@@ -3015,7 +3015,7 @@ jr_023_525a:
 
 jr_023_525e:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_023_5baa
@@ -3053,7 +3053,7 @@ jr_023_5298:
 
 Jump_023_529c:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_023_5da4
@@ -3091,7 +3091,7 @@ jr_023_52d5:
 
 Jump_023_52d9:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_023_5f9e
@@ -3157,7 +3157,7 @@ jr_023_5316:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [hl], a
     xor a
     ld [$cc29], a
@@ -3237,10 +3237,10 @@ jr_023_53a6:
     ld a, $03
 
 jr_023_53a8:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_023_53ab:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_023_53f7
 
@@ -3741,7 +3741,7 @@ jr_023_5654:
 
 
 Call_023_565f:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld l, h
     ld d, [hl]
@@ -4147,7 +4147,7 @@ Call_023_58c8:
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr nz, jr_023_5921
 

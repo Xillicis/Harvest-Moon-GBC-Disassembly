@@ -623,7 +623,7 @@ Call_001_4459:
 jr_001_4466:
     dec a
     ld [$cb85], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_4485
 
@@ -662,7 +662,7 @@ jr_001_4489:
     ld [$c780], a
 
 jr_001_4495:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_44b0
 
@@ -822,7 +822,7 @@ Jump_001_453f:
 
     call Call_001_7374
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
@@ -876,7 +876,7 @@ Jump_001_4596:
 
     call Call_001_7374
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
@@ -931,7 +931,7 @@ Jump_001_45f0:
 
     call Call_001_7374
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
@@ -986,7 +986,7 @@ Jump_001_464a:
 
     call Call_001_7374
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
@@ -1081,12 +1081,12 @@ jr_001_46da:
     ld a, $03
 
 jr_001_46dc:
-    ld hl, $c60d
+    ld hl, wPlayerFacingDirection
     ld [hl], a
     call Call_001_7374
 
 jr_001_46e3:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_001_479a
 
@@ -1596,7 +1596,7 @@ Call_001_49eb:
     jr z, jr_001_4a44
 
     ld b, a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_001_4a28
 
@@ -1684,14 +1684,14 @@ Jump_001_4a6a:
     ld a, $10
     ld [$c912], a
     ld [$cb86], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $0c
     call Call_000_151d
     ret
 
 
 Call_001_4a92:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_4aee
 
@@ -1843,7 +1843,7 @@ jr_001_4bc9:
 
 
 Jump_001_4bcb:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $01
     jr z, jr_001_4be2
 
@@ -1914,12 +1914,12 @@ jr_001_4be2:
     and $01
     jr nz, jr_001_4c6e
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [$c78d], a
     add $00
     call Call_000_15fd
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     jp Jump_001_4f0e
 
 
@@ -1982,7 +1982,7 @@ jr_001_4c6e:
     add $00
     call Call_000_15fd
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     jp Jump_001_4f0e
 
 
@@ -2041,7 +2041,7 @@ Jump_001_4cf5:
     jr nz, jr_001_4d7e
 
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld [$c78d], a
     add $00
     call Call_000_15fd
@@ -2103,7 +2103,7 @@ jr_001_4d7e:
     ret nz
 
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld [$c78d], a
     add $00
     call Call_000_15fd
@@ -2165,7 +2165,7 @@ Jump_001_4e03:
     jr nz, jr_001_4e8c
 
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld [$c78d], a
     add $00
     call Call_000_15fd
@@ -2227,7 +2227,7 @@ jr_001_4e8c:
     ret nz
 
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld [$c78d], a
     add $00
     call Call_000_15fd
@@ -2254,7 +2254,7 @@ Jump_001_4f0e:
     ld a, $18
     ld [$cb85], a
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $68
     call Call_000_151d
     pop hl
@@ -2297,7 +2297,7 @@ jr_001_4f69:
     ld b, a
 
 Jump_001_4f7d:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $01
     jr z, jr_001_4f94
 
@@ -2342,7 +2342,7 @@ jr_001_4f94:
     and $01
     ret nz
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [$c7ad], a
     add $00
     call Call_000_1622
@@ -2413,7 +2413,7 @@ Jump_001_502c:
     and $01
     ret nz
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [$c7ad], a
     add $00
     call Call_000_1622
@@ -2511,7 +2511,7 @@ Jump_001_50ba:
     and $02
     ret nz
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [$c7ad], a
     add $00
     call Call_000_1622
@@ -2624,7 +2624,7 @@ jr_001_51e7:
 
 
 jr_001_5216:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld [$c7ad], a
     add $00
     call Call_000_1622
@@ -2983,7 +2983,7 @@ jr_001_5458:
     ldh a, [$ffa5]
     call Call_000_1fb5
     ld [hl+], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr nz, jr_001_54a5
 
@@ -4177,7 +4177,7 @@ jr_001_5b8d:
     call RST_TableJumpBankSwitch
     ld a, $32
     call $16d1
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_5bb3
 
@@ -4617,7 +4617,7 @@ Call_001_5e78:
     cp $03
     ret nz
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_5ea2
 
@@ -4820,9 +4820,9 @@ UseSickle:
     call RST_TableJumpBankSwitch
     ld a, $34
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_001_6524
     ld a, [$cb42]
     or a
@@ -4952,7 +4952,7 @@ UseHoe:
     call RST_TableJumpBankSwitch
     ld a, $34
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ret
 
@@ -4965,7 +4965,7 @@ UseHammer:
     call RST_TableJumpBankSwitch
     ld a, $34
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_001_6524
     ld a, [$cb42]
     or a
@@ -5021,7 +5021,7 @@ UseAx:
     call RST_TableJumpBankSwitch
     ld a, $34
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_001_6524
     ld a, [$cb42]
     or a
@@ -5066,7 +5066,7 @@ UseSuperSickle:
     call Call_000_151d
     ld a, $50
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ret
 
@@ -5077,7 +5077,7 @@ UseSuperHoe:
     call RST_TableJumpBankSwitch
     ld a, $44
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ret
 
@@ -5088,7 +5088,7 @@ UseSprinkler:
     call Call_000_151d
     ld a, $56
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ret
 
@@ -5101,7 +5101,7 @@ UseSuperHammer:
     call RST_TableJumpBankSwitch
     ld a, $3e
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_001_6524
     ld a, [$cb42]
     or a
@@ -5155,7 +5155,7 @@ UseSuperAx:
     call RST_TableJumpBankSwitch
     ld a, $44
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_001_6524
     ld a, [$cb42]
     or a
@@ -5229,9 +5229,9 @@ UseWateringCan:
     ld [$c912], a
 
 jr_001_6260:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_6285
 
@@ -5444,7 +5444,7 @@ UseGrassSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     xor a
     ld [$cb74], a
@@ -5466,7 +5466,7 @@ UseTomatoSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $01
     ld [$cb74], a
@@ -5488,7 +5488,7 @@ UseCornSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $02
     ld [$cb74], a
@@ -5510,7 +5510,7 @@ UseTurnipSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $03
     ld [$cb74], a
@@ -5538,7 +5538,7 @@ UsePotatoSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $04
     ld [$cb74], a
@@ -5560,7 +5560,7 @@ UseEggplantSeeds:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $05
     ld [$cb74], a
@@ -5582,7 +5582,7 @@ Jump_001_64a6:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $06
     ld [$cb74], a
@@ -5604,7 +5604,7 @@ Jump_001_64d0:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $07
     ld [$cb74], a
@@ -5626,7 +5626,7 @@ Jump_001_64fa:
     call Call_000_151d
     ld a, $55
     ld [$c912], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, $08
     ld [$cb74], a
@@ -5642,7 +5642,7 @@ Jump_001_64fa:
 
 
 Call_001_6524:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_6539
 
@@ -5755,7 +5755,7 @@ jr_001_65ae:
     jr jr_001_6564
 
 jr_001_65bd:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_6605
 
@@ -6345,7 +6345,7 @@ jr_001_6917:
 
 
 Call_001_691e:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr nz, jr_001_693b
 
@@ -6858,7 +6858,7 @@ jr_001_6bde:
     xor a
     ld [$cb7a], a
     ld [$cb7b], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_6c2c
 

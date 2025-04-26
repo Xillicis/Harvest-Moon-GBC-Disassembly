@@ -716,7 +716,7 @@ jr_008_4503:
 
 
 jr_008_4520:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_4538
 
@@ -1032,7 +1032,7 @@ jr_008_46b7:
     ld h, a
     ld a, [$cb49]
     ld l, a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_46f1
 
@@ -1099,7 +1099,7 @@ Jump_008_4722:
     call Call_000_1002
 
 Call_008_4741:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_475f
 
@@ -1152,7 +1152,7 @@ jr_008_4791:
     or a
     ret z
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_47b5
 
@@ -1237,7 +1237,7 @@ Jump_008_4801:
     ld h, a
     ld a, [$cb49]
     ld l, a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_485b
 
@@ -1855,7 +1855,7 @@ Jump_008_4c16:
     ld h, a
     ld a, [$cb49]
     ld l, a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_008_4cf0
 
@@ -2440,7 +2440,7 @@ jr_008_4f1f:
     call Call_000_25ce
     ld a, $35
     call $16d1
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_4f67
 
@@ -7304,7 +7304,7 @@ Call_008_69a4:
     ldh a, [$ffa5]
     call Call_000_1fb5
     ld [hl+], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_6a1d
 
@@ -7637,7 +7637,7 @@ Call_008_6b9a:
     ld [$c771], a
     xor a
     ld [$c770], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_6bca
 
@@ -7715,7 +7715,7 @@ Call_008_6c0b:
     ld [$c770], a
     ld a, $20
     ld [$c771], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_6c65
 

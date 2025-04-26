@@ -2,7 +2,7 @@
 ; 1 - Facing left
 ; 2 - Facing right
 ; 3 - Facing up
-;DEF wPlayerFacingDirection EQU $c60d
+;DEF wPlayerFacingDirection EQU wPlayerFacingDirection
 ;
 ;DEF wCollisionNoMovement EQU $c90e
 

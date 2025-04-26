@@ -4749,14 +4749,14 @@ jr_026_551a:
     jr jr_026_554d
 
 jr_026_5544:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a9
     call Call_000_151d
     ret
 
 
 jr_026_554d:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $47
     call Call_000_151d
     ret
@@ -4767,21 +4767,21 @@ jr_026_5556:
     or a
     jr nz, jr_026_5565
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $78
     call Call_000_151d
     ret
 
 
 jr_026_5565:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $70
     call Call_000_151d
     ret
 
 
 jr_026_556e:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $4b
     call Call_000_151d
     ret
@@ -4802,14 +4802,14 @@ jr_026_556e:
     jr jr_026_5594
 
 jr_026_558b:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a1
     call Call_000_151d
     ret
 
 
 jr_026_5594:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $00
     call Call_000_151d
     ret
@@ -4820,21 +4820,21 @@ jr_026_559d:
     or a
     jr nz, jr_026_55ac
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $74
     call Call_000_151d
     ret
 
 
 jr_026_55ac:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $6c
     call Call_000_151d
     ret
 
 
 jr_026_55b5:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $14
     call Call_000_151d
     ret
@@ -4848,27 +4848,27 @@ jr_026_55b5:
     or a
     jr z, jr_026_55d3
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a1
     call Call_000_151d
     ret
 
 
 jr_026_55d3:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $04
     call Call_000_151d
     ret
 
 
 jr_026_55dc:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $18
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $08
     call Call_000_151d
     ret
@@ -4882,159 +4882,159 @@ jr_026_55dc:
     or a
     jr z, jr_026_5603
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a5
     call Call_000_151d
     ret
 
 
 jr_026_5603:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $0c
     call Call_000_151d
     ret
 
 
 jr_026_560c:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $10
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $1c
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $22
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $26
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $2a
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $2e
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $32
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $36
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $3a
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $3f
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $43
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $80
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a1
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a5
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $a9
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $ad
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $b1
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $4f
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $57
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $5b
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $5f
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $64
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $8f
     call Call_000_151d
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     add $93
     call Call_000_151d
     ret
@@ -5828,7 +5828,7 @@ jr_026_560c:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5c8e
 
@@ -5895,7 +5895,7 @@ jr_026_5caf:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5d0c
 
@@ -5962,7 +5962,7 @@ jr_026_5d2d:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5d8a
 
@@ -6029,7 +6029,7 @@ jr_026_5dab:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5e08
 
@@ -6126,7 +6126,7 @@ jr_026_5e29:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5ebd
 
@@ -6223,7 +6223,7 @@ jr_026_5ede:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_5f72
 
@@ -6320,7 +6320,7 @@ jr_026_5f93:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6027
 
@@ -6417,7 +6417,7 @@ jr_026_6048:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_60dc
 
@@ -6514,7 +6514,7 @@ jr_026_60fd:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6191
 
@@ -6613,7 +6613,7 @@ jr_026_61b2:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_624a
 
@@ -6684,7 +6684,7 @@ jr_026_626b:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_62ce
 
@@ -6753,7 +6753,7 @@ jr_026_62ef:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6352
 
@@ -6837,7 +6837,7 @@ jr_026_637d:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_63e2
 
@@ -6904,7 +6904,7 @@ jr_026_6403:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6460
 
@@ -6969,7 +6969,7 @@ jr_026_6481:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_64d9
 
@@ -7036,7 +7036,7 @@ jr_026_64fa:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6557
 
@@ -7103,7 +7103,7 @@ jr_026_6578:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_65d5
 
@@ -7174,7 +7174,7 @@ jr_026_65f6:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6659
 
@@ -7271,7 +7271,7 @@ jr_026_667a:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6717
 
@@ -7380,7 +7380,7 @@ jr_026_6738:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_67d0
 
@@ -7536,7 +7536,7 @@ jr_026_67f1:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_68f0
 
@@ -7713,7 +7713,7 @@ jr_026_6911:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6a51
 
@@ -7785,7 +7785,7 @@ jr_026_6a72:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6ace
 
@@ -7851,7 +7851,7 @@ jr_026_6aef:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6b49
 
@@ -8113,7 +8113,7 @@ jr_026_6b6a:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6d2a
 
@@ -8179,7 +8179,7 @@ jr_026_6d4b:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6da5
 
@@ -8277,7 +8277,7 @@ jr_026_6dc6:
     xor a
     ld [$c645], a
     ld [$c644], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6e5c
 
@@ -8344,7 +8344,7 @@ jr_026_6e7d:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6eda
 
@@ -8411,7 +8411,7 @@ jr_026_6efb:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6f58
 
@@ -8478,7 +8478,7 @@ jr_026_6f79:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_6fd6
 
@@ -8545,7 +8545,7 @@ jr_026_6ff7:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_7054
 
@@ -8612,7 +8612,7 @@ jr_026_7075:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_70d2
 
@@ -8679,7 +8679,7 @@ jr_026_70f3:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_7150
 
@@ -9010,7 +9010,7 @@ jr_026_7171:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_73b2
 
@@ -9077,7 +9077,7 @@ jr_026_73d3:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_7430
 
@@ -9144,7 +9144,7 @@ jr_026_7451:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_74ae
 
@@ -9211,7 +9211,7 @@ jr_026_74cf:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_752c
 
@@ -9308,7 +9308,7 @@ jr_026_754d:
     ld [$c645], a
     ld [$c644], a
     ld [$c650], a
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_026_75e1
 

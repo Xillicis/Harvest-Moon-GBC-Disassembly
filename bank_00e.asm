@@ -395,7 +395,7 @@ jr_00e_42b5:
 
 Jump_00e_42bb:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
@@ -431,7 +431,7 @@ jr_00e_42f0:
 
 Jump_00e_42f4:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
@@ -467,7 +467,7 @@ jr_00e_4329:
 
 Jump_00e_432d:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
@@ -503,7 +503,7 @@ jr_00e_4362:
 
 Jump_00e_4366:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
@@ -887,7 +887,7 @@ Jump_00e_4577:
 
 Call_00e_457b:
 Jump_00e_457b:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     add a
     ld b, l
@@ -1380,7 +1380,7 @@ jr_00e_4867:
 
 
 Jump_00e_4880:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $03
     ret nz
 
@@ -1389,7 +1389,7 @@ Jump_00e_4880:
     jr jr_00e_4867
 
 Jump_00e_488d:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $03
     ret nz
 
@@ -2717,10 +2717,10 @@ jr_00e_5022:
     ld a, $03
 
 jr_00e_5024:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_00e_5027:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_00e_506e
 
@@ -2870,7 +2870,7 @@ jr_00e_510c:
 
 
 Call_00e_5113:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld hl, $513e
     add l
     ld l, a
@@ -3228,7 +3228,7 @@ Call_00e_52d4:
 
 Call_00e_52dd:
 jr_00e_52dd:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     jp hl
 
@@ -4004,7 +4004,7 @@ Jump_00e_5771:
 
 Jump_00e_5794:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $20
     call RST_TableJumpBankSwitch
     ld a, [$c608]
@@ -4022,7 +4022,7 @@ Jump_00e_5794:
 
 Jump_00e_57b1:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_1502
@@ -4036,7 +4036,7 @@ Jump_00e_57b1:
 
 Jump_00e_57c8:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_150b
@@ -4054,7 +4054,7 @@ Jump_00e_57c8:
 
 Jump_00e_57e5:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_1514
@@ -4068,7 +4068,7 @@ Jump_00e_57e5:
 
 Jump_00e_57fc:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_14f9
@@ -4099,7 +4099,7 @@ jr_00e_5829:
 
 Jump_00e_582d:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_150b
@@ -4130,7 +4130,7 @@ jr_00e_585a:
 
 Jump_00e_585e:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1514
@@ -4165,7 +4165,7 @@ jr_00e_588b:
 
 Jump_00e_5895:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1502
@@ -4440,10 +4440,10 @@ jr_00e_59fb:
     ld a, $03
 
 jr_00e_59fd:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_00e_5a00:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_00e_5a3f
 
@@ -4877,7 +4877,7 @@ jr_00e_5ce3:
 
 Jump_00e_5cfc:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
@@ -4913,7 +4913,7 @@ jr_00e_5d31:
 
 Jump_00e_5d35:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
@@ -4949,7 +4949,7 @@ jr_00e_5d6a:
 
 Jump_00e_5d6e:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
@@ -4985,7 +4985,7 @@ jr_00e_5da3:
 
 Jump_00e_5da7:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
@@ -5280,7 +5280,7 @@ Jump_00e_5f0b:
     ld a, $02
     ld [sItemSlot], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $40
@@ -5298,7 +5298,7 @@ Jump_00e_5f0b:
 
 
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $4c
     call $16d1
     ld a, $00
@@ -5310,7 +5310,7 @@ Jump_00e_5f0b:
 
 
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $4d
     call $16d1
     ld a, $00
@@ -5326,7 +5326,7 @@ Jump_00e_5f95:
     or a
     jr nz, jr_00e_5ffd
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $02
     jr nz, jr_00e_5ffd
 
@@ -5394,7 +5394,7 @@ jr_00e_5ffd:
     cp AX
     jr nz, jr_00e_6034
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $03
     jr nz, jr_00e_6034
 
@@ -5478,10 +5478,10 @@ jr_00e_607b:
     ld a, $03
 
 jr_00e_607d:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_00e_6080:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_00e_60c7
 
@@ -5874,7 +5874,7 @@ jr_00e_6338:
 
 Jump_00e_633e:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
@@ -5910,7 +5910,7 @@ jr_00e_6373:
 
 Jump_00e_6377:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
@@ -5946,7 +5946,7 @@ jr_00e_63ac:
 
 Jump_00e_63b0:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
@@ -5982,7 +5982,7 @@ jr_00e_63e5:
 
 Jump_00e_63e9:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
@@ -6263,10 +6263,10 @@ jr_00e_6557:
     ld a, $03
 
 jr_00e_6559:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_00e_655c:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_00e_65a3
 

@@ -1,6 +1,6 @@
 SECTION "WRAM 0", WRAM0
 
-ds $60c
+ds $60d
 
 ; 0 - Facing down
 ; 1 - Facing left
@@ -8,7 +8,7 @@ ds $60c
 ; 3 - Facing up
 wPlayerFacingDirection:: db ; 0xc60d
 
-ds $301
+ds $300
 
 wCollisionNoMovement:: db ; 0xc90e
 
@@ -32,8 +32,8 @@ wHeldObject:: db ; 0xcb4a
 
 ds $22e
 
-wPlayerGenderSelection:: db
-wCatOrDogSelection:: db
+wPlayerGenderSelection:: db ; 0xcd79
+wCatOrDogSelection:: db ; 0xcd7a
 
 ;DEF hROMBankTemp EQU $ffa4
 ;

@@ -552,7 +552,7 @@ Call_005_4355:
     or a
     ret nz
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $03
     ret nz
 
@@ -4936,7 +4936,7 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     ld l, h
     ld e, e
@@ -5301,7 +5301,7 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     push de
     ld e, l
@@ -6143,7 +6143,7 @@ jr_005_628c:
     ld a, $27
     call Call_000_3f52
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $48
     call Call_000_151d
     ld a, $02
@@ -6288,7 +6288,7 @@ jr_005_6388:
     ld a, $2a
     call Call_000_3f52
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $48
     call Call_000_151d
     ld a, $02

@@ -3588,7 +3588,7 @@ Jump_022_5356:
     ld a, $01
     ld [$c910], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, [sCurrentDayCounter]
     ld [$b901], a
     ld a, [$b882]
@@ -3681,7 +3681,7 @@ Jump_022_53e7:
     ld [wcb32], a
     ld [$cb34], a
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $0004
@@ -3722,7 +3722,7 @@ Jump_022_542d:
     ld [wcb32], a
     ld [$cb34], a
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $00fc
@@ -3763,7 +3763,7 @@ Jump_022_5473:
     ld [wcb32], a
     ld [$cb34], a
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $fc00
@@ -3804,7 +3804,7 @@ Jump_022_54b9:
     ld [wcb32], a
     ld [$cb34], a
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $0400
@@ -3886,14 +3886,14 @@ jr_022_5538:
     ld a, $03
 
 jr_022_553a:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     xor a
     ld [wcb30], a
     ld [wcb32], a
     ld [$cb34], a
 
 jr_022_5547:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_022_559a
 
@@ -4663,7 +4663,7 @@ Jump_022_598a:
 
 
 Jump_022_599a:
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $02
     jr z, jr_022_59ae
 

@@ -317,7 +317,7 @@ Jump_027_41f6:
     xor a
     ld [$c611], a
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $4c
     call Call_000_151d
     ret
@@ -329,7 +329,7 @@ Jump_027_420a:
     xor a
     ld [$c611], a
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $14
     call Call_000_151d
     ret
@@ -417,7 +417,7 @@ Call_027_428b:
     ld a, $15
     call Call_000_151d
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $e0
     ld [$c60a], a
     ld a, $28
@@ -456,7 +456,7 @@ Call_027_42e1:
     ld a, $4a
     call Call_000_151d
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $50
     ld [$c60a], a
     ld a, $58
@@ -504,7 +504,7 @@ Call_027_432c:
     ld a, $4a
     call Call_000_151d
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $50
     ld [$c60a], a
     ld a, $58

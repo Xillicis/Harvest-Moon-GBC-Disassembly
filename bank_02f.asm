@@ -6,7 +6,7 @@
 SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
 
     cpl
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     rst $00
     dec c
     ld b, b
@@ -6279,12 +6279,12 @@ jr_02f_6575:
     ld a, $03
 
 jr_02f_6577:
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
 
 jr_02f_657a:
     ld a, $02
     call RST_TableJumpBankSwitch
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     cp $00
     jp z, Jump_02f_65c6
 
@@ -6431,7 +6431,7 @@ jr_02f_6653:
 
 Jump_02f_6665:
     ld a, $00
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_14f9
@@ -6468,7 +6468,7 @@ jr_02f_6692:
 
 Jump_02f_66a1:
     ld a, $03
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1502
@@ -6505,7 +6505,7 @@ jr_02f_66ce:
 
 Jump_02f_66dd:
     ld a, $01
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_150b
@@ -6542,7 +6542,7 @@ jr_02f_670a:
 
 Jump_02f_6719:
     ld a, $02
-    ld [$c60d], a
+    ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_000_1514
@@ -6926,7 +6926,7 @@ Call_02f_6919:
 
 Call_02f_6929:
     ld hl, $c86d
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6a95
     add e
     ld e, a
@@ -6967,7 +6967,7 @@ jr_02f_6961:
 
 Call_02f_6967:
     ld hl, $c88d
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6a95
     add e
     ld e, a
@@ -7017,7 +7017,7 @@ jr_02f_69a9:
 
 Call_02f_69af:
     ld hl, $c8ad
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6a95
     add e
     ld e, a
@@ -7067,7 +7067,7 @@ jr_02f_69f1:
 
 Call_02f_69f7:
     ld hl, $c8cd
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6a95
     add e
     ld e, a
@@ -7137,7 +7137,7 @@ jr_02f_6a51:
 
 Call_02f_6a57:
     ld hl, $c8ed
-    ld a, [$c60d]
+    ld a, [wPlayerFacingDirection]
     ld de, $6a95
     add e
     ld e, a
