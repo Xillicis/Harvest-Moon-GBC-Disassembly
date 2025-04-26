@@ -5694,7 +5694,7 @@ jr_00f_61d0:
     ld [$cc75], a
     ret
 
-Label_00f_61d5:
+UpdateSpriteTotalHappiness: ; 0fx61d6
     xor a
     ld [sPrayedFlag], a
     ld a, [$ba0d]

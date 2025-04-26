@@ -7271,8 +7271,8 @@ Call_002_67a1:
     ld hl, $6da9
     ld a, $04
     call BankSwitchCallHL
-    ld hl, $61d6
-    ld a, $0f
+    ld hl, UpdateSpriteTotalHappiness
+    ld a, BANK(UpdateSpriteTotalHappiness) ; bank 0f
     call BankSwitchCallHL
 
 jr_002_67f9:

@@ -7346,7 +7346,7 @@ Call_004_6da3:
     call Call_000_18d0
     ret
 
-
+Label_004_6da9:
     ld hl, $b9a7
     ld b, $00
     ld a, [$b9a6]
