@@ -113,7 +113,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld b, h
     ld c, l
     ld hl, $ba10
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     pop hl
     push hl
     pop hl
@@ -1999,7 +1999,7 @@ jr_022_4b24:
     ld [hl], a
     ld hl, $b93a
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     pop hl
     jr jr_022_4b20
 
@@ -3532,7 +3532,7 @@ jr_022_52e4:
     ld c, a
     ld b, $ff
     ld hl, $c606
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -3547,10 +3547,10 @@ jr_022_5309:
     ld [$c60b], a
     ld hl, $c606
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, $c608
     ld bc, $fff3
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -3576,7 +3576,7 @@ jr_022_5331:
     ld c, a
     ld b, $ff
     ld hl, $c606
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -7000,14 +7000,14 @@ jr_022_6638:
     ldh [$ff93], a
     ld hl, $c606
     ld bc, $0002
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c60a]
     inc a
     inc a
     ld [$c60a], a
     ld hl, $c7a6
     ld bc, $0002
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, $cb8e
     dec [hl]
     ld a, $01
@@ -7031,10 +7031,10 @@ jr_022_6677:
     ld [$c60a], a
     ld hl, $c606
     ld bc, $fffe
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, $c7a6
     ld bc, $fffe
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, $cb8e
     dec [hl]
     ret

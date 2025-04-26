@@ -1689,11 +1689,11 @@ Call_021_4a86:
 
     ld hl, $c608
     ld bc, $0015
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_685d
     ld hl, $c608
     ld bc, $ffeb
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jp nz, Jump_021_4bbd
@@ -1704,11 +1704,11 @@ Call_021_4a86:
 
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_685d
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jp nz, Jump_021_4bbd
@@ -1723,11 +1723,11 @@ Call_021_4a86:
 jr_021_4ae2:
     ld hl, $c608
     ld bc, $ffec
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6866
     ld hl, $c608
     ld bc, $0014
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jp nz, Jump_021_4bbd
@@ -1738,11 +1738,11 @@ jr_021_4ae2:
 
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6866
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jp nz, Jump_021_4bbd
@@ -1757,11 +1757,11 @@ jr_021_4ae2:
 Jump_021_4b2d:
     ld hl, $c606
     ld bc, $0014
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_686f
     ld hl, $c606
     ld bc, $ffec
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jr nz, jr_021_4bbd
@@ -1772,11 +1772,11 @@ Jump_021_4b2d:
 
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_686f
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jr nz, jr_021_4bbd
@@ -1791,11 +1791,11 @@ Jump_021_4b2d:
 Jump_021_4b76:
     ld hl, $c606
     ld bc, $ffec
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6878
     ld hl, $c606
     ld bc, $0014
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jr nz, jr_021_4bbd
@@ -1806,11 +1806,11 @@ Jump_021_4b76:
 
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6878
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
     jr nz, jr_021_4bbd
@@ -1860,11 +1860,11 @@ jr_021_4bd6:
 
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1874,11 +1874,11 @@ jr_021_4bd6:
 
     ld hl, $c608
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1888,11 +1888,11 @@ jr_021_4bd6:
 
     ld hl, $c608
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1923,11 +1923,11 @@ jr_021_4c62:
 
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1937,11 +1937,11 @@ jr_021_4c62:
 
     ld hl, $c608
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1951,11 +1951,11 @@ jr_021_4c62:
 
     ld hl, $c608
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1986,11 +1986,11 @@ Jump_021_4ce9:
 
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2000,11 +2000,11 @@ Jump_021_4ce9:
 
     ld hl, $c606
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2014,11 +2014,11 @@ Jump_021_4ce9:
 
     ld hl, $c606
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2048,11 +2048,11 @@ jr_021_4d72:
 
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2062,11 +2062,11 @@ jr_021_4d72:
 
     ld hl, $c606
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2076,11 +2076,11 @@ jr_021_4d72:
 
     ld hl, $c606
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2110,11 +2110,11 @@ Jump_021_4df7:
 
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2124,11 +2124,11 @@ Jump_021_4df7:
 
     ld hl, $c606
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2138,11 +2138,11 @@ Jump_021_4df7:
 
     ld hl, $c606
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2172,11 +2172,11 @@ jr_021_4e80:
 
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2186,11 +2186,11 @@ jr_021_4e80:
 
     ld hl, $c606
     ld bc, $0010
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff0
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2200,11 +2200,11 @@ jr_021_4e80:
 
     ld hl, $c606
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2276,11 +2276,11 @@ Jump_021_4f51:
 jr_021_4f68:
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2290,11 +2290,11 @@ jr_021_4f68:
 
     ld hl, $c606
     ld bc, $fff2
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_150b
     ld hl, $c606
     ld bc, $000e
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2347,11 +2347,11 @@ Jump_021_4ff6:
 Jump_021_5000:
     ld hl, $c606
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2361,11 +2361,11 @@ Jump_021_5000:
 
     ld hl, $c606
     ld bc, $000e
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1514
     ld hl, $c606
     ld bc, $fff2
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2410,11 +2410,11 @@ Jump_021_5000:
 Jump_021_508e:
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2431,11 +2431,11 @@ Jump_021_508e:
 
     ld hl, $c608
     ld bc, $fff2
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $000e
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2452,11 +2452,11 @@ Jump_021_508e:
 
     ld hl, $c608
     ld bc, $ffe8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1502
     ld hl, $c608
     ld bc, $0018
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2508,11 +2508,11 @@ Jump_021_508e:
 Jump_021_515d:
     ld hl, $c608
     ld bc, $0004
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $fffc
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2534,11 +2534,11 @@ Jump_021_515d:
 jr_021_518c:
     ld hl, $c608
     ld bc, $0008
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $fff8
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2560,11 +2560,11 @@ jr_021_518c:
 jr_021_51bb:
     ld hl, $c608
     ld bc, $000e
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_14f9
     ld hl, $c608
     ld bc, $fff2
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -2963,7 +2963,7 @@ Jump_021_5443:
     ld [$c912], a
     ld hl, $b938
     ld bc, $fffe
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $35
     call Call_000_25ce
@@ -3531,7 +3531,7 @@ Jump_021_5773:
     call RST_TableJumpBankSwitch
     ld hl, $b938
     ld bc, $0002
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $36
     call Call_000_25ce
@@ -4059,22 +4059,22 @@ jr_021_5a88:
 jr_021_5aae:
     ld hl, $c606
     ld bc, $000a
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6881
     ld hl, $c606
     ld bc, $fff6
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [de]
     cp $0e
     jr z, jr_021_5ae5
 
     ld hl, $c606
     ld bc, $fff6
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_021_6881
     ld hl, $c606
     ld bc, $000a
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [de]
     cp $0e
     jr z, jr_021_5aef
@@ -8863,7 +8863,7 @@ Jump_021_768b:
     call $6d12
     ld hl, $c806
     ld bc, $0004
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c80d]
     ld b, a
     add $0c

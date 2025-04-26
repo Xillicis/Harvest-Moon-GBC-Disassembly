@@ -193,7 +193,7 @@ Jump_027_412c:
     ld [$c611], a
     ld hl, $c60a
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -206,7 +206,7 @@ Jump_027_4142:
     ld [$c611], a
     ld hl, $c60a
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c90d]
     or a
     ret z
@@ -225,7 +225,7 @@ Jump_027_4161:
     ld [$c611], a
     ld hl, $c60a
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -248,7 +248,7 @@ Jump_027_4184:
     ld [$c611], a
     ld hl, $c60b
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -12037,7 +12037,7 @@ jr_027_7310:
     call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0056
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     xor a
     ld [$cb55], a
     ld [$b8fe], a
@@ -12053,7 +12053,7 @@ jr_027_7324:
 
     ld hl, $b938
     ld bc, $fed4
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, sPlayerMoney
     ld bc, $ec78
     call AddSignedBCToHL
@@ -12065,7 +12065,7 @@ jr_027_7324:
 jr_027_7349:
     ld hl, $b938
     ld bc, $ff9c
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, sPlayerMoney
     ld bc, $f63c
     call AddSignedBCToHL
@@ -12295,7 +12295,7 @@ jr_027_74b3:
     call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0081
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     xor a
     ld [$cb55], a
     jr jr_027_752a

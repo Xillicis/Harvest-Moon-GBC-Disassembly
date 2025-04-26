@@ -2019,7 +2019,6 @@ AddSignedBCToHL: ; 00x0cbb
 
 ; Add the 16-bit value in BC to the 16-bit little-endian word at [HL]
 AddBCtoWordAtHL:
-Call_000_0cce:
     ld a, [hl]
     add c
     ld [hli], a
@@ -2829,7 +2828,7 @@ jr_000_1177:
 jr_000_117c:
     ld hl, $cbe2
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$ccc4]
     cp $02
     jr nc, jr_000_11a4
@@ -10298,7 +10297,7 @@ Jump_000_37c0:
 jr_000_37c4:
     ld hl, $cb53
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld hl, $cb55
     inc [hl]
     ldh a, [hROMBankTemp]
@@ -10352,7 +10351,7 @@ Jump_000_3815:
     call ClearOldTextOnTextBox
     ld hl, $cb53
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     xor a
     ld [$cb55], a
     ld a, [$cb6e]

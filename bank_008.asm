@@ -1005,7 +1005,7 @@ jr_008_468f:
     ld [$cb45], a
     ld hl, $b938
     ld bc, $0006
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $38
     call Call_000_25cb
@@ -1095,7 +1095,7 @@ Jump_008_4722:
     ld [$cb45], a
     ld hl, $b93a
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1002
 
 Call_008_4741:
@@ -1446,7 +1446,7 @@ jr_008_492f:
     ld [$cb45], a
     ld hl, $b938
     ld bc, $0006
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_0f73
     ret
 
@@ -1682,7 +1682,7 @@ jr_008_4ae6:
     call Call_008_68c8
     ld hl, $b93a
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     call Call_000_1002
     ldh a, [$ffac]
     cp $04
@@ -3808,7 +3808,7 @@ jr_008_560e:
 
     ld hl, $c791
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c0a8]
     and $01
     ret z
@@ -3841,7 +3841,7 @@ jr_008_560e:
     ld a, [$c78c]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -3862,7 +3862,7 @@ jr_008_566d:
     ld a, [$c78c]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -4633,7 +4633,7 @@ Call_008_5ac4:
 
     ld hl, $c7b1
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c0a8]
     and $01
     ret z
@@ -4664,7 +4664,7 @@ Call_008_5ac4:
     ld a, [$c7ac]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -4685,7 +4685,7 @@ jr_008_5b33:
     ld a, [$c7ac]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -5343,7 +5343,7 @@ Call_008_5f29:
 
     ld hl, $c7b1
     ld bc, $ffff
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$c0a8]
     and $01
     ret z
@@ -5373,7 +5373,7 @@ Call_008_5f29:
     ld a, [$c7ac]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -5394,7 +5394,7 @@ jr_008_5f95:
     ld a, [$c7ac]
     ld c, a
     ld b, $00
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ret
 
 
@@ -7466,7 +7466,7 @@ jr_008_6a80:
 Call_008_6ab9:
     ld hl, $b90f
     ld bc, $0001
-    call Call_000_0cce
+    call AddBCtoWordAtHL
     ld a, [$b910]
     cp $06
     jr z, jr_008_6ae2
