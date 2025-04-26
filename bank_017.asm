@@ -9485,7 +9485,7 @@ jr_017_67b8:
     ld [bc], a
     ld bc, $2711
     dec bc
-    call nc, Call_000_0702
+    call nc, $0702
     dec b
     dec c
     ld h, a

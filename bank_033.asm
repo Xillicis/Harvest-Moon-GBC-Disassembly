@@ -12898,7 +12898,7 @@ jr_033_7a91:
     ld [bc], a
     ld de, $2712
     dec bc
-    call c, Call_000_0702
+    call c, $0702
     ld b, $0d
     jr @+$80
 

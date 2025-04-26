@@ -9892,7 +9892,7 @@ jr_006_7874:
     db $fc
     db $db
     db $fc
-    jp Jump_000_07f4
+    jp $07f4
 
 
     adc e

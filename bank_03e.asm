@@ -11392,7 +11392,7 @@ jr_03e_7204:
     add b
     push bc
     push af
-    call nz, Call_000_0802
+    call nz, $0802
     ld bc, $0960
     inc bc
     rst $38

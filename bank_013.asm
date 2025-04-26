@@ -11817,7 +11817,7 @@ jr_013_7a6b:
     ld de, $2712
     dec bc
     ld a, c
-    call nc, Call_000_0702
+    call nc, $0702
     dec b
     dec c
     ld h, a

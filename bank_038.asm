@@ -2903,7 +2903,7 @@ jr_038_4c8c:
     sbc h
     ld h, b
     sbc $6c
-    call c, Call_000_0968
+    call c, $0968
     ld b, $0f
     inc b
     inc c

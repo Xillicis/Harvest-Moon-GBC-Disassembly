@@ -12381,7 +12381,7 @@ jr_022_7e65:
     db $ed
     xor a
     rst $38
-    jp c, Jump_000_09f6
+    jp c, $09f6
 
     ld e, c
     and [hl]

@@ -12583,7 +12583,7 @@ jr_03a_7466:
     cp $fd
     cp $f2
     db $fc
-    call c, Call_000_08e0
+    call c, $08e0
     ldh a, [$fff0]
     nop
     ldh [rLCDC], a

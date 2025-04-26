@@ -13872,7 +13872,7 @@ jr_007_7c9a:
     ld [$0e01], a
     inc c
     ei
-    jp c, Jump_000_07db
+    jp c, $07db
 
     ld [$1e1d], sp
     rra

@@ -9556,7 +9556,7 @@ jr_037_67ce:
     ld [bc], a
     ld bc, $2711
     dec bc
-    call c, Call_000_0702
+    call c, $0702
     ld b, $0d
     ld [hl], a
     jr jr_037_6881

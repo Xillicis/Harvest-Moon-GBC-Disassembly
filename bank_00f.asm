@@ -9914,7 +9914,7 @@ jr_00f_77e2:
     ld d, d
     inc bc
     ld [bc], a
-    jp Jump_000_0707
+    jp $0707
 
 
     db $10

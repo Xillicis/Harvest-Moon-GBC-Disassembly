@@ -8529,7 +8529,7 @@ jr_03d_694e:
     ld a, [bc]
     inc hl
     inc c
-    jp Jump_000_0a15
+    jp $0a15
 
 
     nop

@@ -925,8 +925,6 @@ Call_000_0673:
 
     ld a, [$cb56]
     or a
-
-Jump_000_0681:
     ret nz
 
     ld a, [$b880]
@@ -934,7 +932,6 @@ Jump_000_0681:
     ld [$b880], a
     cp $1e
     jr nc, jr_000_068e
-
     ret
 
 
@@ -1001,30 +998,21 @@ jr_000_06db:
     ld a, [sCurrentSeason]
     cp $04
     jr nc, jr_000_06f4
-
     ret
-
 
 jr_000_06f4:
     xor a
     ld [sCurrentSeason], a
-
-Call_000_06f8:
     call Call_000_08b7
     ld a, [$b885]
     inc a
     ld [$b885], a
-
-Call_000_0702:
     cp $63
     ret nz
 
     ld a, $62
-
-Jump_000_0707:
     ld [$b885], a
     ret
-
 
 Call_000_070b:
     ld a, [$b882]
@@ -1181,18 +1169,14 @@ Call_000_07ab:
     ld hl, $085f
     add l
     ld l, a
-
-Jump_000_07db:
     ld a, $00
     adc h
     ld h, a
-    ld a, [hl+]
-
-Call_000_07e0:
+    ld a, [hli]
     ld [$b919], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b91a], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$ba54], a
     ld a, [hl]
     ld [$ba55], a
@@ -1200,19 +1184,14 @@ Call_000_07e0:
     or a
     ret nz
 
-Jump_000_07f4:
     ld a, [$b906]
     or a
-
-Call_000_07f8:
     ret nz
 
     ld a, [$b919]
     ld c, a
     ld e, $80
     ld a, [$c0a7]
-
-Call_000_0802:
     cp $28
     jr nz, jr_000_0808
 
@@ -1374,8 +1353,6 @@ jr_000_08cd:
     ld [$ba51], a
     ld a, [hl]
     ld [$ba52], a
-
-Call_000_08e0:
     ret
 
 
@@ -1418,10 +1395,8 @@ Call_000_08fb:
     pop af
     ret
 
-
 Call_000_0905:
     ret
-
 
 Call_000_0906:
     ldh a, [$ff99]
@@ -1450,7 +1425,6 @@ jr_000_0916:
     ld bc, $0014
     jp ZeroOutHL
 
-
 Call_000_0924:
     ld hl, $c500
     ldh a, [$ff97]
@@ -1461,11 +1435,11 @@ Call_000_0924:
     ld h, a
     ret
 
-
 Call_000_0930:
     ld de, $c500
     ldh a, [$ff97]
     rst $30
+
     ret
 
     set 7, e
@@ -1485,8 +1459,6 @@ jr_000_093b:
     ld [hl+], a
     ld [hl], $00
     ldh a, [$ff97]
-
-Jump_000_094c:
     add $04
     ldh [$ff97], a
     ret
@@ -1507,11 +1479,7 @@ Call_000_095c:
     ld a, d
     ld [MBC3RomBank], a
     call Call_000_0994
-
-Call_000_0967:
     pop af
-
-Call_000_0968:
     ld [MBC3RomBank], a
     ret
 
@@ -1655,8 +1623,6 @@ jr_000_09ea:
 jr_000_09f4:
     add hl, hl
     ld b, a
-
-Jump_000_09f6:
     ld a, c
     adc c
     ld c, a
@@ -1692,8 +1658,6 @@ jr_000_0a0a:
 jr_000_0a12:
     ld a, e
     ldh [$ffa4], a
-
-Jump_000_0a15:
     ld a, d
     ldh [$ffa5], a
     ret
@@ -1726,7 +1690,6 @@ Call_000_0a2d:
     ldh a, [$ff96]
     ldh [rWX], a
     ret
-
 
 Call_000_0a3e:
     ld c, a
@@ -2054,6 +2017,8 @@ AddSignedBCToHL: ; 00x0cbb
     dec  [hl]         ; otherwise we had a net borrow → fix 3rd byte
     ret
 
+; Add the 16-bit value in BC to the 16-bit little-endian word at [HL]
+AddBCtoWordAtHL:
 Call_000_0cce:
     ld a, [hl]
     add c

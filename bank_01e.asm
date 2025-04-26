@@ -9790,7 +9790,7 @@ jr_01e_6bd3:
     ld a, e
     ld a, a
     adc c
-    call nc, Call_000_07e0
+    call nc, $07e0
     ld h, l
 
 jr_01e_6c2e:
@@ -9873,7 +9873,7 @@ jr_01e_6c52:
     rst $38
     ld b, e
     cp l
-    jp Jump_000_0681
+    jp $0681
 
 
     ld e, a
@@ -11443,7 +11443,7 @@ jr_01e_7342:
     add b
     push bc
     push af
-    call nz, Call_000_0802
+    call nz, $0802
     ld bc, $0960
     inc bc
     rst $38

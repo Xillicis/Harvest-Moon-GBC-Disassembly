@@ -12457,7 +12457,7 @@ jr_002_7ecd:
     rst $38
     db $ed
     dec h
-    jp c, Jump_000_09f6
+    jp c, $09f6
 
     ld e, c
     nop

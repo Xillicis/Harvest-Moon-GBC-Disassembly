@@ -13570,7 +13570,7 @@ jr_031_7ed3:
     rst $38
     rrca
     ldh a, [rWave_4]
-    call z, Call_000_07f8
+    call z, $07f8
     rla
     jr jr_031_7ed3
 
