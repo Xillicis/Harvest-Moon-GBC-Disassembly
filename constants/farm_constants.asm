@@ -1,3 +1,7 @@
+const_def
+const CAT ; 0
+const DOG ; 1
+
 ; Items you can pickup
 const_def 1
 const BUSH       ; $01
