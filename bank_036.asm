@@ -5340,7 +5340,7 @@ jr_036_56fe:
     ldh a, [c]
     ld c, h
     ld a, [hl-]
-    call c, Call_000_10fc
+    call c, $10fc
 
 jr_036_573d:
     inc l
@@ -5484,7 +5484,7 @@ jr_036_57d7:
     di
     ld c, h
     ld a, [hl-]
-    call c, Call_000_10fc
+    call c, $10fc
     inc l
     db $10
     jr jr_036_57e1

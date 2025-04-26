@@ -9720,7 +9720,7 @@ jr_023_796b:
     and a
     sbc [hl]
     cp $c1
-    call nz, Call_000_113f
+    call nz, $113f
     rst $38
     cp $00
     jr jr_023_796b

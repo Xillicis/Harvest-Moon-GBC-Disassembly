@@ -1443,7 +1443,7 @@ jr_03c_4606:
     ld bc, $0764
     inc bc
     dec l
-    jp z, Jump_000_0cf2
+    jp z, $0cf2
 
     rrca
     dec b

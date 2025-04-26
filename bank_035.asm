@@ -11745,7 +11745,7 @@ jr_035_70e7:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_0cf2
+    call c, $0cf2
     daa
 
 jr_035_70f2:
@@ -12036,7 +12036,7 @@ jr_035_71fe:
     jp nz, $15fa
 
     dec a
-    jp nz, Jump_000_10ee
+    jp nz, $10ee
 
     ret nc
 

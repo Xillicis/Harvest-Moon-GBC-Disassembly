@@ -348,7 +348,7 @@ jr_008_4302:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     call Call_008_456e
     ret
 
@@ -481,7 +481,7 @@ jr_008_43b4:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     call Call_008_456e
     ret
 
@@ -649,7 +649,7 @@ jr_008_4495:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     call Call_008_456e
     ret
 

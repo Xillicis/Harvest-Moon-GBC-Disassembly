@@ -2784,7 +2784,7 @@ jr_019_4bec:
     db $fc
     ldh [$fffe], a
     ldh [$fffe], a
-    call nc, Call_000_0f10
+    call nc, $0f10
     rra
     nop
     ccf
@@ -8149,7 +8149,7 @@ jr_019_62b9:
     ld [hl-], a
     pop af
     xor $e2
-    call c, Call_000_10ee
+    call c, $10ee
     or $08
     cp $00
     inc a

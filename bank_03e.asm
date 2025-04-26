@@ -9557,7 +9557,7 @@ jr_03e_6963:
     rst $38
     or h
     cp a
-    jp c, Jump_000_0fdf
+    jp c, $0fdf
 
     rst $38
     ld bc, $a83e
@@ -9952,7 +9952,7 @@ jr_03e_6b3c:
     and l
     ld b, $03
     ld bc, $0842
-    jp Jump_000_0d05
+    jp $0d05
 
 
     dec bc

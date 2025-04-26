@@ -8210,7 +8210,7 @@ jr_024_70d6:
     sbc [hl]
     cp $ff
     pop bc
-    call nz, Call_000_113f
+    call nz, $113f
     rst $38
     ld sp, hl
     ld a, a

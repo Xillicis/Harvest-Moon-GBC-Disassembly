@@ -11417,7 +11417,7 @@ jr_014_7558:
     db $e4
     jr jr_014_757f
 
-    call c, Call_000_0e9f
+    call c, $0e9f
     ldh a, [rOBP0]
     or b
     ld c, h

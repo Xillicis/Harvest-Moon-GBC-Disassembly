@@ -10033,7 +10033,7 @@ jr_01e_6c52:
     and l
     ld b, $03
     ld bc, $0842
-    jp Jump_000_0d05
+    jp $0d05
 
 
     dec bc

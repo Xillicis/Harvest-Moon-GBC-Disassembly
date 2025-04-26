@@ -8080,7 +8080,7 @@ jr_039_62f9:
     ld [hl-], a
     or c
     xor $e2
-    call c, Call_000_10ee
+    call c, $10ee
     ld a, d
     adc h
     ldh a, [c]

@@ -1491,7 +1491,7 @@ jr_038_4645:
     ld e, h
     and b
     cp $9c
-    call c, Call_000_0f28
+    call c, $0f28
     nop
     dec e
     rrca

@@ -2249,7 +2249,7 @@ jr_026_49ff:
     ld c, l
     ld [$b14c], sp
     ld c, [hl]
-    call nz, Call_000_0e50
+    call nz, $0e50
     ld c, a
     ld d, h
     ld c, l

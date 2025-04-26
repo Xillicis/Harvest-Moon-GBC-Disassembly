@@ -11452,7 +11452,7 @@ jr_015_70e5:
 
 Jump_015_70eb:
     xor [hl]
-    call c, Call_000_0cf2
+    call c, $0cf2
     ld a, [$3e44]
     inc bc
     dec a

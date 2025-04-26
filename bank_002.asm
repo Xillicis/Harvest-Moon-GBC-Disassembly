@@ -9494,7 +9494,7 @@ Jump_002_728f:
     ld a, a
     sub c
     ld a, a
-    jp z, Jump_000_3f87
+    jp z, $3f87
 
     or b
     ld e, a
@@ -12322,7 +12322,7 @@ jr_002_7d00:
     inc b
     add hl, de
     nop
-    call Call_000_1132
+    call $1132
     ld [de], a
     rst $38
     ret nz

@@ -5010,7 +5010,7 @@ jr_01d_59ce:
     ld sp, hl
     ret nz
 
-    call nz, Call_000_0d03
+    call nz, $0d03
     db $10
     ccf
     nop

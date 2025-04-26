@@ -4280,7 +4280,7 @@ jr_031_4f8e:
     jp nz, $c381
 
     add c
-    call nz, Call_000_0f81
+    call nz, $0f81
     ld bc, $0000
     nop
     nop

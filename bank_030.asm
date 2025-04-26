@@ -11599,7 +11599,7 @@ jr_030_749d:
     add b
     ld a, a
     ld l, l
-    call c, Call_000_0f40
+    call c, $0f40
     ld c, c
     nop
     jr c, @+$01
@@ -11719,7 +11719,7 @@ jr_030_7528:
     ld h, e
     sbc l
     ccf
-    jp Jump_000_3f71
+    jp $3f71
 
 
     ld a, [$f4ff]
@@ -13133,7 +13133,7 @@ jr_030_7b47:
     jr jr_030_7af3
 
     inc bc
-    jp Jump_000_10ff
+    jp $10ff
 
 
     rra

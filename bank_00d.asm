@@ -7578,7 +7578,7 @@ jr_00d_67d5:
     ld a, [hl]
     cp b
     or $68
-    jp nc, Jump_000_3fac
+    jp nc, $3fac
 
     inc c
     dec de
@@ -9505,7 +9505,7 @@ Jump_00d_707c:
     dec e
 
 jr_00d_708f:
-    jp Jump_000_0f3d
+    jp $0f3d
 
 
     ldh a, [c]

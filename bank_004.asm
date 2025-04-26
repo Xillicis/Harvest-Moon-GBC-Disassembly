@@ -8297,7 +8297,7 @@ jr_004_713a:
     sbc [hl]
     cp $c1
     rst $38
-    call nz, Call_000_113f
+    call nz, $113f
     rst $38
     ld sp, hl
     ld a, a
@@ -8722,7 +8722,7 @@ jr_004_73f8:
 
     cp l
     cp $99
-    jp nz, Jump_000_1102
+    jp nz, $1102
 
     ld a, l
     ret nz

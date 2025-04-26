@@ -1044,7 +1044,7 @@ Call_000_070b:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, [$b918]
     ld c, a
     ld e, $85
@@ -1053,14 +1053,14 @@ Call_000_070b:
     ld d, a
 
 Jump_000_074b:
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, [$b915]
     ld c, a
     ld e, $86
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, $01
     ld [$cb75], a
     ret
@@ -1201,7 +1201,7 @@ jr_000_0808:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, [$b91a]
     ld c, a
     ld e, $81
@@ -1215,7 +1215,7 @@ jr_000_0820:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, [$ba54]
     ld c, a
     ld e, $82
@@ -1229,7 +1229,7 @@ jr_000_0838:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, [$ba55]
     ld c, a
     ld e, $83
@@ -1243,7 +1243,7 @@ jr_000_0850:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     ld a, $01
     ld [$cb75], a
     ret
@@ -2043,9 +2043,6 @@ Call_000_0cd5:
     ld a, $09
     ld [MBC3SRamBank], a
     xor a
-
-Call_000_0cf2:
-Jump_000_0cf2:
     ld [$a000], a
     nop
 
@@ -2058,12 +2055,8 @@ Call_000_0cf6:
     xor a
     ld [$a000], a
     nop
-
-Call_000_0d03:
     nop
     nop
-
-Jump_000_0d05:
     nop
     ld a, $0b
     ld [MBC3SRamBank], a
@@ -2241,11 +2234,8 @@ Call_000_0de8:
 
     xor a
     ld [sCurrentDayCounter], a
-
-Call_000_0e50:
     call Call_000_07ab
     ret
-
 
 Call_000_0e54:
     ld a, [$c912]
@@ -2263,24 +2253,18 @@ jr_000_0e64:
     pop hl
     ret
 
-
 jr_000_0e66:
     ld a, [$c602]
     cp $5f
     jr z, jr_000_0e7b
-
     cp $60
     jr z, jr_000_0e7b
-
     cp $61
     jr z, jr_000_0e7b
-
     cp $62
     jr z, jr_000_0e7b
-
     pop hl
     ret
-
 
 jr_000_0e7b:
     ld a, $1c
@@ -2302,15 +2286,10 @@ jr_000_0e81:
     ld a, [$c912]
     cp $b4
     jr z, jr_000_0ea9
-
     cp $6e
-
-Call_000_0e9f:
     jr z, jr_000_0eb0
-
     cp $50
     jr z, jr_000_0eb7
-
     cp $a0
     jr z, jr_000_0ebe
 
@@ -2320,13 +2299,11 @@ jr_000_0ea9:
     pop hl
     ret
 
-
 jr_000_0eb0:
     ld a, $8b
     call Call_000_151d
     pop hl
     ret
-
 
 jr_000_0eb7:
     ld a, $8c
@@ -2334,13 +2311,11 @@ jr_000_0eb7:
     pop hl
     ret
 
-
 jr_000_0ebe:
     ld a, $8d
     call Call_000_151d
     pop hl
     ret
-
 
 Call_000_0ec5:
 Jump_000_0ec5:
@@ -2349,30 +2324,23 @@ Jump_000_0ec5:
     call BankSwitchCallHL
     ret
 
-
 Call_000_0ece:
     call Call_000_2527
     ld a, [$b8a0]
     cp $01
     jr z, jr_000_0f03
-
     cp $03
     jr z, jr_000_0f09
-
     ld a, [sCurrentSeason]
-    cp $00
+    cp SPRING
     jr z, jr_000_0ef1
-
-    cp $01
+    cp SUMMER
     jr z, jr_000_0ef7
-
-    cp $02
+    cp AUTUMN
     jr z, jr_000_0efd
-
     ld a, $13
     call Call_000_25c5
     ret
-
 
 Call_000_0ef1:
 jr_000_0ef1:
@@ -2380,24 +2348,20 @@ jr_000_0ef1:
     call Call_000_25c8
     ret
 
-
 jr_000_0ef7:
     ld a, $0b
     call Call_000_25c5
     ret
-
 
 jr_000_0efd:
     ld a, $0f
     call Call_000_25c5
     ret
 
-
 jr_000_0f03:
     ld a, $40
     call Call_000_25ce
     ret
-
 
 Call_000_0f09:
 Jump_000_0f09:
@@ -2406,25 +2370,16 @@ jr_000_0f09:
     call Call_000_25ce
     ret
 
-
 Call_000_0f0f:
     xor a
-
-Call_000_0f10:
     ld [$cb2f], a
-
-Jump_000_0f13:
     ld [wcb30], a
     ld [wLeftOrDownSideFacingTileID], a
     ld [wcb32], a
     ld [wRightOrUpSideFacingTileID], a
-
-Jump_000_0f1f:
     ld [$cb34], a
     ld [$cb37], a
     ld [$cb38], a
-
-Call_000_0f28:
     ld [$cb39], a
     ld [$cb3a], a
     ld [$cb3b], a
@@ -2432,15 +2387,10 @@ Call_000_0f28:
     ld [$cb3d], a
     ld [$cb3e], a
     ld [$cb3f], a
-
-Jump_000_0f3d:
     ld [$cb40], a
-
-Call_000_0f40:
     ld [$cb41], a
     ld [$cb42], a
     ret
-
 
 Call_000_0f47:
     ld b, a
@@ -2454,12 +2404,10 @@ Call_000_0f47:
     ld [$b8f2], a
     ret
 
-
 jr_000_0f56:
     ld a, $ff
     ld [$b8f2], a
     ret
-
 
 jr_000_0f5c:
     ld a, b
@@ -2478,12 +2426,10 @@ jr_000_0f63:
     ld [$b8f2], a
     ret
 
-
 jr_000_0f6e:
     xor a
     ld [$b8f2], a
     ret
-
 
 Call_000_0f73:
     ld a, [$b939]
@@ -2493,15 +2439,12 @@ Call_000_0f73:
     ld a, [$b939]
     cp $04
     jr nc, jr_000_0f8e
-
-Call_000_0f81:
     cp $03
     jr c, jr_000_0fa1
 
     ld a, [$b938]
     cp $e8
     jr nc, jr_000_0f8e
-
     jr jr_000_0fa1
 
 jr_000_0f8e:
@@ -2532,7 +2475,6 @@ jr_000_0fa1:
     ld [$b92f], a
     ret
 
-
 Call_000_0fc7:
     ld a, [$b90a]
     cp $00
@@ -2545,15 +2487,12 @@ Call_000_0fc7:
     ld a, $85
     ld [$ba46], a
     ld a, $86
-
-Jump_000_0fdf:
     ld [$ba47], a
     ld a, $0e
     ld [$ba48], a
     ld a, $0d
     ld [$ba5b], a
     ret
-
 
 jr_000_0fed:
     ld a, $ef
@@ -2564,7 +2503,6 @@ jr_000_0fed:
     ld [$ba48], a
     ld [$ba5b], a
     ret
-
 
 Call_000_1002:
 Jump_000_1002:
@@ -2694,9 +2632,6 @@ Call_000_10cb:
     ld [$b935], a
     ld a, [$ccd0]
     ld [$b936], a
-
-Call_000_10ee:
-Jump_000_10ee:
     ld a, [$ccd1]
     ld [$b937], a
     ret
@@ -2706,22 +2641,12 @@ Call_000_10f5:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
     ld a, $11
-
-Call_000_10fc:
     ld [MBC3RomBank], a
-
-Jump_000_10ff:
     ld a, [$b911]
-
-Jump_000_1102:
     cp $00
-
-Call_000_1104:
     jr z, jr_000_110f
-
     cp $01
     jr z, jr_000_1114
-
     ld de, $6881
     jr jr_000_1119
 
@@ -2753,8 +2678,6 @@ jr_000_112e:
 
 jr_000_1131:
     ld a, [de]
-
-Call_000_1132:
     inc de
     ld [hl+], a
     dec b
@@ -2766,14 +2689,11 @@ Call_000_1132:
     add hl, de
     pop de
     dec c
-
-Call_000_113f:
     jr nz, jr_000_112e
 
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 Call_000_1147:
     ld a, [$b90b]
@@ -2795,9 +2715,7 @@ jr_000_1157:
     add hl, bc
     dec e
     jr nz, jr_000_1157
-
     ret
-
 
 Call_000_1162:
     push hl
@@ -2866,7 +2784,6 @@ jr_000_11b3:
     pop hl
     ret
 
-
 Call_000_11c2:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
@@ -2875,7 +2792,6 @@ Call_000_11c2:
     ld a, [$b911]
     cp $00
     jr z, jr_000_11e5
-
     cp $01
     jr z, jr_000_11f3
 
@@ -2904,7 +2820,6 @@ jr_000_11ff:
     ld [MBC3RomBank], a
     ret
 
-
 Call_000_1205:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
@@ -2917,7 +2832,6 @@ Call_000_1205:
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 Call_000_1221:
     ld a, [MBC3SRamBank]
@@ -2932,7 +2846,6 @@ Call_000_1221:
     ld [MBC3RomBank], a
     ret
 
-
 Call_000_123d:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
@@ -2945,7 +2858,6 @@ Call_000_123d:
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 Call_000_1259:
     ld a, [MBC3SRamBank]
@@ -10264,7 +10176,7 @@ jr_000_3785:
     ld hl, $4001
     ld a, $11
     ld d, a
-    call Call_000_3f6c
+    call BankedSyncCopyTileToVRAM
     pop af
     ld b, a
     ld [$cb63], a
@@ -11593,59 +11505,61 @@ Call_000_3f52:
     call Call_000_3f0b
     ret
 
-
-Call_000_3f6c:
-    ld a, [MBC3SRamBank]
+; Temporarily switch ROM bank in D, then call SyncCopyTileToVRAM, then restore
+BankedSyncCopyTileToVRAM:
+    ld a, [MBC3SRamBank]    ; save current bank
     push af
     ld a, d
-
-Jump_000_3f71:
-    ld [MBC3RomBank], a
-    call Call_000_3f7c
+    ld [MBC3RomBank], a     ; switch to bank in D
+    call SyncCopyTileToVRAM ; do the PPU-synced copy
     pop af
-    ld [MBC3RomBank], a
+    ld [MBC3RomBank], a     ; restore original bank
     ret
 
-
-Call_000_3f7c:
-    ld a, c
-
-Jump_000_3f7d:
-    ld b, h
-    ld c, l
-    ld h, $00
-    ld l, a
-    add hl, hl
-    add hl, hl
-    add hl, hl
-    add hl, hl
+SyncCopyTileToVRAM:
+; inputs:
+;   BC = basePointer to tile data
+;   C  = tileIndex (source)
+;   E  = tileIndex (destination)
+; clobbers: A, B, C, D, E, H, L, flags
+    ld a, c       ; A = tileIndex low‐byte
+    ld b, h       ; B = basePointer high‐byte
+    ld c, l       ; C = basePointer low‐byte
+    ld h, $00     
+    ld l, a       ; HL = tileIndex (0…255)
+    
+    ; HL ← HL * 16
+    add hl, hl    ; ×2
+    add hl, hl    ; ×4
+    add hl, hl    ; ×8
+    add hl, hl    ; ×16
+    
+    ; HL ← basePointer + tileIndex*16
     add hl, bc
+    
+    push hl       ; save sourcePtr
 
-Jump_000_3f87:
-    push hl
     ld h, $00
-    ld l, e
-    add hl, hl
-    add hl, hl
-    add hl, hl
-    add hl, hl
-    ld de, $8000
-    add hl, de
+    ld l, e       ; HL = targetTileIndex
+    add hl, hl    ; ×2
+    add hl, hl    ; ×4
+    add hl, hl    ; ×8
+    add hl, hl    ; ×16
+    ld de, $8000  ; start of VRAM tile data
+    add hl, de    ; DE = destPtr = 0x8000 + targetTileIndex*16
     ld d, h
-    ld e, l
-    pop hl
-    ld c, $10
+    ld e, l       ; DE = destPtr
+    pop hl        ; HL = sourcePtr
 
-jr_000_3f98:
-    call SyncToBlankPeriod
-    ld a, [hl+]
-    ld [de], a
-    inc de
+    ld c, $10     ; 16 bytes to go
+.loop
+    call SyncToBlankPeriod ; wait for H-Blank/V-Blank
+    ld a, [hli]            ; A = [sourcePtr++]
+    ld [de], a             ; write A → [destPtr]
+    inc de                 ; destPtr++
     dec c
-    jr nz, jr_000_3f98
-
+    jr nz, .loop
     ret
-
 
 Call_000_3fa2:
     push hl
@@ -11655,8 +11569,6 @@ Call_000_3fa2:
     call Call_000_25cb
     pop bc
     pop de
-
-Jump_000_3fac:
     pop hl
     ret
 

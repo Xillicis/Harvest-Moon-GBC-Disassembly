@@ -9764,7 +9764,7 @@ jr_003_7951:
     sbc $be
     ret nz
 
-    call nz, Call_000_1104
+    call nz, $1104
     ld de, $02fe
     jr @-$5e
 

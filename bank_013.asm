@@ -11954,7 +11954,7 @@ jr_013_7afa:
     ld [hl], d
     jr nz, @+$22
 
-    jp nz, Jump_000_0f1f
+    jp nz, $0f1f
 
     nop
     sbc a

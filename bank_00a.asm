@@ -12966,7 +12966,7 @@ jr_00a_7728:
     db $e4
     ld hl, sp-$0c
     ld a, [$fcea]
-    jp nc, Jump_000_3f7d
+    jp nc, $3f7d
 
     nop
     adc h

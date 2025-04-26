@@ -6943,7 +6943,7 @@ jr_03d_620c:
     ld b, c
     ld de, $6ff8
     ld bc, $1409
-    jp Jump_000_0f13
+    jp $0f13
 
 
     rrca
