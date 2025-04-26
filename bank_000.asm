@@ -518,22 +518,22 @@ SyncLoadBGPPalette:
     ret
 
 Call_000_0429:
-    ld hl, $043d
+    ld hl, Data_000_043d
     call SyncLoadSpritePalette7
-    ld hl, $0445
+    ld hl, Data_000_0445
     call SyncLoadSpritePalette3
     ret
 
 Call_000_0436:
-    ld hl, $044d
+    ld hl, Data_000_044d
     call SyncLoadSpritePalette7
     ret
 
-; 00x043d
+Data_000_043d: ; 00x043d
     RGB 28,19,19, 4,4,0, 15,11,11, 31,27,17
-; 00x0445
+Data_000_0445: ; 00x0445
     RGB 28,19,19, 4,4,0, 15,11,11, 31,27,17
-; 00x044d
+Data_000_044d: ; 00x044d
     RGB 28,19,19, 4,4,0,  0,24,6,  24,31,0
 
 LoadTextBoxTilesIntoBGMap1: ; 00x0455
@@ -575,8 +575,8 @@ Call_000_04c7:
     xor a
     ldh [$ff97], a
     ld [$c500], a
-    call Call_000_0a2d
-    call Call_000_0a55
+    call RestoreScrollAndWindow
+    call LoadDMGPalettes
     xor a
     ldh [$ff99], a
     call Call_000_263a
@@ -1051,8 +1051,6 @@ Call_000_070b:
     ld hl, $4001
     ld a, $11
     ld d, a
-
-Jump_000_074b:
     call BankedSyncCopyTileToVRAM
     ld a, [$b915]
     ld c, a
@@ -1065,7 +1063,7 @@ Jump_000_074b:
     ld [$cb75], a
     ret
 
-
+; Data
     nop
     inc [hl]
     inc [hl]
@@ -1248,7 +1246,7 @@ jr_000_0850:
     ld [$cb75], a
     ret
 
-
+; Data
     ld e, b
     ld e, c
     ld e, d
@@ -1384,8 +1382,6 @@ Jump_000_08ee:
     add d
     push af
     push bc
-
-Call_000_08fb:
     push de
     push hl
     call Call_000_0905
@@ -1680,7 +1676,7 @@ Multiply8Bit:
     pop de
     ret
 
-Call_000_0a2d:
+RestoreScrollAndWindow:
     ldh a, [$ff91]
     ldh [rSCY], a
     ldh a, [$ff93]
@@ -1716,14 +1712,14 @@ Call_000_0a47:
     ld h, b
     ret
 
-Call_000_0a55:
-    ld hl, $c0a3
-    ld a, [hli]
-    ldh [rBGP], a
-    ld a, [hli]
-    ldh [rOBP0], a
-    ld a, [hl]
-    ldh [rOBP1], a
+LoadDMGPalettes:
+    ld hl, $c0a3       ; point HL at a 3-byte palette table
+    ld a, [hli]        ; A = first byte; HL→C0A4
+    ldh [rBGP], a      ; BGP ← first byte
+    ld a, [hli]        ; A = second byte; HL→C0A5
+    ldh [rOBP0], a     ; OBP0 ← second byte
+    ld a, [hl]         ; A = third byte (HL still C0A5)
+    ldh [rOBP1], a     ; OBP1 ← third byte
     ret
 
 CopyTileDataToBGMap: ; 00x0a62
@@ -7427,13 +7423,11 @@ Jump_000_2b6c:
     or b
     jp Jump_000_2a96
 
-
 Call_000_2b72:
 Jump_000_2b72:
     call Call_000_2b8a
     ld a, $00
     jp Jump_000_2a96
-
 
 Call_000_2b7a:
     call Call_000_2b8a
@@ -7444,7 +7438,6 @@ Call_000_2b7a:
     and b
     ld [$d397], a
     ret
-
 
 Call_000_2b8a:
     ld a, [$d399]
@@ -9380,7 +9373,7 @@ Jump_000_3434:
 
     ld c, d
     rlca
-    jp c, Jump_000_074b
+    jp c, $074b
 
     ld e, e
     ld c, h

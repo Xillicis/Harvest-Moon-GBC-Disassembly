@@ -11323,7 +11323,7 @@ jr_013_77cb:
     inc [hl]
     ret c
 
-    call nc, Call_000_08fb
+    call nc, $08fb
     inc e
     add $1a
     ld bc, $0300
