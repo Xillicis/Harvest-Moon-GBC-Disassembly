@@ -2460,7 +2460,7 @@ jr_000_0fa1:
     xor a
     ld [$cccc], a
     ld a, [$b938]
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     ld a, [$b939]
     ld [$cccb], a
     call Call_000_3268
@@ -2536,7 +2536,7 @@ jr_000_1030:
     xor a
     ld [$cccc], a
     ld a, [$b93a]
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     ld a, [$b93b]
     ld [$cccb], a
 
@@ -2560,7 +2560,7 @@ Call_000_1056:
     jr z, jr_000_108d
 
 Jump_000_105d:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $02
     jr nc, jr_000_107c
 
@@ -2586,7 +2586,7 @@ jr_000_107c:
     ld a, $86
     ld [sPlayerMoney+1], a
     ld a, $01
-    ld [$b8f1], a
+    ld [sPlayerMoney+2], a
     jr jr_000_1097
 
 jr_000_108d:
@@ -2601,7 +2601,7 @@ jr_000_1097:
     ld a, [sPlayerMoney+1]
     ld [$cccb], a
     ld a, [sPlayerMoney]
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     call Call_000_3268
     ld a, [$cccd]
     ld [$b928], a
@@ -8930,7 +8930,7 @@ Call_000_325c:
     ld a, h
     ld [$cccb], a
     ld a, l
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     xor a
     ld [$cccc], a
 
@@ -8943,7 +8943,7 @@ Jump_000_3268:
     ld [hl+], a
     ld [hl+], a
     ld [hl], a
-    ld hl, $ccca
+    ld hl, wTempPlayerMoney
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -9078,7 +9078,7 @@ Call_000_32fe:
     dec a
 
 Call_000_3304:
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     xor a
     ld [$cccb], a
     ld [$cccc], a

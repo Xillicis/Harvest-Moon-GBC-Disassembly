@@ -1454,7 +1454,7 @@ Call_029_4737:
     ret z
 
     ld hl, sPlayerMoney
-    ld de, $ccca
+    ld de, wTempPlayerMoney
     ld a, [hl+]
     ld [de], a
     inc de
@@ -4560,7 +4560,7 @@ Call_029_580e:
     ld b, $04
     call CopyHLtoDE
     ld hl, sPlayerMoney
-    ld de, $ccca
+    ld de, wTempPlayerMoney
     ld b, $03
     call CopyHLtoDE
     call Call_000_3268

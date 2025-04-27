@@ -32,8 +32,14 @@ wHeldObject:: db ; 0xcb4a
 
 ds $22e
 
+;wTempPlayerMoney:: ds 3 ; 0xccca
+;
+;ds $aa
+
 wPlayerGenderSelection:: db ; 0xcd79
 wCatOrDogSelection:: db ; 0xcd7a
+
+
 
 ;DEF hROMBankTemp EQU $ffa4
 ;

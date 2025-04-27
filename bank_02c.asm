@@ -13514,7 +13514,7 @@ jr_02c_7d1e:
     ld a, [$b940]
     ld [$cccb], a
     ld a, [$b93f]
-    ld [$ccca], a
+    ld [wTempPlayerMoney], a
     call Call_000_3268
     ld a, [$cccd]
     ld [$ccad], a

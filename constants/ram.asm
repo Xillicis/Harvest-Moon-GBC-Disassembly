@@ -21,7 +21,10 @@
 ;DEF wHeldObject EQU $cb4a
 
 ;DEF wPlayerGenderSelection EQU $cd79
+
 DEF wCatOrDogSelection EQU $cd7a
+
+DEF wTempPlayerMoney EQU $ccca
 
 DEF hROMBankTemp EQU $ffa4
 

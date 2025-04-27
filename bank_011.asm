@@ -6,6 +6,7 @@
 SECTION "ROM Bank $011", ROMX[MBC3SRamBank], BANK[$11]
 
     db $11
+TextFontTileset::
     INCBIN "gfx/font.2bpp"
     db $00, $00, $67, $00, $CC, $00, $CC, $00, $C7, $00, $C0, $00, $CC, $00, $67, $00,
     db $00, $00, $C0, $00, $60, $00, $0C, $00, $CC, $00, $6C, $00, $6C, $00, $C7, $00,

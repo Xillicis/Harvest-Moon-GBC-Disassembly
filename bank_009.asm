@@ -1446,7 +1446,7 @@ Call_009_4747:
     ret z
 
     ld hl, sPlayerMoney
-    ld de, $ccca
+    ld de, wTempPlayerMoney
     ld a, [hl+]
     ld [de], a
     inc de
@@ -4266,8 +4266,8 @@ Call_009_5680:
     call ClearBGMap0
     call ClearBGMap1
     call Call_000_323d
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld de, $9000
     ld bc, $0800
     call Call_000_2308
@@ -4605,16 +4605,16 @@ jr_009_57eb:
 
 Call_009_5867:
     ld hl, sPlayerName
-    ld de, $9821
-    ld b, $04
+    ld de, vBGMap0 + $21
+    ld b, 4
     call CopyHLtoDE
     ld hl, sPlayerMoney
-    ld de, $ccca
+    ld de, wTempPlayerMoney
     ld b, $03
     call CopyHLtoDE
     call Call_000_3268
     ld hl, $cccd
-    ld de, $986d
+    ld de, vBGMap0 + $6d
     ld b, $05
     call CopyHLtoDE
     ld hl, $1a02
@@ -4626,9 +4626,9 @@ Call_009_5867:
 
 jr_009_5897:
     ld a, l
-    ld [$98a6], a
+    ld [vBGMap0 + $a6], a
     ld a, h
-    ld [$98a7], a
+    ld [vBGMap0 + $a7], a
     ld hl, $af2d
     ld a, [sCatOrDog]
     or a
@@ -4638,12 +4638,12 @@ jr_009_5897:
 
 jr_009_58ab:
     ld a, l
-    ld [$98a8], a
+    ld [vBGMap0 + $a8], a
     ld a, h
     ld [$98a9], a
     ld hl, sPetName
-    ld de, $98e6
-    ld b, $04
+    ld de, vBGMap0 + $e6
+    ld b, 4
     call CopyHLtoDE
     ld hl, $0eaf
     ld a, [$b8ea]
