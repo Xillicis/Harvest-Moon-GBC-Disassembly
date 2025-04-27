@@ -3623,9 +3623,7 @@ jr_03d_519a:
     ld [$cb4f], a
     ret
 
-
     ret
-
 
 Call_03d_51d9:
     di
@@ -3683,7 +3681,7 @@ Call_03d_51d9:
     ld [sInventory], a
     ld [sInventory+1], a
     ld a, $ff
-    ld [$b8fa], a
+    ld [sInventory+2], a
     ld a, $02
     ld [sItemSlot], a
     ld a, $00
@@ -3697,7 +3695,7 @@ Call_03d_51d9:
     ld a, $01
     ld [sPlayerMoney+1], a
     xor a
-    ld [$b8f1], a
+    ld [sPlayerMoney+2], a
     call Call_000_1056
     call Call_000_070b
     call Call_000_07ab

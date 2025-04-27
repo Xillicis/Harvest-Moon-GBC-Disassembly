@@ -13510,9 +13510,9 @@ jr_02c_7d1e:
 
 
     ld a, [$b941]
-    ld [$cccc], a
+    ld [wTempPlayerMoney+2], a
     ld a, [$b940]
-    ld [$cccb], a
+    ld [wTempPlayerMoney+1], a
     ld a, [$b93f]
     ld [wTempPlayerMoney], a
     call Call_000_3268

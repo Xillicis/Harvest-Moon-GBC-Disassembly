@@ -12063,7 +12063,7 @@ jr_007_7306:
     jr jr_007_7373
 
 jr_007_732e:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $00
     jr nz, jr_007_7387
 
@@ -12092,7 +12092,7 @@ jr_007_7349:
     jr jr_007_7373
 
 jr_007_7358:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $00
     jr nz, jr_007_7387
 

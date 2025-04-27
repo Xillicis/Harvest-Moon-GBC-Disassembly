@@ -11987,7 +11987,7 @@ jr_027_72a3:
     jr jr_027_7310
 
 jr_027_72cb:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $00
     jr nz, jr_027_7324
 
@@ -12016,7 +12016,7 @@ jr_027_72e6:
     jr jr_027_7310
 
 jr_027_72f5:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $00
     jr nz, jr_027_7324
 

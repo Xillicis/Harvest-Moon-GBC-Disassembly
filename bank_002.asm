@@ -194,9 +194,9 @@ jr_002_4170:
     ld [sPlayerMoney+1], a
     ld a, [$ccc4]
     ld b, a
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     adc b
-    ld [$b8f1], a
+    ld [sPlayerMoney+2], a
     call Call_000_1056
     ld a, [$b88d]
     cp $13
@@ -7271,9 +7271,7 @@ Call_002_67a1:
     ld hl, $6da9
     ld a, $04
     call BankSwitchCallHL
-    ld hl, UpdateSpriteTotalHappiness
-    ld a, BANK(UpdateSpriteTotalHappiness) ; bank 0f
-    call BankSwitchCallHL
+    callfar UpdateSpriteTotalHappiness
 
 jr_002_67f9:
     call Call_002_6d7a
