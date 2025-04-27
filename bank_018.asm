@@ -4451,7 +4451,7 @@ jr_018_534c:
     ldh [rP1], a
     jr @-$1e
 
-    call nz, Call_000_2638
+    call nz, $2638
     ret c
 
     push hl

@@ -8625,7 +8625,7 @@ jr_03d_697b:
     ld de, $723e
     daa
     scf
-    call c, Call_000_2531
+    call c, $2531
     rlca
     add hl, sp
     ld e, $7f

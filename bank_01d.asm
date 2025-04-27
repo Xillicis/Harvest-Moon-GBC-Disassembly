@@ -8585,7 +8585,7 @@ jr_01d_69af:
     ld [hl-], a
     cp $e1
     dec d
-    call nz, Call_000_2638
+    call nz, $2638
     ret c
 
     push hl
@@ -8891,7 +8891,7 @@ jr_01d_6ae2:
     inc de
     ld de, $273e
     scf
-    call nc, Call_000_2531
+    call nc, $2531
     ld b, $39
     rst $08
     ld h, c

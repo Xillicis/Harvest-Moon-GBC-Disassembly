@@ -2929,7 +2929,6 @@ Call_000_12c9:
     ld [MBC3RomBank], a
     ret
 
-
 Call_000_12e5:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
@@ -2942,7 +2941,6 @@ Call_000_12e5:
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 InitializeFarmMap:
     ld a, [MBC3SRamBank]
@@ -6136,15 +6134,13 @@ Call_000_2527:
     call Call_000_2569
     ld a, $80
     ldh [rNR52], a
-
-Call_000_2531:
     xor a
     ldh [rNR51], a
     ld [$d397], a
     ld a, $77
     ldh [rNR50], a
     ld hl, $d300
-    ld b, $06
+    ld b, 6
     ld a, $ff
 
 jr_000_2542:
@@ -6156,11 +6152,9 @@ jr_000_2542:
     add hl, de
     dec b
     jr nz, jr_000_2542
-
     xor a
     ld [$d3a3], a
     ret
-
 
     xor a
     ld [$d3a3], a
@@ -6168,13 +6162,11 @@ jr_000_2542:
     ld [$d397], a
     ret
 
-
     ld a, $04
     ld [$d3a3], a
     xor a
     ld [$d397], a
     ret
-
 
 Call_000_2569:
     ld a, b
@@ -6270,7 +6262,6 @@ Call_000_25ce:
     ld a, $1e
     ld [MBC3RomBank], a
 ; Check for data in bank 1e starting somewhere around $4001
-Call_000_25de:
     ld h, $00
     add hl, hl
     add hl, hl
@@ -6340,14 +6331,11 @@ jr_000_2613:
     inc a
     pop hl
     pop de
-
-Call_000_2638:
     pop bc
     ret
 
-
 Call_000_263a:
-    ld a, [MBC3SRamBank] ; is this something like wBankToLoad?
+    ld a, [MBC3SRamBank]
     push af
     ld a, $1e
     ld [MBC3RomBank], a
@@ -6363,13 +6351,12 @@ Jump_000_2654:
     push hl
     ld de, $ffe6
     ld b, $19
-
-jr_000_265a:
+.loop
     ld a, [hl+]
     ld [de], a
     inc e
     dec b
-    jr nz, jr_000_265a
+    jr nz, .loop
 
     ldh a, [$ffe7]
     and $03

@@ -10697,7 +10697,7 @@ jr_035_6c1f:
     ld e, e
     and a
     ccf
-    call nz, Call_000_25de
+    call nz, $25de
     cpl
     jr jr_035_6cbb
 
