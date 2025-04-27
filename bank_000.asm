@@ -1140,6 +1140,7 @@ jr_000_07a6:
     dec [hl]
     dec [hl]
 
+; TODO: Possibly something with printing the day number or the season or something...
 Call_000_07ab:
     ld a, [sCurrentDayCounter]
     ld l, a

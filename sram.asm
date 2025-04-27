@@ -99,10 +99,7 @@ sb8d9::  db
 sNumGrassSeeds::  db ; 0xb8da
 ; 0 = Cat, 1 = Dog
 sCatOrDog::  db ; 0xb8db
-sb8dc::  db 
-sb8dd::  db 
-sb8de::  db 
-sb8df::  db 
+sPetName::  ds 4 ; 0xb8dc
 sb8e0::  db 
 sb8e1::  db 
 sb8e2::  db 
@@ -124,10 +121,7 @@ sPlayerMoney:: dw
 sb8f1::  db 
 sb8f2::  db 
 sb8f3::  db 
-sb8f4::  db 
-sb8f5::  db 
-sb8f6::  db 
-sb8f7::  db 
+sPlayerName::  ds 4 ; 0xb8f4
 sInventory::  ds 3 ; 0xb8f8
 sItemSlot::  db  ; 0xb8fb
 sb8fc::  db 

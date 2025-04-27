@@ -4604,7 +4604,7 @@ jr_009_57eb:
     ld e, b
 
 Call_009_5867:
-    ld hl, $b8f4
+    ld hl, sPlayerName
     ld de, $9821
     ld b, $04
     call CopyHLtoDE
@@ -4641,7 +4641,7 @@ jr_009_58ab:
     ld [$98a8], a
     ld a, h
     ld [$98a9], a
-    ld hl, $b8dc
+    ld hl, sPetName
     ld de, $98e6
     ld b, $04
     call CopyHLtoDE

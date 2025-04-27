@@ -691,7 +691,7 @@ Call_03f_43bc:
 
 
     call Call_03f_4542
-    ld hl, $b8f4
+    ld hl, sPlayerName
     ld de, $cdbf
     ld a, $05
     ld [de], a
@@ -4709,7 +4709,7 @@ jr_03f_5701:
 
 
     push bc
-    ld hl, $b8f4
+    ld hl, sPlayerName
     ld de, $cdbf
     ld a, $05
     ld [de], a

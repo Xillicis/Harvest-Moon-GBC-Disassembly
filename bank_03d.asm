@@ -3575,7 +3575,7 @@ jr_03d_5118:
     ld bc, $0010
     call Call_000_2308
     ld hl, $cd75
-    ld de, $b8f4
+    ld de, sPlayerName
     call Call_03d_496c
     ld a, [wPlayerGenderSelection]
     ld [sPlayerGender], a
@@ -3595,7 +3595,7 @@ jr_03d_519a:
     ld a, [wCatOrDogSelection]
     ld [sCatOrDog], a
     ld hl, $cd7b
-    ld de, $b8dc
+    ld de, sPetName
     call Call_03d_496c
     ld a, $0a
     ld hl, sNumCroissant

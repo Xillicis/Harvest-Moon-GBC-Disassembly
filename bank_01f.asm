@@ -912,7 +912,7 @@ Call_01f_44b9:
 
 
     call Call_01f_463f
-    ld hl, $b8f4
+    ld hl, sPlayerName
     ld de, $cdbf
     ld a, $05
     ld [de], a
@@ -4873,7 +4873,7 @@ jr_01f_5812:
 
 
     push bc
-    ld hl, $b8f4
+    ld hl, sPlayerName
     ld de, $cdbf
     ld a, $05
     ld [de], a

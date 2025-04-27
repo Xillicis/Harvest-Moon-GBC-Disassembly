@@ -3571,7 +3571,7 @@ Label_01d_5192:
     ld bc, $0010
     call Call_000_2308
     ld hl, $cd75
-    ld de, $b8f4
+    ld de, sPlayerName
     call Call_01d_499e
     ld a, [wPlayerGenderSelection]
     ld [sPlayerGender], a
@@ -3590,7 +3590,7 @@ Label_01d_5192:
     ld a, [wCatOrDogSelection]
     ld [sCatOrDog], a
     ld hl, $cd7b
-    ld de, $b8dc
+    ld de, sPetName
     call Call_01d_499e
     ld a, $0a
     ld hl, sNumCroissant
