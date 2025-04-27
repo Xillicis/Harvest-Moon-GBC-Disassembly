@@ -30,11 +30,11 @@ ds $16
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a
 
-ds $22e
+ds $17f
 
-;wTempPlayerMoney:: ds 3 ; 0xccca
-;
-;ds $aa
+wTempPlayerMoney:: ds 3 ; 0xccca
+
+ds $ac
 
 wPlayerGenderSelection:: db ; 0xcd79
 wCatOrDogSelection:: db ; 0xcd7a

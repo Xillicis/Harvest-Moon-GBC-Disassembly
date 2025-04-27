@@ -2593,13 +2593,13 @@ jr_000_108d:
     xor a
     ld [sPlayerMoney], a
     ld [sPlayerMoney+1], a
-    ld [$b8f1], a
+    ld [sPlayerMoney+2], a
 
 jr_000_1097:
-    ld a, [$b8f1]
-    ld [$cccc], a
+    ld a, [sPlayerMoney+2]
+    ld [wTempPlayerMoney+2], a
     ld a, [sPlayerMoney+1]
-    ld [$cccb], a
+    ld [wTempPlayerMoney+1], a
     ld a, [sPlayerMoney]
     ld [wTempPlayerMoney], a
     call Call_000_3268
@@ -8924,7 +8924,6 @@ jr_000_324d:
     jr nz, jr_000_324d
 
     ret
-
 
 Call_000_325c:
     ld a, h
