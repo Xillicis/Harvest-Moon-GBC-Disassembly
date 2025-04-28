@@ -1873,7 +1873,7 @@ Call_000_0af5:
     ld a, [hli]
     pop de
     pop hl
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     pop hl
     ld a, $07
     rst $38
@@ -5730,7 +5730,7 @@ CopyHLtoDEBig:
     jr nz, .loop
     ret
 
-Call_000_2308:
+BankedCopyHLtoDEBig:
     push hl
     ld l, a
     ld a, [MBC3SRamBank]

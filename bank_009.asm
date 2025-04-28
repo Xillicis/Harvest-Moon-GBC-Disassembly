@@ -4121,7 +4121,7 @@ Call_009_5435:
 Call_009_5590:
     ld a, $11
     ld bc, $0010
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ret
 
 
@@ -4270,12 +4270,12 @@ Call_009_5680:
     ld a, BANK(TextFontTileset)
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $11
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $6aae
     ld c, $09
     ld de, $8000
@@ -5697,7 +5697,6 @@ Jump_009_5e6c:
     ld [$cb4f], a
     ret
 
-
 Call_009_5e8e:
 jr_009_5e8e:
     ld a, [hl+]
@@ -5762,9 +5761,7 @@ jr_009_5e8e:
     ld d, a
     dec b
     jr nz, jr_009_5e8e
-
     ret
-
 
 Call_009_5ed0:
     inc [hl]

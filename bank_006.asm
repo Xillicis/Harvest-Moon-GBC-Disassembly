@@ -14,12 +14,12 @@ SECTION "ROM Bank $006", ROMX[$4000], BANK[$6]
     ld a, $11
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $11
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $79d4
     ld c, $05
     ld de, $9800
@@ -1798,7 +1798,7 @@ jr_006_48a5:
 Call_006_48bd:
     ld a, $11
     ld bc, $0010
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ret
 
 

@@ -1282,12 +1282,12 @@ Call_03d_468c:
     ld a, $31
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $31
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $6509
     ld c, $3d
     ld de, $89a0
@@ -3573,7 +3573,7 @@ jr_03d_5118:
     ld a, $3d
     ld de, $bff0
     ld bc, $0010
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $cd75
     ld de, sPlayerName
     call Call_03d_496c

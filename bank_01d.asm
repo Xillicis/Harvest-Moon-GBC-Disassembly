@@ -1280,12 +1280,12 @@ Call_01d_46a6:
     ld a, $11
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $11
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $6679
     ld c, $1d
     ld de, $89a0
@@ -3569,7 +3569,7 @@ Label_01d_5192:
     ld a, $1d
     ld de, $bff0
     ld bc, $0010
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $cd75
     ld de, sPlayerName
     call Call_01d_499e

@@ -4119,7 +4119,7 @@ Call_029_5404:
 Call_029_5552:
     ld a, $31
     ld bc, $0010
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ret
 
 
@@ -4249,12 +4249,12 @@ Call_029_5627:
     ld a, $31
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $31
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $6a55
     ld c, $29
     ld de, $8000

@@ -76,12 +76,12 @@ Call_03f_4092:
     ld a, $31
     ld de, $9000
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $4801
     ld a, $31
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ret
 
 
@@ -2336,7 +2336,7 @@ Call_03f_4b2e:
     ld a, $31
     ld de, $8f00
     ld bc, $0100
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ret
 
 
@@ -9708,12 +9708,12 @@ jr_03f_6c89:
     ld a, $31
     ld de, $9010
     ld bc, $07f0
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $47f1
     ld a, $31
     ld de, $8800
     ld bc, $0800
-    call Call_000_2308
+    call BankedCopyHLtoDEBig
     ld hl, $c0a3
     ld a, $6c
     ld [hl+], a
