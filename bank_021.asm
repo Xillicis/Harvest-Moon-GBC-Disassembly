@@ -180,7 +180,7 @@ jr_021_4120:
     ld [$cb89], a
     call Call_021_6b77
     call Call_021_7221
-    call Call_000_10f5
+    call LoadHouseExpansionTileDataIntoSRAM
     ld a, $00
     call RST_TableJumpBankSwitch
     call Call_021_725f
@@ -5486,7 +5486,7 @@ Jump_021_636a:
     or a
     ret nz
 
-    ld [$b8b9], a
+    ld [sShedEggplantSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -5508,7 +5508,7 @@ Jump_021_6394:
     or a
     ret nz
 
-    ld [$b8ba], a
+    ld [sShedPeanutSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -8834,7 +8834,7 @@ Jump_021_7649:
     ld [$ba3b], a
     ld a, [sCurrentSeason]
     ld [$ba3c], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     ld [$ba3d], a
     ret
 
@@ -9824,9 +9824,9 @@ Jump_021_7ccb:
 
 
 Jump_021_7cd1:
-    ld a, [$b911]
-    cp $00
-    jr z, jr_021_7cfb
+    ld a, [sHouseExpansionFlag]
+    cp 0
+    jr z, .noHouseExpansion
 
     ld a, $37
     ld [$cbf7], a
@@ -9843,8 +9843,7 @@ Jump_021_7cd1:
     call Call_000_3f52
     ret
 
-
-jr_021_7cfb:
+.noHouseExpansion
     ld a, $35
     ld [$cbf7], a
     ld a, $34
@@ -9887,7 +9886,7 @@ Jump_021_7d32:
 
 
 Jump_021_7d38:
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $01
     jr z, jr_021_7d45
 

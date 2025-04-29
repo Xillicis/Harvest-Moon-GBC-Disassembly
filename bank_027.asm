@@ -11969,7 +11969,7 @@ jr_027_72a3:
     or a
     jp nz, Jump_027_7362
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_027_72e6
 
@@ -12047,7 +12047,7 @@ jr_027_7310:
 jr_027_7324:
     ld a, $02
     ld [$b8fe], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_027_7349
 
@@ -12115,7 +12115,7 @@ jr_027_7389:
 
 
     call Call_000_3f26
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_027_73a7
 
@@ -12141,7 +12141,7 @@ jr_027_73ad:
 
     xor a
     ld [$b89a], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_027_73e4
 

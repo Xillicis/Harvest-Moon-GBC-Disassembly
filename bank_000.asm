@@ -1004,14 +1004,14 @@ jr_000_06f4:
     xor a
     ld [sCurrentSeason], a
     call Call_000_08b7
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     inc a
-    ld [$b885], a
+    ld [sCurrentYear], a
     cp $63
     ret nz
 
     ld a, $62
-    ld [$b885], a
+    ld [sCurrentYear], a
     ret
 
 Call_000_070b:
@@ -2633,52 +2633,51 @@ Call_000_10cb:
     ld [$b937], a
     ret
 
-
-Call_000_10f5:
+LoadHouseExpansionTileDataIntoSRAM:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
-    ld a, $11
+    ld a, BANK(NoHouseExpansionTileData) ; 0x11
     ld [MBC3RomBank], a
-    ld a, [$b911]
-    cp $00
-    jr z, jr_000_110f
-    cp $01
-    jr z, jr_000_1114
-    ld de, $6881
-    jr jr_000_1119
+    ld a, [sHouseExpansionFlag]
+    cp 0
+    jr z, .noHouseExpansion
+    cp 1
+    jr z, .firstHouseExpansion
+    ld de, SecondHouseExpansionTileData
+    jr .loadTileDataIntoSRAM
 
-jr_000_110f:
-    ld de, $6929
-    jr jr_000_1119
+.noHouseExpansion
+    ld de, NoHouseExpansionTileData
+    jr .loadTileDataIntoSRAM
 
-jr_000_1114:
-    ld de, $68d5
-    jr jr_000_1119
+.firstHouseExpansion
+    ld de, FirstHouseExpansionTileData
+    jr .loadTileDataIntoSRAM
 
-jr_000_1119:
+.loadTileDataIntoSRAM
     ld a, $0d
     ld c, $80
-    call Multiply8Bit
+    call Multiply8Bit ; hl is 0x0680
     ld bc, $a000
-    add hl, bc
+    add hl, bc        ; hl is 0xa680
     ld a, $08
     add l
     ld l, a
     ld a, $00
     adc h
-    ld h, a
+    ld h, a  ; hl is 0xa688
     ld c, $06
 
-jr_000_112e:
+.outerLoop
     ld b, $0e
     push hl
 
-jr_000_1131:
+.innerLoop
     ld a, [de]
     inc de
     ld [hl+], a
     dec b
-    jr nz, jr_000_1131
+    jr nz, .innerLoop
 
     pop hl
     push de
@@ -2686,7 +2685,7 @@ jr_000_1131:
     add hl, de
     pop de
     dec c
-    jr nz, jr_000_112e
+    jr nz, .outerLoop
 
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
@@ -2786,7 +2785,7 @@ Call_000_11c2:
     ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_000_11e5
     cp $01

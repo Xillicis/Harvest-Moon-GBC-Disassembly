@@ -664,9 +664,9 @@ jr_009_43a5:
     xor a
     ld [sCurrentSeason], a
     call Call_000_08b7
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     inc a
-    ld [$b885], a
+    ld [sCurrentYear], a
     ret
 
 
@@ -2886,7 +2886,7 @@ Call_009_4de0:
     call CopyHLtoDE
 
 jr_009_4ed8:
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $02
     jr z, jr_009_4ef4
 
@@ -3088,7 +3088,7 @@ jr_009_4ef4:
     or a
     jr z, jr_009_4ff8
 
-    ld a, [$b8af]
+    ld a, [sShedSprinklerFlag]
     or a
     jr nz, jr_009_4ff8
 
@@ -3113,7 +3113,7 @@ jr_009_4fed:
     call Call_009_508e
 
 jr_009_4ff8:
-    ld a, [$b8ad]
+    ld a, [sShedBrushFlag]
     or a
     jr nz, jr_009_5010
 
@@ -3276,7 +3276,7 @@ jr_009_50aa:
 
 
 Call_009_50d0:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     ld hl, $0000
     or a
     jr z, jr_009_50e1

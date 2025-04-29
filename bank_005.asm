@@ -6313,7 +6313,7 @@ jr_005_63ab:
 
 
 Call_005_63c5:
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_005_641a
 
@@ -6897,7 +6897,7 @@ jr_005_6764:
     ret
 
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jp z, Jump_005_677f
 

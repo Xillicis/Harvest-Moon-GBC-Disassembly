@@ -9725,7 +9725,7 @@ jr_03f_6c89:
     ldh [$ff91], a
     ld [$ccd2], a
     ld [$cb68], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     ld [$ccd3], a
     ld a, [sCurrentSeason]
     ld [$ccd4], a
@@ -9814,7 +9814,7 @@ jr_03f_6f2f:
     xor a
     ld [$c911], a
     ld a, [$ccd3]
-    ld [$b885], a
+    ld [sCurrentYear], a
     ld a, [$ccd4]
     ld [sCurrentSeason], a
     ld a, [$ccd5]

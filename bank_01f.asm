@@ -9994,7 +9994,7 @@ jr_01f_6961:
     ldh [$ff91], a
     ld [$ccd2], a
     ld [$cb68], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     ld [$ccd3], a
     ld a, [sCurrentSeason]
     ld [$ccd4], a
@@ -10083,7 +10083,7 @@ jr_01f_7058:
     xor a
     ld [$c911], a
     ld a, [$ccd3]
-    ld [$b885], a
+    ld [sCurrentYear], a
     ld a, [$ccd4]
     ld [sCurrentSeason], a
     ld a, [$ccd5]

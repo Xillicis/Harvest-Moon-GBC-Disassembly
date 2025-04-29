@@ -10,7 +10,8 @@ sb882::  db
 sCurrentDayCounter::  db 
 ; Spring = 0, Summer = 1, Fall = 2, Winter = 3
 sCurrentSeason::  db 
-sb885::  db 
+; Year 1 starts at 0, etc...
+sCurrentYear::  db 
 sb886::  db 
 sb887::  db 
 sb888::  db 
@@ -39,7 +40,8 @@ sb89e::  db
 sb89f::  db 
 sb8a0::  db 
 sb8a1::  db 
-sb8a2::  db 
+sb8a2::  db
+
 sShedItemFlagList::
 sShedSickleFlag::  db 
 sShedHoeFlag::  db 
@@ -48,12 +50,12 @@ sShedAxFlag::  db
 sShedSuperSickleFlag::  db 
 sShedSuperHoeFlag::  db 
 sShedSuperHammerFlag::  db 
-sb8aa::  db 
+sShedSuperAxFlag::  db 
 sShedCowMedicineFlag::  db 
 sShedMilkerFlag::  db 
-sb8ad::  db 
+sShedBrushFlag::  db 
 sShedWateringCanFlag::  db ; 0xb8ae
-sb8af::  db 
+sShedSprinklerFlag::  db 
 sb8b0::  db 
 sShedPMedicineFlag::  db ; 0xb8b1
 sShedMPotionFlag::  db ; 0xb8b2
@@ -63,8 +65,8 @@ sShedTurnipSeedsFlag::  db ; 0xb8b5
 sShedPotatoSeedsFlag::  db ; 0xb8b6
 sb8b7::  db 
 sb8b8::  db 
-sb8b9::  db 
-sb8ba::  db 
+sShedEggplantSeedsFlag::  db 
+sShedPeanutSeedsFlag::  db 
 sb8bb::  db 
 sb8bc::  db 
 sb8bd::  db 
@@ -146,7 +148,8 @@ sb90d::  db
 sb90e::  db 
 sb90f::  db 
 sb910::  db 
-sb911::  db 
+; 0 - no expansion, 1 - the house is expanded
+sHouseExpansionFlag::  db ; 0xb911
 sb912::  db 
 sb913::  db 
 sb914::  db 

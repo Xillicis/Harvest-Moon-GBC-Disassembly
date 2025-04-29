@@ -11728,7 +11728,7 @@ jr_00c_7d3e:
     xor a
     ld [$b8a6], a
     ld a, $01
-    ld [$b8aa], a
+    ld [sShedSuperAxFlag], a
     ret
 
 

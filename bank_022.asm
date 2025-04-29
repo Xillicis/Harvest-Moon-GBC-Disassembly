@@ -100,7 +100,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [$cbe0], a
     ld a, [$b881]
     ld [$cbe1], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     ld [$cbdd], a
     call Call_022_43f1
     call Call_000_0cd5
@@ -713,26 +713,26 @@ jr_022_4420:
     ld a, $04
     call Call_000_09c9
     ld [sCurrentSeason], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
     ld a, l
-    ld [$b885], a
+    ld [sCurrentYear], a
     cp $63
     ret c
 
     ld a, $63
-    ld [$b885], a
+    ld [sCurrentYear], a
     ret
 
 
 Call_022_4456:
     ld a, [$cbdd]
     ld b, a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp b
     jr nz, jr_022_4474
 
@@ -779,9 +779,9 @@ jr_022_4474:
     ld a, [$cbe4]
     sbc h
     ld [$cbe4], a
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     dec a
-    ld [$b885], a
+    ld [sCurrentYear], a
     ld a, $03
     ld [sCurrentSeason], a
     ld a, $1d
@@ -825,7 +825,7 @@ Call_022_44e9:
 
 
 jr_022_44f8:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $00
     ret nz
 
@@ -1088,14 +1088,14 @@ Jump_022_464f:
 jr_022_464f:
     xor a
     ld [$b8fe], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_022_4665
 
     ld a, $0a
     call Call_000_0f47
     ld a, $02
-    ld [$b911], a
+    ld [sHouseExpansionFlag], a
     ret
 
 
@@ -1103,7 +1103,7 @@ jr_022_4665:
     ld a, $0a
     call Call_000_0f47
     ld a, $01
-    ld [$b911], a
+    ld [sHouseExpansionFlag], a
     ret
 
 
@@ -1145,7 +1145,7 @@ Call_022_467b:
 
 
 Call_022_46ad:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     jr nz, jr_022_471b
 
@@ -3163,7 +3163,7 @@ jr_022_5015:
     cp $16
     jr z, jr_022_50a8
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $01
     jr nz, jr_022_50a8
 
@@ -3238,7 +3238,7 @@ jr_022_50a8:
     call Call_022_5ff1
     xor a
     ld [$c780], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     ld [$cbe8], a
     ld a, $01
     ld [$cb81], a
@@ -4567,7 +4567,7 @@ jr_022_58fe:
 
 
 jr_022_5909:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     inc a
     ld l, a
     ld h, $00
@@ -5007,7 +5007,7 @@ jr_022_5b71:
 
 
 jr_022_5b79:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -5050,7 +5050,7 @@ Call_022_5b94:
 
 
 Call_022_5bab:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -5961,7 +5961,7 @@ jr_022_600b:
     call $670e
 
 jr_022_6018:
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jp z, Jump_022_60e4
 
@@ -6622,7 +6622,7 @@ jr_022_63ca:
 
     ld a, [$c820]
     call nz, $64b4
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_022_643a
 
@@ -6729,7 +6729,7 @@ jr_022_645f:
     cp b
     ret nz
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     jr z, jr_022_64eb
 
@@ -6956,7 +6956,7 @@ Call_022_6601:
     or a
     jr nz, jr_022_6638
 
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -7418,9 +7418,9 @@ jr_022_68c5:
     xor a
     ld [sCurrentSeason], a
     call Call_000_08b7
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     inc a
-    ld [$b885], a
+    ld [sCurrentYear], a
     ret
 
 
@@ -8362,7 +8362,7 @@ Call_022_6cda:
     cp $03
     jr nz, jr_022_6ced
 
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $02
     ret nz
 
@@ -8480,7 +8480,7 @@ Call_022_6d9a:
     ret c
 
 jr_022_6db3:
-    ld a, [$b8af]
+    ld a, [sShedSprinklerFlag]
     cp $01
     ret z
 
@@ -8508,7 +8508,7 @@ Call_022_6dd0:
     or a
     ret nz
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $02
     ret z
 
@@ -8522,7 +8522,7 @@ Call_022_6dd0:
 
 
 Call_022_6ded:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -8544,7 +8544,7 @@ Call_022_6ded:
 
 
 Call_022_6e0a:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -8620,7 +8620,7 @@ Call_022_6e69:
 
 
 Call_022_6e70:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     or a
     ret nz
 
@@ -8631,7 +8631,7 @@ Call_022_6e70:
 
 
 Call_022_6e7c:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $02
     ret nz
 
@@ -8660,7 +8660,7 @@ Call_022_6e94:
     ret
 
 
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $00
     ret z
 
@@ -8714,7 +8714,7 @@ jr_022_6ee8:
 
 
 Call_022_6ef6:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $01
     ret nz
 
@@ -8725,7 +8725,7 @@ Call_022_6ef6:
 
 
 Call_022_6f03:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $02
     ret nz
 
@@ -8826,15 +8826,15 @@ Call_022_6f74:
 
     xor a
     ld [$b8fe], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $02
     ret z
 
     inc a
-    ld [$b911], a
+    ld [sHouseExpansionFlag], a
     ld a, $12
     ld [$b88d], a
-    ld a, [$b911]
+    ld a, [sHouseExpansionFlag]
     cp $01
     jr z, jr_022_6fa7
 
@@ -8860,7 +8860,7 @@ jr_022_6fad:
 
 
 Call_022_6fb5:
-    ld a, [$b885]
+    ld a, [sCurrentYear]
     cp $00
     ret z
 
