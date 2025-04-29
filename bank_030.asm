@@ -9260,7 +9260,7 @@ jr_030_69da:
 
 jr_030_6abc:
     ld c, e
-    call z, Call_000_11ff
+    call z, $11ff
     ld [hl-], a
     add h
     adc l

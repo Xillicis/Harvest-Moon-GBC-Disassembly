@@ -1159,7 +1159,7 @@ Jump_02b_44db:
 
 jr_02b_44ea:
     ld c, e
-    call z, Call_000_11ff
+    call z, $11ff
     ld [hl-], a
     add h
     adc l
@@ -4206,7 +4206,7 @@ jr_02b_5167:
 
 jr_02b_51f4:
     ld c, e
-    call z, Call_000_11ff
+    call z, $11ff
     ld [hl-], a
     add h
     adc l

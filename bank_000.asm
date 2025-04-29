@@ -2780,38 +2780,38 @@ jr_000_11b3:
     pop hl
     ret
 
+; Probably loads the interior tile set into SRAM
 Call_000_11c2:
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
     ld a, [sHouseExpansionFlag]
-    cp $00
-    jr z, jr_000_11e5
-    cp $01
-    jr z, jr_000_11f3
+    cp 0
+    jr z, .noHouseExpansion
+    cp 1
+    jr z, .firstHouseExpansion
 
     ld hl, $6fa9
     ld de, $d800
     ld bc, $0154
     call CopyHLtoDEBig
-    jr jr_000_11ff
+    jr .exit
 
-jr_000_11e5:
+.noHouseExpansion
     ld hl, $7251
     ld de, $d800
     ld bc, $0154
     call CopyHLtoDEBig
-    jr jr_000_11ff
+    jr .exit
 
-jr_000_11f3:
+.firstHouseExpansion
     ld hl, $70fd
     ld de, $d800
     ld bc, $0154
     call CopyHLtoDEBig
 
-Call_000_11ff:
-jr_000_11ff:
+.exit
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
