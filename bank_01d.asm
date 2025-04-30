@@ -64,7 +64,7 @@ Jump_01d_402a:
     ld [$cb52], a
     ld a, $01
     ld [$cb56], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
@@ -729,7 +729,7 @@ Call_01d_434b:
     ld [$cd66], a
 
 jr_01d_43e9:
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
@@ -1386,7 +1386,7 @@ jr_01d_474d:
     ld [$cd29], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $04
@@ -1609,7 +1609,7 @@ Jump_01d_48b7:
     ld c, b
     add hl, sp
     ld b, e
-    call nc, Call_000_1348
+    call nc, $1348
     ld c, a
     rst $18
     ld c, c
@@ -4482,7 +4482,7 @@ jr_01d_576e:
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $4d

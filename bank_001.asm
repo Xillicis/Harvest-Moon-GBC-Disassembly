@@ -14,6 +14,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 ; 0x4011
     RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
 
+Label_001_4019:
     call ClearBGMap0
     call ClearBGMap1
     call Call_000_323d

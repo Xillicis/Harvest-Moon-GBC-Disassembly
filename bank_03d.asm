@@ -54,7 +54,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     ld [$cb52], a
     ld a, $01
     ld [$cb56], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
@@ -707,7 +707,7 @@ Call_03d_433e:
     ld [$cd66], a
 
 jr_03d_43cf:
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
@@ -1388,7 +1388,7 @@ jr_03d_4726:
     ld [$cd29], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $04
@@ -4492,7 +4492,7 @@ jr_03d_571c:
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $4d

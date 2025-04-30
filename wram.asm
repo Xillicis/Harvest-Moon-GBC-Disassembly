@@ -1,6 +1,8 @@
 SECTION "WRAM 0", WRAM0
 
-ds $60d
+wShadowOAM:: ds 160 ; at $C000, holds up to 40×4 bytes of sprite attributes
+
+ds 1389
 
 ; 0 - Facing down
 ; 1 - Facing left

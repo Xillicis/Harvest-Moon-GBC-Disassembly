@@ -6811,7 +6811,7 @@ jr_03f_6044:
 
     ld e, h
     adc $5b
-    jp c, Jump_000_1360
+    jp c, $1360
 
     ld hl, $ef1e
     dec h

@@ -3424,7 +3424,7 @@ jr_03c_4e6a:
     inc b
     dec b
     cp e
-    jp nc, Jump_000_0520
+    jp nc, $0520
 
     db $db
     ld hl, $9000

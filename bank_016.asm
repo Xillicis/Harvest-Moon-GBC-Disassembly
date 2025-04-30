@@ -8430,7 +8430,7 @@ jr_016_64c7:
     ld a, b
     jp nc, $ea3c
 
-    call nc, Call_000_28fe
+    call nc, $28fe
     dec b
 
 jr_016_64e2:

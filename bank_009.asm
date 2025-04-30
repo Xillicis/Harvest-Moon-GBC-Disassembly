@@ -82,7 +82,7 @@ jr_009_4073:
     ld [$cd2b], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
@@ -4102,7 +4102,7 @@ Call_009_5435:
     ld [$cb1c], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
@@ -4200,7 +4200,7 @@ jr_009_55e0:
     xor a
     ld [$cd6b], a
     ld [$cb5c], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54

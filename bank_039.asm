@@ -5029,7 +5029,7 @@ jr_039_558a:
     cp h
     ld l, b
     call c, $3ee0
-    call z, Call_000_133f
+    call z, $133f
     ld [hl], a
     inc l
     cp h
@@ -8233,7 +8233,7 @@ jr_039_639e:
     ld a, b
     add b
     cp $38
-    call c, Call_000_28e8
+    call c, $28e8
     ldh a, [$ff0e]
     rlca
     rlca

@@ -258,7 +258,7 @@ Jump_000_01b1:
     ld hl, $8000
     ld bc, $1fff
     call ZeroOutHL
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $1cff
     call ZeroOutHL
     call InitializeHRAM
@@ -315,7 +315,7 @@ Jump_000_0217:
     pop hl
     xor a
     ldh [$ff97], a
-    call Call_000_0278
+    call ConditionalClearBGMap0_Bank1
     push hl
     push af
     ld l, $27
@@ -353,19 +353,19 @@ Jump_000_026d:
     jp z, Jump_000_026d
     jp Jump_000_0217
 
-Call_000_0278:
+ConditionalClearBGMap0_Bank1:
     ld a, [$c0bb]
     or a
     jr z, .jr_000_028d
     ld c, rVBK_c
     ld a, $01
-    ldh [c], a
+    ldh [c], a ; load VRAM1
     xor a
     ldh [$ffa4], a
-    call Call_000_229e
+    call ClearBGMap0_duplicate
     ld c, rVBK_c
     xor a
-    ldh [c], a
+    ldh [c], a ; change back to VRAM0
 .jr_000_028d
     ld a, [$c0bc]
     ld b, a
@@ -594,15 +594,11 @@ jr_000_0509:
     call Call_000_2195
     ld hl, $c0ba
     inc [hl]
-
-Call_000_0513:
     ld a, [$cb5e]
     ld [$cb5d], a
     ld a, [$c0ba]
     and $10
     jr z, jr_000_0529
-
-Jump_000_0520:
     ld a, [$cb5c]
     ld [$cb5d], a
     call Call_000_0673
@@ -628,7 +624,7 @@ jr_000_0529:
     pop hl
     ldh a, [$ff99]
     ldh [$ff9a], a
-    call Call_000_0906
+    call ClearUnusedOAMEntries
     ldh a, [$ff8a]
     and $0f
     cp $0f
@@ -1395,26 +1391,23 @@ Jump_000_08ee:
 Call_000_0905:
     ret
 
-Call_000_0906:
-    ldh a, [$ff99]
+ClearUnusedOAMEntries:
+    ldh a, [$ff99] ; A ← numBytesUsed (0-159)
     ld c, a
     ld b, $00
-    ld hl, $c000
-    add hl, bc
-    sub $a0
-    ret nc
+    ld hl, wShadowOAM
+    add hl, bc ; HL ← 0xC000 + numBytesUsed
+    sub $A0  ; A ← numBytesUsed – 160
+    ret nc   ; if A≥0 (i.e. numBytesUsed≥160) → nothing to do
 
-    cpl
-    inc a
-    ld b, a
-    xor a
-
-Call_000_0916:
-jr_000_0916:
-    ld [hl+], a
+    cpl      ; A ← ~(numBytesUsed–160)
+    inc a    ; A ← 160–numBytesUsed
+    ld b, a  ; B = leftover bytes to clear
+    xor a    ; A = 0 (the fill-value)
+.loop
+    ld [hli], a
     dec b
-    jr nz, jr_000_0916
-
+    jr nz, .loop
     ret
 
 
@@ -2979,7 +2972,7 @@ InitializeFarmMap:
     ld de, $5621
     ld b, $31
 
-Outer_loop2:
+.outer_loop2
     push hl
     ld c, $10
 
@@ -2993,7 +2986,6 @@ Outer_loop2:
     dec c
     jr nz, .inner_loop2
 
-Call_000_133f:
     pop hl
     ld a, $80
     add l
@@ -3001,16 +2993,14 @@ Call_000_133f:
     ld a, $00
     adc h
     ld h, a
-
-Call_000_1348:
     dec b
-    jr nz, Outer_loop2
+    jr nz, .outer_loop2
 
     ld hl, sMapObjectLocation + 64
     ld de, $5c41
     ld b, $31
 
-Outer_loop3:
+.outer_loop3
     push hl
     ld c, $10
 
@@ -3025,8 +3015,6 @@ Outer_loop3:
     jr nz, .inner_loop3
 
     pop hl
-
-Jump_000_1360:
     ld a, $80
     add l
     ld l, a
@@ -3034,7 +3022,7 @@ Jump_000_1360:
     adc h
     ld h, a
     dec b
-    jr nz, Outer_loop3
+    jr nz, .outer_loop3
 
     ld hl, sMapObjectLocation + 96
     ld de, $6261
@@ -3178,8 +3166,6 @@ jr_000_1414:
 
 jr_000_141e:
     ldh a, [rSTAT]
-
-Jump_000_1420:
     and $02
     jr nz, jr_000_141e
 
@@ -3193,7 +3179,6 @@ jr_000_142a:
     and $02
     jr nz, jr_000_142a
 
-Call_000_1430:
     ld a, [hl+]
     ld [de], a
     call Call_000_1f91
@@ -5440,10 +5425,8 @@ BankSwitchCallHL:
     ld [MBC3RomBank], a
     ret
 
-
 JumpHL:
     jp hl
-
 
 Call_000_2195:
     ld a, [$cbf1]
@@ -5502,9 +5485,6 @@ jr_000_21d4:
     ldh a, [rP1]
     ldh a, [rP1]
     ldh a, [rP1]
-
-Call_000_2200:
-Jump_000_2200:
     ldh a, [rP1]
     cpl
     and $0f
@@ -5545,7 +5525,6 @@ jr_000_222f:
     ld a, $30
     ldh [rP1], a
     ret
-
 
 InitializeHRAM: ; 0x2242
     ld c, $80
@@ -5610,7 +5589,7 @@ ClearBGMap0:
 BeginZeroing:
     ld bc, $0400
 .loop
-    ld a, $00
+    ld a, 0
     ld [hld], a
     dec bc
     ld a, b
@@ -5622,7 +5601,7 @@ ClearBGMap1:
     ld hl, $9fff
     jr BeginZeroing
 
-Call_000_229e:
+ClearBGMap0_duplicate:
     ld hl, $9bff
     ld bc, $0400
 .loop
@@ -6866,7 +6845,6 @@ Call_000_28d6:
     ldh a, [$fffa]
     swap a
 
-Call_000_28de:
 jr_000_28de:
     ldh [$fffa], a
     jp Jump_000_277a
@@ -6877,11 +6855,8 @@ jr_000_28e3:
     jr nz, jr_000_28ed
 
     ld a, [hl+]
-
-Call_000_28e8:
     ldh [rNR50], a
     jp Jump_000_277a
-
 
 jr_000_28ed:
     cp $a7
@@ -6891,24 +6866,18 @@ jr_000_28ed:
     ldh [$ffed], a
     jp Jump_000_29ff
 
-
 jr_000_28f7:
     cp $ae
     jr nz, jr_000_2909
 
     ld a, [hl+]
     and $10
-
-Call_000_28fe:
     ld b, a
-
-Jump_000_28ff:
     ldh a, [$ffea]
     and $ef
     or b
     ldh [$ffea], a
     jp Jump_000_277a
-
 
 jr_000_2909:
     cp $af
@@ -6922,7 +6891,6 @@ jr_000_2909:
     or b
     ldh [$ffea], a
     jp Jump_000_277a
-
 
 jr_000_291b:
     inc hl
@@ -8900,7 +8868,7 @@ jr_000_3237:
 Call_000_323d:
     ld b, $a0
     ld a, $00
-    ld hl, $c000
+    ld hl, wShadowOAM
 .loop
     ld [hli], a
     dec b

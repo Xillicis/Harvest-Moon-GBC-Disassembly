@@ -74,7 +74,7 @@ jr_029_4066:
     ld [$cd2b], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
@@ -4100,7 +4100,7 @@ Call_029_5404:
     ld [$cb1c], a
     ld a, $1d
     ld [$cb4e], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
@@ -4179,7 +4179,7 @@ jr_029_555e:
     xor a
     ld [$cd6b], a
     ld [$cb5c], a
-    ld hl, $c000
+    ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
@@ -9774,7 +9774,7 @@ jr_029_6fd1:
     dec hl
     ld b, b
     add b
-    ld hl, $c000
+    ld hl, wShadowOAM
     ldh [rWave_3], a
     ret nz
 

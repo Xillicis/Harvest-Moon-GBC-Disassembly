@@ -8988,7 +8988,7 @@ jr_00a_656d:
     and d
     db $dd
     cp l
-    jp nz, Jump_000_28ff
+    jp nz, $28ff
 
     rst $10
     adc a

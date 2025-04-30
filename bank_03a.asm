@@ -13809,7 +13809,7 @@ jr_03a_799e:
     nop
     ld b, b
     add b
-    call c, Call_000_2200
+    call c, $2200
     call c, $ec12
     ld a, l
     add d

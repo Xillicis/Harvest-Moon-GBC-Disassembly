@@ -741,7 +741,7 @@ Jump_01c_4301:
 
 jr_01c_4304:
     and h
-    jp nz, Jump_000_1420
+    jp nz, $1420
 
     xor c
     nop

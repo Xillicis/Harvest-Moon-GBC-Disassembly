@@ -8530,7 +8530,7 @@ Call_036_64da:
     ld a, b
     jp nc, Jump_036_6a3c
 
-    call nc, Call_000_28de
+    call nc, $28de
     dec b
     inc bc
     ld [bc], a

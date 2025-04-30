@@ -10489,7 +10489,7 @@ jr_004_7baa:
     nop
     ld b, b
     add b
-    call c, Call_000_2200
+    call c, $2200
     rst $30
     call c, $ec12
     pop hl

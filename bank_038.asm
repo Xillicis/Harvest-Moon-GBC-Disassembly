@@ -571,7 +571,7 @@ jr_038_426c:
     ld e, [hl]
     xor h
     ld a, [hl]
-    call z, Call_000_0916
+    call z, $0916
     rla
     rrca
     rra

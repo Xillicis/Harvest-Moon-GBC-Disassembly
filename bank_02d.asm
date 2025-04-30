@@ -5420,7 +5420,7 @@ jr_02d_58fc:
     ld bc, $0102
     ld hl, $1f2c
     nop
-    jp Jump_000_2200
+    jp $2200
 
 
     ld de, $0202
@@ -5598,7 +5598,7 @@ jr_02d_59d6:
     inc bc
     inc c
     inc de
-    call Call_000_0513
+    call $0513
     inc c
     add hl, hl
     inc l
