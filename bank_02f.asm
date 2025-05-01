@@ -6756,13 +6756,13 @@ jr_02f_682a:
     jr z, jr_02f_684d
 
     ld a, $15
-    ld [$b882], a
+    ld [sCurrentHour], a
     ret
 
 
 jr_02f_684d:
     ld a, $12
-    ld [$b882], a
+    ld [sCurrentHour], a
     ret
 
 

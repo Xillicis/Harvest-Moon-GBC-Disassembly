@@ -8789,7 +8789,7 @@ jr_023_74dc:
 
 
 Call_023_74e1:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 

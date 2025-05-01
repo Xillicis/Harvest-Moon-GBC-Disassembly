@@ -10886,7 +10886,7 @@ UploadPetPalette:
     ret
 
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_01f_78ce
 

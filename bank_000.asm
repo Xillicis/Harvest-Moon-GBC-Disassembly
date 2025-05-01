@@ -258,7 +258,7 @@ Jump_000_01b1:
     ld hl, $8000
     ld bc, $1fff
     call ZeroOutHL
-    ld hl, wShadowOAM
+    ld hl, wShadowOAM ; 0xc000 beginning of wram.
     ld bc, $1cff
     call ZeroOutHL
     call InitializeHRAM
@@ -640,7 +640,6 @@ jr_000_055c:
     pop af
     ret
 
-
 Jump_000_0561:
     ldh a, [$ff8d]
     inc a
@@ -945,8 +944,8 @@ jr_000_0696:
     cp $0e
     ret nz
 
-    ld a, [$b882]
-    cp $05
+    ld a, [sCurrentHour]
+    cp TIME_5_AM
     ret nz
 
     ld a, $01
@@ -957,9 +956,9 @@ jr_000_0696:
 jr_000_06ac:
     xor a
     ld [$b881], a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     inc a
-    ld [$b882], a
+    ld [sCurrentHour], a
     cp $18
     jr nc, jr_000_06c2
 
@@ -970,7 +969,7 @@ jr_000_06ac:
 
 jr_000_06c2:
     xor a
-    ld [$b882], a
+    ld [sCurrentHour], a
     call Call_000_070b
     ld a, [sCurrentDayCounter]
     inc a
@@ -1011,7 +1010,7 @@ jr_000_06f4:
     ret
 
 Call_000_070b:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     ld l, a
     ld h, $00
     ld e, a
@@ -4572,7 +4571,7 @@ Jump_000_1cff:
     cp $29
     ret z
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $11
     ret nc
 
@@ -6122,7 +6121,7 @@ Call_000_2527:
     ld b, 6
     ld a, $ff
 
-jr_000_2542:
+.loop
     ld [hl], a
     ld de, $0017
     add hl, de
@@ -6130,7 +6129,7 @@ jr_000_2542:
     ld de, $0002
     add hl, de
     dec b
-    jr nz, jr_000_2542
+    jr nz, .loop
     xor a
     ld [$d3a3], a
     ret
@@ -6240,7 +6239,6 @@ Call_000_25ce:
     push af
     ld a, $1e
     ld [MBC3RomBank], a
-; Check for data in bank 1e starting somewhere around $4001
     ld h, $00
     add hl, hl
     add hl, hl
@@ -6281,13 +6279,13 @@ jr_000_260c:
 
 jr_000_2613:
     xor a
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
-    ld [hl+], a
+    ld [hli], a
     ld a, [de]
     inc de
     ld [hl], a

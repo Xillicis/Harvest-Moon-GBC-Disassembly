@@ -38,8 +38,8 @@ Label_001_4019:
     or a
     jr nz, jr_001_4062
 
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     jr nc, jr_001_4062
 
     ld a, [$c0bd]
@@ -141,7 +141,7 @@ jr_001_40f8:
 
 jr_001_4103:
     ld a, [sCatOrDog]
-    cp $01
+    cp DOG
     jr z, jr_001_4122
 
     ld hl, $79a1
@@ -4686,8 +4686,8 @@ jr_001_5ed8:
     call Call_000_25ce
     ld a, $01
     ld [$cb80], a
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     jr nc, jr_001_5ef4
 
     ld a, [wHeldObject]
@@ -4725,8 +4725,8 @@ jr_001_5f10:
     ld [$cb7e], a
     ld a, h
     ld [$cb7f], a
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     ret nc
 
     ld a, [wHeldObject]
@@ -7000,12 +7000,12 @@ jr_001_6ca4:
 
 
 Call_001_6cd1:
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     jr c, jr_001_6cde
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret c
 
 jr_001_6cde:
@@ -8149,8 +8149,8 @@ Call_001_72b0:
 
 
 jr_001_72d6:
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     ret nz
 
     ld a, [$b881]
@@ -8957,8 +8957,8 @@ Call_001_77ff:
 
 
 Call_001_7821:
-    ld a, [$b882]
-    cp $0c
+    ld a, [sCurrentHour]
+    cp TIME_12_PM
     ret nz
 
     ld a, [$b881]
@@ -8976,8 +8976,8 @@ Call_001_7821:
 
 
 Call_001_783c:
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]
@@ -9010,8 +9010,8 @@ Call_001_783c:
 
 
 Call_001_7878:
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     ret nz
 
     ld a, [$b881]
@@ -9038,8 +9038,8 @@ Call_001_7895:
     cp $13
     ret nz
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]
@@ -9066,8 +9066,8 @@ Call_001_78be:
     cp $17
     ret nz
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]

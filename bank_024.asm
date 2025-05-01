@@ -7577,7 +7577,7 @@ jr_024_6e7e:
     res 7, c
 
 Call_024_6e92:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 

@@ -5,7 +5,8 @@ sMapObjectLocation:: ds 6272
 
 sb880::  db 
 sb881::  db 
-sb882::  db 
+; 6 = Wake up time
+sCurrentHour::  db 
 ; Starts at Day 0. Counts how many days have passed
 sCurrentDayCounter::  db 
 ; Spring = 0, Summer = 1, Fall = 2, Winter = 3

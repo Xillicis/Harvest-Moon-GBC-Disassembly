@@ -15,8 +15,8 @@ SECTION "ROM Bank $021", ROMX[$4000], BANK[$21]
     or a
     jr nz, jr_021_402b
 
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     jr nc, jr_021_402b
 
     ld a, [$c0bd]
@@ -4553,8 +4553,8 @@ jr_021_5dd3:
     call Call_000_25ce
     ld a, $01
     ld [$cb80], a
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     jr nc, jr_021_5def
 
     ld a, [wHeldObject]
@@ -4592,8 +4592,8 @@ jr_021_5e0b:
     ld [$cb7e], a
     ld a, h
     ld [$cb7f], a
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     ret nc
 
     ld a, [wHeldObject]
@@ -6885,12 +6885,12 @@ jr_021_6b37:
 
 
 Call_021_6b64:
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     jr c, jr_021_6b71
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret c
 
 jr_021_6b71:
@@ -8135,8 +8135,8 @@ Call_021_71a8:
 
 
 jr_021_71ce:
-    ld a, [$b882]
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     ret nz
 
     ld a, [$b881]
@@ -8927,8 +8927,8 @@ Call_021_76df:
 
 
 Call_021_7701:
-    ld a, [$b882]
-    cp $0c
+    ld a, [sCurrentHour]
+    cp TIME_12_PM
     ret nz
 
     ld a, [$b881]
@@ -8946,8 +8946,8 @@ Call_021_7701:
 
 
 Call_021_771c:
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]
@@ -8980,8 +8980,8 @@ Call_021_771c:
 
 
 Call_021_7758:
-    ld a, [$b882]
-    cp $11
+    ld a, [sCurrentHour]
+    cp TIME_5_PM
     ret nz
 
     ld a, [$b881]
@@ -9008,8 +9008,8 @@ Call_021_7775:
     cp $13
     ret nz
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]
@@ -9036,8 +9036,8 @@ Call_021_779e:
     cp $17
     ret nz
 
-    ld a, [$b882]
-    cp $12
+    ld a, [sCurrentHour]
+    cp TIME_6_PM
     ret nz
 
     ld a, [$b881]

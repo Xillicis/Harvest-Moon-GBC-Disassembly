@@ -6760,13 +6760,13 @@ jr_00f_6836:
     jr z, jr_00f_6859
 
     ld a, $15
-    ld [$b882], a
+    ld [sCurrentHour], a
     ret
 
 
 jr_00f_6859:
     ld a, $12
-    ld [$b882], a
+    ld [sCurrentHour], a
     ret
 
 
@@ -8443,11 +8443,11 @@ jr_00f_716f:
     cp $01
     jr nz, jr_00f_7197
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_00f_7184
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $12
     jr c, jr_00f_7197
 
@@ -8770,11 +8770,11 @@ jr_00f_7310:
     cp $01
     jr nz, jr_00f_7338
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_00f_7325
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $12
     jr c, jr_00f_7338
 

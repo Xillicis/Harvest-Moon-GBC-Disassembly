@@ -14,6 +14,8 @@ INCLUDE "constants/item_constants.asm"
 INCLUDE "constants/physics_constants.asm"
 INCLUDE "constants/player_constants.asm"
 INCLUDE "constants/farm_constants.asm"
+INCLUDE "constants/time_constants.asm"
+
 ;INCLUDE "vram.asm"
 INCLUDE "bank_000.asm"
 INCLUDE "bank_001.asm"

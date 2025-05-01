@@ -3648,7 +3648,7 @@ Call_03d_51d9:
     ld [$cb81], a
     ld [$c910], a
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     ld a, $ff
     ld [sCurrentDayCounter], a
     ld a, $80

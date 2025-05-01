@@ -96,7 +96,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [$cbde], a
     ld a, [sCurrentDayCounter]
     ld [$cbdf], a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     ld [$cbe0], a
     ld a, [$b881]
     ld [$cbe1], a
@@ -131,7 +131,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, [sCurrentSeason]
     ld hl, $9865
     call Call_022_41d8
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     ld hl, $986f
     call Call_022_4229
     ld de, $986b
@@ -549,7 +549,7 @@ jr_022_4343:
     ld a, $18
     call Call_000_09c9
     ld b, a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_022_435e
 
@@ -593,7 +593,7 @@ jr_022_437a:
     ld a, $18
     call Call_000_09c9
     ld b, a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_022_4395
 
@@ -686,14 +686,14 @@ Call_022_43f1:
     ld a, [sCurrentDayCounter]
     add l
     ld [sCurrentDayCounter], a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     add b
-    ld [$b882], a
+    ld [sCurrentHour], a
     cp $18
     jr c, jr_022_4420
 
     sub $18
-    ld [$b882], a
+    ld [sCurrentHour], a
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
@@ -744,7 +744,7 @@ Call_022_4456:
     cp $1d
     ret nz
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 
@@ -760,7 +760,7 @@ jr_022_4474:
     call Multiply8Bit
     pop de
     add hl, de
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     sub $06
     add l
     ld l, a
@@ -787,7 +787,7 @@ jr_022_4474:
     ld a, $1d
     ld [sCurrentDayCounter], a
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     xor a
     ld [$b881], a
     ld [$b880], a
@@ -795,7 +795,7 @@ jr_022_4474:
 
 
 jr_022_44c7:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     sub $06
     ld b, a
     ld a, [$cbe5]
@@ -805,7 +805,7 @@ jr_022_44c7:
     sbc $00
     ld [$cbe4], a
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     xor a
     ld [$b881], a
     ld [$b880], a
@@ -866,7 +866,7 @@ Call_022_4525:
     cp $1d
     ret nz
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 
@@ -1344,7 +1344,7 @@ jr_022_47ca:
     jr jr_022_47e6
 
 jr_022_47e0:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 
@@ -1379,7 +1379,7 @@ jr_022_4801:
 
 
 jr_022_4815:
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret c
 
@@ -2793,7 +2793,7 @@ Call_022_4e9a:
     cp $18
     jr nc, jr_022_4ebd
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     jr c, jr_022_4eb7
 
@@ -3591,7 +3591,7 @@ Jump_022_5356:
     ld [wPlayerFacingDirection], a
     ld a, [sCurrentDayCounter]
     ld [$b901], a
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     ld [$b902], a
     ld a, [$b881]
     ld [$b903], a
@@ -6964,7 +6964,7 @@ Call_022_6601:
     cp $01
     ret nz
 
-    ld a, [$b882]
+    ld a, [sCurrentHour]
     cp $06
     ret nz
 
@@ -7387,7 +7387,7 @@ jr_022_6876:
     ld [$b880], a
     ld [$b881], a
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     call Call_000_070b
     ld a, [sCurrentDayCounter]
     inc a
@@ -7429,7 +7429,7 @@ jr_022_68d4:
     ld [$b880], a
     ld [$b881], a
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     call Call_000_070b
     xor a
     ld [$ba40], a
@@ -8350,7 +8350,7 @@ jr_022_6cc3:
 
 Jump_022_6ccd:
     ld a, $06
-    ld [$b882], a
+    ld [sCurrentHour], a
     xor a
     ld [$b881], a
     ld [$b880], a
