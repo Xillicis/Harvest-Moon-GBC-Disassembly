@@ -8842,7 +8842,7 @@ jr_003_7522:
 
 Call_003_7527:
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret c
 
     ld a, [$b949]

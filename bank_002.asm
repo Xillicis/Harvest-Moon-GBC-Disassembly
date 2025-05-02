@@ -562,7 +562,7 @@ jr_002_4351:
     call Call_000_09c9
     ld b, a
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_002_436c
 
     add b
@@ -606,7 +606,7 @@ jr_002_4388:
     call Call_000_09c9
     ld b, a
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_002_43a3
 
     add b
@@ -701,7 +701,7 @@ Call_002_43ff:
     ld a, [sCurrentHour]
     add b
     ld [sCurrentHour], a
-    cp $18
+    cp TIME_12_AM
     jr c, jr_002_442e
 
     sub $18
@@ -756,8 +756,8 @@ Call_002_4464:
     cp 29
     ret nz
 
-    ld a, [sCurrentHour] ; this might be the year
-    cp $06
+    ld a, [sCurrentHour]
+    cp TIME_6_AM
     ret c
 
     jr jr_002_44d5
@@ -796,9 +796,9 @@ jr_002_4482:
     ld [sCurrentYear], a
     ld a, WINTER
     ld [sCurrentSeason], a
-    ld a, $1d
+    ld a, 29
     ld [sCurrentDayCounter], a
-    ld a, $06
+    ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
     ld [$b881], a
@@ -816,7 +816,7 @@ jr_002_44d5:
     ld a, [$cbe4]
     sbc $00
     ld [$cbe4], a
-    ld a, $06
+    ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
     ld [$b881], a
@@ -879,7 +879,7 @@ Call_002_4533:
     ret nz
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret c
 
     ld a, $11
@@ -1353,7 +1353,7 @@ jr_002_47d8:
 
 jr_002_47ee:
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret c
 
 jr_002_47f4:
@@ -1388,7 +1388,7 @@ jr_002_480f:
 
 jr_002_4823:
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret c
 
     ld a, $03
@@ -2802,7 +2802,7 @@ Call_002_4ea8:
     jr nc, jr_002_4ecb
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_002_4ec5
 
     add b
@@ -7057,7 +7057,7 @@ Call_002_6694:
     ret nz
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret nz
 
     ld a, [$b881]
@@ -7485,7 +7485,7 @@ Call_002_6921:
     xor a
     ld [$b880], a
     ld [$b881], a
-    ld a, $06
+    ld a, TIME_6_AM
     ld [sCurrentHour], a
     call Call_000_070b
     ld a, [sCurrentDayCounter]
@@ -7527,7 +7527,7 @@ jr_002_6974:
     xor a
     ld [$b880], a
     ld [$b881], a
-    ld a, $06
+    ld a, TIME_6_AM
     ld [sCurrentHour], a
     call Call_000_070b
     xor a
@@ -8447,7 +8447,7 @@ jr_002_6d63:
 
 
 Jump_002_6d6d:
-    ld a, $06
+    ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
     ld [$b881], a

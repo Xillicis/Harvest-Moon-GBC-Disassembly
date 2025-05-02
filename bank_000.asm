@@ -959,7 +959,7 @@ jr_000_06ac:
     ld a, [sCurrentHour]
     inc a
     ld [sCurrentHour], a
-    cp $18
+    cp TIME_12_AM
     jr nc, jr_000_06c2
 
     call Call_000_070b
@@ -4572,7 +4572,7 @@ Jump_000_1cff:
     ret z
 
     ld a, [sCurrentHour]
-    cp $11
+    cp TIME_5_PM
     ret nc
 
     cp $06

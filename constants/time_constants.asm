@@ -1,4 +1,8 @@
-const_def 5
+const_def 1
+const TIME_1_AM  ; $01
+const TIME_2_AM  ; $02
+const TIME_3_AM  ; $03
+const TIME_4_AM  ; $04
 const TIME_5_AM  ; $05
 const TIME_6_AM  ; $06
 const TIME_7_AM  ; $07
@@ -13,3 +17,9 @@ const TIME_3_PM  ; $0f
 const TIME_4_PM  ; $10
 const TIME_5_PM  ; $11
 const TIME_6_PM  ; $12
+const TIME_7_PM  ; $13
+const TIME_8_PM  ; $14
+const TIME_9_PM  ; $15
+const TIME_10_PM ; $16
+const TIME_11_PM ; $17
+const TIME_12_AM ; $18

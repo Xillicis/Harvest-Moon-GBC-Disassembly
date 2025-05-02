@@ -91,7 +91,7 @@ jr_008_4193:
     jr z, jr_008_41d7
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr nz, jr_008_41e1
 
     ld a, [$c912]

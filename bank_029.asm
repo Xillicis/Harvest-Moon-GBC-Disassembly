@@ -517,14 +517,14 @@ Jump_029_42a5:
     push bc
     call Call_000_0f73
     ld a, [sCurrentHour]
-    cp $05
+    cp TIME_5_AM
     jr z, jr_029_430b
 
-    cp $10
+    cp TIME_4_PM
     call z, Call_029_4310
     call Call_029_435d
     ld a, [sCurrentHour]
-    cp $05
+    cp TIME_5_AM
     jr nz, jr_029_42cf
 
     ld a, [$b881]
@@ -537,7 +537,7 @@ Jump_029_42a5:
 
 jr_029_42cf:
     ld a, [sCurrentHour]
-    cp $12
+    cp TIME_6_PM
     jr nz, jr_029_42f6
 
     xor a
@@ -603,7 +603,7 @@ jr_029_4332:
 
 
     push bc
-    ld a, $05
+    ld a, TIME_5_AM
     ld [sCurrentHour], a
     ld a, $0d
     ld [$b881], a
@@ -624,7 +624,7 @@ Call_029_435d:
     ld a, [sCurrentHour]
     inc a
     ld [sCurrentHour], a
-    cp $18
+    cp TIME_12_AM
     jr nc, jr_029_436c
 
     call Call_000_070b

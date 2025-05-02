@@ -200,7 +200,7 @@ Call_02e_417d:
     ret nz
 
     ld a, [sCurrentHour]
-    cp $05
+    cp TIME_5_AM
     ret nz
 
     ld a, [$b881]
@@ -3399,7 +3399,7 @@ jr_02e_53aa:
     or a
     ret nz
 
-    ld a, $12
+    ld a, TIME_6_PM
     ld [sCurrentHour], a
     xor a
     ld [$b881], a
