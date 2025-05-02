@@ -98,7 +98,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [$cbdf], a
     ld a, [sCurrentHour]
     ld [$cbe0], a
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     ld [$cbe1], a
     ld a, [sCurrentYear]
     ld [$cbdd], a
@@ -789,8 +789,8 @@ jr_022_4474:
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
-    ld [$b881], a
-    ld [$b880], a
+    ld [sCurrentMinute], a
+    ld [sClockFrameCount], a
     ret
 
 
@@ -807,8 +807,8 @@ jr_022_44c7:
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
-    ld [$b881], a
-    ld [$b880], a
+    ld [sCurrentMinute], a
+    ld [sClockFrameCount], a
     ret
 
 
@@ -3593,7 +3593,7 @@ Jump_022_5356:
     ld [$b901], a
     ld a, [sCurrentHour]
     ld [$b902], a
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     ld [$b903], a
     ret
 
@@ -6968,11 +6968,11 @@ Call_022_6601:
     cp TIME_6_AM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $00
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
@@ -7384,8 +7384,8 @@ jr_022_6876:
     jr c, jr_022_68d4
 
     xor a
-    ld [$b880], a
-    ld [$b881], a
+    ld [sClockFrameCount], a
+    ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     call Call_000_070b
@@ -7426,8 +7426,8 @@ jr_022_68c5:
 
 jr_022_68d4:
     xor a
-    ld [$b880], a
-    ld [$b881], a
+    ld [sClockFrameCount], a
+    ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     call Call_000_070b
@@ -8352,8 +8352,8 @@ Jump_022_6ccd:
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
-    ld [$b881], a
-    ld [$b880], a
+    ld [sCurrentMinute], a
+    ld [sClockFrameCount], a
     ret
 
 

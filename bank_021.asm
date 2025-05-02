@@ -8139,11 +8139,11 @@ jr_021_71ce:
     cp TIME_6_AM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $00
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
@@ -8645,9 +8645,9 @@ jr_021_750b:
     ld a, $01
     ld [$cb81], a
     xor a
-    ld [$b881], a
+    ld [sCurrentMinute], a
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld a, [$b88c]
     cp $01
     jp z, Jump_021_7584
@@ -8931,16 +8931,16 @@ Call_021_7701:
     cp TIME_12_PM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $00
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld [$cb90], a
     ret
 
@@ -8950,16 +8950,16 @@ Call_021_771c:
     cp TIME_6_PM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $00
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     xor a
     ld [$b890], a
     ld [$b891], a
@@ -8984,16 +8984,16 @@ Call_021_7758:
     cp TIME_5_PM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $00
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld a, $03
     ld [$cb90], a
     ret
@@ -9012,16 +9012,16 @@ Call_021_7775:
     cp TIME_6_PM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $01
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld a, $04
     ld [$cb90], a
     ret
@@ -9040,16 +9040,16 @@ Call_021_779e:
     cp TIME_6_PM
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $01
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     cp $00
     ret nz
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld a, $05
     ld [$cb90], a
     ret
@@ -9219,7 +9219,7 @@ Call_021_78cd:
     ret z
 
     ld a, $01
-    ld [$b880], a
+    ld [sClockFrameCount], a
     ld a, [$b88c]
     cp $01
     jr z, jr_021_7933

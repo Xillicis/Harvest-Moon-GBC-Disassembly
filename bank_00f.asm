@@ -6753,8 +6753,8 @@ jr_00f_6836:
     ld [$cb4f], a
     xor a
     ld [$c910], a
-    ld [$b880], a
-    ld [$b881], a
+    ld [sClockFrameCount], a
+    ld [sCurrentMinute], a
     ld a, [$ccb8]
     cp $00
     jr z, jr_00f_6859

@@ -227,7 +227,7 @@ Call_00e_41a1:
     cp $05
     ret nz
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $0e
     ret nz
 
@@ -3429,8 +3429,8 @@ jr_00e_53cd:
     ld a, $12
     ld [sCurrentHour], a
     xor a
-    ld [$b881], a
-    ld [$b880], a
+    ld [sCurrentMinute], a
+    ld [sClockFrameCount], a
     ld [$c910], a
     ld a, $02
     ld [$cb50], a

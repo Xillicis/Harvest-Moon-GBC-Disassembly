@@ -528,12 +528,12 @@ Jump_009_42b2:
     cp $05
     jr nz, jr_009_42dc
 
-    ld a, [$b881]
+    ld a, [sCurrentMinute]
     cp $0e
     jr nz, jr_009_4303
 
     dec a
-    ld [$b881], a
+    ld [sCurrentMinute], a
     jr jr_009_4303
 
 jr_009_42dc:
@@ -607,7 +607,7 @@ jr_009_433f:
     ld a, $05
     ld [sCurrentHour], a
     ld a, $0d
-    ld [$b881], a
+    ld [sCurrentMinute], a
     call Call_000_070b
     pop hl
     xor a

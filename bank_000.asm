@@ -601,7 +601,7 @@ jr_000_0509:
     jr z, jr_000_0529
     ld a, [$cb5c]
     ld [$cb5d], a
-    call Call_000_0673
+    call TickGameClock
 
 jr_000_0529:
     call Call_000_056c
@@ -824,7 +824,7 @@ Jump_000_0605:
     jr nc, jr_000_05fc
 
     ld c, a
-    jr nc, jr_000_0696
+    jr nc, $0696
 
     ld h, h
     cpl
@@ -908,8 +908,14 @@ Jump_000_0640:
     dec a
     ret
 
-
-Call_000_0673:
+; Advance game clock by one minute every ~30 frames, which eventually increments
+; the hours, days, seasons, and years. 
+; Pauses if some certain flags are set.
+TickGameClock:
+    ; In:  called every V‑Blank (or similar frame hook)
+    ; Out: sCurrentMinute++ once threshold is reached,
+    ;      sets BA40 when time == 5:14
+    ; Clobbers: A, B, C, flags
     ld a, [$cb81]
     or a
     ret nz
@@ -922,26 +928,23 @@ Call_000_0673:
     or a
     ret nz
 
-    ld a, [$b880]
+    ld a, [sClockFrameCount]
     inc a
-    ld [$b880], a
-    cp $1e
-    jr nc, jr_000_068e
+    ld [sClockFrameCount], a
+    cp 30
+    jr nc, .incrementMinute
     ret
 
-
-jr_000_068e:
+.incrementMinute
     xor a
-    ld [$b880], a
-    ld a, [$b881]
+    ld [sClockFrameCount], a
+    ld a, [sCurrentMinute]
     inc a
+    ld [sCurrentMinute], a
+    cp 15
+    jr nc, .incrementHour
 
-jr_000_0696:
-    ld [$b881], a
-    cp $0f
-    jr nc, jr_000_06ac
-
-    cp $0e
+    cp 14
     ret nz
 
     ld a, [sCurrentHour]
@@ -952,37 +955,34 @@ jr_000_0696:
     ld [$ba40], a
     ret
 
-
-jr_000_06ac:
+.incrementHour
     xor a
-    ld [$b881], a
+    ld [sCurrentMinute], a
     ld a, [sCurrentHour]
     inc a
     ld [sCurrentHour], a
     cp TIME_12_AM
-    jr nc, jr_000_06c2
+    jr nc, .incrementDay
 
     call Call_000_070b
     call Call_000_070b
     ret
 
-
-jr_000_06c2:
+.incrementDay
     xor a
     ld [sCurrentHour], a
     call Call_000_070b
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
-    cp $1e
-    jr nc, jr_000_06db
+    cp 30
+    jr nc, .incrementSeason
 
     call Call_000_07ab
     call Call_000_08b7
     ret
 
-
-jr_000_06db:
+.incrementSeason
     xor a
     ld [sCurrentDayCounter], a
     ld a, [sCurrentSeason]
@@ -992,20 +992,20 @@ jr_000_06db:
     call Call_000_08b7
     ld a, [sCurrentSeason]
     cp $04
-    jr nc, jr_000_06f4
+    jr nc, .incrementYear
     ret
 
-jr_000_06f4:
+.incrementYear
     xor a
     ld [sCurrentSeason], a
     call Call_000_08b7
     ld a, [sCurrentYear]
     inc a
     ld [sCurrentYear], a
-    cp $63
+    cp 99
     ret nz
 
-    ld a, $62
+    ld a, 98 ; maximum year?
     ld [sCurrentYear], a
     ret
 

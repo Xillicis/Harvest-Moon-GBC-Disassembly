@@ -3,16 +3,20 @@ SECTION "SRAM 0", SRAM
 ; TODO: Define width and height as constants for defining sram space.
 sMapObjectLocation:: ds 6272
 
-sb880::  db 
-sb881::  db 
+; increments until it reaches 30 and then increments the minute by 1. 
+; I think it's to keep the consistency of the work day time too.
+sClockFrameCount::  db ; 0xb880
+; This byte is incremented while outside, once it reaches $0f, it rolls back to 0
+; and increases sCurrentHour by 1.
+sCurrentMinute::  db  ; 0xb881
 ; 6 = Wake up time
-sCurrentHour::  db 
+sCurrentHour::  db  ; 0xb882
 ; Starts at Day 0. Counts how many days have passed
-sCurrentDayCounter::  db 
+sCurrentDayCounter::  db  ; 0xb883
 ; Spring = 0, Summer = 1, Fall = 2, Winter = 3
-sCurrentSeason::  db 
+sCurrentSeason::  db  ; 0xb884
 ; Year 1 starts at 0, etc...
-sCurrentYear::  db 
+sCurrentYear::  db  ; 0xb885
 sb886::  db 
 sb887::  db 
 sb888::  db 
