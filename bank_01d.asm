@@ -3643,7 +3643,7 @@ Call_01d_521e: ; 1dx521e
     ld [$cb5f], a
     call InitializeFarmMap
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld [$c910], a
     ld a, $06
     ld [sCurrentHour], a

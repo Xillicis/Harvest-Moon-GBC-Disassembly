@@ -916,7 +916,7 @@ TickGameClock:
     ; Out: sCurrentMinute++ once threshold is reached,
     ;      sets BA40 when time == 5:14
     ; Clobbers: A, B, C, flags
-    ld a, [$cb81]
+    ld a, [wPlayerIsInsideOrAtTown]
     or a
     ret nz
 
@@ -952,7 +952,7 @@ TickGameClock:
     ret nz
 
     ld a, $01
-    ld [$ba40], a
+    ld [s6AMFlag], a
     ret
 
 .incrementHour
@@ -2216,7 +2216,7 @@ Call_000_0de8:
     ld [$cb55], a
     ld [$cb5f], a
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [sCurrentDayCounter] ; $ff happens in the intro cut scene
     cp $ff
     ret nz

@@ -13,7 +13,7 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
     ld [$b88d], a
     ld [$b88c], a
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_0f0f
     call ClearBGMap0
     call ClearBGMap1

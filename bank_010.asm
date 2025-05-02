@@ -3146,7 +3146,7 @@ jr_010_4f00:
     add hl, de
     nop
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [$ba49]
     or a
     jr nz, jr_010_4fbe

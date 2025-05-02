@@ -32,7 +32,13 @@ ds $16
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a
 
-ds $17f
+ds 54
+
+; This is zero if the player is outside at the farm.
+; It is one if the player is inside or at town
+wPlayerIsInsideOrAtTown:: db ; 0xcb81
+
+ds $148 ; $17f
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

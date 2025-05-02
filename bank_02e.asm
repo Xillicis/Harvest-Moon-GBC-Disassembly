@@ -132,7 +132,7 @@ jr_02e_40e9:
     ret nz
 
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     xor a
     ld [$cc98], a
     ld [$cc99], a
@@ -258,7 +258,7 @@ Call_02e_41de:
     ret z
 
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [$c911]
     dec a
     ld [$c911], a

@@ -165,7 +165,7 @@ jr_001_4122:
     ld [$cb5e], a
     xor a
     ld [$cb79], a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -207,7 +207,7 @@ jr_001_4122:
 
 jr_001_418d:
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld [$cb7a], a
     ld [$cb7b], a
     ld [$cb7c], a
@@ -292,7 +292,7 @@ Call_001_4224:
     ret z
 
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [$c911]
     dec a
     ld [$c911], a
@@ -6769,7 +6769,7 @@ Call_001_6b67:
     or a
     ret nz
 
-    ld a, [$ba40]
+    ld a, [s6AMFlag]
     or a
     ret z
 
@@ -8154,11 +8154,11 @@ jr_001_72d6:
     ret nz
 
     ld a, [sCurrentMinute]
-    cp $00
+    cp 0
     ret nz
 
     ld a, [sClockFrameCount]
-    cp $00
+    cp 0
     ret nz
 
     ld a, $01
@@ -8673,7 +8673,7 @@ jr_001_762b:
     ld [$b88d], a
     ld [$cbf6], a
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     xor a
     ld [sCurrentMinute], a
     ld a, $01
@@ -9031,11 +9031,11 @@ Call_001_7878:
 
 Call_001_7895:
     ld a, [sCurrentSeason]
-    cp $01
+    cp SUMMER
     ret nz
 
     ld a, [sCurrentDayCounter]
-    cp $13
+    cp 19
     ret nz
 
     ld a, [sCurrentHour]
@@ -9043,14 +9043,14 @@ Call_001_7895:
     ret nz
 
     ld a, [sCurrentMinute]
-    cp $01
+    cp 1
     ret nz
 
     ld a, [sClockFrameCount]
-    cp $00
+    cp 0
     ret nz
 
-    ld a, $01
+    ld a, 1
     ld [sClockFrameCount], a
     ld a, $04
     ld [$cb90], a
@@ -9059,11 +9059,11 @@ Call_001_7895:
 
 Call_001_78be:
     ld a, [sCurrentSeason]
-    cp $03
+    cp WINTER
     ret nz
 
     ld a, [sCurrentDayCounter]
-    cp $17
+    cp 23
     ret nz
 
     ld a, [sCurrentHour]
@@ -9071,14 +9071,14 @@ Call_001_78be:
     ret nz
 
     ld a, [sCurrentMinute]
-    cp $01
+    cp 1
     ret nz
 
     ld a, [sClockFrameCount]
-    cp $00
+    cp 0
     ret nz
 
-    ld a, $01
+    ld a, 1
     ld [sClockFrameCount], a
     ld a, $05
     ld [$cb90], a
@@ -9320,7 +9320,7 @@ jr_001_7a53:
     ld [$c911], a
     call Call_001_4224
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ret
 
 
@@ -9343,7 +9343,7 @@ jr_001_7a72:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9367,7 +9367,7 @@ Jump_001_7a9d:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9391,7 +9391,7 @@ Jump_001_7ac8:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9418,7 +9418,7 @@ Jump_001_7af3:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9433,7 +9433,7 @@ jr_001_7b21:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9457,7 +9457,7 @@ Jump_001_7b3a:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9479,7 +9479,7 @@ Jump_001_7b65:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9519,7 +9519,7 @@ jr_001_7baf:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9541,7 +9541,7 @@ Jump_001_7bd8:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9563,7 +9563,7 @@ Jump_001_7c01:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9585,7 +9585,7 @@ Jump_001_7c2a:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9607,7 +9607,7 @@ Jump_001_7c53:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9642,7 +9642,7 @@ jr_001_7c9e:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9671,7 +9671,7 @@ Jump_001_7cc4:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9693,7 +9693,7 @@ Jump_001_7ced:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 
@@ -9715,7 +9715,7 @@ Jump_001_7d16:
     ld a, $ff
     ld [$c80c], a
     xor a
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     call Call_000_3f26
     ret
 

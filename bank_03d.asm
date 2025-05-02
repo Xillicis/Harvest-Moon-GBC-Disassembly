@@ -3607,7 +3607,7 @@ jr_03d_519a:
     ld [hl+], a
     ld [hl+], a
     ld a, $01
-    ld [$b8a3], a
+    ld [sShedSickleFlag], a
     ld [$b8a4], a
     ld [$b8a5], a
     ld [$b8a6], a
@@ -3645,7 +3645,7 @@ Call_03d_51d9:
     ld [$cb5f], a
     call InitializeFarmMap
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld [$c910], a
     ld a, $06
     ld [sCurrentHour], a

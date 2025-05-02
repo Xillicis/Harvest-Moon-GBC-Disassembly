@@ -48,11 +48,11 @@ sb8a1::  db
 sb8a2::  db
 
 sShedItemFlagList::
-sShedSickleFlag::  db 
-sShedHoeFlag::  db 
-sShedHammerFlag::  db 
-sShedAxFlag::  db 
-sShedSuperSickleFlag::  db 
+sShedSickleFlag::  db ; 0xb8a3
+sShedHoeFlag::  db  ; 0xb8a4
+sShedHammerFlag::  db  ; 0xb8a5
+sShedAxFlag::  db  ; 0xb8a6
+sShedSuperSickleFlag::  db ; 0xb8a7
 sShedSuperHoeFlag::  db 
 sShedSuperHammerFlag::  db 
 sShedSuperAxFlag::  db 
@@ -441,7 +441,7 @@ sba2c::  db
 sba2d::  db 
 sba2e::  db 
 sba2f::  db 
-sNumShipments::  db 
+sNumShipments::  db ; 0xba30
 sba31::  db 
 sba32::  db 
 sba33::  db 
@@ -457,7 +457,7 @@ sba3c::  db
 sba3d::  db 
 sba3e::  db 
 sPrayedFlag::  db 
-sba40::  db 
+s6AMFlag::  db 
 sba41::  db 
 sba42::  db 
 sba43::  db 

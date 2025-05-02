@@ -637,7 +637,7 @@ Call_022_439b:
 
 jr_022_43bb:
     ld a, $01
-    ld [$b8a7], a
+    ld [sShedSuperSickleFlag], a
     ld a, $ff
     ld [$ba38], a
     ret
@@ -3241,7 +3241,7 @@ jr_022_50a8:
     ld a, [sHouseExpansionFlag]
     ld [$cbe8], a
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [$b8d1]
     and a
     jp z, Jump_022_514d
@@ -7432,7 +7432,7 @@ jr_022_68d4:
     ld [sCurrentHour], a
     call Call_000_070b
     xor a
-    ld [$ba40], a
+    ld [s6AMFlag], a
     ret
 
 

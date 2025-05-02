@@ -6014,7 +6014,7 @@ Call_02f_62dd:
     ld bc, $020f
     rst $38
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     xor a
     ld [$cbe8], a
     ld [$ccb7], a

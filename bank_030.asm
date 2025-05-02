@@ -3028,7 +3028,7 @@ Call_030_4ebd:
     rla
     nop
     ld a, $01
-    ld [$cb81], a
+    ld [wPlayerIsInsideOrAtTown], a
     ld a, [$ba49]
     or a
     jr nz, jr_030_4f2d
