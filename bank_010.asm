@@ -7773,7 +7773,7 @@ jr_010_64a5:
     rst $38
     db $f4
     inc a
-    call nz, Call_000_32fe
+    call nz, $32fe
     ld a, [hl]
     adc d
     ld l, $ff

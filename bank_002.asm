@@ -7475,11 +7475,11 @@ jr_002_6916:
 Call_002_6921:
     ld a, [$b900]
     or a
-    jr nz, jr_002_6974
+    jr nz, .jr_002_6974
 
     ld a, [$b902]
     cp $06
-    jr c, jr_002_6974
+    jr c, .jr_002_6974
 
     xor a
     ld [sClockFrameCount], a
@@ -7490,14 +7490,12 @@ Call_002_6921:
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
-    cp $1e
-    jr nc, jr_002_694c
-
+    cp 30
+    jr nc, .updateSeason
     call Call_000_07ab
     ret
 
-
-jr_002_694c:
+.updateSeason
     xor a
     ld [sCurrentDayCounter], a
     ld a, [sCurrentSeason]
@@ -7507,12 +7505,10 @@ jr_002_694c:
     call Call_000_08b7
     ld a, [sCurrentSeason]
     cp $04
-    jr nc, jr_002_6965
-
+    jr nc, .updateYear
     ret
 
-
-jr_002_6965:
+.updateYear
     xor a
     ld [sCurrentSeason], a
     call Call_000_08b7
@@ -7521,8 +7517,7 @@ jr_002_6965:
     ld [sCurrentYear], a
     ret
 
-
-jr_002_6974:
+.jr_002_6974
     xor a
     ld [sClockFrameCount], a
     ld [sCurrentMinute], a

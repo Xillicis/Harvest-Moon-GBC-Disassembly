@@ -1148,7 +1148,7 @@ Call_000_07ab:
     ld a, [hl+]
     ld [$ba53], a
     ld a, [sCurrentSeason]
-    ld c, $1e
+    ld c, 30
     call Multiply8Bit
     ld a, [sCurrentDayCounter]
     add l
@@ -2531,9 +2531,6 @@ jr_000_1030:
     ld [wTempPlayerMoney], a
     ld a, [$b93b]
     ld [$cccb], a
-
-Call_000_1040:
-Jump_000_1040:
     call Call_000_3268
     ld a, [$cccf]
     ld [$b930], a
@@ -2545,34 +2542,35 @@ Jump_000_1052:
     ld [$b932], a
     ret
 
-
+; Looks like some kind of check to make sure the players money is capped at 99999,
+; but it also seems to do other stuff.
+; 0x1869f = 99999 (maximum money)
 Call_000_1056:
-    ld a, [$b8f1]
+    ld a, [sPlayerMoney+2]
     cp $ff
     jr z, jr_000_108d
 
 Jump_000_105d:
     ld a, [sPlayerMoney+2]
-    cp $02
-    jr nc, jr_000_107c
+    cp $02 ; highest byte cannot be 2 or larger
+    jr nc, .setMaxMoney
 
     cp $01
     jr c, jr_000_1097
 
     ld a, [sPlayerMoney+1]
     cp $87
-    jr nc, jr_000_107c
+    jr nc, .setMaxMoney
 
     cp $86
     jr c, jr_000_1097
 
     ld a, [sPlayerMoney]
     cp $a0
-    jr nc, jr_000_107c
-
+    jr nc, .setMaxMoney
     jr jr_000_1097
 
-jr_000_107c:
+.setMaxMoney
     ld a, $9f
     ld [sPlayerMoney], a
     ld a, $86
@@ -9028,18 +9026,9 @@ jr_000_32f0:
     ld [de], a
     ret
 
-
-    inc [hl]
-    dec [hl]
-    ld [hl], $37
-
-Call_000_32fe:
-    jr c, jr_000_3339
-
-    ld a, [hl-]
-    dec sp
-    inc a
-    dec a
+; The routine above loads this, don't know what it is for...
+Data_000_32fa:
+    db $34, $35, $36, $37, $38, $39, $3a, $3b, $3c, $3d
 
 Call_000_3304:
     ld [wTempPlayerMoney], a
@@ -9077,8 +9066,6 @@ Jump_000_3311:
     ld [MBC3RomBank], a
     pop hl
     pop de
-
-jr_000_3339:
     ldh a, [rLY]
     ld c, a
 
@@ -11380,18 +11367,13 @@ Call_000_3efc:
 jr_000_3efc:
     call SyncToBlankPeriod
     ld a, $c3
-
-Jump_000_3f01:
     ld [$c0a2], a
     ldh [rLCDC], a
     xor a
 
 jr_000_3f07:
     ld [$cb4c], a
-
-Jump_000_3f0a:
     ret
-
 
 Call_000_3f0b:
     call ClearOldTextOnTextBox
@@ -11403,12 +11385,9 @@ Call_000_3f0b:
     ld a, $e3
     ld [$c0a2], a
     ldh [rLCDC], a
-
-Call_000_3f20:
     ld a, $01
     ld [$cb4c], a
     ret
-
 
 Call_000_3f26:
     ld a, $ff

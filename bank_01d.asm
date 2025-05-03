@@ -5367,7 +5367,7 @@ jr_01d_5b0f:
     push hl
     rst $38
     add d
-    jp nz, Jump_000_3f01
+    jp nz, $3f01
 
     rst $38
     adc d

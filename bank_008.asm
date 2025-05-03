@@ -6854,7 +6854,7 @@ jr_008_65cc:
     ld c, b
     ld de, $1212
     ld de, $0000
-    jp nz, Jump_000_1040
+    jp nz, $1040
 
     ld [bc], a
     ld [bc], a
@@ -6866,7 +6866,7 @@ jr_008_65cc:
     ld [de], a
     ld [de], a
     ld de, $0000
-    call nz, Call_000_1040
+    call nz, $1040
     ld [bc], a
     ld [bc], a
     stop
@@ -6935,7 +6935,7 @@ jr_008_65cc:
     ld c, b
     ld de, $1212
     ld de, $0000
-    jp nc, Jump_000_1040
+    jp nc, $1040
 
     ld [bc], a
     ld [bc], a
@@ -6945,7 +6945,7 @@ jr_008_65cc:
     ld c, b
     ld de, $1212
     ld de, $0000
-    call nc, Call_000_1040
+    call nc, $1040
     ld [bc], a
     ld [bc], a
     stop

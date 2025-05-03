@@ -6792,7 +6792,6 @@ Call_001_6b67:
     ld [$cb79], a
     ret
 
-
 Call_001_6ba5:
     ld a, [$cb84]
     or a
