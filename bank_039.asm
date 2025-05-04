@@ -6278,7 +6278,7 @@ jr_039_5b2b:
     add sp, -$34
     jr nc, jr_039_5b7a
 
-    call z, Call_000_30ce
+    call z, $30ce
     scf
     sbc $3d
     ld a, [bc]

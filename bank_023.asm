@@ -6264,7 +6264,7 @@ Jump_023_658b:
     or a
     jr nz, jr_023_65d5
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $10
     jr nc, jr_023_65d5
@@ -6304,7 +6304,7 @@ jr_023_65d5:
     or a
     jr nz, jr_023_661f
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $02
     jr nc, jr_023_661f
@@ -6344,7 +6344,7 @@ jr_023_661f:
     or a
     jr nz, jr_023_6669
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $02
     jr nc, jr_023_6669
@@ -6384,7 +6384,7 @@ jr_023_6669:
     or a
     jp nz, Jump_023_64a3
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $02
     jp nc, Jump_023_64a3
@@ -6487,7 +6487,7 @@ jr_023_671a:
     ld h, a
     sub h
     ld h, a
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -6502,7 +6502,7 @@ jr_023_675f:
     ld [$cc37], a
     jr jr_023_67aa
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -6517,7 +6517,7 @@ jr_023_6777:
     ld [$cc37], a
     jr jr_023_67aa
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -6532,7 +6532,7 @@ jr_023_678f:
     ld [$cc37], a
     jr jr_023_67aa
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -6547,7 +6547,7 @@ jr_023_67a7:
     ld [$cc37], a
 
 jr_023_67aa:
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     and $f8
     ld b, a
@@ -6560,7 +6560,7 @@ jr_023_67aa:
 jr_023_67b9:
     sub $30
     ld [$ba1e], a
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -8080,7 +8080,7 @@ jr_023_70f5:
     or a
     jr nz, jr_023_713a
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $08
     jr nc, jr_023_713b
@@ -8199,7 +8199,7 @@ jr_023_7155:
     or a
     jr nz, jr_023_71da
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $08
     jr nc, jr_023_71da
@@ -8290,7 +8290,7 @@ jr_023_7217:
     or a
     ret nz
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     cp $08
     ret nc
@@ -8444,7 +8444,7 @@ jr_023_7309:
 Call_023_730c:
 jr_023_730c:
     inc de
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a
@@ -8471,7 +8471,7 @@ jr_023_732c:
 
 jr_023_732f:
     inc de
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a

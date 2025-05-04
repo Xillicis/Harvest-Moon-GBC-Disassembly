@@ -2039,7 +2039,7 @@ jr_038_48de:
     or h
     ld d, $ec
     ldh a, [c]
-    call z, Call_000_30cc
+    call z, $30cc
     ld a, b
     and b
     ld e, $05
@@ -9100,7 +9100,7 @@ jr_038_66aa:
     jr jr_038_66aa
 
 jr_038_66ac:
-    call z, Call_000_30ee
+    call z, $30ee
     cp e
     ldh a, [rDIV]
     inc bc

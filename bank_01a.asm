@@ -5664,7 +5664,7 @@ jr_01a_56fb:
     db $dd
     and [hl]
     ld a, [hl-]
-    call nz, Call_000_30cc
+    call nz, $30cc
     ld l, b
     ldh a, [$ff88]
     ldh a, [$ff50]

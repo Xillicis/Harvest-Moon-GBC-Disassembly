@@ -9115,7 +9115,7 @@ jr_018_6678:
     db $e4
     jr jr_018_66de
 
-    call z, Call_000_30fe
+    call z, $30fe
     ei
     ldh a, [rTAC]
     nop

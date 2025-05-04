@@ -13014,7 +13014,7 @@ jr_03e_793d:
 jr_03e_7956:
     cp $20
     sub [hl]
-    jp nz, Jump_000_3001
+    jp nz, $3001
 
     cp $01
     jp hl

@@ -13,40 +13,39 @@ LinearCongruentialGenerator:
     ldh [hRandomNumber], a
     ret
 
-Call_000_0b1d:
+; Return a pseudo‑random byte in A, updating the 8‑bit seed in [hRandomNumber]
+GetNextRandomByte:
     ld hl, RandomTableData
-    ldh a, [hRandomNumber]
-    add l
+    ldh a, [hRandomNumber] ; A = old seed
+    add l                  ; add seed to the low byte of HL
     ld l, a
     ld a, $00
-    adc h
+    adc h                  ; propagate carry into the high byte
     ld h, a
-    ld a, [hl]
+    ld a, [hl]             ; A = RandomTableData[ seed ]
     push af
+
+    ;; compute B = (frameCounter | 1)
     ld a, [$c0a8]
     or $01
     ld b, a
+
+    ;; update seed: new_seed = old_seed + B + carry_from_table_wrap
     ldh a, [hRandomNumber]
-Jump_000_0b32:
     adc b
     ldh [hRandomNumber], a
     pop af
     ret
 
-
 Call_000_0b37:
     ld hl, RandomTableData
     ldh a, [$ff9d]
-
-Call_000_0b3c:
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
     ld a, [hl]
-
-Call_000_0b43:
     ldh [$ff9d], a
     ret
 

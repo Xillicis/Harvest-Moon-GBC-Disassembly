@@ -9889,7 +9889,7 @@ jr_022_73e0:
     inc bc
     db $10
     db $db
-    call c, Call_000_0b3c
+    call c, $0b3c
     db $10
     dec sp
     inc a

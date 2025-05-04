@@ -141,7 +141,7 @@ jr_030_40b9:
     ld b, e
     and a
     ld b, e
-    call Call_000_0b43
+    call $0b43
     ld b, h
     add hl, sp
 
@@ -192,7 +192,7 @@ jr_030_412f:
     cp $01
     jr z, jr_030_4169
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a

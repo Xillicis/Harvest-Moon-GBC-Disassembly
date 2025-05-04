@@ -207,7 +207,7 @@ jr_010_414a:
     cp $01
     jr z, jr_010_4184
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld h, $00
     ld l, a

@@ -9331,7 +9331,7 @@ jr_005_7265:
     ldh a, [$ffa1]
     dec b
     xor $dd
-    call c, Call_000_3033
+    call c, $3033
     rst $08
     di
     ldh [$ffdf], a

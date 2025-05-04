@@ -1696,7 +1696,7 @@ jr_016_4791:
     nop
     ld a, [$fee4]
     ldh a, [$fffe]
-    call nz, Call_000_30fc
+    call nz, $30fc
     inc e
     db $10
     ld a, [bc]

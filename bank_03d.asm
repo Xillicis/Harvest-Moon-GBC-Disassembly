@@ -3963,7 +3963,7 @@ jr_03d_540d:
 
 
 Call_03d_5432:
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -6571,7 +6571,7 @@ jr_03d_6066:
     dec [hl]
     add e
     dec l
-    jp Jump_000_0b32
+    jp $0b32
 
 
     ld b, c

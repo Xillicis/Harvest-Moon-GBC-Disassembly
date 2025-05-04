@@ -1705,7 +1705,7 @@ jr_036_473a:
     db $e4
     xor $f0
     cp [hl]
-    call nz, Call_000_30dc
+    call nz, $30dc
     ld a, h
     sub b
     ld e, $e4
@@ -11025,7 +11025,7 @@ jr_036_6f65:
 
     nop
     cp d
-    call nz, Call_000_30cc
+    call nz, $30cc
     db $10
     ldh [$ff58], a
     or b

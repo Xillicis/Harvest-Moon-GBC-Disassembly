@@ -5943,7 +5943,7 @@ Call_004_647f:
     ld h, h
     db $fd
     ld h, h
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5958,7 +5958,7 @@ jr_004_64c8:
     ld [$cc59], a
     jr jr_004_6513
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5973,7 +5973,7 @@ jr_004_64e0:
     ld [$cc59], a
     jr jr_004_6513
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5988,7 +5988,7 @@ jr_004_64f8:
     ld [$cc59], a
     jr jr_004_6513
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -6003,7 +6003,7 @@ jr_004_6510:
     ld [$cc59], a
 
 jr_004_6513:
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     and $f8
     ld b, a
@@ -6016,7 +6016,7 @@ jr_004_6513:
 jr_004_6522:
     sub $30
     ld [$ba2c], a
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a

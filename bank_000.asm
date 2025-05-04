@@ -8392,8 +8392,6 @@ jr_000_2fcc:
 
 Jump_000_3000:
     ld a, [hl+]
-
-Jump_000_3001:
     ld [$cb60], a
     ld a, [hli]
     ld h, [hl]
@@ -8408,7 +8406,6 @@ Jump_000_3001:
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 Jump_000_3017:
     ldh a, [$ffac]
@@ -8431,8 +8428,6 @@ Jump_000_3017:
     ld a, d
     inc a
     ld [MBC3RomBank], a
-
-Call_000_3033:
     dec hl
     dec hl
     ld a, [hl+]
@@ -8466,7 +8461,6 @@ Call_000_3033:
     ld [MBC3RomBank], a
     ret
 
-
 Jump_000_3063:
     ldh a, [$ffa5]
     cp $80
@@ -8475,7 +8469,6 @@ Jump_000_3063:
     sub $80
     ldh [$ffa5], a
     jp Jump_000_30bd
-
 
 jr_000_3070:
     ldh a, [$ffac]
@@ -8531,7 +8524,6 @@ jr_000_3070:
     ld [MBC3RomBank], a
     ret
 
-
 Jump_000_30bd:
     ldh a, [$ffac]
     ld l, a
@@ -8545,12 +8537,8 @@ Jump_000_30bd:
     ld a, $00
     adc h
     ld h, a
-
-Call_000_30cc:
     inc hl
     inc hl
-
-Call_000_30ce:
     ld d, [hl]
     ld a, [MBC3SRamBank]
     ldh [hROMBankTemp], a
@@ -8559,8 +8547,6 @@ Call_000_30ce:
     ld [MBC3RomBank], a
     dec hl
     dec hl
-
-Call_000_30dc:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -8573,8 +8559,6 @@ Call_000_30dc:
     sla c
     rl b
     add hl, bc
-
-Call_000_30ee:
     pop bc
     ld a, [hl+]
     ld [$cb61], a
@@ -8584,12 +8568,8 @@ Call_000_30ee:
     ld h, [hl]
     ld l, a
     ld d, $00
-
-Call_000_30fc:
     add hl, de
     add hl, de
-
-Call_000_30fe:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -8598,7 +8578,7 @@ Call_000_30fe:
     ld [MBC3RomBank], a
     ret
 
-
+; Data
     ld bc, $1240
     ld bc, $1440
     ld bc, $1440

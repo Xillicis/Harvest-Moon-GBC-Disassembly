@@ -5856,7 +5856,7 @@ Call_024_63d2:
 
     ld d, b
     ld h, h
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5871,7 +5871,7 @@ jr_024_641b:
     ld [$cc59], a
     jr jr_024_6466
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5886,7 +5886,7 @@ jr_024_6433:
     ld [$cc59], a
     jr jr_024_6466
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5901,7 +5901,7 @@ jr_024_644b:
     ld [$cc59], a
     jr jr_024_6466
 
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
@@ -5916,7 +5916,7 @@ jr_024_6463:
     ld [$cc59], a
 
 jr_024_6466:
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     and $f8
     ld b, a
@@ -5929,7 +5929,7 @@ jr_024_6466:
 jr_024_6475:
     sub $30
     ld [$ba2c], a
-    call Call_000_0b1d
+    call GetNextRandomByte
     ldh a, [$ff9c]
     ld h, $00
     ld l, a
