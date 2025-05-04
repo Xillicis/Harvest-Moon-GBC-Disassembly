@@ -331,7 +331,7 @@ Jump_000_0217:
     xor a
     ldh [$ff9a], a
     xor a
-    ld [$c500], a
+    ld [wVRAMBlitCommandList], a
     xor a
     ldh [$ff97], a
     push hl
@@ -558,23 +558,25 @@ Call_000_04c7:
     push bc
     push de
     push hl
+;; Turn on bit 1 (LCD enable) in the LCDC register
     ldh a, [rLCDC]
-    or $02
+    or 1 << rLCDC_SPRITES_ENABLE
     ldh [rLCDC], a
-    ldh a, [$ff8d]
+    ldh a, [$ff8d] ; a per-VBlank "first-time" flag
     or a
     jp nz, Jump_000_0561
 
+;; first VBlank in a sequence:
     inc a
     ldh [$ff8d], a
-    call $ff80
-    ei
-    call $6e8b
-    ld de, $c500
-    call Call_000_22d9
+    call $ff80      ; BIOS routine: "wait_VBlank_and_joypad"
+    ei              ; re-enable IME (interrupts) for nested ISRs
+    call $6e8b      ; BIOS "MGL" call (typically "pad input + DMA")
+    ld de, wVRAMBlitCommandList
+    call ExecuteVRAMBlitCommands
     xor a
     ldh [$ff97], a
-    ld [$c500], a
+    ld [wVRAMBlitCommandList], a
     call RestoreScrollAndWindow
     call LoadDMGPalettes
     xor a
@@ -583,14 +585,13 @@ Call_000_04c7:
     ld a, [$c0a8]
     inc a
     ld [$c0a8], a
-    jr nc, jr_000_0509
+    jr nc, .next1 ; if no overflow, skip
 
     ld a, [$c0a9]
     inc a
-    ld [$c0a9], a
-
-jr_000_0509:
-    call LinearCongruentialGenerator
+    ld [$c0a9], a ; overwise bump a second counter
+.next1
+    call LinearCongruentialGenerator ; update PRNG
     call Call_000_2195
     ld hl, $c0ba
     inc [hl]
@@ -598,12 +599,12 @@ jr_000_0509:
     ld [$cb5d], a
     ld a, [$c0ba]
     and $10
-    jr z, jr_000_0529
+    jr z, .skipClock
     ld a, [$cb5c]
     ld [$cb5d], a
     call TickGameClock
 
-jr_000_0529:
+.skipClock
     call Call_000_056c
     call Call_000_0d22
     push hl
@@ -631,7 +632,7 @@ jr_000_0529:
     jp z, Jump_000_01b1
 
     xor a
-    ldh [$ff8d], a
+    ldh [$ff8d], a ; clear the "first-VBlank" flag
 
 jr_000_055c:
     pop hl
@@ -1415,7 +1416,7 @@ ClearUnusedOAMEntries:
     jp ZeroOutHL
 
 Call_000_0924:
-    ld hl, $c500
+    ld hl, wVRAMBlitCommandList
     ldh a, [$ff97]
     add l
     ld l, a
@@ -1425,7 +1426,7 @@ Call_000_0924:
     ret
 
 Call_000_0930:
-    ld de, $c500
+    ld de, wVRAMBlitCommandList
     ldh a, [$ff97]
     rst $30
 
@@ -5610,7 +5611,7 @@ ClearBGMap0_duplicate:
     jr nz, .loop
     ret
 
-jr_000_22ad:
+BeginBlitting:
     inc de
     ld h, a
     ld a, [de]
@@ -5619,59 +5620,60 @@ jr_000_22ad:
     ld a, [de]
     inc de
     ld c, a
-    and $3f
-    ld b, a
-    ld a, c
+    and %00111111 ; length of data block (up to 63)
+    ld b, a ; b is a counter for bytes to copy
+    ld a, c ; top two bits get rotated to the first two bits
     rlca
     rlca
-    and $03
-    jr z, jr_000_22d3
+    and $03 ; check this first two bits now
+    jr z, .horizontalCopy
     dec a
-    jr z, jr_000_22e2
+    jr z, HorizontalFill
     dec a
-    jr z, jr_000_22ea
-
-jr_000_22c5:
+    jr z, VerticalFill
+; fallthrough
+.verticalCopy
     ld a, [de]
     ld [hl], a
     ld a, b
-    ld bc, $0020
+    ld bc, $0020 ; 32 byte shift
     add hl, bc
     ld b, a
     dec b
-    jr nz, jr_000_22c5
-
+    jr nz, .verticalCopy
     inc de
-    jr jr_000_22d9
+    jr ExecuteVRAMBlitCommands
 
-jr_000_22d3:
+.horizontalCopy
     ld a, [de]
-    ld [hl+], a
+    ld [hli], a
     inc de
     dec b
-    jr nz, jr_000_22d3
+    jr nz, .horizontalCopy
+; fallthrough
 
-Call_000_22d9:
-jr_000_22d9:
+ExecuteVRAMBlitCommands:
+    ; In:  DE → command stream
+    ; Clobbers: A, B, C, DE, HL
+    ; Returns when a zero-length command is encountered
     xor a
     ld [$cb75], a
     ld a, [de]
     or a
-    jr nz, jr_000_22ad
+    jr nz, BeginBlitting
     ret
 
-jr_000_22e2:
+HorizontalFill:
     ld a, [de]
     inc de
-
-jr_000_22e4:
+.fill
     ld [hl+], a
     dec b
-    jr nz, jr_000_22e4
+    jr nz, .fill
+    jr ExecuteVRAMBlitCommands
 
-    jr jr_000_22d9
-
-jr_000_22ea:
+VerticalFill:
+.fill
     ld a, [de]
     ld [hl], a
     inc de
@@ -5680,8 +5682,8 @@ jr_000_22ea:
     add hl, bc
     ld b, a
     dec b
-    jr nz, jr_000_22ea
-    jr jr_000_22d9
+    jr nz, .fill
+    jr ExecuteVRAMBlitCommands
 
 CopyHLtoDE:
 ; copy `b` bytes of data from address starting in `hl` to address starting at `de`.

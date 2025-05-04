@@ -1681,7 +1681,7 @@ jr_026_4780:
     call Call_000_31a0
     call Call_026_4865
     ld de, $48bc
-    call Call_000_22d9
+    call ExecuteVRAMBlitCommands
     ld hl, $99c0
     ld bc, $0060
     call ZeroOutHL

@@ -13294,7 +13294,7 @@ jr_030_7bbb:
     inc a
     db $fd
     rst $38
-    ld de, $c500
+    ld de, wVRAMBlitCommandList
     db $fd
     ld [$38f8], sp
     ld hl, sp-$01

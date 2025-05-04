@@ -1713,7 +1713,7 @@ jr_006_47f7:
     call Call_000_31a0
     call Call_006_489f
     ld de, $48f6
-    call Call_000_22d9
+    call ExecuteVRAMBlitCommands
     ld hl, $99c0
     ld bc, $0060
     call ZeroOutHL

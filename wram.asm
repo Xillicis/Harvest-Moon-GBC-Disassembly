@@ -4,9 +4,13 @@ wShadowOAM:: ds 160 ; at $C000, holds up to 40×4 bytes of sprite attributes
 
 ds 7
 
-wSTAT_HandlerIndex:: db
+wSTAT_HandlerIndex:: db ; 0xc0a7
 
-ds 1381
+ds 1112
+
+wVRAMBlitCommandList:: db ; 0xc500
+
+ds 268
 
 ; 0 - Facing down
 ; 1 - Facing left

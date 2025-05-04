@@ -122,7 +122,7 @@ SECTION "ROM Bank $032", ROMX[$4000], BANK[$32]
     ld c, [hl]
     ld bc, $9100
     ld c, [hl]
-    ld bc, $c500
+    ld bc, wVRAMBlitCommandList
     ld c, a
     ld bc, $3b00
     ld d, b
@@ -2116,7 +2116,7 @@ jr_032_4851:
     ret z
 
     ld c, e
-    ld a, [$c500]
+    ld a, [wVRAMBlitCommandList]
     nop
     ld a, [$c4f8]
     nop

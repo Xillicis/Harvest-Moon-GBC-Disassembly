@@ -1384,7 +1384,7 @@ jr_012_4851:
     ret z
 
     ld c, e
-    ld a, [$c500]
+    ld a, [wVRAMBlitCommandList]
     db $10
     ld a, [$c4f8]
     db $10
