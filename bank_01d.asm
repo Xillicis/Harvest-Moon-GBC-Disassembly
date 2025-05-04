@@ -1222,47 +1222,42 @@ jr_01d_466c:
     ret
 
 
-jr_01d_4675:
-    ldh a, [rLY]
-    cp $4f
-    jr z, jr_01d_467f
+; STAT interrupt handler to split horizontal scroll:
+; at scanline 79→load map scroll, at 119→reset scroll for UI
+SplitHScrollHandler:
+.wait
+    ldh a, [rLY]  
+    cp $4f        ; is current scanline 79?
+    jr z, .on79   ; yes → set up scroll for the main map
+    jr nc, .on119 ; if past 79, skip to the next threshold logic
+    jr .wait      ; otherwise, keep looping
 
-    jr nc, jr_01d_468f
-
-    jr jr_01d_4675
-
-jr_01d_467f:
-    ldh a, [rSTAT]
-    and $03
-    jr nz, jr_01d_467f
-
-    ld a, [$cd64]
-    ldh [rSCX], a
-    ld a, $75
-    ldh [rLYC], a
+.on79
+    ldh a, [rSTAT]  
+    and $03       ; mask mode bits
+    jr nz, .on79  ; spin until mode=0 (H‑Blank)
+    ld a, [$cd64]  
+    ldh [rSCX], a ; load your “map scroll X” value
+    ld a, $75      
+    ldh [rLYC], a ; set LYC=0x75 (117) for the next interrupt
     ret
 
+.on119
+    ldh a,[rLY]  
+    cp $77       ; is it scanline 119?
+    jr z, .on119_2
+    ret nc       ; if we’ve passed 119 already, bail out
+    jr .on119
 
-jr_01d_468f:
-    ldh a, [rLY]
-    cp $77
-    jr z, jr_01d_4698
-
-    ret nc
-
-    jr jr_01d_468f
-
-jr_01d_4698:
+.on119_2
     ldh a, [rSTAT]
     and $03
-    jr nz, jr_01d_4698
-
+    jr nz, .on119_2 ; wait for mode=0 again
     xor a
-    ldh [rSCX], a
+    ldh [rSCX], a   ; reset SCX to 0 (fixed section)
     ld a, $4d
-    ldh [rLYC], a
+    ldh [rLYC], a   ; set LYC back to 0x4d (77) for the next cycle
     ret
-
 
 Call_01d_46a6:
     call ClearBGMap0

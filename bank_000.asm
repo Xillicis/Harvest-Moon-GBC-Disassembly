@@ -9037,7 +9037,6 @@ Call_000_3304:
     ld [$cccc], a
     jp Jump_000_3268
 
-
 Jump_000_3311:
     push af
     push bc
@@ -9047,11 +9046,11 @@ Jump_000_3311:
     ld e, a
     add a
     add e
-    ld e, a
-    ld d, $00
+    ld e, a ; 3*a
+    ld d, $00 
     ld hl, $3345
     add hl, de
-    ld a, [hl+]
+    ld a, [hli]
     ld e, a
     ld d, [hl]
     inc hl
@@ -9078,93 +9077,53 @@ Jump_000_3311:
     pop af
     reti
 
-
 Call_000_3344:
     jp hl
 
+Data_000_3345:
+    db $C3, $33, $00
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $30, $47, $06
+    db $C3, $33, $00
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $55, $78, $1F
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $55, $78, $1F
+    db $5C, $43, $1D
+    db $75, $46, $1D
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $A6, $4E, $06
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $C3, $33, $00
+    db $55, $78, $1F
+    db $C3, $33, $00
+    db $55, $78, $1F
 
-    jp $0033
-
-
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    jr nc, @+$49
-
-    ld b, $c3
-    inc sp
-    nop
-    ld d, l
-    ld a, b
-
-Call_000_335f:
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    ld d, l
-    ld a, b
-    rra
-    jp $0033
-    jp $0033
-    ld d, l
-    ld a, b
-    rra
-    ld e, h
-    ld b, e
-    dec e
-    ld [hl], l
-    ld b, [hl]
-    dec e
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    and [hl]
-    ld c, [hl]
-    ld b, $c3
-    inc sp
-    nop
-    jp $0033
-    jp $0033
-    jp $0033
-    jp $0033
-    ld d, l
-    ld a, b
-    rra
-    jp $0033
-    ld d, l
-    ld a, b
-    rra
     ret
 
 Call_000_33c4:

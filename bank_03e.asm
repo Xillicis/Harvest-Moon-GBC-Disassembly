@@ -14138,7 +14138,7 @@ jr_03e_7de7:
     ld c, a
     db $db
     daa
-    call z, Call_000_335f
+    call z, $335f
     and $19
     pop hl
     sbc [hl]
