@@ -3000,14 +3000,11 @@ jr_002_4f98:
     pop hl
     ret
 
-
 Call_002_4f9b:
     ld a, [sCurrentSeason]
     cp WINTER
     jr z, jr_002_4fa3
-
     ret
-
 
 jr_002_4fa3:
     push hl
@@ -3021,7 +3018,6 @@ jr_002_4fa3:
     pop bc
     pop hl
     ret
-
 
 Call_002_4fb0:
     ld a, [sCurrentSeason]
