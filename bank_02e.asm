@@ -290,7 +290,7 @@ jr_02e_41f7:
 jr_02e_4213:
     ld a, [$c90f]
     ld b, a
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     add b
     ld [$cb50], a
     ld a, $1d

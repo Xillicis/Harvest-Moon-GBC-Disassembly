@@ -13044,7 +13044,7 @@ jr_007_7832:
     call Call_000_23e9
     call Call_000_2424
     ld hl, $7ad9
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jr z, jr_007_78c5
 
@@ -13106,7 +13106,7 @@ jr_007_78f0:
     call Call_000_23e9
     call Call_000_2424
     pop hl
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $20
     jr z, jr_007_7983
 

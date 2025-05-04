@@ -600,7 +600,7 @@ jr_01d_430c:
     xor a
     ld [$cb56], a
     ld a, $11
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$c0a6], a
     ld a, [$c0a2]
@@ -1025,7 +1025,7 @@ jr_01d_4557:
     ld a, $27
 
 jr_01d_4559:
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     ret
 
 
@@ -1041,7 +1041,7 @@ jr_01d_4559:
     inc a
     ld [$c0a6], a
     ld a, $12
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$cb92], a
     ret
@@ -3795,7 +3795,7 @@ Call_01d_521e: ; 1dx521e
 
 Call_01d_538e:
     push bc
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $1d
     jr z, jr_01d_53d7
 

@@ -8439,7 +8439,7 @@ jr_00f_7159:
     ld [$cb4e], a
 
 jr_00f_716f:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jr nz, jr_00f_7197
 
@@ -8761,12 +8761,12 @@ jr_00f_7301:
     jr nz, jr_00f_7310
 
     ld a, [$cb50]
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$c0a6], a
 
 jr_00f_7310:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jr nz, jr_00f_7338
 
@@ -8954,7 +8954,7 @@ jr_00f_7410:
 
     call Call_00f_73fe
     ld a, [$cb50]
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$c0a6], a
     xor a

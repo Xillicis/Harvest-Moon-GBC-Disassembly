@@ -342,7 +342,7 @@ jr_021_4221:
 jr_021_427f:
     ld a, [$c90f]
     ld b, a
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     add b
     ld [$cb50], a
     ld a, $1d
@@ -2663,7 +2663,7 @@ jr_021_5273:
     cp NO_ITEM
     jp nz, Jump_021_5e25
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $02
     ret z
 
@@ -7322,7 +7322,7 @@ jr_021_6dd8:
     ld hl, $80e0
     xor a
     ld [$cb16], a
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $03
     jr nz, jr_021_6e09
 
@@ -7901,7 +7901,7 @@ Jump_021_6e51:
 
 
 Call_021_7032:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 

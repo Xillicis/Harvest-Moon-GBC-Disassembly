@@ -835,7 +835,7 @@ Jump_028_43f1:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $05
     jr z, jr_028_442c
 
@@ -1256,7 +1256,7 @@ jr_028_4612:
 
     ld a, $37
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -1307,7 +1307,7 @@ jr_028_4658:
     cp $02
     ret nz
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jr nz, jr_028_46b7
 
@@ -1357,7 +1357,7 @@ jr_028_46b7:
 
     ld a, $3a
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -1560,7 +1560,7 @@ Jump_028_4804:
 
     ld a, $30
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -1719,7 +1719,7 @@ jr_028_48e7:
 
     ld a, $37
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -1764,7 +1764,7 @@ jr_028_4933:
 
     ld a, $38
     call Call_000_25cb
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -1796,7 +1796,7 @@ jr_028_4933:
 jr_028_4975:
     ld a, $3b
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -2041,11 +2041,11 @@ jr_028_4aea:
 jr_028_4b19:
     ld a, $32
     call Call_000_25ce
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $03
     ret z
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $04
     ret z
 
@@ -2055,7 +2055,7 @@ jr_028_4b19:
 
 
 jr_028_4b30:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -2180,7 +2180,7 @@ Jump_028_4c1a:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jp nz, Jump_028_4c1a
 
@@ -3076,7 +3076,7 @@ Jump_028_5083:
     cp $30
     jp z, Jump_028_5254
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -7478,7 +7478,7 @@ jr_028_65f1:
     nop
 
 Call_028_68ed:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $04
     ret z
 

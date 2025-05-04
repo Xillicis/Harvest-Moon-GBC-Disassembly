@@ -665,7 +665,7 @@ jr_020_5750:
     ld a, $04
     call Call_000_09dc
     ld b, l
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $14
     jr z, jr_020_57b3
 
@@ -5410,7 +5410,7 @@ Jump_020_70c2:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $08
     ret z
 

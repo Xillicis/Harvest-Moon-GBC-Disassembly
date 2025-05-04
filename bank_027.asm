@@ -12963,7 +12963,7 @@ jr_027_77cf:
     ld bc, $0400
     call ZeroOutHL
     ld hl, $7a56
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     jr z, jr_027_7854
 
@@ -13025,7 +13025,7 @@ jr_027_787f:
     call Call_000_23e9
     call Call_000_2424
     pop hl
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $20
     jr z, jr_027_7912
 

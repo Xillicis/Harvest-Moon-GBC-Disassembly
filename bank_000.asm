@@ -51,7 +51,7 @@ RST_38::
 
     db $ff
 
-VBlankInterrupt::
+VBlankInterrupt:: ; 00x0048
     call Call_000_04c7
 
 Call_000_0043:
@@ -59,8 +59,8 @@ Call_000_0043:
 
     db $ff, $ff, $ff, $ff
 
-LCDCInterrupt::
-    jp Jump_000_3311
+LCDCInterrupt:: ; 0x0048
+    jp STATInterrupt_Dispatch
 
     db $ff, $ff, $ff, $ff, $ff
 
@@ -74,11 +74,11 @@ SerialTransferCompleteInterrupt::
 
     db $ff, $ff, $ff, $ff, $ff
 
-JoypadTransitionInterrupt::
+JoypadTransitionInterrupt:: ; 00x0060
     reti
 
 Call_000_0061:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     or a
     rst $08
 
@@ -281,7 +281,7 @@ Jump_000_01b1:
 
 .jr_000_0202
     ld a, $20
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
 
 Call_000_0207:
     call SafeTurnOffLCDDuringVBlank
@@ -369,7 +369,7 @@ ConditionalClearBGMap0_Bank1:
 .jr_000_028d
     ld a, [$c0bc]
     ld b, a
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     or a
     add b
     rst $08
@@ -651,7 +651,7 @@ Jump_000_0561:
 Call_000_056c:
     ld a, [$c0bc]
     ld b, a
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     or a
     add b
     rst $08
@@ -1185,7 +1185,7 @@ Call_000_07ab:
     ld a, [$b919]
     ld c, a
     ld e, $80
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $28
     jr nz, jr_000_0808
 
@@ -1199,7 +1199,7 @@ jr_000_0808:
     ld a, [$b91a]
     ld c, a
     ld e, $81
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $28
     jr nz, jr_000_0820
 
@@ -1213,7 +1213,7 @@ jr_000_0820:
     ld a, [$ba54]
     ld c, a
     ld e, $82
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $28
     jr nz, jr_000_0838
 
@@ -1227,7 +1227,7 @@ jr_000_0838:
     ld a, [$ba55]
     ld c, a
     ld e, $83
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $28
     jr nz, jr_000_0850
 
@@ -3574,7 +3574,7 @@ jr_000_1614:
 
 Call_000_1622:
     push af
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $02
     jr z, jr_000_162e
 
@@ -3599,7 +3599,7 @@ jr_000_162e:
 
 Call_000_163d:
     push af
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $02
     jr z, jr_000_1649
 
@@ -4559,7 +4559,7 @@ db $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF
 
 Call_000_1cff:
 Jump_000_1cff:
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $26
     ret z
 
@@ -9037,18 +9037,20 @@ Call_000_3304:
     ld [$cccc], a
     jp Jump_000_3268
 
-Jump_000_3311:
+; STAT interrupt: lookup a 3‑byte entry at 0x3345 + 3*[$C0A7],
+; switch to that ROM bank, and jump to the handler
+STATInterrupt_Dispatch: ; 0x3311
     push af
     push bc
     push de
     push hl
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     ld e, a
     add a
     add e
     ld e, a ; 3*a
     ld d, $00 
-    ld hl, $3345
+    ld hl, STAT_HandlerIndex
     add hl, de
     ld a, [hli]
     ld e, a
@@ -9060,27 +9062,25 @@ Jump_000_3311:
     ld [MBC3RomBank], a
     ld l, e
     ld h, d
-    call Call_000_3344
+    call STAT_HandlerJump
     pop af
     ld [MBC3RomBank], a
     pop hl
     pop de
     ldh a, [rLY]
     ld c, a
-
 .wait
     ldh a, [rLY]
     cp c
     jr z, .wait
-
     pop bc
     pop af
     reti
 
-Call_000_3344:
+STAT_HandlerJump: ; 0x3344
     jp hl
 
-Data_000_3345:
+STAT_HandlerIndex: ; 0x3345
     db $C3, $33, $00
     db $55, $78, $1F
     db $55, $78, $1F

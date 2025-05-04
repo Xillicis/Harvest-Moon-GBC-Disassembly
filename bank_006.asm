@@ -2917,7 +2917,7 @@ jr_006_4c8b:
     ld [$c910], a
     ld [$c0a6], a
     inc a
-    ld [$c0a7], a
+    ld [wSTAT_HandlerIndex], a
     pop hl
     ret
 
@@ -6705,7 +6705,7 @@ jr_006_6324:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -6776,7 +6776,7 @@ jr_006_63a8:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -7195,7 +7195,7 @@ jr_006_66af:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -7266,7 +7266,7 @@ jr_006_6733:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -8039,7 +8039,7 @@ jr_006_6c23:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -8274,7 +8274,7 @@ jr_006_6e7f:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
@@ -8301,7 +8301,7 @@ jr_006_6e7f:
     ret
 
 
-    ld a, [$c0a7]
+    ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
 
