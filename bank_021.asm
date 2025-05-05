@@ -5297,7 +5297,6 @@ Jump_021_621b:
     ld [$b89f], a
     ret
 
-
 jr_021_623d:
     ld a, $02
     ld [$b89f], a
@@ -8213,7 +8212,7 @@ Call_021_725f:
     sbc $00
     ld h, a
     ld a, $10
-    call Call_000_09c9
+    call DivideHLByA
     add $20
     ldh [$ff93], a
     ld a, l
@@ -8229,7 +8228,7 @@ Call_021_725f:
     sbc $00
     ld h, a
     ld a, $10
-    call Call_000_09c9
+    call DivideHLByA
     add $20
     ldh [$ff91], a
     ld c, l

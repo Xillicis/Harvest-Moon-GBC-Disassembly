@@ -1011,13 +1011,13 @@ Call_000_070b:
     ld d, $00
     add hl, hl
     add hl, de
-    ld de, $0763
+    ld de, Data_000_0763
     add hl, de
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b915], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b917], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b918], a
     ld a, [$cb56]
     or a
@@ -1053,81 +1053,31 @@ Call_000_070b:
     ret
 
 ; Data
-    nop
-    inc [hl]
-    inc [hl]
-    nop
-    inc [hl]
-    dec [hl]
-    nop
-    inc [hl]
-    ld [hl], $00
-    inc [hl]
-
-Jump_000_076e:
-    scf
-    nop
-    inc [hl]
-    jr c, jr_000_0773
-
-jr_000_0773:
-    inc [hl]
-    add hl, sp
-    nop
-    inc [hl]
-    ld a, [hl-]
-    nop
-    inc [hl]
-    dec sp
-    nop
-    inc [hl]
-    inc a
-    nop
-    inc [hl]
-    dec a
-    nop
-    dec [hl]
-    inc [hl]
-    nop
-    dec [hl]
-    dec [hl]
-    rrca
-    inc [hl]
-    inc [hl]
-    rrca
-    inc [hl]
-    dec [hl]
-    rrca
-    inc [hl]
-    ld [hl], $0f
-    inc [hl]
-    scf
-    rrca
-    inc [hl]
-    jr c, jr_000_07a6
-
-    inc [hl]
-    add hl, sp
-    rrca
-    inc [hl]
-    ld a, [hl-]
-    rrca
-    inc [hl]
-    dec sp
-    rrca
-    inc [hl]
-    inc a
-    rrca
-    inc [hl]
-    dec a
-    rrca
-
-jr_000_07a6:
-    dec [hl]
-    inc [hl]
-    rrca
-    dec [hl]
-    dec [hl]
+Data_000_0763:
+    db $00, $34, $34
+    db $00, $34, $35
+    db $00, $34, $36
+    db $00, $34, $37
+    db $00, $34, $38
+    db $00, $34, $39
+    db $00, $34, $3A
+    db $00, $34, $3B
+    db $00, $34, $3C
+    db $00, $34, $3D
+    db $00, $35, $34
+    db $00, $35, $35
+    db $0F, $34, $34
+    db $0F, $34, $35
+    db $0F, $34, $36
+    db $0F, $34, $37
+    db $0F, $34, $38
+    db $0F, $34, $39
+    db $0F, $34, $3A
+    db $0F, $34, $3B
+    db $0F, $34, $3C
+    db $0F, $34, $3D
+    db $0F, $35, $34
+    db $0F, $35, $35
 
 ; TODO: Possibly something with printing the day number or the season or something...
 Call_000_07ab:
@@ -1137,7 +1087,7 @@ Call_000_07ab:
     add hl, hl
     ld de, $087b
     add hl, de
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b914], a
     ld a, [hl+]
     ld [$ba53], a
@@ -1151,10 +1101,10 @@ Call_000_07ab:
     adc h
     ld h, a
     ld a, $07
-    call Call_000_09c9
+    call DivideHLByA
     add a
     add a
-    ld hl, $085f
+    ld hl, Data_000_085f
     add l
     ld l, a
     ld a, $00
@@ -1237,82 +1187,13 @@ jr_000_0850:
     ret
 
 ; Data
-    ld e, b
-    ld e, c
-    ld e, d
-    ld d, a
-    ld e, e
-    ld e, h
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld h, b
-    ld h, c
-    ld h, d
-    ld e, e
-    ld h, e
-    ld h, h
-    ld h, l
-    ld h, [hl]
-    ld h, a
-    ld l, b
-    ld l, c
-    ld d, h
-    ld l, d
-    ld l, e
-    ld l, h
-    ld d, h
-    ld d, l
-    ld d, [hl]
-    ld d, a
-    inc [hl]
-    dec [hl]
-    inc [hl]
-    ld [hl], $34
-    scf
-    inc [hl]
-    jr c, @+$36
-
-    add hl, sp
-    inc [hl]
-    ld a, [hl-]
-    inc [hl]
-    dec sp
-    inc [hl]
-    inc a
-    inc [hl]
-    dec a
-    dec [hl]
-    inc [hl]
-    dec [hl]
-    dec [hl]
-    dec [hl]
-    ld [hl], $35
-    scf
-    dec [hl]
-    jr c, jr_000_08cd
-
-    add hl, sp
-    dec [hl]
-    ld a, [hl-]
-    dec [hl]
-    dec sp
-    dec [hl]
-    inc a
-    dec [hl]
-    dec a
-    ld [hl], $34
-    ld [hl], $35
-    ld [hl], $36
-    ld [hl], $37
-    ld [hl], $38
-    ld [hl], $39
-    ld [hl], $3a
-    ld [hl], $3b
-    ld [hl], $3c
-    ld [hl], $3d
-    scf
-    inc [hl]
+Data_000_085f:
+    db $58, $59, $5A, $57, $5B, $5C, $5D, $5E, $5F, $60, $61, $62, $5B, $63, $64, $65,
+    db $66, $67, $68, $69, $54, $6A, $6B, $6C, $54, $55, $56, $57, $34, $35, $34, $36,
+    db $34, $37, $34, $38, $34, $39, $34, $3A, $34, $3B, $34, $3C, $34, $3D, $35, $34,
+    db $35, $35, $35, $36, $35, $37, $35, $38, $35, $39, $35, $3A, $35, $3B, $35, $3C,
+    db $35, $3D, $36, $34, $36, $35, $36, $36, $36, $37, $36, $38, $36, $39, $36, $3A,
+    db $36, $3B, $36, $3C, $36, $3D, $37, $34, 
 
 Call_000_08b7:
     ld a, [sCurrentSeason]
@@ -1544,32 +1425,27 @@ jr_000_09ba:
     ldh [$ff97], a
     ret
 
-
-Call_000_09c9:
+; Non‑restoring divide: 16‑bit HL ÷ 8‑bit A → quotient in L, remainder in A
+DivideHLByA:
     push de
-    ld d, $10
-    ld e, a
-    xor a
-
-jr_000_09ce:
-    add hl, hl
-    rla
-    jr c, jr_000_09d5
-
-    cp e
-    jr c, jr_000_09d7
-
-jr_000_09d5:
-    sub e
-    inc l
-
-jr_000_09d7:
+    ld d, $10      ; 16 iterations (one per dividend bit)
+    ld e, a        ; E = divisor
+    xor a          ; A = 0 (remainder accumulator)
+.loop
+    add hl, hl     ; shift dividend left → C = old HL’s top bit
+    rla            ; shift remainder<<1, pull C into new remainder bit
+    
+    jr  c, .subtract  ; if remainder ≥ 2^8 (i.e. C from rla = 1), we need to subtract
+    cp  e             ; else compare remainder with divisor
+    jr  c, .noSubtract    ; if remainder < divisor, skip subtraction
+.subtract
+    sub e       ; remainder -= divisor
+    inc l       ; quotient_bit = 1 -> increment low byte of HL
+.noSubtract
     dec d
-    jr nz, jr_000_09ce
-
+    jr nz, .loop
     pop de
     ret
-
 
 Call_000_09dc:
     push de
@@ -9440,7 +9316,7 @@ Jump_000_3501:
     sbc a
     ld l, [hl]
     rlca
-    jp z, Jump_000_076e
+    jp z, $076e
 
     db $f4
     ld e, b

@@ -212,7 +212,7 @@ jr_010_414a:
     ld h, $00
     ld l, a
     ld a, $64
-    call Call_000_09c9
+    call DivideHLByA
     cp $05
     jr nc, jr_010_4184
 
@@ -4290,7 +4290,7 @@ jr_010_561a:
     ld h, b
     ld l, c
     ld a, $40
-    call Call_000_09c9
+    call DivideHLByA
     ld a, l
     ld [$ba4b], a
     call Call_000_0f47

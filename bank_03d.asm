@@ -3968,7 +3968,7 @@ Call_03d_5432:
     ld h, $00
     ld l, a
     ld a, $64
-    call Call_000_09c9
+    call DivideHLByA
     ret
 
 

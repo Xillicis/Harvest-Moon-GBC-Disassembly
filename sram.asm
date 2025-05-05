@@ -457,6 +457,7 @@ sba3c::  db
 sba3d::  db 
 sba3e::  db 
 sPrayedFlag::  db 
+; This is set if the player stayed up too late.
 s6AMFlag::  db 
 sba41::  db 
 sba42::  db 

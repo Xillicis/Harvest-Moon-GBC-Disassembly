@@ -6542,7 +6542,7 @@ jr_003_6760:
     ld h, $00
     ld l, a
     ld a, $04
-    call Call_000_09c9
+    call DivideHLByA
     cp $03
     jr nz, jr_003_67a5
 
@@ -6557,7 +6557,7 @@ jr_003_67a5:
     ld h, $00
     ld l, a
     ld a, $04
-    call Call_000_09c9
+    call DivideHLByA
     cp $02
     jr nz, jr_003_67bd
 
@@ -6572,7 +6572,7 @@ jr_003_67bd:
     ld h, $00
     ld l, a
     ld a, $04
-    call Call_000_09c9
+    call DivideHLByA
     cp $01
     jr nz, jr_003_67d5
 
@@ -6587,7 +6587,7 @@ jr_003_67d5:
     ld h, $00
     ld l, a
     ld a, $04
-    call Call_000_09c9
+    call DivideHLByA
     cp $00
     jr nz, jr_003_67ed
 
@@ -6615,7 +6615,7 @@ jr_003_67ff:
     ld h, $00
     ld l, a
     ld a, $64
-    call Call_000_09c9
+    call DivideHLByA
     cp $1e
     jr c, jr_003_6823
 
@@ -8500,7 +8500,7 @@ jr_003_7352:
     ld h, $00
     ld l, a
     ld a, $64
-    call Call_000_09c9
+    call DivideHLByA
     cp $0a
     jr c, jr_003_736d
 
@@ -8527,7 +8527,7 @@ jr_003_7375:
     ld h, $00
     ld l, a
     ld a, $64
-    call Call_000_09c9
+    call DivideHLByA
     cp $0a
     jr c, jr_003_7390
 

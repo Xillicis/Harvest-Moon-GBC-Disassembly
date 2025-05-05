@@ -8122,7 +8122,7 @@ Call_001_737f:
     sbc $00
     ld h, a
     ld a, $10
-    call Call_000_09c9
+    call DivideHLByA
     add $20
     ldh [$ff93], a
     ld a, l
@@ -8138,7 +8138,7 @@ Call_001_737f:
     sbc $00
     ld h, a
     ld a, $10
-    call Call_000_09c9
+    call DivideHLByA
     add $20
     ldh [$ff91], a
     ld c, l

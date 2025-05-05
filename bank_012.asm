@@ -8225,7 +8225,7 @@ jr_012_6bed:
     add b
     call Call_012_6e9b
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     or l
     jr z, jr_012_6c99
@@ -8264,7 +8264,7 @@ jr_012_6c99:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     or l
     jp z, Jump_012_6d2f

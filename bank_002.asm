@@ -447,7 +447,7 @@ Call_002_42b8:
     adc h
     ld h, a
     ld a, $07
-    call Call_000_09c9
+    call DivideHLByA
     add a
     add a
     ld hl, $42ee
@@ -529,7 +529,7 @@ Call_002_430a:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     or l
     jr z, jr_002_4351
@@ -559,7 +559,7 @@ jr_002_4351:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld b, a
     ld a, [sCurrentHour]
     cp TIME_6_AM
@@ -586,7 +586,7 @@ Call_002_4372:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     or l
     jr z, jr_002_4388
@@ -603,7 +603,7 @@ jr_002_4388:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld b, a
     ld a, [sCurrentHour]
     cp TIME_6_AM
@@ -692,7 +692,7 @@ Call_002_43ff:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld b, a
     ld a, [sCurrentDayCounter]
     add l
@@ -714,7 +714,7 @@ jr_002_442e:
     ld l, a
     ld h, $00
     ld a, $1e
-    call Call_000_09c9
+    call DivideHLByA
     ld [sCurrentDayCounter], a
     ld a, [sCurrentSeason]
     add l
@@ -722,7 +722,7 @@ jr_002_442e:
     ld l, a
     ld h, $00
     ld a, $04
-    call Call_000_09c9
+    call DivideHLByA
     ld [sCurrentSeason], a
     ld a, [sCurrentYear]
     add l
@@ -1491,7 +1491,7 @@ jr_002_48ce:
 jr_002_48d1:
     add hl, hl
     ld a, $0f
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     ld [$cbe4], a
     ld a, l
@@ -1516,7 +1516,7 @@ jr_002_48ee:
 
 jr_002_48f1:
     ld a, $0f
-    call Call_000_09c9
+    call DivideHLByA
     ld a, h
     ld [$cbe4], a
     ld a, l
@@ -1784,7 +1784,7 @@ Call_002_4a15:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call Call_000_09c9
+    call DivideHLByA
     ld a, l
     ld [$cbdc], a
     or a
@@ -5140,7 +5140,7 @@ Call_002_5c3e:
     ld l, a
     ld h, $00
     ld a, $0a
-    call Call_000_09c9
+    call DivideHLByA
     ld [$b8a2], a
     ret
 
@@ -5151,7 +5151,7 @@ Call_002_5c54:
     ld l, a
     ld h, $00
     ld a, $1e
-    call Call_000_09c9
+    call DivideHLByA
     ld b, a
     ld a, [$b8a2]
     cp b
@@ -8356,14 +8356,14 @@ Call_002_6cf9:
     ld l, a
     ld h, $00
     ld a, $05
-    call Call_000_09c9
+    call DivideHLByA
     ld b, l
     call $1ae6
     ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $0a
-    call Call_000_09c9
+    call DivideHLByA
     ld a, l
     ldh [$ffa4], a
     ld a, [$b902]
