@@ -125,16 +125,9 @@ Data_000_0066:
     db $e0, $3f, $00
     db $df, $3f, $00
     db $e0, $3f, $00
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff, $ff, $ff
-    db $ff
+
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 Boot::
     nop
@@ -2124,7 +2117,6 @@ Call_000_0d22:
     xor a
     ld [MBC3SRamBank], a
     ret
-
 
 Call_000_0d90:
     ld a, [$c902]
