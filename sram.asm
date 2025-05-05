@@ -162,8 +162,8 @@ sb915::  db
 sb916::  db 
 sb917::  db 
 sb918::  db 
-sDayOfTheWeekTileIndex4::  db  ; 0xb919
-sDayOfTheWeekTileIndex1::  db  ; 0xb91a
+sDayOfTheWeekTileIndex1::  db  ; 0xb919
+sDayOfTheWeekTileIndex2::  db  ; 0xb91a
 sb91b::  db 
 sb91c::  db 
 sb91d::  db 
@@ -478,8 +478,8 @@ sba50::  db
 sba51::  db 
 sba52::  db 
 sba53::  db 
-sDayOfTheWeekTileIndex2::  db ; 0xba54
-sDayOfTheWeekTileIndex3::  db ; 0xba55
+sDayOfTheWeekTileIndex3::  db ; 0xba54
+sDayOfTheWeekTileIndex4::  db ; 0xba55
 ;sba56::  db 
 ;sba57::  db 
 ;sba58::  db 

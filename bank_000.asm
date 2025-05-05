@@ -972,7 +972,7 @@ TickGameClock:
     cp 30
     jr nc, .incrementSeason
 
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ret
 
@@ -982,7 +982,7 @@ TickGameClock:
     ld a, [sCurrentSeason]
     inc a
     ld [sCurrentSeason], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [sCurrentSeason]
     cp $04
@@ -1079,17 +1079,17 @@ Data_000_0763:
     db $0F, $35, $34
     db $0F, $35, $35
 
-; TODO: Possibly something with printing the day number or the season or something...
-Call_000_07ab:
+; 
+UpdateDayOfTheWeekTileData:
     ld a, [sCurrentDayCounter]
     ld l, a
     ld h, $00
     add hl, hl
-    ld de, $087b
+    ld de, DayOfTheMonthTileIndices
     add hl, de
     ld a, [hli]
     ld [$b914], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$ba53], a
     ld a, [sCurrentSeason]
     ld c, 30
@@ -1105,7 +1105,7 @@ Call_000_07ab:
     call DivideHLByA
     add a
     add a
-    ld hl, DayOrTheWeekTileIndices
+    ld hl, DayOfTheWeekTileIndices
     add l
     ld l, a
     ld a, $00
@@ -1113,13 +1113,13 @@ Call_000_07ab:
     ld h, a
 ;;; Store the tile indices for the day of the week from the font graphics
     ld a, [hli]
-    ld [sDayOfTheWeekTileIndex4], a
-    ld a, [hli]
     ld [sDayOfTheWeekTileIndex1], a
     ld a, [hli]
     ld [sDayOfTheWeekTileIndex2], a
-    ld a, [hl]
+    ld a, [hli]
     ld [sDayOfTheWeekTileIndex3], a
+    ld a, [hl]
+    ld [sDayOfTheWeekTileIndex4], a
     ld a, [$cb56]
     or a
     ret nz
@@ -1128,7 +1128,7 @@ Call_000_07ab:
     or a
     ret nz
 
-    ld a, [sDayOfTheWeekTileIndex4]
+    ld a, [sDayOfTheWeekTileIndex1]
     ld c, a
     ld e, $80
     ld a, [wSTAT_HandlerIndex]
@@ -1142,7 +1142,7 @@ jr_000_0808:
     ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex1]
+    ld a, [sDayOfTheWeekTileIndex2]
     ld c, a
     ld e, $81
     ld a, [wSTAT_HandlerIndex]
@@ -1156,7 +1156,7 @@ jr_000_0820:
     ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex2]
+    ld a, [sDayOfTheWeekTileIndex3]
     ld c, a
     ld e, $82
     ld a, [wSTAT_HandlerIndex]
@@ -1170,7 +1170,7 @@ jr_000_0838:
     ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex3]
+    ld a, [sDayOfTheWeekTileIndex4]
     ld c, a
     ld e, $83
     ld a, [wSTAT_HandlerIndex]
@@ -1188,7 +1188,7 @@ jr_000_0850:
     ld [$cb75], a
     ret
 
-DayOrTheWeekTileIndices: ; 0x085f
+DayOfTheWeekTileIndices: ; 0x085f
     db $58, $59, $5A, $57 ; Monday
     db $5B, $5C, $5D, $5E ; Tuesday
     db $5F, $60, $61, $62 ; Wednesday
@@ -1196,23 +1196,12 @@ DayOrTheWeekTileIndices: ; 0x085f
     db $66, $67, $68, $69 ; Friday
     db $54, $6A, $6B, $6C ; Saturday
     db $54, $55, $56, $57 ; Sunday
-;;;
-    db $34, $35, $34, $36
-    db $34, $37, $34, $38
-    db $34, $39, $34, $3A
-    db $34, $3B, $34, $3C
-    db $34, $3D, $35, $34
-    db $35, $35, $35, $36
-    db $35, $37, $35, $38
-;;;
-    db $35, $39, $35, $3A
-    db $35, $3B, $35, $3C
-    db $35, $3D, $36, $34
-    db $36, $35, $36, $36
-    db $36, $37, $36, $38
-    db $36, $39, $36, $3A
-    db $36, $3B, $36, $3C
-    db $36, $3D, $37, $34
+DayOfTheMonthTileIndices:
+    db $34, $35, $34, $36, $34, $37, $34, $38, $34, $39, $34, $3A, $34, $3B ; 01 | 02 | 03 | 04 | 05 | 06 | 07
+    db $34, $3C, $34, $3D, $35, $34, $35, $35, $35, $36, $35, $37, $35, $38 ; 08 | 09 | 10 | 11 | 12 | 13 | 14
+    db $35, $39, $35, $3A, $35, $3B, $35, $3C, $35, $3D, $36, $34, $36, $35 ; 15 | 16 | 17 | 18 | 19 | 20 | 21
+    db $36, $36, $36, $37, $36, $38, $36, $39, $36, $3A, $36, $3B, $36, $3C ; 22 | 23 | 24 | 25 | 26 | 27 | 28
+    db $36, $3D, $37, $34                                                   ; 29 | 30
 
 Call_000_08b7:
     ld a, [sCurrentSeason]
@@ -2075,7 +2064,7 @@ Call_000_0de8:
     ld [$cb92], a
     call Call_000_1056
     call Call_000_070b
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     call Call_000_1002
     call Call_000_0f73
@@ -2111,7 +2100,7 @@ Call_000_0de8:
 
     xor a
     ld [sCurrentDayCounter], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     ret
 
 Call_000_0e54:

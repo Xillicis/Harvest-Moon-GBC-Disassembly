@@ -180,7 +180,7 @@ jr_002_4170:
     xor a
     ld [$c911], a
     call Call_000_070b
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [$ccc2]
     ld b, a
@@ -7488,7 +7488,7 @@ Call_002_6921:
     ld [sCurrentDayCounter], a
     cp 30
     jr nc, .updateSeason
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     ret
 
 .updateSeason
@@ -7497,7 +7497,7 @@ Call_002_6921:
     ld a, [sCurrentSeason]
     inc a
     ld [sCurrentSeason], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [sCurrentSeason]
     cp $04
@@ -8509,7 +8509,7 @@ Call_002_6de8:
     cp $00
     call z, Call_002_7055
     call Call_002_6e8d
-    ld a, [sDayOfTheWeekTileIndex1]
+    ld a, [sDayOfTheWeekTileIndex2]
     cp $6a
     call z, Call_002_6ed2
     ld a, [sCurrentDayCounter]

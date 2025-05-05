@@ -169,7 +169,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     xor a
     ld [$c911], a
     call Call_000_070b
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [$ccc2]
     ld b, a
@@ -7395,7 +7395,7 @@ jr_022_6876:
     cp $1e
     jr nc, jr_022_68ac
 
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     ret
 
 
@@ -7405,7 +7405,7 @@ jr_022_68ac:
     ld a, [sCurrentSeason]
     inc a
     ld [sCurrentSeason], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [sCurrentSeason]
     cp $04
@@ -8421,7 +8421,7 @@ Call_022_6d48:
     cp $00
     call z, Call_022_6fb5
     call Call_022_6ded
-    ld a, [sDayOfTheWeekTileIndex1]
+    ld a, [sDayOfTheWeekTileIndex2]
     cp $6a
     call z, Call_022_6e32
     ld a, [sCurrentDayCounter]

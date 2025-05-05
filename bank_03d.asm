@@ -3698,7 +3698,7 @@ Call_03d_51d9:
     ld [sPlayerMoney+2], a
     call Call_000_1056
     call Call_000_070b
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     call Call_000_1002
     call Call_000_0f73

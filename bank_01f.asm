@@ -10088,7 +10088,7 @@ jr_01f_7058:
     ld [sCurrentSeason], a
     ld a, [$ccd5]
     ld [$b883], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ret
 

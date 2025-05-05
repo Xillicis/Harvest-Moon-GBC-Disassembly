@@ -642,14 +642,14 @@ jr_009_4379:
     cp $1e
     jr nc, jr_009_438f
 
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     ret
 
 
 jr_009_438f:
     xor a
     ld [sCurrentDayCounter], a
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     ld a, [sCurrentSeason]
     inc a
     ld [sCurrentSeason], a

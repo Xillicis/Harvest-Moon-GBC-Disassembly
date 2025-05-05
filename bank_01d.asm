@@ -3692,7 +3692,7 @@ Call_01d_521e: ; 1dx521e
     ld [$b8f1], a
     call Call_000_1056
     call Call_000_070b
-    call Call_000_07ab
+    call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     call Call_000_1002
     call Call_000_0f73
