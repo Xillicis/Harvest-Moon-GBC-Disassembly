@@ -1094,6 +1094,7 @@ Call_000_07ab:
     ld a, [sCurrentSeason]
     ld c, 30
     call Multiply8Bit
+;;; Compute the day of the week
     ld a, [sCurrentDayCounter]
     add l
     ld l, a
@@ -1104,20 +1105,21 @@ Call_000_07ab:
     call DivideHLByA
     add a
     add a
-    ld hl, Data_000_085f
+    ld hl, DayOrTheWeekTileIndices
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
+;;; Store the tile indices for the day of the week from the font graphics
     ld a, [hli]
-    ld [$b919], a
+    ld [sDayOfTheWeekTileIndex4], a
     ld a, [hli]
-    ld [$b91a], a
+    ld [sDayOfTheWeekTileIndex1], a
     ld a, [hli]
-    ld [$ba54], a
+    ld [sDayOfTheWeekTileIndex2], a
     ld a, [hl]
-    ld [$ba55], a
+    ld [sDayOfTheWeekTileIndex3], a
     ld a, [$cb56]
     or a
     ret nz
@@ -1126,7 +1128,7 @@ Call_000_07ab:
     or a
     ret nz
 
-    ld a, [$b919]
+    ld a, [sDayOfTheWeekTileIndex4]
     ld c, a
     ld e, $80
     ld a, [wSTAT_HandlerIndex]
@@ -1136,11 +1138,11 @@ Call_000_07ab:
     ld e, $59
 
 jr_000_0808:
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [$b91a]
+    ld a, [sDayOfTheWeekTileIndex1]
     ld c, a
     ld e, $81
     ld a, [wSTAT_HandlerIndex]
@@ -1150,11 +1152,11 @@ jr_000_0808:
     ld e, $5a
 
 jr_000_0820:
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [$ba54]
+    ld a, [sDayOfTheWeekTileIndex2]
     ld c, a
     ld e, $82
     ld a, [wSTAT_HandlerIndex]
@@ -1164,11 +1166,11 @@ jr_000_0820:
     ld e, $5b
 
 jr_000_0838:
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [$ba55]
+    ld a, [sDayOfTheWeekTileIndex3]
     ld c, a
     ld e, $83
     ld a, [wSTAT_HandlerIndex]
@@ -1178,22 +1180,39 @@ jr_000_0838:
     ld e, $58
 
 jr_000_0850:
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
     ld a, $01
     ld [$cb75], a
     ret
 
-; Data
-Data_000_085f:
-    db $58, $59, $5A, $57, $5B, $5C, $5D, $5E, $5F, $60, $61, $62, $5B, $63, $64, $65,
-    db $66, $67, $68, $69, $54, $6A, $6B, $6C, $54, $55, $56, $57, $34, $35, $34, $36,
-    db $34, $37, $34, $38, $34, $39, $34, $3A, $34, $3B, $34, $3C, $34, $3D, $35, $34,
-    db $35, $35, $35, $36, $35, $37, $35, $38, $35, $39, $35, $3A, $35, $3B, $35, $3C,
-    db $35, $3D, $36, $34, $36, $35, $36, $36, $36, $37, $36, $38, $36, $39, $36, $3A,
-    db $36, $3B, $36, $3C, $36, $3D, $37, $34, 
+DayOrTheWeekTileIndices: ; 0x085f
+    db $58, $59, $5A, $57 ; Monday
+    db $5B, $5C, $5D, $5E ; Tuesday
+    db $5F, $60, $61, $62 ; Wednesday
+    db $5B, $63, $64, $65 ; Thursday
+    db $66, $67, $68, $69 ; Friday
+    db $54, $6A, $6B, $6C ; Saturday
+    db $54, $55, $56, $57 ; Sunday
+;;;
+    db $34, $35, $34, $36
+    db $34, $37, $34, $38
+    db $34, $39, $34, $3A
+    db $34, $3B, $34, $3C
+    db $34, $3D, $35, $34
+    db $35, $35, $35, $36
+    db $35, $37, $35, $38
+;;;
+    db $35, $39, $35, $3A
+    db $35, $3B, $35, $3C
+    db $35, $3D, $36, $34
+    db $36, $35, $36, $36
+    db $36, $37, $36, $38
+    db $36, $39, $36, $3A
+    db $36, $3B, $36, $3C
+    db $36, $3D, $37, $34
 
 Call_000_08b7:
     ld a, [sCurrentSeason]

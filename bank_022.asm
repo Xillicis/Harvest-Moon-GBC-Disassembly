@@ -8421,7 +8421,7 @@ Call_022_6d48:
     cp $00
     call z, Call_022_6fb5
     call Call_022_6ded
-    ld a, [$b91a]
+    ld a, [sDayOfTheWeekTileIndex1]
     cp $6a
     call z, Call_022_6e32
     ld a, [sCurrentDayCounter]

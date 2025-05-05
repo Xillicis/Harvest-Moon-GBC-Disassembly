@@ -8509,7 +8509,7 @@ Call_002_6de8:
     cp $00
     call z, Call_002_7055
     call Call_002_6e8d
-    ld a, [$b91a]
+    ld a, [sDayOfTheWeekTileIndex1]
     cp $6a
     call z, Call_002_6ed2
     ld a, [sCurrentDayCounter]
