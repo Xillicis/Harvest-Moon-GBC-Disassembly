@@ -130,14 +130,14 @@ sb8f3::  db
 sPlayerName::  ds 4 ; 0xb8f4
 sInventory::  ds 3 ; 0xb8f8
 sItemSlot::  db  ; 0xb8fb
-sb8fc::  db 
+sb8fc::  db ; 0xb8fc
 sb8fd::  db 
 sb8fe::  db 
 sb8ff::  db 
 sb900::  db 
-sb901::  db 
-sb902::  db 
-sb903::  db 
+sDayOfPreviousSleep::  db ; 0xb901
+sHourOfPreviousSleep::  db ; 0xb902
+sMinuteOfPreviousSleep::  db ; 0xb903
 ; This determines the number of flowers that are loaded in the house
 ; Max energy gets increases once a berry is eaten.
 sNumPowerBerriesEaten::  db 

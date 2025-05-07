@@ -873,7 +873,7 @@ Call_022_4525:
     ld a, $11
     ld [$b88d], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ret
 
 
@@ -3590,11 +3590,11 @@ Jump_022_5356:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, [sCurrentDayCounter]
-    ld [$b901], a
+    ld [sDayOfPreviousSleep], a
     ld a, [sCurrentHour]
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ld a, [sCurrentMinute]
-    ld [$b903], a
+    ld [sMinuteOfPreviousSleep], a
     ret
 
 
@@ -7379,7 +7379,7 @@ jr_022_6876:
     or a
     jr nz, jr_022_68d4
 
-    ld a, [$b902]
+    ld a, [sHourOfPreviousSleep]
     cp $06
     jr c, jr_022_68d4
 
@@ -8278,7 +8278,7 @@ Call_022_6c59:
     call DivideHLByA
     ld a, l
     ldh [$ffa4], a
-    ld a, [$b902]
+    ld a, [sHourOfPreviousSleep]
     cp $16
     jr z, jr_022_6ca5
 
@@ -8804,7 +8804,7 @@ Call_022_6f63:
     ld a, $11
     ld [$b88d], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     pop hl
     ret
 

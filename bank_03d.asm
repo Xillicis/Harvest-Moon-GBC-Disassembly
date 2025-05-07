@@ -3685,11 +3685,11 @@ Call_03d_51d9:
     ld a, $02
     ld [sItemSlot], a
     ld a, $00
-    ld [$b901], a
+    ld [sDayOfPreviousSleep], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ld a, $00
-    ld [$b903], a
+    ld [sMinuteOfPreviousSleep], a
     ld a, $f4
     ld [sPlayerMoney], a
     ld a, $01

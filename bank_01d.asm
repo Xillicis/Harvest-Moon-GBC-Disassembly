@@ -3678,11 +3678,11 @@ Call_01d_521e: ; 1dx521e
     ld a, $02
     ld [sItemSlot], a
     ld a, $00
-    ld [$b901], a
+    ld [sDayOfPreviousSleep], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ld a, $00
-    ld [$b903], a
+    ld [sMinuteOfPreviousSleep], a
     ; loads 500 money
     ld a, $f4
     ld [sPlayerMoney], a

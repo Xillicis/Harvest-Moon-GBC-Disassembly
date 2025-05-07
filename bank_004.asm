@@ -7430,29 +7430,23 @@ jr_004_6e2d:
     ld [$b9a5], a
     ret
 
-
 Call_004_6e37:
     ld a, b
     cp $04
     ret z
-
     ld d, h
     ld e, l
     ld c, b
-
 jr_004_6e3e:
     ld a, [hl]
     cp $02
     jr z, jr_004_6e5a
-
     cp $03
     jr z, jr_004_6e5a
-
     inc c
     ld a, c
     cp $04
     jr z, jr_004_6e57
-
     ld a, $0c
     add l
     ld l, a
@@ -7460,34 +7454,27 @@ jr_004_6e3e:
     adc h
     ld h, a
     jr jr_004_6e3e
-
 jr_004_6e57:
     ld h, d
     ld l, e
     ret
-
-
 jr_004_6e5a:
     inc hl
     inc hl
     ld a, [hl]
     cp $00
     jr z, jr_004_6e6e
-
     dec hl
     inc [hl]
     ld a, [hl]
     cp $03
     jr c, jr_004_6e6d
-
     xor a
     ld [hl+], a
     ld [hl], a
     jr jr_004_6e6e
-
 jr_004_6e6d:
     inc hl
-
 jr_004_6e6e:
     inc hl
     inc hl

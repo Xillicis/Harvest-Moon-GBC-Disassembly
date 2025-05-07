@@ -5838,7 +5838,7 @@ jr_00b_598c:
     or h
     and [hl]
     sbc c
-    ld bc, $b902
+    ld bc, sHourOfPreviousSleep
     rst $38
     or [hl]
     or $f1

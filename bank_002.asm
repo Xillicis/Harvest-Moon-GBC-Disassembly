@@ -884,7 +884,7 @@ Call_002_4533:
     ld a, $11
     ld [$b88d], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ret
 
 
@@ -3686,11 +3686,11 @@ Jump_002_540a:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, [sCurrentDayCounter]
-    ld [$b901], a
+    ld [sDayOfPreviousSleep], a
     ld a, [sCurrentHour]
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     ld a, [sCurrentMinute]
-    ld [$b903], a
+    ld [sMinuteOfPreviousSleep], a
     ret
 
 
@@ -7232,10 +7232,11 @@ Call_002_672f:
 
 ; New day initialization?
 Call_002_67a1:
-    call Call_002_6921
+    call UpdateCalendarDate
     call Call_002_6cf9
     xor a
     ld [$b900], a
+; I think this adds money from the shipment
     ld hl, sPlayerMoney
     ld a, [$b8fc]
     ld c, a
@@ -7263,7 +7264,7 @@ Call_002_67a1:
     ld hl, $63c5
     ld a, $03
     call BankSwitchCallHL
-    ld hl, $6da9
+    ld hl, Label_004_6da9
     ld a, $04
     call BankSwitchCallHL
     callfar UpdateSpriteTotalHappiness
@@ -7465,17 +7466,16 @@ jr_002_6916:
     or c
     cp $00
     jr nz, jr_002_68a0
-
     ret
 
-Call_002_6921:
+UpdateCalendarDate:
     ld a, [$b900]
     or a
-    jr nz, .jr_002_6974
+    jr nz, .skipCalendarUpdate
 
-    ld a, [$b902]
+    ld a, [sHourOfPreviousSleep]
     cp $06
-    jr c, .jr_002_6974
+    jr c, .skipCalendarUpdate
 
     xor a
     ld [sClockFrameCount], a
@@ -7513,7 +7513,7 @@ Call_002_6921:
     ld [sCurrentYear], a
     ret
 
-.jr_002_6974
+.skipCalendarUpdate
     xor a
     ld [sClockFrameCount], a
     ld [sCurrentMinute], a
@@ -7523,7 +7523,6 @@ Call_002_6921:
     xor a
     ld [s6AMFlag], a
     ret
-
 
 Call_002_6988:
     ld a, [$b8a0]
@@ -8366,34 +8365,25 @@ Call_002_6cf9:
     call DivideHLByA
     ld a, l
     ldh [$ffa4], a
-    ld a, [$b902]
+    ld a, [sHourOfPreviousSleep]
     cp $16
     jr z, jr_002_6d45
-
     cp $17
     jr z, jr_002_6d49
-
     cp $00
     jr z, jr_002_6d4d
-
     cp $01
     jr z, jr_002_6d51
-
     cp $02
     jr z, jr_002_6d55
-
     cp $03
     jr z, jr_002_6d59
-
     cp $04
     jr z, jr_002_6d5d
-
     cp $05
     jr z, jr_002_6d61
-
     cp $16
     jr c, jr_002_6d45
-
     ret
 
 
@@ -8434,7 +8424,6 @@ jr_002_6d63:
     ld b, l
     call $1ae6
     ret
-
 
 Jump_002_6d6d:
     ld a, TIME_6_AM
@@ -8892,7 +8881,7 @@ Call_002_7003:
     ld a, $11
     ld [$b88d], a
     ld a, $16
-    ld [$b902], a
+    ld [sHourOfPreviousSleep], a
     pop hl
     ret
 

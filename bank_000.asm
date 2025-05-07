@@ -8758,13 +8758,13 @@ Call_000_3268:
 Jump_000_3268:
     xor a
     ld hl, $cccd
-    ld [hl+], a
-    ld [hl+], a
-    ld [hl+], a
-    ld [hl+], a
+    ld [hli], a
+    ld [hli], a
+    ld [hli], a
+    ld [hli], a
     ld [hl], a
     ld hl, wTempPlayerMoney
-    ld a, [hl+]
+    ld a, [hli]
     ld h, [hl]
     ld l, a
     ld de, $cccd
