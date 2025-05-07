@@ -3493,7 +3493,7 @@ jr_030_519c:
     ld [$ba43], a
     xor a
     ld [$ba49], a
-    ld [$b93f], a
+    ld [sNumProduceShipped], a
     ld [$b940], a
     ld [$b941], a
     ld a, [$b8d1]

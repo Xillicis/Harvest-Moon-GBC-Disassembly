@@ -2639,7 +2639,7 @@ jr_000_11a4:
     ld [$ccc4], a
 
 jr_000_11b3:
-    ld hl, $b93f
+    ld hl, sNumProduceShipped
     call Call_000_1f64
     ld hl, $ba35
     call Call_000_1f64
@@ -4453,7 +4453,7 @@ Jump_000_1cff:
     cp $06
     ret c
 
-    ld hl, $b93f
+    ld hl, sNumProduceShipped
     call Call_000_1f64
     ld hl, $ba35
     call Call_000_1f64
@@ -4760,14 +4760,14 @@ Call_000_1f64:
     ld a, [hl]
     inc a
     ld [hl], a
-    or a
+    or a ; did we overflow?
     jr nz, jr_000_1f77
 
     inc hl
     ld a, [hl]
     inc a
     ld [hl], a
-    or a
+    or a ; did the second byte overflow?
     jr nz, jr_000_1f78
 
     inc hl

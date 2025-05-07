@@ -13513,7 +13513,7 @@ jr_02c_7d1e:
     ld [wTempPlayerMoney+2], a
     ld a, [$b940]
     ld [wTempPlayerMoney+1], a
-    ld a, [$b93f]
+    ld a, [sNumProduceShipped]
     ld [wTempPlayerMoney], a
     call Call_000_3268
     ld a, [$cccd]

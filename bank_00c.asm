@@ -11800,7 +11800,7 @@ jr_00c_7d74:
     ld [$cccc], a
     ld a, [$b940]
     ld [$cccb], a
-    ld a, [$b93f]
+    ld a, [sNumProduceShipped]
     ld [wTempPlayerMoney], a
     call Call_000_3268
     ld a, [$cccd]

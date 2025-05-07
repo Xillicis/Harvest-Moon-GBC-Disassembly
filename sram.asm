@@ -198,11 +198,10 @@ sb939::  db
 sb93a::  db 
 sb93b::  db 
 sb93c::  db 
-sb93d::  db 
-sb93e::  db 
-sb93f::  db 
-sb940::  db 
-sb941::  db 
+; little endian
+sShipmentPayment::  dw ; 0xb93d 
+; total produced shipped (per year?)
+sNumProduceShipped::  ds 3 ; 0xb93f
 sb942::  db 
 sb943::  db 
 sb944::  db 
