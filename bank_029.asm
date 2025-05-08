@@ -9797,7 +9797,7 @@ jr_029_6fd1:
     adc h
     nop
     rst $38
-    jp c, Jump_000_1f8c
+    jp c, $1f8c
 
     nop
     dec a

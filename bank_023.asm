@@ -989,7 +989,7 @@ jr_023_4606:
 
     ld a, [$cc18]
     ld hl, $4435
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -1043,7 +1043,7 @@ jr_023_4656:
 
     ld a, [$cc18]
     ld hl, $443d
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -1096,7 +1096,7 @@ jr_023_46a6:
 
     ld a, [$cc18]
     ld hl, $4439
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -1149,7 +1149,7 @@ jr_023_46f6:
 
     ld a, [$cc18]
     ld hl, $4435
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -1202,7 +1202,7 @@ jr_023_4746:
 
     ld a, [$cc18]
     ld hl, $443d
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -1512,7 +1512,7 @@ jr_023_4931:
 jr_023_4952:
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $09
     add l
     ld l, a
@@ -1537,7 +1537,7 @@ jr_023_4952:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -1592,7 +1592,7 @@ jr_023_49ca:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -1713,7 +1713,7 @@ jr_023_4a6c:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $02
     ld [hl], a
     ld a, $05
@@ -1732,7 +1732,7 @@ jr_023_4a6c:
 jr_023_4a92:
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -1788,7 +1788,7 @@ jr_023_4ad8:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $14
     add l
     ld l, a
@@ -1833,7 +1833,7 @@ jr_023_4b20:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     cp $04
     ret nz
@@ -1910,7 +1910,7 @@ jr_023_4b74:
     ld c, h
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $01
     add l
     ld l, a
@@ -1944,7 +1944,7 @@ jr_023_4bc2:
 jr_023_4bcc:
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -1966,7 +1966,7 @@ jr_023_4bcc:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $01
     add l
     ld l, a
@@ -2012,7 +2012,7 @@ jr_023_4c34:
 jr_023_4c3e:
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -2034,7 +2034,7 @@ jr_023_4c3e:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $01
     add l
     ld l, a
@@ -2068,7 +2068,7 @@ jr_023_4c92:
 jr_023_4c9c:
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0a
     add l
     ld l, a
@@ -3135,7 +3135,7 @@ jr_023_5316:
 
     ld hl, $5196
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0b
     add l
     ld l, a
@@ -3150,7 +3150,7 @@ jr_023_5316:
     ld [hl], a
     ld hl, $519e
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0d
     add l
     ld l, a
@@ -3190,7 +3190,7 @@ jr_023_5316:
     ld [$cc28], a
     ld hl, $519e
     ldh a, [$ffaa]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $00
     ld [hl], a
     ret
@@ -5650,7 +5650,7 @@ Call_023_6236:
 Call_023_623c:
     ldh a, [$ffa4]
     ld hl, $5196
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     cp $03
     ret z
@@ -5663,7 +5663,7 @@ Call_023_623c:
 
     ldh a, [$ffa4]
     ld hl, $519e
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $06
     add l
     ld l, a
@@ -5715,7 +5715,7 @@ jr_023_6286:
 
     ldh a, [$ffa4]
     ld hl, $519e
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $06
     add l
     ld l, a
@@ -5746,7 +5746,7 @@ jr_023_62af:
 jr_023_62b4:
     ldh a, [$ffa4]
     ld hl, $519e
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $08
     add l
     ld l, a
@@ -5774,7 +5774,7 @@ jr_023_62d5:
 jr_023_62d8:
     ldh a, [$ffa4]
     ld hl, $5196
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $0b
     add l
     ld l, a
@@ -5838,7 +5838,7 @@ Call_023_632b:
 Call_023_6334:
     ld hl, $5196
     ld a, [$b9a2]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $01
     add l
     ld l, a
@@ -7922,7 +7922,7 @@ Jump_023_7032:
 
 Call_023_703d:
     ld hl, $73e7
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     ld hl, $7048
     rst $00
@@ -7938,7 +7938,7 @@ Call_023_703d:
     ld [hl], e
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -7968,7 +7968,7 @@ jr_023_7069:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -7998,7 +7998,7 @@ jr_023_708b:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $09
     add l
     ld l, a
@@ -8069,7 +8069,7 @@ jr_023_70c5:
 jr_023_70f5:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $14
     add l
     ld l, a
@@ -8087,7 +8087,7 @@ jr_023_70f5:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8098,7 +8098,7 @@ jr_023_70f5:
     ld [hl], a
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $04
     ld [hl], a
     ld a, [$b945]
@@ -8116,7 +8116,7 @@ jr_023_713a:
 jr_023_713b:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8137,7 +8137,7 @@ jr_023_713b:
 jr_023_7155:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $09
     add l
     ld l, a
@@ -8188,7 +8188,7 @@ jr_023_7155:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $14
     add l
     ld l, a
@@ -8206,7 +8206,7 @@ jr_023_7155:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8217,7 +8217,7 @@ jr_023_7155:
     ld [hl], a
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $04
     ld [hl], a
     ld a, [$b945]
@@ -8232,7 +8232,7 @@ jr_023_7155:
 jr_023_71da:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $07
     add l
     ld l, a
@@ -8279,7 +8279,7 @@ jr_023_71da:
 jr_023_7217:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $14
     add l
     ld l, a
@@ -8297,7 +8297,7 @@ jr_023_7217:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8308,7 +8308,7 @@ jr_023_7217:
     ld [hl], a
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $04
     ld [hl], a
     ld a, [$b945]
@@ -8325,7 +8325,7 @@ jr_023_7217:
     dec b
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8395,7 +8395,7 @@ jr_023_72c0:
     ld [$b9a1], a
     ld hl, $73e7
     ldh a, [$ffa5]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $00
     ld [hl+], a
     ld a, $af
@@ -8414,7 +8414,7 @@ jr_023_72c0:
     ld [hl], a
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $06
     add l
     ld l, a
@@ -8499,7 +8499,7 @@ jr_023_734f:
 jr_023_7352:
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a
@@ -8547,7 +8547,7 @@ Jump_023_737a:
 
     ld hl, $73e7
     ldh a, [$ffa4]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $05
     add l
     ld l, a

@@ -27,7 +27,7 @@ SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
     call Call_000_31a0
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     ld a, $40
@@ -78,7 +78,7 @@ jr_010_4063:
     call RST_TableJumpBankSwitch
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     ld hl, $40ad
     rst $00
@@ -196,7 +196,7 @@ jr_010_40c6:
 
 jr_010_414a:
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $09
     add l
     ld l, a
@@ -239,7 +239,7 @@ jr_010_4189:
     call RST_TableJumpBankSwitch
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     ld hl, $41a5
     rst $00
@@ -272,7 +272,7 @@ jr_010_4189:
 
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $09
     add l
     ld l, a
@@ -289,7 +289,7 @@ jr_010_4189:
     ld [$cc1c], a
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     push af
@@ -337,7 +337,7 @@ jr_010_4207:
     ld [$c760], a
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     ld b, b
@@ -557,7 +557,7 @@ jr_010_4362:
     ld [$cc1c], a
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     ld a, h
@@ -593,7 +593,7 @@ jr_010_4362:
     ld [$cc1c], a
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     or b
@@ -661,7 +661,7 @@ jr_010_4362:
     call RST_TableJumpBankSwitch
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     inc d
@@ -733,7 +733,7 @@ jr_010_4458:
     ld [$cc1c], a
     ld hl, $40ea
     ld a, [$cc28]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [hl]
     rst $00
     ld a, e
@@ -3454,7 +3454,7 @@ jr_010_51a4:
 
 Jump_010_51a8:
     ld hl, $51d4
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, $01
     add l
     ld l, a

@@ -1896,7 +1896,7 @@ jr_02e_4b98:
 
     sub $32
     ld hl, $4fba
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc92]
     ld d, a
     ld a, [$cc93]
@@ -1993,7 +1993,7 @@ jr_02e_4c12:
 
     sub $32
     ld hl, $4fba
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc92]
     ld d, a
     ld a, [$cc93]
@@ -2046,7 +2046,7 @@ jr_02e_4c91:
 
     sub $32
     ld hl, $4fba
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc92]
     ld d, a
     ld a, [$cc93]
@@ -2164,7 +2164,7 @@ jr_02e_4d3a:
 
     ld hl, $4f4a
     ld a, [$cc18]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc17]
     sla a
     ld b, a
@@ -2230,7 +2230,7 @@ jr_02e_4da8:
 
     ld a, [$cc17]
     ld hl, $4fba
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc92]
     ld d, a
     ld a, [$cc93]
@@ -2881,7 +2881,7 @@ jr_02e_5115:
     adc b
     ld d, c
     ld a, [$cc7a]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld de, $c600
     ld b, $10
     call CopyHLtoDE

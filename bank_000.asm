@@ -1558,13 +1558,16 @@ RestoreScrollAndWindow:
     ldh [rWX], a
     ret
 
-Call_000_0a3e:
+; A = index (0…n)
+; HL = base of a 16‑bit little‑endian word table
+; → HL = table[index]
+LoadWordFromTableHL:
     ld c, a
-    ld b, $00
+    ld b, $00    ; BC = index
     add hl, bc
-    add hl, bc
-    ld a, [hl+]
-    ld h, [hl]
+    add hl, bc   ; HL += index*2
+    ld a, [hli]  ; fetch low byte, HL++
+    ld h, [hl]   ; fetch high byte
     ld l, a
     ret
 
@@ -1584,13 +1587,13 @@ Call_000_0a47:
     ret
 
 LoadDMGPalettes:
-    ld hl, $c0a3       ; point HL at a 3-byte palette table
-    ld a, [hli]        ; A = first byte; HL→C0A4
-    ldh [rBGP], a      ; BGP ← first byte
-    ld a, [hli]        ; A = second byte; HL→C0A5
-    ldh [rOBP0], a     ; OBP0 ← second byte
-    ld a, [hl]         ; A = third byte (HL still C0A5)
-    ldh [rOBP1], a     ; OBP1 ← third byte
+    ld hl, $c0a3     ; point HL at a 3-byte palette table
+    ld a, [hli]      ; A = first byte; HL→C0A4
+    ldh [rBGP], a    ; BGP ← first byte
+    ld a, [hli]      ; A = second byte; HL→C0A5
+    ldh [rOBP0], a   ; OBP0 ← second byte
+    ld a, [hl]       ; A = third byte (HL still C0A5)
+    ldh [rOBP1], a   ; OBP1 ← third byte
     ret
 
 CopyTileDataToBGMap: ; 00x0a62
@@ -2640,9 +2643,9 @@ jr_000_11a4:
 
 jr_000_11b3:
     ld hl, sNumProduceShipped
-    call Call_000_1f64
+    call IncrementHLWithUpperBound
     ld hl, $ba35
-    call Call_000_1f64
+    call IncrementHLWithUpperBound
     pop de
     pop hl
     ret
@@ -4454,12 +4457,12 @@ Jump_000_1cff:
     ret c
 
     ld hl, sNumProduceShipped
-    call Call_000_1f64
+    call IncrementHLWithUpperBound
     ld hl, $ba35
-    call Call_000_1f64
+    call IncrementHLWithUpperBound
     ld a, [$b93c]
     ld hl, $1d4e
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld d, h
     ld e, l
     ld a, [$b93d]
@@ -4542,9 +4545,9 @@ jr_000_1e50:
 jr_000_1e6c:
     ld hl, $1f1c
     ld a, [$cc77]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc76]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ldh a, [$ffac]
     ld e, a
     ldh a, [$ffad]
@@ -4554,7 +4557,7 @@ jr_000_1e6c:
     ld e, l
     ld hl, $1f14
     ld a, [$cc76]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld b, $10
 
 jr_000_1e8f:
@@ -4611,9 +4614,9 @@ jr_000_1ec4:
 jr_000_1ed2:
     ld hl, $1f40
     ld a, [$cc77]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld a, [$cc78]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ldh a, [$ffac]
     ld e, a
     ldh a, [$ffad]
@@ -4625,7 +4628,7 @@ Call_000_1ee8:
     ld e, l
     ld hl, $1f30
     ld a, [$cc78]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld b, $10
 
 jr_000_1ef5:
@@ -4756,33 +4759,31 @@ jr_000_1f5c:
     ld [hl], b
     nop
 
-Call_000_1f64:
+IncrementHLWithUpperBound:
     ld a, [hl]
     inc a
     ld [hl], a
-    or a ; did we overflow?
-    jr nz, jr_000_1f77
-
-    inc hl
-    ld a, [hl]
-    inc a
-    ld [hl], a
-    or a ; did the second byte overflow?
-    jr nz, jr_000_1f78
+    or a
+    jr nz, .firstByteNoOverflow
 
     inc hl
     ld a, [hl]
     inc a
     ld [hl], a
-    jr jr_000_1f79
+    or a
+    jr nz, .secondByteNoOverflow
 
-jr_000_1f77:
     inc hl
+    ld a, [hl]
+    inc a
+    ld [hl], a
+    jr .proceed
 
-jr_000_1f78:
+.firstByteNoOverflow
     inc hl
-
-jr_000_1f79:
+.secondByteNoOverflow
+    inc hl
+.proceed
     ld a, [hl]
     cp $01
     ret nz
@@ -4798,15 +4799,12 @@ jr_000_1f79:
     ret c
 
     ld a, $9f
-    ld [hl+], a
+    ld [hli], a
     ld a, $86
-
-Jump_000_1f8c:
-    ld [hl+], a
+    ld [hli], a
     ld a, $01
     ld [hl], a
     ret
-
 
 Call_000_1f91:
     ld a, [$c0bb]

@@ -527,7 +527,7 @@ Label_020_556c: ; 20x556c
     ld hl, $5554
     ldh a, [$ffa4]
     add $06
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     ld c, $4f
     ld a, $01
     ldh [c], a
@@ -539,7 +539,7 @@ Label_020_556c: ; 20x556c
     ldh [c], a
     ldh a, [$ffa4]
     ld hl, $5554
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call CGBBackgroundPaletteUpload
     ret
 
@@ -604,7 +604,7 @@ Data_020_5696:
 
     ldh a, [$ffab]
     ld hl, $5716
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call SyncToBlankPeriod
     ld a, $02
     ld [hl+], a
@@ -624,7 +624,7 @@ jr_020_5750:
     ld a, [$cd32]
     ldh [$ffab], a
     ld hl, $5716
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call SyncToBlankPeriod
     ld a, $07
     ld [hl+], a
@@ -690,7 +690,7 @@ jr_020_5750:
 jr_020_57b3:
     ld a, b
     ld hl, $57f5
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call Call_000_0401
     ret
 
@@ -698,7 +698,7 @@ jr_020_57b3:
 jr_020_57be:
     ld a, b
     ld hl, $5807
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call Call_000_0401
     ret
 
@@ -706,7 +706,7 @@ jr_020_57be:
 jr_020_57c9:
     ld a, b
     ld hl, $5811
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call Call_000_0401
     ret
 
@@ -714,7 +714,7 @@ jr_020_57c9:
 jr_020_57d4:
     ld a, b
     ld hl, $5815
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call Call_000_0401
     ret
 
@@ -722,7 +722,7 @@ jr_020_57d4:
 jr_020_57df:
     ld a, b
     ld hl, $5823
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     call Call_000_0401
     ret
 
@@ -730,7 +730,7 @@ jr_020_57df:
 jr_020_57ea:
     ld a, b
     ld hl, $582d
-    call Call_000_0a3e
+    call LoadWordFromTableHL
 
 Jump_020_57f1:
     call Call_000_0401

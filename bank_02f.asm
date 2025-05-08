@@ -7975,7 +7975,7 @@ jr_02f_6ef6:
 jr_02f_6f01:
     ld hl, $6eee
     ld a, [de]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     inc de
     ld a, $ff
     ld [hl+], a

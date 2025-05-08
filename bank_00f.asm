@@ -8033,7 +8033,7 @@ jr_00f_6f59:
 jr_00f_6f64:
     ld hl, $6f51
     ld a, [de]
-    call Call_000_0a3e
+    call LoadWordFromTableHL
     inc de
     ld a, $ff
     ld [hl+], a
