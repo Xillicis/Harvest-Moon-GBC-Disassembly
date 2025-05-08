@@ -121,12 +121,12 @@ sb8ea::  db
 sb8eb::  db 
 ; 0 = Male, 1 = Female
 sPlayerGender::  db  ; 0xb8ec
-sPlayerEnergy::  db 
-sPlayerMaxEnergy::  db 
+sPlayerEnergy::  db  ; 0xb8ed
+sPlayerMaxEnergy::  db ; 0xb8ee
 ; little endian
-sPlayerMoney:: ds 3
-sb8f2::  db 
-sb8f3::  db 
+sPlayerMoney:: ds 3 ; 0xb8ef
+sb8f2::  db ; 0xb8f2
+sb8f3::  db ; 0xb8f3
 sPlayerName::  ds 4 ; 0xb8f4
 sInventory::  ds 3 ; 0xb8f8
 sItemSlot::  db  ; 0xb8fb
