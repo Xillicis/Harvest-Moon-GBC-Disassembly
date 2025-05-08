@@ -579,19 +579,19 @@ jr_029_430b:
 Call_029_4310:
     xor a
     ld [$cb90], a
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld b, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     or b
     jr z, jr_029_4332
 
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld [$b8fc], a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld [$b8fd], a
     xor a
-    ld [$b93d], a
-    ld [$b93e], a
+    ld [sShipmentPayment], a
+    ld [sShipmentPayment+1], a
     ret
 
 

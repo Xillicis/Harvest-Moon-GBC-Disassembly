@@ -2813,15 +2813,15 @@ jr_022_4eb7:
 
 
 jr_022_4ebd:
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld c, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld b, a
     ld hl, sPlayerMoney
     call AddSignedBCToHL
     xor a
-    ld [$b93d], a
-    ld [$b93e], a
+    ld [sShipmentPayment], a
+    ld [sShipmentPayment+1], a
     ret
 
 
@@ -7155,15 +7155,15 @@ Call_022_669c:
     ld b, a
     call AddSignedBCToHL
     ld hl, sPlayerMoney
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld c, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld b, a
     call AddSignedBCToHL
     call Call_000_1056
     xor a
-    ld [$b93d], a
-    ld [$b93e], a
+    ld [sShipmentPayment], a
+    ld [sShipmentPayment+1], a
     ld [$b8fc], a
     ld [$b8fd], a
     ld a, [sCurrentSeason]

@@ -1570,19 +1570,20 @@ LoadWordFromTableHL:
     ld h, [hl]   ; fetch high byte
     ld l, a
     ret
-
-Call_000_0a47:
+; A = index (0…n), HL = base of a 3‑byte‑per‑entry table  
+; → HL = table[index].word (little‑endian), A = table[index].byte3
+Lookup3ByteTableEntry:
     ld c, a
-    ld b, $00
+    ld b, $00    ; BC = index
     add hl, bc
     add hl, bc
-    add hl, bc
+    add hl, bc   ; HL += index*3
     ld c, [hl]
     inc hl
     ld b, [hl]
     inc hl
-    ld a, [hl]
-    ld l, c
+    ld a, [hl]   ; A = third byte
+    ld l, c      ; HL = first two bytes as word
     ld h, b
     ret
 
@@ -2486,9 +2487,9 @@ jr_000_1097:
     ret
 
 Call_000_10cb:
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld l, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld h, a
     call Call_000_325c
     ld a, [$cccd]
@@ -4465,9 +4466,9 @@ Jump_000_1cff:
     call LoadWordFromTableHL
     ld d, h
     ld e, l
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld l, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld h, a
     add hl, de
     ld a, h
@@ -4483,9 +4484,9 @@ Jump_000_1cff:
 
 .jr_000_1d42
     ld a, l
-    ld [$b93d], a
+    ld [sShipmentPayment], a
     ld a, h
-    ld [$b93e], a
+    ld [sShipmentPayment+1], a
     call Call_000_10cb
     ret
 

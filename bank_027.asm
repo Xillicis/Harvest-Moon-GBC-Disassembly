@@ -13065,7 +13065,7 @@ jr_027_787f:
     add a
     add b
     ld hl, $7b6a
-    call Call_000_0a47
+    call Lookup3ByteTableEntry
     ld de, $79a6
     call Call_000_24ea
     ld a, [$dd01]
@@ -13074,7 +13074,7 @@ jr_027_787f:
     add b
     inc a
     ld hl, $7b6a
-    call Call_000_0a47
+    call Lookup3ByteTableEntry
     ld de, $79b6
     call Call_000_24ea
     ld a, [$dd01]
@@ -13084,7 +13084,7 @@ jr_027_787f:
     inc a
     inc a
     ld hl, $7b6a
-    call Call_000_0a47
+    call Lookup3ByteTableEntry
     ld de, $79c6
     call Call_000_24ea
 

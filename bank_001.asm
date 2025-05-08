@@ -9045,19 +9045,19 @@ jr_001_7951:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb90], a
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld b, a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     or b
     jr z, jr_001_7982
 
-    ld a, [$b93d]
+    ld a, [sShipmentPayment]
     ld [$b8fc], a
-    ld a, [$b93e]
+    ld a, [sShipmentPayment+1]
     ld [$b8fd], a
     xor a
-    ld [$b93d], a
-    ld [$b93e], a
+    ld [sShipmentPayment], a
+    ld [sShipmentPayment+1], a
     ld a, $1f
     call Call_000_3f52
     ret
