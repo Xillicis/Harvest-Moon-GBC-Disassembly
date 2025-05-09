@@ -222,7 +222,7 @@ jr_001_418d:
     pop af
     pop hl
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
@@ -2237,41 +2237,25 @@ Jump_001_4f0e:
     pop hl
     ret
 
-
 Jump_001_4f50:
     ld a, $01
     ld [$cb8b], a
     xor a
     ld [$c7a0], a
     ld [$cb89], a
-    ld hl, $4f6d
+    ld hl, Data_001_4f6d
     ld a, [sCatOrDog]
-    cp $01
+    cp DOG
     jr z, jr_001_4f69
-
-    ld hl, $4f75
-
+    ld hl, Data_001_4f75
 jr_001_4f69:
     call SyncLoadSpritePalette2
     ret
 
-
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    ccf
-    ld [bc], a
-    ld a, a
-    ld b, a
-    ld a, h
-    ld c, [hl]
-    add h
-    nop
-    sbc h
-    add hl, bc
-    ld a, a
-    ld b, a
+Data_001_4f6d:
+    db $7C, $4E, $84, $00, $3F, $02, $7F, $47
+Data_001_4f75:
+    db $7C, $4E, $84, $00, $9C, $09, $7F, $47
 
 Jump_001_4f7d:
     ld a, [wPlayerFacingDirection]
@@ -2343,7 +2327,7 @@ jr_001_4f94:
     xor a
     ld [$cb8b], a
     ld a, [sCatOrDog]
-    cp $00
+    cp CAT
     jp z, Jump_001_5022
 
     ld a, [$c7ad]
@@ -2414,7 +2398,7 @@ Jump_001_502c:
     xor a
     ld [$cb8b], a
     ld a, [sCatOrDog]
-    cp $00
+    cp CAT
     jp z, Jump_001_5022
 
     ld a, [$c7ad]
@@ -2422,7 +2406,6 @@ Jump_001_502c:
     add $20
     call Call_000_163d
     ret
-
 
 Jump_001_50ba:
     ld hl, $c608
@@ -2512,7 +2495,7 @@ Jump_001_50ba:
     xor a
     ld [$cb8b], a
     ld a, [sCatOrDog]
-    cp $00
+    cp CAT
     jp z, Jump_001_5022
 
     ld a, [$c7ad]
@@ -2520,7 +2503,6 @@ Jump_001_50ba:
     add $20
     call Call_000_163d
     ret
-
 
 Jump_001_5189:
     ld hl, $c608
@@ -2625,7 +2607,7 @@ jr_001_5216:
     xor a
     ld [$cb8b], a
     ld a, [sCatOrDog]
-    cp $00
+    cp CAT
     jp z, Jump_001_5022
 
     ld a, [$c7ad]

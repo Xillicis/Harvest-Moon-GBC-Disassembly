@@ -4330,7 +4330,7 @@ jr_038_52ae:
     rrca
     ldh a, [rP1]
     add sp, -$10
-    call nc, Call_000_2a38
+    call nc, $2a38
     call c, $1ce2
     ldh a, [c]
     ld c, h
@@ -4414,7 +4414,7 @@ jr_038_52c8:
     nop
     ldh a, [rP1]
     add sp, -$10
-    call nc, Call_000_2a38
+    call nc, $2a38
     call c, $1ce2
     ldh a, [c]
     ld c, h

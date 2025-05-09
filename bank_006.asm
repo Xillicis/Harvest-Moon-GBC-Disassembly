@@ -70,7 +70,7 @@ SECTION "ROM Bank $006", ROMX[$4000], BANK[$6]
     ld a, $22
     call Call_000_25c5
     ld a, $e3
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ld [$cd64], a
     ld [$cd65], a
@@ -1745,7 +1745,7 @@ jr_006_47f7:
     ld hl, $4897
     call Call_000_0401
     ld a, $87
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $06
     ldh [rLYC], a
     ld a, $40
@@ -2925,10 +2925,10 @@ jr_006_4c8b:
     push bc
     xor a
     ldh [rSTAT], a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     xor $08
     and $fd
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld b, a
     ld hl, $ff40
 

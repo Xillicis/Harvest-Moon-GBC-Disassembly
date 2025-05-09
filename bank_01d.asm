@@ -70,7 +70,7 @@ Jump_01d_402a:
     ld a, $00
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $00
@@ -94,7 +94,7 @@ Jump_01d_402a:
 
 
 Call_01d_40b4:
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     ld b, a
     ld hl, rLCDC
 
@@ -271,10 +271,10 @@ jr_01d_415b:
     rlca
     rlca
     ld b, a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $f7
     or b
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld b, $04
     call Call_01d_434b
     jr nz, jr_01d_41aa
@@ -467,10 +467,10 @@ Call_01d_4244:
     rlca
     rlca
     ld b, a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $f7
     or b
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld b, $04
     call Call_01d_434b
     ld hl, $cd77
@@ -603,9 +603,9 @@ jr_01d_430c:
     ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$c0a6], a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     pop hl
     ret
 
@@ -735,7 +735,7 @@ jr_01d_43e9:
     ld a, $00
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $4d
@@ -1391,7 +1391,7 @@ jr_01d_474d:
     ld de, $8e00
     call Call_000_31a0
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -4483,7 +4483,7 @@ jr_01d_576e:
     ld a, $4d
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -5526,7 +5526,7 @@ jr_01d_5c22:
     xor a
     jr nz, jr_01d_5c5c
 
-    jp Jump_000_2925
+    jp $2925
 
 
     ld h, $63
@@ -9711,7 +9711,7 @@ jr_01d_6e6c:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $03
@@ -10494,7 +10494,7 @@ jr_01d_72d1:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $03

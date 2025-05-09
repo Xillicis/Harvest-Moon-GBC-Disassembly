@@ -107,7 +107,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $03

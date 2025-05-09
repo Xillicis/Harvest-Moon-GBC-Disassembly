@@ -101,7 +101,7 @@ jr_010_4063:
 
 jr_010_40c6:
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -3209,7 +3209,7 @@ jr_010_4fbe:
     call Call_010_563c
     call Call_010_5663
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a
@@ -13567,7 +13567,7 @@ jr_010_7dbd:
     ld [$dcf6], sp
     ld a, [hl-]
     inc l
-    jp c, Jump_000_1cff
+    jp c, $1cff
 
     ld [hl+], a
     ld b, $18

@@ -2,7 +2,11 @@ SECTION "WRAM 0", WRAM0
 
 wShadowOAM:: ds 160 ; at $C000, holds up to 40×4 bytes of sprite attributes
 
-ds 7
+ds 2
+
+wLCDCTempStorage:: db ; 0xc0a2
+
+ds 4
 
 wSTAT_HandlerIndex:: db ; 0xc0a7
 
@@ -40,7 +44,12 @@ ds $16
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a
 
-ds 54
+ds 1
+
+;; Either 1 or 0, for whether the textbox is displayed
+wTextBoxIsDisplayed:: db
+
+ds 52
 
 ; This is zero if the player is outside at the farm.
 ; It is one if the player is inside or at town

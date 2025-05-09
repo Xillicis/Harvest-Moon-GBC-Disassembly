@@ -143,7 +143,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     call Call_022_4e44
     call Call_022_4e62
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $01
@@ -3321,7 +3321,7 @@ jr_022_5191:
     call $63ff
     call Call_000_070b
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $ff
     ld [$cb52], a
     xor a

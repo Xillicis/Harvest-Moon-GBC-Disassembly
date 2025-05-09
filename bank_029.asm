@@ -80,7 +80,7 @@ jr_029_4066:
     ld a, $54
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -1449,7 +1449,7 @@ Call_029_4737:
     and $04
     jp nz, Jump_029_47d9
 
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     bit 5, a
     ret z
 
@@ -1562,11 +1562,11 @@ jr_029_478f:
     add b
 
 Jump_029_47d9:
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     bit 5, a
     jr z, jr_029_47f3
 
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     ld b, a
 
 jr_029_47e4:
@@ -1577,12 +1577,12 @@ jr_029_47e4:
     ld a, b
     and $df
     ldh [rLCDC], a
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ret
 
 
 jr_029_47f3:
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     ld b, a
 
 jr_029_47f7:
@@ -1593,7 +1593,7 @@ jr_029_47f7:
     ld a, b
     or $20
     ldh [rLCDC], a
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ret
 
 
@@ -4106,7 +4106,7 @@ Call_029_5404:
     ld a, $54
     call Call_000_25c5
     ld a, $c3
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -4185,7 +4185,7 @@ jr_029_555e:
     ld a, $54
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -4231,7 +4231,7 @@ jr_029_555e:
 Call_029_5614:
     call Call_029_5627
     ld a, $e3
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rSTAT], a
     xor a
@@ -7435,7 +7435,7 @@ jr_029_65b3:
     ld a, h
     ld [$cd29], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rSTAT], a
     xor a
@@ -7828,7 +7828,7 @@ Call_029_6760:
     ld c, $0c
     call Call_029_65d6
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $af
     ld [$cb5c], a
     ld a, $e9

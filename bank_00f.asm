@@ -6079,7 +6079,7 @@ Call_00f_62dc:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     ld a, $40
@@ -7597,7 +7597,7 @@ jr_00f_6c70:
     call Call_00f_6e3b
     call Call_00f_6e7f
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a

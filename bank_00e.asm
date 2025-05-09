@@ -141,7 +141,7 @@ jr_00e_410d:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a
@@ -3698,7 +3698,7 @@ jr_00e_5507:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a
@@ -4693,7 +4693,7 @@ Call_00e_5ad2:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a
@@ -5755,7 +5755,7 @@ Call_00e_616c:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a
@@ -6569,7 +6569,7 @@ jr_00e_669f:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $68
     ldh [$ff95], a
     xor a

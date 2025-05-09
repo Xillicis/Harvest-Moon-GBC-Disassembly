@@ -60,7 +60,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     ld a, $00
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $00
@@ -84,7 +84,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
 
 
 Call_03d_40a7:
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     ld b, a
     ld hl, $ff40
 
@@ -257,10 +257,10 @@ jr_03d_414e:
     rlca
     rlca
     ld b, a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $f7
     or b
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld b, $04
     call Call_03d_433e
     jr nz, jr_03d_419d
@@ -453,10 +453,10 @@ Call_03d_4237:
     rlca
     rlca
     ld b, a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $f7
     or b
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld b, $04
     call Call_03d_433e
     ld hl, $cd77
@@ -589,9 +589,9 @@ jr_03d_42ff:
     ld [wSTAT_HandlerIndex], a
     ld a, $01
     ld [$c0a6], a
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     and $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     pop hl
     ret
 
@@ -713,7 +713,7 @@ jr_03d_43cf:
     ld a, $00
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $4d
@@ -1394,7 +1394,7 @@ jr_03d_4726:
     ld a, $04
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -4498,7 +4498,7 @@ jr_03d_571c:
     ld a, $4d
     call Call_000_25c5
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $00
     ldh [rSTAT], a
     xor a
@@ -9438,7 +9438,7 @@ jr_03d_6d1c:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $03
@@ -10215,7 +10215,7 @@ jr_03d_7174:
     ld a, $66
     ldh [rLYC], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $03

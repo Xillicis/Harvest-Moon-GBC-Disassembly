@@ -75,7 +75,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66

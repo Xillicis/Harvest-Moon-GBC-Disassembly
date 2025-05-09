@@ -649,6 +649,8 @@ Call_000_056c:
     or a
     add b
     rst $08
+
+; Data?
     ld a, [hl+]
     ld [hl], b
     rra
@@ -901,6 +903,7 @@ Jump_000_0640:
     ld [hl], d
     dec a
     ret
+; end of data?
 
 ; Advance game clock by one minute every ~30 frames, which eventually increments
 ; the hours, days, seasons, and years. 
@@ -4439,7 +4442,6 @@ db $AF, $AF, $AF, $02, $21, $22, $1C, $24, $1E, $27, $AF, $05, $1E, $1E, $1D, $A
 db $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF
 
 Call_000_1cff:
-Jump_000_1cff:
     ld a, [wSTAT_HandlerIndex]
     cp $26
     ret z
@@ -4454,7 +4456,7 @@ Jump_000_1cff:
     cp TIME_5_PM
     ret nc
 
-    cp $06
+    cp TIME_6_AM
     ret c
 
     ld hl, sNumProduceShipped
@@ -4490,54 +4492,7 @@ Jump_000_1cff:
     call Call_000_10cb
     ret
 
-ShipmentSellingPrice: ; 1d4e
-REPT 26
-    dw $0000
-ENDR
-dw 150
-dw 120
-dw $0000 
-dw $0000
-dw $0000
-dw 60
-dw $0000
-dw 80
-dw $0000
-dw 350
-dw $0000
-dw 250
-dw $0000 
-dw 150
-dw $0000
-dw 70
-REPT 18
-    dw $0000 
-ENDR
-dw 100
-dw $0000 
-dw $0000 
-dw $0000
-dw 300
-dw 300
-REPT 31
-    dw $0000 
-ENDR
-dw 500
-dw 500
-dw 500
-dw 500
-dw 500
-dw 500
-dw $0000
-dw $0000
-dw 150
-dw 60
-dw 80
-dw 150
-dw $0000
-dw $0000
-dw $0000
-dw $0000
+INCLUDE "data/selling_price.asm"
 
 Label_000_1e30:
     call c, $3e05
@@ -5466,15 +5421,15 @@ SafeTurnOffLCDDuringVBlank:
     ret
 
 Call_000_2273:
-    ld a, [$c0a2]
+    ld a, [wLCDCTempStorage]
     ldh [rLCDC], a
     ret
 
-Label_000_2279:
-    xor a
-    ldh [rIF], a
-    ld a, [$c0a0]
-    ldh [rIE], a
+RestoreInterruptMask: ; 00x2279
+    xor a           ; A = 0
+    ldh [rIF], a    ; IF ← 0   (clear all pending interrupts)
+    ld a, [$c0a0]   ; A ← saved IE mask
+    ldh [rIE], a    ; IE ← A   (enable only the interrupts you’ve stored)
     ret
 
 ZeroOutHL:
@@ -6806,8 +6761,6 @@ jr_000_291b:
     ld bc, $1211
     inc d
     inc hl
-
-Jump_000_2925:
     rlca
     dec d
     rla
@@ -6831,14 +6784,12 @@ jr_000_292f:
     call Call_000_2b72
     ret
 
-
 Call_000_2941:
 jr_000_2941:
     call Call_000_2b8a
     xor a
     ldh [rNR30], a
     ret
-
 
 Jump_000_2948:
     ld b, a
@@ -7023,8 +6974,6 @@ Call_000_2a20:
     ret nc
 
     and $0f
-
-Call_000_2a38:
     ld b, a
     ldh a, [$fff5]
     ldh [$fff6], a
@@ -8779,11 +8728,11 @@ jr_000_324d:
 
 Call_000_325c:
     ld a, h
-    ld [$cccb], a
+    ld [wTempPlayerMoney+1], a
     ld a, l
     ld [wTempPlayerMoney], a
     xor a
-    ld [$cccc], a
+    ld [wTempPlayerMoney+2], a
 
 Call_000_3268:
 Jump_000_3268:
@@ -8799,7 +8748,7 @@ Jump_000_3268:
     ld h, [hl]
     ld l, a
     ld de, $cccd
-    ld a, [$cccc]
+    ld a, [wTempPlayerMoney+2]
     or a
     jr z, jr_000_3288
 
@@ -8922,8 +8871,8 @@ Data_000_32fa:
 Call_000_3304:
     ld [wTempPlayerMoney], a
     xor a
-    ld [$cccb], a
-    ld [$cccc], a
+    ld [wTempPlayerMoney+1], a
+    ld [wTempPlayerMoney+2], a
     jp Jump_000_3268
 
 ; STAT interrupt: lookup a 3‑byte entry at 0x3345 + 3*[$C0A7],
@@ -11214,13 +11163,13 @@ jr_000_3ef6:
 Call_000_3efc:
 jr_000_3efc:
     call SyncToBlankPeriod
-    ld a, $c3
-    ld [$c0a2], a
+    ld a, 1 << rLCDC_ENABLE | 1 << rLCDC_WINDOW_TILEMAP | 1 << rLCDC_SPRITES_ENABLE | 1 << rLCDC_BG_PRIORITY
+    ld [wLCDCTempStorage], a
     ldh [rLCDC], a
     xor a
 
 jr_000_3f07:
-    ld [$cb4c], a
+    ld [wTextBoxIsDisplayed], a
     ret
 
 Call_000_3f0b:
@@ -11230,11 +11179,11 @@ Call_000_3f0b:
     ld a, $68
     ldh [$ff95], a
     call SyncToBlankPeriod
-    ld a, $e3
-    ld [$c0a2], a
+    ld a, 1 << rLCDC_ENABLE | 1 << rLCDC_WINDOW_TILEMAP | 1 << rLCDC_WINDOW_ENABLE | 1 << rLCDC_SPRITES_ENABLE | 1 << rLCDC_BG_PRIORITY
+    ld [wLCDCTempStorage], a
     ldh [rLCDC], a
-    ld a, $01
-    ld [$cb4c], a
+    ld a, 1
+    ld [wTextBoxIsDisplayed], a
     ret
 
 Call_000_3f26:

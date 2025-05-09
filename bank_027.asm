@@ -429,7 +429,7 @@ Call_027_428b:
     ld a, $80
     ld [$c62f], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $01
@@ -464,7 +464,7 @@ Call_027_42e1:
     xor a
     ld [$c620], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $01
@@ -512,7 +512,7 @@ Call_027_432c:
     xor a
     ld [$c620], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     xor a
     ldh [rIF], a
     ld a, $01
@@ -13052,7 +13052,7 @@ jr_027_787f:
     ld hl, $9800
     ld bc, $0400
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     call ZeroOutHL
     call Call_000_2273
     call Call_000_2424

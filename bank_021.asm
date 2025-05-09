@@ -206,7 +206,7 @@ jr_021_418b:
     ld [$cb79], a
     ld [$cb7d], a
     ld a, $83
-    ld [$c0a2], a
+    ld [wLCDCTempStorage], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
