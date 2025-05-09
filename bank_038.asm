@@ -3394,7 +3394,7 @@ jr_038_4e7c:
     cp d
 
 jr_038_4ec4:
-    call c, Call_000_3ce2
+    call c, $3ce2
     ld c, [hl]
     jr nc, jr_038_4f06
 

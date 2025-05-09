@@ -14206,7 +14206,7 @@ jr_017_7d1c:
     jr nc, jr_017_7d91
 
     rst $08
-    call nz, Call_000_3ec1
+    call nz, $3ec1
     inc e
     ret nc
 

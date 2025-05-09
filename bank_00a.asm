@@ -13405,7 +13405,7 @@ jr_00a_78f3:
     ccf
     ld b, b
     ld b, h
-    jp Jump_000_3cf7
+    jp $3cf7
 
 
     jr nc, jr_00a_78f3

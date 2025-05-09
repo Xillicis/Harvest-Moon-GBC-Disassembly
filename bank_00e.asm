@@ -3077,7 +3077,7 @@ Call_00e_5213:
     db $d3
     db $d3
     db $d3
-    call nc, Call_000_3ce2
+    call nc, $3ce2
     inc a
     inc a
     inc a

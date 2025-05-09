@@ -1635,7 +1635,7 @@ jr_036_473a:
     inc c
     xor h
     ld [hl], b
-    call c, Call_000_3f28
+    call c, $3f28
     inc de
     inc a
     rrca
@@ -10823,7 +10823,7 @@ jr_036_6e9a:
     add sp, $54
     ld l, h
     sub b
-    call nc, Call_000_3c68
+    call nc, $3c68
     inc de
     jr jr_036_6ebc
 

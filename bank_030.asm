@@ -8365,7 +8365,7 @@ jr_030_662e:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe
@@ -9128,7 +9128,7 @@ jr_030_69da:
     pop bc
     ld a, a
     inc d
-    jp Jump_000_3c69
+    jp $3c69
 
 
     cp d

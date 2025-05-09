@@ -11896,7 +11896,7 @@ jr_014_764e:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe

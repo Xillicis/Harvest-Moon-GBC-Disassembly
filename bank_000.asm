@@ -5420,7 +5420,7 @@ SafeTurnOffLCDDuringVBlank:
     ldh [rIE], a
     ret
 
-Call_000_2273:
+Call_000_2273: ; 00x2273
     ld a, [wLCDCTempStorage]
     ldh [rLCDC], a
     ret
@@ -10671,8 +10671,6 @@ Jump_000_3c2c:
     adc h
     ld h, a
     ld a, [hl+]
-
-Call_000_3c38:
     ld e, a
     ld a, [hl]
     ld h, a
@@ -10683,7 +10681,6 @@ Jump_000_3c3c:
     ld a, [$cb5c]
     ld [hl], a
     ret
-
 
 Call_000_3c44:
     ld a, [$cb58]
@@ -10703,14 +10700,9 @@ Call_000_3c44:
     ld [$cb52], a
     ld [$cb57], a
     call Call_000_3f0b
-
-Call_000_3c68:
     xor a
-
-Jump_000_3c69:
     ld [$cb58], a
     ret
-
 
 jr_000_3c6d:
     call Call_000_3fa2
@@ -10744,7 +10736,6 @@ jr_000_3c6d:
     ld [$cb57], a
     ret
 
-
 jr_000_3cb2:
     call Call_000_3fa2
     xor a
@@ -10767,7 +10758,6 @@ jr_000_3cb2:
     or a
     ret nz
 
-Call_000_3ce2:
     ld a, $04
     ld [$cb52], a
     call Call_000_3f0b
@@ -10776,15 +10766,11 @@ Call_000_3ce2:
     ld [$cb57], a
     ret
 
-
 Call_000_3cf2:
 Jump_000_3cf2:
     ld a, $3c
     call Call_000_3f52
-
-Jump_000_3cf7:
     ret
-
 
 Call_000_3cf8:
     ld a, [$cb8f]
@@ -10795,7 +10781,6 @@ Call_000_3cf8:
     ld a, $08
     call BankSwitchCallHL
     ret
-
 
 jr_000_3d07:
     ld a, [$cb52]
@@ -10808,7 +10793,6 @@ jr_000_3d07:
 
     call Call_000_3a6f
     ret
-
 
 jr_000_3d17:
     ld a, [$cb56]
@@ -10867,7 +10851,6 @@ jr_000_3d41:
     ld [$cb57], a
     ret
 
-
 jr_000_3d7b:
     xor a
     ld [$cc1b], a
@@ -10898,7 +10881,6 @@ jr_000_3d7b:
     ld a, $01
     ld [$cb56], a
     ret
-
 
 Call_000_3db3:
     ld a, [$c912]
@@ -10939,14 +10921,11 @@ Jump_000_3dbd:
 
     cp $07
     jr z, jr_000_3deb
-
     ret
-
 
 jr_000_3deb:
     pop hl
     ret
-
 
 Call_000_3ded:
     ld a, [$b88c]
@@ -10961,11 +10940,8 @@ Call_000_3ded:
     ld [$cbf6], a
     ret
 
-
 Call_000_3dfd:
     ld a, [$b906]
-
-Call_000_3e00:
     or a
     ret nz
 
@@ -10980,12 +10956,11 @@ Call_000_3e00:
     ld [$cb5f], a
     ret
 
-
 Call_000_3e1a:
-    ld hl, $9c30
+    ld hl, vBGMap1 + $30
     call SyncToBlankPeriod
     ld a, $88
-    ld [hl+], a
+    ld [hli], a
     inc a
     ld [hl], a
     call SyncToBlankPeriod
@@ -11022,7 +10997,7 @@ Call_000_3e1a:
 
 jr_000_3e66:
     ld c, a
-    ld hl, $1b20
+    ld hl, Data_000_1b20
     ld b, $00
 
 jr_000_3e6c:
@@ -11036,15 +11011,15 @@ jr_000_3e6c:
 jr_000_3e73:
     ld a, b
     add a
-    ld hl, $3ebc
+    ld hl, Data_000_3ebc
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
-    ld a, [hl+]
+    ld a, [hli]
     ld c, a
-    ld a, [hl+]
+    ld a, [hli]
     ld b, a
     ld hl, $6ce2
     add hl, bc
@@ -11060,7 +11035,7 @@ jr_000_3e95:
 
 jr_000_3e97:
     call SyncToBlankPeriod
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
     dec c
@@ -11077,7 +11052,7 @@ jr_000_3ea8:
 
 jr_000_3eaa:
     call SyncToBlankPeriod
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
 
@@ -11092,73 +11067,11 @@ Call_000_3eb0:
     ld [MBC3RomBank], a
     ret
 
-
-    sub b
-    nop
-    jr nz, jr_000_3ec1
-
-    or b
-
-Call_000_3ec1:
-jr_000_3ec1:
-    ld bc, $0240
-    ld h, b
-
-Call_000_3ec5:
-    inc bc
-    ldh a, [$ff03]
-    add b
-    inc b
-    db $10
-    dec b
-    ret nc
-
-    dec bc
-
-Call_000_3ece:
-    jr nc, jr_000_3edf
-
-    nop
-    db $10
-    ret nc
-
-    ld [bc], a
-    and b
-    dec b
-    jr nc, jr_000_3ede
-
-    ldh a, [$ff0c]
-    ld h, b
-    inc c
-    add b
-    dec c
-
-jr_000_3ede:
-    ret nz
-
-jr_000_3edf:
-    ld b, $50
-    rlca
-    ldh [rTAC], a
-    ld [hl], b
-    ld [$0900], sp
-    sub b
-    add hl, bc
-    jr nz, jr_000_3ef6
-
-    or b
-    ld a, [bc]
-    ld b, b
-    dec bc
-    or b
-    ld de, $1090
-    jr nz, jr_000_3f07
-
-jr_000_3ef6:
-    db $10
-    ld c, $a0
-    ld c, $00
-    nop
+Data_000_3ebc:
+    db $90, $00, $20, $01, $B0, $01, $40, $02, $60, $03, $F0, $03, $80, $04, $10, $05
+    db $D0, $0B, $30, $0F, $00, $10, $D0, $02, $A0, $05, $30, $06, $F0, $0C, $60, $0C
+    db $80, $0D, $C0, $06, $50, $07, $E0, $07, $70, $08, $00, $09, $90, $09, $20, $0A
+    db $B0, $0A, $40, $0B, $B0, $11, $90, $10, $20, $11, $10, $0E, $A0, $0E, $00, $00 
 
 Call_000_3efc:
 jr_000_3efc:
@@ -11167,8 +11080,6 @@ jr_000_3efc:
     ld [wLCDCTempStorage], a
     ldh [rLCDC], a
     xor a
-
-jr_000_3f07:
     ld [wTextBoxIsDisplayed], a
     ret
 
@@ -11188,8 +11099,6 @@ Call_000_3f0b:
 
 Call_000_3f26:
     ld a, $ff
-
-Call_000_3f28:
     ld [$cb52], a
     xor a
     ld [$cb53], a

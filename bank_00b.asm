@@ -3310,7 +3310,7 @@ jr_00b_4ec2:
     rst $38
     adc b
     ld [hl], b
-    call nz, Call_000_3c38
+    call nz, $3c38
     ret nz
 
     ld a, $d8

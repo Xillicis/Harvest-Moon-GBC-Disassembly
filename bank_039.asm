@@ -5123,7 +5123,7 @@ jr_039_55f1:
     ei
     rra
     ldh [$fffa], a
-    call z, Call_000_3ec5
+    call z, $3ec5
     add b
     nop
     nop

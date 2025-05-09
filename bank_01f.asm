@@ -3798,7 +3798,7 @@ jr_01f_52e6:
     inc bc
     jr z, @+$22
 
-    call c, Call_000_3e00
+    call c, $3e00
     inc bc
     ld [$cdb4], a
     ld h, b

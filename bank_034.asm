@@ -12169,7 +12169,7 @@ jr_034_7668:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe

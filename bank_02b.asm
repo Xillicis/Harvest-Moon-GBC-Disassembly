@@ -262,7 +262,7 @@ Jump_02b_4101:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe
@@ -1023,7 +1023,7 @@ jr_02b_4408:
     pop bc
     ld a, a
     inc d
-    jp Jump_000_3c69
+    jp $3c69
 
 
     cp d
@@ -3140,7 +3140,7 @@ Jump_02b_4d3e:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe
@@ -4073,7 +4073,7 @@ jr_02b_5112:
     inc d
 
 jr_02b_5167:
-    jp Jump_000_3c69
+    jp $3c69
 
 
     cp d
@@ -6424,7 +6424,7 @@ jr_02b_5ab2:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe
@@ -9297,7 +9297,7 @@ Jump_02b_679a:
     ld a, [bc]
     or $ff
     dec [hl]
-    call Call_000_3ece
+    call $3ece
     dec de
     ei
     cp $fe
@@ -10107,7 +10107,7 @@ jr_02b_6b08:
     inc d
 
 jr_02b_6b5b:
-    jp Jump_000_3c69
+    jp $3c69
 
 
     cp d

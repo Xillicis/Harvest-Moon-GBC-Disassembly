@@ -8899,7 +8899,7 @@ jr_029_6c4c:
     dec c
     db $ec
     ldh a, [$fff7]
-    call nc, Call_000_3c38
+    call nc, $3c38
     ld a, a
     dec hl
     nop
