@@ -12792,7 +12792,7 @@ jr_031_7b95:
     jp $beb3
 
 
-    call nz, Call_000_37bf
+    call nz, $37bf
     ld c, a
     ld [hl], b
     push hl

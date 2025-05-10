@@ -9904,11 +9904,7 @@ jr_000_3785:
     add l
     ld l, a
     ld a, $00
-
-Call_000_37bf:
     adc h
-
-Jump_000_37c0:
     ld h, a
     call Call_000_0a93
 
@@ -9922,12 +9918,10 @@ jr_000_37c4:
     ld [MBC3RomBank], a
     ret
 
-
 jr_000_37d7:
     ld a, [wTextID]
     cp $04
     jr nz, jr_000_37e1
-
     call Call_000_3e1a
 
 jr_000_37e1:
@@ -9946,7 +9940,6 @@ jr_000_37e1:
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
-
 
 Jump_000_3804:
     ld a, [$cb69]

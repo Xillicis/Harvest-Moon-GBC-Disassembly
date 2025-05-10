@@ -12262,7 +12262,7 @@ jr_022_7df2:
     ld a, a
 
 jr_022_7e0d:
-    jp nc, Jump_000_37c0
+    jp nc, $37c0
 
     ld [bc], a
     dec e

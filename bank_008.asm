@@ -838,10 +838,8 @@ jr_008_45bb:
     inc de
     dec b
     jr nz, jr_008_45bb
-
     call Call_000_3e1a
     ret
-
 
     ld hl, sInventory
     ld a, [sItemSlot]
