@@ -16,7 +16,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
     ldh [$ff91], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ldh [$ff93], a
     ldh [$ff91], a

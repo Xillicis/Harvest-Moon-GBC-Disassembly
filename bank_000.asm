@@ -8676,16 +8676,16 @@ jr_000_3237:
     ld [MBC3RomBank], a
     ret
 
-Call_000_323d:
-    ld b, $a0
-    ld a, $00
+; Clear the 160‑byte Shadow OAM buffer at wShadowOAM
+ClearShadowOAMBuffer:
+    ld b, $a0          ; 160 entries
+    ld a, $00          ; value to write
     ld hl, wShadowOAM
-.loop
-    ld [hli], a
+.loop:
+    ld [hli], a        ; *HL++ = 0
     dec b
     jr nz, .loop
     ret
-
 
     ld b, a
     ld de, $5000

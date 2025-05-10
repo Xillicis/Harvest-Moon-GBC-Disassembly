@@ -16,7 +16,7 @@ SECTION "ROM Bank $009", ROMX[$4000], BANK[$9]
     pop hl
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $6e
@@ -3950,7 +3950,7 @@ Call_009_5435:
     push hl
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $6c
@@ -4147,7 +4147,7 @@ jr_009_559c:
     pop hl
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $7771
     ld c, $06
     ld de, $8800
@@ -4265,7 +4265,7 @@ Call_009_566d:
 Call_009_5680:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, TextFontTileset
     ld a, BANK(TextFontTileset)
     ld de, $9000

@@ -8,7 +8,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     dec a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $5e7e
     ld c, $3d
     ld de, $8800
@@ -654,7 +654,7 @@ Call_03d_433e:
     call Call_03d_43f2
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $6b51
     ld c, $3e
     ld de, $8000
@@ -1277,7 +1277,7 @@ jr_03d_467e:
 Call_03d_468c:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $4001
     ld a, $31
     ld de, $9000
@@ -4427,7 +4427,7 @@ jr_03d_565b:
     add b
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $7a68
     ld c, $32
     ld de, $9000
@@ -9385,7 +9385,7 @@ jr_03d_6d1c:
     rst $38
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $7aca
     ld c, $2f
     ld de, $8800
@@ -10160,7 +10160,7 @@ jr_03d_7174:
     and l
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $769e
     ld c, $24
     ld de, $8800

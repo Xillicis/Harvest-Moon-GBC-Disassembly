@@ -16,7 +16,7 @@ SECTION "ROM Bank $01d", ROMX[$4000], BANK[$1d]
     pop hl
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $5fe3
     ld c, $1d
     ld de, $8800
@@ -676,7 +676,7 @@ Call_01d_434b:
     call Call_01d_440c
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $6cb4
     ld c, $1e
     ld de, $8000
@@ -1262,7 +1262,7 @@ SplitHScrollHandler:
 Call_01d_46a6:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $63
@@ -3551,7 +3551,7 @@ jr_01d_514a:
 Label_01d_5192:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $9000
 .loop
     xor a
@@ -4412,7 +4412,7 @@ jr_01d_56b1:
     pop hl
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $7a58
     ld c, $12
     ld de, $9000
@@ -9650,7 +9650,7 @@ jr_01d_6e6c:
     rst $38
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $2c
@@ -10431,7 +10431,7 @@ jr_01d_72d1:
     and l
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $da

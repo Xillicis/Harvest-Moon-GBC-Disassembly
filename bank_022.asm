@@ -13,7 +13,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     call Call_000_0d22
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $4001
     ld a, $31
     ld de, $9010
@@ -3130,7 +3130,7 @@ jr_022_5015:
 
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     di
     ld a, [$cb92]
     cp $ff

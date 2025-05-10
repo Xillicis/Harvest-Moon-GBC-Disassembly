@@ -13,7 +13,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     call Call_000_0d22
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $4001
     ld a, $11
     ld de, $9010
@@ -3153,7 +3153,7 @@ jr_002_5023:
     call SyncLoadSpritePalette6
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     di
     ld a, [$cb92]
     cp $ff

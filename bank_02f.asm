@@ -6034,7 +6034,7 @@ Call_02f_62dd:
     ld [$c820], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $5f14
     ld a, $2d
     call BankSwitchCallHL
@@ -7512,7 +7512,7 @@ jr_02f_6c1a:
     ld [$c820], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $76dc
     ld c, $30
     ld de, $8800

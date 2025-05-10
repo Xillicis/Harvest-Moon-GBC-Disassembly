@@ -6038,7 +6038,7 @@ Call_00f_62dc:
     ld [$c820], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $5efb
     ld a, $0d
     call BankSwitchCallHL
@@ -6759,13 +6759,12 @@ jr_00f_6836:
     cp $00
     jr z, jr_00f_6859
 
-    ld a, $15
+    ld a, TIME_9_PM
     ld [sCurrentHour], a
     ret
 
-
 jr_00f_6859:
-    ld a, $12
+    ld a, TIME_6_PM
     ld [sCurrentHour], a
     ret
 
@@ -7569,7 +7568,7 @@ jr_00f_6c70:
     ld [$c820], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $7729
     ld c, $10
     ld de, $8800
@@ -8444,11 +8443,11 @@ jr_00f_716f:
     jr nz, jr_00f_7197
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_00f_7184
 
     ld a, [sCurrentHour]
-    cp $12
+    cp TIME_6_PM
     jr c, jr_00f_7197
 
 jr_00f_7184:
@@ -8686,11 +8685,11 @@ jr_00f_7259:
     inc b
     inc b
     inc b
-    jr jr_00f_72d0
+    jr $72d0
 
-    jr jr_00f_72d2
+    jr $72d2
 
-    jr jr_00f_72e8
+    jr $72e8
 
     inc l
     inc l
@@ -8730,14 +8729,14 @@ jr_00f_72d2:
     cp l
     cp l
     cp l
+
+Label_00f_72de:
     ld a, [$cd23]
     or a
     jr z, jr_00f_72eb
 
     ld a, [$c0bb]
     or a
-
-jr_00f_72e8:
     jp nz, Jump_00f_7370
 
 jr_00f_72eb:
@@ -8771,11 +8770,11 @@ jr_00f_7310:
     jr nz, jr_00f_7338
 
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_00f_7325
 
     ld a, [sCurrentHour]
-    cp $12
+    cp TIME_6_PM
     jr c, jr_00f_7338
 
 jr_00f_7325:

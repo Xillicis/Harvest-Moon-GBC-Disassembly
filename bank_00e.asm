@@ -40,7 +40,7 @@ jr_00e_4022:
     ld [$cc79], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld hl, $cb2f
     ld [hl+], a
@@ -3630,7 +3630,7 @@ jr_00e_5507:
     ld [$cc79], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld [$cc6c], a
     ld [$cc6d], a
@@ -4615,7 +4615,7 @@ Call_00e_5ad2:
     ld [$cc79], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld [$cc6c], a
     ld [$cc6d], a
@@ -5680,7 +5680,7 @@ Call_00e_616c:
     ld [$cc79], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld [$cc6c], a
     ld [$cc6d], a
@@ -6494,7 +6494,7 @@ jr_00e_669f:
     ld [$cc79], a
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld [$cc6c], a
     ld [$cc6d], a

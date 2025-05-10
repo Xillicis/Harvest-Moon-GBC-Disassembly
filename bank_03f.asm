@@ -8,7 +8,7 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ccf
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     call Call_03f_4092
     ld hl, $74aa
     ld c, $3d
@@ -9703,7 +9703,7 @@ jr_03f_6c89:
     add b
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $4001
     ld a, $31
     ld de, $9010

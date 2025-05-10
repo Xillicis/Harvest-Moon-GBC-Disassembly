@@ -17,7 +17,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 Label_001_4019:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     push hl
     push af
     ld l, $8d

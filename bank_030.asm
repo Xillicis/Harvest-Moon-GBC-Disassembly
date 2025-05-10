@@ -11,7 +11,7 @@ Jump_030_4002:
     adc d
     ld [hl+], a
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     ld hl, $6d5c
     ld c, $30
     ld de, $8800
@@ -3041,7 +3041,7 @@ Call_030_4ebd:
 jr_030_4f2d:
     call ClearBGMap0
     call ClearBGMap1
-    call Call_000_323d
+    call ClearShadowOAMBuffer
     xor a
     ld [$c600], a
     ld [$c620], a
