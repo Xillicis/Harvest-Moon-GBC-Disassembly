@@ -145,14 +145,17 @@ sb905::  db
 sb906::  db 
 sb907::  db 
 sCurrentWaterInWateringCan::  db 
-sb909::  db 
+
+; Seems to just load 1 on the first interaction.
+sSpriteFirstInteractionFlag::  db  ; 0xb909
 sb90a::  db 
 sb90b::  db 
 sb90c::  db 
 sb90d::  db 
 sb90e::  db 
-sb90f::  db 
-sb910::  db 
+; Keeps track of the number of tiles plowed. I think this might be used for winning the game.
+sNumTilesPlowed::  dw ; 0xb90f
+
 ; 0 - no expansion, 1 - the house is expanded
 sHouseExpansionFlag::  db ; 0xb911
 sb912::  db 
@@ -404,7 +407,7 @@ sba08::  db
 sba09::  db 
 sba0a::  db 
 sba0b::  db 
-sba0c::  db 
+sSpriteEventFlags::  db  ; 0xba0c
 sba0d::  db 
 sba0e::  db 
 sba0f::  db 

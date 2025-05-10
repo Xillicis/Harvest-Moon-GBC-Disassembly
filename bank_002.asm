@@ -508,10 +508,10 @@ Call_002_42b8:
     ld d, a
 
 Call_002_430a:
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 7, a
     call nz, Call_002_43a9
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 6, a
     call nz, Call_002_43d4
     ld a, [$ba0d]
@@ -3242,7 +3242,7 @@ jr_002_50ec:
     ld [$cb5e], a
     xor a
     ld [$cb56], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb76], a
     ld [$cb78], a
     ld [$cb7a], a
@@ -3410,7 +3410,7 @@ jr_002_5264:
 
 jr_002_5271:
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -3707,7 +3707,7 @@ Call_002_5433:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

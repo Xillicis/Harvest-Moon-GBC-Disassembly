@@ -51,7 +51,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld hl, wShadowOAM
@@ -685,7 +685,7 @@ Call_03d_433e:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld hl, $4447
@@ -1372,7 +1372,7 @@ jr_03d_4726:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld a, $4e
@@ -3636,7 +3636,7 @@ Call_03d_51d9:
     ld a, $23
     call BankSwitchCallHL
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb4d], a
     xor a
     ld [$cb53], a
@@ -4486,7 +4486,7 @@ jr_03d_571c:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a
@@ -9446,7 +9446,7 @@ jr_03d_6d1c:
     ld a, $08
     call Call_000_25c8
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb56], a
     ld [$cb53], a
@@ -9494,7 +9494,7 @@ jr_03d_6e12:
     or b
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -10223,7 +10223,7 @@ jr_03d_7174:
     ld a, $08
     call Call_000_25c8
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb56], a
     ld [$cb53], a
@@ -10271,7 +10271,7 @@ jr_03d_72a3:
     or b
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

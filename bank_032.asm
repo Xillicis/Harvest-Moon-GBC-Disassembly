@@ -12040,9 +12040,9 @@ jr_032_793a:
     cp $06
     ret nz
 
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     set 5, a
-    ld [$ba0c], a
+    ld [sSpriteEventFlags], a
     ld hl, $c80b
     dec [hl]
     ld a, [hl]

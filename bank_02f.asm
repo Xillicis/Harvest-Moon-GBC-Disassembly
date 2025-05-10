@@ -6053,7 +6053,7 @@ Call_02f_62dd:
     ld a, $1d
     ld [$cb4e], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -6089,7 +6089,7 @@ Call_02f_62dd:
     ld a, $17
     call Call_000_25c5
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -6116,7 +6116,7 @@ Call_02f_62dd:
     cp $18
     jr nz, jr_02f_64a1
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jr nz, jr_02f_64a1
 
@@ -6167,7 +6167,7 @@ Call_02f_64be:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -6718,7 +6718,7 @@ jr_02f_680a:
 
 
 jr_02f_680b:
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -7625,7 +7625,7 @@ jr_02f_6d44:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

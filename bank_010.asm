@@ -3498,7 +3498,7 @@ Call_010_51ca:
     cp c
     adc e
     cp c
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -3527,7 +3527,7 @@ jr_010_51f0:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -3579,7 +3579,7 @@ jr_010_523a:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -4155,7 +4155,7 @@ Call_010_554f:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

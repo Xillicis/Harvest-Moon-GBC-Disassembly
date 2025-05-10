@@ -3372,7 +3372,7 @@ Call_030_512c:
     cp c
     adc e
     cp c
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -3401,7 +3401,7 @@ jr_030_5152:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -3453,7 +3453,7 @@ jr_030_519c:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -4030,7 +4030,7 @@ Call_030_54ba:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -9449,7 +9449,7 @@ jr_030_6b72:
     ld h, c
     ld l, d
     halt
-    jp nc, Jump_000_08ee
+    jp nc, $08ee
 
     rst $38
     ld c, a

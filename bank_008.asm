@@ -1209,7 +1209,6 @@ jr_008_47e8:
     ld [$cb45], a
     ret
 
-
 Jump_008_4801:
     xor a
     ldh [$ffa4], a
@@ -1219,7 +1218,6 @@ Jump_008_4801:
     xor a
     ld [$cb45], a
     ret
-
 
     ld a, [$c912]
     cp $02
@@ -7462,121 +7460,88 @@ jr_008_6a80:
     ld [hl], a
     ret
 
-
 Call_008_6ab9:
-    ld hl, $b90f
+    ld hl, sNumTilesPlowed
     ld bc, $0001
     call AddBCtoWordAtHL
-    ld a, [$b910]
+    ld a, [sNumTilesPlowed+1]
     cp $06
     jr z, jr_008_6ae2
-
     cp $05
     jr z, jr_008_6aee
-
     cp $04
     jr z, jr_008_6afb
-
     cp $03
     jr z, jr_008_6b07
-
     cp $02
     jr z, jr_008_6b14
-
     cp $01
     jr z, jr_008_6b20
-
     cp $00
     jr z, jr_008_6b2c
-
     ret
-
 
 jr_008_6ae2:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_008_6b44
-
     cp $7a
     jr z, jr_008_6b6c
-
     ret
-
 
 jr_008_6aee:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jp z, Jump_008_6b94
-
     cp $80
     jr z, jr_008_6b6c
-
     ret
-
 
 jr_008_6afb:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_008_6b6c
-
     cp $80
     jr z, jr_008_6b44
-
     ret
-
 
 jr_008_6b07:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_008_6b44
-
     cp $80
     jp z, Jump_008_6b94
-
     ret
-
 
 jr_008_6b14:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_008_6b94
-
     cp $80
     jr z, jr_008_6b6c
-
     ret
-
 
 jr_008_6b20:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_008_6b6c
-
     cp $80
     jr z, jr_008_6b44
-
     ret
-
 
 jr_008_6b2c:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $08
     jr z, jr_008_6b44
-
     cp $40
     jr z, jr_008_6b44
-
     cp $10
     jr z, jr_008_6b94
-
     cp $80
     jr z, jr_008_6b94
-
     cp $20
     jr z, jr_008_6b6c
-
     ret
-
 
 jr_008_6b44:
     ld hl, sPlayerMoney

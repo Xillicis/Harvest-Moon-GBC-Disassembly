@@ -55,7 +55,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a
@@ -1702,7 +1702,7 @@ jr_026_4780:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a

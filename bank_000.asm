@@ -1206,6 +1206,7 @@ DayOfTheMonthTileIndices:
     db $36, $36, $36, $37, $36, $38, $36, $39, $36, $3A, $36, $3B, $36, $3C ; 22 | 23 | 24 | 25 | 26 | 27 | 28
     db $36, $3D, $37, $34                                                   ; 29 | 30
 
+; Not seeing where these sram values are actually used...
 Call_000_08b7:
     ld a, [sCurrentSeason]
     ld l, a
@@ -1217,51 +1218,27 @@ Call_000_08b7:
     ld d, a
     add hl, hl
     add hl, de
-    ld de, $08e1
+    ld de, Data_000_08e1
     add hl, de
-    ld a, [hl+]
+    ld a, [hli]
     ld [$b912], a
-    ld a, [hl+]
-
-jr_000_08cd:
+    ld a, [hli]
     ld [$b913], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$ba4f], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$ba50], a
-    ld a, [hl+]
+    ld a, [hli]
     ld [$ba51], a
     ld a, [hl]
     ld [$ba52], a
     ret
 
+Data_000_08e1:
+    db $6D, $6E, $6F, $70, $71, $72, $73, $74, $75, $76, $77, $78, $EF, $79, $7A, $7B,
+    db $7C, $EF, $7D, $7E, $7F, $80, $81, $82, 
 
-    ld l, l
-    ld l, [hl]
-    ld l, a
-    ld [hl], b
-    ld [hl], c
-    ld [hl], d
-    ld [hl], e
-    ld [hl], h
-    ld [hl], l
-    halt
-    ld [hl], a
-    ld a, b
-    rst $28
-
-Jump_000_08ee:
-    ld a, c
-    ld a, d
-    ld a, e
-    ld a, h
-    rst $28
-    ld a, l
-    ld a, [hl]
-    ld a, a
-    add b
-    add c
-    add d
+Label_000_08f9:
     push af
     push bc
     push de
@@ -2092,7 +2069,7 @@ Call_000_0de8:
     ld [$cb56], a
     ld [$cb57], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb4d], a
     xor a
     ld [$cb53], a
@@ -9818,14 +9795,14 @@ Jump_000_3702:
     ret nz
 
     call Call_000_38fb
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jp z, Jump_000_383d
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $3c
     call z, Call_000_38c1
-    ld a, [$cb52]
+    ld a, [wTextID]
     ld [$cb4d], a
     ld l, a
     ld h, $00
@@ -9947,7 +9924,7 @@ jr_000_37c4:
 
 
 jr_000_37d7:
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $04
     jr nz, jr_000_37e1
 
@@ -9955,7 +9932,7 @@ jr_000_37d7:
 
 jr_000_37e1:
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -10104,7 +10081,7 @@ Call_000_38c6:
     ret z
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     call Call_000_3f52
 
@@ -10407,7 +10384,7 @@ jr_000_3aa6:
 jr_000_3ab9:
     call Call_000_3efc
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
 
@@ -10496,7 +10473,7 @@ Call_000_3b32:
     ret nz
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     xor a
     ld [$cb58], a
@@ -10508,7 +10485,7 @@ Call_000_3b32:
 jr_000_3b54:
     call Call_000_3efc
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a
@@ -10652,7 +10629,7 @@ Jump_000_3c10:
     ld [$cb54], a
     ld [$cb55], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f26
 
 Call_000_3c28:
@@ -10697,7 +10674,7 @@ Call_000_3c44:
     ld [$cbea], a
     call Call_000_3efc
     ld a, $03
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a
@@ -10729,7 +10706,7 @@ jr_000_3c6d:
     ret nz
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     xor a
     ld [$cb58], a
@@ -10759,7 +10736,7 @@ jr_000_3cb2:
     ret nz
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     xor a
     ld [$cb58], a
@@ -10783,7 +10760,7 @@ Call_000_3cf8:
     ret
 
 jr_000_3d07:
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -10811,7 +10788,7 @@ jr_000_3d17:
     ld a, $01
     ld [$cb56], a
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     xor a
     ld [$cb58], a
@@ -10844,7 +10821,7 @@ jr_000_3d41:
     ret nz
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     xor a
     ld [$cb58], a
@@ -10875,7 +10852,7 @@ jr_000_3d7b:
     call RST_TableJumpBankSwitch
     call Call_000_3f0b
     ld a, $00
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $03
     ld [$c912], a
     ld a, $01
@@ -10946,7 +10923,7 @@ Call_000_3dfd:
     ret nz
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     ld a, $01
     ld [$cc1b], a
@@ -11099,7 +11076,7 @@ Call_000_3f0b:
 
 Call_000_3f26:
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -11112,7 +11089,7 @@ Call_000_3f26:
     jr nz, jr_000_3efc
 
     ld a, $04
-    ld [$cb52], a
+    ld [wTextID], a
     call Call_000_3f0b
     xor a
     ld [$cb58], a
@@ -11122,12 +11099,12 @@ Call_000_3f26:
 
 Call_000_3f52:
     ld b, a
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
     ld a, b
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld [$cb5f], a

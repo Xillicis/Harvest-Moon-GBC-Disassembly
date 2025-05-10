@@ -61,7 +61,7 @@ Jump_01d_402a:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld hl, wShadowOAM
@@ -707,7 +707,7 @@ Call_01d_434b:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld hl, $4461
@@ -1365,7 +1365,7 @@ jr_01d_474d:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld a, $4e
@@ -3629,7 +3629,7 @@ Call_01d_521e: ; 1dx521e
     ld a, $03
     call BankSwitchCallHL
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb4d], a
     xor a
     ld [$cb53], a
@@ -4471,7 +4471,7 @@ jr_01d_576e:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a
@@ -9719,7 +9719,7 @@ jr_01d_6e6c:
     ld a, $08
     call Call_000_25c8
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb56], a
     ld [$cb53], a
@@ -9767,7 +9767,7 @@ jr_01d_6f6f:
     or b
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -10502,7 +10502,7 @@ jr_01d_72d1:
     ld a, $08
     call Call_000_25c8
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb56], a
     ld [$cb53], a
@@ -10550,7 +10550,7 @@ jr_01d_740d:
     or b
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

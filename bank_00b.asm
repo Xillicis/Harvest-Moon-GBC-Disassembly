@@ -4116,7 +4116,7 @@ jr_00b_51ca:
     ld l, d
     halt
     rst $38
-    jp nc, Jump_000_08ee
+    jp nc, $08ee
 
     ld c, a
     ld d, h
@@ -10038,7 +10038,7 @@ jr_00b_6b6a:
     rst $38
     ld l, d
     halt
-    jp nc, Jump_000_08ee
+    jp nc, $08ee
 
     ld c, a
     ld d, h

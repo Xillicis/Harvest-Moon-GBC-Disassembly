@@ -7,7 +7,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
 
     daa
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -119,7 +119,7 @@ jr_027_40c6:
     ld a, $11
     ld [$cb50], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -11594,7 +11594,7 @@ jr_027_700d:
     ret nz
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
 
 jr_027_7020:
     xor a
@@ -11619,7 +11619,7 @@ jr_027_7020:
     jr nz, jr_027_7092
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb55], a
@@ -11661,7 +11661,7 @@ jr_027_7092:
     jr nz, jr_027_70c7
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb55], a
@@ -11694,7 +11694,7 @@ jr_027_70c7:
     ld a, $02
     ld [$c90f], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -11743,7 +11743,7 @@ jr_027_7111:
     ld a, $20
     ld [$c911], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -12214,7 +12214,7 @@ jr_027_7413:
     call AddSignedBCToHL
     call Call_000_1056
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -12288,7 +12288,7 @@ jr_027_74b3:
     or a
     jp nz, Jump_027_74ea
 
-    ld a, [$b909]
+    ld a, [sSpriteFirstInteractionFlag]
     or a
     jr z, jr_027_7522
 
@@ -12307,13 +12307,13 @@ Jump_027_74ea:
     xor a
     ld [$b90a], a
     call Call_000_0fc7
-    ld a, [$b909]
+    ld a, [sSpriteFirstInteractionFlag]
     or a
     jr nz, jr_027_751a
 
     call ClearOldTextOnTextBox
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a
@@ -12352,7 +12352,7 @@ jr_027_752a:
 
     call ClearOldTextOnTextBox
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a

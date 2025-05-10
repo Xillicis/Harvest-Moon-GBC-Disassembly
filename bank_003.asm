@@ -96,7 +96,7 @@ SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
     ld a, $ff
     ld [$cc24], a
     ld [$cc28], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
@@ -358,7 +358,7 @@ Call_003_42d7:
     or b
     jr nz, jr_003_4323
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jr nz, jr_003_4323
 

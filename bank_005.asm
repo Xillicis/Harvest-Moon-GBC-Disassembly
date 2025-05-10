@@ -114,7 +114,7 @@ Call_005_40e2:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

@@ -7808,10 +7808,10 @@ jr_028_6a8e:
 
 
 Call_028_6abb:
-    ld hl, $b90f
+    ld hl, sNumTilesPlowed
     ld bc, $0001
     call AddBCtoWordAtHL
-    ld a, [$b910]
+    ld a, [sNumTilesPlowed+1]
     cp $06
     jr z, jr_028_6ae4
 
@@ -7837,7 +7837,7 @@ Call_028_6abb:
 
 
 jr_028_6ae4:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_028_6b46
 
@@ -7848,7 +7848,7 @@ jr_028_6ae4:
 
 
 jr_028_6af0:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jp z, Jump_028_6b96
 
@@ -7859,7 +7859,7 @@ jr_028_6af0:
 
 
 jr_028_6afd:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_028_6b6e
 
@@ -7870,7 +7870,7 @@ jr_028_6afd:
 
 
 jr_028_6b09:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_028_6b46
 
@@ -7881,7 +7881,7 @@ jr_028_6b09:
 
 
 jr_028_6b16:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_028_6b96
 
@@ -7892,7 +7892,7 @@ jr_028_6b16:
 
 
 jr_028_6b22:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $00
     jr z, jr_028_6b6e
 
@@ -7903,7 +7903,7 @@ jr_028_6b22:
 
 
 jr_028_6b2e:
-    ld a, [$b90f]
+    ld a, [sNumTilesPlowed]
     cp $08
     jr z, jr_028_6b46
 

@@ -15,7 +15,7 @@ SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
     pop af
     pop hl
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -127,7 +127,7 @@ jr_007_40d3:
     ld a, $11
     ld [$cb50], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -11670,7 +11670,7 @@ jr_007_7070:
     ret nz
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
 
 jr_007_7083:
     xor a
@@ -11695,7 +11695,7 @@ jr_007_7083:
     jr nz, jr_007_70f5
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb55], a
@@ -11737,7 +11737,7 @@ jr_007_70f5:
     jr nz, jr_007_712a
 
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb55], a
@@ -11770,7 +11770,7 @@ jr_007_712a:
     ld a, $02
     ld [$c90f], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -11819,7 +11819,7 @@ jr_007_7174:
     ld a, $20
     ld [$c911], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -12290,7 +12290,7 @@ jr_007_7476:
     call AddSignedBCToHL
     call Call_000_1056
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -12364,7 +12364,7 @@ jr_007_7516:
     or a
     jp nz, Jump_007_754d
 
-    ld a, [$b909]
+    ld a, [sSpriteFirstInteractionFlag]
     or a
     jr z, jr_007_7585
 
@@ -12383,13 +12383,13 @@ Jump_007_754d:
     xor a
     ld [$b90a], a
     call Call_000_0fc7
-    ld a, [$b909]
+    ld a, [sSpriteFirstInteractionFlag]
     or a
     jr nz, jr_007_757d
 
     call ClearOldTextOnTextBox
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a
@@ -12428,7 +12428,7 @@ jr_007_758d:
 
     call ClearOldTextOnTextBox
     ld a, $01
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb57], a
     call Call_000_3f0b
     xor a

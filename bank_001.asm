@@ -549,7 +549,7 @@ Call_001_43f3:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -6731,7 +6731,7 @@ Call_001_6b67:
     or a
     ret z
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -6906,7 +6906,7 @@ jr_001_6c75:
 
 
 Call_001_6c80:
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
     ld a, [$cb79]
@@ -6916,7 +6916,7 @@ Call_001_6c80:
     ld [$cb79], a
     or a
     jr z, jr_001_6ca4
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
     ld a, [$cb4f]
@@ -6929,7 +6929,7 @@ Call_001_6c80:
 
 jr_001_6ca4:
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -7772,7 +7772,7 @@ Call_001_712d:
     cp $01
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -8074,7 +8074,7 @@ Call_001_7336:
     ld [$cb57], a
     ld [$b88c], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $00
     ld [$cb53], a
     ld [$cb54], a

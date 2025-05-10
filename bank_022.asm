@@ -496,10 +496,10 @@ Call_022_42aa:
     ld d, a
 
 Call_022_42fc:
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 7, a
     call nz, Call_022_439b
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 6, a
     call nz, Call_022_43c6
     ld a, [$ba0d]
@@ -3219,7 +3219,7 @@ jr_022_50a8:
     ld [$cb5e], a
     xor a
     ld [$cb56], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld [$cb76], a
     ld [$cb78], a
     ld [$cb7a], a
@@ -3323,7 +3323,7 @@ jr_022_5191:
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $ff
-    ld [$cb52], a
+    ld [wTextID], a
     xor a
     ld [$cb53], a
     ld [$cb54], a
@@ -3611,7 +3611,7 @@ Call_022_537d:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 

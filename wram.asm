@@ -44,12 +44,24 @@ ds $16
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a
 
-ds 1
+ds 1 ; 0xcb4b
 
 ;; Either 1 or 0, for whether the textbox is displayed
-wTextBoxIsDisplayed:: db
+wTextBoxIsDisplayed:: db ; 0xcb4c
 
-ds 52
+ds 1 ; 0xcb4d
+
+ds 1 ; 0xcb4e
+
+ds 1 ; 0xcb4f
+
+ds 1 ; 0xcb50
+
+ds 1 ; 0xcb51
+
+wTextID:: db ; 0xcb52
+
+ds 46
 
 ; This is zero if the player is outside at the farm.
 ; It is one if the player is inside or at town

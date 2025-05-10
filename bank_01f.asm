@@ -249,7 +249,7 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a

@@ -49,7 +49,7 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     xor a

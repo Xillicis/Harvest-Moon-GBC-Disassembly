@@ -3223,7 +3223,7 @@ jr_039_4e2c:
     ld a, c
     ld b, $1a
     inc c
-    jp c, $ba0c
+    jp c, sSpriteEventFlags
 
     call z, $04fa
     ccf

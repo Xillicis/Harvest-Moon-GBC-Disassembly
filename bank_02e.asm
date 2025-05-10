@@ -313,7 +313,7 @@ Call_02e_422c:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jr nz, jr_02e_4292
 
@@ -1136,14 +1136,12 @@ Jump_02e_46fa:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_02e_4705:
     ld a, $b0
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Jump_02e_4710:
     ld a, [$ba0d]
@@ -1165,20 +1163,19 @@ Jump_02e_4726:
     set 0, a
     ld [sSpriteDailyHappiness], a
     call Call_02e_50f0
-    ld a, [$ba0c]
-    bit 0, a
+    ld a, [sSpriteEventFlags]
+    bit EVENT_TALKED_TO_SPRITE_FIRST_TIME, a
     jr nz, jr_02e_474d
 
-    set 0, a
-    ld [$ba0c], a
-    ld a, $01
-    ld [$b909], a
+    set EVENT_TALKED_TO_SPRITE_FIRST_TIME, a
+    ld [sSpriteEventFlags], a
+    ld a, 1
+    ld [sSpriteFirstInteractionFlag], a
     ld a, $b1
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_02e_474d:
     ld a, [$cc79]
@@ -1188,7 +1185,7 @@ jr_02e_474d:
     cp $03
     jr z, jr_02e_4792
 
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 5, a
     jr nz, jr_02e_476a
 
@@ -1208,7 +1205,7 @@ jr_02e_476a:
 
 
 jr_02e_4775:
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 5, a
     jr nz, jr_02e_4787
 
@@ -1228,7 +1225,7 @@ jr_02e_4787:
 
 
 jr_02e_4792:
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 5, a
     jr nz, jr_02e_47a4
 
@@ -1274,33 +1271,31 @@ Jump_02e_47ca:
 
 
 Jump_02e_47da:
-    ld a, [$ba0c]
-    bit 1, a
+    ld a, [sSpriteEventFlags]
+    bit EVENT_SPRITE_GAVE_BERRY, a
     jr nz, jr_02e_47f4
 
-    set 1, a
-    ld [$ba0c], a
+    set EVENT_SPRITE_GAVE_BERRY, a
+    ld [sSpriteEventFlags], a
     ld a, $c2
     call Call_000_3f52
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_02e_4726
 
-
     ret
-
 
 jr_02e_47f4:
     ld a, [sSpriteTotalHappiness]
     cp $1e
     jp c, Jump_02e_4726
 
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 7, a
     jr nz, jr_02e_4816
 
     set 7, a
-    ld [$ba0c], a
+    ld [sSpriteEventFlags], a
     ld a, $bf
     call Call_000_3f52
     ld a, $00
@@ -1316,12 +1311,12 @@ jr_02e_4816:
     cp $32
     jp c, Jump_02e_4726
 
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 6, a
     jp nz, Jump_02e_4726
 
     set 6, a
-    ld [$ba0c], a
+    ld [sSpriteEventFlags], a
     ld a, $c0
     call Call_000_3f52
     ld a, $00
@@ -3382,7 +3377,7 @@ jr_02e_53aa:
     ret
 
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -3707,7 +3702,7 @@ Call_02e_55dd:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     ret nz
 
@@ -4720,7 +4715,7 @@ jr_02e_5c0f:
     or a
     jr nz, jr_02e_5c71
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jr nz, jr_02e_5c6b
 
@@ -5349,7 +5344,7 @@ jr_02e_5fb2:
     cp $43
     jr nz, jr_02e_5fe9
 
-    ld a, [$ba0c]
+    ld a, [sSpriteEventFlags]
     bit 5, a
     jr nz, jr_02e_5fe9
 
@@ -5757,7 +5752,7 @@ Call_02e_6281:
     or a
     ret nz
 
-    ld a, [$cb52]
+    ld a, [wTextID]
     cp $ff
     jr nz, jr_02e_62e0
 

@@ -13103,7 +13103,7 @@ jr_014_7c2b:
     ld h, c
     ld l, d
     halt
-    jp nc, Jump_000_08ee
+    jp nc, $08ee
 
     ld c, a
     rst $38

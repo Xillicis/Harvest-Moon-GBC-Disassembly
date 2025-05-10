@@ -43,7 +43,7 @@ SECTION "ROM Bank $029", ROMX[$4000], BANK[$29]
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     ld a, [$cd2a]
@@ -4298,7 +4298,7 @@ Call_029_5627:
     ld [hl], a
     dec a
     ld [$cb1c], a
-    ld [$cb52], a
+    ld [wTextID], a
     ld a, $01
     ld [$cb56], a
     call Call_029_580e

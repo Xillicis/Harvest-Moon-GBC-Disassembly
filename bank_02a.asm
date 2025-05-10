@@ -10098,7 +10098,7 @@ jr_02a_6aed:
     cpl
     ld hl, $0dfc
     ld [hl+], a
-    ld bc, $ba0c
+    ld bc, sSpriteEventFlags
     ld [hl], e
     xor [hl]
     ld d, a
