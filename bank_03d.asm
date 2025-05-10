@@ -11631,7 +11631,7 @@ jr_03d_792a:
     inc c
     add hl, bc
     ld a, [bc]
-    jp Jump_000_3906
+    jp $3906
 
 
     ld [hl], e
@@ -12460,7 +12460,7 @@ jr_03d_7b81:
     ld a, c
     db $10
     pop af
-    jp nz, Jump_000_3903
+    jp nz, $3903
 
     pop af
     add d

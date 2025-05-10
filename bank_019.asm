@@ -11899,7 +11899,7 @@ jr_019_72e7:
     nop
     nop
     ld a, [$e2e4]
-    call c, Call_000_38c6
+    call c, $38c6
     ld h, c
     sbc [hl]
     sub c

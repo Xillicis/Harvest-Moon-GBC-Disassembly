@@ -12678,7 +12678,7 @@ jr_035_74dc:
     db $ec
     nop
     cp d
-    call z, Call_000_347b
+    call z, $347b
     ccf
     rlca
     cpl
@@ -14253,7 +14253,7 @@ jr_035_7b90:
     ld [bc], a
     sub d
     sub d
-    jp nc, Jump_000_3612
+    jp nc, $3612
 
     add $0e
     or $4e

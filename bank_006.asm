@@ -9997,7 +9997,7 @@ jr_006_7991:
 
 jr_006_79b9:
     add sp, $10
-    call nz, Call_000_38ff
+    call nz, $38ff
     ldh a, [c]
     inc c
     adc c

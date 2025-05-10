@@ -10181,7 +10181,7 @@ jr_02a_6aed:
     ld [hl], d
     sbc l
     inc hl
-    call c, Call_000_39c6
+    call c, $39c6
     dec [hl]
     db $db
     rst $38
@@ -13416,7 +13416,7 @@ Jump_02a_78ed:
     sbc l
     rst $38
     inc hl
-    call c, Call_000_39c6
+    call c, $39c6
     or b
     ld [hl], b
     cp c

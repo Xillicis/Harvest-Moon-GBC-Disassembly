@@ -7537,7 +7537,7 @@ jr_025_6993:
     rst $08
     rst $28
     rst $08
-    call z, Call_000_38ff
+    call z, $38ff
     jr nz, @+$04
 
 jr_025_6a91:
@@ -8889,7 +8889,7 @@ jr_025_6fd7:
     rst $38
     ld b, $20
     rst $38
-    jp nz, Jump_000_35c0
+    jp nz, $35c0
 
     ld b, b
     xor d

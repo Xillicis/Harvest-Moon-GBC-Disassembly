@@ -4710,7 +4710,7 @@ jr_017_5313:
 
 jr_017_5315:
     xor d
-    call nc, Call_000_36cb
+    call nc, $36cb
     dec b
     ld a, [$f40a]
     jp nc, Jump_000_3c2c

@@ -11532,7 +11532,7 @@ jr_002_7b06:
     ld [hl-], a
     ld c, l
     ld [hl-], a
-    call Call_000_3532
+    call $3532
     ld [bc], a
     dec h
     ld [bc], a

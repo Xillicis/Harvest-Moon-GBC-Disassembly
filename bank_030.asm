@@ -8897,7 +8897,7 @@ Jump_030_679a:
     dec [hl]
     ld sp, hl
     rst $38
-    call z, Call_000_34f4
+    call z, $34f4
     cp b
     rra
     ld a, h

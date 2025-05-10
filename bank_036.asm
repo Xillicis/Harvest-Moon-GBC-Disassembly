@@ -7461,7 +7461,7 @@ jr_036_5ff5:
     sub b
 
 jr_036_6037:
-    call nc, Call_000_38e8
+    call nc, $38e8
     ret nz
 
     ret nc
@@ -7487,7 +7487,7 @@ jr_036_6037:
     sbc $b4
     db $fc
     sub b
-    call nc, Call_000_38e8
+    call nc, $38e8
     ret nz
 
     ldh a, [$ffe0]
@@ -12374,7 +12374,7 @@ jr_036_751e:
     ld l, a
     rst $18
     ld l, a
-    call nc, Call_000_3428
+    call nc, $3428
     ret z
 
     sub h

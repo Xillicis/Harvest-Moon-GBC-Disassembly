@@ -2987,7 +2987,7 @@ jr_016_4d38:
     add sp, -$04
     ld h, b
     ldh a, [c]
-    call z, Call_000_36c9
+    call z, $36c9
     or $00
     ld hl, sp+$00
     ld [$1c07], sp

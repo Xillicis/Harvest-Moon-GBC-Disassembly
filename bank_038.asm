@@ -6260,7 +6260,7 @@ jr_038_5ac5:
     pop de
     xor $f9
     and $65
-    jp c, Jump_000_34cb
+    jp c, $34cb
 
     sub d
     ld l, h
@@ -14219,7 +14219,7 @@ Jump_038_7c62:
     ret nz
 
     ld a, [$fa24]
-    call nz, Call_000_34ca
+    call nz, $34ca
     ld h, $d8
     inc d
     dec bc
@@ -14239,7 +14239,7 @@ Jump_038_7c62:
     ld d, [hl]
     xor b
     ld l, d
-    call nc, Call_000_38c6
+    call nc, $38c6
     xor [hl]
     ret nc
 

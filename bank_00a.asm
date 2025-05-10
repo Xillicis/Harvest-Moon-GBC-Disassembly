@@ -13361,7 +13361,7 @@ jr_00a_78e1:
     ld h, d
     sbc l
     inc hl
-    call c, Call_000_39c6
+    call c, $39c6
     cp $e1
 
 jr_00a_78f3:

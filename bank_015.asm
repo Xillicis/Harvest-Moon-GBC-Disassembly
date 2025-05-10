@@ -7332,7 +7332,7 @@ jr_015_5f0a:
     ldh [rP1], a
     ld [hl], c
     rst $38
-    jp nc, Jump_000_347d
+    jp nc, $347d
 
     ld e, b
     ld d, b
@@ -13942,7 +13942,7 @@ jr_015_7b90:
     ld [bc], a
     sub d
     sub d
-    jp nc, Jump_000_3612
+    jp nc, $3612
 
     add $0e
     or $4e

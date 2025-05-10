@@ -3297,7 +3297,7 @@ Jump_004_547a:
 
 jr_004_54d8:
     sbc b
-    jp nz, Jump_000_3702
+    jp nz, $3702
 
     jr c, jr_004_54de
 
@@ -3310,7 +3310,7 @@ jr_004_54de:
 
 jr_004_54e4:
     sbc b
-    call nz, Call_000_3702
+    call nz, $3702
     jr c, jr_004_54ea
 
 jr_004_54ea:

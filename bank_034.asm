@@ -12628,7 +12628,7 @@ jr_034_78e3:
     dec h
     rst $38
     pop de
-    jp nc, Jump_000_39e8
+    jp nc, $39e8
 
     or [hl]
     rra

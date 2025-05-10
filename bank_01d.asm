@@ -12743,7 +12743,7 @@ jr_01d_7d01:
     ld a, c
     db $10
     pop af
-    jp nz, Jump_000_3903
+    jp nz, $3903
 
     pop af
     add d

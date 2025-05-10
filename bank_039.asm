@@ -7660,7 +7660,7 @@ jr_039_6148:
     xor $f0
     rra
     and $ea
-    call c, Call_000_36cd
+    call c, $36cd
     ld a, a
     xor d
     ld e, a
@@ -9407,7 +9407,7 @@ jr_039_687e:
     ld h, b
     sbc $6c
     xor [hl]
-    call nc, Call_000_38d6
+    call nc, $38d6
 
 jr_039_68df:
     xor [hl]
@@ -11798,7 +11798,7 @@ jr_039_72ed:
     ld e, d
     db $e4
     and d
-    call c, Call_000_38c6
+    call c, $38c6
     ld [hl], c
 
 jr_039_7308:
@@ -11953,7 +11953,7 @@ jr_039_7370:
     ld b, $3d
     jp z, $2ad5
 
-    jp c, Jump_000_34e0
+    jp c, $34e0
 
     ret z
 

@@ -12320,7 +12320,7 @@ jr_033_780c:
     inc bc
     db $fd
     rlca
-    jp nz, Jump_000_3815
+    jp nz, $3815
 
     ret nc
 

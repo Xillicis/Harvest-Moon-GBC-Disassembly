@@ -2580,7 +2580,7 @@ jr_009_4c93:
     ld l, a
     ld l, e
     ld c, e
-    jp Jump_000_364b
+    jp $364b
 
 
     ld c, l

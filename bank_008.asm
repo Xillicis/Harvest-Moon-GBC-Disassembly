@@ -8734,7 +8734,7 @@ Jump_008_6cb7:
     rst $20
     ld e, d
     rst $20
-    jp c, Jump_000_3ac7
+    jp c, $3ac7
 
     rst $38
     ld [bc], a
@@ -8820,7 +8820,7 @@ Jump_008_6cb7:
     rst $30
     ld [$eaf7], a
     rst $20
-    jp c, Jump_000_3ac7
+    jp c, $3ac7
 
     rst $00
     cp d

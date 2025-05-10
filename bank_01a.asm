@@ -9023,7 +9023,7 @@ jr_01a_6590:
     ld b, b
     ld e, h
     and b
-    jp nz, Jump_000_393c
+    jp nz, $393c
 
     ld b, $06
     nop

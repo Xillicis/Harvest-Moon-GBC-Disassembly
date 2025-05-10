@@ -4697,10 +4697,10 @@ jr_037_5313:
     adc h
     ld [hl], b
     xor d
-    call nc, Call_000_36cb
+    call nc, $36cb
     dec b
     ld a, [$f40a]
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     add hl, bc

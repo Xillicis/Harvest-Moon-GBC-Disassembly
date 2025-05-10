@@ -4340,7 +4340,7 @@ jr_00d_5870:
 
     ld de, $0202
     ld sp, $001f
-    jp Jump_000_3900
+    jp $3900
 
 
     ld [hl-], a
@@ -6806,7 +6806,7 @@ jr_00d_6438:
     ld a, b
     ld [hl], d
     adc h
-    jp z, Jump_000_3434
+    jp z, $3434
 
     ret z
 
@@ -7251,7 +7251,7 @@ jr_00d_6636:
     ld a, b
     ld [hl], d
     adc h
-    jp z, Jump_000_3434
+    jp z, $3434
 
     ret z
 

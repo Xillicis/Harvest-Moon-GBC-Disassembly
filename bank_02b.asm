@@ -792,7 +792,7 @@ jr_02b_4148:
     dec [hl]
     ld sp, hl
     rst $38
-    call z, Call_000_34f4
+    call z, $34f4
     cp b
     rra
     ld a, h
@@ -3603,7 +3603,7 @@ Call_02b_4ebd:
     call $d2b3
     dec h
     pop de
-    jp nc, Jump_000_39e8
+    jp nc, $39e8
 
     rst $38
     or [hl]
@@ -9847,7 +9847,7 @@ Jump_02b_69ff:
     inc sp
     db $fd
     rst $38
-    call nz, Call_000_36f1
+    call nz, $36f1
     cp e
     dec de
     ld a, h
@@ -10500,7 +10500,7 @@ jr_02b_6ca2:
     ld a, c
     ld h, h
     sbc a
-    jp z, Jump_000_35ff
+    jp z, $35ff
 
     or h
     db $db
