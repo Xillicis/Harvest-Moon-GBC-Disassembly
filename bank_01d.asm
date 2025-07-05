@@ -3620,7 +3620,7 @@ Label_01d_5192:
 ; Looks like some initialization
 Call_01d_521e: ; 1dx521e
     di
-    call Call_000_0cd5
+    call InitRealTimeClock
     di
     ld hl, sMapObjectLocation
     ld bc, $1fff

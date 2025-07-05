@@ -10,7 +10,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, [$cb92]
     cp $ff
     call z, Call_000_0de8
-    call Call_000_0d22
+    call ReadRealTimeClock
     call ClearBGMap0
     call ClearBGMap1
     call ClearShadowOAMBuffer
@@ -103,7 +103,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, [sCurrentYear]
     ld [$cbdd], a
     call Call_022_43f1
-    call Call_000_0cd5
+    call InitRealTimeClock
     call Call_022_4456
     ld a, [$cbe4]
     ld h, a

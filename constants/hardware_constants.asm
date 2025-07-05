@@ -1,6 +1,8 @@
 ; seems like they are using $2100 to change banks rather than the usual $2000.
 DEF MBC3RomBank  EQU $2100
 DEF MBC3SRamBank EQU $4000
+DEF SRAMorRTC_Data EQU $a000 ; maps to SRAM bank 0–3 or RTC regs 08–0C
+
 
 ; interrupt flags
 DEF VBLANK   EQU 0

@@ -3627,7 +3627,7 @@ jr_03d_519a:
 
 Call_03d_51d9:
     di
-    call Call_000_0cd5
+    call InitRealTimeClock
     di
     ld hl, sMapObjectLocation
     ld bc, $1fff

@@ -215,8 +215,8 @@ Start:
     ldh [rSCX], a
     ld a, $0a
     ld [$0000], a
-    ld a, $01
-    ld [$6000], a
+    ld a, 1
+    ld [rRTCLATCH], a
     xor a
     ld [$dd00], a
     call Call_000_2430
@@ -592,14 +592,14 @@ Call_000_04c7:
     ld [$cb5d], a
     ld a, [$c0ba]
     and $10
-    jr z, .skipClock
+    jr z, .skipGameClock
     ld a, [$cb5c]
     ld [$cb5d], a
     call TickGameClock
 
-.skipClock
+.skipGameClock
     call Call_000_056c
-    call Call_000_0d22
+    call ReadRealTimeClock
     push hl
     push af
     ld l, $4c
@@ -1878,110 +1878,107 @@ AddBCtoWordAtHL:
     ld [hl], a
     ret
 
-Call_000_0cd5:
+InitRealTimeClock:
     ld a, $0a
     ld [$1fff], a
-    ld a, $01
-    ld [$6000], a
-    ld a, $08
+    ld a, 1
+    ld [rRTCLATCH], a
+    ld a, RTC_S
     ld [MBC3SRamBank], a
     xor a
-    ld [$a000], a
+    ld [SRAMorRTC_Data], a
     nop
     nop
     nop
     nop
-    ld a, $09
+    ld a, RTC_M
     ld [MBC3SRamBank], a
     xor a
-    ld [$a000], a
-    nop
-
-Call_000_0cf6:
+    ld [SRAMorRTC_Data], a
     nop
     nop
     nop
-    ld a, $0a
+    nop
+    ld a, RTC_H
     ld [MBC3SRamBank], a
     xor a
-    ld [$a000], a
+    ld [SRAMorRTC_Data], a
     nop
     nop
     nop
     nop
-    ld a, $0b
+    ld a, RTC_DL
     ld [MBC3SRamBank], a
     xor a
-    ld [$a000], a
+    ld [SRAMorRTC_Data], a
     nop
     nop
     nop
     nop
-    ld a, $0c
+    ld a, RTC_DH
     ld [MBC3SRamBank], a
-    ld a, $00
-    ld [$a000], a
+    ld a, 0
+    ld [SRAMorRTC_Data], a
     xor a
     ld [MBC3SRamBank], a
     ret
 
-
-Call_000_0d22:
+ReadRealTimeClock:
     ld a, $0a
     ld [$1fff], a
     xor a
-    ld [$6000], a
+    ld [rRTCLATCH], a ; prepare to latch
     inc a
-    ld [$6000], a
-    ld a, $08
+    ld [rRTCLATCH], a ; actually latch: RTC regs <- current time
+    ld a, RTC_S
     ld [MBC3SRamBank], a
-    ld a, [$a000]
+    ld a, [SRAMorRTC_Data]
     and $3f
     ld [$c905], a
     nop
     nop
     nop
     nop
-    ld a, $09
+    ld a, RTC_M
     ld [MBC3SRamBank], a
-    ld a, [$a000]
+    ld a, [SRAMorRTC_Data]
     and $3f
     ld [$c904], a
     nop
     nop
     nop
     nop
-    ld a, $0a
+    ld a, RTC_H
     ld [MBC3SRamBank], a
-    ld a, [$a000]
+    ld a, [SRAMorRTC_Data]
     and $1f
     ld [$c903], a
     nop
     nop
     nop
     nop
-    ld a, $0b
+    ld a, RTC_DL
     ld [MBC3SRamBank], a
-    ld a, [$a000]
+    ld a, [SRAMorRTC_Data]
     ld [$c902], a
     xor a
     ld [MBC3SRamBank], a
     ret
 
 
-    ld a, $0c
+    ld a, RTC_DH
     ld [MBC3SRamBank], a
     ld a, $40
-    ld [$a000], a
+    ld [SRAMorRTC_Data], a
     xor a
     ld [MBC3SRamBank], a
     ret
 
 
-    ld a, $0c
+    ld a, RTC_DH
     ld [MBC3SRamBank], a
     ld a, $00
-    ld [$a000], a
+    ld [SRAMorRTC_Data], a
     xor a
     ld [MBC3SRamBank], a
     ret

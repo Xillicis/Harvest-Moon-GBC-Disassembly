@@ -6814,7 +6814,7 @@ jr_00d_6438:
     ret nc
 
     ld a, [hl+]
-    call c, Call_000_0cf6
+    call c, $0cf6
     dec h
     dec de
     dec hl
@@ -7259,7 +7259,7 @@ jr_00d_6636:
     ret nc
 
     ld a, [hl+]
-    call c, Call_000_0cf6
+    call c, $0cf6
     dec h
     dec de
     dec hl

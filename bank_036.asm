@@ -7041,7 +7041,7 @@ jr_036_5e5b:
     ld b, $0f
     ld bc, $0003
     cp [hl]
-    call z, Call_000_0cf6
+    call z, $0cf6
     inc l
     ret nz
 

@@ -10,12 +10,12 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld a, [$cb92]
     cp $ff
     call z, Call_000_0de8
-    call Call_000_0d22
+    call ReadRealTimeClock
     call ClearBGMap0
     call ClearBGMap1
     call ClearShadowOAMBuffer
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld de, $9010
     ld bc, $07f0
     call BankedCopyHLtoDEBig
@@ -26,10 +26,10 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     call BankedCopyHLtoDEBig
     ld hl, $c0a3
     ld a, $6c
-    ld [hl+], a
+    ld [hli], a
     ld a, $1c
-    ld [hl+], a
-    ld [hl+], a
+    ld [hli], a
+    ld [hli], a
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -103,7 +103,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld a, [sCurrentYear]
     ld [$cbdd], a
     call Call_002_43ff
-    call Call_000_0cd5
+    call InitRealTimeClock
     call Call_002_4464
     ld a, [$cbe4]
     ld h, a

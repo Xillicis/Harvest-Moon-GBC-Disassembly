@@ -12422,7 +12422,7 @@ jr_007_758d:
     ld a, $01
     ld [$b90a], a
     call Call_000_0fc7
-    call Call_000_0cd5
+    call InitRealTimeClock
     ret
 
 
