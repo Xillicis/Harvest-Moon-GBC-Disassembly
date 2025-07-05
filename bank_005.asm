@@ -3627,7 +3627,7 @@ jr_005_50b5:
     ld a, [$cb4a]
     or a
     call nz, Call_005_5296
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     call nz, Call_005_52d0
     ret

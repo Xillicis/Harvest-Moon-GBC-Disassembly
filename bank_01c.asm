@@ -2451,7 +2451,7 @@ jr_01c_49e9:
     ld d, b
     ldh [rIE], a
     nop
-    call nc, Call_000_1528
+    call nc, $1528
     ld a, [bc]
     rst $18
     dec d

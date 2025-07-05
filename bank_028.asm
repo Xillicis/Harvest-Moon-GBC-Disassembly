@@ -4379,7 +4379,7 @@ Call_028_57c5:
     cp $01
     jr z, jr_028_57e6
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_028_57e6
 
@@ -5491,7 +5491,7 @@ Call_028_5e33:
     cp $01
     jr z, jr_028_5e54
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_028_5e54
 
@@ -6203,7 +6203,7 @@ Call_028_62b5:
     cp $01
     jr z, jr_028_62d6
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_028_62d6
 

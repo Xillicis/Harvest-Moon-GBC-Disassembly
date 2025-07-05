@@ -2101,7 +2101,7 @@ jr_000_0e64:
     ret
 
 jr_000_0e66:
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $5f
     jr z, jr_000_0e7b
     cp $60
@@ -3220,25 +3220,17 @@ Call_000_1514:
     call BankSwitchCallHL
     ret
 
-
 Call_000_151d:
-    ld hl, $c602
-
-Call_000_1520:
+    ld hl, wPlayerSpriteID
     cp [hl]
     ret z
-
-Call_000_1522:
     ld [hli], a
     ld a, $ff
     ld [hli], a
     inc hl
     xor a
-
-Call_000_1528:
     ld [hl], a
     ret
-
 
 Call_000_152a:
 Jump_000_152a:
@@ -4008,7 +4000,7 @@ Call_000_1923:
     or a
     ret nz
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -4016,16 +4008,15 @@ Call_000_1923:
     call Call_000_25cb
     ld a, $38
     ld [$c912], a
-    ld a, $21
+    ld a, PLAYER_HOLDING_ITEM_POSE
     call Call_000_151d
+; Rotate item slot
     ld a, [sItemSlot]
     inc a
-    cp $03 ; third item (always empty hands right?)
-    jr nz, jr_000_194a
-
+    cp $03 ; Max number of possible held items
+    jr nz, .next
     xor a
-
-jr_000_194a:
+.next
     ld [sItemSlot], a
     ld hl, sInventory
 ; get inventory item
@@ -10130,21 +10121,21 @@ Jump_000_3dbd:
     or a
     jr nz, jr_000_3deb
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_000_3deb
 
-    ld a, [$c602]
-    cp $04
+    ld a, [wPlayerSpriteID]
+    cp PLAYER_SPRINTING_DOWN_POSE
     jr z, jr_000_3deb
 
-    cp $05
+    cp PLAYER_SPRINTING_LEFT_POSE
     jr z, jr_000_3deb
 
-    cp $06
+    cp PLAYER_SPRINTING_RIGHT_POSE
     jr z, jr_000_3deb
 
-    cp $07
+    cp PLAYER_SPRINTING_UP_POSE
     jr z, jr_000_3deb
     ret
 
@@ -10343,7 +10334,6 @@ Call_000_3f26:
     ld [$cb58], a
     ld [$cb57], a
     ret
-
 
 Call_000_3f52:
     ld b, a

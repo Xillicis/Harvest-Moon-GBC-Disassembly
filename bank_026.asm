@@ -4742,7 +4742,7 @@ jr_026_551a:
     or a
     jr nz, jr_026_5544
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_026_5556
 
@@ -4795,7 +4795,7 @@ jr_026_556e:
     or a
     jr nz, jr_026_558b
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_026_559d
 

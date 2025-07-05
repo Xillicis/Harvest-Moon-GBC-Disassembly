@@ -12056,7 +12056,7 @@ jr_032_793a:
     ret
 
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $88
     jp z, Jump_032_7a29
 

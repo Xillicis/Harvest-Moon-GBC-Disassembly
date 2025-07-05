@@ -3799,7 +3799,7 @@ jr_024_573b:
 
 
 jr_024_574c:
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $5f
     jr z, jr_024_5760
 

@@ -4809,7 +4809,7 @@ Label_006_55e4:
     or a
     jr nz, jr_006_55fd
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_006_560f
 
@@ -4862,7 +4862,7 @@ jr_006_5627:
     or a
     jr nz, jr_006_5644
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_006_5656
 

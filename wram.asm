@@ -14,7 +14,13 @@ ds 1112
 
 wVRAMBlitCommandList:: db ; 0xc500
 
-ds 268
+ds 257
+
+; Seems like an ID used to determine which player sprite should be displayed;
+; Walking, holding item, etc...
+wPlayerSpriteID:: db ; 0xc602
+
+ds 10
 
 ; 0 - Facing down
 ; 1 - Facing left
@@ -67,7 +73,12 @@ ds 46
 ; It is one if the player is inside or at town
 wPlayerIsInsideOrAtTown:: db ; 0xcb81
 
-ds $148 ; $17f
+ds 9
+
+; a flag to indicate the player is or is not holding a pet (0 or 1)
+wPlayerHoldingPet:: db ; 0xcb8b
+
+ds $13e ; $17f
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

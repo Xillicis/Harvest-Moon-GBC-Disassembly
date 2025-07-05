@@ -423,13 +423,13 @@ Jump_001_42e8:
     or a
     ret z
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr z, jr_001_431c
 
     xor a
     ld [$b8e1], a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ret
 
 
@@ -485,7 +485,7 @@ Jump_001_4354:
     ld [wHeldObject], a
     ld [$cb84], a
     ld [$cb82], a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld [$cb89], a
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -512,7 +512,7 @@ Jump_001_439a:
     ld [wHeldObject], a
     ld [$cb84], a
     ld [$cb82], a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld [$cb89], a
     pop hl
     ret
@@ -1095,7 +1095,7 @@ jr_001_46e3:
     cp $02
     jp z, Jump_001_48e1
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jp nz, Jump_001_4596
 
@@ -1192,7 +1192,7 @@ jr_001_4796:
     ret
 
 Jump_001_479a:
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jp nz, Jump_001_453f
 
@@ -1286,7 +1286,7 @@ jr_001_4838:
     ret
 
 Jump_001_483c:
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jp nz, Jump_001_45f0
 
@@ -1381,7 +1381,7 @@ jr_001_48dd:
     ret
 
 Jump_001_48e1:
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jp nz, Jump_001_464a
 
@@ -1645,7 +1645,7 @@ jr_001_4a44:
     ld bc, $0102
 
 Jump_001_4a6a:
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -2239,7 +2239,7 @@ Jump_001_4f0e:
 
 Jump_001_4f50:
     ld a, $01
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     xor a
     ld [$c7a0], a
     ld [$cb89], a
@@ -2325,7 +2325,7 @@ jr_001_4f94:
     ld a, $01
     ld [$c7a0], a
     xor a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp CAT
     jp z, Jump_001_5022
@@ -2396,7 +2396,7 @@ Jump_001_502c:
     ld a, $01
     ld [$c7a0], a
     xor a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp CAT
     jp z, Jump_001_5022
@@ -2493,7 +2493,7 @@ Jump_001_50ba:
     ld a, $01
     ld [$c7a0], a
     xor a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp CAT
     jp z, Jump_001_5022
@@ -2605,7 +2605,7 @@ jr_001_5216:
     ld a, $01
     ld [$c7a0], a
     xor a
-    ld [$cb8b], a
+    ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp CAT
     jp z, Jump_001_5022
@@ -2646,7 +2646,7 @@ Call_001_527d:
     or a
     jp nz, Jump_001_4f50
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jp nz, Jump_001_4f7d
 
@@ -3102,7 +3102,7 @@ Call_001_557f:
     or a
     ret nz
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6517,7 +6517,7 @@ jr_001_6a29:
     cp $3e
     jr nz, jr_001_6a3e
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6534,7 +6534,7 @@ jr_001_6a3e:
     cp $3f
     jr nz, jr_001_6a53
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6560,7 +6560,7 @@ jr_001_6a53:
     cp $40
     jr nz, jr_001_6a77
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6584,7 +6584,7 @@ Call_001_6a78:
     or a
     ret z
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr z, jr_001_6a97
 
@@ -6636,7 +6636,7 @@ Call_001_6ad5:
     or a
     ret nz
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6755,7 +6755,7 @@ Call_001_6ba5:
     or a
     ret nz
 
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     ret nz
 
@@ -6767,7 +6767,7 @@ Call_001_6ba5:
     or a
     ret nz
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $20
     ret z
 
@@ -6963,7 +6963,7 @@ jr_001_6cde:
     ret
 
 Call_001_6ce4:
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     jr nz, jr_001_6d14
 

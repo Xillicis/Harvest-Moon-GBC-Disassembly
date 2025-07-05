@@ -913,7 +913,7 @@ jr_003_45a3:
 
 
 jr_003_45b4:
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $5f
     jr z, jr_003_45c8
 

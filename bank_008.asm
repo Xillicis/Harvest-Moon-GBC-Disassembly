@@ -4043,7 +4043,7 @@ Call_008_57cc:
     cp $01
     jr z, jr_008_57ed
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_008_57ed
 
@@ -5143,7 +5143,7 @@ Call_008_5e24:
     cp $01
     jr z, jr_008_5e45
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_008_5e45
 
@@ -5843,7 +5843,7 @@ Call_008_6290:
     cp $01
     jr z, jr_008_62b1
 
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $4f
     jr z, jr_008_62b1
 

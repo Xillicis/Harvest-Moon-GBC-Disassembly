@@ -3574,7 +3574,7 @@ Jump_025_516e:
     ld a, [$cb4a]
     or a
     call nz, Call_025_51ff
-    ld a, [$cb8b]
+    ld a, [wPlayerHoldingPet]
     or a
     call nz, Call_025_5239
     ret

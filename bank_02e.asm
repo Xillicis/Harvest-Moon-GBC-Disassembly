@@ -5067,7 +5067,7 @@ jr_02e_5e0f:
 
 
 jr_02e_5e16:
-    ld a, [$c602]
+    ld a, [wPlayerSpriteID]
     cp $86
     ret nz
 

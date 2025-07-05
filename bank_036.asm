@@ -6031,7 +6031,7 @@ jr_036_5a1d:
     jr @-$40
 
     ld c, h
-    call c, Call_000_1520
+    call c, $1520
     dec bc
     dec c
 
