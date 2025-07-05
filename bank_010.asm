@@ -480,7 +480,7 @@ jr_010_42dd:
     ld hl, $c606
     dec [hl]
     dec [hl]
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     ret z
 

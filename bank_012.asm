@@ -10872,7 +10872,7 @@ jr_012_7a04:
 
 
 Jump_012_7a0d:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     ret nz
 
@@ -10886,7 +10886,7 @@ Jump_012_7a18:
 
 
 Jump_012_7a19:
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     cp $01
     jr z, jr_012_7a28
 

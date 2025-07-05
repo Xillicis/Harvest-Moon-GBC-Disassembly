@@ -11917,7 +11917,7 @@ jr_00d_7b36:
     xor $fd
     ld [de], a
     rst $38
-    call nc, Call_000_153e
+    call nc, $153e
     inc e
     inc bc
     ld [$0b07], sp

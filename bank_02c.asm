@@ -13448,7 +13448,7 @@ jr_02c_7ce8:
     ld a, $37
     call $16d1
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld [$cb8c], a
     ld a, $07
     ld [$cb8d], a

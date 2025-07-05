@@ -6101,7 +6101,7 @@ Call_02f_62dd:
     call Call_000_3efc
     call Call_000_3dfd
     xor a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -6142,7 +6142,7 @@ jr_02f_64a4:
 
 
 Call_02f_64b6:
-    ld hl, $c912
+    ld hl, wInputFreezeTimer
     ld a, [hl]
     or a
     ret z
@@ -6163,7 +6163,7 @@ Call_02f_64be:
     or a
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -6184,7 +6184,7 @@ Call_02f_64be:
     jr z, jr_02f_6500
 
     call Call_02f_654f
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     ret z
 
@@ -6214,7 +6214,7 @@ jr_02f_6500:
     and $10
     jp nz, Jump_02f_6719
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 

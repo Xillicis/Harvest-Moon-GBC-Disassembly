@@ -31,7 +31,7 @@ SECTION "ROM Bank $008", ROMX[$4000], BANK[$8]
     db $41, $c9
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $08
     ret nz
 
@@ -40,11 +40,11 @@ SECTION "ROM Bank $008", ROMX[$4000], BANK[$8]
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $62
     jr z, jr_008_418d
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     jr z, jr_008_4193
 
@@ -62,7 +62,7 @@ jr_008_4193:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     ret nz
 
@@ -86,7 +86,7 @@ jr_008_4193:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     jr z, jr_008_41d7
 
@@ -94,7 +94,7 @@ jr_008_4193:
     cp TIME_6_AM
     jr nz, jr_008_41e1
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $5f
     jp z, Jump_008_41ee
 
@@ -113,7 +113,7 @@ jr_008_41d7:
 
 
 jr_008_41e1:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $40
     jr z, jr_008_41ee
 
@@ -219,7 +219,7 @@ jr_008_427b:
 
 Jump_008_4291:
     xor a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
 
 Jump_008_4295:
     xor a
@@ -227,7 +227,7 @@ Jump_008_4295:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $30
     jp z, Jump_008_42db
 
@@ -328,7 +328,7 @@ jr_008_4302:
     add hl, de
     ld de, $1b3f
     add hl, de
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     sub $23
     ld b, a
     ld a, $0d
@@ -528,7 +528,7 @@ jr_008_4418:
     ret nz
 
 jr_008_442c:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $0f
     jp z, Jump_008_446e
 
@@ -629,7 +629,7 @@ jr_008_4495:
     add hl, de
     ld de, $1b3f
     add hl, de
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     sub $02
     ld b, a
     ld a, $0d
@@ -654,7 +654,7 @@ jr_008_4495:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     jr z, jr_008_44e0
 
@@ -704,11 +704,11 @@ jr_008_4503:
     or a
     ret z
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $08
     jr z, jr_008_4520
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $04
     jr z, jr_008_4563
 
@@ -915,7 +915,7 @@ jr_008_4612:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -968,7 +968,7 @@ jr_008_4658:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -1016,7 +1016,7 @@ jr_008_46b7:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -1217,7 +1217,7 @@ Jump_008_4801:
     ld [$cb45], a
     ret
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -1349,7 +1349,7 @@ Call_008_48b6:
     ld a, $37
     call $16d1
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld [$cb8c], a
     ld a, $07
     ld [$cb8d], a
@@ -1370,11 +1370,11 @@ Call_008_48b6:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $14
     jr z, jr_008_492f
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -1419,7 +1419,7 @@ jr_008_492f:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $02
     ret nz
 
@@ -1447,7 +1447,7 @@ jr_008_492f:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $30
     jr z, jr_008_4971
 
@@ -1688,11 +1688,11 @@ jr_008_4ae6:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $28
     jr z, jr_008_4b15
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $08
     jr z, jr_008_4b2c
 
@@ -1832,7 +1832,7 @@ jr_008_4b2c:
 
 
 Jump_008_4c16:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     ret nz
 
@@ -1861,7 +1861,7 @@ Jump_008_4c16:
     cp $02
     jp z, Jump_008_4e43
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     jr z, jr_008_4c69
 
@@ -1989,7 +1989,7 @@ jr_008_4cde:
 
 
 Jump_008_4cf0:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     jr z, jr_008_4d11
 
@@ -2120,7 +2120,7 @@ jr_008_4d88:
 
 
 Jump_008_4d9a:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     jr z, jr_008_4dbb
 
@@ -2248,7 +2248,7 @@ jr_008_4e30:
 
 
 Jump_008_4e43:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     jr z, jr_008_4e64
 
@@ -2383,18 +2383,18 @@ Jump_008_4eeb:
     xor a
     ld [$cbe9], a
     ld a, $80
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $00
     call RST_TableJumpBankSwitch
     call Call_008_6b9a
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $40
     jr z, jr_008_4f11
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $20
     jr z, jr_008_4f11
 
@@ -2408,7 +2408,7 @@ jr_008_4f11:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $24
     jr z, jr_008_4f1f
 
@@ -2425,7 +2425,7 @@ jr_008_4f1f:
     or a
     ret z
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $40
     ret nz
 
@@ -2705,7 +2705,7 @@ Jump_008_507e:
 
     ld a, $1e
     ld [sCurrentWaterInWateringCan], a
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $0a
     ret nz
 
@@ -2714,7 +2714,7 @@ Jump_008_507e:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $28
     ret nz
 
@@ -2723,7 +2723,7 @@ Jump_008_507e:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $28
     ret nz
 
@@ -2732,7 +2732,7 @@ Jump_008_507e:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $30
     jp z, Jump_008_524f
 
@@ -2740,7 +2740,7 @@ Jump_008_507e:
     cp $01
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $10
     ret nz
 
@@ -3029,7 +3029,7 @@ Jump_008_524f:
     ret
 
 
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     cp $01
     ret nz
 
@@ -3173,7 +3173,7 @@ jr_008_52ec:
 
 
 Jump_008_5307:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     ret nz
 
@@ -3184,7 +3184,7 @@ Jump_008_5307:
     ret nz
 
     ld a, $60
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $07
     ld [$cb8d], a
     ld a, $20
@@ -7547,7 +7547,7 @@ jr_008_6b44:
     call AddSignedBCToHL
     call Call_000_1056
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, [$c640]
@@ -7570,7 +7570,7 @@ jr_008_6b6c:
     call AddSignedBCToHL
     call Call_000_1056
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, [$c640]

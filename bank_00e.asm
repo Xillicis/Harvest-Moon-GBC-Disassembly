@@ -343,7 +343,7 @@ Call_00e_424f:
     call Call_00e_4202
     call Call_000_0e54
     call Call_00e_4526
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -383,7 +383,7 @@ Call_00e_424f:
     and $10
     jp nz, Jump_00e_432d
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -855,7 +855,7 @@ Call_00e_4526:
     ld a, $56
     call $16d1
     ld a, $1e
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld hl, sPlayerMoney
     ld bc, $0064
     call AddSignedBCToHL
@@ -871,7 +871,7 @@ Call_00e_4526:
     ld a, $37
     call $16d1
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld [$cb8c], a
     ld a, $07
     ld [$cb8d], a
@@ -952,7 +952,7 @@ jr_00e_45ca:
     jr nz, jr_00e_45eb
 
     ld a, $01
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld b, $00
     call CheckForNoEnergyAnimation
 
@@ -1349,7 +1349,7 @@ jr_00e_4839:
     ret
 
 Jump_00e_485c:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -1439,7 +1439,7 @@ jr_00e_48d6:
     ld a, $35
     call Call_000_25ce
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $07
     ld [$cc16], a
     xor a
@@ -1488,7 +1488,7 @@ jr_00e_491b:
     ld a, $35
     call Call_000_25ce
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $09
     ld [$cc16], a
     xor a
@@ -1584,7 +1584,7 @@ jr_00e_49a5:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -1599,7 +1599,7 @@ jr_00e_49d6:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [sSpriteDailyHappiness]
     set 1, a
     ld [sSpriteDailyHappiness], a
@@ -1620,7 +1620,7 @@ Jump_00e_4a06:
     ld a, $01
     ld [$cb80], a
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
@@ -1630,7 +1630,7 @@ Jump_00e_4a06:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -1659,7 +1659,7 @@ Jump_00e_4a29:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$cc19]
     ld [sItemSlot], a
     ld hl, sInventory
@@ -1684,7 +1684,7 @@ jr_00e_4a6d:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [sSpriteDailyHappiness]
     set 1, a
     ld [sSpriteDailyHappiness], a
@@ -1725,7 +1725,7 @@ Jump_00e_4ac3:
     ld a, $01
     ld [$cb80], a
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
@@ -1735,7 +1735,7 @@ Jump_00e_4ac3:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$cc19]
     ld [sItemSlot], a
     ld hl, sInventory
@@ -1756,7 +1756,7 @@ Jump_00e_4af9:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $0a
     ld [$cc16], a
     xor a
@@ -2662,7 +2662,7 @@ jr_00e_4fe1:
 
 Jump_00e_4fe7:
     call Call_00e_4ffc
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     ret z
 
@@ -3266,7 +3266,7 @@ Call_00e_530d:
     ret
 
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3305,7 +3305,7 @@ jr_00e_533b:
     ret z
 
     ld a, $60
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$cb8d]
     and $01
     jr z, jr_00e_5378
@@ -3315,7 +3315,7 @@ jr_00e_533b:
     jr nz, jr_00e_536e
 
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $8e
     call Call_000_151d
     call Call_000_1afe
@@ -3464,7 +3464,7 @@ jr_00e_543b:
     cp $01
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3485,7 +3485,7 @@ jr_00e_543b:
 
 
 Call_00e_5468:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3508,7 +3508,7 @@ Call_00e_5480:
     or a
     ret z
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3746,7 +3746,7 @@ Call_00e_560d:
     call Call_00e_4202
     call Call_000_0e54
     call Call_00e_4526
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3786,7 +3786,7 @@ Call_00e_560d:
     and $10
     jp nz, Jump_00e_585e
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3817,7 +3817,7 @@ jr_00e_5677:
     and $10
     jp nz, Jump_00e_57e5
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -3835,7 +3835,7 @@ Call_00e_56a5:
     or a
     ret z
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     jr z, jr_00e_5719
 
@@ -3967,7 +3967,7 @@ jr_00e_5753:
     ld a, $22
     call RST_TableJumpBankSwitch
     ld a, $3d
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $01
     ld [$cc70], a
     xor a
@@ -3987,7 +3987,7 @@ Jump_00e_5771:
     ld a, $23
     call RST_TableJumpBankSwitch
     ld a, $3e
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $02
     ld [$cc70], a
     xor a
@@ -4383,7 +4383,7 @@ jr_00e_59b7:
 
 Jump_00e_59be:
     call Call_00e_59d5
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     jr z, jr_00e_59d4
 
@@ -4773,7 +4773,7 @@ jr_00e_5c5a:
     call Call_00e_4202
     call Call_000_0e54
     call Call_00e_4526
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -4813,7 +4813,7 @@ jr_00e_5c5a:
     and $10
     jp nz, Jump_00e_5d6e
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -4828,7 +4828,7 @@ jr_00e_5cbc:
     cp $01
     jr nz, jr_00e_5ce3
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     jr nz, jr_00e_5cd4
 
@@ -4840,9 +4840,9 @@ jr_00e_5cbc:
 
 
 jr_00e_5cd4:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     dec a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     or a
     ret nz
 
@@ -5122,7 +5122,7 @@ jr_00e_5e61:
     cp $86
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $01
     ret nz
 
@@ -5145,7 +5145,7 @@ Call_00e_5e73:
     cp $04
     jp z, Jump_00e_5f0b
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     jr nz, jr_00e_5e61
 
@@ -5192,7 +5192,7 @@ jr_00e_5ec5:
     ld a, $26
     call RST_TableJumpBankSwitch
     ld a, $25
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$cc73]
     or a
     jr nz, jr_00e_5f01
@@ -5238,7 +5238,7 @@ jr_00e_5f01:
 
 
 Jump_00e_5f0b:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -5283,7 +5283,7 @@ Jump_00e_5f0b:
     ld a, $35
     call Call_000_25ce
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     xor a
     ld [$cc72], a
     ld [$cc73], a
@@ -5355,7 +5355,7 @@ Jump_00e_5f95:
     ld a, $86
     call Call_000_151d
     ld a, $18
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $36
     call Call_000_25ce
     ld a, $01
@@ -5369,7 +5369,7 @@ Jump_00e_5f95:
 
 jr_00e_5ff2:
     ld a, $01
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld b, $00
     call CheckForNoEnergyAnimation
     ret
@@ -5421,7 +5421,7 @@ jr_00e_6038:
 
 Jump_00e_603e:
     call Call_00e_6055
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     jr z, jr_00e_6054
 
@@ -5819,7 +5819,7 @@ Call_00e_62d9:
     call Call_00e_4202
     call Call_000_0e54
     call Call_00e_4526
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -5855,7 +5855,7 @@ Call_00e_62d9:
     and $10
     jp nz, Jump_00e_63b0
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -6206,7 +6206,7 @@ jr_00e_6513:
 
 Jump_00e_651a:
     call Call_00e_6531
-    ld a, [$c603]
+    ld a, [wPlayerAnimationIndex]
     and $01
     jr z, jr_00e_6530
 

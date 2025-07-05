@@ -2264,7 +2264,7 @@ jr_01f_4a4a:
     db $10
     and l
     ld c, l
-    call z, Call_000_1557
+    call z, $1557
     ld c, e
     ld de, $0e5c
     and l

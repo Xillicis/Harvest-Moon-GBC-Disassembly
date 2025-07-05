@@ -2058,7 +2058,7 @@ Call_000_0de8:
     ld [$cb16], a
     ld [$cb1c], a
     ld [$c90d], a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld [wCollisionNoMovement], a
     ld [$c910], a
     ld [$c90f], a
@@ -2085,12 +2085,12 @@ Call_000_0de8:
     ret
 
 Call_000_0e54:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret z
 
     dec a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     cp $26
     jr z, jr_000_0e66
     or a
@@ -2123,14 +2123,14 @@ jr_000_0e81:
     or a
     jr z, jr_000_0e64
 
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     xor a
     ld [$cb91], a
     ld a, $b4
     ld a, $6e
     ld a, $50
     ld a, $a0
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     cp $b4
     jr z, jr_000_0ea9
     cp $6e
@@ -3249,9 +3249,6 @@ Jump_000_152a:
     ld [hl+], a
     inc hl
     xor a
-
-Call_000_153e:
-Jump_000_153e:
     ld [hl], a
     ld [$c810], a
     ld a, $01
@@ -3259,7 +3256,6 @@ Jump_000_153e:
     ld a, $0b
     ld [$c801], a
     ret
-
 
 jr_000_154d:
     ld a, b
@@ -3269,8 +3265,6 @@ jr_000_154d:
     ld [hl+], a
     inc hl
     xor a
-
-Call_000_1557:
     ld [hl], a
     ld [$c810], a
     ld a, $01
@@ -3280,7 +3274,6 @@ Call_000_1557:
     ld a, $0b
     ld [$c801], a
     ret
-
 
 Call_000_156b:
     sub $04
@@ -3307,7 +3300,6 @@ Call_000_156b:
     ld [$c821], a
     ret
 
-
 jr_000_1590:
     ld a, b
     ld hl, $c822
@@ -3325,7 +3317,6 @@ jr_000_1590:
     ld a, $09
     ld [$c821], a
     ret
-
 
 Call_000_15ae:
     ld hl, $c762
@@ -3364,7 +3355,6 @@ Call_000_15cb:
     ld [$c76e], a
     ret
 
-
 Call_000_15e4:
     ld hl, $c762
     ld [hl+], a
@@ -3373,8 +3363,6 @@ Call_000_15e4:
     inc hl
     xor a
     ld [hl], a
-
-Jump_000_15ee:
     ld hl, $c760
     ld a, $01
     ld [hl+], a
@@ -3389,8 +3377,6 @@ Call_000_15fd:
     ld b, a
     ld a, [$b8ea]
     cp $02
-
-Jump_000_1603:
     jr z, jr_000_160c
 
     cp $03
@@ -4007,7 +3993,7 @@ Call_000_1923:
     ld a, $42
     call Call_000_25cb
     ld a, $38
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, PLAYER_HOLDING_ITEM_POSE
     call Call_000_151d
 ; Rotate item slot
@@ -4301,7 +4287,7 @@ SetFallDownAnimation:
 SetDizzyCollapseAnimation:
     pop hl
     ld a, $01
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
 
 Jump_000_1ab4:
 jr_000_1ab4:
@@ -9935,7 +9921,7 @@ jr_000_3c6d:
     ld a, $13
     call RST_TableJumpBankSwitch
     ld a, $3e
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$c620]
     ld [$cb87], a
     ld a, $00
@@ -9965,7 +9951,7 @@ jr_000_3cb2:
     ld a, $13
     call RST_TableJumpBankSwitch
     ld a, $3e
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, [$c620]
     ld [$cb87], a
     ld a, $00
@@ -10093,20 +10079,18 @@ jr_000_3d7b:
     ld a, $00
     ld [wTextID], a
     ld a, $03
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $01
     ld [$cb56], a
     ret
 
 Call_000_3db3:
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     jr nz, jr_000_3deb
 
     ld a, [$c90d]
     or a
-
-Jump_000_3dbd:
     jr nz, jr_000_3deb
 
     ld a, [$c620]

@@ -14046,7 +14046,7 @@ jr_039_7c48:
     ld a, [bc]
     cp $03
     dec a
-    jp Jump_000_15ee
+    jp $15ee
 
 
     ld l, d

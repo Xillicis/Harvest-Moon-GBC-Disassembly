@@ -6558,7 +6558,7 @@ jr_018_5bdf:
     rst $38
     ld h, e
     xor $01
-    call nz, $c603
+    call nz, wPlayerAnimationIndex
     ld bc, $00cf
     rst $08
     add b
@@ -7799,7 +7799,7 @@ jr_018_612c:
     add h
     adc $8f
     nop
-    call nz, $c603
+    call nz, wPlayerAnimationIndex
     ld b, c
     rst $38
     ld h, b

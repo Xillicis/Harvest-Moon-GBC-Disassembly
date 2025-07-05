@@ -259,9 +259,9 @@ Jump_027_419a:
 
     inc a
     ld [$c611], a
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     dec a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -345,7 +345,7 @@ Jump_027_421e:
     ld a, $01
     ld [$cb80], a
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -11609,7 +11609,7 @@ jr_027_7020:
     ld [$cb57], a
     ld a, $50
     ld [$cb73], a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_000_0f0f
     ret
 
@@ -11632,7 +11632,7 @@ jr_027_7020:
     ld [$cb57], a
     ld a, $50
     ld [$cb73], a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_000_0f0f
     xor a
     ld [$b890], a
@@ -11759,7 +11759,7 @@ jr_027_7111:
 
 
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
@@ -11775,7 +11775,7 @@ jr_027_7111:
     ld a, $02
     ld [$cbf6], a
     ld a, $3c
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
@@ -11787,7 +11787,7 @@ jr_027_7111:
 
 
     ld a, $60
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $06
     ld [$cb8d], a
     ld a, $20
@@ -11840,7 +11840,7 @@ jr_027_71d5:
     ld a, $01
     ld [$c76c], a
     ld a, $ff
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -11909,7 +11909,7 @@ jr_027_7248:
     call Call_000_152a
     call Call_000_3f26
     ld a, $64
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 
@@ -12234,7 +12234,7 @@ jr_027_7413:
     ld a, $01
     ld [$c813], a
     ld a, $02
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ret
 
 

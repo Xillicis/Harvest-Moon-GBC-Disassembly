@@ -20,7 +20,10 @@ ds 257
 ; Walking, holding item, etc...
 wPlayerSpriteID:: db ; 0xc602
 
-ds 10
+; Number used to indicate which animation sprite to use (0 - Max Num Animations)
+wPlayerAnimationIndex:: db ; 0xc603
+
+ds 9
 
 ; 0 - Facing down
 ; 1 - Facing left
@@ -32,7 +35,12 @@ ds $300
 
 wCollisionNoMovement:: db ; 0xc90e
 
-ds $221
+ds 3
+
+; Don't know if this actually freezes input, but functionally it stops you froming doing anything
+wInputFreezeTimer:: db ; 0xc912
+
+ds $21d
 ;
 ; Since the player is not locked to a grid, the play can be facing two different tiles at one.
 ; If the player is facing up/down, then this ram address indicates whether there is an object on the left side.

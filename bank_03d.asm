@@ -9498,7 +9498,7 @@ jr_03d_6e12:
     cp $ff
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -9539,7 +9539,7 @@ jr_03d_6e12:
     ld a, $0b
     call RST_TableJumpBankSwitch
     ld a, $64
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_03d_6fe0
     ret
 
@@ -9549,7 +9549,7 @@ jr_03d_6e12:
     ld a, $0d
     call Call_000_1887
     ld a, $1e
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_03d_6fe0
     ret
 
@@ -9561,7 +9561,7 @@ jr_03d_6e12:
     ld a, $0c
     call Call_000_1887
     ld a, $32
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_03d_6fe0
     ret
 
@@ -9571,7 +9571,7 @@ jr_03d_6e12:
     ld a, $35
     call Call_000_25ce
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $23
     ld [$cb4a], a
     ld a, $03
@@ -9581,7 +9581,7 @@ jr_03d_6e12:
 
 
     ld a, $30
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $0d
     call Call_000_1887
     ld a, $00
@@ -9617,7 +9617,7 @@ jr_03d_6ed0:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $01
     ld [$cc16], a
     xor a
@@ -9669,7 +9669,7 @@ jr_03d_6f2d:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $eb
     call Call_000_3f52
     call Call_03d_6fe0
@@ -9696,7 +9696,7 @@ jr_03d_6f61:
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     call Call_03d_6fe0
     ret
 
@@ -9708,7 +9708,7 @@ jr_03d_6f61:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $04
     ld [$cc16], a
     xor a
@@ -10275,7 +10275,7 @@ jr_03d_72a3:
     cp $ff
     ret nz
 
-    ld a, [$c912]
+    ld a, [wInputFreezeTimer]
     or a
     ret nz
 
@@ -10313,7 +10313,7 @@ jr_03d_72a3:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $1a
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $35
     call Call_000_25ce
     call Call_03d_73a6
@@ -10345,7 +10345,7 @@ jr_03d_7310:
     ld a, $36
     call Call_000_25ce
     ld a, $08
-    ld [$c912], a
+    ld [wInputFreezeTimer], a
     ld a, $01
     ld [$cc16], a
     xor a
