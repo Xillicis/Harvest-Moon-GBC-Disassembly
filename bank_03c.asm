@@ -6864,7 +6864,7 @@ jr_03c_5de1:
     ld a, [hl-]
     ld c, a
     or $3e
-    call z, Call_000_063f
+    call z, $063f
     ld [hl], a
     rst $38
     jr jr_03c_5e59

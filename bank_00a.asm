@@ -13345,7 +13345,7 @@ jr_00a_78d0:
     ld a, [hl]
     sbc c
     dec hl
-    call c, Call_000_05ff
+    call c, $05ff
 
 jr_00a_78e1:
     ld a, [de]
@@ -13464,7 +13464,7 @@ jr_00a_78f3:
     ld a, l
     cp a
     db $fd
-    jp c, Jump_000_0640
+    jp c, $0640
 
     push af
     ld a, [bc]

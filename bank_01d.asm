@@ -7340,7 +7340,7 @@ jr_01d_6407:
     reti
 
 
-    jp c, Jump_000_05a1
+    jp c, $05a1
 
     adc e
     adc h

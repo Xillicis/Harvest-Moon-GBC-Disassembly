@@ -8850,7 +8850,7 @@ jr_01e_67ed:
     add b
     inc hl
     ld a, [bc]
-    jp z, Jump_000_0605
+    jp z, $0605
 
     dec c
     inc h

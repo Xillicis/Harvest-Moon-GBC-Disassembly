@@ -11015,7 +11015,7 @@ jr_012_7aa9:
     cpl
     jr nc, @-$4a
 
-    call z, Call_000_0640
+    call z, $0640
     ld b, b
     inc bc
     rst $28

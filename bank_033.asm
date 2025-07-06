@@ -11633,7 +11633,7 @@ jr_033_752c:
     rst $38
     nop
     db $fd
-    jp Jump_000_05e4
+    jp $05e4
 
 
     rst $38

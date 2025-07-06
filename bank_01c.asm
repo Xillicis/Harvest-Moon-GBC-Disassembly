@@ -6462,7 +6462,7 @@ jr_01c_5bf8:
     ld a, [hl-]
     rrca
     or $3e
-    call z, Call_000_063f
+    call z, $063f
     ld [hl], a
     rst $38
     jr jr_01c_5c70

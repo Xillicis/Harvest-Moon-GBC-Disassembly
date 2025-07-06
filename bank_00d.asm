@@ -6312,7 +6312,7 @@ jr_00d_61f6:
     ld a, [$fa34]
     ld h, h
     push hl
-    jp c, Jump_000_057b
+    jp c, $057b
 
     ld [hl], e
     inc l

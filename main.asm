@@ -4,6 +4,7 @@
 ; https://github.com/mattcurrie/mgbdis
 
 INCLUDE "hardware.inc"
+INCLUDE "charmap.asm"
 INCLUDE "macros/const.asm"
 INCLUDE "macros/gfx.asm"
 INCLUDE "macros/farcall.asm"

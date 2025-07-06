@@ -650,260 +650,23 @@ Call_000_056c:
     add b
     rst $08
 
-; Data?
-    ld a, [hl+]
-    ld [hl], b
-    rra
-    ldh [c], a
-    ld b, c
-
-Jump_000_057b:
-    ld bc, $52a0
-    ld [bc], a
-    jr z, jr_000_05c2
-
-    inc bc
-    ld hl, $0441
-    ret z
-
-    ld b, b
-    dec b
-    cp c
-    ld b, b
-    ld b, $f2
-    ld b, b
-    db $10
-    ld b, b
-    ld b, c
-    ld c, $db
-    ld d, l
-    ld c, $ed
-    ld e, e
-    ld c, $96
-    ld h, d
-    ld c, $92
-    ld h, a
-    ld c, $67
-    ld d, b
-    db $10
-    ld a, e
-
-Jump_000_05a1:
-    ld d, b
-    db $10
-    add b
-    ld h, h
-    rrca
-    and h
-    ld b, b
-    dec e
-    ld e, b
-    ld b, h
-    dec e
-    ldh [c], a
-    ld b, a
-    dec e
-    add $40
-    add hl, bc
-    ld e, $47
-    add hl, bc
-    ret c
-
-    ld c, h
-    add hl, bc
-
-Call_000_05b8:
-Jump_000_05b8:
-    add hl, bc
-    ld c, [hl]
-    add hl, bc
-    ld d, $4f
-    add hl, bc
-    inc c
-    ld d, c
-    add hl, bc
-    ld e, l
-
-jr_000_05c2:
-    ld d, d
-    add hl, bc
-    ld b, c
-    ld d, [hl]
-    add hl, bc
-    inc sp
-    ld d, a
-    add hl, bc
-
-Jump_000_05ca:
-    dec a
-    ld d, e
-    dec e
-    dec a
-    ld d, e
-    dec e
-    ld e, [hl]
-    ld h, [hl]
-    add hl, bc
-    ld a, [de]
-    ld l, b
-    add hl, bc
-    and l
-    ld d, a
-    dec e
-    inc h
-    ld c, c
-    ld b, $8b
-    ld b, c
-    rra
-    dec a
-    ld d, e
-    dec e
-    dec e
-    ld d, d
-
-Jump_000_05e4:
-    dec e
-    ld b, c
-    ld l, l
-    rrca
-    ld [hl], e
-    ld b, b
-    rlca
-    ld b, c
-    ld l, a
-    dec e
-    ld a, c
-    ld b, c
-    ld [bc], a
-    rst $18
-    ld [hl], e
-    dec e
-    ld bc, $3f6f
-    db $d3
-    ld b, c
-    ld hl, $51f9
-
-jr_000_05fc:
-    ld [hli], a
-    dec de
-    ld b, c
-
-Call_000_05ff:
-    inc hl
-
-Jump_000_0600:
-    inc d
-    ld b, c
-    inc h
-    cp b
-    ld b, b
-
-Jump_000_0605:
-    dec h
-    cp c
-    ld b, b
-    ld h, $d7
-    ld b, b
-    jr nc, jr_000_0629
-
-    ld b, c
-    ld l, $ab
-    ld d, l
-    ld l, $a2
-    ld e, e
-    ld l, $3e
-    ld h, d
-    ld l, $2d
-    ld h, a
-    ld l, $c9
-    ld c, a
-    jr nc, jr_000_05fc
-
-    ld c, a
-    jr nc, $0696
-
-    ld h, h
-    cpl
-    sub a
-    ld b, b
-    dec a
-    ld a, $44
-
-jr_000_0629:
-    dec a
-    or b
-    ld b, a
-    dec a
-    cp c
-    ld b, b
-    add hl, hl
-    ld c, $47
-    add hl, hl
-    or a
-    ld c, h
-    add hl, hl
-    db $e4
-    ld c, l
-
-Call_000_0638:
-    add hl, hl
-    db $ed
-    ld c, [hl]
-    add hl, hl
-    rst $18
-    ld d, b
-    add hl, hl
-
-Call_000_063f:
-    inc l
-
-Call_000_0640:
-Jump_000_0640:
-    ld d, d
-    add hl, hl
-    add sp, $55
-    add hl, hl
-    jp c, Jump_000_2956
-
-    ld hl, sp+$52
-    dec a
-    ld hl, sp+$52
-    dec a
-    dec b
-    ld h, [hl]
-    add hl, hl
-    pop bc
-    ld h, a
-    add hl, hl
-    ld d, e
-    ld d, a
-    dec a
-    ld [$2648], a
-    xor a
-    ld b, b
-    ccf
-    ld hl, sp+$52
-    dec a
-    ret c
-
-    ld d, c
-    dec a
-    sbc $6c
-    cpl
-    ld h, [hl]
-    ld b, b
-    daa
-    db $e4
-    ld l, l
-    dec a
-    ld l, e
-    ld b, c
-    ld [hl+], a
-    ld [hl], l
-    ld [hl], d
-    dec a
-    ret
-; end of data?
+Data_000_0576:
+    db $2A, $70, $1F, $E2, $41, $01, $A0, $52, $02, $28, $41, $03, $21, $41, $04, $C8
+    db $40, $05, $B9, $40, $06, $F2, $40, $10, $40, $41, $0E, $DB, $55, $0E, $ED, $5B
+    db $0E, $96, $62, $0E, $92, $67, $0E, $67, $50, $10, $7B, $50, $10, $80, $64, $0F
+    db $A4, $40, $1D, $58, $44, $1D, $E2, $47, $1D, $C6, $40, $09, $1E, $47, $09, $D8
+    db $4C, $09, $09, $4E, $09, $16, $4F, $09, $0C, $51, $09, $5D, $52, $09, $41, $56
+    db $09, $33, $57, $09, $3D, $53, $1D, $3D, $53, $1D, $5E, $66, $09, $1A, $68, $09
+    db $A5, $57, $1D, $24, $49, $06, $8B, $41, $1F, $3D, $53, $1D, $1D, $52, $1D, $41
+    db $6D, $0F, $73, $40, $07, $41, $6F, $1D, $79, $41, $02, $DF, $73, $1D, $01, $6F
+    db $3F, $D3, $41, $21, $F9, $51, $22, $1B, $41, $23, $14, $41, $24, $B8, $40, $25
+    db $B9, $40, $26, $D7, $40, $30, $1C, $41, $2E, $AB, $55, $2E, $A2, $5B, $2E, $3E
+    db $62, $2E, $2D, $67, $2E, $C9, $4F, $30, $DD, $4F, $30, $74, $64, $2F, $97, $40
+    db $3D, $3E, $44, $3D, $B0, $47, $3D, $B9, $40, $29, $0E, $47, $29, $B7, $4C, $29
+    db $E4, $4D, $29, $ED, $4E, $29, $DF, $50, $29, $2C, $52, $29, $E8, $55, $29, $DA
+    db $56, $29, $F8, $52, $3D, $F8, $52, $3D, $05, $66, $29, $C1, $67, $29, $53, $57
+    db $3D, $EA, $48, $26, $AF, $40, $3F, $F8, $52, $3D, $D8, $51, $3D, $DE, $6C, $2F
+    db $66, $40, $27, $E4, $6D, $3D, $6B, $41, $22, $75, $72, $3D, $C9
 
 ; Advance game clock by one minute every ~30 frames, which eventually increments
 ; the hours, days, seasons, and years. 
@@ -1014,7 +777,7 @@ Call_000_070b:
     ld d, $00
     add hl, hl
     add hl, de
-    ld de, Data_000_0763
+    ld de, AMPMHourText
     add hl, de
     ld a, [hli]
     ld [$b915], a
@@ -1033,56 +796,33 @@ Call_000_070b:
     ld a, [$b917]
     ld c, a
     ld e, $84
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
     ld a, [$b918]
     ld c, a
     ld e, $85
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
     ld a, [$b915]
     ld c, a
     ld e, $86
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
     ld a, $01
     ld [$cb75], a
     ret
 
-; Data
-Data_000_0763:
-    db $00, $34, $34
-    db $00, $34, $35
-    db $00, $34, $36
-    db $00, $34, $37
-    db $00, $34, $38
-    db $00, $34, $39
-    db $00, $34, $3A
-    db $00, $34, $3B
-    db $00, $34, $3C
-    db $00, $34, $3D
-    db $00, $35, $34
-    db $00, $35, $35
-    db $0F, $34, $34
-    db $0F, $34, $35
-    db $0F, $34, $36
-    db $0F, $34, $37
-    db $0F, $34, $38
-    db $0F, $34, $39
-    db $0F, $34, $3A
-    db $0F, $34, $3B
-    db $0F, $34, $3C
-    db $0F, $34, $3D
-    db $0F, $35, $34
-    db $0F, $35, $35
+; A little bit weird, but 'A' and 'P' comes first in AM/PM. I wonder if some kind of Japanese hold over?
+AMPMHourText:
+    db "A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"
+    db "P00", "P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11"
 
-; 
 UpdateDayOfTheWeekTileData:
     ld a, [sCurrentDayCounter]
     ld l, a
@@ -4311,9 +4051,12 @@ EnergyScaleForTirednessAnimations:
     db $64, $43, $21, $00
 
 ; Separate data???
-    db $FA, $ED, $B8, $80
+    db $FA, $ED ;$B8, ;$80
+
 
 ;;;;; Is this actual code? somehow jumps here?
+    cp b ; 00x1ae8
+    add b
     jr c, jr_000_1af7
     ld [sPlayerEnergy], a
     ld b, a
@@ -4327,37 +4070,30 @@ jr_000_1af7:
     ld [sPlayerEnergy], a
     ret
 
-
+; This might be unused code???
 Call_000_1afe:
     ld a, [$cb8d]
     cp $01
     jr z, jr_000_1b0e
-
     cp $03
     jr z, jr_000_1b14
-
     cp $05
     jr z, jr_000_1b1a
-
     ret
-
 
 jr_000_1b0e:
     ld b, $1e
-    call $1ae6
+    call $1ae6 ; BGB is saying this memory address is `undefined opcode`...
     ret
-
 
 jr_000_1b14:
     ld b, $14
     call $1ae6
     ret
 
-
 jr_000_1b1a:
     ld b, $0a
     call $1ae6
-
     ret
 
 Data_000_1b20:

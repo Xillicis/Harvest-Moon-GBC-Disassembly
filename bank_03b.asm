@@ -10976,7 +10976,7 @@ jr_03b_6e58:
     ld [hl], c
 
 jr_03b_6e70:
-    jp nc, Jump_000_05b8
+    jp nc, $05b8
 
     ld b, h
     or l
@@ -11126,7 +11126,7 @@ jr_03b_6f02:
     ld [hl], c
 
 jr_03b_6f1a:
-    call nc, Call_000_05b8
+    call nc, $05b8
     ld b, h
     or a
     cp b
@@ -11588,7 +11588,7 @@ jr_03b_70f8:
     ld b, e
     scf
     ld [hl], c
-    jp c, Jump_000_05b8
+    jp c, $05b8
 
     ld b, h
     or h

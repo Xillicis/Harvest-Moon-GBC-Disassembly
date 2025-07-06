@@ -7279,7 +7279,7 @@ jr_02d_61ec:
     ld a, [$fa34]
     ld h, h
     and l
-    jp c, Jump_000_057b
+    jp c, $057b
 
     ld d, e
 

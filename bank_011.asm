@@ -3489,7 +3489,7 @@ jr_011_79d4:
     ld h, d
     nop
     rst $18
-    jp nz, Jump_000_0600
+    jp nz, $0600
 
     nop
     ld a, [bc]

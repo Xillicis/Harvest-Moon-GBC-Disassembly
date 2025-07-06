@@ -11132,7 +11132,7 @@ jr_010_7325:
     ld c, b
     ld [bc], a
     ld bc, $5057
-    jp z, Jump_000_05ca
+    jp z, $05ca
 
     rst $38
     dec b
