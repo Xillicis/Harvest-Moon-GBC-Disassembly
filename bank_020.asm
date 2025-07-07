@@ -1066,7 +1066,7 @@ Jump_020_5959:
     ld de, $5c78
 
 jr_020_5c2a:
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $03
     jr z, jr_020_5c38
 

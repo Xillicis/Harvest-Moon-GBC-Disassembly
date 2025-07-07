@@ -3971,7 +3971,7 @@ jr_028_5529:
     ret
 
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $02
     jr z, jr_028_554c
 

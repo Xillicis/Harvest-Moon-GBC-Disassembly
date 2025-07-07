@@ -6031,7 +6031,7 @@ jr_023_6430:
     ld [$b991], a
 
 jr_023_6433:
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $00
     jp nz, Jump_023_658b
 
@@ -8176,7 +8176,7 @@ jr_023_7155:
     ret
 
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $00
     jr z, jr_023_71da
 

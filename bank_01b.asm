@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
 
-    dec de
+    db $1b ; Bank number
+
     ld hl, $cd6c
     ld a, [hl+]
     ld h, [hl]
@@ -22,7 +23,6 @@ SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
     ld l, e
     jp hl
 
-
     ld a, l
     ld [$cd6c], a
     ld a, h
@@ -30,7 +30,6 @@ SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
     ld hl, $cd98
     inc [hl]
     ret
-
 
     ld h, b
     ld l, c
@@ -43,7 +42,6 @@ SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
     ld a, [hl+]
     ld [$cd6f], a
     ret
-
 
     ld h, b
     ld l, c
@@ -14435,24 +14433,8 @@ jr_01b_7d1b:
     jr c, jr_01b_7d85
 
     rlca
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 
 jr_01b_7d85:
     rst $38

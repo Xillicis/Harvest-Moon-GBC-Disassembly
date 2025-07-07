@@ -43,7 +43,8 @@ sb89c::  db
 sb89d::  db 
 sb89e::  db 
 sb89f::  db 
-sb8a0::  db 
+; 0 = sunny day, 1 = rainy day, 2 = snowy day, 3 = strong winds (Hurricane?)
+sCurrentWeather::  db ; 0xb8a0
 sb8a1::  db 
 sb8a2::  db
 

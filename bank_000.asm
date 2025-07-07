@@ -1910,10 +1910,10 @@ Jump_000_0ec5:
 
 Call_000_0ece:
     call Call_000_2527
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_000_0f03
-    cp $03
+    cp WINDY_DAY
     jr z, jr_000_0f09
     ld a, [sCurrentSeason]
     cp SPRING
@@ -8498,14 +8498,14 @@ jr_000_32b9:
     inc de
     ld a, l
     ld [de], a
-    ld hl, $32fa
+    ld hl, DigitList
     ld de, $cccd
     ld c, $04
 
 jr_000_32ce:
     ld a, [de]
     or a
-    jr nz, jr_000_32dd
+    jr nz, .jr_000_32dd
 
     push af
     ld a, $af
@@ -8513,11 +8513,10 @@ jr_000_32ce:
     pop af
     inc de
     dec c
-    jr z, jr_000_32f0
-
+    jr z, .loadDigit
     jr jr_000_32ce
 
-jr_000_32dd:
+.jr_000_32dd
     ld a, [de]
     push af
     push hl
@@ -8532,24 +8531,23 @@ jr_000_32dd:
     pop af
     inc de
     dec c
-    jr z, jr_000_32f0
+    jr z, .loadDigit
+    jr .jr_000_32dd
 
-    jr jr_000_32dd
-
-jr_000_32f0:
-    ld a, [de]
+.loadDigit
+    ld a, [de] ; de holds the number
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
-    ld a, [hl]
+    ld a, [hl] ; hl points to the specific digit
     ld [de], a
     ret
 
 ; The routine above loads this, don't know what it is for...
-Data_000_32fa:
-    db $34, $35, $36, $37, $38, $39, $3a, $3b, $3c, $3d
+DigitList: ; 00x32fa
+    db "0123456789"
 
 Call_000_3304:
     ld [wTempPlayerMoney], a

@@ -3636,8 +3636,8 @@ jr_008_5530:
     ret
 
 
-    ld a, [$b8a0]
-    cp $02
+    ld a, [sCurrentWeather]
+    cp SNOWY_DAY
     jr z, jr_008_5553
 
     ld a, [$c7ca]

@@ -218,7 +218,7 @@ jr_021_418b:
     call Call_021_71a8
     call Call_021_6cc3
     call Call_000_3dfd
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $01
     jr z, jr_021_41cb
 
@@ -7908,11 +7908,11 @@ Call_021_7032:
     cp $ff
     ret nz
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $01
     ret z
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $02
     ret z
 
@@ -8113,11 +8113,11 @@ Call_021_71a8:
     or a
     ret nz
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $01
     ret z
 
-    ld a, [$b8a0]
+    ld a, [sCurrentWeather]
     cp $02
     ret z
 

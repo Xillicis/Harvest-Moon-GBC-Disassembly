@@ -1209,8 +1209,8 @@ jr_002_46fd:
 
 
 jr_002_4709:
-    ld a, $00
-    ld [$b8a0], a
+    ld a, 0
+    ld [sCurrentWeather], a
     ld [$b89f], a
     ld a, $50
     ld [$b924], a
@@ -1299,8 +1299,8 @@ jr_002_4789:
 
 
 jr_002_479f:
-    ld a, $03
-    ld [$b8a0], a
+    ld a, WINDY_DAY
+    ld [sCurrentWeather], a
     ld a, $30
     ld [$b924], a
     ld a, $01
@@ -1323,8 +1323,8 @@ jr_002_47c3:
 
 
 jr_002_47c9:
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     jr z, jr_002_47d8
 
     ld a, [$b89f]
@@ -1357,7 +1357,7 @@ jr_002_47ee:
 
 jr_002_47f4:
     ld a, $00
-    ld [$b8a0], a
+    ld [sCurrentWeather], a
     ld [$b89f], a
     ld a, $50
     ld [$b924], a
@@ -1390,8 +1390,8 @@ jr_002_4823:
     cp TIME_6_AM
     ret c
 
-    ld a, $03
-    ld [$b8a0], a
+    ld a, WINDY_DAY
+    ld [sCurrentWeather], a
     ld a, $30
     ld [$b924], a
     ld a, $01
@@ -2952,14 +2952,14 @@ jr_002_4f5d:
 
 
 Call_002_4f68:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_002_4f89
 
-    cp $03
+    cp WINDY_DAY
     jr z, jr_002_4f89
 
-    cp $02
+    cp SNOWY_DAY
     jr z, jr_002_4f89
 
     push hl
@@ -4233,8 +4233,8 @@ jr_002_575d:
 
 
 jr_002_5764:
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     jr z, jr_002_577f
 
     ld a, $18
@@ -4928,8 +4928,8 @@ Call_002_5b01:
 
 jr_002_5b28:
     call Call_002_5be0
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     jr nz, jr_002_5b38
 
     ld a, $00
@@ -5107,8 +5107,8 @@ jr_002_5c19:
 
 
 jr_002_5c20:
-    ld a, $00
-    ld [$b8a0], a
+    ld a, SUNNY_DAY
+    ld [sCurrentWeather], a
     pop hl
     ret
 
@@ -5616,8 +5616,8 @@ jr_002_5e69:
 
 jr_002_5e6b:
     ld [wInputFreezeTimer], a
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     jr nz, jr_002_5e7a
 
     ld hl, $5df1
@@ -5770,8 +5770,8 @@ jr_002_5f20:
 
 
 Call_002_5f31:
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     jp z, Jump_002_5fa8
 
     ld a, [$b88a]
@@ -7272,8 +7272,8 @@ Call_002_67a1:
 jr_002_67f9:
     call Call_002_6d7a
     ld a, [$b89f]
-    ld [$b8a0], a
-    cp $00
+    ld [sCurrentWeather], a
+    cp SUNNY_DAY
     jr nz, jr_002_681b
 
     ld a, $50
@@ -7340,8 +7340,8 @@ Jump_002_686d:
 
 Jump_002_6882:
 jr_002_6882:
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     call z, Call_002_6cd1
     call Call_002_5b01
     push hl
@@ -7525,14 +7525,14 @@ UpdateCalendarDate:
     ret
 
 Call_002_6988:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_002_69a9
 
-    cp $03
+    cp WINDY_DAY
     jr z, jr_002_69a9
 
-    cp $02
+    cp SNOWY_DAY
     jr z, jr_002_69a9
 
     push hl
@@ -7648,11 +7648,11 @@ jr_002_6a07:
     pop hl
 
 jr_002_6a09:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_002_6a15
 
-    cp $03
+    cp WINDY_DAY
     jr z, jr_002_6a15
 
     ret
@@ -7676,8 +7676,8 @@ jr_002_6a15:
 jr_002_6a24:
     pop bc
     pop hl
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     ret nz
 
     push hl
@@ -7883,11 +7883,11 @@ jr_002_6afd:
     pop hl
 
 jr_002_6aff:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_002_6b0b
 
-    cp $03
+    cp WINDY_DAY
     jr z, jr_002_6b0b
 
     ret
@@ -7911,8 +7911,8 @@ jr_002_6b0b:
 jr_002_6b1a:
     pop bc
     pop hl
-    ld a, [$b8a0]
-    cp $03
+    ld a, [sCurrentWeather]
+    cp WINDY_DAY
     ret nz
 
     push hl
@@ -7978,8 +7978,8 @@ jr_002_6b68:
     pop hl
 
 jr_002_6b6a:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret nz
 
     push hl
@@ -8040,8 +8040,8 @@ jr_002_6bab:
     pop hl
 
 jr_002_6bad:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret nz
 
     push hl
@@ -8102,8 +8102,8 @@ jr_002_6bee:
     pop hl
 
 jr_002_6bf0:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret nz
 
     push hl
@@ -8164,8 +8164,8 @@ jr_002_6c31:
     pop hl
 
 jr_002_6c33:
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret nz
 
     push hl
@@ -8226,8 +8226,8 @@ jr_002_6c74:
     pop hl
 
 jr_002_6c76:
-    ld a, [$b8a0]
-    cp $02
+    ld a, [sCurrentWeather]
+    cp SNOWY_DAY
     ret nz
 
     push hl
@@ -8288,8 +8288,8 @@ jr_002_6cb7:
     pop hl
 
 jr_002_6cb9:
-    ld a, [$b8a0]
-    cp $02
+    ld a, [sCurrentWeather]
+    cp SNOWY_DAY
     ret nz
 
     push hl

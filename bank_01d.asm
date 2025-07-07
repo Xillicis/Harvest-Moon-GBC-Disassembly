@@ -3702,7 +3702,7 @@ Call_01d_521e: ; 1dx521e
     call Call_000_0fc7
     ld a, $00
     ld [$b89f], a
-    ld [$b8a0], a
+    ld [sCurrentWeather], a
     ld a, $50
     ld [$b924], a
     ld a, $83

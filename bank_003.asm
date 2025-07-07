@@ -6082,8 +6082,8 @@ jr_003_6476:
     ld [$b991], a
 
 jr_003_6479:
-    ld a, [$b8a0]
-    cp $00
+    ld a, [sCurrentWeather]
+    cp SUNNY_DAY
     jp nz, Jump_003_65d1
 
     ld a, [$b949]
@@ -8226,14 +8226,14 @@ jr_003_719b:
     ret
 
 
-    ld a, [$b8a0]
-    cp $00
+    ld a, [sCurrentWeather]
+    cp SUNNY_DAY
     jr z, jr_003_7220
 
-    cp $01
+    cp RAINY_DAY
     jr z, jr_003_7220
 
-    cp $02
+    cp SNOWY_DAY
     jr z, jr_003_7220
 
     ld hl, $742d

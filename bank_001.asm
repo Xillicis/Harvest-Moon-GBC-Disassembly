@@ -234,14 +234,14 @@ jr_001_418d:
     call Call_001_72b0
     call Call_001_6e30
     call Call_000_3dfd
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     jr z, jr_001_41da
 
-    cp $03
+    cp WINDY_DAY
     jr z, jr_001_41da
 
-    cp $02
+    cp SNOWY_DAY
     jr z, jr_001_41de
 
     ret
@@ -7776,12 +7776,12 @@ Call_001_712d:
     cp $ff
     ret nz
 
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret z
 
-    ld a, [$b8a0]
-    cp $02
+    ld a, [sCurrentWeather]
+    cp SNOWY_DAY
     ret z
 
     ld a, [$b890]
@@ -7989,12 +7989,12 @@ Call_001_72b0:
     or a
     ret nz
 
-    ld a, [$b8a0]
-    cp $01
+    ld a, [sCurrentWeather]
+    cp RAINY_DAY
     ret z
 
-    ld a, [$b8a0]
-    cp $02
+    ld a, [sCurrentWeather]
+    cp SNOWY_DAY
     ret z
 
     call Call_000_0b37
