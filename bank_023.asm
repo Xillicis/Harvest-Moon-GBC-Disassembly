@@ -9445,7 +9445,7 @@ Call_023_7814:
     rst $38
     call $cf84
     add [hl]
-    call $cb84
+    call wPlayerIsRidingHorse
     add d
     rst $38
     call Call_023_4f84

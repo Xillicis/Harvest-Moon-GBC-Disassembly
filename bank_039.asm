@@ -5792,7 +5792,7 @@ jr_039_5928:
     ld [$521c], a
     xor h
     ld a, [$6a04]
-    call nc, Call_000_070b
+    call nc, UpdateHourTileData
     ld b, $01
     inc bc
     nop

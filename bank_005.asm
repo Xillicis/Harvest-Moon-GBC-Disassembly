@@ -3621,7 +3621,7 @@ jr_005_50b5:
     ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     call nz, Call_005_5296
     ld a, [$cb4a]

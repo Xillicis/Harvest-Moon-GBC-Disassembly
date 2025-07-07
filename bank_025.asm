@@ -3568,7 +3568,7 @@ Jump_025_516e:
     ld [wRightOrUpSideFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     call nz, Call_025_51ff
     ld a, [$cb4a]

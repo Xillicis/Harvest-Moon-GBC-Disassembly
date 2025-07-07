@@ -560,16 +560,16 @@ DEF LCDCB_BGON    EQU 0 ; BG Display
 ; --
 ;DEF rSTAT EQU $FF41
 
-DEF STATF_LYC     EQU  %01000000 ; LYC=LY Coincidence (Selectable)
-DEF STATF_MODE10  EQU  %00100000 ; Mode 10
-DEF STATF_MODE01  EQU  %00010000 ; Mode 01 (V-Blank)
-DEF STATF_MODE00  EQU  %00001000 ; Mode 00 (H-Blank)
-DEF STATF_LYCF    EQU  %00000100 ; Coincidence Flag
-DEF STATF_HBL     EQU  %00000000 ; H-Blank
-DEF STATF_VBL     EQU  %00000001 ; V-Blank
-DEF STATF_OAM     EQU  %00000010 ; OAM-RAM is used by system
-DEF STATF_LCD     EQU  %00000011 ; Both OAM and VRAM used by system
-DEF STATF_BUSY    EQU  %00000010 ; When set, VRAM access is unsafe
+;DEF STATF_LYC     EQU  %01000000 ; LYC=LY Coincidence (Selectable)
+;DEF STATF_MODE10  EQU  %00100000 ; Mode 10
+;DEF STATF_MODE01  EQU  %00010000 ; Mode 01 (V-Blank)
+;DEF STATF_MODE00  EQU  %00001000 ; Mode 00 (H-Blank)
+;DEF STATF_LYCF    EQU  %00000100 ; Coincidence Flag
+;DEF STATF_HBL     EQU  %00000000 ; H-Blank
+;DEF STATF_VBL     EQU  %00000001 ; V-Blank
+;DEF STATF_OAM     EQU  %00000010 ; OAM-RAM is used by system
+;DEF STATF_LCD     EQU  %00000011 ; Both OAM and VRAM used by system
+;DEF STATF_BUSY    EQU  %00000010 ; When set, VRAM access is unsafe
 
 DEF STATB_LYC     EQU  6
 DEF STATB_MODE10  EQU  5

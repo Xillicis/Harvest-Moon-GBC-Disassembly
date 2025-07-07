@@ -4738,7 +4738,7 @@ jr_026_551a:
     or a
     ret nz
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_026_5544
 
@@ -4791,7 +4791,7 @@ jr_026_556e:
     or a
     jr nz, jr_026_55b5
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_026_558b
 
@@ -4844,7 +4844,7 @@ jr_026_55b5:
     or a
     jr nz, jr_026_55dc
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr z, jr_026_55d3
 
@@ -4878,7 +4878,7 @@ jr_026_55dc:
     or a
     jr nz, jr_026_560c
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr z, jr_026_5603
 

@@ -183,7 +183,7 @@ jr_001_4122:
     ld [$b90d], a
     xor a
     ld [$b90e], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [$cb89], a
     call Call_001_6ce4
@@ -416,7 +416,7 @@ Jump_001_42e8:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     pop hl
     ld a, [$b8e1]
@@ -483,7 +483,7 @@ Jump_001_4354:
     ld [$c800], a
     ld [$c620], a
     ld [wHeldObject], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerHoldingPet], a
     ld [$cb89], a
@@ -510,7 +510,7 @@ Jump_001_439a:
     ld [$c800], a
     ld [$c620], a
     ld [wHeldObject], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerHoldingPet], a
     ld [$cb89], a
@@ -693,7 +693,7 @@ jr_001_44b0:
 
 
 Call_001_44b4:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 
@@ -817,7 +817,7 @@ jr_001_4536:
 
 
 Jump_001_453f:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
 
@@ -871,7 +871,7 @@ jr_001_4592:
 
 
 Jump_001_4596:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
 
@@ -926,7 +926,7 @@ jr_001_45e9:
 
 
 Jump_001_45f0:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
 
@@ -981,7 +981,7 @@ jr_001_4643:
 
 
 Jump_001_464a:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
 
@@ -1655,7 +1655,7 @@ Jump_001_4a6a:
 
     call Call_001_4a92
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     xor a
     ld [$cb82], a
     ld a, $10
@@ -1841,10 +1841,10 @@ jr_001_4be2:
     ld d, $00
     ld e, $18
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     jr nz, jr_001_4c6e
@@ -1904,10 +1904,10 @@ jr_001_4c6e:
     ld d, $00
     ld e, $e8
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     ret nz
@@ -1967,10 +1967,10 @@ Jump_001_4cf5:
     ld d, $18
     ld e, $00
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     jr nz, jr_001_4d7e
@@ -2029,10 +2029,10 @@ jr_001_4d7e:
     ld d, $e8
     ld e, $00
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     ret nz
@@ -2091,10 +2091,10 @@ Jump_001_4e03:
     ld d, $e8
     ld e, $00
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     jr nz, jr_001_4e8c
@@ -2153,10 +2153,10 @@ jr_001_4e8c:
     ld d, $18
     ld e, $00
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     call Call_000_19aa
     ld a, $01
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld a, [$cb89]
     or a
     ret nz
@@ -2211,7 +2211,7 @@ jr_001_4e8c:
 
 Jump_001_4f0e:
     xor a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld a, $01
     ld [$c780], a
@@ -2638,7 +2638,7 @@ Call_001_527d:
     or a
     jp nz, Jump_001_4a6a
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_4bcb
 
@@ -3098,7 +3098,7 @@ Call_001_557f:
     or a
     ret nz
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 
@@ -6491,7 +6491,7 @@ Call_001_6a09:
     or a
     ret nz
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 
@@ -6632,7 +6632,7 @@ Call_001_6ac6:
 
 
 Call_001_6ad5:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 
@@ -6751,7 +6751,7 @@ Call_001_6b67:
     ret
 
 Call_001_6ba5:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 

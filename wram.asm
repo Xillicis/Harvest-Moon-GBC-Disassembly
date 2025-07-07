@@ -81,7 +81,12 @@ ds 46
 ; It is one if the player is inside or at town
 wPlayerIsInsideOrAtTown:: db ; 0xcb81
 
-ds 9
+ds 2
+
+wPlayerIsRidingHorse:: db ; 0xcb84
+
+ds 6
+
 
 ; a flag to indicate the player is or is not holding a pet (0 or 1)
 wPlayerHoldingPet:: db ; 0xcb8b

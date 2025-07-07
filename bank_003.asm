@@ -9495,7 +9495,7 @@ Call_003_785a:
     rst $38
     call $cf84
     add [hl]
-    call $cb84
+    call wPlayerIsRidingHorse
     add d
     rst $38
     call $4f84

@@ -608,7 +608,7 @@ jr_009_433f:
     ld [sCurrentHour], a
     ld a, $0d
     ld [sCurrentMinute], a
-    call Call_000_070b
+    call UpdateHourTileData
     pop hl
     xor a
     ld [$cb56], a
@@ -628,14 +628,14 @@ Call_009_436a:
     cp $18
     jr nc, jr_009_4379
 
-    call Call_000_070b
+    call UpdateHourTileData
     ret
 
 
 jr_009_4379:
     xor a
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a

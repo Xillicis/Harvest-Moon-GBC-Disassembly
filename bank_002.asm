@@ -179,7 +179,7 @@ jr_002_4170:
     ld [$c910], a
     xor a
     ld [$c911], a
-    call Call_000_070b
+    call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [$ccc2]
@@ -3248,7 +3248,7 @@ jr_002_50ec:
     ld [$cb7a], a
     ld [$cb7b], a
     ld [$cb7c], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [$cb89], a
     ld [$cb4a], a
@@ -3372,7 +3372,7 @@ jr_002_5211:
     call Call_002_672f
     call Call_002_65b6
     call $6492
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, $83
     ld [wLCDCTempStorage], a
     ld c, $4f
@@ -7482,7 +7482,7 @@ UpdateCalendarDate:
     ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
@@ -7519,7 +7519,7 @@ UpdateCalendarDate:
     ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     xor a
     ld [s6AMFlag], a
     ret

@@ -1908,7 +1908,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     ret
 
 Label_020_6f8e:
-    ld a, [$b93c]
+    ld a, [sCurrentlyHeldItem]
     rst $00
 
 

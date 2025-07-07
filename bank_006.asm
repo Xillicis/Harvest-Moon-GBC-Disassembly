@@ -4805,7 +4805,7 @@ Label_006_55e4:
     or a
     ret nz
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_006_55fd
 
@@ -4858,7 +4858,7 @@ jr_006_5627:
     or a
     jr nz, jr_006_566e
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_006_5644
 
@@ -4911,7 +4911,7 @@ jr_006_566e:
     or a
     jr nz, jr_006_5695
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr z, jr_006_568c
 
@@ -4945,7 +4945,7 @@ jr_006_5695:
     or a
     jr nz, jr_006_56c5
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr z, jr_006_56bc
 

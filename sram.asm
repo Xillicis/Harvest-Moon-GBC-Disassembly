@@ -200,7 +200,9 @@ sb938::  db
 sb939::  db 
 sb93a::  db 
 sb93b::  db 
-sb93c::  db 
+; This is used for determining the payment for the item you deposit in the shipping container.
+; It will also track the item you're currently holding as well, like a Sickly, Turnip Seeds, etc...
+sCurrentlyHeldItem::  db ; 0xb93c
 ; little endian
 sShipmentPayment::  dw ; 0xb93d 
 ; total produced shipped (per year?)

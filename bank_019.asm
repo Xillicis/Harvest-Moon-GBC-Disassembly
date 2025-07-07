@@ -5867,7 +5867,7 @@ jr_019_5907:
     ld d, d
     xor h
     ld a, [$ea04]
-    call nc, Call_000_070b
+    call nc, UpdateHourTileData
     ld b, $01
     inc bc
     nop

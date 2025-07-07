@@ -168,7 +168,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [$c910], a
     xor a
     ld [$c911], a
-    call Call_000_070b
+    call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     ld a, [$ccc2]
@@ -3225,7 +3225,7 @@ jr_022_50a8:
     ld [$cb7a], a
     ld [$cb7b], a
     ld [$cb7c], a
-    ld [$cb84], a
+    ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [$cb89], a
     ld [$cb4a], a
@@ -3319,7 +3319,7 @@ jr_022_5191:
     call Call_022_669c
     call Call_022_6523
     call $63ff
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $ff
@@ -7388,7 +7388,7 @@ jr_022_6876:
     ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
@@ -7430,7 +7430,7 @@ jr_022_68d4:
     ld [sCurrentMinute], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     xor a
     ld [s6AMFlag], a
     ret

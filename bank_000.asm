@@ -724,14 +724,14 @@ TickGameClock:
     cp TIME_12_AM
     jr nc, .incrementDay
 
-    call Call_000_070b
-    call Call_000_070b
+    call UpdateHourTileData
+    call UpdateHourTileData
     ret
 
 .incrementDay
     xor a
     ld [sCurrentHour], a
-    call Call_000_070b
+    call UpdateHourTileData
     ld a, [sCurrentDayCounter]
     inc a
     ld [sCurrentDayCounter], a
@@ -769,7 +769,7 @@ TickGameClock:
     ld [sCurrentYear], a
     ret
 
-Call_000_070b:
+UpdateHourTileData: ; 00x070b
     ld a, [sCurrentHour]
     ld l, a
     ld h, $00
@@ -1732,7 +1732,6 @@ Call_000_0d90:
     ld [$b889], a
     ret
 
-
 SyncToBlankPeriod:
     ldh a, [rLY]
     cp 102
@@ -1782,7 +1781,7 @@ Call_000_0de8:
     xor a
     ld [$cb92], a
     call Call_000_1056
-    call Call_000_070b
+    call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
     call Call_000_08b7
     call Call_000_1002
@@ -2146,7 +2145,6 @@ Call_000_1056:
     cp $ff
     jr z, jr_000_108d
 
-Jump_000_105d:
     ld a, [sPlayerMoney+2]
     cp $02 ; highest byte cannot be 2 or larger
     jr nc, .setMaxMoney
@@ -3243,7 +3241,7 @@ Data_000_1659: ; 0x1659
     db $bb, $57, $06
 
 Call_000_16d1:
-    ld [$b93c], a
+    ld [sCurrentlyHeldItem], a
     push hl
     push af
     ld l, $8e
@@ -3252,7 +3250,7 @@ Call_000_16d1:
     call BankSwitchCallHL
     pop af
     pop hl
-    ld a, [$b93c]
+    ld a, [sCurrentlyHeldItem]
     rst $08
 
 
@@ -3720,7 +3718,7 @@ Call_000_1923:
     or a
     ret nz
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
 
@@ -3818,7 +3816,7 @@ jr_000_19a6:
 
 
 Call_000_19aa:
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_000_19f2
 
@@ -4128,13 +4126,13 @@ db $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF
 
 Call_000_1cff:
     ld a, [wSTAT_HandlerIndex]
-    cp $26
+    cp STATF_MODE10 | STATF_LYCF | STATF_OAM
     ret z
 
-    cp $27
+    cp STATF_MODE10 | STATF_LYCF | STATF_LCD
     ret z
 
-    cp $29
+    cp STATF_MODE10 | STATF_MODE00 | STATF_VBL
     ret z
 
     ld a, [sCurrentHour]
@@ -4148,7 +4146,7 @@ Call_000_1cff:
     call IncrementHLWithUpperBound
     ld hl, $ba35
     call IncrementHLWithUpperBound
-    ld a, [$b93c]
+    ld a, [sCurrentlyHeldItem]
     ld hl, ShipmentSellingPrice
     call LoadWordFromTableHL
     ld d, h
@@ -9835,7 +9833,7 @@ Call_000_3db3:
     or a
     jr nz, jr_000_3deb
 
-    ld a, [$cb84]
+    ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_000_3deb
 
