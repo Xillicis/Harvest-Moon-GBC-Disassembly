@@ -20,9 +20,12 @@ sCurrentYear::  db  ; 0xb885
 sb886::  db 
 sb887::  db 
 sb888::  db 
-sTimeElapsed::  db 
-sb88a::  db 
-sb88b::  db 
+sTimeElapsed::  db ; 0xb889
+
+; Only increments to the new season when the next day over rolls over to the new season.
+sSeasonOfNextDay::  db ; 0xb88a
+sNextDayCounter::  db  ; 0xb88b
+
 sb88c::  db 
 sb88d::  db 
 sb88e::  db 

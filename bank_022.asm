@@ -4829,21 +4829,21 @@ jr_022_59de:
 Call_022_5a6e:
     call Call_022_5b94
     ld a, [sCurrentDayCounter]
-    ld [$b88b], a
+    ld [sNextDayCounter], a
     ld a, [sCurrentSeason]
-    ld [$b88a], a
+    ld [sSeasonOfNextDay], a
     ld a, [sCurrentDayCounter]
     inc a
-    ld [$b88b], a
+    ld [sNextDayCounter], a
     cp $1e
     jr nz, jr_022_5a95
 
     xor a
-    ld [$b88b], a
-    ld a, [$b88a]
+    ld [sNextDayCounter], a
+    ld a, [sSeasonOfNextDay]
     inc a
     and $03
-    ld [$b88a], a
+    ld [sSeasonOfNextDay], a
 
 jr_022_5a95:
     call Call_022_5b4d
@@ -4857,13 +4857,13 @@ jr_022_5a95:
 
 
 jr_022_5aa5:
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $01
     jr nz, jr_022_5abc
 
     ld a, [$b8a2]
     ld b, a
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp b
     jr nz, jr_022_5abc
 
@@ -4885,7 +4885,7 @@ jr_022_5abc:
 
 
 jr_022_5acc:
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $00
     jp z, Jump_022_5af3
 
@@ -4927,7 +4927,7 @@ Jump_022_5af3:
 Jump_022_5b08:
     ld a, [$b8a1]
     ld b, a
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp b
     jr nz, jr_022_5b23
 
@@ -4975,15 +4975,15 @@ Call_022_5b4d:
     or a
     jr nz, jr_022_5b8d
 
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $01
     jr z, jr_022_5b69
 
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $02
     jr z, jr_022_5b71
 
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $03
     jr z, jr_022_5b79
 
@@ -4991,7 +4991,7 @@ Call_022_5b4d:
 
 
 jr_022_5b69:
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $13
     jr z, jr_022_5b86
 
@@ -4999,7 +4999,7 @@ jr_022_5b69:
 
 
 jr_022_5b71:
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $09
     jr z, jr_022_5b86
 
@@ -5011,7 +5011,7 @@ jr_022_5b79:
     or a
     ret nz
 
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $13
     jr z, jr_022_5b86
 
@@ -5693,7 +5693,7 @@ Call_022_5e9e:
     cp $03
     jp z, Jump_022_5f15
 
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $00
     jr z, jr_022_5ec8
 

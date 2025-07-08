@@ -243,9 +243,7 @@ jr_001_418d:
 
     cp SNOWY_DAY
     jr z, jr_001_41de
-
     ret
-
 
 jr_001_41da:
     call Call_001_6b05
@@ -5329,7 +5327,7 @@ Jump_001_632d:
     call Call_000_151d
     ld a, $69
     ld [wInputFreezeTimer], a
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $03
     jr z, jr_001_634f
 
@@ -8624,9 +8622,9 @@ Jump_001_76c6:
     add $24
     call Call_000_152a
     call Call_001_77ff
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     ld [$b894], a
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     ld [$b895], a
     ret
 

@@ -5285,7 +5285,7 @@ Jump_021_621b:
     call Call_000_151d
     ld a, $69
     ld [wInputFreezeTimer], a
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     cp $03
     jr z, jr_021_623d
 
@@ -8732,9 +8732,9 @@ Jump_021_75a6:
     add $24
     call Call_000_152a
     call Call_021_76df
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     ld [$b894], a
-    ld a, [$b88a]
+    ld a, [sSeasonOfNextDay]
     ld [$b895], a
     ret
 

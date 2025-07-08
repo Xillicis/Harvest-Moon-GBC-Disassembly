@@ -1200,7 +1200,7 @@ jr_002_46f0:
 
 jr_002_46fd:
     ld a, [sCurrentDayCounter]
-    cp $1d
+    cp 29
     ret nz
 
     ld a, $09
@@ -4909,22 +4909,23 @@ jr_002_5a71:
 
 Call_002_5b01:
     call Call_002_5c27
+; overwrites sNextDayCounter with sCurrentDayCounter +1.
     ld a, [sCurrentDayCounter]
-    ld [$b88b], a
+    ld [sNextDayCounter], a
     ld a, [sCurrentSeason]
-    ld [$b88a], a
+    ld [sSeasonOfNextDay], a
     ld a, [sCurrentDayCounter]
     inc a
-    ld [$b88b], a
-    cp $1e
+    ld [sNextDayCounter], a
+    cp 30
     jr nz, jr_002_5b28
 
     xor a
-    ld [$b88b], a
-    ld a, [$b88a]
+    ld [sNextDayCounter], a
+    ld a, [sSeasonOfNextDay]
     inc a
     and $03
-    ld [$b88a], a
+    ld [sSeasonOfNextDay], a
 
 jr_002_5b28:
     call Call_002_5be0
@@ -4938,13 +4939,13 @@ jr_002_5b28:
 
 
 jr_002_5b38:
-    ld a, [$b88a]
-    cp $01
+    ld a, [sSeasonOfNextDay]
+    cp SUMMER
     jr nz, jr_002_5b4f
 
     ld a, [$b8a2]
     ld b, a
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp b
     jr nz, jr_002_5b4f
 
@@ -4966,14 +4967,14 @@ jr_002_5b4f:
 
 
 jr_002_5b5f:
-    ld a, [$b88a]
-    cp $00
+    ld a, [sSeasonOfNextDay]
+    cp SPRING
     jp z, Jump_002_5b86
 
-    cp $01
+    cp SUMMER
     jp z, Jump_002_5b9b
 
-    cp $02
+    cp AUTUMN
     jp z, Jump_002_5bcb
 
     call Call_000_0b37
@@ -5008,7 +5009,7 @@ Jump_002_5b86:
 Jump_002_5b9b:
     ld a, [$b8a1]
     ld b, a
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp b
     jr nz, jr_002_5bb6
 
@@ -5056,23 +5057,22 @@ Call_002_5be0:
     or a
     jr nz, jr_002_5c20
 
-    ld a, [$b88a]
-    cp $01
+    ld a, [sSeasonOfNextDay]
+    cp SUMMER
     jr z, jr_002_5bfc
 
-    ld a, [$b88a]
-    cp $02
+    ld a, [sSeasonOfNextDay]
+    cp AUTUMN
     jr z, jr_002_5c04
 
-    ld a, [$b88a]
-    cp $03
+    ld a, [sSeasonOfNextDay]
+    cp WINTER
     jr z, jr_002_5c0c
-
     ret
 
 
 jr_002_5bfc:
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $13
     jr z, jr_002_5c19
 
@@ -5080,7 +5080,7 @@ jr_002_5bfc:
 
 
 jr_002_5c04:
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $09
     jr z, jr_002_5c19
 
@@ -5092,7 +5092,7 @@ jr_002_5c0c:
     or a
     ret nz
 
-    ld a, [$b88b]
+    ld a, [sNextDayCounter]
     cp $13
     jr z, jr_002_5c19
 
@@ -5774,14 +5774,14 @@ Call_002_5f31:
     cp WINDY_DAY
     jp z, Jump_002_5fa8
 
-    ld a, [$b88a]
-    cp $00
+    ld a, [sSeasonOfNextDay]
+    cp SPRING
     jr z, jr_002_5f5b
 
-    cp $01
+    cp SUMMER
     jr z, jr_002_5f6e
 
-    cp $02
+    cp AUTUMN
     jr z, jr_002_5f95
 
     ld a, [$b89f]
