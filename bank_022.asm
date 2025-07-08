@@ -1204,7 +1204,7 @@ jr_022_46ef:
 jr_022_46fb:
     ld a, $00
     ld [sCurrentWeather], a
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, $50
     ld [$b924], a
     ld a, $83
@@ -1303,7 +1303,7 @@ jr_022_4791:
     ld a, $02
     ld [$b927], a
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, $80
     ld [$b8a1], a
     ret
@@ -1320,7 +1320,7 @@ jr_022_47bb:
     cp $03
     jr z, jr_022_47ca
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     jr z, jr_022_4801
 
@@ -1351,7 +1351,7 @@ jr_022_47e0:
 jr_022_47e6:
     ld a, $00
     ld [sCurrentWeather], a
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, $50
     ld [$b924], a
     ld a, $83
@@ -1394,7 +1394,7 @@ jr_022_4815:
     ld a, $02
     ld [$b927], a
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4852,7 +4852,7 @@ jr_022_5a95:
     jr nz, jr_022_5aa5
 
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4868,7 +4868,7 @@ jr_022_5aa5:
     jr nz, jr_022_5abc
 
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4880,7 +4880,7 @@ jr_022_5abc:
     jr nz, jr_022_5acc
 
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4905,7 +4905,7 @@ jr_022_5acc:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4920,7 +4920,7 @@ Jump_022_5af3:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4932,7 +4932,7 @@ Jump_022_5b08:
     jr nz, jr_022_5b23
 
     ld a, $03
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, [sCurrentDayCounter]
     ld [$ba4d], a
     ld a, $80
@@ -4951,7 +4951,7 @@ jr_022_5b23:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4966,7 +4966,7 @@ Jump_022_5b38:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 
@@ -5020,7 +5020,7 @@ jr_022_5b79:
 
 jr_022_5b86:
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     pop hl
     ret
 
@@ -5543,7 +5543,7 @@ jr_022_5dd8:
     jr jr_022_5e11
 
 jr_022_5de7:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr nz, jr_022_5df3
 
@@ -5703,7 +5703,7 @@ Call_022_5e9e:
     cp $02
     jr z, jr_022_5f02
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_022_5ec2
 
@@ -5719,7 +5719,7 @@ jr_022_5ec2:
 
 
 jr_022_5ec8:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_022_5ed5
 
@@ -5735,7 +5735,7 @@ jr_022_5ed5:
 
 
 jr_022_5edb:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_022_5ef0
 
@@ -5769,7 +5769,7 @@ jr_022_5efc:
 
 
 jr_022_5f02:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_022_5f0f
 
@@ -7184,7 +7184,7 @@ Call_022_669c:
 
 jr_022_6766:
     call Call_022_6cda
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     ld [sCurrentWeather], a
     cp $00
     jr nz, jr_022_6788
@@ -8358,7 +8358,7 @@ Jump_022_6ccd:
 
 
 Call_022_6cda:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     jr nz, jr_022_6ced
 
@@ -8500,7 +8500,7 @@ jr_022_6db3:
 
 
 Call_022_6dd0:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     ret z
 

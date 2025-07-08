@@ -1070,7 +1070,7 @@ jr_020_5c2a:
     cp $03
     jr z, jr_020_5c38
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     jr nz, jr_020_5c3b
 
@@ -1402,7 +1402,7 @@ Label_020_6ba0:
     ret
 
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     ld hl, $42a9
     cp $00
     jr z, jr_020_6c07

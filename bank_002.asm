@@ -1207,9 +1207,9 @@ jr_002_46fd:
 
 
 jr_002_4709:
-    ld a, 0
+    ld a, SUNNY_DAY
     ld [sCurrentWeather], a
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, $50
     ld [$b924], a
     ld a, $83
@@ -1307,8 +1307,8 @@ jr_002_479f:
     ld [$b926], a
     ld a, $02
     ld [$b927], a
-    ld a, $00
-    ld [$b89f], a
+    ld a, SUNNY_DAY
+    ld [sNextDayWeather], a
     ld a, $80
     ld [$b8a1], a
     ret
@@ -1325,8 +1325,8 @@ jr_002_47c9:
     cp WINDY_DAY
     jr z, jr_002_47d8
 
-    ld a, [$b89f]
-    cp $03
+    ld a, [sNextDayWeather]
+    cp WINDY_DAY
     jr z, jr_002_480f
 
     ret
@@ -1354,9 +1354,9 @@ jr_002_47ee:
     ret c
 
 jr_002_47f4:
-    ld a, $00
+    ld a, SUNNY_DAY
     ld [sCurrentWeather], a
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld a, $50
     ld [$b924], a
     ld a, $83
@@ -1398,8 +1398,8 @@ jr_002_4823:
     ld [$b926], a
     ld a, $02
     ld [$b927], a
-    ld a, $00
-    ld [$b89f], a
+    ld a, SUNNY_DAY
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4797,113 +4797,29 @@ jr_002_5a71:
     call Call_000_3f52
     ret
 
+SpringWeatherProbabilityTable: ; 02x5a81
+db SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY
+db SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
 
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    ld bc, $0001
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    ld bc, $0100
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
-    nop
-    ld [bc], a
-    nop
-    nop
+SummerWeatherProbabilityTable: ; 02x5aa1
+db SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, RAINY_DAY, RAINY_DAY, SUNNY_DAY
+db SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db RAINY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+
+AutumnWeatherProbabilityTable: ; 02x5ac1
+db SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, RAINY_DAY, SUNNY_DAY, SUNNY_DAY
+db SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+db RAINY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY
+
+WinterWeatherProbabilityTable: ; 02x5ae1
+db SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY
+db SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY
+db SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY
+db SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY, SUNNY_DAY, SNOWY_DAY, SUNNY_DAY, SUNNY_DAY
 
 Call_002_5b01:
     call Call_002_5c27
@@ -4931,10 +4847,9 @@ jr_002_5b28:
     cp WINDY_DAY
     jr nz, jr_002_5b38
 
-    ld a, $00
-    ld [$b89f], a
+    ld a, SUNNY_DAY
+    ld [sNextDayWeather], a
     ret
-
 
 jr_002_5b38:
     ld a, [sSeasonOfNextDay]
@@ -4947,8 +4862,8 @@ jr_002_5b38:
     cp b
     jr nz, jr_002_5b4f
 
-    ld a, $00
-    ld [$b89f], a
+    ld a, SUNNY_DAY
+    ld [sNextDayWeather], a
     ret
 
 
@@ -4959,95 +4874,90 @@ jr_002_5b4f:
     cp b
     jr nz, jr_002_5b5f
 
-    ld a, $00
-    ld [$b89f], a
+    ld a, SUNNY_DAY
+    ld [sNextDayWeather], a
     ret
 
 
 jr_002_5b5f:
     ld a, [sSeasonOfNextDay]
     cp SPRING
-    jp z, Jump_002_5b86
-
+    jp z, GetSpringWeather
     cp SUMMER
-    jp z, Jump_002_5b9b
-
+    jp z, GetSummerWeather
     cp AUTUMN
-    jp z, Jump_002_5bcb
+    jp z, GetAutumnWeather
+
+; fallthrough to winter
 
     call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and 31 ; $1f
-    ld hl, $5ae1
+    ld hl, WinterWeatherProbabilityTable
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
-Jump_002_5b86:
+GetSpringWeather:
     call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and 31 ; $1f
-    ld hl, $5a81
+    ld hl, SpringWeatherProbabilityTable ; $5a81
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
-
-Jump_002_5b9b:
+GetSummerWeather:
     ld a, [$b8a1]
     ld b, a
     ld a, [sNextDayCounter]
     cp b
-    jr nz, jr_002_5bb6
-
-    ld a, $03
-    ld [$b89f], a
+    jr nz, .noWindyDay
+    ld a, WINDY_DAY
+    ld [sNextDayWeather], a
     ld a, [sCurrentDayCounter]
     ld [$ba4d], a
     ld a, $80
     ld [$b8a1], a
     ret
 
-
-jr_002_5bb6:
+.noWindyDay
     call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and 31 ; $1f
-    ld hl, $5aa1
+    ld hl, SummerWeatherProbabilityTable
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
-
-Jump_002_5bcb:
+GetAutumnWeather:
     call GetOnDemandRandomNumber
     ldh a, [$ff9d]
-    and $1f
-    ld hl, $5ac1
+    and 31 ; $1f
+    ld hl, AutumnWeatherProbabilityTable
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
     ld a, [hl]
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
-
 
 Call_002_5be0:
     ld a, [$b893]
@@ -5072,7 +4982,6 @@ jr_002_5bfc:
     ld a, [sNextDayCounter]
     cp $13
     jr z, jr_002_5c19
-
     ret
 
 
@@ -5080,9 +4989,7 @@ jr_002_5c04:
     ld a, [sNextDayCounter]
     cp $09
     jr z, jr_002_5c19
-
     ret
-
 
 jr_002_5c0c:
     ld a, [sCurrentYear]
@@ -5092,23 +4999,19 @@ jr_002_5c0c:
     ld a, [sNextDayCounter]
     cp $13
     jr z, jr_002_5c19
-
     ret
-
 
 jr_002_5c19:
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     pop hl
     ret
-
 
 jr_002_5c20:
     ld a, SUNNY_DAY
     ld [sCurrentWeather], a
     pop hl
     ret
-
 
 Call_002_5c27:
     ld a, [sCurrentSeason]
@@ -5622,7 +5525,7 @@ jr_002_5e6b:
     jr jr_002_5ea4
 
 jr_002_5e7a:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr nz, jr_002_5e86
 
@@ -5782,7 +5685,7 @@ Call_002_5f31:
     cp AUTUMN
     jr z, jr_002_5f95
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_002_5f55
 
@@ -5798,7 +5701,7 @@ jr_002_5f55:
 
 
 jr_002_5f5b:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_002_5f68
 
@@ -5814,7 +5717,7 @@ jr_002_5f68:
 
 
 jr_002_5f6e:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_002_5f83
 
@@ -5848,7 +5751,7 @@ jr_002_5f8f:
 
 
 jr_002_5f95:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $00
     jr z, jr_002_5fa2
 
@@ -7269,7 +7172,7 @@ Call_002_67a1:
 
 jr_002_67f9:
     call Call_002_6d7a
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     ld [sCurrentWeather], a
     cp SUNNY_DAY
     jr nz, jr_002_681b
@@ -8432,7 +8335,7 @@ Jump_002_6d6d:
 
 
 Call_002_6d7a:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     jr nz, jr_002_6d8d
 
@@ -8574,7 +8477,7 @@ jr_002_6e53:
 
 
 Call_002_6e70:
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     ret z
 

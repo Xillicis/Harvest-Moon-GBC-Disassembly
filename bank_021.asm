@@ -5289,17 +5289,17 @@ Jump_021_621b:
     cp $03
     jr z, jr_021_623d
 
-    ld a, [$b89f]
+    ld a, [sNextDayWeather]
     cp $03
     ret z
 
     ld a, $01
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 jr_021_623d:
     ld a, $02
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ret
 
 

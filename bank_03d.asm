@@ -3707,7 +3707,7 @@ Call_03d_51d9:
     call BankSwitchCallHL
     call Call_000_0fc7
     ld a, $00
-    ld [$b89f], a
+    ld [sNextDayWeather], a
     ld [sCurrentWeather], a
     ld a, $50
     ld [$b924], a

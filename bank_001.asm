@@ -5328,21 +5328,21 @@ Jump_001_632d:
     ld a, $69
     ld [wInputFreezeTimer], a
     ld a, [sSeasonOfNextDay]
-    cp $03
+    cp WINTER
     jr z, jr_001_634f
 
-    ld a, [$b89f]
-    cp $03
+    ld a, [sNextDayWeather]
+    cp WINDY_DAY
     ret z
 
-    ld a, $01
-    ld [$b89f], a
+    ld a, RAINY_DAY
+    ld [sNextDayWeather], a
     ret
 
 
 jr_001_634f:
-    ld a, $02
-    ld [$b89f], a
+    ld a, SNOWY_DAY
+    ld [sNextDayWeather], a
     ret
 
 
