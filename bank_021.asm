@@ -8121,7 +8121,7 @@ Call_021_71a8:
     cp $02
     ret z
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     cp $0f

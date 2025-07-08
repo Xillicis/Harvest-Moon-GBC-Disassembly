@@ -37,7 +37,10 @@ GetNextRandomByte:
     pop af
     ret
 
-Call_000_0b37:
+; Seems to be a way to get random numbers. I think it might be based on different actions
+; you do in game and also idle animations to get more randomness into the game based on the players
+; actions. 
+GetOnDemandRandomNumber: ; 00x0b37
     ld hl, RandomTableData
     ldh a, [$ff9d]
     add l

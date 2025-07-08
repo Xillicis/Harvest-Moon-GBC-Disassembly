@@ -1192,9 +1192,7 @@ jr_002_46f0:
     ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_002_4709
-
     jr nc, jr_002_4729
-
     ret
 
 
@@ -1286,7 +1284,7 @@ jr_002_477c:
 
 jr_002_4789:
     ld a, [sCurrentDayCounter]
-    cp $1d
+    cp 29
     ret nz
 
     ld a, $18
@@ -4977,9 +4975,9 @@ jr_002_5b5f:
     cp AUTUMN
     jp z, Jump_002_5bcb
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
-    and $1f
+    and 31 ; $1f
     ld hl, $5ae1
     add l
     ld l, a
@@ -4990,11 +4988,10 @@ jr_002_5b5f:
     ld [$b89f], a
     ret
 
-
 Jump_002_5b86:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
-    and $1f
+    and 31 ; $1f
     ld hl, $5a81
     add l
     ld l, a
@@ -5023,9 +5020,9 @@ Jump_002_5b9b:
 
 
 jr_002_5bb6:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
-    and $1f
+    and 31 ; $1f
     ld hl, $5aa1
     add l
     ld l, a
@@ -5038,7 +5035,7 @@ jr_002_5bb6:
 
 
 Jump_002_5bcb:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $1f
     ld hl, $5ac1
@@ -5117,7 +5114,7 @@ Call_002_5c27:
     ld a, [sCurrentSeason]
     or a
     ret nz
-
+; If it's spring
     ld a, [sCurrentDayCounter]
     cp 27
     call z, Call_002_5c3e
@@ -5134,19 +5131,20 @@ Call_002_5c3e:
     ld a, [sCurrentYear]
     or a
     ret nz
-
-    call Call_000_0b37
+; If it's the first year
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld l, a
     ld h, $00
     ld a, $0a
     call DivideHLByA
+; register `a` is in the interval [0,25]
     ld [$b8a2], a
     ret
 
 
 Call_002_5c54:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld l, a
     ld h, $00
@@ -7259,9 +7257,9 @@ Call_002_67a1:
     ld b, a
     ld a, [sCurrentDayCounter]
     or b
-    jr z, jr_002_67f9
+    jr z, jr_002_67f9 ; first day of spring
 
-    ld hl, $63c5
+    ld hl, Label_003_63c5
     ld a, $03
     call BankSwitchCallHL
     ld hl, Label_004_6da9
@@ -7286,7 +7284,7 @@ jr_002_67f9:
     jr jr_002_6882
 
 jr_002_681b:
-    cp $01
+    cp RAINY_DAY
     jp nz, Jump_002_6836
 
     ld a, $00
@@ -7300,7 +7298,7 @@ jr_002_681b:
 
 
 Jump_002_6836:
-    cp $02
+    cp SNOWY_DAY
     jp nz, Jump_002_6851
 
     ld a, $71
@@ -7314,7 +7312,7 @@ Jump_002_6836:
 
 
 Jump_002_6851:
-    cp $03
+    cp WINDY_DAY
     jp nz, Jump_002_686d
 
     ld a, $30
@@ -7552,12 +7550,11 @@ Call_002_6988:
     pop hl
     ret
 
-
 jr_002_69a9:
     push hl
     push bc
     dec hl
-    ld a, [hl-]
+    ld a, [hld]
     cp $00
     jr nz, jr_002_69b8
 
@@ -8326,7 +8323,7 @@ jr_002_6cd7:
     cp $12
     jr nz, jr_002_6cef
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $3f
     cp $3f

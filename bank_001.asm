@@ -7995,7 +7995,7 @@ Call_001_72b0:
     cp SNOWY_DAY
     ret z
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     cp $0f

@@ -4895,7 +4895,7 @@ jr_022_5acc:
     cp $02
     jp z, Jump_022_5b38
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $1f
     ld hl, $5a4e
@@ -4910,7 +4910,7 @@ jr_022_5acc:
 
 
 Jump_022_5af3:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $1f
     ld hl, $59ee
@@ -4941,7 +4941,7 @@ Jump_022_5b08:
 
 
 jr_022_5b23:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $1f
     ld hl, $5a0e
@@ -4956,7 +4956,7 @@ jr_022_5b23:
 
 
 Jump_022_5b38:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $1f
     ld hl, $5a2e
@@ -5054,7 +5054,7 @@ Call_022_5bab:
     or a
     ret nz
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld l, a
     ld h, $00
@@ -5065,7 +5065,7 @@ Call_022_5bab:
 
 
 Call_022_5bc1:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld l, a
     ld h, $00
@@ -8238,7 +8238,7 @@ jr_022_6c37:
     cp $12
     jr nz, jr_022_6c4f
 
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $3f
     cp $3f

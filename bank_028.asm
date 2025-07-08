@@ -5182,7 +5182,7 @@ Jump_028_5bbe:
     ld [bc], a
 
 Jump_028_5c50:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5221,7 +5221,7 @@ Jump_028_5c76:
 
 
 Jump_028_5c7e:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5247,7 +5247,7 @@ Jump_028_5c7e:
 
 
 Jump_028_5ca4:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5274,7 +5274,7 @@ Jump_028_5cc5:
     jr jr_028_5d2a
 
 Jump_028_5cc7:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld hl, $5c40
@@ -5295,7 +5295,7 @@ Jump_028_5cc7:
 
 Jump_028_5ce2:
 jr_028_5ce2:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ld hl, RandomTableData
     ld a, [$c0a8]
     add l
@@ -5337,7 +5337,7 @@ jr_028_5ce2:
 
 Jump_028_5d2a:
 jr_028_5d2a:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld b, a
@@ -5375,7 +5375,7 @@ Jump_028_5d50:
 
 
 Jump_028_5d6e:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ld a, [$c0a8]
     and $01
     inc a
@@ -5401,7 +5401,7 @@ Jump_028_5d6e:
 
 
 Jump_028_5d9f:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld b, a
@@ -5423,7 +5423,7 @@ Jump_028_5d9f:
 
 
 Jump_028_5dc6:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     srl a
     and $1f
@@ -5446,7 +5446,7 @@ Jump_028_5dc6:
 
 
 Jump_028_5df0:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     srl a
     srl a
@@ -5901,7 +5901,7 @@ Jump_028_6036:
     ld [bc], a
 
 Jump_028_60cd:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5931,7 +5931,7 @@ Jump_028_60ee:
 
 
 Jump_028_60f2:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5957,7 +5957,7 @@ Jump_028_60f2:
 
 
 Jump_028_6118:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     ld b, a
     ld a, [$c0a8]
@@ -5987,7 +5987,7 @@ Jump_028_613e:
     jr jr_028_615b
 
 Jump_028_6140:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld hl, $60bd
@@ -6008,7 +6008,7 @@ Jump_028_6140:
 
 Jump_028_615b:
 jr_028_615b:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ld hl, RandomTableData
     ld a, [$c0a8]
     add l
@@ -6049,7 +6049,7 @@ jr_028_615b:
 
 
 Jump_028_61a3:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld b, a
@@ -6070,7 +6070,7 @@ Jump_028_61a3:
 
 
 Jump_028_61c9:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld b, a
@@ -6091,7 +6091,7 @@ Jump_028_61c9:
 
 
 Jump_028_61f0:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ld a, [$c0a8]
     and $01
     inc a
@@ -6117,7 +6117,7 @@ Jump_028_61f0:
 
 
 Jump_028_6221:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     and $0f
     ld b, a
@@ -6139,7 +6139,7 @@ Jump_028_6221:
 
 
 Jump_028_6248:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     srl a
     srl a
@@ -6163,7 +6163,7 @@ Jump_028_6248:
 
 
 Jump_028_6274:
-    call Call_000_0b37
+    call GetOnDemandRandomNumber
     ldh a, [$ff9d]
     srl a
     srl a

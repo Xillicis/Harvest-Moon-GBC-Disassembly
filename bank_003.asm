@@ -5953,7 +5953,7 @@ jr_003_63bd:
     ld a, $03
     ret
 
-
+Label_003_63c5:
     ld a, [$b949]
     cp $ff
     jr z, jr_003_63f2
