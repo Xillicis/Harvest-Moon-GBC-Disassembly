@@ -1195,7 +1195,6 @@ jr_002_46f0:
     jr nc, jr_002_4729
     ret
 
-
 jr_002_46fd:
     ld a, [sCurrentDayCounter]
     cp 29
@@ -1204,7 +1203,6 @@ jr_002_46fd:
     ld a, $09
     ld [$b8a2], a
     ret
-
 
 jr_002_4709:
     ld a, SUNNY_DAY
@@ -1220,7 +1218,6 @@ jr_002_4709:
     ld a, $80
     ld [$b8a2], a
     ret
-
 
 jr_002_4729:
     ld a, $01
@@ -1276,11 +1273,8 @@ jr_002_477c:
     ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_002_479f
-
     jr nc, jr_002_47c3
-
     ret
-
 
 jr_002_4789:
     ld a, [sCurrentDayCounter]
@@ -1294,7 +1288,6 @@ jr_002_4789:
     ld a, $17
     ld [$ba4d], a
     ret
-
 
 jr_002_479f:
     ld a, WINDY_DAY
@@ -1328,7 +1321,6 @@ jr_002_47c9:
     ld a, [sNextDayWeather]
     cp WINDY_DAY
     jr z, jr_002_480f
-
     ret
 
 
@@ -1379,7 +1371,6 @@ jr_002_480f:
     ld a, [sCurrentDayCounter]
     cp b
     jr z, jr_002_4823
-
     ret
 
 
@@ -1552,15 +1543,12 @@ Call_002_4919:
     ld a, l
     cp $18
     jr nc, jr_002_4923
-
     ret
-
 
 jr_002_4923:
     ld a, [sPlayerMaxEnergy]
     ld [sPlayerEnergy], a
     ret
-
 
 Call_002_492a:
     ld a, $f1
@@ -1610,7 +1598,6 @@ jr_002_496d:
     add hl, de
     dec b
     jr nz, jr_002_496d
-
     ret
 
 
@@ -2829,7 +2816,8 @@ jr_002_4ecb:
     ld [sShipmentPayment+1], a
     ret
 
-
+; I think this might modify the different tiles to be modified by the weather.
+; So, the planted seeds become automatically watered when it's raining.
 Call_002_4ee1:
     ld hl, sMapObjectLocation
     ld bc, $0c40
@@ -2932,7 +2920,6 @@ jr_002_4f50:
 
     cp $f0
     jr z, jr_002_4f5a
-
     jr jr_002_4f5d
 
 jr_002_4f5a:
@@ -2945,9 +2932,7 @@ jr_002_4f5d:
     or c
     cp $00
     jr nz, jr_002_4ee7
-
     ret
-
 
 Call_002_4f68:
     ld a, [sCurrentWeather]
@@ -2977,12 +2962,11 @@ Call_002_4f68:
     pop hl
     ret
 
-
 jr_002_4f89:
     push hl
     push bc
     dec hl
-    ld a, [hl-]
+    ld a, [hld]
     cp $00
     jr nz, jr_002_4f98
 
@@ -4878,7 +4862,6 @@ jr_002_5b4f:
     ld [sNextDayWeather], a
     ret
 
-
 jr_002_5b5f:
     ld a, [sSeasonOfNextDay]
     cp SPRING
@@ -5066,7 +5049,7 @@ jr_002_5c69:
     ld [$ba4c], a
     ret
 
-
+Data_002_5c71:
     nop
     ld b, b
     ld bc, $0241
@@ -5526,27 +5509,24 @@ jr_002_5e6b:
 
 jr_002_5e7a:
     ld a, [sNextDayWeather]
-    cp $00
-    jr nz, jr_002_5e86
-
-    ld hl, $5c71
+    cp SUNNY_DAY
+    jr nz, .notSunnyDay
+    ld hl, Data_002_5c71
     jr jr_002_5ea4
 
-jr_002_5e86:
-    cp $01
-    jr nz, jr_002_5e8f
-
+.notSunnyDay
+    cp RAINY_DAY
+    jr nz, .notRainyDay
     ld hl, $5cd1
     jr jr_002_5ea4
 
-jr_002_5e8f:
-    cp $02
-    jr nz, jr_002_5e98
-
+.notRainyDay
+    cp SNOWY_DAY
+    jr nz, .notSnowyDay
     ld hl, $5d31
     jr jr_002_5ea4
 
-jr_002_5e98:
+.notSnowyDay
     cp $04
     jr nz, jr_002_5ea1
 
@@ -5702,7 +5682,7 @@ jr_002_5f55:
 
 jr_002_5f5b:
     ld a, [sNextDayWeather]
-    cp $00
+    cp SUNNY_DAY
     jr z, jr_002_5f68
 
     ld a, $0d
@@ -8336,11 +8316,11 @@ Jump_002_6d6d:
 
 Call_002_6d7a:
     ld a, [sNextDayWeather]
-    cp $03
+    cp WINDY_DAY
     jr nz, jr_002_6d8d
 
     ld a, [sCurrentYear]
-    cp $02
+    cp 2
     ret nz
 
     ld a, $01
@@ -8478,7 +8458,7 @@ jr_002_6e53:
 
 Call_002_6e70:
     ld a, [sNextDayWeather]
-    cp $03
+    cp WINDY_DAY
     ret z
 
     ld a, [$b88d]

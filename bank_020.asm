@@ -112,12 +112,12 @@ Data_020_4269:
 Data_020_4289:
     db $05, $02, $1D, $02, $66, $19, $99, $66, $6F, $01, $0D, $06, $0E, $04, $04, $00
     db $50, $A0, $50, $A0, $D0, $60, $C8, $F0, $F8, $60, $58, $30, $38, $10, $10, $00
-Data_020_42a9: ; 20x42a9
+SunnyDayPalette: ; 20x42a9
     db $5F, $37, $23, $00, $72, $05, $79, $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25
     db $DF, $6F, $23, $0C, $0C, $0D, $34, $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E
     db $00, $34, $84, $04, $0C, $0D, $C4, $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E
     db $7F, $47, $84, $04, $0C, $0D, $C4, $69, $DF, $6F, $00, $00, $0C, $0D, $1F, $00
-Data_020_42e9: ; 20x42e9
+RainyDayPalette: ; 20x42e9
     db $5F, $37, $23, $00, $72, $05, $79, $1E, $3A, $63, $A4, $04, $EF, $00, $B8, $25
     db $DF, $6F, $23, $0C, $0C, $0D, $34, $52, $5F, $37, $84, $04, $0C, $0D, $14, $2E
     db $00, $34, $84, $04, $0C, $0D, $C4, $69, $DF, $03, $05, $00, $0C, $0D, $5F, $4E
@@ -1067,11 +1067,11 @@ Jump_020_5959:
 
 jr_020_5c2a:
     ld a, [sCurrentWeather]
-    cp $03
+    cp WINDY_DAY
     jr z, jr_020_5c38
 
     ld a, [sNextDayWeather]
-    cp $03
+    cp WINDY_DAY
     jr nz, jr_020_5c3b
 
 jr_020_5c38:
@@ -1403,23 +1403,20 @@ Label_020_6ba0:
 
 
     ld a, [sNextDayWeather]
-    ld hl, $42a9
-    cp $00
-    jr z, jr_020_6c07
+    ld hl, SunnyDayPalette
+    cp SUNNY_DAY
+    jr z, .gotPaletteData
 
-    ld hl, Data_020_42e9
-    cp $01
-    jr z, jr_020_6c07
-
-    cp $02
-    jr z, jr_020_6c07
-
+    ld hl, RainyDayPalette
+    cp RAINY_DAY
+    jr z, .gotPaletteData
+    cp SNOWY_DAY
+    jr z, .gotPaletteData
     cp $04
-    jr z, jr_020_6c07
+    jr z, .gotPaletteData
 
     ld hl, Data_020_4329
-
-jr_020_6c07:
+.gotPaletteData
     call CGBBackgroundPaletteUpload
     ret
 

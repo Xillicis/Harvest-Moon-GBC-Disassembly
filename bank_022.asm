@@ -1202,7 +1202,7 @@ jr_022_46ef:
 
 
 jr_022_46fb:
-    ld a, $00
+    ld a, SUNNY_DAY
     ld [sCurrentWeather], a
     ld [sNextDayWeather], a
     ld a, $50
@@ -1292,7 +1292,7 @@ jr_022_477b:
 
 
 jr_022_4791:
-    ld a, $03
+    ld a, WINDY_DAY
     ld [sCurrentWeather], a
     ld a, $30
     ld [$b924], a
@@ -1302,7 +1302,7 @@ jr_022_4791:
     ld [$b926], a
     ld a, $02
     ld [$b927], a
-    ld a, $00
+    ld a, SUNNY_DAY
     ld [sNextDayWeather], a
     ld a, $80
     ld [$b8a1], a
@@ -1317,13 +1317,12 @@ jr_022_47b5:
 
 jr_022_47bb:
     ld a, [sCurrentWeather]
-    cp $03
+    cp WINDY_DAY
     jr z, jr_022_47ca
 
     ld a, [sNextDayWeather]
-    cp $03
+    cp WINDY_DAY
     jr z, jr_022_4801
-
     ret
 
 
@@ -1349,7 +1348,7 @@ jr_022_47e0:
     ret c
 
 jr_022_47e6:
-    ld a, $00
+    ld a, SUNNY_DAY
     ld [sCurrentWeather], a
     ld [sNextDayWeather], a
     ld a, $50
