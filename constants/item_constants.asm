@@ -23,7 +23,7 @@ const SUPER_HOE      ; $14
 const SUPER_AX       ; $15
 const SUPER_HAMMER   ; $16
 const_skip 8
-const TURNIP         ; $1f
+const UNKNOWN        ; $1f
 const_skip 46
 const EGGPLANT_SEEDS ; $4e
 const PEANUT_SEEDS   ; $4f

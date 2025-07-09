@@ -2814,7 +2814,7 @@ PickUpTurnip:
     call BankSwitchCallHL
     pop af
     pop hl
-    ld a, $12
+    ld a, TURNIP
     ld [wHeldObject], a
     ld a, $1f
     call $16d1

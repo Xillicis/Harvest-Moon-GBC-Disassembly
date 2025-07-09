@@ -5348,22 +5348,17 @@ Call_000_235e:
     jr z, jr_000_239a
     ret
 
-
 jr_000_237a:
     ld a, [$cb14]
     or a
     jr nz, jr_000_239f
-
     ret
-
 
 jr_000_2381:
     ld a, [$cb15]
     or a
     jr nz, jr_000_239f
-
     ret
-
 
 jr_000_2388:
     ld a, [$cb16]

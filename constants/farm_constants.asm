@@ -7,7 +7,8 @@ const_def 1
 const BUSH       ; $01
 const STONE      ; $02
 const FENCE_POST ; $03
-const_skip 15
+const_skip 14
+const TURNIP     ; $12
 const POTATO     ; $13
 const MUSHROOM   ; $30
 
