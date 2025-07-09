@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
 
-    ld [hl+], a
+    db $22 ; bank number
+
     di
     ld a, [$cb92]
     cp $ff
