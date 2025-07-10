@@ -463,7 +463,7 @@ Call_03d_4237:
     call Call_03d_42bc
     ld de, $5484
     call Call_03d_42ce
-    ld hl, $cd75
+    ld hl, wPlayerName
     ld b, $04
     call Call_03d_433e
     dec hl
@@ -3574,7 +3574,7 @@ jr_03d_5118:
     ld de, $bff0
     ld bc, $0010
     call BankedCopyHLtoDEBig
-    ld hl, $cd75
+    ld hl, wPlayerName
     ld de, sPlayerName
     call Call_03d_496c
     ld a, [wPlayerGenderSelection]

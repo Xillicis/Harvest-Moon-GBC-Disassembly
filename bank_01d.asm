@@ -102,7 +102,6 @@ jr_01d_40bb:
     ldh a, [rSTAT]
     and $03
     jr nz, jr_01d_40bb
-
     ld [hl], b
     ret
 
@@ -477,7 +476,7 @@ Call_01d_4244:
     call Call_01d_42c9
     ld de, $54c9
     call Call_01d_42db
-    ld hl, $cd75
+    ld hl, wPlayerName
     ld b, $04
     call Call_01d_434b
     dec hl
@@ -746,18 +745,17 @@ jr_01d_43e9:
     ldh [rIE], a
     ret
 
-
 Call_01d_440c:
     xor a
     ld [$cd61], a
     ld hl, $bff0
-    ld de, $4438
+    ld de, Data_01d_4438
     ld b, $10
     call Call_01d_442e
     ret nz
 
     ld hl, $a002
-    ld de, $4448
+    ld de, Data_01d_4448
     ld b, $10
     call Call_01d_442e
     ret nz
@@ -765,7 +763,6 @@ Call_01d_440c:
     ld a, $01
     ld [$cd61], a
     ret
-
 
 Call_01d_442e:
 jr_01d_442e:
@@ -781,33 +778,15 @@ jr_01d_442e:
     cp a
     ret
 
+Data_01d_4438: ; 1dx4438
+    db $42, $61, $63, $6B, $55, $70, $5F, $43, $68, $65, $63, $6B, $21, $23, $24, $25
+Data_01d_4448: ; 1dx4448
+    db $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01
 
-    ld b, d
-    ld h, c
-    ld h, e
-    ld l, e
-    ld d, l
-    ld [hl], b
-    ld e, a
-    ld b, e
-    ld l, b
-    ld h, l
-    ld h, e
-    ld l, e
-    ld hl, $2423
-    dec h
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
-    ld c, $01
+Label_01d_4458: ; 1dx4458
     ld a, [$cb4e]
     or a
     ret nz
-
     call Call_01d_4113
     ret
 
@@ -1689,7 +1668,7 @@ Jump_01d_48b7:
     ld d, l
     or [hl]
     ld d, l
-    jr jr_01d_49a5
+    jr $49a5
 
     ld c, c
     add hl, sp
@@ -1774,19 +1753,17 @@ Jump_01d_48b7:
     ret
 
 
-Call_01d_499e:
-    ld a, [hl+]
+CopyHLToDE4Bytes:
+    ld a, [hli]
     ld [de], a
     inc de
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
-    ld a, [hl+]
-
-jr_01d_49a5:
+    ld a, [hli]
     ld [de], a
     inc de
-    ld a, [hl+]
+    ld a, [hli]
     ld [de], a
     inc de
     ret
@@ -3548,72 +3525,7 @@ jr_01d_514a:
 
     ret
 
-Label_01d_5192:
-    call ClearBGMap0
-    call ClearBGMap1
-    call ClearShadowOAMBuffer
-    ld hl, $9000
-.loop
-    xor a
-    ld [hl+], a
-    ld a, l
-    cp $10
-    jr nz, .loop
-    call Call_01d_521e
-    ld hl, $4438
-    ld a, $1d
-    ld de, $bff0
-    ld bc, $0010
-    call BankedCopyHLtoDEBig
-    ld hl, $cd75
-    ld de, sPlayerName
-    call Call_01d_499e
-    ld a, [wPlayerGenderSelection]
-    ld [sPlayerGender], a
-    or a
-    jr z, .genderSelected
-; Start with watering can and some seeds if chose Girl
-    ld a, $01
-    ld [sShedTurnipSeedsFlag], a
-    ld [sNumTurnipSeeds], a
-    ld [sShedPotatoSeedsFlag], a
-    ld [sNumPotatoSeeds], a
-    ld [sShedGrassSeedsFlag], a
-    ld [sNumGrassSeeds], a
-    ld [sShedWateringCanFlag], a
-.genderSelected
-    ld a, [wCatOrDogSelection]
-    ld [sCatOrDog], a
-    ld hl, $cd7b
-    ld de, sPetName
-    call Call_01d_499e
-    ld a, $0a
-    ld hl, sNumCroissant
-    ld [hl+], a
-    ld [hl+], a
-    ld [hl+], a
-    inc hl
-    inc hl
-    ld [hl+], a
-    ld [hl+], a
-; player begins with first 4 basic tools tools
-    ld a, $01
-    ld [sShedSickleFlag], a
-    ld [sShedHoeFlag], a
-    ld [sShedHammerFlag], a
-    ld [sShedAxFlag], a
-    ld h, b
-    ld l, c
-    xor a
-    ld [$cb56], a
-    inc a
-    ld [$c910], a
-    ld a, $0e
-    ld [$cb50], a
-    ld a, $02
-    ld [$cb4f], a
-    ret
-
+INCLUDE "engine/new_game.asm"
 
     ret
 
@@ -3637,7 +3549,7 @@ Call_01d_521e: ; 1dx521e
     ld [$cb55], a
     ld [$cb5f], a
     call InitializeFarmMap
-    ld a, $01
+    ld a, 1
     ld [wPlayerIsInsideOrAtTown], a
     ld [$c910], a
     ld a, $06
@@ -3804,7 +3716,7 @@ Call_01d_538e:
 
     ld hl, $cd7b
     ld de, $b8e6
-    call Call_01d_499e
+    call CopyHLToDE4Bytes
     ld a, $01
     ld [$b89c], a
     xor a
@@ -3820,7 +3732,7 @@ Call_01d_538e:
 jr_01d_53b8:
     ld hl, $cd7b
     ld de, $cd2c
-    call Call_01d_499e
+    call CopyHLToDE4Bytes
     ld a, [$b9a1]
     and $f0
     or $0f
@@ -3871,7 +3783,7 @@ jr_01d_53fe:
     ld d, h
     ld e, l
     ld hl, $cd7b
-    call Call_01d_499e
+    call CopyHLToDE4Bytes
     xor a
     ld [de], a
     inc de
@@ -3938,7 +3850,7 @@ jr_01d_5452:
     ld [hl], b
     ld de, $cd2c
     ld hl, $cd7b
-    call Call_01d_499e
+    call CopyHLToDE4Bytes
     pop hl
     xor a
     ld [$cb56], a
