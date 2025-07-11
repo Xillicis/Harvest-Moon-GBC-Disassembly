@@ -39,10 +39,12 @@ SetupNewGameData: ; 1dx5192
 .genderSelected
     ld a, [wCatOrDogSelection]
     ld [sCatOrDog], a
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, sPetName
     call CopyHLToDE4Bytes
-    ld a, $0a
+; Initialize the food and drink (10x for each)
+; This is actually redundent, because the food/drink gets updated in Call_01d_521e
+    ld a, 10
     ld hl, sNumCroissant
     ld [hli], a
     ld [hli], a
@@ -52,7 +54,7 @@ SetupNewGameData: ; 1dx5192
     ld [hli], a
     ld [hli], a
 ; player begins with first 4 basic tools tools
-    ld a, $01
+    ld a, 1
     ld [sShedSickleFlag], a
     ld [sShedHoeFlag], a
     ld [sShedHammerFlag], a

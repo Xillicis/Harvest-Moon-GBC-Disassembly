@@ -3350,7 +3350,7 @@ jr_010_50ff:
 
     ld a, b
     call Call_000_3304
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccad], a
     ld a, $c3
     call Call_000_3f52

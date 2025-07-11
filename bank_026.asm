@@ -685,9 +685,9 @@ Call_026_43d7:
     push hl
     call Call_000_3304
     pop hl
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [hl+], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [hl+], a
     ret
 

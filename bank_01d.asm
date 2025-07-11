@@ -3571,7 +3571,7 @@ Call_01d_521e: ; 1dx521e
     ld [sNumWildGrapeJuice], a
     ld [sNumGreenTea], a
     xor a
-    ld [$b8cc], a
+    ld [$b8cc], a ; a drink consumable, not sure which one
     ld a, $80
     ld [$b8eb], a
     ld a, MAX_ENERGY
@@ -3589,11 +3589,11 @@ Call_01d_521e: ; 1dx521e
     ld [sInventory+2], a
     ld a, $02
     ld [sItemSlot], a
-    ld a, $00
+    ld a, 0
     ld [sDayOfPreviousSleep], a
-    ld a, $16
+    ld a, TIME_10_PM
     ld [sHourOfPreviousSleep], a
-    ld a, $00
+    ld a, 0
     ld [sMinuteOfPreviousSleep], a
     ; loads 500 money
     ld a, $f4
@@ -3714,7 +3714,7 @@ Call_01d_538e:
     cp $23
     jr z, jr_01d_53b8
 
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, $b8e6
     call CopyHLToDE4Bytes
     ld a, $01
@@ -3730,7 +3730,7 @@ Call_01d_538e:
 
 
 jr_01d_53b8:
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, $cd2c
     call CopyHLToDE4Bytes
     ld a, [$b9a1]
@@ -3782,7 +3782,7 @@ jr_01d_53fe:
     inc hl
     ld d, h
     ld e, l
-    ld hl, $cd7b
+    ld hl, wPetName
     call CopyHLToDE4Bytes
     xor a
     ld [de], a
@@ -3849,7 +3849,7 @@ jr_01d_5452:
     pop hl
     ld [hl], b
     ld de, $cd2c
-    ld hl, $cd7b
+    ld hl, wPetName
     call CopyHLToDE4Bytes
     pop hl
     xor a

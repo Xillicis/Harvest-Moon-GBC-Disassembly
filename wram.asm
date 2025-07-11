@@ -95,12 +95,16 @@ ds $13e ; $17f
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 
-ds $a8
+wDecimalPlayerMoneyTileID:: ds 5 ; 0xcccd
+
+ds $a3
 
 wPlayerName:: ds 4 ; 0xcd75
 
 wPlayerGenderSelection:: db ; 0xcd79
+
 wCatOrDogSelection:: db ; 0xcd7a
+wPetName:: ds 4 ; 0xcd7b
 
 
 

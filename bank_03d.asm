@@ -3594,7 +3594,7 @@ jr_03d_5118:
 jr_03d_519a:
     ld a, [wCatOrDogSelection]
     ld [sCatOrDog], a
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, sPetName
     call Call_03d_496c
     ld a, $0a
@@ -3811,7 +3811,7 @@ Call_03d_5349:
     cp $23
     jr z, jr_03d_5373
 
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, $b8e6
     call Call_03d_496c
     ld a, $01
@@ -3827,7 +3827,7 @@ Call_03d_5349:
 
 
 jr_03d_5373:
-    ld hl, $cd7b
+    ld hl, wPetName
     ld de, $cd2c
     call Call_03d_496c
     ld a, [$b9a1]
@@ -3879,7 +3879,7 @@ jr_03d_53b9:
     inc hl
     ld d, h
     ld e, l
-    ld hl, $cd7b
+    ld hl, wPetName
     call Call_03d_496c
     xor a
     ld [de], a
@@ -3946,7 +3946,7 @@ jr_03d_540d:
     pop hl
     ld [hl], b
     ld de, $cd2c
-    ld hl, $cd7b
+    ld hl, wPetName
     call Call_03d_496c
     pop hl
     xor a

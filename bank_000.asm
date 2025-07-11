@@ -2051,11 +2051,11 @@ jr_000_0fa1:
     ld a, [$b939]
     ld [$cccb], a
     call Call_000_3268
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b92d], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$b92e], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$b92f], a
     ret
 
@@ -2127,11 +2127,11 @@ jr_000_1030:
     ld a, [$b93b]
     ld [$cccb], a
     call Call_000_3268
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b930], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$b931], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
 
 Jump_000_1052:
     ld [$b932], a
@@ -2143,7 +2143,7 @@ Jump_000_1052:
 Call_000_1056:
     ld a, [sPlayerMoney+2]
     cp $ff
-    jr z, jr_000_108d
+    jr z, .jr_000_108d
 
     ld a, [sPlayerMoney+2]
     cp $02 ; highest byte cannot be 2 or larger
@@ -2173,7 +2173,7 @@ Call_000_1056:
     ld [sPlayerMoney+2], a
     jr jr_000_1097
 
-jr_000_108d:
+.jr_000_108d
     xor a
     ld [sPlayerMoney], a
     ld [sPlayerMoney+1], a
@@ -2187,15 +2187,15 @@ jr_000_1097:
     ld a, [sPlayerMoney]
     ld [wTempPlayerMoney], a
     call Call_000_3268
-    ld a, [$cccd]
+    ld a, [wDecimalPlayerMoneyTileID]
     ld [$b928], a
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld [$b929], a
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b92a], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$b92b], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$b92c], a
     ret
 
@@ -2205,15 +2205,15 @@ Call_000_10cb:
     ld a, [sShipmentPayment+1]
     ld h, a
     call Call_000_325c
-    ld a, [$cccd]
+    ld a, [wDecimalPlayerMoneyTileID]
     ld [$b933], a
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld [$b934], a
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b935], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$b936], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$b937], a
     ret
 
@@ -8412,10 +8412,12 @@ Call_000_325c:
     xor a
     ld [wTempPlayerMoney+2], a
 
+; Convert a 24-bit money value at wTempPlayerMoney into 5 decimal digits
+; placed at $CCCD–$CCD1 (most significant first).
 Call_000_3268:
 Jump_000_3268:
     xor a
-    ld hl, $cccd
+    ld hl, wDecimalPlayerMoneyTileID
     ld [hli], a
     ld [hli], a
     ld [hli], a
@@ -8425,68 +8427,69 @@ Jump_000_3268:
     ld a, [hli]
     ld h, [hl]
     ld l, a
-    ld de, $cccd
+    ld de, wDecimalPlayerMoneyTileID
     ld a, [wTempPlayerMoney+2]
     or a
-    jr z, jr_000_3288
+    jr z, .highByteDone
 
     ld bc, $63c0
     add hl, bc
     ld a, [de]
-
-Jump_000_3285:
     add $04
     ld [de], a
 
-jr_000_3288:
-    ld bc, $d8f0
+.highByteDone
+    ld bc, -10000 ; $d8f0
     ld a, [de]
 
-jr_000_328c:
+; Subtracting 10000 and counting how many times it takes before we hit a carry.
+; This tells us what digit is in the 10000s place
+.subtractLoop10000
     inc a
     add hl, bc
-    jr c, jr_000_328c
+    jr c, .subtractLoop10000
 
-    ld bc, $2710
+; Undo the last operation since we fellthrough
+    ld bc, 10000
     add hl, bc
     dec a
     ld [de], a
-    ld bc, $fc18
+    ld bc, -1000
     inc de
     ld a, [de]
 
-jr_000_329b:
+.subtractLoop1000
     inc a
     add hl, bc
-    jr c, jr_000_329b
+    jr c, .subtractLoop1000
 
-    ld bc, $03e8
+    ld bc, 1000
     add hl, bc
     dec a
     ld [de], a
-    ld bc, $ff9c
+    ld bc, -100
     inc de
     ld a, [de]
 
-jr_000_32aa:
+.subtractLoop100
     inc a
     add hl, bc
-    jr c, jr_000_32aa
+    jr c, .subtractLoop100
 
-    ld bc, $0064
+    ld bc, 100
     add hl, bc
     dec a
     ld [de], a
-    ld bc, $fff6
+    ld bc, -10
     inc de
     ld a, [de]
 
-jr_000_32b9:
+.subtractLoop10
     inc a
     add hl, bc
-    jr c, jr_000_32b9
+    jr c, .subtractLoop10
 
-    ld bc, $000a
+    ld bc, 10
     add hl, bc
     dec a
     ld [de], a
@@ -8494,7 +8497,7 @@ jr_000_32b9:
     ld a, l
     ld [de], a
     ld hl, DigitList
-    ld de, $cccd
+    ld de, wDecimalPlayerMoneyTileID
     ld c, $04
 
 jr_000_32ce:

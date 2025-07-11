@@ -13498,13 +13498,13 @@ jr_02c_7d1e:
     ld a, [$cc9b]
     ld l, a
     call Call_000_325c
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld [$ccad], a
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$ccae], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccaf], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccb0], a
     ret
 
@@ -13516,15 +13516,15 @@ jr_02c_7d1e:
     ld a, [sNumProduceShipped]
     ld [wTempPlayerMoney], a
     call Call_000_3268
-    ld a, [$cccd]
+    ld a, [wDecimalPlayerMoneyTileID]
     ld [$ccad], a
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld [$ccae], a
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$ccaf], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccb0], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccb1], a
     ret
 
@@ -13551,11 +13551,11 @@ jr_02c_7d1e:
 
     ld a, [$cc15]
     call Call_000_3304
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$ccad], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccae], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccaf], a
     ret
 
@@ -13598,20 +13598,20 @@ jr_02c_7d1e:
 
     ld a, [$b8f2]
     call Call_000_3304
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$ccad], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccae], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccaf], a
     ret
 
 
     ld a, [sNumPowerBerriesEaten]
     call Call_000_3304
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccad], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccae], a
     ret
 
@@ -13621,13 +13621,13 @@ jr_02c_7d1e:
     ld a, [$ba10]
     ld l, a
     call Call_000_325c
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld [$ccad], a
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$ccae], a
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [$ccaf], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccb0], a
     ret
 

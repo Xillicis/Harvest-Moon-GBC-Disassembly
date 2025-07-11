@@ -1464,19 +1464,19 @@ Call_029_4737:
     ld a, [hl+]
     ld [de], a
     call Call_000_3268
-    ld a, [$cccd]
+    ld a, [wDecimalPlayerMoneyTileID]
     ld bc, $8060
     call Call_029_4784
-    ld a, [$ccce]
+    ld a, [wDecimalPlayerMoneyTileID+1]
     ld bc, $8068
     call Call_029_4784
-    ld a, [$cccf]
+    ld a, [wDecimalPlayerMoneyTileID+2]
     ld bc, $8070
     call Call_029_4784
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld bc, $8078
     call Call_029_4784
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld bc, $8080
     call Call_029_4784
     pop hl
@@ -4564,7 +4564,7 @@ Call_029_580e:
     ld b, $03
     call CopyHLtoDE
     call Call_000_3268
-    ld hl, $cccd
+    ld hl, wDecimalPlayerMoneyTileID
     ld de, $986d
     ld b, $05
     call CopyHLtoDE
@@ -4848,7 +4848,7 @@ Jump_029_59be:
     ld a, $16
     sub [hl]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -4889,7 +4889,7 @@ Jump_029_5a1b:
     ld h, [hl]
     ld l, a
     call Call_000_325c
-    ld hl, $cccf
+    ld hl, wDecimalPlayerMoneyTileID+2
     ld de, $9928
     ld b, $03
     call CopyHLtoDE
@@ -5164,7 +5164,7 @@ jr_029_5b77:
     ld a, [$b9a5]
     and $7f
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5200,7 +5200,7 @@ jr_029_5bd8:
     ld h, [hl]
     ld l, a
     call Call_000_325c
-    ld hl, $cccf
+    ld hl, wDecimalPlayerMoneyTileID+2
     ld de, $9908
     ld b, $03
     call CopyHLtoDE
@@ -5327,7 +5327,7 @@ jr_029_5c3b:
     ld b, h
     ld a, [sNumCroissant]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5337,7 +5337,7 @@ jr_029_5c3b:
     ld [$986a], a
     ld a, [sNumRiceBall]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5347,7 +5347,7 @@ jr_029_5c3b:
     ld [$98ea], a
     ld a, [sNumMeatDumpling]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5362,7 +5362,7 @@ jr_029_5c3b:
 
     ld a, [sNumWildGrapeJuice]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5372,7 +5372,7 @@ jr_029_5c3b:
     ld [$986c], a
     ld a, [sNumGreenTea]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5382,7 +5382,7 @@ jr_029_5c3b:
     ld [$98ec], a
     ld a, [$b8cc]
     call Call_000_3304
-    ld hl, $ccd0
+    ld hl, wDecimalPlayerMoneyTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a

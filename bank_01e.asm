@@ -8152,7 +8152,7 @@ jr_01e_6394:
     call $ffee
     rst $38
     cp $ed
-    jp z, Jump_000_3285
+    jp z, $3285
 
     ld de, $0100
     inc hl

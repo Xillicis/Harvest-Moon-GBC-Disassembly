@@ -2448,9 +2448,9 @@ Call_03f_4bca:
     push hl
     call Call_000_3304
     pop hl
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     ld [hl+], a
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     ld [hl+], a
     ret
 
@@ -10133,19 +10133,19 @@ jr_03f_70ea:
     ld l, a
     call Call_000_325c
     pop hl
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     cp $af
     jr nz, jr_03f_70ff
 
     ld a, $ff
-    ld [$ccd0], a
+    ld [wDecimalPlayerMoneyTileID+3], a
 
 jr_03f_70ff:
     ldh a, [rSTAT]
     and $02
     jr nz, jr_03f_70ff
 
-    ld a, [$ccd0]
+    ld a, [wDecimalPlayerMoneyTileID+3]
     inc a
     ld [hl+], a
 
@@ -10154,7 +10154,7 @@ jr_03f_710a:
     and $02
     jr nz, jr_03f_710a
 
-    ld a, [$ccd1]
+    ld a, [wDecimalPlayerMoneyTileID+4]
     inc a
     ld [hl], a
     ret
