@@ -198,7 +198,7 @@ jr_002_4170:
     ld a, [sPlayerMoney+2]
     adc b
     ld [sPlayerMoney+2], a
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, [$b88d]
     cp $13
     ret nz
@@ -4506,7 +4506,7 @@ Jump_002_59c8:
     ld hl, sPlayerMoney
     ld bc, 1000
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $09
     jr jr_002_59e5
 
@@ -6248,7 +6248,7 @@ Call_002_67a1:
     ld a, [sShipmentPayment+1]
     ld b, a
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     xor a
     ld [sShipmentPayment], a
     ld [sShipmentPayment+1], a

@@ -13515,7 +13515,7 @@ jr_02c_7d1e:
     ld [wTempPlayerMoney+1], a
     ld a, [sNumProduceShipped]
     ld [wTempPlayerMoney], a
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID]
     ld [$ccad], a
     ld a, [wDecimalPlayerMoneyTileID+1]

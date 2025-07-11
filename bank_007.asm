@@ -12128,25 +12128,25 @@ jr_007_7387:
     jr z, jr_007_73ac
 
     ld hl, $b938
-    ld bc, $fed4
+    ld bc, -300
     call AddBCtoWordAtHL
     ld hl, sPlayerMoney
-    ld bc, $ec78
+    ld bc, -5000
     call AddSignedBCToHL
     call Call_000_0f73
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ret
 
 
 jr_007_73ac:
     ld hl, $b938
-    ld bc, $ff9c
+    ld bc, -100
     call AddBCtoWordAtHL
     ld hl, sPlayerMoney
-    ld bc, $f63c
+    ld bc, -2500
     call AddSignedBCToHL
     call Call_000_0f73
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ret
 
 
@@ -12288,7 +12288,7 @@ jr_007_7476:
     ld hl, sPlayerMoney
     ld bc, $004b
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $ff
     ld [wTextID], a
     xor a
@@ -12336,9 +12336,9 @@ jr_007_74e6:
     xor a
     ld [$b88e], a
     ld hl, sPlayerMoney
-    ld bc, $fffb
+    ld bc, -5
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $14
     call Call_000_0f47
     ret

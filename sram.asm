@@ -164,8 +164,11 @@ sNumTilesPlowed::  dw ; 0xb90f
 
 ; 0 - no expansion, 1 - the house is expanded
 sHouseExpansionFlag::  db ; 0xb911
-sb912::  db 
-sb913::  db 
+
+; The season tile data is broken up into two non-contiguous parts of sram.
+; Not sure why, maybe it was another carry over from Japanese? 
+sSeasonTileIDPart1::  dw ; 0xb912
+
 sb914::  db 
 sb915::  db 
 sb916::  db 
@@ -483,10 +486,7 @@ sba4b::  db
 sba4c::  db 
 sba4d::  db 
 sba4e::  db 
-sba4f::  db 
-sba50::  db 
-sba51::  db 
-sba52::  db 
+sSeasonTileIDPart2::  ds 4 ; 0xba4f
 sba53::  db 
 sDayOfTheWeekTileIndex3::  db ; 0xba54
 sDayOfTheWeekTileIndex4::  db ; 0xba55

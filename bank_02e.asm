@@ -836,7 +836,7 @@ Call_02e_4503:
     ld hl, sPlayerMoney
     ld bc, $0064
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

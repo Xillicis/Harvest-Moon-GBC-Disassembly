@@ -857,9 +857,9 @@ Call_00e_4526:
     ld a, $1e
     ld [wInputFreezeTimer], a
     ld hl, sPlayerMoney
-    ld bc, $0064
+    ld bc, 100
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

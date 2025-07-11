@@ -480,7 +480,7 @@ jr_029_4267:
     push hl
 
 Jump_029_427c:
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     pop hl
     ld a, $42
     call Call_000_25cb
@@ -1463,7 +1463,7 @@ Call_029_4737:
     inc de
     ld a, [hl+]
     ld [de], a
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID]
     ld bc, $8060
     call Call_029_4784
@@ -4563,7 +4563,7 @@ Call_029_580e:
     ld de, wTempPlayerMoney
     ld b, $03
     call CopyHLtoDE
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld hl, wDecimalPlayerMoneyTileID
     ld de, $986d
     ld b, $05

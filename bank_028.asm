@@ -7926,7 +7926,7 @@ jr_028_6b46:
     ld hl, sPlayerMoney
     ld bc, $0032
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $00
@@ -7949,7 +7949,7 @@ jr_028_6b6e:
     ld hl, sPlayerMoney
     ld bc, $0064
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $00

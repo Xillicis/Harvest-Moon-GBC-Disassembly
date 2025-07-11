@@ -959,17 +959,17 @@ Call_000_08b7:
     ld de, Data_000_08e1
     add hl, de
     ld a, [hli]
-    ld [$b912], a
+    ld [sSeasonTileIDPart1], a
     ld a, [hli]
-    ld [$b913], a
+    ld [sSeasonTileIDPart1+1], a
     ld a, [hli]
-    ld [$ba4f], a
+    ld [sSeasonTileIDPart2], a
     ld a, [hli]
-    ld [$ba50], a
+    ld [sSeasonTileIDPart2+1], a
     ld a, [hli]
-    ld [$ba51], a
+    ld [sSeasonTileIDPart2+2], a
     ld a, [hl]
-    ld [$ba52], a
+    ld [sSeasonTileIDPart2+3], a
     ret
 
 Data_000_08e1:
@@ -1780,7 +1780,7 @@ Call_000_0de8:
     di
     xor a
     ld [$cb92], a
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
     call Call_000_08b7
@@ -2050,7 +2050,7 @@ jr_000_0fa1:
     ld [wTempPlayerMoney], a
     ld a, [$b939]
     ld [$cccb], a
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b92d], a
     ld a, [wDecimalPlayerMoneyTileID+3]
@@ -2126,7 +2126,7 @@ jr_000_1030:
     ld [wTempPlayerMoney], a
     ld a, [$b93b]
     ld [$cccb], a
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID+2]
     ld [$b930], a
     ld a, [wDecimalPlayerMoneyTileID+3]
@@ -2140,7 +2140,7 @@ Jump_000_1052:
 ; Looks like some kind of check to make sure the players money is capped at 99999,
 ; but it also seems to do other stuff.
 ; 0x1869f = 99999 (maximum money)
-Call_000_1056:
+UpdatePlayerMoneyTileData:
     ld a, [sPlayerMoney+2]
     cp $ff
     jr z, .jr_000_108d
@@ -2150,19 +2150,19 @@ Call_000_1056:
     jr nc, .setMaxMoney
 
     cp $01
-    jr c, jr_000_1097
+    jr c, .getTileData
 
     ld a, [sPlayerMoney+1]
     cp $87
     jr nc, .setMaxMoney
 
     cp $86
-    jr c, jr_000_1097
+    jr c, .getTileData
 
     ld a, [sPlayerMoney]
     cp $a0
     jr nc, .setMaxMoney
-    jr jr_000_1097
+    jr .getTileData
 
 .setMaxMoney
     ld a, $9f
@@ -2171,7 +2171,7 @@ Call_000_1056:
     ld [sPlayerMoney+1], a
     ld a, $01
     ld [sPlayerMoney+2], a
-    jr jr_000_1097
+    jr .getTileData
 
 .jr_000_108d
     xor a
@@ -2179,14 +2179,14 @@ Call_000_1056:
     ld [sPlayerMoney+1], a
     ld [sPlayerMoney+2], a
 
-jr_000_1097:
+.getTileData
     ld a, [sPlayerMoney+2]
     ld [wTempPlayerMoney+2], a
     ld a, [sPlayerMoney+1]
     ld [wTempPlayerMoney+1], a
     ld a, [sPlayerMoney]
     ld [wTempPlayerMoney], a
-    call Call_000_3268
+    call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID]
     ld [$b928], a
     ld a, [wDecimalPlayerMoneyTileID+1]
@@ -8414,8 +8414,7 @@ Call_000_325c:
 
 ; Convert a 24-bit money value at wTempPlayerMoney into 5 decimal digits
 ; placed at $CCCD–$CCD1 (most significant first).
-Call_000_3268:
-Jump_000_3268:
+LoadDecimalMoneyTileData:
     xor a
     ld hl, wDecimalPlayerMoneyTileID
     ld [hli], a
@@ -8552,7 +8551,7 @@ Call_000_3304:
     xor a
     ld [wTempPlayerMoney+1], a
     ld [wTempPlayerMoney+2], a
-    jp Jump_000_3268
+    jp LoadDecimalMoneyTileData
 
 ; STAT interrupt: lookup a 3‑byte entry at 0x3345 + 3*[$C0A7],
 ; switch to that ROM bank, and jump to the handler

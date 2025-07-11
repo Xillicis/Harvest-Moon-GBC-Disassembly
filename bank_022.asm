@@ -187,7 +187,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, [$b8f1]
     adc b
     ld [$b8f1], a
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, [$b88d]
     cp $13
     ret nz
@@ -4600,9 +4600,9 @@ Jump_022_5935:
     ld a, $01
     ld [$b8ff], a
     ld hl, sPlayerMoney
-    ld bc, $03e8
+    ld bc, 1000
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     ld a, $09
     jr jr_022_5952
 
@@ -7160,7 +7160,7 @@ Call_022_669c:
     ld a, [sShipmentPayment+1]
     ld b, a
     call AddSignedBCToHL
-    call Call_000_1056
+    call UpdatePlayerMoneyTileData
     xor a
     ld [sShipmentPayment], a
     ld [sShipmentPayment+1], a
