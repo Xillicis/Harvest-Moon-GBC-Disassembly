@@ -10089,7 +10089,7 @@ jr_01f_7058:
     ld a, [$ccd5]
     ld [$b883], a
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ret
 
 

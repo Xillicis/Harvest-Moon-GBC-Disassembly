@@ -656,14 +656,14 @@ jr_009_438f:
     cp $04
     jr nc, jr_009_43a5
 
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ret
 
 
 jr_009_43a5:
     xor a
     ld [sCurrentSeason], a
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentYear]
     inc a
     ld [sCurrentYear], a

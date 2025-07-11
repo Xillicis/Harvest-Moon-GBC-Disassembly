@@ -3699,7 +3699,7 @@ Call_03d_51d9:
     call UpdatePlayerMoneyTileData
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     call Call_000_1002
     call Call_000_0f73
     ld hl, $456e

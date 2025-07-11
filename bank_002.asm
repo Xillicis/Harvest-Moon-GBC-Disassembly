@@ -182,7 +182,7 @@ jr_002_4170:
     ld [$c911], a
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [$ccc2]
     ld b, a
     ld a, [sPlayerMoney]
@@ -6497,7 +6497,7 @@ UpdateCalendarDate:
     inc a
     ld [sCurrentSeason], a
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentSeason]
     cp $04
     jr nc, .updateYear
@@ -6506,7 +6506,7 @@ UpdateCalendarDate:
 .updateYear
     xor a
     ld [sCurrentSeason], a
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentYear]
     inc a
     ld [sCurrentYear], a

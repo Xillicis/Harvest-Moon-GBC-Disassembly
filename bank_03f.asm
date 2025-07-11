@@ -9820,7 +9820,7 @@ jr_03f_6f2f:
     ld a, [$ccd5]
     ld [sCurrentDayCounter], a
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ret
 
 

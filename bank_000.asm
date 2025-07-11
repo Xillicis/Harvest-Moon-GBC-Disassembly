@@ -739,7 +739,7 @@ TickGameClock:
     jr nc, .incrementSeason
 
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ret
 
 .incrementSeason
@@ -749,7 +749,7 @@ TickGameClock:
     inc a
     ld [sCurrentSeason], a
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentSeason]
     cp $04
     jr nc, .incrementYear
@@ -758,7 +758,7 @@ TickGameClock:
 .incrementYear
     xor a
     ld [sCurrentSeason], a
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentYear]
     inc a
     ld [sCurrentYear], a
@@ -945,7 +945,7 @@ DayOfTheMonthTileIndices:
     db "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
 
 ; Not seeing where these sram values are actually used...
-Call_000_08b7:
+UpdateSeasonTileData:
     ld a, [sCurrentSeason]
     ld l, a
     ld h, $00
@@ -956,7 +956,7 @@ Call_000_08b7:
     ld d, a
     add hl, hl
     add hl, de
-    ld de, Data_000_08e1
+    ld de, SeasonTileData
     add hl, de
     ld a, [hli]
     ld [sSeasonTileIDPart1], a
@@ -972,9 +972,11 @@ Call_000_08b7:
     ld [sSeasonTileIDPart2+3], a
     ret
 
-Data_000_08e1:
-    db $6D, $6E, $6F, $70, $71, $72, $73, $74, $75, $76, $77, $78, $EF, $79, $7A, $7B,
-    db $7C, $EF, $7D, $7E, $7F, $80, $81, $82, 
+SeasonTileData:
+    db $6D, $6E, $6F, $70, $71, $72 ; SPRING
+    db $73, $74, $75, $76, $77, $78 ; SUMMER
+    db $EF, $79, $7A, $7B, $7C, $EF ; FALL ($EF Buffer???)
+    db $7D, $7E, $7F, $80, $81, $82 ; WINTER
 
 Label_000_08f9:
     push af
@@ -1783,7 +1785,7 @@ Call_000_0de8:
     call UpdatePlayerMoneyTileData
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     call Call_000_1002
     call Call_000_0f73
     ld hl, $456e

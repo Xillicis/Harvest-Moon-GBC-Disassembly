@@ -171,7 +171,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld [$c911], a
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [$ccc2]
     ld b, a
     ld a, [sPlayerMoney]
@@ -7406,7 +7406,7 @@ jr_022_68ac:
     inc a
     ld [sCurrentSeason], a
     call UpdateDayOfTheWeekTileData
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentSeason]
     cp $04
     jr nc, jr_022_68c5
@@ -7417,7 +7417,7 @@ jr_022_68ac:
 jr_022_68c5:
     xor a
     ld [sCurrentSeason], a
-    call Call_000_08b7
+    call UpdateSeasonTileData
     ld a, [sCurrentYear]
     inc a
     ld [sCurrentYear], a
