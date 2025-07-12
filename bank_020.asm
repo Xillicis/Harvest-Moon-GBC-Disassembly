@@ -663,7 +663,7 @@ jr_020_5750:
     sub $50
     ld h, a
     ld a, $04
-    call Call_000_09dc
+    call DivideHLByA_8bit
     ld b, l
     ld a, [wSTAT_HandlerIndex]
     cp $14

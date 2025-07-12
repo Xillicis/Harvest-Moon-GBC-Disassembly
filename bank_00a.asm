@@ -8490,7 +8490,7 @@ jr_00a_6412:
     ld h, $d5
     ld [$ff1d], a
     dec hl
-    call z, Call_000_2bcc
+    call z, $2bcc
     or [hl]
     ld a, e
     rst $10
@@ -11572,7 +11572,7 @@ jr_00a_7156:
     ld h, $d5
     rst $38
     ld [$2b1d], a
-    call z, Call_000_2bcc
+    call z, $2bcc
     or [hl]
     ld a, e
 

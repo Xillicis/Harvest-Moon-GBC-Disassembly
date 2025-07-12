@@ -1881,7 +1881,7 @@ jr_03c_47be:
     cp e
     ret z
 
-    jp nc, Jump_000_2cff
+    jp nc, $2cff
 
     cp [hl]
     jr nz, @-$10
@@ -3528,7 +3528,7 @@ jr_03c_4f17:
     db $fc
     rst $38
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp

@@ -8661,7 +8661,7 @@ jr_025_6f17:
     ld d, b
     or b
     ld h, $c6
-    call c, Call_000_2cff
+    call c, $2cff
     sub d
     ld h, d
     ld h, b

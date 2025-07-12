@@ -5861,7 +5861,7 @@ Call_024_63d2:
     ld h, $00
     ld l, a
     ld a, $04
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $03
     jr nz, jr_024_641b
 
@@ -5876,7 +5876,7 @@ jr_024_641b:
     ld h, $00
     ld l, a
     ld a, $04
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $02
     jr nz, jr_024_6433
 
@@ -5891,7 +5891,7 @@ jr_024_6433:
     ld h, $00
     ld l, a
     ld a, $04
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $01
     jr nz, jr_024_644b
 
@@ -5906,7 +5906,7 @@ jr_024_644b:
     ld h, $00
     ld l, a
     ld a, $04
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $00
     jr nz, jr_024_6463
 
@@ -5934,7 +5934,7 @@ jr_024_6475:
     ld h, $00
     ld l, a
     ld a, $64
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $28
     jr c, jr_024_64a6
 

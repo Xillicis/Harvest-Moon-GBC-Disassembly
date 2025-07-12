@@ -29,7 +29,7 @@ SECTION "ROM Bank $017", ROMX[$4000], BANK[$17]
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec hl
     inc d
     jr nc, jr_017_4034
@@ -772,7 +772,7 @@ jr_017_4327:
     ld hl, sp+$56
     db $fc
     cp [hl]
-    call z, Call_000_2cf2
+    call z, $2cf2
     ld h, $1b
     inc a
     inc bc
@@ -13656,7 +13656,7 @@ jr_017_7ad9:
     or b
     inc h
     nop
-    jp z, Jump_000_0101
+    jp z, $0101
 
     rrca
     jr nz, jr_017_7ae2

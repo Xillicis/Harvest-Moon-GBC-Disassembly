@@ -773,19 +773,19 @@ Call_008_456e:
     ld a, [sItemSlot]
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
     cp NO_ITEM
-    jr nz, jr_008_4583
+    jr nz, .compareItem
 
     ld b, $1f
     jr jr_008_4590
 
-jr_008_4583:
+.compareItem
     ld c, a
-    ld hl, $1b20
+    ld hl, Data_000_1b20
     ld b, $00
 
 jr_008_4589:

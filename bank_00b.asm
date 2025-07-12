@@ -1499,7 +1499,7 @@ jr_00b_46b8:
     jp c, $dc2d
 
     dec l
-    call c, Call_000_2baf
+    call c, $2baf
     xor a
     rst $38
     dec hl
@@ -4519,7 +4519,7 @@ jr_00b_53a1:
 
     rst $38
     dec l
-    call c, Call_000_2baf
+    call c, $2baf
     xor a
     dec hl
     adc a
@@ -10443,7 +10443,7 @@ jr_00b_6d0e:
     jp c, $dc2d
 
     dec l
-    call c, Call_000_2baf
+    call c, $2baf
     rst $38
     xor a
     dec hl

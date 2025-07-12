@@ -31,7 +31,7 @@ SECTION "ROM Bank $035", ROMX[$4000], BANK[$35]
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp
@@ -1063,7 +1063,7 @@ jr_035_4446:
     ld d, [hl]
     db $fc
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$0094], a
     nop
     nop
@@ -1299,7 +1299,7 @@ jr_035_4540:
     or [hl]
     db $fc
     xor d
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     sbc $b0
     xor $94
@@ -1971,7 +1971,7 @@ jr_035_4823:
     or [hl]
     db $fc
     xor d
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     call c, $eeb0
     sub b
@@ -2015,7 +2015,7 @@ jr_035_484b:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     nop
     nop
     nop
@@ -2052,7 +2052,7 @@ jr_035_484b:
     ld hl, sp+$56
     db $fc
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$ca94], a
     or h
     ccf
@@ -3432,7 +3432,7 @@ jr_035_4e0c:
     ld d, [hl]
     db $fc
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$ce94], a
     or b
     rra
@@ -3823,7 +3823,7 @@ jr_035_5017:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec [hl]
     ld a, [bc]
     ld a, e
@@ -4832,7 +4832,7 @@ jr_035_5407:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp
@@ -6579,7 +6579,7 @@ jr_035_5b2e:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3bf4], a
     inc b
     dec l
@@ -6781,7 +6781,7 @@ jr_035_5c11:
     rla
     ld [$0e17], sp
     xor d
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     sbc $b0
     rst $28
@@ -6864,7 +6864,7 @@ jr_035_5c6f:
     nop
     nop
     xor d
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     sbc $b0
     rst $28
@@ -7738,7 +7738,7 @@ jr_035_6025:
     ld a, b
     sub $7c
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3ff4], a
     nop
     dec l
@@ -8537,7 +8537,7 @@ jr_035_6337:
     ldh a, [c]
     inc c
     ldh [c], a
-    call c, Call_000_2cd2
+    call c, $2cd2
     ld [hl-], a
     call z, $b47a
     ld c, $07
@@ -9047,7 +9047,7 @@ jr_035_654f:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$37f4], a
     jr jr_035_65b1
 
@@ -9891,7 +9891,7 @@ jr_035_68fe:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld b, $03
     ld b, $03
     inc bc
@@ -10784,7 +10784,7 @@ jr_035_6cc1:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp
@@ -11589,7 +11589,7 @@ jr_035_6df2:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     rst $10
     jr z, jr_035_70c3
 
@@ -13594,7 +13594,7 @@ jr_035_78d5:
     cp b
     sub $7c
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3ff4], a
     nop
     dec l
@@ -13674,7 +13674,7 @@ jr_035_7917:
     cp b
     sub $7c
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$1f94], a
     ld [bc], a
     inc sp
@@ -13851,7 +13851,7 @@ jr_035_79de:
     jr jr_035_79c6
 
     cp b
-    call nz, Call_000_2c38
+    call nz, $2c38
     ret nc
 
     cp $28
@@ -15030,7 +15030,7 @@ jr_035_7ed5:
     ld hl, sp+$56
     db $fc
     xor d
-    call c, Call_000_2cd6
+    call c, $2cd6
     ld [$0194], a
     nop
     rlca

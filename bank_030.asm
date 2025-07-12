@@ -197,7 +197,7 @@ jr_030_412f:
     ld h, $00
     ld l, a
     ld a, $64
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $05
     jr nc, jr_030_4169
 
@@ -4165,7 +4165,7 @@ jr_030_5585:
     ld h, b
     ld l, c
     ld a, $40
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, l
     ld [$ba4b], a
     call Call_000_0f47

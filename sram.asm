@@ -166,7 +166,8 @@ sNumTilesPlowed::  dw ; 0xb90f
 sHouseExpansionFlag::  db ; 0xb911
 
 ; The season tile data is broken up into two non-contiguous parts of sram.
-; Not sure why, maybe it was another carry over from Japanese? 
+; Not sure why, maybe it was another carry over from Japanese? I assume this game was originally
+; in Japanese? I have no idea.
 sSeasonTileIDPart1::  dw ; 0xb912
 
 sb914::  db 

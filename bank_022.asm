@@ -436,7 +436,7 @@ Call_022_42aa:
     adc h
     ld h, a
     ld a, $07
-    call DivideHLByA
+    call DivideHLByA_16bit
     add a
     add a
     ld hl, $42e0
@@ -518,7 +518,7 @@ Call_022_42fc:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, h
     or l
     jr z, jr_022_4343
@@ -548,7 +548,7 @@ jr_022_4343:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld b, a
     ld a, [sCurrentHour]
     cp TIME_6_AM
@@ -575,7 +575,7 @@ Call_022_4364:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, h
     or l
     jr z, jr_022_437a
@@ -592,7 +592,7 @@ jr_022_437a:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld b, a
     ld a, [sCurrentHour]
     cp TIME_6_AM
@@ -682,7 +682,7 @@ Call_022_43f1:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld b, a
     ld a, [sCurrentDayCounter]
     add l
@@ -704,7 +704,7 @@ jr_022_4420:
     ld l, a
     ld h, $00
     ld a, $1e
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld [sCurrentDayCounter], a
     ld a, [sCurrentSeason]
     add l
@@ -712,7 +712,7 @@ jr_022_4420:
     ld l, a
     ld h, $00
     ld a, $04
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld [sCurrentSeason], a
     ld a, [sCurrentYear]
     add l
@@ -1484,7 +1484,7 @@ jr_022_48c0:
 jr_022_48c3:
     add hl, hl
     ld a, $0f
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, h
     ld [$cbe4], a
     ld a, l
@@ -1509,7 +1509,7 @@ jr_022_48e0:
 
 jr_022_48e3:
     ld a, $0f
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, h
     ld [$cbe4], a
     ld a, l
@@ -1777,7 +1777,7 @@ Call_022_4a07:
     ld a, [$cbe5]
     ld l, a
     ld a, $18
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, l
     ld [$cbdc], a
     or a
@@ -5059,7 +5059,7 @@ Call_022_5bab:
     ld l, a
     ld h, $00
     ld a, $0a
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld [$b8a2], a
     ret
 
@@ -5070,7 +5070,7 @@ Call_022_5bc1:
     ld l, a
     ld h, $00
     ld a, $1e
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld b, a
     ld a, [$b8a2]
     cp b
@@ -8268,14 +8268,14 @@ Call_022_6c59:
     ld l, a
     ld h, $00
     ld a, $05
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld b, l
     call $1ae6
     ld a, [sPlayerMaxEnergy]
     ld l, a
     ld h, $00
     ld a, $0a
-    call DivideHLByA
+    call DivideHLByA_16bit
     ld a, l
     ldh [$ffa4], a
     ld a, [sHourOfPreviousSleep]

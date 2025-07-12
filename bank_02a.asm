@@ -8500,7 +8500,7 @@ jr_02a_6414:
     ld h, $d5
     ld [$1dff], a
     dec hl
-    call z, Call_000_2bcc
+    call z, $2bcc
     or [hl]
     ld a, e
     rst $10
@@ -11520,7 +11520,7 @@ jr_02a_7127:
     ld h, $ff
     push de
     ld [$2b1d], a
-    call z, Call_000_2bcc
+    call z, $2bcc
     or [hl]
     rst $38
 

@@ -2654,7 +2654,7 @@ jr_038_4b95:
     ld b, $dc
     add sp, -$2c
     add sp, $3a
-    call nz, Call_000_2cf2
+    call nz, $2cf2
     db $ec
     ret c
 
@@ -2726,7 +2726,7 @@ jr_038_4bda:
     ld b, $dd
     ld [$e8d6], a
     ld a, [hl-]
-    call nz, Call_000_2cf2
+    call nz, $2cf2
     db $ec
     ret c
 
@@ -3061,7 +3061,7 @@ jr_038_4d3d:
     jr z, jr_038_4d3d
 
     add sp, -$46
-    call nz, Call_000_2cf2
+    call nz, $2cf2
     db $ec
     ret c
 
@@ -6701,7 +6701,7 @@ jr_038_5c20:
     dec c
     ld a, $c4
     call z, $be30
-    call nz, Call_000_2cfe
+    call nz, $2cfe
     db $fc
     ret nz
 
@@ -6967,7 +6967,7 @@ Call_038_5db6:
     nop
     nop
     ld a, d
-    call nz, Call_000_2cd6
+    call nz, $2cd6
     ld a, [hl-]
     call z, $70ac
     call nc, Call_038_7868
@@ -10099,7 +10099,7 @@ jr_038_6ad8:
     sbc $20
     ld a, [hl]
     sbc h
-    call c, Call_000_09e8
+    call c, $09e8
     ld b, $1c
     rrca
     inc e
@@ -10212,7 +10212,7 @@ jr_038_6b4f:
     jp z, $28d7
 
     cp e
-    call nz, Call_000_2cf2
+    call nz, $2cf2
     db $ec
     ret c
 
@@ -14035,7 +14035,7 @@ jr_038_7b80:
     adc d
     db $f4
     ld a, [hl+]
-    call nc, Call_000_2cd2
+    call nc, $2cd2
     ld a, [hl]
     ret c
 
@@ -14141,7 +14141,7 @@ jr_038_7bd5:
     ld a, [hl+]
 
 jr_038_7c2a:
-    call nc, Call_000_2cd2
+    call nc, $2cd2
     cp [hl]
     ld e, b
     cp h

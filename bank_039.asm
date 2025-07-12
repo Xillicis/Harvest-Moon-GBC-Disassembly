@@ -7750,7 +7750,7 @@ jr_039_61b4:
     dec c
     ldh a, [c]
     db $fd
-    jp nz, Jump_000_2cd7
+    jp nz, $2cd7
 
     ld a, a
     and d
@@ -13060,7 +13060,7 @@ jr_039_7845:
     dec c
     ld a, $c4
     call z, $be30
-    call nz, Call_000_2cfe
+    call nz, $2cfe
     db $fc
     ret nz
 

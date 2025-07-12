@@ -5031,7 +5031,7 @@ jr_03b_55da:
     db $ec
     ld e, [hl]
     ld [hl], d
-    call Call_000_2c20
+    call $2c20
     call $cd72
     inc b
     ld hl, $7240
@@ -5084,7 +5084,7 @@ jr_03b_562d:
     ld c, h
     ld e, a
     ld [hl], d
-    call Call_000_2c20
+    call $2c20
     call $cd82
     inc b
     ld hl, $7240
@@ -5749,11 +5749,11 @@ jr_03b_592b:
     and $40
     inc de
     ld b, c
-    call z, Call_03b_7261
+    call z, $7261
     call $a820
     cp c
     adc h
-    call Call_000_2c01
+    call $2c01
     ld a, l
     ld hl, $7240
     call $8020

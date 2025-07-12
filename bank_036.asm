@@ -50,7 +50,7 @@ jr_036_4037:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec d
     ld a, [bc]
     ccf
@@ -154,7 +154,7 @@ jr_036_40a7:
     ld hl, sp+$56
     db $fc
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$de94], a
     or b
     ccf
@@ -322,7 +322,7 @@ jr_036_417c:
     jr @+$09
 
     xor d
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     sbc $b4
     rst $28
@@ -1355,7 +1355,7 @@ jr_036_4600:
     sbc b
     sub $3c
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$eef4], a
     sub b
     ccf
@@ -1416,7 +1416,7 @@ jr_036_4645:
     sbc b
     sub $3c
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$ce94], a
     or b
     ccf
@@ -4889,7 +4889,7 @@ Call_036_54fa:
 jr_036_553c:
     db $fc
     xor [hl]
-    call c, Call_000_2cd2
+    call c, $2cd2
     dec h
     ld a, [de]
     dec sp
@@ -4959,7 +4959,7 @@ jr_036_5572:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cd2
+    call c, $2cd2
     ld h, b
 
 jr_036_5592:
@@ -5139,7 +5139,7 @@ jr_036_564e:
     db $fc
     jp c, $b6fc
 
-    call c, Call_000_2cd2
+    call c, $2cd2
     ld l, $f0
     xor $f4
     cp $80
@@ -5225,7 +5225,7 @@ jr_036_56ae:
     db $fc
     jp c, $a2fc
 
-    call c, Call_000_2cd2
+    call c, $2cd2
     ld l, $f0
     xor $f4
     cp $80
@@ -5397,7 +5397,7 @@ jr_036_5752:
     db $fc
     jp c, $b6fc
 
-    call c, Call_000_2cf2
+    call c, $2cf2
 
 jr_036_577b:
     ld l, [hl]
@@ -5449,7 +5449,7 @@ jr_036_577b:
     rrca
     nop
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
 
 jr_036_57b5:
     ld [$eef4], a
@@ -5516,7 +5516,7 @@ jr_036_57e1:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp
@@ -6102,7 +6102,7 @@ jr_036_5a57:
 
     inc [hl]
     ld hl, sp-$06
-    call c, Call_000_2cd6
+    call c, $2cd6
     ld [hl], l
     xor $fb
     ld d, $03
@@ -7170,7 +7170,7 @@ jr_036_5ef5:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3bf4], a
     inc b
     dec a
@@ -7440,7 +7440,7 @@ jr_036_5ff5:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3bf4], a
     inc b
     dec a
@@ -8235,7 +8235,7 @@ jr_036_6380:
     db $fc
     jp z, $a2fc
 
-    call c, Call_000_2cd2
+    call c, $2cd2
     or $88
     sbc $b4
     dec de
@@ -9110,7 +9110,7 @@ jr_036_6707:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     dec h
     ld a, [de]
     dec sp
@@ -9971,7 +9971,7 @@ jr_036_6ac5:
     ld hl, sp+$56
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$3f94], a
     db $10
     dec e
@@ -13210,7 +13210,7 @@ jr_036_786d:
     ld d, [hl]
     db $fc
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     ld [$fef4], a
     ldh a, [$fffe]
     add h
@@ -13264,7 +13264,7 @@ jr_036_786d:
     ld hl, sp+$56
     db $fc
     xor d
-    call c, Call_000_2cf6
+    call c, $2cf6
     ld [$3d94], a
     ld a, [bc]
     ccf

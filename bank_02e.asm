@@ -5113,7 +5113,7 @@ Call_02e_5e28:
     ld a, $00
     ld h, a
     ld a, $0a
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $03
     jr c, jr_02e_5e6e
 

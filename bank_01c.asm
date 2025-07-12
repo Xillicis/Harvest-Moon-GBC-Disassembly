@@ -3345,7 +3345,7 @@ Call_01c_4dff:
     db $fc
     xor [hl]
     rst $38
-    call c, Call_000_2cf2
+    call c, $2cf2
     daa
     dec de
     ccf

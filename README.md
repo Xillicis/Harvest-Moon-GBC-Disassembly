@@ -1,6 +1,8 @@
 # Harvest Moon GBC
 
-This is a disassembly of Harvest Moon GBC.
+This is a disassembly of Harvest Moon GBC. 
+Currently, I (Xillicis) am the only one doing the disassembly, so it takes some time.
+The goal is to have a completely reverse engineered game so people can make hacks, translations, etc...
 
 It builds the following rom:
 

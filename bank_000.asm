@@ -5,49 +5,7 @@
 
 SECTION "ROM Bank $000", ROM0[$0]
 
-RST_00::
-    jp JumpToFunctionInTable
-
-    db $ff, $ff, $ff, $ff, $ff
-
-RST_08::
-    jp TableJumpBankSwitch
-    ret
-
-    db $ff, $ff, $ff, $ff
-
-RST_10::
-    ret
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-RST_18::
-    ret
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-RST_20::
-    ret
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-RST_28::
-    ret
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-RST_30::
-    ret
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-RST_38::
-    add l
-    ld l, a
-    ld a, $00
-    adc h
-    ld h, a
-    ret
+INCLUDE "home/header.asm"
 
     db $ff
 
@@ -131,10 +89,7 @@ Data_000_0066:
 
 Boot::
     nop
-
-Jump_000_0101:
     jp Jump_000_0150
-
 
 HeaderLogo::
     db $ce, $ed, $66, $66, $cc, $0d, $00, $0b, $03, $73, $00, $83, $00, $0c, $00, $0d
@@ -392,123 +347,7 @@ Data_000_0297: ; 00x0297
     pop af
     ret
 
-; hl points to a list of palette data
-CGBBackgroundPaletteUpload:
-    ld c, rBGPI_c
-    ld a, 1 << rBGPI_AUTO_INCREMENT
-    ldh [c], a
-    inc c
-    ld b, 32
-.loop
-    ld a, [hli]
-    ldh [c], a
-    ld a, [hli]
-    ldh [c], a
-    dec b
-    jr nz, .loop
-    ret
-
-BGPBackgroundPaletteUpload: ; 00x03ab
-    ld c, rOBPI_c
-    ld a, 1 << rBGPI_AUTO_INCREMENT
-    ldh [c], a
-    inc c
-    ld b, 32
-.loop
-    ld a, [hli]
-    ldh [c], a
-    ld a, [hli]
-    ldh [c], a
-    dec b
-    jr nz, .loop
-    ret
-
-Call_000_03bb:
-    ld de, $dd02
-    ld b, $40
-    call CopyHLtoDE
-    xor a
-    ld [$cd22], a
-    inc a
-    ld [$cd23], a
-    ld c, rBGPI_c
-    ld a, $80
-    ldh [c], a
-    inc c
-    ld b, $20
-.loop
-    ld a, $ff
-    ldh [c], a
-    ld a, $7f
-    ldh [c], a
-    dec b
-    jr nz, .loop
-    ret
-
-SyncLoadSpritePalette3:
-    ld b, %10011000 ; address for start of 3rd palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette2:
-    ld b, %10010000 ; address for start of 2nd palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette5:
-    ld b, %10101000 ; address for start of 5th palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette7:
-    ld b, %10111000 ; address for start of 7th palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette4:
-    ld b, %10100000 ; address for start of 4th palette
-    call SyncLoadOBJPalette
-    ret
-
-SyncLoadSpritePalette6:
-    ld b, %10110000 ; address for start of 6th palette
-    call SyncLoadOBJPalette
-    ret
-
-Call_000_0401:
-    ld b, $b8
-    call SyncLoadBGPPalette
-    ret
-
-; b contains some kind of palette address
-; hl points to palette data
-SyncLoadOBJPalette:
-    ld c, rOBPI_c
-    ld a, b
-    ldh [c], a
-    ld c, rOBPD_c
-    ld d, $08
-.loop
-    call SyncToBlankPeriod
-    ld a, [hli]
-    ldh [c], a
-    dec d
-    jr nz, .loop
-    ret
-
-SyncLoadBGPPalette:
-    ld c, rBGPI_c
-    ld a, b
-    ldh [c], a
-    ld c, rBGPD_c
-    ld d, $08
-.loop
-    call SyncToBlankPeriod
-    ld a, [hli]
-    ldh [c], a
-    dec d
-    jr nz, .loop
-    ret
+INCLUDE "home/palettes.asm"
 
 Call_000_0429:
     ld hl, Data_000_043d
@@ -668,315 +507,7 @@ Data_000_0576:
     db $3D, $EA, $48, $26, $AF, $40, $3F, $F8, $52, $3D, $D8, $51, $3D, $DE, $6C, $2F
     db $66, $40, $27, $E4, $6D, $3D, $6B, $41, $22, $75, $72, $3D, $C9
 
-; Advance game clock by one minute every ~30 frames, which eventually increments
-; the hours, days, seasons, and years. 
-; Pauses if some certain flags are set.
-TickGameClock:
-    ; In:  called every V‑Blank (or similar frame hook)
-    ; Out: sCurrentMinute++ once threshold is reached,
-    ;      sets BA40 when time == 5:14
-    ; Clobbers: A, B, C, flags
-    ld a, [wPlayerIsInsideOrAtTown]
-    or a
-    ret nz
-
-    ld a, [$cb4e]
-    or a
-    ret nz
-
-    ld a, [$cb56]
-    or a
-    ret nz
-
-    ld a, [sClockFrameCount]
-    inc a
-    ld [sClockFrameCount], a
-    cp 30
-    jr nc, .incrementMinute
-    ret
-
-.incrementMinute
-    xor a
-    ld [sClockFrameCount], a
-    ld a, [sCurrentMinute]
-    inc a
-    ld [sCurrentMinute], a
-    cp 15
-    jr nc, .incrementHour
-
-    cp 14
-    ret nz
-
-    ld a, [sCurrentHour]
-    cp TIME_5_AM
-    ret nz
-
-    ld a, $01
-    ld [s6AMFlag], a
-    ret
-
-.incrementHour
-    xor a
-    ld [sCurrentMinute], a
-    ld a, [sCurrentHour]
-    inc a
-    ld [sCurrentHour], a
-    cp TIME_12_AM
-    jr nc, .incrementDay
-
-    call UpdateHourTileData
-    call UpdateHourTileData
-    ret
-
-.incrementDay
-    xor a
-    ld [sCurrentHour], a
-    call UpdateHourTileData
-    ld a, [sCurrentDayCounter]
-    inc a
-    ld [sCurrentDayCounter], a
-    cp 30
-    jr nc, .incrementSeason
-
-    call UpdateDayOfTheWeekTileData
-    call UpdateSeasonTileData
-    ret
-
-.incrementSeason
-    xor a
-    ld [sCurrentDayCounter], a
-    ld a, [sCurrentSeason]
-    inc a
-    ld [sCurrentSeason], a
-    call UpdateDayOfTheWeekTileData
-    call UpdateSeasonTileData
-    ld a, [sCurrentSeason]
-    cp $04
-    jr nc, .incrementYear
-    ret
-
-.incrementYear
-    xor a
-    ld [sCurrentSeason], a
-    call UpdateSeasonTileData
-    ld a, [sCurrentYear]
-    inc a
-    ld [sCurrentYear], a
-    cp 99
-    ret nz
-
-    ld a, 98 ; maximum year?
-    ld [sCurrentYear], a
-    ret
-
-UpdateHourTileData: ; 00x070b
-    ld a, [sCurrentHour]
-    ld l, a
-    ld h, $00
-    ld e, a
-    ld d, $00
-    add hl, hl
-    add hl, de
-    ld de, AMPMHourText
-    add hl, de
-    ld a, [hli]
-    ld [$b915], a
-    ld a, [hli]
-    ld [$b917], a
-    ld a, [hli]
-    ld [$b918], a
-    ld a, [$cb56]
-    or a
-    ret nz
-
-    ld a, [$b906]
-    or a
-    ret nz
-
-    ld a, [$b917]
-    ld c, a
-    ld e, $84
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, [$b918]
-    ld c, a
-    ld e, $85
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, [$b915]
-    ld c, a
-    ld e, $86
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, $01
-    ld [$cb75], a
-    ret
-
-; A little bit weird, but 'A' and 'P' comes first in AM/PM. I wonder if some kind of Japanese hold over?
-AMPMHourText:
-    db "A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10", "A11"
-    db "P00", "P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11"
-
-UpdateDayOfTheWeekTileData:
-    ld a, [sCurrentDayCounter]
-    ld l, a
-    ld h, $00
-    add hl, hl
-    ld de, DayOfTheMonthTileIndices
-    add hl, de
-    ld a, [hli]
-    ld [$b914], a
-    ld a, [hli]
-    ld [$ba53], a
-    ld a, [sCurrentSeason]
-    ld c, 30
-    call Multiply8Bit
-;;; Compute the day of the week
-    ld a, [sCurrentDayCounter]
-    add l
-    ld l, a
-    ld a, $00
-    adc h
-    ld h, a
-    ld a, $07
-    call DivideHLByA
-    add a
-    add a
-    ld hl, DayOfTheWeekTileIndices
-    add l
-    ld l, a
-    ld a, $00
-    adc h
-    ld h, a
-;;; Store the tile indices for the day of the week from the font graphics
-    ld a, [hli]
-    ld [sDayOfTheWeekTileIndex1], a
-    ld a, [hli]
-    ld [sDayOfTheWeekTileIndex2], a
-    ld a, [hli]
-    ld [sDayOfTheWeekTileIndex3], a
-    ld a, [hl]
-    ld [sDayOfTheWeekTileIndex4], a
-    ld a, [$cb56]
-    or a
-    ret nz
-
-    ld a, [$b906]
-    or a
-    ret nz
-
-    ld a, [sDayOfTheWeekTileIndex1]
-    ld c, a
-    ld e, $80
-    ld a, [wSTAT_HandlerIndex]
-    cp $28
-    jr nz, jr_000_0808
-
-    ld e, $59
-
-jr_000_0808:
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex2]
-    ld c, a
-    ld e, $81
-    ld a, [wSTAT_HandlerIndex]
-    cp $28
-    jr nz, jr_000_0820
-
-    ld e, $5a
-
-jr_000_0820:
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex3]
-    ld c, a
-    ld e, $82
-    ld a, [wSTAT_HandlerIndex]
-    cp $28
-    jr nz, jr_000_0838
-
-    ld e, $5b
-
-jr_000_0838:
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, [sDayOfTheWeekTileIndex4]
-    ld c, a
-    ld e, $83
-    ld a, [wSTAT_HandlerIndex]
-    cp $28
-    jr nz, jr_000_0850
-
-    ld e, $58
-
-jr_000_0850:
-    ld hl, TextFontTileset
-    ld a, BANK(TextFontTileset)
-    ld d, a
-    call BankedSyncCopyTileToVRAM
-    ld a, $01
-    ld [$cb75], a
-    ret
-
-DayOfTheWeekTileIndices: ; 0x085f
-    db $58, $59, $5A, $57 ; Monday
-    db $5B, $5C, $5D, $5E ; Tuesday
-    db $5F, $60, $61, $62 ; Wednesday
-    db $5B, $63, $64, $65 ; Thursday
-    db $66, $67, $68, $69 ; Friday
-    db $54, $6A, $6B, $6C ; Saturday
-    db $54, $55, $56, $57 ; Sunday
-DayOfTheMonthTileIndices:
-    db "01", "02", "03", "04", "05", "06", "07", "08", "09", "10"
-    db "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
-    db "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
-
-; Not seeing where these sram values are actually used...
-UpdateSeasonTileData:
-    ld a, [sCurrentSeason]
-    ld l, a
-    ld h, $00
-    add hl, hl
-    ld a, l
-    ld e, a
-    ld a, h
-    ld d, a
-    add hl, hl
-    add hl, de
-    ld de, SeasonTileData
-    add hl, de
-    ld a, [hli]
-    ld [sSeasonTileIDPart1], a
-    ld a, [hli]
-    ld [sSeasonTileIDPart1+1], a
-    ld a, [hli]
-    ld [sSeasonTileIDPart2], a
-    ld a, [hli]
-    ld [sSeasonTileIDPart2+1], a
-    ld a, [hli]
-    ld [sSeasonTileIDPart2+2], a
-    ld a, [hl]
-    ld [sSeasonTileIDPart2+3], a
-    ret
-
-SeasonTileData:
-    db $6D, $6E, $6F, $70, $71, $72 ; SPRING
-    db $73, $74, $75, $76, $77, $78 ; SUMMER
-    db $EF, $79, $7A, $7B, $7C, $EF ; FALL ($EF Buffer???)
-    db $7D, $7E, $7F, $80, $81, $82 ; WINTER
+INCLUDE "home/time.asm"
 
 Label_000_08f9:
     push af
@@ -1154,7 +685,7 @@ jr_000_09ba:
     ret
 
 ; Non‑restoring divide: 16‑bit HL ÷ 8‑bit A → quotient in L, remainder in A
-DivideHLByA:
+DivideHLByA_16bit:
     push de
     ld d, $10      ; 16 iterations (one per dividend bit)
     ld e, a        ; E = divisor
@@ -1175,29 +706,25 @@ DivideHLByA:
     pop de
     ret
 
-Call_000_09dc:
+; Same as DivideHLByA_16bit, but only iterates on the first 8 bits.
+; It's only used once though.
+DivideHLByA_8bit: ; 00x09dc
     push de
     ld d, $08
     ld e, a
     xor a
-
-jr_000_09e1:
+.loop
     add hl, hl
     rla
-    jr c, jr_000_09e8
-
+    jr c, .subtract
     cp e
-    jr c, jr_000_09ea
-
-Call_000_09e8:
-jr_000_09e8:
+    jr c, .noSubtract
+.subtract
     sub e
     inc l
-
-jr_000_09ea:
+.noSubtract
     dec d
-    jr nz, jr_000_09e1
-
+    jr nz, .loop
     pop de
     ret
 
@@ -1218,16 +745,12 @@ jr_000_09f4:
     jr c, jr_000_0a00
     cp e
     jr c, jr_000_0a02
-
-Call_000_0a00:
 jr_000_0a00:
     sub e
     inc l
-
 jr_000_0a02:
     dec d
     jr nz, jr_000_09f4
-
     pop de
     ret
 
@@ -1403,10 +926,9 @@ jr_000_0ab9:
     ret
 
 Call_000_0ac1:
-    ld bc, $ffe0
+    ld bc, -$20 
     add hl, bc
-    ld b, $00
-
+    ld b, 0
 jr_000_0ac7:
     ld a, [de]
     cp $ff
@@ -1578,150 +1100,8 @@ Label_000_0c98:
     ld b, a
     ret
 
-;  Credit to ChatGPT:
-;  input : HL → 3-byte little-endian value  (low, mid, high)
-;          BC = 16-bit signed delta to add
-;  result: value := value + BC
-;  flags : preserved (only the routine itself relies on C flag)
-
-AddSignedBCToHL: ; 00x0cbb
-    ld   a,c          ; A = low 8 bits of delta
-    add  [hl]         ; add to low byte
-    ld   [hli],a      ; store and  HL++
-    inc  bc           ; sneak the low-byte carry into B
-                      ;   (if C was 0xFF, B is now B+1)
-    ld   a,b          ; A = high 8 bits of (delta + carry-from-low)
-    bit  7,a          ; test sign of that high byte
-    jr   nz, .neg     ; if it’s ≥$80 we’re adding a negative value
-
-.pos                  ; --------  positive (or zero) delta --------
-    adc  [hl]         ; add high byte  + original ADD’s carry
-    ld   [hl+],a      ; store, HL++
-    ret  nc           ; if no overflow into the third byte, we’re done
-    inc  [hl]         ; otherwise bump the 3rd byte
-    ret
-
-.neg                  ; --------  negative delta (subtract) -------
-    adc  [hl]         ; same, but A is two’s-complement negative
-    ld   [hli],a
-    ret  c            ; if we *borrowed* (carry = 1), all done
-    dec  [hl]         ; otherwise we had a net borrow → fix 3rd byte
-    ret
-
-; Add the 16-bit value in BC to the 16-bit little-endian word at [HL]
-AddBCtoWordAtHL:
-    ld a, [hl]
-    add c
-    ld [hli], a
-    ld a, [hl]
-    adc b
-    ld [hl], a
-    ret
-
-InitRealTimeClock:
-    ld a, $0a
-    ld [$1fff], a
-    ld a, 1
-    ld [rRTCLATCH], a
-    ld a, RTC_S
-    ld [MBC3SRamBank], a
-    xor a
-    ld [SRAMorRTC_Data], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_M
-    ld [MBC3SRamBank], a
-    xor a
-    ld [SRAMorRTC_Data], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_H
-    ld [MBC3SRamBank], a
-    xor a
-    ld [SRAMorRTC_Data], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_DL
-    ld [MBC3SRamBank], a
-    xor a
-    ld [SRAMorRTC_Data], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_DH
-    ld [MBC3SRamBank], a
-    ld a, 0
-    ld [SRAMorRTC_Data], a
-    xor a
-    ld [MBC3SRamBank], a
-    ret
-
-ReadRealTimeClock:
-    ld a, $0a
-    ld [$1fff], a
-    xor a
-    ld [rRTCLATCH], a ; prepare to latch
-    inc a
-    ld [rRTCLATCH], a ; actually latch: RTC regs <- current time
-    ld a, RTC_S
-    ld [MBC3SRamBank], a
-    ld a, [SRAMorRTC_Data]
-    and $3f
-    ld [$c905], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_M
-    ld [MBC3SRamBank], a
-    ld a, [SRAMorRTC_Data]
-    and $3f
-    ld [$c904], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_H
-    ld [MBC3SRamBank], a
-    ld a, [SRAMorRTC_Data]
-    and $1f
-    ld [$c903], a
-    nop
-    nop
-    nop
-    nop
-    ld a, RTC_DL
-    ld [MBC3SRamBank], a
-    ld a, [SRAMorRTC_Data]
-    ld [$c902], a
-    xor a
-    ld [MBC3SRamBank], a
-    ret
-
-
-    ld a, RTC_DH
-    ld [MBC3SRamBank], a
-    ld a, $40
-    ld [SRAMorRTC_Data], a
-    xor a
-    ld [MBC3SRamBank], a
-    ret
-
-
-    ld a, RTC_DH
-    ld [MBC3SRamBank], a
-    ld a, $00
-    ld [SRAMorRTC_Data], a
-    xor a
-    ld [MBC3SRamBank], a
-    ret
+INCLUDE "home/add_array.asm"
+INCLUDE "home/rtc.asm"
 
 Call_000_0d90:
     ld a, [$c902]
@@ -1788,8 +1168,8 @@ Call_000_0de8:
     call UpdateSeasonTileData
     call Call_000_1002
     call Call_000_0f73
-    ld hl, $456e
-    ld a, $08
+    ld hl, Call_008_456e
+    ld a, BANK(Call_008_456e)
     call BankSwitchCallHL
     xor a
     ld [$cb14], a
@@ -4095,8 +3475,14 @@ jr_000_1b1a:
     ret
 
 Data_000_1b20:
-db $0B, $0C, $0D, $0E, $13, $14, $16, $15, $00, $08, $09, $0A, $12, $12, $52, $01
-db $02, $03, $04, $05, $06, $07, $4E, $4F, $50, $51, $53, $54, $55, $10, $11, $12
+; Tools
+db SICKLE, HOE, HAMMER, AX, SUPER_SICKLE, SUPER_HOE, SUPER_HAMMER, SUPER_AX
+; Medince etc...
+db COW_MEDICINE, MILKER, BRUSH, WATERING_CAN, SPRINKLER, SPRINKLER, P_MEDICINE, M_POTION
+; Seeds
+db COW_BELL, GRASS_SEEDS, TURNIP_SEEDS, POTATO_SEEDS, TOMATO_SEEDS, CORN_SEEDS
+db EGGPLANT_SEEDS, PEANUT_SEEDS, CARROT_SEEDS, BROCOLLI_SEEDS, PICK_AX, UMBRELLA
+db $55, COW_FEED, CHICKEN_FEED, SPRINKLER
 db $22, $1C, $24, $25, $1E, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $07, $28, $1E
 db $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $07, $1A, $26, $26, $1E
 db $2B, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $00, $31, $AF, $AF, $AF, $AF, $AF
@@ -6938,458 +6324,34 @@ Call_000_2b8a:
     pop af
     ret
 
-
-    call nc, $6407
-    rlca
-    ld sp, hl
-    ld b, $95
-    ld b, $37
-    ld b, $dd
-    dec b
-    adc c
-    dec b
-    ld a, [hl-]
-    dec b
-    ldh a, [rDIV]
-    xor b
-    inc b
-    ld h, l
-    inc b
-    ld h, $04
-    sbc h
-    rlca
-
-Call_000_2baf:
-    ld l, $07
-    rst $00
-    ld b, $66
-    ld b, $0a
-    ld b, $b3
-    dec b
-    ld h, c
-    dec b
-    dec d
-    dec b
-    call z, $8604
-    inc b
-    ld b, l
-    inc b
-    ld [$0004], sp
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-
-Call_000_2bcc:
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    stop
-    nop
-    nop
-    nop
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    jr nz, jr_000_2c13
-
-    jr nz, jr_000_2c15
-
-    nop
-    nop
-    nop
-    db $10
-    db $10
-    db $10
-    db $10
-    db $10
-    jr nz, @+$22
-
-    jr nz, jr_000_2c21
-
-Call_000_2c01:
-    jr nz, jr_000_2c33
-
-    jr nc, jr_000_2c35
-
-    nop
-    nop
-    db $10
-    db $10
-    db $10
-    db $10
-    jr nz, jr_000_2c2d
-
-    jr nz, jr_000_2c2f
-
-    jr nc, jr_000_2c41
-
-    jr nc, jr_000_2c43
-
-jr_000_2c13:
-    ld b, b
-    ld b, b
-
-jr_000_2c15:
-    nop
-    nop
-    db $10
-    db $10
-    db $10
-    jr nz, @+$22
-
-    jr nz, jr_000_2c4e
-
-    jr nc, jr_000_2c50
-
-Call_000_2c20:
-    ld b, b
-
-jr_000_2c21:
-    ld b, b
-    ld b, b
-    ld d, b
-    ld d, b
-    nop
-    nop
-    db $10
-    db $10
-    jr nz, @+$22
-
-    jr nz, jr_000_2c5d
-
-jr_000_2c2d:
-    jr nc, jr_000_2c6f
-
-jr_000_2c2f:
-    ld b, b
-    ld b, b
-    ld d, b
-    ld d, b
-
-jr_000_2c33:
-    ld h, b
-    ld h, b
-
-jr_000_2c35:
-    nop
-    nop
-    db $10
-
-Call_000_2c38:
-    db $10
-    jr nz, @+$22
-
-    jr nc, jr_000_2c6d
-
-    ld b, b
-    ld b, b
-    ld d, b
-    ld d, b
-
-jr_000_2c41:
-    ld h, b
-    ld h, b
-
-jr_000_2c43:
-    ld [hl], b
-    ld [hl], b
-    nop
-    db $10
-    db $10
-    jr nz, jr_000_2c6a
-
-    jr nc, jr_000_2c7c
-
-    ld b, b
-    ld b, b
-
-jr_000_2c4e:
-    ld d, b
-    ld d, b
-
-jr_000_2c50:
-    ld h, b
-    ld h, b
-    ld [hl], b
-    ld [hl], b
-    add b
-    nop
-    db $10
-    db $10
-    jr nz, jr_000_2c7a
-
-    jr nc, jr_000_2c9c
-
-    ld b, b
-
-jr_000_2c5d:
-    ld d, b
-    ld d, b
-    ld h, b
-    ld [hl], b
-    ld [hl], b
-    add b
-    add b
-    sub b
-    nop
-    db $10
-    db $10
-    jr nz, @+$32
-
-jr_000_2c6a:
-    jr nc, jr_000_2cac
-
-    ld d, b
-
-jr_000_2c6d:
-    ld d, b
-    ld h, b
-
-jr_000_2c6f:
-    ld [hl], b
-    ld [hl], b
-    add b
-    sub b
-    sub b
-    and b
-    nop
-    db $10
-    db $10
-    jr nz, jr_000_2caa
-
-jr_000_2c7a:
-    ld b, b
-    ld b, b
-
-jr_000_2c7c:
-    ld d, b
-    ld h, b
-    ld [hl], b
-    ld [hl], b
-    add b
-    sub b
-    and b
-    and b
-    or b
-    nop
-    db $10
-    jr nz, jr_000_2ca9
-
-    jr nc, jr_000_2ccb
-
-    ld d, b
-    ld h, b
-    ld h, b
-    ld [hl], b
-    add b
-    sub b
-    and b
-    and b
-    or b
-    ret nz
-
-    nop
-    db $10
-    jr nz, @+$32
-
-    jr nc, @+$42
-
-    ld d, b
-
-jr_000_2c9c:
-    ld h, b
-    ld [hl], b
-    add b
-    sub b
-    and b
-    and b
-    or b
-    ret nz
-
-    ret nc
-
-    nop
-    db $10
-    jr nz, jr_000_2cd9
-
-jr_000_2ca9:
-    ld b, b
-
-jr_000_2caa:
-    ld d, b
-    ld h, b
-
-jr_000_2cac:
-    ld [hl], b
-    ld [hl], b
-    add b
-    sub b
-    and b
-    or b
-    ret nz
-
-    ret nc
-
-    ldh [rP1], a
-    db $10
-    jr nz, jr_000_2ce9
-
-    ld b, b
-    ld d, b
-    ld h, b
-    ld [hl], b
-    add b
-    sub b
-    and b
-    or b
-    ret nz
-
-    ret nc
-
-    ldh [$fff0], a
-    nop
-    nop
-    ld bc, $0001
-    nop
-
-jr_000_2ccb:
-    rst $38
-    rst $38
-    nop
-    nop
-    ld bc, $0001
-
-Call_000_2cd2:
-    nop
-    rst $38
-    rst $38
-    nop
-
-Call_000_2cd6:
-    nop
-
-Jump_000_2cd7:
-    nop
-    nop
-
-jr_000_2cd9:
-    ld bc, $0101
-    ld bc, $0000
-    nop
-    nop
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    nop
-    ld bc, $0102
-
-jr_000_2ce9:
-    nop
-    rst $38
-    cp $ff
-    nop
-    ld bc, $0102
-    nop
-
-Call_000_2cf2:
-    rst $38
-    cp $ff
-    nop
-
-Call_000_2cf6:
-    nop
-    ld bc, $0201
-
-Call_000_2cfa:
-    ld [bc], a
-    ld bc, $0001
-
-Call_000_2cfe:
-    nop
-
-Call_000_2cff:
-Jump_000_2cff:
-    rst $38
-    rst $38
-
-Jump_000_2d01:
-    cp $fe
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    cp $fe
-    cp $fe
-    cp $fe
-    cp $fe
-    cp $fe
-    cp $fe
-    cp $fe
-    cp $fe
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0101
-    ld bc, $0202
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
+Data_000_2b95:
+    db $D4, $07, $64, $07, $F9, $06, $95, $06, $37, $06, $DD, $05, $89, $05, $3A, $05,
+    db $F0, $04, $A8, $04, $65, $04, $26, $04, $9C, $07, $2E, $07, $C7, $06, $66, $06,
+    db $0A, $06, $B3, $05, $61, $05, $15, $05, $CC, $04, $86, $04, $45, $04, $08, $04,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $10, $10, $10, $10, $10, $10, $10, $10,
+    db $00, $00, $00, $00, $10, $10, $10, $10, $10, $10, $10, $10, $20, $20, $20, $20,
+    db $00, $00, $00, $10, $10, $10, $10, $10, $20, $20, $20, $20, $20, $30, $30, $30,
+    db $00, $00, $10, $10, $10, $10, $20, $20, $20, $20, $30, $30, $30, $30, $40, $40,
+    db $00, $00, $10, $10, $10, $20, $20, $20, $30, $30, $30, $40, $40, $40, $50, $50,
+    db $00, $00, $10, $10, $20, $20, $20, $30, $30, $40, $40, $40, $50, $50, $60, $60,
+    db $00, $00, $10, $10, $20, $20, $30, $30, $40, $40, $50, $50, $60, $60, $70, $70,
+    db $00, $10, $10, $20, $20, $30, $30, $40, $40, $50, $50, $60, $60, $70, $70, $80,
+    db $00, $10, $10, $20, $20, $30, $40, $40, $50, $50, $60, $70, $70, $80, $80, $90,
+    db $00, $10, $10, $20, $30, $30, $40, $50, $50, $60, $70, $70, $80, $90, $90, $A0,
+    db $00, $10, $10, $20, $30, $40, $40, $50, $60, $70, $70, $80, $90, $A0, $A0, $B0,
+    db $00, $10, $20, $20, $30, $40, $50, $60, $60, $70, $80, $90, $A0, $A0, $B0, $C0,
+    db $00, $10, $20, $30, $30, $40, $50, $60, $70, $80, $90, $A0, $A0, $B0, $C0, $D0,
+    db $00, $10, $20, $30, $40, $50, $60, $70, $70, $80, $90, $A0, $B0, $C0, $D0, $E0,
+    db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90, $A0, $B0, $C0, $D0, $E0, $F0,
+    db $00, $00, $01, $01, $00, $00, $FF, $FF, $00, $00, $01, $01, $00, $00, $FF, $FF,
+    db $00, $00, $00, $00, $01, $01, $01, $01, $00, $00, $00, $00, $FF, $FF, $FF, $FF,
+    db $00, $01, $02, $01, $00, $FF, $FE, $FF, $00, $01, $02, $01, $00, $FF, $FE, $FF,
+    db $00, $00, $01, $01, $02, $02, $01, $01, $00, $00, $FF, $FF, $FE, $FE, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE, $FE,
+    db $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01, $01,
+    db $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, $02, 
 
 Call_000_2d45:
     ld a, [$d3a5]
@@ -8114,128 +7076,17 @@ Jump_000_30bd:
     ld [MBC3RomBank], a
     ret
 
-; Data
-    ld bc, $1240
-    ld bc, $1440
-    ld bc, $1440
-    ld bc, $1440
-    db $ed
-    ld [hl], d
-    dec bc
-    adc $6b
-    rla
-    rst $38
-    ld h, d
-    rrca
-    push de
-    ld d, [hl]
-    db $10
-    ld a, [$0a7a]
-    sbc a
-    ld [hl], b
-    inc de
-    ld bc, $1760
-    inc d
-    ld h, b
-    inc de
-    ld bc, $0a40
-    ld h, l
-    ld c, b
-    dec b
-    ld e, c
-    ld l, d
-    inc d
-    ld l, $68
-    inc d
-    add a
-    ld d, l
-    inc d
-    add a
-    ld d, l
-    inc d
-    add a
-    ld d, l
-    inc d
-    add a
-    ld d, l
-    inc d
-    add a
-    ld h, h
-    inc d
-    add a
-    ld h, h
-    inc d
-    add a
-    ld h, h
-    inc d
-    add a
-    ld h, h
-    inc d
-    adc l
-    ld h, h
-    rla
-    ld bc, $3240
-    ld bc, $3440
-    ld bc, $3440
-    ld bc, $3440
-    di
-    ld [hl], e
-    dec hl
-    and $6b
-    scf
-    nop
-    ld h, e
-    cpl
-    ld b, b
-    ld d, [hl]
-    jr nc, jr_000_319e
-
-    ld a, e
-    ld a, [hl+]
-    sbc a
-    ld [hl], b
-    inc sp
-    ld bc, $3760
-    inc d
-    ld h, b
-    inc sp
-    ld bc, $2a40
-    adc $47
-    dec h
-    ld e, c
-    ld l, d
-    inc [hl]
-    ld l, $68
-    inc [hl]
-    add a
-    ld d, l
-    inc [hl]
-    add a
-    ld d, l
-    inc [hl]
-    add a
-    ld d, l
-    inc [hl]
-    add a
-    ld d, l
-    inc [hl]
-    add a
-    ld h, h
-    inc [hl]
-    add a
-    ld h, h
-    inc [hl]
-    add a
-    ld h, h
-    inc [hl]
-    add a
-    ld h, h
-    inc [hl]
-    adc l
-
-jr_000_319e:
-    ld h, h
-    scf
+Data_000_310a:
+    db $01, $40, $12, $01, $40, $14, $01, $40, $14, $01, $40, $14, $ED, $72, $0B, $CE,
+    db $6B, $17, $FF, $62, $0F, $D5, $56, $10, $FA, $7A, $0A, $9F, $70, $13, $01, $60,
+    db $17, $14, $60, $13, $01, $40, $0A, $65, $48, $05, $59, $6A, $14, $2E, $68, $14,
+    db $87, $55, $14, $87, $55, $14, $87, $55, $14, $87, $55, $14, $87, $64, $14, $87,
+    db $64, $14, $87, $64, $14, $87, $64, $14, $8D, $64, $17, $01, $40, $32, $01, $40,
+    db $34, $01, $40, $34, $01, $40, $34, $F3, $73, $2B, $E6, $6B, $37, $00, $63, $2F,
+    db $40, $56, $30, $30, $7B, $2A, $9F, $70, $33, $01, $60, $37, $14, $60, $33, $01,
+    db $40, $2A, $CE, $47, $25, $59, $6A, $34, $2E, $68, $34, $87, $55, $34, $87, $55,
+    db $34, $87, $55, $34, $87, $55, $34, $87, $64, $34, $87, $64, $34, $87, $64, $34,
+    db $87, $64, $34, $8D, $64, $37, 
 
 ; Something very complicated...
 ; `hl` points to some data

@@ -3771,7 +3771,7 @@ Call_01d_5477:
     ld h, $00
     ld l, a
     ld a, $64
-    call DivideHLByA
+    call DivideHLByA_16bit
     ret
 
 

@@ -5164,7 +5164,7 @@ Call_00e_5e73:
     ld a, $00
     ld h, a
     ld a, $0a
-    call DivideHLByA
+    call DivideHLByA_16bit
     cp $03
     jr c, jr_00e_5eb9
 

@@ -9052,7 +9052,7 @@ jr_03e_6803:
     ld b, d
     ei
     db $fc
-    jp Jump_000_2d01
+    jp $2d01
 
 
     rra

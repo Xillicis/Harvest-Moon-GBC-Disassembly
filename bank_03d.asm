@@ -3968,7 +3968,7 @@ Call_03d_5432:
     ld h, $00
     ld l, a
     ld a, $64
-    call DivideHLByA
+    call DivideHLByA_16bit
     ret
 
 
@@ -8362,7 +8362,7 @@ Jump_03d_6800:
 
 jr_03d_6888:
     xor [hl]
-    call c, Call_000_2cf2
+    call c, $2cf2
     db $eb
     ld bc, $fd25
     ld a, [de]

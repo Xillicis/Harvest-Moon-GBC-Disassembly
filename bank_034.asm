@@ -13774,7 +13774,7 @@ Jump_034_7dda:
     jp c, $dc2d
 
     dec l
-    call c, Call_000_2baf
+    call c, $2baf
     rst $38
     xor a
     dec hl

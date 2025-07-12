@@ -8212,7 +8212,7 @@ Call_021_725f:
     sbc $00
     ld h, a
     ld a, $10
-    call DivideHLByA
+    call DivideHLByA_16bit
     add $20
     ldh [$ff93], a
     ld a, l
@@ -8228,7 +8228,7 @@ Call_021_725f:
     sbc $00
     ld h, a
     ld a, $10
-    call DivideHLByA
+    call DivideHLByA_16bit
     add $20
     ldh [$ff91], a
     ld c, l
