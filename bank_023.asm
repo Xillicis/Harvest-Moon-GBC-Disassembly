@@ -2485,7 +2485,7 @@ jr_023_4f04:
     ld [$cc17], a
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2496,7 +2496,7 @@ jr_023_4f26:
     ld [$cc17], a
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2508,7 +2508,7 @@ jr_023_4f38:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2810,7 +2810,7 @@ Jump_023_5142:
     ld [$cc18], a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2822,7 +2822,7 @@ Jump_023_5155:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -9931,7 +9931,7 @@ jr_023_79dd:
     rst $38
     rlca
     rlca
-    ld [$c90f], sp
+    ld [wDestinationWarpID], sp
     ret
 
 

@@ -526,7 +526,7 @@ Jump_025_4328:
     ld a, [$cb51]
     ld [$cbe8], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ret
 
 
@@ -560,7 +560,7 @@ Call_025_433d:
     ld a, $02
     ld [$c910], a
     ld a, $01
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ret
 
 
@@ -605,7 +605,7 @@ Call_025_43a4:
     or a
     ret z
 
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     cp $00
     jr nz, jr_025_43d3
 
@@ -6714,7 +6714,7 @@ jr_025_661b:
 
 jr_025_661c:
     ld a, $08
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret
@@ -6772,7 +6772,7 @@ jr_025_6671:
 
 jr_025_6672:
     ld a, $09
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret

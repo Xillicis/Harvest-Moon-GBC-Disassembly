@@ -7,34 +7,6 @@ SECTION "ROM Bank $000", ROM0[$0]
 
 INCLUDE "home/header.asm"
 
-    db $ff
-
-VBlankInterrupt:: ; 00x0048
-    call Call_000_04c7
-
-Call_000_0043:
-    reti
-
-    db $ff, $ff, $ff, $ff
-
-LCDCInterrupt:: ; 0x0048
-    jp STATInterrupt_Dispatch
-
-    db $ff, $ff, $ff, $ff, $ff
-
-TimerOverflowInterrupt::
-    jp Jump_000_33f9
-
-    db $ff, $ff, $ff, $ff, $ff
-
-SerialTransferCompleteInterrupt::
-    jp Jump_000_3408
-
-    db $ff, $ff, $ff, $ff, $ff
-
-JoypadTransitionInterrupt:: ; 00x0060
-    reti
-
 Call_000_0061:
     ld a, [wSTAT_HandlerIndex]
     or a
@@ -89,7 +61,7 @@ Data_000_0066:
 
 Boot::
     nop
-    jp Jump_000_0150
+    jp _Boot
 
 HeaderLogo::
     db $ce, $ed, $66, $66, $cc, $0d, $00, $0b, $03, $73, $00, $83, $00, $0c, $00, $0d
@@ -135,7 +107,7 @@ HeaderComplementCheck::
 HeaderGlobalChecksum::
     db $83, $4c
 
-Jump_000_0150:
+_Boot:
     nop
 
 Start:
@@ -1180,7 +1152,7 @@ Call_000_0de8:
     ld [wInputFreezeTimer], a
     ld [wCollisionNoMovement], a
     ld [$c910], a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$cb56], a
     ld [$cb57], a
@@ -2201,7 +2173,6 @@ jr_000_1461:
     pop hl
     ret
 
-
 Call_000_1471:
     push hl
     push bc
@@ -2212,8 +2183,6 @@ Call_000_1471:
     add hl, hl
     add hl, hl
     ld a, [MBC3SRamBank]
-
-Jump_000_147d:
     ldh [hROMBankTemp], a
     ld a, $11
     ld [MBC3RomBank], a
@@ -2306,10 +2275,7 @@ jr_000_14d3:
     ld [MBC3RomBank], a
     pop bc
     pop hl
-
-Call_000_14f8:
     ret
-
 
 Call_000_14f9:
     ld hl, $50c9
@@ -2317,20 +2283,17 @@ Call_000_14f9:
     call BankSwitchCallHL
     ret
 
-
 Call_000_1502:
     ld hl, $51a7
     ld a, $05
     call BankSwitchCallHL
     ret
 
-
 Call_000_150b:
     ld hl, $52f7
     ld a, $05
     call BankSwitchCallHL
     ret
-
 
 Call_000_1514:
     ld hl, $53e2
@@ -2857,9 +2820,6 @@ Call_000_16d1:
     ld b, $1f
     ld [hl], h
     ld b, $9d
-
-Call_000_1830:
-Jump_000_1830:
     ld [hl], h
     ld b, $1b
     ld [hl], l
@@ -2868,12 +2828,8 @@ Jump_000_1830:
     ld b, $17
     halt
     ld b, $4e
-
-Jump_000_183c:
     halt
     ld b, $cc
-
-Call_000_183f:
     halt
     ld b, $03
     ld [hl], a
@@ -3748,8 +3704,6 @@ Call_000_1f21:
     ld bc, $0150
     ld h, b
     ld bc, $0170
-
-Call_000_1f28:
     nop
     ld bc, $0110
     jr nz, @+$03
@@ -8502,10 +8456,10 @@ jr_000_3c6d:
     call RST_TableJumpBankSwitch
     ld a, $3e
     ld [wInputFreezeTimer], a
-    ld a, [$c620]
+    ld a, [wPlayerIsCarryingItem]
     ld [$cb87], a
-    ld a, $00
-    ld [$c620], a
+    ld a, 0
+    ld [wPlayerIsCarryingItem], a
     ld a, [$b906]
     or a
     ret nz
@@ -8532,10 +8486,10 @@ jr_000_3cb2:
     call RST_TableJumpBankSwitch
     ld a, $3e
     ld [wInputFreezeTimer], a
-    ld a, [$c620]
+    ld a, [wPlayerIsCarryingItem]
     ld [$cb87], a
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, [$b906]
     or a
     ret nz
@@ -8673,7 +8627,7 @@ Call_000_3db3:
     or a
     jr nz, jr_000_3deb
 
-    ld a, [$c620]
+    ld a, [wPlayerIsCarryingItem]
     or a
     jr nz, jr_000_3deb
 

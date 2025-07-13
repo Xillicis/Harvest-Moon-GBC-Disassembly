@@ -539,7 +539,7 @@ Jump_005_4340:
     ld a, [$cb51]
     ld [$cbe8], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ret
 
 
@@ -573,7 +573,7 @@ Call_005_4355:
     ld a, $02
     ld [$c910], a
     ld a, $01
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ret
 
 
@@ -618,7 +618,7 @@ Call_005_43bc:
     or a
     ret z
 
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     cp $00
     jr nz, jr_005_43ef
 
@@ -4935,7 +4935,7 @@ Label_005_5689:
     ld [$cb3a], a
     ret
 
-
+Label_005_5b5f:
     ld a, [wPlayerFacingDirection]
     rst $00
     ld l, h
@@ -4947,7 +4947,6 @@ Label_005_5689:
     inc l
     ld e, l
     ret
-
 
     ld a, [$c606]
     ld l, a
@@ -5035,7 +5034,7 @@ Label_005_5689:
     pop hl
     ret
 
-
+Label_005_5c96:
     ld a, [$c608]
     add $08
     ld l, a
@@ -6775,7 +6774,7 @@ jr_005_66b2:
 
 jr_005_66b3:
     ld a, $08
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret
@@ -6833,7 +6832,7 @@ jr_005_6708:
 
 jr_005_6709:
     ld a, $09
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret

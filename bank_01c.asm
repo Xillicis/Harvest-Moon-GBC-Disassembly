@@ -5850,7 +5850,7 @@ jr_01c_591e:
     ld h, h
     rst $38
     sbc b
-    call nc, Call_000_1f28
+    call nc, $1f28
     dec bc
     rra
     dec bc

@@ -9705,7 +9705,7 @@ jr_01d_702d:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     call Call_01d_713d
     ret
 
@@ -9796,7 +9796,7 @@ jr_01d_70be:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     call Call_01d_713d
     ret
 
@@ -10285,7 +10285,7 @@ jr_01d_72d1:
     ld [$cb4e], a
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [$c800], a
     ld [$cb5a], a
     ld [$cb5b], a
@@ -10442,7 +10442,7 @@ jr_01d_747a:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $03
     call Call_000_18d0
     call Call_01d_7510

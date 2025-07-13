@@ -7786,7 +7786,7 @@ jr_00d_734a:
     or b
     inc [hl]
     ld hl, sp+$6e
-    call c, Call_000_183f
+    call c, $183f
     rra
     rlca
     ld [$0707], sp

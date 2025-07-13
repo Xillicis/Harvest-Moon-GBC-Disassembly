@@ -6408,7 +6408,7 @@ jr_038_5b4c:
 
     ld [hl], c
     rst $38
-    jp nc, Jump_000_147d
+    jp nc, $147d
 
     ld a, b
     ld d, b

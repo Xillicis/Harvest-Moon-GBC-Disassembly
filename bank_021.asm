@@ -263,7 +263,7 @@ jr_021_41cf:
 
 
 Call_021_4208:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     or a
     ret z
 
@@ -283,8 +283,8 @@ Call_021_4208:
 
 jr_021_4221:
     call Call_021_6664
-    ld a, [$c90f]
-    cp $05
+    ld a, [wDestinationWarpID]
+    cp TOWN
     jr z, jr_021_429c
 
     cp $06
@@ -340,7 +340,7 @@ jr_021_4221:
 
 
 jr_021_427f:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     ld b, a
     ld a, [wSTAT_HandlerIndex]
     add b
@@ -364,7 +364,7 @@ jr_021_429c:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$c910], a
     xor a
@@ -380,7 +380,7 @@ Jump_021_42b9:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld a, $01
     ld [$c910], a
@@ -421,7 +421,7 @@ Jump_021_4306:
     ld a, $1c
     ld [$cb50], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld a, $05
     ld [$c910], a
@@ -440,7 +440,7 @@ Jump_021_4325:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$c910], a
     xor a
@@ -451,7 +451,7 @@ Jump_021_4325:
     ld [$c7c0], a
     ld [$c7a0], a
     ld [$c800], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [wHeldObject], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
@@ -471,14 +471,14 @@ Jump_021_436b:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$c910], a
     xor a
     ld [$c7c0], a
     ld [$c7a0], a
     ld [$c800], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [wHeldObject], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
@@ -496,7 +496,7 @@ Jump_021_43a2:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$c910], a
     xor a
@@ -3372,7 +3372,7 @@ jr_021_5667:
     ld a, $14
     ld [hl], a
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -3516,7 +3516,7 @@ jr_021_571e:
     ld a, $50
     ld [hl], a
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -6500,8 +6500,8 @@ jr_021_690a:
 
 
 Call_021_690b:
-    ld a, $01
-    ld [$c90f], a
+    ld a, HOME
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     xor a
@@ -6532,24 +6532,24 @@ jr_021_692a:
 
 
 Call_021_6943:
-    ld a, $02
-    ld [$c90f], a
+    ld a, COW_BARN
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret
 
 
 Call_021_694e:
-    ld a, $03
-    ld [$c90f], a
+    ld a, CHICKEN_COUP
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ret
 
 
 Call_021_6959:
-    ld a, $04
-    ld [$c90f], a
+    ld a, SHED
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     xor a
@@ -6579,8 +6579,8 @@ Call_021_6968:
     cp $00
     ret nz
 
-    ld a, $05
-    ld [$c90f], a
+    ld a, TOWN
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     xor a
@@ -6873,7 +6873,7 @@ jr_021_6b37:
     ld [$cb5f], a
     call Call_000_3efc
     ld a, $06
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ld a, $01
@@ -8184,7 +8184,7 @@ Call_021_7221:
     ld [wInputFreezeTimer], a
     ld [wCollisionNoMovement], a
     ld [$c910], a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$cb56], a
     ld [$cb57], a
@@ -9284,7 +9284,7 @@ jr_021_7933:
     xor a
     ld [$b88c], a
     ld a, $07
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     call Call_021_4208

@@ -2126,7 +2126,7 @@ jr_00c_4bc8:
     push de
     ld sp, $00d8
     call nc, $8031
-    call nc, Call_000_14f8
+    call nc, $14f8
     ld sp, $00d4
     ld b, $31
     db $ec
@@ -2149,7 +2149,7 @@ jr_00c_4be9:
     push de
     ld sp, $00dc
     call nc, $8031
-    call c, Call_000_14f8
+    call c, $14f8
     ld sp, $00dc
     ld b, $31
     db $f4

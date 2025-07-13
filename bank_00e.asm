@@ -95,7 +95,7 @@ jr_00e_4022:
     ld [hl+], a
     ld [hl], a
     ld [$ba0e], a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [wCollisionNoMovement], a
     ld [$c800], a
     ld [$c80e], a
@@ -259,7 +259,7 @@ Call_00e_41a1:
 
 jr_00e_41db:
     ld a, $06
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ld a, [$c606]
@@ -277,7 +277,7 @@ jr_00e_41db:
 
 
 Call_00e_4202:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     or a
     ret z
 
@@ -301,7 +301,7 @@ jr_00e_421b:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld [$c7c0], a
     ld a, $01
@@ -311,7 +311,7 @@ jr_00e_421b:
 
 
 jr_00e_4236:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     ld b, a
     ld a, [wSTAT_HandlerIndex]
     add b
@@ -1595,7 +1595,7 @@ jr_00e_49d6:
     call Call_000_16d1
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1680,7 +1680,7 @@ jr_00e_4a6d:
     call $16d1
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1762,7 +1762,7 @@ Jump_00e_4af9:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 

@@ -362,7 +362,7 @@ Jump_007_4244:
     ld [$c613], a
     xor a
     ld [$c611], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [$cb4a], a
     ld hl, $5ef6
     ld a, $01
@@ -449,7 +449,7 @@ Call_007_4298:
     ld a, $1f
     call $16d1
     ld a, $01
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $80
     ld [$c62f], a
     ld a, $83
@@ -494,7 +494,7 @@ Call_007_4308:
     ld a, $58
     ld [$c60b], a
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $83
     ld [wLCDCTempStorage], a
     xor a
@@ -571,7 +571,7 @@ Call_007_4360:
     ld a, $58
     ld [$c60b], a
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $83
     ld [wLCDCTempStorage], a
     xor a
@@ -11751,7 +11751,7 @@ jr_007_70f5:
     ld a, $18
     ld [$c911], a
     ld a, $01
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     call Call_000_0f0f
     ret
 
@@ -11768,7 +11768,7 @@ jr_007_712a:
     ld a, $01
     ld [$c911], a
     ld a, $02
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $ff
     ld [wTextID], a
     xor a
@@ -11815,7 +11815,7 @@ jr_007_7174:
     xor a
     ld [$b893], a
     ld a, $0a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ld a, $ff

@@ -12188,7 +12188,7 @@ Jump_032_7a1d:
     ret nz
 
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -12205,7 +12205,7 @@ Jump_032_7a29:
     jr nz, jr_032_7a49
 
     xor a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 

@@ -5137,7 +5137,7 @@ Call_006_570d: ; watering can goes here...
     ret
 
 Label_006_57c1:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5161,7 +5161,7 @@ Label_006_57c1:
     ret
 
 Label_006_57ed:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5185,7 +5185,7 @@ Label_006_57ed:
     ret
 
 Label_006_5819:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5209,7 +5209,7 @@ Label_006_5819:
     ret
 
 Label_006_5845:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5233,7 +5233,7 @@ Label_006_5845:
     ret
 
 Label_006_5871:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5257,7 +5257,7 @@ Label_006_5871:
     ret
 
 Label_006_589d:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5281,7 +5281,7 @@ Label_006_589d:
     ret
 
 Label_006_58c9:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5305,7 +5305,7 @@ Label_006_58c9:
     ret
 
 Label_006_58f5:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5329,7 +5329,7 @@ Label_006_58f5:
     ret
 
 Label_006_5921:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5353,7 +5353,7 @@ Label_006_5921:
     ret
 
 Label_006_594d:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5377,7 +5377,7 @@ Label_006_594d:
     ret
 
 Label_006_5979:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5401,7 +5401,7 @@ Label_006_5979:
     ret
 
 Label_006_59a5:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5425,7 +5425,7 @@ Label_006_59a5:
     ret
 
 Label_006_59d1:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5449,7 +5449,7 @@ Label_006_59d1:
     ret
 
 Label_006_59fd:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5473,7 +5473,7 @@ Label_006_59fd:
     ret
 
 Label_006_5a29:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5497,7 +5497,7 @@ Label_006_5a29:
     ret
 
 Label_006_5a55:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, Data_006_5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5527,7 +5527,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5551,7 +5551,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5575,7 +5575,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5599,7 +5599,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5623,7 +5623,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5647,7 +5647,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5671,7 +5671,7 @@ Label_006_5a55:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5695,7 +5695,7 @@ Label_006_5a55:
     ret
 
 Jump_006_569e:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5729,7 +5729,7 @@ Data_006_5bf7:
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
 Label_006_5c17:
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5761,7 +5761,7 @@ Label_006_5c17:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5793,7 +5793,7 @@ Label_006_5c17:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5823,7 +5823,7 @@ Label_006_5c17:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -5854,8 +5854,8 @@ Label_006_5c17:
 
 
     ld a, $00
-    ld [$c620], a
-    ld a, $01
+    ld [wPlayerIsCarryingItem], a
+    ld a, 1
     ld [$c640], a
     ld a, $02
     ld [$c641], a
@@ -5921,8 +5921,8 @@ jr_006_5d68:
 
 
     ld a, $00
-    ld [$c620], a
-    ld a, $01
+    ld [wPlayerIsCarryingItem], a
+    ld a, 1
     ld [$c640], a
     ld a, $02
     ld [$c641], a
@@ -5988,8 +5988,8 @@ jr_006_5de6:
 
 
     ld a, $00
-    ld [$c620], a
-    ld a, $01
+    ld [wPlayerIsCarryingItem], a
+    ld a, 1
     ld [$c640], a
     ld a, $02
     ld [$c641], a
@@ -6055,7 +6055,7 @@ jr_006_5e64:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6121,7 +6121,7 @@ jr_006_5ee2:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6152,7 +6152,7 @@ jr_006_5ee2:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6218,7 +6218,7 @@ jr_006_5f97:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6249,7 +6249,7 @@ jr_006_5f97:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6315,7 +6315,7 @@ jr_006_604c:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6346,7 +6346,7 @@ jr_006_604c:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6412,7 +6412,7 @@ jr_006_6101:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6443,7 +6443,7 @@ jr_006_6101:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6509,7 +6509,7 @@ jr_006_61b6:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6540,7 +6540,7 @@ jr_006_61b6:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6606,7 +6606,7 @@ jr_006_626b:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -6639,7 +6639,7 @@ jr_006_626b:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6710,7 +6710,7 @@ jr_006_6324:
     ret nz
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6781,7 +6781,7 @@ jr_006_63a8:
     ret nz
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6863,7 +6863,7 @@ jr_006_6436:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -6930,7 +6930,7 @@ jr_006_64bc:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7062,7 +7062,7 @@ jr_006_65b3:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7129,7 +7129,7 @@ jr_006_6631:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7200,7 +7200,7 @@ jr_006_66af:
     ret nz
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7271,7 +7271,7 @@ jr_006_6733:
     ret nz
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7375,7 +7375,7 @@ jr_006_67f1:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7406,7 +7406,7 @@ jr_006_67f1:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7472,7 +7472,7 @@ jr_006_68aa:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7502,7 +7502,7 @@ jr_006_68aa:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7532,7 +7532,7 @@ jr_006_68aa:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7563,7 +7563,7 @@ jr_006_68aa:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7708,7 +7708,7 @@ jr_006_69ca:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7739,7 +7739,7 @@ jr_006_69ca:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7812,7 +7812,7 @@ jr_006_6b2b:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7878,7 +7878,7 @@ jr_006_6ba8:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -7943,7 +7943,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7967,7 +7967,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -7991,7 +7991,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8015,7 +8015,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8043,7 +8043,7 @@ jr_006_6c23:
     cp $01
     ret nz
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8067,7 +8067,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8091,7 +8091,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8115,7 +8115,7 @@ jr_006_6c23:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8140,7 +8140,7 @@ jr_006_6c23:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8206,7 +8206,7 @@ jr_006_6e04:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8370,7 +8370,7 @@ jr_006_6f36:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8437,7 +8437,7 @@ jr_006_6fb4:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8504,7 +8504,7 @@ jr_006_7032:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8571,7 +8571,7 @@ jr_006_70b0:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8638,7 +8638,7 @@ jr_006_712e:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8705,7 +8705,7 @@ jr_006_71ac:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -8771,7 +8771,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8795,7 +8795,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8819,7 +8819,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8843,7 +8843,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8867,7 +8867,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8891,7 +8891,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8915,7 +8915,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8945,7 +8945,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -8975,7 +8975,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -9005,7 +9005,7 @@ jr_006_722a:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -9036,7 +9036,7 @@ jr_006_722a:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -9103,7 +9103,7 @@ jr_006_748c:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -9170,7 +9170,7 @@ jr_006_750a:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -9237,7 +9237,7 @@ jr_006_7588:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -9303,7 +9303,7 @@ jr_006_7606:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -9334,7 +9334,7 @@ jr_006_7606:
 
 
     ld a, $00
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $01
     ld [$c640], a
     ld a, $02
@@ -9400,7 +9400,7 @@ jr_006_76bb:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -9430,7 +9430,7 @@ jr_006_76bb:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE
@@ -9460,7 +9460,7 @@ jr_006_76bb:
     ret
 
 
-    ld de, $c620
+    ld de, wPlayerIsCarryingItem
     ld hl, $5bf7
     ld b, $20
     call CopyHLtoDE

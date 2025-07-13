@@ -999,7 +999,7 @@ jr_03c_42f3:
     ei
     ld a, [$0062]
     inc bc
-    ld bc, $c90f
+    ld bc, wDestinationWarpID
     or b
     rst $08
     or b
@@ -6243,7 +6243,7 @@ jr_03c_5b07:
     ld h, h
     rst $38
     sbc b
-    call nc, Call_000_1f28
+    call nc, $1f28
     dec bc
     rra
     dec bc

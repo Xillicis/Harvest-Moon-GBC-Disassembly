@@ -31,11 +31,19 @@ ds 9
 ; 3 - Facing up
 wPlayerFacingDirection:: db ; 0xc60d
 
-ds $300
+ds $12
+
+wPlayerIsCarryingItem:: db ; 0xc620
+
+ds $20
+
+ds $2cd
 
 wCollisionNoMovement:: db ; 0xc90e
 
-ds 3
+wDestinationWarpID:: db ; 0xc90f
+
+ds 2
 
 ; Don't know if this actually freezes input, but functionally it stops you froming doing anything
 wInputFreezeTimer:: db ; 0xc912

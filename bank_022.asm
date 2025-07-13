@@ -3229,7 +3229,7 @@ jr_022_50a8:
     ld [$cb82], a
     ld [$cb89], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [$c90d], a
     ld [$cb91], a
     ld [$cb85], a
@@ -3398,7 +3398,7 @@ jr_022_5241:
     ld a, $18
     ld [$c911], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $01
     ld [wInputFreezeTimer], a
     ret
@@ -3413,8 +3413,8 @@ jr_022_5261:
     ld [$b88d], a
     ld a, $18
     ld [$c911], a
-    ld a, $03
-    ld [$c90f], a
+    ld a, CHICKEN_COUP
+    ld [wDestinationWarpID], a
     ld a, $01
     ld [wInputFreezeTimer], a
     ret
@@ -4159,7 +4159,7 @@ jr_022_56d1:
     ld a, $18
     ld [$c911], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, [wPlayerHoldingPet]
     or a
     ret z
@@ -4389,15 +4389,15 @@ Call_022_57ef:
 
 
 jr_022_57fe:
-    ld a, [$c90f]
-    cp $02
+    ld a, [wDestinationWarpID]
+    cp COW_BARN
     jr z, jr_022_5838
 
-    ld a, [$c90f]
-    cp $03
+    ld a, [wDestinationWarpID]
+    cp CHICKEN_COUP
     jr z, jr_022_5857
 
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     or a
     jr z, jr_022_5823
 
@@ -4537,7 +4537,7 @@ Call_022_5880:
     ld a, $18
     ld [$c911], a
     ld a, $ff
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ret
 
 
@@ -4553,7 +4553,7 @@ jr_022_58f0:
     ld a, $01
     ld [$c911], a
     ld a, $01
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     call Call_000_0f0f
     ret
 

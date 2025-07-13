@@ -2065,7 +2065,7 @@ jr_018_48ce:
     or h
     cp $ec
     cp $cc
-    call z, Call_000_1830
+    call z, $1830
     ldh [rNR34], a
     inc bc
     daa
@@ -6374,7 +6374,7 @@ jr_018_5b54:
     add sp, -$30
     ld [hl], c
     rst $38
-    jp nc, Jump_000_147d
+    jp nc, $147d
 
     ld a, b
 
@@ -14192,7 +14192,7 @@ jr_018_7bfa:
     nop
     rst $38
     ld [$08ff], sp
-    jp z, Jump_000_1830
+    jp z, $1830
 
     ldh [$ff88], a
     ld [hl], b

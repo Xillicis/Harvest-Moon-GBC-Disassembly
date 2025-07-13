@@ -7492,7 +7492,7 @@ jr_035_5f0c:
     ldh [rP1], a
     ld [hl], c
     rst $38
-    jp nc, Jump_000_147d
+    jp nc, $147d
 
     ld a, b
     ld d, b

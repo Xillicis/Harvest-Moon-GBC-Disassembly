@@ -999,7 +999,7 @@ jr_028_4495:
 
 jr_028_44e0:
     ld a, [$cb87]
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, [$c908]
     cp $00
     ret z
@@ -1095,7 +1095,7 @@ jr_028_4552:
 jr_028_4563:
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [$cb80], a
     ret
 

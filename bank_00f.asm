@@ -6022,7 +6022,7 @@ Call_00f_62dc:
     xor a
     ld [$cbe8], a
     ld [$ccb7], a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c800], a
     ld [$c820], a
     ld [$c840], a

@@ -11878,7 +11878,7 @@ jr_033_760f:
     cp l
     ccf
     ld b, d
-    jp Jump_000_183c
+    jp $183c
 
 
     rlca

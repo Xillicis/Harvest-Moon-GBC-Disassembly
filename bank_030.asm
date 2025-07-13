@@ -3044,7 +3044,7 @@ jr_030_4f2d:
     call ClearShadowOAMBuffer
     xor a
     ld [$c600], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld [$c640], a
     ld [$c660], a
     ld [$c680], a

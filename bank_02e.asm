@@ -71,7 +71,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     ld [hl+], a
     ld [hl], a
     ld [$ba0e], a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [wCollisionNoMovement], a
     ld [$c800], a
     ld [$c80e], a
@@ -235,7 +235,7 @@ Call_02e_417d:
 
 jr_02e_41b7:
     ld a, $06
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld a, $20
     ld [$c911], a
     ld a, [$c606]
@@ -253,7 +253,7 @@ jr_02e_41b7:
 
 
 Call_02e_41de:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     or a
     ret z
 
@@ -277,7 +277,7 @@ jr_02e_41f7:
     ld a, $1d
     ld [$cb4f], a
     xor a
-    ld [$c90f], a
+    ld [wDestinationWarpID], a
     ld [$c911], a
     ld a, $01
     ld [$c910], a
@@ -288,7 +288,7 @@ jr_02e_41f7:
 
 
 jr_02e_4213:
-    ld a, [$c90f]
+    ld a, [wDestinationWarpID]
     ld b, a
     ld a, [wSTAT_HandlerIndex]
     add b
@@ -1575,7 +1575,7 @@ jr_02e_49b3:
     call $16d1
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1660,7 +1660,7 @@ jr_02e_4a4a:
     call $16d1
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1742,7 +1742,7 @@ Jump_02e_4ad6:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 

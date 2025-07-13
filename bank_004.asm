@@ -1063,7 +1063,7 @@ jr_004_4694:
     ld [hl], a
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
 
 jr_004_46b1:
     call Call_004_6f3f
@@ -2403,9 +2403,7 @@ NoObjectInteraction:
     jp z, Jump_004_4e5a
 
 ; use current item
-    ld hl, $527d
-    ld a, $01
-    call BankSwitchCallHL
+    callfar Call_001_527d
     ld a, $04
     ld [$cc20], a
     ret
@@ -2671,7 +2669,7 @@ jr_004_50de:
 
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2681,7 +2679,7 @@ jr_004_50ed:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -2792,7 +2790,7 @@ jr_004_5176:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -2946,7 +2944,7 @@ jr_004_527a:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -3086,7 +3084,7 @@ jr_004_527a:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -3214,7 +3212,7 @@ Jump_004_5467:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 
@@ -3224,7 +3222,7 @@ Jump_004_547a:
     xor a
     ld [$cc17], a
     ld [$cb4a], a
-    ld [$c620], a
+    ld [wPlayerIsCarryingItem], a
     ret
 
 

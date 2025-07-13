@@ -2562,7 +2562,7 @@ jr_02c_4ba8:
 
 jr_02c_4bcc:
     call nc, $8020
-    call nc, Call_000_14f8
+    call nc, $14f8
     jr nz, jr_02c_4ba8
 
     nop
@@ -2589,7 +2589,7 @@ jr_02c_4bcc:
 
 jr_02c_4bed:
     call nc, $8020
-    call c, Call_000_14f8
+    call c, $14f8
     jr nz, @-$22
 
 jr_02c_4bf5:
