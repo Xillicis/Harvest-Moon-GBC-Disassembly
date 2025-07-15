@@ -5385,9 +5385,9 @@ Jump_021_62bc:
     call Call_000_191a
     ld a, $01
     ld [$cb74], a
-    ld a, [$b8d4]
+    ld a, [sNumTomatoSeeds]
     dec a
-    ld [$b8d4], a
+    ld [sNumTomatoSeeds], a
     or a
     ret nz
 
@@ -5407,9 +5407,9 @@ Jump_021_62e6:
     call Call_000_191a
     ld a, $02
     ld [$cb74], a
-    ld a, [$b8d5]
+    ld a, [sNumCornSeeds]
     dec a
-    ld [$b8d5], a
+    ld [sNumCornSeeds], a
     or a
     ret nz
 
@@ -5479,9 +5479,9 @@ Jump_021_636a:
     call Call_000_191a
     ld a, $05
     ld [$cb74], a
-    ld a, [$b8d6]
+    ld a, [sNumEggplantSeeds]
     dec a
-    ld [$b8d6], a
+    ld [sNumEggplantSeeds], a
     or a
     ret nz
 
@@ -5501,9 +5501,9 @@ Jump_021_6394:
     call Call_000_191a
     ld a, $06
     ld [$cb74], a
-    ld a, [$b8d7]
+    ld a, [sNumPeanutSeeds]
     dec a
-    ld [$b8d7], a
+    ld [sNumPeanutSeeds], a
     or a
     ret nz
 
@@ -5523,9 +5523,9 @@ Jump_021_63be:
     call Call_000_191a
     ld a, $07
     ld [$cb74], a
-    ld a, [$b8d8]
+    ld a, [sNumCarrotSeeds]
     dec a
-    ld [$b8d8], a
+    ld [sNumCarrotSeeds], a
     or a
     ret nz
 
@@ -5545,9 +5545,9 @@ Jump_021_63e8:
     call Call_000_191a
     ld a, $08
     ld [$cb74], a
-    ld a, [$b8d9]
+    ld a, [sNumBrocolliSeeds]
     dec a
-    ld [$b8d9], a
+    ld [sNumBrocolliSeeds], a
     or a
     ret nz
 

@@ -103,12 +103,12 @@ sb8d0::  db
 sb8d1::  db 
 sNumTurnipSeeds::  db ; 0xb8d2
 sNumPotatoSeeds::  db ; 0xb8d3
-sb8d4::  db 
-sb8d5::  db 
-sb8d6::  db 
-sb8d7::  db 
-sb8d8::  db 
-sb8d9::  db 
+sNumTomatoSeeds::  db ; 0xb8d4
+sNumCornSeeds::  db  ; 0xb8d5
+sNumEggplantSeeds::  db ; 0xb8d6
+sNumPeanutSeeds::  db ; 0xb8d7
+sNumCarrotSeeds::  db ; 0xb8d8
+sNumBrocolliSeeds::  db ; 0xb8d9
 sNumGrassSeeds::  db ; 0xb8da
 ; 0 = Cat, 1 = Dog
 sCatOrDog::  db ; 0xb8db

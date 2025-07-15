@@ -657,22 +657,22 @@ Call_026_4376:
     ld a, [sNumPotatoSeeds]
     ld hl, $98ac
     call Call_026_43d7
-    ld a, [$b8d4]
+    ld a, [sNumTomatoSeeds]
     ld hl, $98ec
     call Call_026_43d7
-    ld a, [$b8d5]
+    ld a, [sNumCornSeeds]
     ld hl, $992c
     call Call_026_43d7
-    ld a, [$b8d6]
+    ld a, [sNumEggplantSeeds]
     ld hl, $996c
     call Call_026_43d7
-    ld a, [$b8d7]
+    ld a, [sNumPeanutSeeds]
     ld hl, $99ac
     call Call_026_43d7
-    ld a, [$b8d8]
+    ld a, [sNumCarrotSeeds]
     ld hl, $99ec
     call Call_026_43d7
-    ld a, [$b8d9]
+    ld a, [sNumBrocolliSeeds]
     ld hl, $9a2c
     call Call_026_43d7
     ld a, [sNumGrassSeeds]

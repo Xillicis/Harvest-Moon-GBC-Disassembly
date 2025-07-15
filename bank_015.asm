@@ -13573,7 +13573,7 @@ jr_015_799c:
     ccf
     rla
     ccf
-    ld [$b8d4], sp
+    ld [sNumTomatoSeeds], sp
     call nz, $ec38
     ret nc
 
