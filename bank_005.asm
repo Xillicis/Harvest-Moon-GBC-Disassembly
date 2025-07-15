@@ -770,75 +770,29 @@ jr_005_446c:
 
 Call_005_44a2:
     ld hl, vBGMap1
-    ld de, $44b0
+    ld de, Data_005_44b0
     ld b, $14
     ld c, $05
     call CopyTileDataToBGMap
     ret
 
+Data_005_44b0:
+    db $C0, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1
+    db $C1, $C1, $C1, $C2, $C6, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD
+    db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7, $C6, $CD, $CD, $CD, $CD, $CD, $CD, $CD
+    db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7, $C6, $CD, $CD, $CD
+    db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7
+    db $C3, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4
+    db $C4, $C4, $C4, $C5, $FA, $10, $C9
 
-    ret nz
-
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    pop bc
-    jp nz, $cdc6
-
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $c7cd
-    add $cd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $c7cd
-    add $cd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $cdcd
-    call $c7cd
-    jp $c4c4
-
-
-    call nz, $c4c4
-    call nz, $c4c4
-    call nz, $c4c4
-    call nz, $c4c4
-    call nz, $c4c4
-    call nz, $fac5
-    db $10
-    ret
-
-
+Label_005_4517:
     cp $01
     jr z, jr_005_4532
 
     cp $02
     jr z, jr_005_4544
 
-    ld hl, $4556
+    ld hl, Data_005_4556
     ld de, $c600
     ld b, $20
     call CopyHLtoDE
@@ -872,85 +826,13 @@ jr_005_4544:
     ldh [$ff93], a
     ret
 
-
-    ld bc, rJOYP
-    nop
-    nop
-    ld [$0058], sp
-    add b
-    nop
-    ld d, b
-    ld h, h
-    nop
-    inc bc
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, rJOYP
-    nop
-    nop
-    ld [$0018], sp
-    dec a
-    nop
-    db $10
-    ld b, l
-    nop
-    inc bc
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, rJOYP
-    nop
-    nop
-    ld [$0058], sp
-    dec l
-    nop
-    ld d, b
-    dec [hl]
-    nop
-    nop
-    ld bc, $0000
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
+Data_005_4556:
+    db $01, $00, $FF, $00, $00, $08, $58, $00, $80, $00, $50, $64, $00, $03, $01, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $01, $00, $FF, $00, $00, $08, $18, $00, $3D, $00, $10, $45, $00, $03, $01, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+    db $01, $00, $FF, $00, $00, $08, $58, $00, $2D, $00, $50, $35, $00, $00, $01, $00
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 
 
 Call_005_45b6:
     ld b, $00
@@ -1035,447 +917,38 @@ jr_005_4616:
     ld a, b
     cp $1d
     jr nz, jr_005_45bb
-
     ret
 
-
-    xor e
-    sbc c
-    ld c, b
-    nop
-    ld b, $00
-    rlca
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    xor l
-    sbc c
-    ld c, d
-    nop
-    rlca
-    nop
-    rlca
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    xor a
-    sbc c
-    ld c, h
-    nop
-    ld [$0700], sp
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    or c
-    sbc c
-    ld c, [hl]
-    nop
-    add hl, bc
-    nop
-    rlca
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    xor e
-    sbc c
-    ld l, b
-    nop
-    ld b, $00
-    rlca
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    xor l
-    sbc c
-    ld l, d
-    nop
-    rlca
-    nop
-    rlca
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    xor a
-    sbc c
-    ld l, h
-    nop
-    ld [$0700], sp
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    or c
-    sbc c
-    ld l, [hl]
-    nop
-    add hl, bc
-    nop
-    rlca
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    and c
-    sbc c
-    ld h, b
-    nop
-    ld bc, $0700
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    and e
-    sbc c
-    ld h, d
-    nop
-    ld [bc], a
-    nop
-    rlca
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    and l
-    sbc c
-    ld h, h
-    nop
-    inc bc
-    nop
-    rlca
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    and a
-    sbc c
-    ld h, [hl]
-    nop
-    inc b
-    nop
-    rlca
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    and a
-    sbc c
-    and [hl]
-    nop
-    inc b
-    nop
-    rlca
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    and a
-    sbc c
-    and h
-    nop
-    inc b
-    nop
-    rlca
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    ld hl, $2899
-    nop
-    ld bc, $0500
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    inc hl
-    sbc c
-    ld a, [hl+]
-    nop
-    ld [bc], a
-    nop
-    dec b
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    dec h
-    sbc c
-    inc l
-    nop
-    inc bc
-    nop
-    dec b
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    daa
-    sbc c
-    ld l, $00
-    inc b
-    nop
-    dec b
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    dec hl
-    sbc c
-    ld [$0600], sp
-    nop
-    dec b
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    dec l
-    sbc c
-    ld a, [bc]
-    nop
-    rlca
-    nop
-    dec b
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    cpl
-    sbc c
-    inc c
-    nop
-    ld [$0500], sp
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    ld sp, $0e99
-    nop
-    add hl, bc
-    nop
-    dec b
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    xor e
-    sbc b
-    ret c
-
-    nop
-    ld b, $00
-    inc bc
-    nop
-    xor b
-    nop
-    xor c
-    nop
-    cp b
-    nop
-    cp c
-    nop
-    xor l
-    sbc b
-    jp c, $0700
-
-    nop
-    inc bc
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    xor a
-    sbc b
-    call c, $0800
-    nop
-    inc bc
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    or c
-    sbc b
-    sbc $00
-    add hl, bc
-    nop
-    inc bc
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
-    and e
-    sbc b
-    jp nc, $0200
-
-    nop
-    inc bc
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    and l
-    sbc b
-    call nc, $0300
-    nop
-    inc bc
-    nop
-    xor d
-    nop
-    xor e
-    nop
-    cp d
-    nop
-    cp e
-    nop
-    and a
-    sbc b
-    sub $00
-    inc b
-    nop
-    inc bc
-    nop
-    xor [hl]
-    nop
-    xor a
-    nop
-    cp [hl]
-    nop
-    cp a
-    nop
+Data_005_461d:
+    db $AB, $99, $48, $00, $06, $00, $07, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $AD, $99, $4A, $00, $07, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $AF, $99, $4C, $00, $08, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $B1, $99, $4E, $00, $09, $00, $07, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $AB, $99, $68, $00, $06, $00, $07, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $AD, $99, $6A, $00, $07, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $AF, $99, $6C, $00, $08, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $B1, $99, $6E, $00, $09, $00, $07, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $A1, $99, $60, $00, $01, $00, $07, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $A3, $99, $62, $00, $02, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $A5, $99, $64, $00, $03, $00, $07, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $A7, $99, $66, $00, $04, $00, $07, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $A7, $99, $A6, $00, $04, $00, $07, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $A7, $99, $A4, $00, $04, $00, $07, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $21, $99, $28, $00, $01, $00, $05, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $23, $99, $2A, $00, $02, $00, $05, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $25, $99, $2C, $00, $03, $00, $05, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $27, $99, $2E, $00, $04, $00, $05, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $2B, $99, $08, $00, $06, $00, $05, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $2D, $99, $0A, $00, $07, $00, $05, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $2F, $99, $0C, $00, $08, $00, $05, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $31, $99, $0E, $00, $09, $00, $05, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $AB, $98, $D8, $00, $06, $00, $03, $00, $A8, $00, $A9, $00, $B8, $00, $B9, $00
+    db $AD, $98, $DA, $00, $07, $00, $03, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $AF, $98, $DC, $00, $08, $00, $03, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $B1, $98, $DE, $00, $09, $00, $03, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00
+    db $A3, $98, $D2, $00, $02, $00, $03, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $A5, $98, $D4, $00, $03, $00, $03, $00, $AA, $00, $AB, $00, $BA, $00, $BB, $00
+    db $A7, $98, $D6, $00, $04, $00, $03, $00, $AE, $00, $AF, $00, $BE, $00, $BF, $00 
 
 Call_005_47ed:
     push de

@@ -569,7 +569,6 @@ UseMilker:
     ld [wInputFreezeTimer], a
     ret
 
-
 UseMedicine:
     ld a, $17
     call RST_TableJumpBankSwitch
@@ -600,13 +599,11 @@ UseMedicine:
     call Call_001_644c
     ret
 
-
 .usedUpMPotion
     xor a
     ld [sShedMPotionFlag], a
     call Call_001_644c
     ret
-
 
 UseCowBell:
     ld b, MEDIUM_ENERGY
@@ -617,7 +614,6 @@ UseCowBell:
     ld [wInputFreezeTimer], a
     ret
 
-
 Jump_001_631d:
     ld b, LARGE_ENERGY
     call CheckForNoEnergyAnimation
@@ -626,7 +622,6 @@ Jump_001_631d:
     ld a, $35
     ld [wInputFreezeTimer], a
     ret
-
 
 Jump_001_632d:
     ld b, LARGE_ENERGY
@@ -646,7 +641,6 @@ Jump_001_632d:
     ld a, RAINY_DAY
     ld [sNextDayWeather], a
     ret
-
 
 jr_001_634f:
     ld a, SNOWY_DAY
@@ -723,7 +717,6 @@ UseGrassSeeds:
     call Call_001_644c
     ret
 
-
 UseTomatoSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
@@ -744,7 +737,6 @@ UseTomatoSeeds:
     ld [$b8b7], a
     call Call_001_644c
     ret
-
 
 UseCornSeeds:
     ld b, SMALL_ENERGY
@@ -767,7 +759,6 @@ UseCornSeeds:
     call Call_001_644c
     ret
 
-
 UseTurnipSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
@@ -789,12 +780,10 @@ UseTurnipSeeds:
     call Call_001_644c
     ret
 
-
 Call_001_644c:
     ld a, $50
     ld [$cb8f], a
     ret
-
 
 UsePotatoSeeds:
     ld b, SMALL_ENERGY

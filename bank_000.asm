@@ -812,6 +812,9 @@ LoadDMGPalettes:
     ldh [rOBP1], a   ; OBP1 ← third byte
     ret
 
+; b = inner loop counter
+; c = outer loop counter
+; b*c = number of bytes to copy
 CopyTileDataToBGMap: ; 00x0a62
 .outerLoop
     call .loadRow
