@@ -988,7 +988,7 @@ jr_010_4fbe:
     ld [$c720], a
     ld [$c740], a
     ld [$c760], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     ld [$c800], a

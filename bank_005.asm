@@ -16,7 +16,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     pop hl
     call Call_005_483e
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c780], a
     ld [$c820], a
     ld [$b88d], a

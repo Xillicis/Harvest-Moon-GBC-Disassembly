@@ -15,7 +15,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     pop af
     pop hl
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c780], a
     call ClearBGMap0
     call ClearBGMap1
@@ -2123,9 +2123,7 @@ jr_004_4d41:
     cp $ff
     jp z, Jump_004_4e5a
 
-    ld hl, $527d
-    ld a, $01
-    call BankSwitchCallHL
+    callfar PlayerInteraction_A_Pressed
     ld a, [sItemSlot]
     ld hl, sInventory
     add l
@@ -2403,7 +2401,7 @@ NoObjectInteraction:
     jp z, Jump_004_4e5a
 
 ; use current item
-    callfar Call_001_527d
+    callfar PlayerInteraction_A_Pressed
     ld a, $04
     ld [$cc20], a
     ret

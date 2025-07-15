@@ -3072,7 +3072,7 @@ jr_002_50ec:
     ld [$cb7c], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     ld [$cb4a], a
     ld [wPlayerIsCarryingItem], a
     ld [$c90d], a
@@ -3601,7 +3601,7 @@ Jump_002_549d:
     call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3639,7 +3639,7 @@ Jump_002_54dc:
     call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3677,7 +3677,7 @@ Jump_002_551b:
     call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3715,7 +3715,7 @@ Jump_002_555a:
     call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3814,7 +3814,7 @@ jr_002_55da:
     call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3854,7 +3854,7 @@ Jump_002_562d:
     call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3894,7 +3894,7 @@ Jump_002_566e:
     call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3934,7 +3934,7 @@ Jump_002_56af:
     call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -5696,63 +5696,76 @@ Jump_002_62d8:
 
 Data_002_62f1:
     db $01, $00, $FF, $00, $00, $08, $88, $00, $80, $00, $50, $64, $00, $03, $01, $00,
+Data_002_6301:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $40, $00, $40, $48, $00, $00, $01, $00,
+Data_002_6311:
     db $01, $00, $FF, $00, $00, $08, $F6, $00, $4D, $00, $8E, $55, $00, $03, $01, $00,
+Data_002_6321:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $40, $00, $40, $48, $00, $00, $01, $00,
+Data_002_6331:
     db $01, $00, $FF, $00, $00, $08, $A8, $00, $6D, $00, $50, $64, $00, $03, $01, $00,
+Data_002_6341:
     db $01, $00, $FF, $00, $00, $08, $78, $00, $80, $00, $50, $64, $00, $03, $01, $00,
+Data_002_6351:
     db $01, $00, $FF, $00, $00, $08, $78, $00, $40, $00, $50, $48, $00, $00, $01, $00,
+Data_002_6361:
     db $01, $00, $FF, $00, $00, $08, $88, $00, $6D, $00, $50, $64, $00, $03, $01, $00,
+Data_002_6371:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $40, $00, $40, $48, $00, $00, $01, $00,
+Data_002_6381:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $3D, $00, $40, $45, $00, $03, $01, $00,
+Data_002_6391:
     db $01, $00, $FF, $00, $00, $08, $58, $00, $80, $00, $50, $64, $00, $03, $01, $00,
+Data_002_63a1:
     db $01, $00, $FF, $00, $00, $08, $80, $00, $40, $00, $78, $48, $00, $00, $01, $00,
+Data_002_63b1:
     db $01, $00, $FF, $00, $00, $08, $86, $00, $6D, $00, $7E, $64, $00, $03, $01, $00,
+Data_002_63c1:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $40, $00, $40, $48, $00, $00, $01, $00,
+Data_002_63d1:
     db $01, $00, $FF, $00, $00, $08, $48, $00, $3D, $00, $40, $45, $00, $03, $01, $00,
+Data_002_63e1:
     db $01, $05, $02, $00, $00, $08, $2D, $00, $80, $00, $00, $00, $00, $02, $00, $00,
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
+Data_002_6401:
     db $01, $05, $22, $00, $00, $08, $2D, $00, $80, $00, $00, $00, $00, $02, $00, $00,
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
 
 Call_002_6421:
     ld a, [$b8e1]
     or a
-    jr nz, jr_002_645d
+    jr nz, .jr_002_645d
 
     ld a, [wPlayerHoldingPet]
     or a
-    jr nz, jr_002_645d
+    jr nz, .jr_002_645d
 
     ld a, [sCatOrDog]
     or a
-    jr z, jr_002_6448
-
-    ld hl, $6401
-    ld de, $c7a0
+    jr z, .cat
+    ld hl, Data_002_6401
+    ld de, wPetIsPresentOnMap
     ld b, $20
     call CopyHLtoDE
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
     ret
-
-jr_002_6448:
-    ld hl, $63e1
-    ld de, $c7a0
+.cat
+    ld hl, Data_002_63e1
+    ld de, wPetIsPresentOnMap
     ld b, $20
     call CopyHLtoDE
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $00
     call Call_000_1622
     ret
 
-
-jr_002_645d:
+.jr_002_645d
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ret
 
 Data_002_6462:

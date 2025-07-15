@@ -74,10 +74,10 @@ sb8b3::  db
 sShedGrassSeedsFlag::  db ; 0xb8b4
 sShedTurnipSeedsFlag::  db ; 0xb8b5
 sShedPotatoSeedsFlag::  db ; 0xb8b6
-sb8b7::  db 
-sb8b8::  db 
-sShedEggplantSeedsFlag::  db 
-sShedPeanutSeedsFlag::  db 
+sShedTomatoSeedsFlag::  db ; 0xb8b7
+sShedCornSeedsFlag::  db ; 0xb8b8
+sShedEggplantSeedsFlag::  db ; 0xb8b9
+sShedPeanutSeedsFlag::  db ; 0xb8ba
 sb8bb::  db 
 sb8bc::  db 
 sb8bd::  db 

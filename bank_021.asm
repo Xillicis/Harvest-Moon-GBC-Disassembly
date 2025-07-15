@@ -177,7 +177,7 @@ jr_021_4120:
     ld [$b90e], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     call Call_021_6b77
     call Call_021_7221
     call LoadHouseExpansionTileDataIntoSRAM
@@ -369,7 +369,7 @@ jr_021_429c:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     pop hl
     ret
 
@@ -427,7 +427,7 @@ Jump_021_4306:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     pop hl
     ret
 
@@ -445,18 +445,18 @@ Jump_021_4325:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [wPlayerIsCarryingItem], a
     ld [wHeldObject], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerHoldingPet], a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     ld a, $00
     call RST_TableJumpBankSwitch
     pop hl
@@ -476,14 +476,14 @@ Jump_021_436b:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [wPlayerIsCarryingItem], a
     ld [wHeldObject], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerHoldingPet], a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     pop hl
     ret
 
@@ -501,7 +501,7 @@ Jump_021_43a2:
     ld [$c910], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     pop hl
     ret
 
@@ -811,7 +811,7 @@ Jump_021_4510:
 
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -868,7 +868,7 @@ Jump_021_456e:
 
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -926,7 +926,7 @@ Jump_021_45cf:
 
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -984,7 +984,7 @@ Jump_021_4630:
 
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1096,7 +1096,7 @@ jr_021_46d7:
 
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1146,7 +1146,7 @@ jr_021_4739:
     ld d, $00
     ld e, $e0
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1197,7 +1197,7 @@ Jump_021_478e:
 
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1251,7 +1251,7 @@ jr_021_47de:
     ld d, $00
     ld e, $20
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1297,7 +1297,7 @@ Jump_021_4830:
 
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1351,7 +1351,7 @@ jr_021_4880:
     ld d, $e0
     ld e, $00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1398,7 +1398,7 @@ Jump_021_48d5:
 
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1452,7 +1452,7 @@ jr_021_4925:
     ld d, $20
     ld e, $00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1854,7 +1854,7 @@ jr_021_4bd6:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     jr nz, jr_021_4c62
 
@@ -1917,7 +1917,7 @@ jr_021_4c62:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -1980,7 +1980,7 @@ Jump_021_4ce9:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     jr nz, jr_021_4d72
 
@@ -2042,7 +2042,7 @@ jr_021_4d72:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -2104,7 +2104,7 @@ Jump_021_4df7:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     jr nz, jr_021_4e80
 
@@ -2166,7 +2166,7 @@ jr_021_4e80:
     call Call_000_19aa
     ld a, $01
     ld [wPlayerIsRidingHorse], a
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -2251,8 +2251,8 @@ Jump_021_4f44:
     ld a, $01
     ld [wPlayerHoldingPet], a
     xor a
-    ld [$c7a0], a
-    ld [$cb89], a
+    ld [wPetIsPresentOnMap], a
+    ld [wPlayerInFrontOfPet], a
     ret
 
 
@@ -2303,7 +2303,7 @@ jr_021_4f68:
     ret nz
 
     ld a, [wPlayerFacingDirection]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     add $00
     call Call_000_1622
     ld a, [$c606]
@@ -2322,14 +2322,14 @@ jr_021_4f68:
     ld [$c7b2], a
     call Call_021_5238
     ld a, $01
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     xor a
     ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -2337,7 +2337,7 @@ jr_021_4f68:
 
 
 Jump_021_4ff6:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $00
     call Call_000_163d
@@ -2374,7 +2374,7 @@ Jump_021_5000:
     ret nz
 
     ld a, [wPlayerFacingDirection]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     add $00
     call Call_000_1622
     ld a, [$c606]
@@ -2393,14 +2393,14 @@ Jump_021_5000:
     ld [$c7b2], a
     call Call_021_5238
     ld a, $01
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     xor a
     ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -2472,7 +2472,7 @@ Jump_021_508e:
     ret nz
 
     ld a, [wPlayerFacingDirection]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     add $00
     call Call_000_1622
     ld a, [$c608]
@@ -2491,14 +2491,14 @@ Jump_021_508e:
     ld [$c7b2], a
     call Call_021_5238
     ld a, $01
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     xor a
     ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -2585,7 +2585,7 @@ jr_021_51bb:
 
 jr_021_51ea:
     ld a, [wPlayerFacingDirection]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     add $00
     call Call_000_1622
     ld a, [$c608]
@@ -2604,14 +2604,14 @@ jr_021_51ea:
     ld [$c7b2], a
     call Call_021_5238
     ld a, $01
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     xor a
     ld [wPlayerHoldingPet], a
     ld a, [sCatOrDog]
     cp $00
     jp z, Jump_021_4ff6
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -2643,7 +2643,7 @@ Call_021_5251:
     or a
     jp nz, Jump_021_4bbf
 
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     jp nz, Jump_021_4f44
 
@@ -3654,7 +3654,7 @@ Jump_021_5854:
 
 
 Call_021_5856:
-    ld a, [$c7a0]
+    ld a, [wPetIsPresentOnMap]
     or a
     ret z
 
@@ -5391,7 +5391,7 @@ Jump_021_62bc:
     or a
     ret nz
 
-    ld [$b8b7], a
+    ld [sShedTomatoSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -5413,7 +5413,7 @@ Jump_021_62e6:
     or a
     ret nz
 
-    ld [$b8b8], a
+    ld [sShedCornSeedsFlag], a
     call Call_021_633a
     ret
 
@@ -6916,14 +6916,14 @@ Call_021_6b77:
     ld a, [$b8e5]
     ld [$c7a9], a
     ld a, $01
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld a, $05
     ld [$c7a1], a
     jr jr_021_6bab
 
 jr_021_6ba7:
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
 
 jr_021_6bab:
     ld hl, $6c43

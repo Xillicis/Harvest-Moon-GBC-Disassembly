@@ -9,9 +9,9 @@ dw 120   ; TOMATO
 dw $0000 
 dw $0000
 dw $0000
-dw 60    ; TURNIP
+dw 60    ; Turnip or Eggplant?
 dw $0000
-dw 80    ; POTATO
+dw 80    ; potato or peanut
 dw $0000
 dw 350   ; LARGE_MILK
 dw $0000
@@ -41,8 +41,8 @@ dw 500
 dw $0000
 dw $0000
 dw 150   ; carrot or broccoli
-dw 60    ; EGGPLANT
-dw 80    ; PEANUT
+dw 60    ; Turnip or Eggplant?
+dw 80    ; potato or peanut
 dw 150   ; carrot or broccoli
 dw $0000
 dw $0000

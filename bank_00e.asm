@@ -101,7 +101,7 @@ jr_00e_4022:
     ld [$c80e], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call $5142
@@ -320,7 +320,7 @@ jr_00e_4236:
     ld [$cb4f], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     pop hl
     ret
 

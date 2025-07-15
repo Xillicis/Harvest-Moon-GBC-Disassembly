@@ -6033,7 +6033,7 @@ Call_00f_62dc:
     ld [$c8e0], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0
@@ -7563,7 +7563,7 @@ jr_00f_6c70:
     ld [$c860], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0

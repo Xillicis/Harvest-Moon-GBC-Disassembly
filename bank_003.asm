@@ -7,7 +7,7 @@ SECTION "ROM Bank $003", ROMX[$4000], BANK[$3]
 
     inc bc
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c780], a
     call ClearBGMap0
     call ClearBGMap1

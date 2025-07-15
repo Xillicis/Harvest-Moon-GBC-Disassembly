@@ -35,9 +35,25 @@ ds $12
 
 wPlayerIsCarryingItem:: db ; 0xc620
 
-ds $20
+ds $70
 
-ds $2cd
+ds $10f
+
+wPetIsPresentOnMap:: db ; 0xc7a0
+
+ds 1
+
+; high nybble is location
+; low nybble is the pose (facing left, sitting facing right, etc... need to document)
+wPetLocationAndPose:: db ; 0xc7a2
+
+ds 4
+
+ds 6
+
+wPetFacingDirection:: db ; 0xc7ad
+
+ds $160
 
 wCollisionNoMovement:: db ; 0xc90e
 
@@ -93,8 +109,11 @@ ds 2
 
 wPlayerIsRidingHorse:: db ; 0xcb84
 
-ds 6
+ds 4
 
+wPlayerInFrontOfPet:: db ; 0xcb89
+
+ds 1
 
 ; a flag to indicate the player is or is not holding a pet (0 or 1)
 wPlayerHoldingPet:: db ; 0xcb8b

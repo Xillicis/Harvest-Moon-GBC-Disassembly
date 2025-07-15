@@ -3227,7 +3227,7 @@ jr_022_50a8:
     ld [$cb7c], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     ld [$cb4a], a
     ld [wPlayerIsCarryingItem], a
     ld [$c90d], a
@@ -3686,7 +3686,7 @@ Jump_022_53e7:
     call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3727,7 +3727,7 @@ Jump_022_542d:
     call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3768,7 +3768,7 @@ Jump_022_5473:
     call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3809,7 +3809,7 @@ Jump_022_54b9:
     call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3911,7 +3911,7 @@ jr_022_5547:
     call RST_TableJumpBankSwitch
     ld de, $00fc
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3951,7 +3951,7 @@ Jump_022_559a:
     call RST_TableJumpBankSwitch
     ld de, $0004
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -3991,7 +3991,7 @@ Jump_022_55db:
     call RST_TableJumpBankSwitch
     ld de, $fc00
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -4031,7 +4031,7 @@ Jump_022_561c:
     call RST_TableJumpBankSwitch
     ld de, $0400
     call Call_000_19aa
-    ld a, [$cb89]
+    ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
 
@@ -6556,10 +6556,10 @@ Call_022_638e:
     jr z, jr_022_63b5
 
     ld hl, $636e
-    ld de, $c7a0
+    ld de, wPetIsPresentOnMap
     ld b, $20
     call CopyHLtoDE
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -6568,10 +6568,10 @@ Call_022_638e:
 
 jr_022_63b5:
     ld hl, $634e
-    ld de, $c7a0
+    ld de, wPetIsPresentOnMap
     ld b, $20
     call CopyHLtoDE
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $00
     call Call_000_1622
@@ -6580,7 +6580,7 @@ jr_022_63b5:
 
 jr_022_63ca:
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ret
 
 

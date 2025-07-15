@@ -4834,7 +4834,7 @@ Call_028_59cb:
     nop
     ld bc, $0001
     ld bc, $0001
-    ld a, [$c7a0]
+    ld a, [wPetIsPresentOnMap]
     or a
     ret z
 
@@ -4970,14 +4970,12 @@ Call_028_5abd:
     and $01
     ret z
 
-    ld a, [$c7ad]
-    cp $00
+    ld a, [wPetFacingDirection]
+    cp FACING_DOWN
     jr z, jr_028_5b2c
-
-    cp $03
+    cp FACING_UP
     jp z, Jump_028_5b58
-
-    cp $01
+    cp FACING_LEFT
     jp z, Jump_028_5b8b
 
     ld bc, $fffc
@@ -5319,12 +5317,12 @@ jr_028_5ce2:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     ld a, $40
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $04
     call Call_000_1622
@@ -5346,7 +5344,7 @@ jr_028_5d2a:
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $00
     call Call_000_1622
@@ -5362,7 +5360,7 @@ Jump_028_5d50:
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $12
@@ -5379,7 +5377,7 @@ Jump_028_5d6e:
     ld a, [$c0a8]
     and $01
     inc a
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     ldh a, [$ff9d]
     and $1f
     ld b, a
@@ -5388,7 +5386,7 @@ Jump_028_5d6e:
     ld [$c7b1], a
     ld a, $01
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $08
@@ -5410,7 +5408,7 @@ Jump_028_5d9f:
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $0a
@@ -5433,7 +5431,7 @@ Jump_028_5dc6:
     ld [$c7b1], a
     ld a, $01
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $0e
@@ -5457,7 +5455,7 @@ Jump_028_5df0:
     ld [$c7b1], a
     ld a, $03
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $14
@@ -5470,7 +5468,7 @@ Jump_028_5df0:
 
 
 Jump_028_5e1c:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $00
     call Call_000_1622
     ld a, $78
@@ -5512,7 +5510,7 @@ Call_028_5e33:
 
 
 jr_028_5e54:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $00
     call Call_000_1622
     ld a, $3c
@@ -5595,8 +5593,8 @@ jr_028_5ebc:
     ld [$c7b1], a
     ld a, h
     ld [$c7b2], a
-    ld a, $01
-    ld [$c7ad], a
+    ld a, FACING_LEFT
+    ld [wPetFacingDirection], a
     jr jr_028_5f02
 
 jr_028_5ece:
@@ -5605,8 +5603,8 @@ jr_028_5ece:
     ld [$c7b1], a
     ld a, h
     ld [$c7b2], a
-    ld a, $02
-    ld [$c7ad], a
+    ld a, FACING_RIGHT
+    ld [wPetFacingDirection], a
     jr jr_028_5f02
 
 jr_028_5ee0:
@@ -5615,8 +5613,8 @@ jr_028_5ee0:
     ld [$c7b1], a
     ld a, b
     ld [$c7b2], a
-    ld a, $03
-    ld [$c7ad], a
+    ld a, FACING_UP
+    ld [wPetFacingDirection], a
     jr jr_028_5f02
 
 jr_028_5ef2:
@@ -5625,8 +5623,8 @@ jr_028_5ef2:
     ld [$c7b1], a
     ld a, b
     ld [$c7b2], a
-    ld a, $00
-    ld [$c7ad], a
+    ld a, FACING_DOWN
+    ld [wPetFacingDirection], a
 
 jr_028_5f02:
     ld b, a
@@ -5692,14 +5690,12 @@ Call_028_5f38:
     and $01
     ret z
 
-    ld a, [$c7ad]
-    cp $00
+    ld a, [wPetFacingDirection]
+    cp FACING_DOWN
     jr z, jr_028_5fa4
-
-    cp $03
+    cp FACING_UP
     jp z, Jump_028_5fd0
-
-    cp $01
+    cp FACING_LEFT
     jp z, Jump_028_6003
 
     ld bc, $fffc
@@ -6032,12 +6028,12 @@ jr_028_615b:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     ld a, $40
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $24
     call Call_000_163d
@@ -6058,7 +6054,7 @@ Jump_028_61a3:
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     ld b, a
     add $20
     call Call_000_163d
@@ -6080,7 +6076,7 @@ Jump_028_61c9:
     xor a
     ld [$c7b2], a
     ld a, $00
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     add $2c
     call Call_000_163d
     ld a, $00
@@ -6095,7 +6091,7 @@ Jump_028_61f0:
     ld a, [$c0a8]
     and $01
     inc a
-    ld [$c7ad], a
+    ld [wPetFacingDirection], a
     ldh a, [$ff9d]
     and $1f
     ld b, a
@@ -6104,7 +6100,7 @@ Jump_028_61f0:
     ld [$c7b1], a
     ld a, $01
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $28
@@ -6126,7 +6122,7 @@ Jump_028_6221:
     ld [$c7b1], a
     xor a
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $2a
@@ -6150,7 +6146,7 @@ Jump_028_6248:
     ld [$c7b1], a
     ld a, $03
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $2d
@@ -6174,7 +6170,7 @@ Jump_028_6274:
     ld [$c7b1], a
     ld a, $03
     ld [$c7b2], a
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     dec a
     ld b, a
     add $2f
@@ -6187,7 +6183,7 @@ Jump_028_6274:
 
 
 Jump_028_62a0:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $20
     call Call_000_163d
     ld a, $78
@@ -6224,7 +6220,7 @@ Call_028_62b5:
 
 
 jr_028_62d6:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $20
     call Call_000_163d
     ld a, $3c
@@ -6252,7 +6248,7 @@ Call_028_62ec:
     ld c, l
     pop hl
     call Call_028_59cb
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     cp $00
     jr z, jr_028_6324
 
@@ -6322,7 +6318,7 @@ jr_028_634e:
     cp $00
     jr z, jr_028_636b
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $20
     call Call_000_163d
     ld a, $78
@@ -6335,7 +6331,7 @@ jr_028_634e:
 
 
 jr_028_636b:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $00
     call Call_000_1622
     ld a, $78
@@ -6349,11 +6345,11 @@ jr_028_636b:
 Call_028_637e:
     xor a
     ld [$cb83], a
-    ld a, [$c7a0]
+    ld a, [wPetIsPresentOnMap]
     or a
     ret z
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     cp $01
     jr z, jr_028_63ce
 
@@ -6472,7 +6468,7 @@ Jump_028_6406:
     cp $00
     jr z, jr_028_6423
 
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $20
     call Call_000_163d
     ld a, $78
@@ -6485,7 +6481,7 @@ Jump_028_6406:
 
 
 jr_028_6423:
-    ld a, [$c7ad]
+    ld a, [wPetFacingDirection]
     add $00
     call Call_000_1622
     ld a, $78

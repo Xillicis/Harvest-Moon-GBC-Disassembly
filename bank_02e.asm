@@ -77,7 +77,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     ld [$c80e], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call $511f
@@ -297,7 +297,7 @@ jr_02e_4213:
     ld [$cb4f], a
     xor a
     ld [$c7c0], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     pop hl
     ret
 

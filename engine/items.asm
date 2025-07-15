@@ -734,7 +734,7 @@ UseTomatoSeeds:
     or a
     ret nz
 
-    ld [$b8b7], a
+    ld [sShedTomatoSeedsFlag], a
     call Call_001_644c
     ret
 
@@ -755,7 +755,7 @@ UseCornSeeds:
     or a
     ret nz
 
-    ld [$b8b8], a
+    ld [sShedCornSeedsFlag], a
     call Call_001_644c
     ret
 

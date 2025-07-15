@@ -1685,7 +1685,7 @@ jr_01f_4828:
     ld c, b
     ld c, c
     ld e, h
-    call nc, Call_000_1648
+    call nc, $1648
     ld e, d
     db $f4
     ld d, h

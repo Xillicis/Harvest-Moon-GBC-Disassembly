@@ -6029,7 +6029,7 @@ Call_02f_62dd:
     ld [$c8e0], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0
@@ -7507,7 +7507,7 @@ jr_02f_6c1a:
     ld [$c860], a
     ld [$c760], a
     ld [$c780], a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c800], a
     ld [$c820], a
     call ClearBGMap0

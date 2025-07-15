@@ -7,7 +7,7 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
 
     dec h
     xor a
-    ld [$c7a0], a
+    ld [wPetIsPresentOnMap], a
     ld [$c780], a
     ld [$c820], a
     ld [$b88d], a

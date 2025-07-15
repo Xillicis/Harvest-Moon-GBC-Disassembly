@@ -2504,7 +2504,7 @@ Call_000_1622:
 
 jr_000_162e:
     pop af
-    ld hl, $c7a2
+    ld hl, wPetLocationAndPose
     cp [hl]
     ret z
 
@@ -2525,13 +2525,11 @@ Call_000_163d:
 
     pop af
     add $40
-
-Call_000_1648:
     push af
 
 jr_000_1649:
     pop af
-    ld hl, $c7a2
+    ld hl, wPetLocationAndPose
     cp [hl]
     ret z
 
@@ -3162,8 +3160,8 @@ Call_000_19aa:
     jr nz, jr_000_19f2
 
     xor a
-    ld [$cb89], a
-    ld a, [$c7a0]
+    ld [wPlayerInFrontOfPet], a
+    ld a, [wPetIsPresentOnMap]
     or a
     ret z
 
@@ -3216,13 +3214,12 @@ jr_000_19e9:
 
 jr_000_19ec:
     ld a, $01
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     ret
-
 
 jr_000_19f2:
     xor a
-    ld [$cb89], a
+    ld [wPlayerInFrontOfPet], a
     ret
 
 CheckForNoEnergyAnimation:
