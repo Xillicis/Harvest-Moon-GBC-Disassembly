@@ -937,13 +937,13 @@ jr_001_5216:
 
 Call_001_5264:
     ld a, [$c7a6]
-    ld [$b8e2], a
+    ld [sPetXPosition], a
     ld a, [$c7a7]
-    ld [$b8e3], a
+    ld [sPetXPosition+1], a
     ld a, [$c7a8]
-    ld [$b8e4], a
+    ld [sPetYPosition], a
     ld a, [$c7a9]
-    ld [$b8e5], a
+    ld [sPetYPosition+1], a
     ret
 
 PlayerInteraction_A_Pressed:

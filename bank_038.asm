@@ -13981,7 +13981,7 @@ jr_038_7b3c:
     or $0e
     or $0e
     ldh a, [c]
-    jp c, $b8e4
+    jp c, sPetYPosition
 
     ld a, a
     ld e, a

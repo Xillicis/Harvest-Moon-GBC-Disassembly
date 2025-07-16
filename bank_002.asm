@@ -4068,7 +4068,7 @@ jr_002_5764:
     ret z
 
     ld a, $01
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ret
 
 
@@ -4342,7 +4342,7 @@ jr_002_58cb:
     ret z
 
     ld a, $01
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ret
 
 
@@ -5732,7 +5732,7 @@ Data_002_6401:
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
 
 Call_002_6421:
-    ld a, [$b8e1]
+    ld a, [sPetIsOutside]
     or a
     jr nz, .jr_002_645d
 

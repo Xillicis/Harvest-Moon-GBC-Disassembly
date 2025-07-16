@@ -114,11 +114,13 @@ sNumGrassSeeds::  db ; 0xb8da
 sCatOrDog::  db ; 0xb8db
 sPetName::  ds 4 ; 0xb8dc
 sb8e0::  db 
-sb8e1::  db 
-sb8e2::  db 
-sb8e3::  db 
-sb8e4::  db 
-sb8e5::  db 
+; This flag gets set to 1 if your pet is outside.
+sPetIsOutside::  db  ; 0xb8e1
+
+; little endian
+sPetXPosition::  dw  ; 0xb8e2
+sPetYPosition::  dw ; 0xb8e4
+
 sb8e6::  db 
 sb8e7::  db 
 sb8e8::  db 

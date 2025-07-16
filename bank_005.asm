@@ -4594,7 +4594,7 @@ Label_005_5c96:
     pop hl
     ret
 
-
+Label_005_5d2c:
     ld a, [$c608]
     add $08
     ld l, a

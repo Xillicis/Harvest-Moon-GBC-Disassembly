@@ -415,7 +415,7 @@ Jump_001_42e8:
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     pop hl
-    ld a, [$b8e1]
+    ld a, [sPetIsOutside]
     or a
     ret z
 
@@ -424,19 +424,19 @@ Jump_001_42e8:
     jr z, jr_001_431c
 
     xor a
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ld [wPlayerHoldingPet], a
     ret
 
 jr_001_431c:
     ld a, [$c7a6]
-    ld [$b8e2], a
+    ld [sPetXPosition], a
     ld a, [$c7a7]
-    ld [$b8e3], a
+    ld [sPetXPosition+1], a
     ld a, [$c7a8]
-    ld [$b8e4], a
+    ld [sPetYPosition], a
     ld a, [$c7a9]
-    ld [$b8e5], a
+    ld [sPetYPosition+1], a
     ret
 
 Jump_001_4335:
@@ -3983,7 +3983,7 @@ Call_001_6a78:
     ld [$c911], a
     xor a
     ld [$c910], a
-    ld a, [$b8e1]
+    ld a, [sPetIsOutside]
     or a
     ret z
 
@@ -3992,19 +3992,19 @@ Call_001_6a78:
     jr z, jr_001_6a97
 
     ld a, $00
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ret
 
 
 jr_001_6a97:
     ld a, [$c7a6]
-    ld [$b8e2], a
+    ld [sPetXPosition], a
     ld a, [$c7a7]
-    ld [$b8e3], a
+    ld [sPetXPosition+1], a
     ld a, [$c7a8]
-    ld [$b8e4], a
+    ld [sPetYPosition], a
     ld a, [$c7a9]
-    ld [$b8e5], a
+    ld [sPetYPosition+1], a
     ret
 
 
@@ -4368,19 +4368,19 @@ Call_001_6ce4:
     or a
     jr nz, jr_001_6d14
 
-    ld a, [$b8e1]
+    ld a, [sPetIsOutside]
     or a
     jr z, jr_001_6d14
 
-    ld a, [$b8e2]
+    ld a, [sPetXPosition]
     ld [$c7a6], a
-    ld a, [$b8e3]
+    ld a, [sPetXPosition+1]
     ld [$c7a7], a
-    ld a, [$b8e4]
+    ld a, [sPetYPosition]
     ld [$c7a8], a
-    ld a, [$b8e5]
+    ld a, [sPetYPosition+1]
     ld [$c7a9], a
-    ld a, $01
+    ld a, 1
     ld [wPetIsPresentOnMap], a
     ld a, $05
     ld [$c7a1], a

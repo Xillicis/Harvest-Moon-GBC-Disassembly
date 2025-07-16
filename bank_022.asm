@@ -4165,7 +4165,7 @@ jr_022_56d1:
     ret z
 
     ld a, $01
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ret
 
 
@@ -4439,7 +4439,7 @@ jr_022_5838:
     ret z
 
     ld a, $01
-    ld [$b8e1], a
+    ld [sPetIsOutside], a
     ret
 
 
@@ -6543,7 +6543,7 @@ Jump_022_6245:
     nop
 
 Call_022_638e:
-    ld a, [$b8e1]
+    ld a, [sPetIsOutside]
     or a
     jr nz, jr_022_63ca
 
