@@ -304,12 +304,12 @@ Call_023_4278:
     jr nz, jr_023_4295
 
     ld a, $e7
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     jr jr_023_429a
 
 jr_023_4295:
     ld a, $e8
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
 
 jr_023_429a:
     ld a, $f0
@@ -359,12 +359,12 @@ Call_023_42ca:
     jr nz, jr_023_42ee
 
     ld a, $a9
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     jr jr_023_42f3
 
 jr_023_42ee:
     ld a, $ad
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
 
 jr_023_42f3:
     ld a, $f0
@@ -1930,14 +1930,14 @@ jr_023_4b74:
     jr nz, jr_023_4bc2
 
     ld a, $a6
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jr jr_023_4bcc
 
 jr_023_4bc2:
     ld a, $aa
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
 
@@ -1998,14 +1998,14 @@ jr_023_4bcc:
     jr nz, jr_023_4c34
 
     ld a, $a7
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jr jr_023_4c3e
 
 jr_023_4c34:
     ld a, $ab
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
 
@@ -2054,14 +2054,14 @@ jr_023_4c3e:
     jr nz, jr_023_4c92
 
     ld a, $a8
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jr jr_023_4c9c
 
 jr_023_4c92:
     ld a, $ac
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
 
@@ -2114,7 +2114,7 @@ jr_023_4cc6:
 
 Jump_023_4cdb:
     ld a, $a2
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2122,7 +2122,7 @@ Jump_023_4cdb:
 
 Jump_023_4ce6:
     ld a, $a0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2130,7 +2130,7 @@ Jump_023_4ce6:
 
 Jump_023_4cf1:
     ld a, $a3
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2138,7 +2138,7 @@ Jump_023_4cf1:
 
 Jump_023_4cfc:
     ld a, $a1
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

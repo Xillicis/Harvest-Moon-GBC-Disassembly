@@ -141,7 +141,7 @@ sItemSlot::  db  ; 0xb8fb
 sb8fc::  db ; 0xb8fc
 sb8fd::  db 
 sb8fe::  db 
-sb8ff::  db 
+sFoundMoneyInDresser::  db ; 0xb8ff
 sb900::  db 
 sDayOfPreviousSleep::  db ; 0xb901
 sHourOfPreviousSleep::  db ; 0xb902

@@ -2146,28 +2146,28 @@ jr_004_4d41:
 
 .topSignChickenCoup
     ld a, $a2
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
 .bottomLeftSignChickenCoup
     ld a, $a4
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
 .middleSignChickenCoup
     ld a, $a3
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
 .rightSignChickenCoup
     ld a, $a5
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

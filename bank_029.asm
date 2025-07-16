@@ -10415,7 +10415,7 @@ jr_029_7287:
     cp h
     ldh [c], a
     inc e
-    call nz, $b8ff
+    call nz, sFoundMoneyInDresser
     call nz, $17b8
 
 jr_029_72f8:

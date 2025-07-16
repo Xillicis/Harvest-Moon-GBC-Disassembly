@@ -5613,7 +5613,7 @@ jr_005_628c:
     xor a
     ld [$c80c], a
     ld a, $27
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $48
@@ -5713,7 +5713,7 @@ Jump_005_6347:
     xor a
     ld [$c80c], a
     ld a, $28
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $02
     ld [$c811], a
     ret
@@ -5758,7 +5758,7 @@ jr_005_6388:
     xor a
     ld [$c80c], a
     ld a, $2a
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $48
@@ -6127,7 +6127,7 @@ Call_005_65fc:
     xor a
     ld [$c810], a
     ld a, $35
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6265,7 +6265,7 @@ jr_005_66be:
     ld a, $01
     ld [$c813], a
     ld a, $37
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6323,7 +6323,7 @@ jr_005_6714:
     ld a, $01
     ld [$c813], a
     ld a, $38
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6433,7 +6433,7 @@ jr_005_67bb:
 
 jr_005_67c6:
     ld a, $32
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6475,7 +6475,7 @@ jr_005_67f6:
     xor a
     ld [$c820], a
     ld a, $33
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $03
     ld [$c80d], a
     ld a, $0f
@@ -6705,7 +6705,7 @@ Jump_005_6958:
 
 Jump_005_6963:
     ld a, $32
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6714,7 +6714,7 @@ jr_005_6969:
     xor a
     ld [$c820], a
     ld a, $33
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $03
     ld [$c80d], a
     ld a, $0f

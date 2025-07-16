@@ -2154,7 +2154,7 @@ jr_024_4d34:
 
 jr_024_4d8b:
     ld a, $a2
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2162,7 +2162,7 @@ jr_024_4d8b:
 
 jr_024_4d96:
     ld a, $a4
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2170,7 +2170,7 @@ jr_024_4d96:
 
 jr_024_4da1:
     ld a, $a3
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -2178,7 +2178,7 @@ jr_024_4da1:
 
 jr_024_4dac:
     ld a, $a5
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

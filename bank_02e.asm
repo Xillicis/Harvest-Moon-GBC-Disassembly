@@ -211,7 +211,7 @@ Call_02e_417d:
     ld b, a
     ld a, $16
     add b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $f0
     ld [$cb79], a
     ret
@@ -1123,7 +1123,7 @@ Jump_02e_46eb:
 
 Jump_02e_46ef:
     ld a, $ae
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1131,14 +1131,14 @@ Jump_02e_46ef:
 
 Jump_02e_46fa:
     ld a, $af
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
 Jump_02e_4705:
     ld a, $b0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1171,8 +1171,8 @@ Jump_02e_4726:
     ld [sSpriteEventFlags], a
     ld a, 1
     ld [sSpriteFirstInteractionFlag], a
-    ld a, $b1
-    call Call_000_3f52
+    ld a, TEXT_SPRITE_TALK_FIRST_TIME
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1189,20 +1189,18 @@ jr_02e_474d:
     bit 5, a
     jr nz, jr_02e_476a
 
-    ld a, $b2
-    call Call_000_3f52
+    ld a, TEXT_SPRITE_HOWDY
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_02e_476a:
     ld a, $b4
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_02e_4775:
     ld a, [sSpriteEventFlags]
@@ -1210,7 +1208,7 @@ jr_02e_4775:
     jr nz, jr_02e_4787
 
     ld a, $b5
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1218,7 +1216,7 @@ jr_02e_4775:
 
 jr_02e_4787:
     ld a, $b7
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1230,7 +1228,7 @@ jr_02e_4792:
     jr nz, jr_02e_47a4
 
     ld a, $b9
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1238,7 +1236,7 @@ jr_02e_4792:
 
 jr_02e_47a4:
     ld a, $bb
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1254,7 +1252,7 @@ Jump_02e_47af:
     jp nz, Jump_02e_47ca
 
     ld a, $e0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1262,7 +1260,7 @@ Jump_02e_47af:
 
 Jump_02e_47ca:
     ld a, $e1
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, $04
@@ -1278,7 +1276,7 @@ Jump_02e_47da:
     set EVENT_SPRITE_GAVE_BERRY, a
     ld [sSpriteEventFlags], a
     ld a, $c2
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_02e_4726
@@ -1297,7 +1295,7 @@ jr_02e_47f4:
     set 7, a
     ld [sSpriteEventFlags], a
     ld a, $bf
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_02e_4726
@@ -1318,7 +1316,7 @@ jr_02e_4816:
     set 6, a
     ld [sSpriteEventFlags], a
     ld a, $c0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_02e_4726
@@ -1510,7 +1508,7 @@ jr_02e_4955:
     jr nc, jr_02e_4967
 
     ld a, $bc
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1521,7 +1519,7 @@ jr_02e_4967:
     jr nc, jr_02e_4976
 
     ld a, $ee
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1529,7 +1527,7 @@ jr_02e_4967:
 
 jr_02e_4976:
     ld a, $ef
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -3371,7 +3369,7 @@ jr_02e_53aa:
     ld a, $01
     ld [$cc98], a
     ld a, $e6
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -3451,7 +3449,7 @@ jr_02e_5418:
     set 1, a
     ld [$ba0d], a
     ld a, $e1
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $04
     call Call_000_18e6
     ld a, $00
@@ -3489,7 +3487,7 @@ Call_02e_545d:
 
     call Call_02e_50f0
     ld a, $be
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     xor a
     ld [$cc6e], a
     ld a, $00
@@ -4704,7 +4702,7 @@ Call_02e_5bef:
     jr nz, jr_02e_5c0f
 
     ld a, $c1
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $05
     ld [$cc98], a
     ret

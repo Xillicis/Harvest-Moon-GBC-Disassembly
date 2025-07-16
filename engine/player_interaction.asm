@@ -1461,7 +1461,7 @@ jr_001_55a3:
 
 jr_001_55c0:
     ld a, $19
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1469,7 +1469,7 @@ jr_001_55c0:
 
 jr_001_55cb:
     ld a, $18
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1477,7 +1477,7 @@ jr_001_55cb:
 
 jr_001_55d6:
     ld a, $1a
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1485,7 +1485,7 @@ jr_001_55d6:
 
 jr_001_55e1:
     ld a, $1b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -1501,7 +1501,7 @@ jr_001_55ec:
     ret nz
 
     ld a, $1c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret

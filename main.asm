@@ -17,6 +17,7 @@ INCLUDE "constants/physics_constants.asm"
 INCLUDE "constants/player_constants.asm"
 INCLUDE "constants/farm_constants.asm"
 INCLUDE "constants/time_constants.asm"
+INCLUDE "constants/text_constants.asm"
 INCLUDE "constants/event_constants.asm"
 
 

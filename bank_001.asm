@@ -4138,7 +4138,7 @@ Call_001_6b67:
     ld b, a
     ld a, $16
     add b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $f0
     ld [$cb79], a
     ret
@@ -6432,7 +6432,7 @@ jr_001_7951:
     ld [sShipmentPayment], a
     ld [sShipmentPayment+1], a
     ld a, $1f
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6441,7 +6441,7 @@ jr_001_7982:
     ld [$b8fc], a
     ld [$b8fd], a
     ld a, $20
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6752,7 +6752,7 @@ Jump_001_7b8e:
     xor a
     ld [$cbf6], a
     ld a, $53
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
 
 jr_001_7baf:
     ld a, [$cbf6]
@@ -7052,25 +7052,25 @@ Call_001_7d3f:
 
 Jump_001_7dbd:
     ld a, $1e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7dc3:
     ld a, $21
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7dc9:
     ld a, $22
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7dcf:
     ld a, $23
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7079,37 +7079,37 @@ Jump_001_7dd5:
     ld b, a
     ld a, $24
     add b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7de0:
     ld a, $26
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7de6:
     ld a, $29
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7dec:
     ld a, $2b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7df2:
     ld a, $2c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7df8:
     ld a, $2d
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7130,7 +7130,7 @@ Jump_001_7dfe:
     ld [$cbfc], a
     ld [$cbfd], a
     ld a, $2e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 .noHouseExpansion
@@ -7147,29 +7147,29 @@ Jump_001_7dfe:
     ld [$cbfc], a
     ld [$cbfd], a
     ld a, $2e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 Jump_001_7e4d:
     ld a, $2f
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 Jump_001_7e53:
     ld a, $30
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7e59:
     ld a, $34
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_001_7e5f:
     ld a, $36
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7179,12 +7179,12 @@ Jump_001_7e65:
     jr z, jr_001_7e72
 
     ld a, $3a
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 jr_001_7e72:
     ld a, $39
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     xor a
     ld [$b897], a
     ld a, $01
@@ -7227,7 +7227,7 @@ jr_001_7ead:
 
 Jump_001_7ebb:
     ld a, $3b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 Data_001_7ec1:

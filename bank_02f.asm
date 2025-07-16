@@ -6703,13 +6703,13 @@ jr_02f_67e9:
     jr z, jr_02f_680a
 
     ld a, $cf
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6804:
     ld a, $d3
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6943,7 +6943,7 @@ Call_02f_6929:
     set 7, a
     ld [$ccb7], a
     ld a, $ca
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6955,13 +6955,13 @@ jr_02f_694f:
     set 7, a
     ld [$ccb7], a
     ld a, $d4
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6961:
     ld a, $d5
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -6987,13 +6987,13 @@ Call_02f_6967:
     set 6, a
     ld [$ccb7], a
     ld a, $cd
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6991:
     ld a, $ce
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7005,13 +7005,13 @@ jr_02f_6997:
     set 6, a
     ld [$ccb7], a
     ld a, $d6
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_69a9:
     ld a, $d7
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7037,13 +7037,13 @@ Call_02f_69af:
     set 5, a
     ld [$ccb7], a
     ld a, $cb
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_69d9:
     ld a, $cc
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7055,13 +7055,13 @@ jr_02f_69df:
     set 5, a
     ld [$ccb7], a
     ld a, $d8
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_69f1:
     ld a, $d9
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7087,13 +7087,13 @@ Call_02f_69f7:
     set 4, a
     ld [$ccb7], a
     ld a, $d0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6a21:
     ld a, $d1
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7109,13 +7109,13 @@ jr_02f_6a27:
     jr nz, jr_02f_6a3f
 
     ld a, $dc
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6a3f:
     ld a, $de
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7125,13 +7125,13 @@ jr_02f_6a45:
     jr nz, jr_02f_6a51
 
     ld a, $dd
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6a51:
     ld a, $df
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7154,7 +7154,7 @@ Call_02f_6a57:
     set 3, a
     ld [$ccb7], a
     ld a, $d2
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7166,13 +7166,13 @@ jr_02f_6a7d:
     set 3, a
     ld [$ccb7], a
     ld a, $da
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_02f_6a8f:
     ld a, $db
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -7619,7 +7619,7 @@ jr_02f_6d37:
     ld a, $e5
 
 jr_02f_6d44:
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $01
     ld [$ccb9], a
     ret

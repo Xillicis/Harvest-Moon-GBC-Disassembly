@@ -370,7 +370,7 @@ Jump_007_4244:
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, $3e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -380,7 +380,7 @@ Jump_007_4266:
     xor a
     ld [$c611], a
     ld a, $48
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -459,7 +459,7 @@ Call_007_4298:
     ld a, $01
     ldh [rIE], a
     ld a, $3d
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     pop hl
     ret
 
@@ -502,7 +502,7 @@ Call_007_4308:
     ld a, $01
     ldh [rIE], a
     ld a, $3f
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     pop hl
     ret
 
@@ -579,7 +579,7 @@ Call_007_4360:
     ld a, $01
     ldh [rIE], a
     ld a, $41
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     pop hl
     ret
 
@@ -617,7 +617,7 @@ jr_007_4422:
     inc a
     ld [$c613], a
     ld a, $40
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -625,7 +625,7 @@ jr_007_442c:
     inc a
     ld [$c613], a
     ld a, $49
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -633,7 +633,7 @@ jr_007_4436:
     inc a
     ld [$c613], a
     ld a, $4a
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -669,7 +669,7 @@ jr_007_4467:
     inc a
     ld [$c613], a
     ld a, $42
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -677,21 +677,21 @@ jr_007_4471:
     inc a
     ld [$c613], a
     ld a, $4c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
     inc a
     ld [$c613], a
     ld a, $4b
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
     inc a
     ld [$c613], a
     ld a, $4c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 

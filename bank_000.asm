@@ -7826,7 +7826,7 @@ Call_000_387f:
 jr_000_387f:
     call Call_000_3f26
     xor a
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -7839,7 +7839,7 @@ jr_000_387f:
 
 jr_000_389b:
     ld a, $01
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     xor a
     ld [$cb58], a
     ld [$cb5f], a
@@ -7867,7 +7867,7 @@ Call_000_38c1:
     ld a, $ff
     ld [wTextID], a
     ld a, $01
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     xor a
     ld [$cb58], a
     ld [$cb55], a
@@ -8505,7 +8505,7 @@ jr_000_3cb2:
 Call_000_3cf2:
 Jump_000_3cf2:
     ld a, $3c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 Call_000_3cf8:
@@ -8853,7 +8853,7 @@ Call_000_3f26:
     ld [$cb57], a
     ret
 
-Call_000_3f52:
+InitializeTextIDAndDisplay:
     ld b, a
     ld a, [wTextID]
     cp $ff

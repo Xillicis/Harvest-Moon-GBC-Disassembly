@@ -4074,7 +4074,7 @@ jr_002_5764:
 
 jr_002_577f:
     ld a, $44
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4446,7 +4446,7 @@ Call_002_5913:
 
 jr_002_5978:
     ld a, $05
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4463,7 +4463,7 @@ jr_002_5983:
 
 jr_002_5991:
     ld a, $07
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4480,7 +4480,7 @@ jr_002_599c:
     ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$cbed], a
     ld a, $1d
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4489,35 +4489,33 @@ jr_002_599c:
 Jump_002_59bd:
 jr_002_59bd:
     ld a, $08
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_002_59c8:
-    ld a, [$b8ff]
+    ld a, [sFoundMoneyInDresser]
     or a
-    jr nz, jr_002_59e3
+    jr nz, .alreadyReceivedMoney
 
-    ld a, $01
-    ld [$b8ff], a
+    ld a, 1
+    ld [sFoundMoneyInDresser], a
     ld hl, sPlayerMoney
     ld bc, 1000
     call AddSignedBCToHL
     call UpdatePlayerMoneyTileData
-    ld a, $09
-    jr jr_002_59e5
+    ld a, TEXT_FOUND_MONEY_IN_DRESSER
+    jr .loadText
 
-jr_002_59e3:
-    ld a, $0a
+.alreadyReceivedMoney
+    ld a, TEXT_DRESSER
 
-jr_002_59e5:
-    call Call_000_3f52
+.loadText
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Jump_002_59ee:
     ld a, $00
@@ -4534,24 +4532,19 @@ Jump_002_59ee:
     ld [wInputFreezeTimer], a
     ret
 
-
 Jump_002_5a08:
     ld a, [sNumPowerBerriesEaten]
     or a
-    jr nz, jr_002_5a12
-
-    ld a, $45
-    jr jr_002_5a14
-
-jr_002_5a12:
-    ld a, $46
-
-jr_002_5a14:
-    call Call_000_3f52
+    jr nz, .loadFlowerBloomedText
+    ld a, TEXT_NO_FLOWERS
+    jr .loadText
+.loadFlowerBloomedText
+    ld a, TEXT_FLOWERS_BLOOMED
+.loadText
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Jump_002_5a1d:
     ld a, [$b8d1]
@@ -4559,7 +4552,7 @@ Jump_002_5a1d:
     ret z
 
     ld a, $52
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4588,7 +4581,7 @@ jr_002_5a41:
     ld a, $0d
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4598,7 +4591,7 @@ jr_002_5a51:
     ld a, $0f
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4608,7 +4601,7 @@ jr_002_5a61:
     ld a, $0c
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4618,7 +4611,7 @@ jr_002_5a71:
     ld a, $0e
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 INCLUDE "data/weather_probabilities.asm"
@@ -4994,7 +4987,7 @@ jr_002_5ecc:
     xor a
     ld [wInputFreezeTimer], a
     push hl
-    call Call_002_5f31
+    call LoadTVText
     pop hl
     ld bc, $0020
     add hl, bc
@@ -5068,109 +5061,83 @@ jr_002_5f20:
     pop bc
     dec c
     jr nz, jr_002_5efe
-
     ret
 
-
-Call_002_5f31:
+LoadTVText: ; 02x5f31
     ld a, [sCurrentWeather]
     cp WINDY_DAY
-    jp z, Jump_002_5fa8
-
+    jp z, .stayInside
     ld a, [sSeasonOfNextDay]
     cp SPRING
-    jr z, jr_002_5f5b
-
+    jr z, .spring
     cp SUMMER
-    jr z, jr_002_5f6e
-
+    jr z, .summer
     cp AUTUMN
-    jr z, jr_002_5f95
+    jr z, .autumn
 
-    ld a, [sNextDayWeather]
-    cp $00
-    jr z, jr_002_5f55
-
-    ld a, $13
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f55:
-    ld a, $12
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f5b:
+; Winter
     ld a, [sNextDayWeather]
     cp SUNNY_DAY
-    jr z, jr_002_5f68
-
-    ld a, $0d
-    call Call_000_3f52
+    jr z, .winterSunnyDay
+    ld a, TEXT_TV_WINTER_SNOWY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.winterSunnyDay
+    ld a, TEXT_TV_WINTER_SUNNY_DAY
+    call InitializeTextIDAndDisplay
     ret
 
-
-jr_002_5f68:
-    ld a, $0c
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f6e:
+.spring
     ld a, [sNextDayWeather]
-    cp $00
-    jr z, jr_002_5f83
+    cp SUNNY_DAY
+    jr z, .springSunnyDay
+    ld a, TEXT_TV_SPRING_RAINY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.springSunnyDay
+    ld a, TEXT_TV_SPRING_SUNNY_DAY
+    call InitializeTextIDAndDisplay
+    ret
 
-    cp $03
-    jr z, jr_002_5f89
-
+.summer
+    ld a, [sNextDayWeather]
+    cp SUNNY_DAY
+    jr z, .summerSunnyDay
+    cp WINDY_DAY
+    jr z, .summerWindyDay
     cp $04
-    jr z, jr_002_5f8f
-
-    ld a, $0f
-    call Call_000_3f52
+    jr z, .jr_002_5f8f
+    ld a, TEXT_TV_SUMMER_RAINY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.summerSunnyDay
+    ld a, TEXT_TV_SUMMER_SUNNY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.summerWindyDay
+    ld a, TEXT_TV_SUMMER_WINDY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.jr_002_5f8f
+    ld a, TEXT_14
+    call InitializeTextIDAndDisplay
     ret
 
-
-jr_002_5f83:
-    ld a, $0e
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f89:
-    ld a, $15
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f8f:
-    ld a, $14
-    call Call_000_3f52
-    ret
-
-
-jr_002_5f95:
+.autumn
     ld a, [sNextDayWeather]
-    cp $00
-    jr z, jr_002_5fa2
-
-    ld a, $11
-    call Call_000_3f52
+    cp SUNNY_DAY
+    jr z, .autumnSunnyDay
+    ld a, TEXT_TV_AUTUMN_RAINY_DAY
+    call InitializeTextIDAndDisplay
+    ret
+.autumnSunnyDay
+    ld a, TEXT_TV_AUTUMN_SUNNY_DAY
+    call InitializeTextIDAndDisplay
     ret
 
-
-jr_002_5fa2:
-    ld a, $10
-    call Call_000_3f52
-    ret
-
-
-Jump_002_5fa8:
-    ld a, $47
-    call Call_000_3f52
+.stayInside
+    ld a, TEXT_TV_STAY_INSIDE_WINDY_DAY
+    call InitializeTextIDAndDisplay
     ret
 
 ; a random number is selected from this list which decides what food/drink will be consumed.

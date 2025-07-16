@@ -1160,7 +1160,7 @@ jr_010_50ff:
     ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$ccad], a
     ld a, $c3
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $03
     ld [$cca6], a
     ld hl, $b949
@@ -1328,7 +1328,7 @@ jr_010_51f0:
 
 
     ld a, $c6
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $05
     ld [$cca6], a
     ret
@@ -1361,12 +1361,12 @@ jr_010_51f0:
     jr nz, jr_010_522f
 
     ld a, $c4
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     jr jr_010_5234
 
 jr_010_522f:
     ld a, $f0
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
 
 jr_010_5234:
     ld a, $08
@@ -1380,7 +1380,7 @@ jr_010_523a:
     jp nz, Jump_010_5095
 
     ld a, $c5
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $08
     ld [$cca6], a
     ret
@@ -1454,7 +1454,7 @@ jr_010_52a6:
 
 
     ld a, $c7
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $08
     ld [$cca6], a
     ld a, $01
@@ -1463,7 +1463,7 @@ jr_010_52a6:
 
 
     ld a, $c8
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $08
     ld [$cca6], a
     ld a, $01
@@ -1956,7 +1956,7 @@ Call_010_554f:
     adc h
     ld d, l
     ld a, $c9
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $03
     ld [$cca6], a
     ret

@@ -4171,7 +4171,7 @@ jr_022_56d1:
 
 jr_022_56ec:
     ld a, $44
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4543,7 +4543,7 @@ Call_022_5880:
 
 jr_022_58e5:
     ld a, $05
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4560,7 +4560,7 @@ jr_022_58f0:
 
 jr_022_58fe:
     ld a, $07
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4577,7 +4577,7 @@ jr_022_5909:
     ld a, [wDecimalPlayerMoneyTileID+4]
     ld [$cbed], a
     ld a, $1d
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4586,19 +4586,19 @@ jr_022_5909:
 Jump_022_592a:
 jr_022_592a:
     ld a, $08
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
 
 Jump_022_5935:
-    ld a, [$b8ff]
+    ld a, [sFoundMoneyInDresser]
     or a
     jr nz, jr_022_5950
 
     ld a, $01
-    ld [$b8ff], a
+    ld [sFoundMoneyInDresser], a
     ld hl, sPlayerMoney
     ld bc, 1000
     call AddSignedBCToHL
@@ -4610,7 +4610,7 @@ jr_022_5950:
     ld a, $0a
 
 jr_022_5952:
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4644,7 +4644,7 @@ jr_022_597f:
     ld a, $46
 
 jr_022_5981:
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4656,7 +4656,7 @@ Jump_022_598a:
     ret z
 
     ld a, $52
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4685,7 +4685,7 @@ jr_022_59ae:
     ld a, $0d
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4695,7 +4695,7 @@ jr_022_59be:
     ld a, $0f
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4705,7 +4705,7 @@ jr_022_59ce:
     ld a, $0c
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -4715,7 +4715,7 @@ jr_022_59de:
     ld a, $0e
     call Call_000_152a
     ld a, $31
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -5708,13 +5708,13 @@ Call_022_5e9e:
     jr z, jr_022_5ec2
 
     ld a, $13
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5ec2:
     ld a, $12
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -5724,13 +5724,13 @@ jr_022_5ec8:
     jr z, jr_022_5ed5
 
     ld a, $0d
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5ed5:
     ld a, $0c
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -5746,25 +5746,25 @@ jr_022_5edb:
     jr z, jr_022_5efc
 
     ld a, $0f
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5ef0:
     ld a, $0e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5ef6:
     ld a, $15
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5efc:
     ld a, $14
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -5774,19 +5774,19 @@ jr_022_5f02:
     jr z, jr_022_5f0f
 
     ld a, $11
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 jr_022_5f0f:
     ld a, $10
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
 Jump_022_5f15:
     ld a, $47
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 

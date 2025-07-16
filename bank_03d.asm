@@ -9453,7 +9453,7 @@ jr_03d_6d1c:
     ld [$cb54], a
     ld [$cb55], a
     ld a, $e9
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -9555,7 +9555,7 @@ jr_03d_6e12:
 
 
     ld a, $ea
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $14
     call RST_TableJumpBankSwitch
     ld a, $0c
@@ -9671,7 +9671,7 @@ jr_03d_6f2d:
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $eb
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     call Call_03d_6fe0
     ret
 
@@ -9723,7 +9723,7 @@ jr_03d_6f61:
     ld a, $3c
     ld [$cc27], a
     ld a, $4e
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -9737,7 +9737,7 @@ jr_03d_6f61:
     ld [$cc27], a
     call Call_03d_6fe0
     ld a, $4f
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -10230,7 +10230,7 @@ jr_03d_7174:
     ld [$cb54], a
     ld [$cb55], a
     ld a, $ec
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ret
 
 
@@ -10359,7 +10359,7 @@ jr_03d_7310:
 
 
     ld a, $ed
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     ld a, $64
     ld [$cc27], a
     ld a, $00
@@ -10377,7 +10377,7 @@ jr_03d_7310:
     ld a, $64
     ld [$cc27], a
     ld a, $50
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     call Call_03d_73a6
     ret
 
@@ -10391,7 +10391,7 @@ jr_03d_7310:
     ld a, $64
     ld [$cc27], a
     ld a, $51
-    call Call_000_3f52
+    call InitializeTextIDAndDisplay
     call Call_03d_73a6
     ret
 
