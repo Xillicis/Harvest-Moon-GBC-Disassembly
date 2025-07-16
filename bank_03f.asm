@@ -9812,7 +9812,7 @@ jr_03f_6f2f:
     ld a, $00
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, [$ccd3]
     ld [sCurrentYear], a
     ld a, [$ccd4]

@@ -9220,9 +9220,9 @@ jr_012_7119:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -9234,9 +9234,9 @@ jr_012_7119:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $26
     add l
@@ -9268,9 +9268,9 @@ jr_012_7119:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $1f
     add l
@@ -9307,10 +9307,10 @@ jr_012_7119:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -9323,10 +9323,10 @@ jr_012_7119:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $1f
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -9356,10 +9356,10 @@ jr_012_7119:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $18
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -9394,10 +9394,10 @@ jr_012_7119:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -9410,10 +9410,10 @@ jr_012_7119:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $1e
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -9443,10 +9443,10 @@ jr_012_7119:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $17
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -9481,9 +9481,9 @@ jr_012_7119:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -9495,10 +9495,10 @@ jr_012_7119:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0a
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -9531,10 +9531,10 @@ jr_012_7119:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0a
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l

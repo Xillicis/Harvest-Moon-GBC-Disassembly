@@ -168,7 +168,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, $03
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     call UpdateHourTileData
     call UpdateDayOfTheWeekTileData
     call UpdateSeasonTileData
@@ -3396,7 +3396,7 @@ jr_022_5241:
     ret nz
 
     ld a, $18
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     xor a
     ld [wDestinationWarpID], a
     ld a, $01
@@ -3412,7 +3412,7 @@ jr_022_5261:
     xor a
     ld [$b88d], a
     ld a, $18
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, CHICKEN_COUP
     ld [wDestinationWarpID], a
     ld a, $01
@@ -3506,9 +3506,9 @@ jr_022_52ca:
 
     dec a
     ld [$c60b], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     dec a
-    ld [$c608], a
+    ld [wPlayerYPosition], a
 
 jr_022_52e4:
     ld a, [$cb73]
@@ -3531,7 +3531,7 @@ jr_022_52e4:
     ld a, b
     ld c, a
     ld b, $ff
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     call AddBCtoWordAtHL
     ret
 
@@ -3545,10 +3545,10 @@ jr_022_5309:
     ld a, [$c60b]
     add $f3
     ld [$c60b], a
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $ffff
     call AddBCtoWordAtHL
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     ld bc, $fff3
     call AddBCtoWordAtHL
     ret
@@ -3575,7 +3575,7 @@ jr_022_5331:
     ld a, b
     ld c, a
     ld b, $ff
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     call AddBCtoWordAtHL
     ret
 
@@ -4121,11 +4121,11 @@ Jump_022_5696:
 Call_022_56a9:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $83
     jr nc, jr_022_56d1
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $5c
     jr nc, jr_022_56bd
 
@@ -4138,7 +4138,7 @@ jr_022_56bd:
     inc [hl]
 
 jr_022_56c5:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -4157,7 +4157,7 @@ jr_022_56d1:
     jr z, jr_022_56ec
 
     ld a, $18
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     xor a
     ld [wDestinationWarpID], a
     ld a, [wPlayerHoldingPet]
@@ -4180,15 +4180,15 @@ jr_022_56ec:
 Call_022_56f7:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $0e
     ret c
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $5d
     jr nc, jr_022_5711
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $08
     jr c, jr_022_571e
 
@@ -4201,7 +4201,7 @@ jr_022_5711:
     dec [hl]
 
 jr_022_5719:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     dec [hl]
     ret
 
@@ -4217,7 +4217,7 @@ jr_022_571e:
 Call_022_5725:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $18
     ret c
 
@@ -4228,15 +4228,15 @@ Call_022_5725:
     cp $01
     jr z, jr_022_576c
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $b9
     jr nc, jr_022_575c
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_022_574f
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $59
     jr c, jr_022_575c
 
@@ -4247,7 +4247,7 @@ jr_022_574f:
     dec [hl]
 
 jr_022_5757:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -4261,7 +4261,7 @@ jr_022_575c:
 
 
 jr_022_5763:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ld hl, $c60a
     dec [hl]
@@ -4269,15 +4269,15 @@ jr_022_5763:
 
 
 jr_022_576c:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $99
     jr nc, jr_022_578a
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_022_5781
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $59
     jr c, jr_022_578a
 
@@ -4286,7 +4286,7 @@ jr_022_5781:
     dec [hl]
 
 jr_022_5785:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -4302,7 +4302,7 @@ jr_022_578a:
 Call_022_5791:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $f8
     ret nc
 
@@ -4313,11 +4313,11 @@ Call_022_5791:
     cp $01
     jr z, jr_022_57d1
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $b8
     jr nc, jr_022_57c1
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $58
     jr c, jr_022_57c1
 
@@ -4327,7 +4327,7 @@ Call_022_5791:
     inc [hl]
 
 jr_022_57bc:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 
@@ -4341,7 +4341,7 @@ jr_022_57c1:
 
 
 jr_022_57c8:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ld hl, $c60a
     inc [hl]
@@ -4349,11 +4349,11 @@ jr_022_57c8:
 
 
 jr_022_57d1:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $98
     jr nc, jr_022_57e8
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $58
     jr c, jr_022_57e8
 
@@ -4361,7 +4361,7 @@ jr_022_57d1:
     inc [hl]
 
 jr_022_57e3:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 
@@ -4375,12 +4375,12 @@ jr_022_57e8:
 
 
 Call_022_57ef:
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     or a
     ret z
 
     dec a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     cp $00
     jr z, jr_022_57fe
 
@@ -4419,7 +4419,7 @@ jr_022_5823:
     ld a, $00
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     pop hl
     ret
 
@@ -4433,7 +4433,7 @@ jr_022_5838:
     ld a, $02
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, [wPlayerHoldingPet]
     or a
     ret z
@@ -4451,7 +4451,7 @@ jr_022_5857:
     ld a, $03
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     pop hl
     ret
 
@@ -4463,7 +4463,7 @@ jr_022_5857:
     ld a, $03
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
 
 
@@ -4535,7 +4535,7 @@ Call_022_5880:
 
 
     ld a, $18
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $ff
     ld [wDestinationWarpID], a
     ret
@@ -4551,7 +4551,7 @@ jr_022_58e5:
 
 jr_022_58f0:
     ld a, $01
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $01
     ld [wDestinationWarpID], a
     call Call_000_0f0f
@@ -6998,14 +6998,14 @@ jr_022_6638:
     inc a
     inc a
     ldh [$ff93], a
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $0002
     call AddBCtoWordAtHL
     ld a, [$c60a]
     inc a
     inc a
     ld [$c60a], a
-    ld hl, $c7a6
+    ld hl, wPetXPosition
     ld bc, $0002
     call AddBCtoWordAtHL
     ld hl, $cb8e
@@ -7029,10 +7029,10 @@ jr_022_6677:
     dec a
     dec a
     ld [$c60a], a
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $fffe
     call AddBCtoWordAtHL
-    ld hl, $c7a6
+    ld hl, wPetXPosition
     ld bc, $fffe
     call AddBCtoWordAtHL
     ld hl, $cb8e

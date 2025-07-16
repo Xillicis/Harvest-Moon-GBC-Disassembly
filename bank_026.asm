@@ -5435,13 +5435,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -5633,13 +5633,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -5691,13 +5691,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -5723,13 +5723,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -5755,13 +5755,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -5785,13 +5785,13 @@ jr_026_560c:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6083,13 +6083,13 @@ jr_026_5e29:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6180,13 +6180,13 @@ jr_026_5ede:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6277,13 +6277,13 @@ jr_026_5f93:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6374,13 +6374,13 @@ jr_026_6048:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6471,13 +6471,13 @@ jr_026_60fd:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -6568,13 +6568,13 @@ jr_026_61b2:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -7337,13 +7337,13 @@ jr_026_6738:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -7434,13 +7434,13 @@ jr_026_67f1:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -7464,13 +7464,13 @@ jr_026_67f1:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -7494,13 +7494,13 @@ jr_026_67f1:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -7670,13 +7670,13 @@ jr_026_6911:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -8877,13 +8877,13 @@ jr_026_7171:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -8907,13 +8907,13 @@ jr_026_7171:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -8937,13 +8937,13 @@ jr_026_7171:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -8967,13 +8967,13 @@ jr_026_7171:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -9265,13 +9265,13 @@ jr_026_754d:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -9362,13 +9362,13 @@ jr_026_7602:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -9392,13 +9392,13 @@ jr_026_7602:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01
@@ -9422,13 +9422,13 @@ jr_026_7602:
     ld b, $20
     call CopyHLtoDE
     ld hl, $c626
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [hl+], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [hl+], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld [hl+], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld [hl+], a
     ld a, [$c60a]
     sub $01

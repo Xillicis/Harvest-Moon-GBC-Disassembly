@@ -1156,7 +1156,7 @@ Call_000_0de8:
     ld [wCollisionNoMovement], a
     ld [$c910], a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$cb56], a
     ld [$cb57], a
     ld a, $ff

@@ -237,15 +237,15 @@ jr_02e_41b7:
     ld a, $06
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
-    ld a, [$c606]
+    ld [wMapChangeFreezeTimer], a
+    ld a, [wPlayerXPosition]
     and $f8
     or $08
-    ld [$c606], a
-    ld a, [$c608]
+    ld [wPlayerXPosition], a
+    ld a, [wPlayerYPosition]
     and $f8
     or $08
-    ld [$c608], a
+    ld [wPlayerYPosition], a
     ld a, $01
     ld [$c910], a
     call Call_02e_41de
@@ -259,9 +259,9 @@ Call_02e_41de:
 
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     dec a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     jr z, jr_02e_4213
 
     cp $13
@@ -278,7 +278,7 @@ jr_02e_41f7:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $01
     ld [$c910], a
     xor a
@@ -573,11 +573,11 @@ Jump_02e_43b5:
 Call_02e_43c8:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $d3
     jr nc, jr_02e_43f4
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c0
     jr nc, jr_02e_43ed
 
@@ -593,7 +593,7 @@ jr_02e_43e0:
     inc [hl]
 
 jr_02e_43e8:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -608,22 +608,22 @@ jr_02e_43ed:
 
 jr_02e_43f4:
     ld a, $1d
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
 
 
 Call_02e_43fa:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $1e
     ret c
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c1
     jr nc, jr_02e_4421
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $51
     jr c, jr_02e_4421
 
@@ -636,7 +636,7 @@ jr_02e_4414:
     dec [hl]
 
 jr_02e_441c:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     dec [hl]
     ret
 
@@ -652,19 +652,19 @@ jr_02e_4421:
 Call_02e_4428:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $18
     ret c
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $99
     jr nc, jr_02e_4454
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_02e_4447
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $59
     jr c, jr_02e_4454
 
@@ -675,7 +675,7 @@ jr_02e_4447:
     dec [hl]
 
 jr_02e_444f:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -691,15 +691,15 @@ jr_02e_4454:
 Call_02e_445b:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $d8
     ret nc
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $98
     jr nc, jr_02e_4480
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $58
     jr c, jr_02e_4480
 
@@ -709,7 +709,7 @@ Call_02e_445b:
     inc [hl]
 
 jr_02e_447b:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 
@@ -1426,7 +1426,7 @@ jr_02e_48b3:
     ld [$cc17], a
     ld bc, $8103
     ld hl, $d800
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $78
     jr c, jr_02e_48f8
 
@@ -3355,7 +3355,7 @@ Call_02e_5385:
     cp d
     ld d, e
     bit 2, e
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $a8
     jr z, jr_02e_53aa
 
@@ -3817,7 +3817,7 @@ Call_02e_5675:
     bit 0, a
     ret z
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $90
     jr nc, jr_02e_56b7
 
@@ -3830,7 +3830,7 @@ Call_02e_5675:
     inc [hl]
 
 jr_02e_56b2:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 
@@ -3852,7 +3852,7 @@ jr_02e_56be:
     bit 0, a
     ret z
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $91
     jr nc, jr_02e_56e2
 
@@ -3865,7 +3865,7 @@ jr_02e_56be:
     dec [hl]
 
 jr_02e_56dd:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -3963,7 +3963,7 @@ Jump_02e_5764:
     ld [wPlayerFacingDirection], a
     ld a, $20
     call RST_TableJumpBankSwitch
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $54
     ret nc
 
@@ -4209,7 +4209,7 @@ Jump_02e_58cf:
 Call_02e_58e2:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $60
     jr nc, jr_02e_5900
 
@@ -4225,7 +4225,7 @@ jr_02e_58f3:
     inc [hl]
 
 jr_02e_58fb:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -4241,11 +4241,11 @@ jr_02e_5900:
 Call_02e_5907:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $61
     jr nc, jr_02e_5928
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $51
     jr c, jr_02e_5928
 
@@ -4258,7 +4258,7 @@ jr_02e_591b:
     dec [hl]
 
 jr_02e_5923:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     dec [hl]
     ret
 
@@ -4274,19 +4274,19 @@ jr_02e_5928:
 Call_02e_592f:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $18
     ret c
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $91
     jr nc, jr_02e_595b
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_02e_594e
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $59
     jr c, jr_02e_595b
 
@@ -4297,7 +4297,7 @@ jr_02e_594e:
     dec [hl]
 
 jr_02e_5956:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -4313,15 +4313,15 @@ jr_02e_595b:
 Call_02e_5962:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $d8
     ret nc
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $90
     jr nc, jr_02e_5987
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $58
     jr c, jr_02e_5987
 
@@ -4331,7 +4331,7 @@ Call_02e_5962:
     inc [hl]
 
 jr_02e_5982:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 
@@ -4992,11 +4992,11 @@ Jump_02e_5da8:
 Call_02e_5dbb:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c3
     jr nc, jr_02e_5de7
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $b0
     jr nc, jr_02e_5de0
 
@@ -5012,7 +5012,7 @@ jr_02e_5dd3:
     inc [hl]
 
 jr_02e_5ddb:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -5032,15 +5032,15 @@ jr_02e_5de7:
 Call_02e_5de8:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $1e
     ret c
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $b1
     jr nc, jr_02e_5e0f
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $51
     jr c, jr_02e_5e0f
 
@@ -5053,7 +5053,7 @@ jr_02e_5e02:
     dec [hl]
 
 jr_02e_5e0a:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     dec [hl]
     ret
 
@@ -6008,7 +6008,7 @@ Jump_02e_6403:
 Call_02e_6416:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c0
     jr nc, jr_02e_6434
 
@@ -6024,7 +6024,7 @@ jr_02e_6427:
     inc [hl]
 
 jr_02e_642f:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -6038,22 +6038,22 @@ jr_02e_6434:
 
 
     ld a, $1d
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
 
 
 Call_02e_6441:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $1e
     ret c
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c1
     jr nc, jr_02e_6468
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $51
     jr c, jr_02e_6468
 
@@ -6066,7 +6066,7 @@ jr_02e_645b:
     dec [hl]
 
 jr_02e_6463:
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     dec [hl]
     ret
 
@@ -6082,15 +6082,15 @@ jr_02e_6468:
 Call_02e_646f:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $a9
     jr nc, jr_02e_6495
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_02e_6488
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $59
     jr c, jr_02e_6495
 
@@ -6101,7 +6101,7 @@ jr_02e_6488:
     dec [hl]
 
 jr_02e_6490:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -6117,11 +6117,11 @@ jr_02e_6495:
 Call_02e_649c:
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $a8
     jr nc, jr_02e_64bb
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $58
     jr c, jr_02e_64bb
 
@@ -6131,7 +6131,7 @@ Call_02e_649c:
     inc [hl]
 
 jr_02e_64b6:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     inc [hl]
     ret
 

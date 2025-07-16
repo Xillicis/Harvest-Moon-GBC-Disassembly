@@ -290,9 +290,9 @@ Call_001_4224:
 
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     dec a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     jr z, jr_001_42ae
 
     cp $13
@@ -322,7 +322,7 @@ jr_001_423d:
     cp $0a
     jp z, Jump_001_43d1
 
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     cp $1e
     jr nz, jr_001_42c9
 
@@ -391,7 +391,7 @@ Jump_001_42cb:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$c910], a
     xor a
     ld [$c7c0], a
@@ -407,7 +407,7 @@ Jump_001_42e8:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $01
     ld [$c910], a
     xor a
@@ -421,21 +421,21 @@ Jump_001_42e8:
 
     ld a, [wPlayerHoldingPet]
     or a
-    jr z, jr_001_431c
+    jr z, .savePetPosition
 
     xor a
     ld [sPetIsOutside], a
     ld [wPlayerHoldingPet], a
     ret
 
-jr_001_431c:
-    ld a, [$c7a6]
+.savePetPosition
+    ld a, [wPetXPosition]
     ld [sPetXPosition], a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     ld [sPetXPosition+1], a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     ld [sPetYPosition], a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     ld [sPetYPosition+1], a
     ret
 
@@ -446,7 +446,7 @@ Jump_001_4335:
     ld [$cb50], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $05
     ld [$c910], a
     xor a
@@ -464,7 +464,7 @@ Jump_001_4354:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$c910], a
     xor a
     ld [$c7c0], a
@@ -494,7 +494,7 @@ Jump_001_439a:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$c910], a
     xor a
     ld [$c7c0], a
@@ -518,7 +518,7 @@ Jump_001_43d1:
     ld [$cb4f], a
     xor a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$c910], a
     xor a
     ld [$c7c0], a
@@ -2224,17 +2224,16 @@ Call_001_5a20:
     ld c, l
     ret
 
-
 Call_001_5a3c:
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     ld l, a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     ld h, a
     add hl, bc
     push hl
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     ld l, a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     ld h, a
     add hl, de
     ld b, h
@@ -2244,7 +2243,6 @@ Call_001_5a3c:
     ld b, h
     ld c, l
     ret
-
 
 Call_001_5a58:
     srl h
@@ -2342,10 +2340,10 @@ Call_001_5a58:
     ret
 
 
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     add $00
     ld l, a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -2358,10 +2356,10 @@ Call_001_5a58:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     add $00
     ld l, a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -2466,30 +2464,28 @@ jr_001_5b8d:
     pop hl
     ret
 
-
 jr_001_5bb3:
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $000a
     call AddBCtoWordAtHL
     call Call_001_69ee
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $fff6
     call AddBCtoWordAtHL
     ld a, [de]
     cp $0e
     jr z, jr_001_5bea
 
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $fff6
     call AddBCtoWordAtHL
     call Call_001_69ee
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     ld bc, $000a
     call AddBCtoWordAtHL
     ld a, [de]
     cp $0e
     jr z, jr_001_5bf4
-
     pop hl
     ret
 
@@ -3127,12 +3123,12 @@ jr_001_65bd:
     cp FACING_RIGHT
     jp z, Jump_001_664a
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     and $0f
     cp $0c
     jr z, jr_001_65f7
@@ -3170,12 +3166,12 @@ jr_001_65f9:
 
 
 jr_001_6605:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     and $0f
     jr z, jr_001_661c
 
@@ -3197,14 +3193,14 @@ jr_001_661c:
 
 
 Jump_001_6626:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $0f
     sub $08
     bit 7, a
@@ -3225,14 +3221,14 @@ jr_001_663f:
 
 
 Jump_001_664a:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $0f
     ld b, a
     ld a, $08
@@ -3424,29 +3420,29 @@ Call_001_6775:
     ld [$c611], a
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $02
     jr nz, jr_001_678b
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $e8
     ret nc
 
 jr_001_678b:
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $02
     jr nz, jr_001_6799
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c0
     jr nc, jr_001_67ca
 
 jr_001_6799:
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $00
     jr nz, jr_001_67a7
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $48
     jr c, jr_001_67ca
 
@@ -3461,15 +3457,15 @@ jr_001_67a7:
     call z, Call_001_7494
 
 jr_001_67b8:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     inc hl
     ld a, l
-    ld [$c608], a
+    ld [wPlayerYPosition], a
     ld a, h
-    ld [$c609], a
+    ld [wPlayerYPosition+1], a
     ret
 
 
@@ -3486,29 +3482,29 @@ Call_001_67d1:
     ld [$c611], a
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $00
     jr nz, jr_001_67e7
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $0e
     ret c
 
 jr_001_67e7:
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $02
     jr nz, jr_001_67f5
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $c1
     jr nc, jr_001_6826
 
 jr_001_67f5:
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     cp $00
     jr nz, jr_001_6803
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     cp $49
     jr c, jr_001_6826
 
@@ -3523,15 +3519,15 @@ jr_001_6803:
     call z, Call_001_7445
 
 jr_001_6814:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     dec hl
     ld a, l
-    ld [$c608], a
+    ld [wPlayerYPosition], a
     ld a, h
-    ld [$c609], a
+    ld [wPlayerYPosition+1], a
     ret
 
 
@@ -3548,11 +3544,11 @@ Call_001_682d:
     ld [$c611], a
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_001_6843
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $18
     ret c
 
@@ -3561,31 +3557,31 @@ jr_001_6843:
     or a
     jr z, jr_001_6859
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $03
     jr nz, jr_001_6867
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $b1
     jr nc, jr_001_6898
 
     jr jr_001_6867
 
 jr_001_6859:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $02
     jr nz, jr_001_6867
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $c1
     jr nc, jr_001_6898
 
 jr_001_6867:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_001_6875
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $51
     jr c, jr_001_6898
 
@@ -3600,15 +3596,15 @@ jr_001_6875:
     call z, Call_001_74e3
 
 jr_001_6886:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     dec hl
     ld a, l
-    ld [$c606], a
+    ld [wPlayerXPosition], a
     ld a, h
-    ld [$c607], a
+    ld [wPlayerXPosition+1], a
     ret
 
 
@@ -3629,49 +3625,49 @@ Call_001_689f:
     or a
     jr z, jr_001_68cb
 
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $03
     jr nz, jr_001_68bb
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $e8
     ret nc
 
 jr_001_68bb:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $03
     jr nz, jr_001_68e6
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $b0
     jr nc, jr_001_6917
 
     jr jr_001_68e6
 
 jr_001_68cb:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $02
     jr nz, jr_001_68d8
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $f8
     ret nc
 
 jr_001_68d8:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $02
     jr nz, jr_001_68e6
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $c0
     jr nc, jr_001_6917
 
 jr_001_68e6:
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, jr_001_68f4
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     cp $50
     jr c, jr_001_6917
 
@@ -3686,15 +3682,15 @@ jr_001_68f4:
     call z, Call_001_7538
 
 jr_001_6905:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     inc hl
     ld a, l
-    ld [$c606], a
+    ld [wPlayerXPosition], a
     ld a, h
-    ld [$c607], a
+    ld [wPlayerXPosition+1], a
     ret
 
 
@@ -3711,12 +3707,12 @@ Call_001_691e:
     cp FACING_DOWN
     jr nz, jr_001_693b
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     dec a
     and $08
     cpl
@@ -3730,14 +3726,14 @@ jr_001_693b:
     cp $01
     jr nz, jr_001_696c
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $08
     and $0f
     cp $00
@@ -3769,14 +3765,14 @@ jr_001_696c:
     cp $02
     jr nz, jr_001_699d
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $08
     and $0f
     cp $00
@@ -3804,12 +3800,12 @@ jr_001_6999:
 
 
 jr_001_699d:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $0d
     and $0f
     cp $00
@@ -3911,7 +3907,6 @@ Call_001_6a09:
     pop hl
     ret
 
-
 jr_001_6a29:
     cp $3e
     jr nz, jr_001_6a3e
@@ -3980,7 +3975,7 @@ Call_001_6a78:
     ld a, HOME
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     xor a
     ld [$c910], a
     ld a, [sPetIsOutside]
@@ -3989,50 +3984,45 @@ Call_001_6a78:
 
     ld a, [wPlayerHoldingPet]
     or a
-    jr z, jr_001_6a97
+    jr z, .savePetPosition
 
     ld a, $00
     ld [sPetIsOutside], a
     ret
 
-
-jr_001_6a97:
-    ld a, [$c7a6]
+.savePetPosition
+    ld a, [wPetXPosition]
     ld [sPetXPosition], a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     ld [sPetXPosition+1], a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     ld [sPetYPosition], a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     ld [sPetYPosition+1], a
     ret
-
 
 Call_001_6ab0:
     ld a, COW_BARN
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
-
 
 Call_001_6abb:
     ld a, CHICKEN_COUP
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
-
 
 Call_001_6ac6:
     ld a, SHED
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     xor a
     ld [$c910], a
     ret
-
 
 Call_001_6ad5:
     ld a, [wPlayerIsRidingHorse]
@@ -4059,7 +4049,7 @@ Call_001_6ad5:
     ld a, TOWN
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     xor a
     ld [$c910], a
     ld [$cd2a], a
@@ -4342,7 +4332,7 @@ jr_001_6ca4:
     ld a, $06
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $01
     ld [$c910], a
     call Call_001_4224
@@ -4373,13 +4363,13 @@ Call_001_6ce4:
     jr z, jr_001_6d14
 
     ld a, [sPetXPosition]
-    ld [$c7a6], a
+    ld [wPetXPosition], a
     ld a, [sPetXPosition+1]
-    ld [$c7a7], a
+    ld [wPetXPosition+1], a
     ld a, [sPetYPosition]
-    ld [$c7a8], a
+    ld [wPetYPosition], a
     ld a, [sPetYPosition+1]
-    ld [$c7a9], a
+    ld [wPetYPosition+1], a
     ld a, 1
     ld [wPetIsPresentOnMap], a
     ld a, $05
@@ -5221,16 +5211,16 @@ jr_001_716e:
     ld [wInputFreezeTimer], a
     ld a, $0d
     call Call_000_15cb
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $58
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $20
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $01
@@ -5249,16 +5239,16 @@ jr_001_71b1:
     call Call_000_0f47
     ld a, $07
     call Call_000_15cb
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $58
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $20
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $01
@@ -5277,16 +5267,16 @@ Jump_001_71f1:
     call Call_000_0f47
     ld a, $11
     call Call_000_15cb
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $58
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $20
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $01
@@ -5427,16 +5417,16 @@ jr_001_72d6:
     call Call_000_0f47
     ld a, $16
     call Call_000_15e4
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $08
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $10
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld [$c769], a
     ld a, $02
@@ -5470,7 +5460,7 @@ Call_001_7336:
     ld [wCollisionNoMovement], a
     ld [$c910], a
     ld [wDestinationWarpID], a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld [$cb56], a
     ld [$cb57], a
     ld [$b88c], a
@@ -5494,9 +5484,9 @@ Call_001_7374:
 
 
 Call_001_737f:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     ld a, l
     sub $60
@@ -5510,9 +5500,9 @@ Call_001_737f:
     ldh [$ff93], a
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, l
     sub $58
@@ -6579,7 +6569,7 @@ jr_001_7a53:
     ld a, $07
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     call Call_001_4224
     xor a
     ld [wPlayerIsInsideOrAtTown], a

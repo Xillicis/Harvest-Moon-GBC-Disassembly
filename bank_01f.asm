@@ -10081,7 +10081,7 @@ jr_01f_7058:
     ld a, $00
     ld [$c910], a
     xor a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, [$ccd3]
     ld [sCurrentYear], a
     ld a, [$ccd4]

@@ -11749,7 +11749,7 @@ jr_007_70f5:
     ld [$cb58], a
     ld [$cb57], a
     ld a, $18
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $01
     ld [wDestinationWarpID], a
     call Call_000_0f0f
@@ -11766,7 +11766,7 @@ jr_007_712a:
     jr nz, jr_007_715f
 
     ld a, $01
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $02
     ld [wDestinationWarpID], a
     ld a, $ff
@@ -11817,7 +11817,7 @@ jr_007_7174:
     ld a, $0a
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ld a, $ff
     ld [wTextID], a
     xor a

@@ -158,7 +158,7 @@ Jump_030_4101:
 
     ld hl, $c60a
     dec [hl]
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ld hl, $c800
     ld a, $0a
@@ -430,7 +430,7 @@ jr_030_4297:
 jr_030_42ae:
     ld hl, $c60b
     inc [hl]
-    ld hl, $c608
+    ld hl, wPlayerYPosition
     inc [hl]
     ret
 
@@ -460,7 +460,7 @@ jr_030_42c2:
     ld hl, $c60a
     dec [hl]
     dec [hl]
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     dec [hl]
     ld a, [wPlayerAnimationIndex]
@@ -525,7 +525,7 @@ jr_030_4327:
 
     ld hl, $c60a
     dec [hl]
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ret
 
@@ -676,7 +676,7 @@ jr_030_4347:
 
     ld hl, $c60a
     dec [hl]
-    ld hl, $c606
+    ld hl, wPlayerXPosition
     dec [hl]
     ld hl, $c800
     ld a, $0a

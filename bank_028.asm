@@ -4009,9 +4009,9 @@ jr_028_554d:
     ld l, a
     ld a, [$c787]
     ld h, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld c, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -4056,9 +4056,9 @@ jr_028_5595:
     ld h, a
     ld bc, $fff8
     add hl, bc
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -4419,9 +4419,9 @@ Call_028_57fc:
     or a
     ret nz
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     ld a, [$c786]
     sub l
@@ -4429,9 +4429,9 @@ Call_028_57fc:
     ld a, [$c787]
     sbc h
     ld h, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, [$c788]
     sub c
@@ -4849,13 +4849,13 @@ jr_028_5a41:
     call Call_028_5abd
 
 jr_028_5a44:
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     ld l, a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     ld h, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld c, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -4894,15 +4894,15 @@ jr_028_5a78:
 jr_028_5a7a:
     ld a, c
     ld [$c7aa], a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     ld l, a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     ld h, a
     ld bc, $fff8
     add hl, bc
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -4990,7 +4990,7 @@ Call_028_5abd:
     or a
     jp nz, Jump_028_5e2e
 
-    ld hl, $c7a6
+    ld hl, wPetXPosition
     ld a, [$c7ac]
     ld c, a
     ld b, $00
@@ -5011,7 +5011,7 @@ jr_028_5b2c:
     or a
     jp nz, Jump_028_5e2e
 
-    ld hl, $c7a8
+    ld hl, wPetYPosition
     ld a, [$c7ac]
     ld c, a
     ld b, $00
@@ -5034,12 +5034,12 @@ Jump_028_5b58:
 
     ld a, [$c7ac]
     ld b, a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     sub b
-    ld [$c7a8], a
-    ld a, [$c7a9]
+    ld [wPetYPosition], a
+    ld a, [wPetYPosition+1]
     sbc $00
-    ld [$c7a9], a
+    ld [wPetYPosition+1], a
     ret
 
 
@@ -5058,12 +5058,12 @@ Jump_028_5b8b:
 
     ld a, [$c7ac]
     ld b, a
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     sub b
-    ld [$c7a6], a
-    ld a, [$c7a7]
+    ld [wPetXPosition], a
+    ld a, [wPetXPosition+1]
     sbc $00
-    ld [$c7a7], a
+    ld [wPetXPosition+1], a
     ret
 
 
@@ -5532,24 +5532,24 @@ Call_028_5e67:
 
 
 jr_028_5e72:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     sub l
     ld l, a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     sbc h
     ld h, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     sub c
     ld c, a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     sbc b
     ld b, a
     push hl
@@ -5709,7 +5709,7 @@ Call_028_5f38:
     or a
     jp nz, Jump_028_5e2e
 
-    ld hl, $c7a6
+    ld hl, wPetXPosition
     ld a, [$c7ac]
     ld c, a
     ld b, $00
@@ -5730,7 +5730,7 @@ jr_028_5fa4:
     or a
     jp nz, Jump_028_5e2e
 
-    ld hl, $c7a8
+    ld hl, wPetYPosition
     ld a, [$c7ac]
     ld c, a
     ld b, $00
@@ -5753,12 +5753,12 @@ Jump_028_5fd0:
 
     ld a, [$c7ac]
     ld b, a
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     sub b
-    ld [$c7a8], a
-    ld a, [$c7a9]
+    ld [wPetYPosition], a
+    ld a, [wPetYPosition+1]
     sbc $00
-    ld [$c7a9], a
+    ld [wPetYPosition+1], a
     ret
 
 
@@ -5777,12 +5777,12 @@ Jump_028_6003:
 
     ld a, [$c7ac]
     ld b, a
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     sub b
-    ld [$c7a6], a
-    ld a, [$c7a7]
+    ld [wPetXPosition], a
+    ld a, [wPetXPosition+1]
     sbc $00
-    ld [$c7a7], a
+    ld [wPetXPosition+1], a
     ret
 
 
@@ -6233,15 +6233,15 @@ jr_028_62d6:
 
 
 Call_028_62ec:
-    ld a, [$c7a6]
+    ld a, [wPetXPosition]
     ld l, a
-    ld a, [$c7a7]
+    ld a, [wPetXPosition+1]
     ld h, a
     add hl, bc
     push hl
-    ld a, [$c7a8]
+    ld a, [wPetYPosition]
     ld l, a
-    ld a, [$c7a9]
+    ld a, [wPetYPosition+1]
     ld h, a
     add hl, de
     ld b, h
@@ -7511,12 +7511,12 @@ Call_028_68ed:
     ld [hl+], a
     ldh a, [$ffa5]
     ld [hl+], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     and $0f
     cp $03
     jr c, jr_028_693d
@@ -7658,12 +7658,12 @@ Call_028_69b7:
     cp $02
     jp z, Jump_028_6a70
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     and $0f
     cp $0c
     jr z, jr_028_6a1d
@@ -7701,12 +7701,12 @@ jr_028_6a1f:
 
 
 jr_028_6a2b:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $08
     cpl
     inc a
     ld b, a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     and $0f
     jr z, jr_028_6a42
 
@@ -7728,14 +7728,14 @@ jr_028_6a42:
 
 
 Jump_028_6a4c:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $0f
     sub $08
     bit 7, a
@@ -7756,14 +7756,14 @@ jr_028_6a65:
 
 
 Jump_028_6a70:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     and $08
     add $08
     cpl
     inc a
     ld c, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     and $0f
     ld b, a
     ld a, $08
@@ -8063,14 +8063,14 @@ Call_028_6c0a:
     cp $02
     jp z, Jump_028_6cb3
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $10
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $14
@@ -8081,14 +8081,14 @@ Call_028_6c0a:
 
 
 jr_028_6c61:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $10
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld [$c769], a
     ld a, $14
@@ -8099,16 +8099,16 @@ jr_028_6c61:
 
 
 jr_028_6c88:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $10
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $04
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $13
@@ -8119,16 +8119,16 @@ jr_028_6c88:
 
 
 Jump_028_6cb3:
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $18
     ld [$c766], a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld [$c767], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $04
     ld [$c768], a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     sbc $00
     ld [$c769], a
     ld a, $14

@@ -23,7 +23,12 @@ wPlayerSpriteID:: db ; 0xc602
 ; Number used to indicate which animation sprite to use (0 - Max Num Animations)
 wPlayerAnimationIndex:: db ; 0xc603
 
-ds 9
+ds 2
+
+wPlayerXPosition:: dw ; 0xc606
+wPlayerYPosition:: dw ; 0xc608
+
+ds 3
 
 ; 0 - Facing down
 ; 1 - Facing left
@@ -47,9 +52,12 @@ ds 1
 ; low nybble is the pose (facing left, sitting facing right, etc... need to document)
 wPetLocationAndPose:: db ; 0xc7a2
 
-ds 4
+ds 3
 
-ds 6
+wPetXPosition:: dw ; 0xc7a6 - oxc7a7
+wPetYPosition:: dw ; 0xc7a8 - oxc7a9
+
+ds 3
 
 wPetFacingDirection:: db ; 0xc7ad
 
@@ -59,7 +67,9 @@ wCollisionNoMovement:: db ; 0xc90e
 
 wDestinationWarpID:: db ; 0xc90f
 
-ds 2
+ds 1
+
+wMapChangeFreezeTimer:: db ; 0xc911
 
 ; Don't know if this actually freezes input, but functionally it stops you froming doing anything
 wInputFreezeTimer:: db ; 0xc912

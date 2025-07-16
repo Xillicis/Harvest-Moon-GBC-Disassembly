@@ -548,7 +548,7 @@ Call_005_4355:
     or a
     ret nz
 
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     or a
     ret nz
 
@@ -561,15 +561,15 @@ Call_005_4355:
     ret nc
 
     ld a, $20
-    ld [$c911], a
-    ld a, [$c606]
+    ld [wMapChangeFreezeTimer], a
+    ld a, [wPlayerXPosition]
     and $f8
     or $08
-    ld [$c606], a
-    ld a, [$c608]
+    ld [wPlayerXPosition], a
+    ld a, [wPlayerYPosition]
     and $f8
     or $08
-    ld [$c608], a
+    ld [wPlayerYPosition], a
     ld a, $02
     ld [$c910], a
     ld a, $01
@@ -614,7 +614,7 @@ Call_005_43b3:
 
 
 Call_005_43bc:
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     or a
     ret z
 
@@ -622,9 +622,9 @@ Call_005_43bc:
     cp $00
     jr nz, jr_005_43ef
 
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     dec a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     cp $00
     jr z, jr_005_43d5
 
@@ -647,9 +647,9 @@ jr_005_43d5:
 
 
 jr_005_43ef:
-    ld a, [$c911]
+    ld a, [wMapChangeFreezeTimer]
     dec a
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     cp $00
     jr z, jr_005_442f
 
@@ -2848,11 +2848,11 @@ jr_005_50b5:
 
     ret
 
-
-    ld a, [$c606]
+Label_005_50c9:
+    ld a, [wPlayerXPosition]
     sub $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -2865,10 +2865,10 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -2881,9 +2881,9 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -2895,9 +2895,9 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $10
     add l
@@ -2975,10 +2975,10 @@ jr_005_50b5:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -2991,10 +2991,10 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3007,9 +3007,9 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -3021,10 +3021,10 @@ jr_005_50b5:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3191,10 +3191,10 @@ jr_005_52ed:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $03
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3207,10 +3207,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3223,10 +3223,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3239,10 +3239,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $09
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -3322,10 +3322,10 @@ jr_005_52ed:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $03
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3338,10 +3338,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3354,10 +3354,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3370,10 +3370,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $08
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3453,10 +3453,10 @@ jr_005_52ed:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -3469,10 +3469,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3485,9 +3485,9 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -3499,11 +3499,11 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     sub $08
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3576,10 +3576,10 @@ jr_005_52ed:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -3592,10 +3592,10 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3608,9 +3608,9 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -3622,9 +3622,9 @@ jr_005_52ed:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $10
     add $08
@@ -3704,10 +3704,10 @@ jr_005_52ed:
 
 ; I think hammer animation goes here?
 Label_005_5689:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
 ; Divide `hl` by 16
     ld h, a
@@ -3722,10 +3722,10 @@ Label_005_5689:
     ld a, l
     ldh [$ffa4], a
 ;;;
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3739,10 +3739,10 @@ Label_005_5689:
     ld a, l
     ldh [$ffa5], a
 ;;;
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3756,10 +3756,10 @@ Label_005_5689:
     ld a, l
     ldh [$ffa6], a
 ;;;
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $11
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -3840,10 +3840,10 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3856,10 +3856,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3872,10 +3872,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3888,10 +3888,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa6], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $10
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -3971,9 +3971,9 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -3985,10 +3985,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0d
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4027,10 +4027,10 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -4043,10 +4043,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $07
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4059,10 +4059,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -4119,10 +4119,10 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $06
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -4135,10 +4135,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $06
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4151,9 +4151,9 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $10
     add l
@@ -4215,10 +4215,10 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $03
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4231,10 +4231,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4247,10 +4247,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $08
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     ld a, l
@@ -4312,10 +4312,10 @@ Label_005_5689:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $03
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4328,10 +4328,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $0f
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4344,10 +4344,10 @@ Label_005_5689:
     rr l
     ld a, l
     ldh [$ffa5], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $08
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -4421,9 +4421,9 @@ Label_005_5b5f:
     ld e, l
     ret
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -4435,9 +4435,9 @@ Label_005_5b5f:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $1f
     add l
@@ -4469,9 +4469,9 @@ Label_005_5b5f:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $18
     add l
@@ -4508,10 +4508,10 @@ Label_005_5b5f:
     ret
 
 Label_005_5c96:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4524,10 +4524,10 @@ Label_005_5c96:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $18
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -4557,10 +4557,10 @@ Label_005_5c96:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $11
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -4595,10 +4595,10 @@ Label_005_5c96:
     ret
 
 Label_005_5d2c:
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4611,10 +4611,10 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $17
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4644,10 +4644,10 @@ Label_005_5d2c:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $10
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4682,9 +4682,9 @@ Label_005_5d2c:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -4696,10 +4696,10 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -4732,10 +4732,10 @@ Label_005_5d2c:
     ld e, a
     add hl, de
     push hl
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -4786,9 +4786,9 @@ Label_005_5d2c:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -4800,9 +4800,9 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld h, a
     ld a, $2f
     add l
@@ -4836,10 +4836,10 @@ Label_005_5d2c:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4852,10 +4852,10 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     sub $28
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     sbc $00
     ld h, a
     srl h
@@ -4887,10 +4887,10 @@ Label_005_5d2c:
     ret
 
 
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $08
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4903,10 +4903,10 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     add $27
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     adc $00
     ld h, a
     srl h
@@ -4938,9 +4938,9 @@ Label_005_5d2c:
     ret
 
 
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld l, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld h, a
     srl h
     rr l
@@ -4952,10 +4952,10 @@ Label_005_5d2c:
     rr l
     ld a, l
     ldh [$ffa4], a
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     add $02
     ld l, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     adc $00
     ld h, a
     ld a, l
@@ -5080,9 +5080,9 @@ Jump_005_5fb9:
     ld l, a
     ld a, [$c767]
     ld h, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld c, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -5129,9 +5129,9 @@ jr_005_5ff2:
     ld h, a
     ld bc, $fff8
     add hl, bc
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -5323,9 +5323,9 @@ Call_005_6117:
     ld l, a
     ld a, [$c767]
     ld h, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld c, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -5370,9 +5370,9 @@ jr_005_614d:
     ld h, a
     ld bc, $fff8
     add hl, bc
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -5466,9 +5466,9 @@ jr_005_61d0:
     ld l, a
     ld a, [$c807]
     ld h, a
-    ld a, [$c606]
+    ld a, [wPlayerXPosition]
     ld c, a
-    ld a, [$c607]
+    ld a, [wPlayerXPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -5515,9 +5515,9 @@ jr_005_6209:
     ld h, a
     ld bc, $0000
     add hl, bc
-    ld a, [$c608]
+    ld a, [wPlayerYPosition]
     ld c, a
-    ld a, [$c609]
+    ld a, [wPlayerYPosition+1]
     ld b, a
     ld a, l
     sub c
@@ -6249,7 +6249,7 @@ jr_005_66b3:
     ld a, $08
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
 
 
@@ -6307,7 +6307,7 @@ jr_005_6709:
     ld a, $09
     ld [wDestinationWarpID], a
     ld a, $20
-    ld [$c911], a
+    ld [wMapChangeFreezeTimer], a
     ret
 
 

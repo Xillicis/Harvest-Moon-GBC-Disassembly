@@ -1904,7 +1904,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     call SyncLoadSpritePalette3
     ret
 
-Label_020_6f8e:
+LoadItemPalette_TableJump:
     ld a, [sCurrentlyHeldItem]
     rst $00
 
