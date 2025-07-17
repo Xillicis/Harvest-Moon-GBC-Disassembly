@@ -7,62 +7,6 @@ SECTION "ROM Bank $000", ROM0[$0]
 
 INCLUDE "home/header.asm"
 
-Call_000_0061:
-    ld a, [wSTAT_HandlerIndex]
-    or a
-    rst $08
-
-Data_000_0066:
-    db $df, $3f, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ba, $3f, $00
-    db $be, $3f, $00
-    db $c2, $3f, $00
-    db $c2, $3f, $00
-    db $c2, $3f, $00
-    db $c2, $3f, $00
-    db $c2, $3f, $00
-    db $df, $3f, $00
-    db $df, $3f, $00
-    db $c6, $3f, $00
-    db $ca, $3f, $00
-    db $ca, $3f, $00
-    db $ce, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $d2, $3f, $00
-    db $ba, $3f, $00
-    db $ce, $3f, $00
-    db $ce, $3f, $00
-    db $ba, $3f, $00
-    db $ba, $3f, $00
-    db $df, $3f, $00
-    db $df, $3f, $00
-    db $ba, $3f, $00
-    db $ce, $3f, $00
-    db $df, $3f, $00
-    db $da, $3f, $00
-    db $e0, $3f, $00
-    db $e0, $3f, $00
-    db $df, $3f, $00
-    db $e0, $3f, $00
-
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
-
-Boot::
-    nop
-    jp _Boot
-
 HeaderLogo::
     db $ce, $ed, $66, $66, $cc, $0d, $00, $0b, $03, $73, $00, $83, $00, $0c, $00, $0d
     db $00, $08, $11, $1f, $88, $89, $00, $0e, $dc, $cc, $6e, $e6, $dd, $dd, $d9, $99
@@ -107,7 +51,7 @@ HeaderComplementCheck::
 HeaderGlobalChecksum::
     db $83, $4c
 
-_Boot:
+_Boot::
     nop
 
 Start:

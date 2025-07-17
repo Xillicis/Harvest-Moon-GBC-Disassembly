@@ -102,4 +102,69 @@ SECTION "joypad", ROM0[$0060]
 JoypadTransitionInterrupt:: ; 00x0060
     reti
 
+Call_000_0061:
+    ld a, [wSTAT_HandlerIndex]
+    or a
+    rst $08
+
+Data_000_0066:
+    db $df, $3f, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ce, $0e, $00
+    db $ba, $3f, $00
+    db $be, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $c2, $3f, $00
+    db $df, $3f, $00
+    db $df, $3f, $00
+    db $c6, $3f, $00
+    db $ca, $3f, $00
+    db $ca, $3f, $00
+    db $ce, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $d2, $3f, $00
+    db $ba, $3f, $00
+    db $ce, $3f, $00
+    db $ce, $3f, $00
+    db $ba, $3f, $00
+    db $ba, $3f, $00
+    db $df, $3f, $00
+    db $df, $3f, $00
+    db $ba, $3f, $00
+    db $ce, $3f, $00
+    db $df, $3f, $00
+    db $da, $3f, $00
+    db $e0, $3f, $00
+    db $e0, $3f, $00
+    db $df, $3f, $00
+    db $e0, $3f, $00
+
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+    db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+
+SECTION "Header", ROM0[$0100]
+
+Boot::
+; Nintendo requires all Game Boy ROMs to begin with a nop ($00) and a jp ($C3)
+; to the starting address.
+        nop
+        jp _Boot
+
+; The Game Boy cartridge header data is patched over by rgbfix.
+; This makes sure it doesn't get used for anything else.
+
+;        ds $0150 - @
+
 
