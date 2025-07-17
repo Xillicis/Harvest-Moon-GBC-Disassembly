@@ -3220,8 +3220,8 @@ jr_022_50a8:
     xor a
     ld [$cb56], a
     ld [wTextID], a
-    ld [$cb76], a
-    ld [$cb78], a
+    ld [wTVAnimationTimer], a
+    ld [wTVIsTurnedOn], a
     ld [$cb7a], a
     ld [$cb7b], a
     ld [$cb7c], a
@@ -3314,7 +3314,7 @@ jr_022_5191:
     ld a, $1d
     ld [$cb4e], a
     ld a, $ff
-    ld [$cb77], a
+    ld [wTVBlinkingIndicator], a
     call Call_000_11c2
     call Call_022_669c
     call Call_022_6523
@@ -4619,14 +4619,14 @@ jr_022_5952:
 Jump_022_595b:
     ld a, $00
     call RST_TableJumpBankSwitch
-    ld a, [$cb78]
+    ld a, [wTVIsTurnedOn]
     or a
     ret nz
 
     ld a, $80
-    ld [$cb76], a
+    ld [wTVAnimationTimer], a
     ld a, $01
-    ld [$cb78], a
+    ld [wTVIsTurnedOn], a
     ld a, $10
     ld [wInputFreezeTimer], a
     ret
@@ -5513,20 +5513,20 @@ jr_022_5db8:
     ld d, e
 
 Call_022_5dbe:
-    ld a, [$cb76]
+    ld a, [wTVAnimationTimer]
     or a
     ret z
 
-    ld a, [$cb78]
+    ld a, [wTVIsTurnedOn]
     or a
     jr nz, jr_022_5dd6
 
     ld a, $ff
-    ld [$cb77], a
+    ld [wTVBlinkingIndicator], a
     ld a, $00
 
 jr_022_5dd0:
-    ld [$cb76], a
+    ld [wTVAnimationTimer], a
     jp Jump_022_5e5e
 
 
@@ -5575,11 +5575,11 @@ jr_022_5e0e:
     ld hl, $5d5e
 
 jr_022_5e11:
-    ld a, [$cb77]
+    ld a, [wTVBlinkingIndicator]
     ld b, a
-    ld a, [$cb76]
+    ld a, [wTVAnimationTimer]
     add b
-    ld [$cb76], a
+    ld [wTVAnimationTimer], a
     cp $7f
     jr z, jr_022_5e31
 
@@ -5618,21 +5618,21 @@ jr_022_5e39:
 
 jr_022_5e48:
     ld a, $ff
-    ld [$cb77], a
+    ld [wTVBlinkingIndicator], a
     ld bc, $0030
     add hl, bc
     jr jr_022_5e67
 
 jr_022_5e53:
     ld a, $01
-    ld [$cb77], a
+    ld [wTVBlinkingIndicator], a
     ld bc, $0040
     add hl, bc
     jr jr_022_5e67
 
 Jump_022_5e5e:
     xor a
-    ld [$cb78], a
+    ld [wTVIsTurnedOn], a
     ld hl, $5c2e
     jr jr_022_5e67
 

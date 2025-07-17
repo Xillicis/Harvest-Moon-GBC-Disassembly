@@ -7783,7 +7783,7 @@ Jump_000_383d:
     or a
     ret z
 
-    ld a, [$cb78]
+    ld a, [wTVIsTurnedOn]
     or a
     ret nz
 
@@ -8568,7 +8568,7 @@ jr_000_3d41:
     xor a
     ld [$cb56], a
     ld [$cbeb], a
-    ld [$cb78], a
+    ld [wTVIsTurnedOn], a
     ld [$cb5f], a
     ld a, [$b88c]
     or a

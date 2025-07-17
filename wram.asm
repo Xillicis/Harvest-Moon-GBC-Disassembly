@@ -109,7 +109,19 @@ ds 1 ; 0xcb51
 
 wTextID:: db ; 0xcb52
 
-ds 46
+ds 35
+
+; This starts a countdown for the animation of the weather girl moving
+; then it gets into a small loop just for the animation of the blinking sun (or other weather thing)
+wTVAnimationTimer:: db ; 0xcb76
+
+; This flips between $01 and $ff when the fun is blinking
+wTVBlinkingIndicator:: db ; 0xcb77
+
+; A flag to indicate the TV is turned on
+wTVIsTurnedOn:: db ; 0xcb78
+
+ds 8
 
 ; This is zero if the player is outside at the farm.
 ; It is one if the player is inside or at town

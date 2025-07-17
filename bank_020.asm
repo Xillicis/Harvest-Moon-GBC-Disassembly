@@ -1059,7 +1059,7 @@ Jump_020_5959:
     ld a, $01
     ldh [c], a
     ld de, $5c70
-    ld a, [$cb78]
+    ld a, [wTVIsTurnedOn]
     cp $00
     jr nz, jr_020_5c2a
 
