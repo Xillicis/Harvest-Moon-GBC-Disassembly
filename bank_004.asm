@@ -50,7 +50,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     ld [$b90c], a
     xor a
@@ -140,7 +140,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     call Call_004_4261
     call Call_004_4275
     call Call_004_4289
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -312,15 +312,15 @@ Call_004_4289:
 
 
 Call_004_429d:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -1070,7 +1070,7 @@ jr_004_46b1:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     ret
@@ -2100,7 +2100,7 @@ jr_004_4d41:
     or a
     jp z, NoObjectInteraction
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp BIG_STONE_TOP_RIGHT_TILE
     jr z, .topSignChickenCoup
     cp BIG_STONE_BOTTOM_LEFT_TILE
@@ -2250,7 +2250,7 @@ jr_004_4e1b:
 
 
 Jump_004_4e5a:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $10
     jr z, jr_004_4ea6
 
@@ -2685,7 +2685,7 @@ jr_004_50ed:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     call Call_004_5889
     ld a, [de]
     cp $02
@@ -2730,7 +2730,7 @@ jr_004_5125:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     call Call_004_5889
     ld a, [de]
     cp $02

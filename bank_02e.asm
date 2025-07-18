@@ -46,7 +46,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cc96], a
     ld [$cc76], a
@@ -144,7 +144,7 @@ jr_02e_40e9:
     or a
     jr z, jr_02e_4134
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     jr nz, jr_02e_4134
 
@@ -195,7 +195,7 @@ Call_02e_417d:
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -275,7 +275,7 @@ jr_02e_41f7:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -294,7 +294,7 @@ jr_02e_4213:
     add b
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [$c7c0], a
     ld [wPetIsPresentOnMap], a
@@ -303,13 +303,13 @@ jr_02e_4213:
 
 
 Call_02e_422c:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -723,9 +723,9 @@ jr_02e_4480:
 
 
 Call_02e_4487:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -737,7 +737,7 @@ Call_02e_4487:
     or a
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jr z, jr_02e_44b7
 
@@ -804,7 +804,7 @@ jr_02e_44f3:
 
 jr_02e_44fd:
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -902,7 +902,7 @@ jr_02e_4582:
     or a
     jr nz, jr_02e_45a7
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp BIG_LOG_TOP_LEFT_TILE
     jp z, Jump_02e_46ef
 
@@ -995,7 +995,7 @@ jr_02e_460e:
 
 
 jr_02e_4628:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp BIG_LOG_TOP_LEFT_TILE
     jp z, Jump_02e_46ef
 
@@ -1100,7 +1100,7 @@ jr_02e_46cd:
     or a
     jr nz, jr_02e_46ac
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $62
     jp z, Jump_02e_483f
 
@@ -1396,7 +1396,7 @@ Jump_02e_4877:
 
 
 Jump_02e_48a4:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $26
     jr z, jr_02e_48b3
 
@@ -3340,9 +3340,9 @@ Call_02e_537c:
 
 
 Call_02e_5385:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -3401,7 +3401,7 @@ jr_02e_53aa:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$b899]
     set 1, a
     ld [$b899], a
@@ -3423,7 +3423,7 @@ Call_02e_53fb:
     bit 1, a
     jr z, jr_02e_5418
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -3624,7 +3624,7 @@ jr_02e_54e4:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cc96], a
     ld [$cc76], a
@@ -3690,13 +3690,13 @@ jr_02e_55be:
 
 
 Call_02e_55dd:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -3788,7 +3788,7 @@ jr_02e_5647:
 
 
 Call_02e_5675:
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -3911,7 +3911,7 @@ Jump_02e_5712:
     or a
     jr nz, jr_02e_571f
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $41
     jr z, jr_02e_5723
 
@@ -3937,7 +3937,7 @@ jr_02e_5723:
 
 
 Jump_02e_5741:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $40
     ret nz
 
@@ -3998,7 +3998,7 @@ Jump_02e_5798:
     and $01
     ret nz
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $40
     ret z
 
@@ -4109,7 +4109,7 @@ Jump_02e_582e:
 
 
 jr_02e_585b:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $41
     ret z
 
@@ -4521,7 +4521,7 @@ Jump_02e_5a6d:
 
 
 jr_02e_5a95:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $41
     ret z
 
@@ -4595,7 +4595,7 @@ Call_02e_5aa2:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cc96], a
     ld [$cc76], a
@@ -4651,7 +4651,7 @@ Call_02e_5aa2:
     or a
     jr z, jr_02e_5bba
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     jr nz, jr_02e_5bba
 
@@ -4687,13 +4687,13 @@ jr_02e_5bca:
 
 
 Call_02e_5bef:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -5286,7 +5286,7 @@ Jump_02e_5f4a:
     cp $42
     jr nz, jr_02e_5fb2
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp FENCE_POST_TILE
     jr nz, jr_02e_5fb2
 
@@ -5651,7 +5651,7 @@ Call_02e_6121:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cc96], a
     ld [$cc76], a
@@ -5730,7 +5730,7 @@ Call_02e_6270:
     cp $ff
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $65
     ret z
 
@@ -5740,13 +5740,13 @@ Call_02e_6270:
 
 
 Call_02e_6281:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -6457,7 +6457,7 @@ jr_02e_6647:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cc96], a
     ld [$cc76], a

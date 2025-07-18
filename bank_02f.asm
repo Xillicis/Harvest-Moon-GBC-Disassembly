@@ -5415,7 +5415,7 @@ Jump_02f_601b:
     xor a
     ld [$cc17], a
     xor a
-    ld hl, wRightOrUpSideFacingTileID
+    ld hl, wDominantFacingTileID
     ld [hl+], a
     ld [hl], a
     ld a, [$cc79]
@@ -6051,7 +6051,7 @@ Call_02f_62dd:
     ld de, $9800
     call Call_000_31a0
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $ff
     ld [wTextID], a
     xor a
@@ -6096,7 +6096,7 @@ Call_02f_62dd:
     ld [$cb55], a
     xor a
     ld [$b88c], a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     call Call_000_3dfd
@@ -6125,7 +6125,7 @@ Call_02f_62dd:
     jr nz, jr_02f_64a1
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     jr jr_02f_64a4
 
 jr_02f_64a1:
@@ -6153,9 +6153,9 @@ Call_02f_64b6:
 
 Call_02f_64be:
     call Call_02f_679d
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -6171,7 +6171,7 @@ Call_02f_64be:
     cp $ff
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -6228,7 +6228,7 @@ jr_02f_6527:
     and $01
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $80
     call z, Call_02f_6929
     cp $81
@@ -6323,7 +6323,7 @@ jr_02f_65b4:
     ret nc
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6357,7 +6357,7 @@ jr_02f_65e9:
     ret c
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6391,7 +6391,7 @@ jr_02f_661e:
     ret nc
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6425,7 +6425,7 @@ jr_02f_6653:
     ret c
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6462,7 +6462,7 @@ jr_02f_6692:
     ret c
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6499,7 +6499,7 @@ jr_02f_66ce:
     ret nc
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6536,7 +6536,7 @@ jr_02f_670a:
     ret nc
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6573,7 +6573,7 @@ jr_02f_6746:
     ret c
 
     ld a, $0d
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ret
 
 
@@ -6634,9 +6634,9 @@ Jump_02f_6794:
 
 
 Call_02f_679d:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -6644,7 +6644,7 @@ Call_02f_679d:
     or a
     jr nz, jr_02f_680b
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0d
     jr z, jr_02f_67e9
 
@@ -6660,7 +6660,7 @@ Call_02f_679d:
     cp $f8
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     jr z, jr_02f_67e9
 
@@ -6673,7 +6673,7 @@ jr_02f_67cd:
     cp $e0
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     jr z, jr_02f_67e9
 
@@ -6686,7 +6686,7 @@ jr_02f_67dc:
     cp $18
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -6726,7 +6726,7 @@ jr_02f_680b:
     and $01
     jr z, jr_02f_6823
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     jr nz, jr_02f_6823
 
@@ -6746,7 +6746,7 @@ jr_02f_682a:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [$c910], a
     ld [sClockFrameCount], a
@@ -7534,7 +7534,7 @@ jr_02f_6c1a:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$ccb9], a
     call Call_02f_6dd8
@@ -7571,9 +7571,9 @@ jr_02f_6c1a:
 
 
 Call_02f_6cf5:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -7649,7 +7649,7 @@ jr_02f_6d5c:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     call Call_02f_6ef6
     ret
 

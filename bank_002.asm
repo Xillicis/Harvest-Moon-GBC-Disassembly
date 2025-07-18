@@ -164,7 +164,7 @@ jr_002_4170:
 
 
     call Call_000_0d90
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -175,7 +175,7 @@ jr_002_4170:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -1213,23 +1213,18 @@ Call_002_4742:
     ld a, [sCurrentSeason]
     cp AUTUMN
     jr z, jr_002_47c3
-
     ld a, [sCurrentSeason]
     cp WINTER
     jr z, jr_002_47c3
-
     ld a, [$b8a1]
     cp $80
     jr z, jr_002_47c9
-
     ld a, [$b8a1]
     cp $ff
     jr z, jr_002_4766
-
     ld a, [sCurrentSeason]
     cp SPRING
     ret z
-
     jr jr_002_477c
 
 jr_002_4766:
@@ -1283,12 +1278,10 @@ jr_002_479f:
     ld [$b8a1], a
     ret
 
-
 jr_002_47c3:
     ld a, $80
     ld [$b8a1], a
     ret
-
 
 jr_002_47c9:
     ld a, [sCurrentWeather]
@@ -1299,7 +1292,6 @@ jr_002_47c9:
     cp WINDY_DAY
     jr z, jr_002_480f
     ret
-
 
 jr_002_47d8:
     ld a, [$ba4c]
@@ -1334,7 +1326,6 @@ jr_002_47f4:
     ld [$b926], a
     ld [$b927], a
     ret
-
 
 jr_002_480f:
     ld a, [$ba4d]
@@ -3063,7 +3054,7 @@ jr_002_50ec:
     ld [$cb5d], a
     ld [$cb5e], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextID], a
     ld [wTVAnimationTimer], a
     ld [wTVIsTurnedOn], a
@@ -3187,7 +3178,7 @@ jr_002_5211:
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $ff
     ld [wTVBlinkingIndicator], a
     call Call_000_11c2
@@ -3238,7 +3229,7 @@ jr_002_5271:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     call Call_000_3dfd
@@ -3270,7 +3261,7 @@ jr_002_5271:
     call Call_002_5356
     call Call_002_5913
     call Call_000_3cf8
-    call Call_002_5e51
+    call AnimateTV
     call Call_002_5433
     call Call_000_2d67
     call Call_000_36f4
@@ -3502,7 +3493,7 @@ Jump_002_540a:
     ld [$cb50], a
     ld a, $1d
     ld a, $01
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $01
     ld [$c910], a
     ld a, $01
@@ -3517,15 +3508,15 @@ Jump_002_540a:
 
 
 Call_002_5433:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -4307,7 +4298,7 @@ jr_002_5891:
     ld a, $1b
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     pop hl
@@ -4318,7 +4309,7 @@ jr_002_58b6:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $00
     ld [$c910], a
     xor a
@@ -4332,7 +4323,7 @@ jr_002_58cb:
     ld a, $22
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     xor a
@@ -4350,7 +4341,7 @@ jr_002_58ea:
     ld a, $0d
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -4362,7 +4353,7 @@ jr_002_58ea:
     ld a, $00
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -4371,7 +4362,7 @@ jr_002_58ea:
 
 
 Call_002_5913:
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -4387,7 +4378,7 @@ Call_002_5913:
     and $02
     ret z
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -4395,45 +4386,36 @@ Call_002_5913:
     and $01
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
-    cp BIG_LOG_BOTTOM_LEFT_TILE
+    ld a, [wDominantFacingTileID]
+    cp BED
     jr z, jr_002_5978
-
-    cp BUSH_TILE
+    cp PHONE_EXCHANGE
     jr z, jr_002_5991
-
-    cp STONE_TILE
+    cp CALENDAR_CLOCK
     jr z, jr_002_599c
+    cp TELEVISION
+    jp z, TelevisionInteract
 
-    cp BIG_STONE_TOP_LEFT_TILE
-    jp z, Jump_002_59ee
-; programming mistake?
     ret z
 
     cp $05
     jr z, jr_002_5983
 
     cp $06
-    jr z, jr_002_59bd
+    jr z, StoveTopInteract
 
-    cp $07
-    jr z, jr_002_59bd
-
+    cp STOVE_TOP
+    jr z, StoveTopInteract
     cp $08
-    jp z, Jump_002_59bd
-
-    cp $09
-    jp z, Jump_002_59c8
-
-    cp $0b
-    jp z, Jump_002_5a08
-
+    jp z, StoveTopInteract
+    cp DRESSER
+    jp z, DresserInteract
+    cp PLANT_TROUGH
+    jp z, PlantTroughInteract
     cp $0c
     jp z, Jump_002_5a1d
-
     cp $99
     jp z, Jump_002_5a2d
-
     ret
 
 
@@ -4485,16 +4467,14 @@ jr_002_599c:
     call RST_TableJumpBankSwitch
     ret
 
-
-Jump_002_59bd:
-jr_002_59bd:
-    ld a, $08
+StoveTopInteract:
+    ld a, TEXT_STOVE_TOP
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-Jump_002_59c8:
+DresserInteract:
     ld a, [sFoundMoneyInDresser]
     or a
     jr nz, .alreadyReceivedMoney
@@ -4517,7 +4497,7 @@ Jump_002_59c8:
     call RST_TableJumpBankSwitch
     ret
 
-Jump_002_59ee:
+TelevisionInteract:
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, [wTVIsTurnedOn]
@@ -4532,7 +4512,7 @@ Jump_002_59ee:
     ld [wInputFreezeTimer], a
     ret
 
-Jump_002_5a08:
+PlantTroughInteract:
     ld a, [sNumPowerBerriesEaten]
     or a
     jr nz, .loadFlowerBloomedText
@@ -4557,23 +4537,17 @@ Jump_002_5a1d:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_002_5a2d:
     ld a, [wPlayerFacingDirection]
-    cp $02
+    cp FACING_RIGHT
     jr z, jr_002_5a41
-
-    cp $00
+    cp FACING_DOWN
     jr z, jr_002_5a51
-
-    cp $03
+    cp FACING_UP
     jr z, jr_002_5a61
-
-    cp $01
+    cp FACING_LEFT
     jr z, jr_002_5a71
-
     ret
-
 
 jr_002_5a41:
     ld a, $01
@@ -4584,7 +4558,6 @@ jr_002_5a41:
     call InitializeTextIDAndDisplay
     ret
 
-
 jr_002_5a51:
     ld a, $03
     ld [$c80d], a
@@ -4594,7 +4567,6 @@ jr_002_5a51:
     call InitializeTextIDAndDisplay
     ret
 
-
 jr_002_5a61:
     ld a, $00
     ld [$c80d], a
@@ -4603,7 +4575,6 @@ jr_002_5a61:
     ld a, $31
     call InitializeTextIDAndDisplay
     ret
-
 
 jr_002_5a71:
     ld a, $02
@@ -4921,7 +4892,7 @@ Data_002_5e31:
 Data_002_5e41:
     db $58, $40, $59, $41, $5A, $42, $5B, $43, $68, $50, $69, $51, $6A, $52, $6B, $53 
 
-Call_002_5e51:
+AnimateTV:
     ld a, [wTVAnimationTimer]
     or a
     ret z

@@ -82,10 +82,10 @@ ds $21d
 wcb30:: db
 ;; This address is used to store the object ID that is in the respective space.
 ;; Need to catalog all the possible IDs here.
-wLeftOrDownSideFacingTileID:: db
+wSubordinateFacingTileID:: db
 ;; Same as the above, but regarding the "right" or "up" side object
 wcb32:: db ; 0xcb32
-wRightOrUpSideFacingTileID:: db ; 0xcb33
+wDominantFacingTileID:: db ; 0xcb33
 
 ds $16
 
@@ -99,9 +99,9 @@ wTextBoxIsDisplayed:: db ; 0xcb4c
 
 ds 1 ; 0xcb4d
 
-ds 1 ; 0xcb4e
-
-ds 1 ; 0xcb4f
+; Seems like these are probably used to stall the player while data loads.
+wFreezePlayerWhenEnteringNewMap:: db ; 0xcb4e
+wPlayerIdleWhenExitingCurrentMap:: db ; 0xcb4f
 
 ds 1 ; 0xcb50
 
@@ -109,7 +109,11 @@ ds 1 ; 0xcb51
 
 wTextID:: db ; 0xcb52
 
-ds 35
+ds 3
+
+wFreezePlayerInTextWindowOrInTown:: db ; 0xcb56
+
+ds 31
 
 ; This starts a countdown for the animation of the weather girl moving
 ; then it gets into a small loop just for the animation of the blinking sun (or other weather thing)

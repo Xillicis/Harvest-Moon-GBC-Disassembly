@@ -7,7 +7,7 @@ const TEXT_04
 const TEXT_05
 const TEXT_06
 const TEXT_07
-const TEXT_08
+const TEXT_STOVE_TOP
 const TEXT_FOUND_MONEY_IN_DRESSER ; $09
 const TEXT_DRESSER                ; $0a
 const TEXT_0B

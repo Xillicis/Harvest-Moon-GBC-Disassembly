@@ -251,12 +251,12 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     call Call_000_25c5
     ld a, $83
@@ -286,9 +286,9 @@ Call_01f_416e:
 
 
     call Call_000_0d90
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -4263,7 +4263,7 @@ jr_01f_551d:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -10077,7 +10077,7 @@ jr_01f_7058:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $00
     ld [$c910], a
     xor a

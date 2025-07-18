@@ -162,7 +162,7 @@ jr_021_4120:
     ldh [$ff93], a
     ldh [$ff91], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $07
     ldh [$ff96], a
     ld a, $68
@@ -346,7 +346,7 @@ jr_021_427f:
     add b
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [$c7c0], a
     ld a, [$cb50]
@@ -362,7 +362,7 @@ jr_021_429c:
     ld a, $13
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -378,7 +378,7 @@ Jump_021_42b9:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -417,7 +417,7 @@ jr_021_42ed:
 
 Jump_021_4306:
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $1c
     ld [$cb50], a
     xor a
@@ -438,7 +438,7 @@ Jump_021_4325:
     ld a, $0f
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -469,7 +469,7 @@ Jump_021_436b:
     ld a, $0f
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -494,7 +494,7 @@ Jump_021_43a2:
     ld a, $0f
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
@@ -507,15 +507,15 @@ Jump_021_43a2:
 
 
 Call_021_43c4:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -1118,7 +1118,7 @@ jr_021_46d7:
     and $01
     jp z, Jump_021_4991
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp FENCE_POST_TILE
     jr z, jr_021_4739
 
@@ -1219,7 +1219,7 @@ Jump_021_478e:
     and $01
     jp z, Jump_021_4991
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp FENCE_POST_TILE
     jr z, jr_021_47de
 
@@ -1319,7 +1319,7 @@ Jump_021_4830:
     and $01
     jp z, Jump_021_49c5
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp FENCE_POST_TILE
     jr z, jr_021_4880
 
@@ -1420,7 +1420,7 @@ Jump_021_48d5:
     and $01
     jp z, Jump_021_49c5
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp FENCE_POST_TILE
     jr z, jr_021_4925
 
@@ -1484,7 +1484,7 @@ jr_021_4973:
 
 
 Jump_021_4977:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0f
     jr z, jr_021_4984
 
@@ -1503,7 +1503,7 @@ jr_021_4984:
 
 
 Jump_021_4991:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0f
     jr z, jr_021_499e
 
@@ -1522,7 +1522,7 @@ jr_021_499e:
 
 
 Jump_021_49ab:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0f
     jr z, jr_021_49b8
 
@@ -1541,7 +1541,7 @@ jr_021_49b8:
 
 
 Jump_021_49c5:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0f
     jr z, jr_021_49d2
 
@@ -2675,7 +2675,7 @@ jr_021_5273:
     or a
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $6a
     jr c, jr_021_52ac
 
@@ -2690,7 +2690,7 @@ jr_021_5273:
 
 
 jr_021_52ac:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp BUSH_TILE
     jr nz, jr_021_52c6
 
@@ -2735,7 +2735,7 @@ jr_021_52ee:
     and $40
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $60
     jr z, jr_021_5318
 
@@ -3022,7 +3022,7 @@ Call_021_549e:
     or a
     ret z
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -3035,7 +3035,7 @@ Call_021_549e:
     ret nz
 
 jr_021_54c2:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $41
     jr z, jr_021_54df
 
@@ -4141,7 +4141,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $5c
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4172,7 +4172,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $82
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4203,7 +4203,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $11
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4234,7 +4234,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $11
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4265,7 +4265,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $11
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4296,7 +4296,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $11
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4327,7 +4327,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $11
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -4358,7 +4358,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $ec
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, $36
     call Call_000_25ce
     ret
@@ -6426,7 +6426,7 @@ Call_021_689c:
     cp $3d
     jr nz, jr_021_68bc
 
-    ld a, [wLeftOrDownSideFacingTileID]
+    ld a, [wSubordinateFacingTileID]
     cp $3d
     jr nz, jr_021_68bc
 
@@ -6439,7 +6439,7 @@ jr_021_68bc:
     cp $3e
     jr nz, jr_021_68d1
 
-    ld a, [wLeftOrDownSideFacingTileID]
+    ld a, [wSubordinateFacingTileID]
     cp $3e
     jr nz, jr_021_68d1
 
@@ -6456,7 +6456,7 @@ jr_021_68d1:
     cp $3f
     jr nz, jr_021_68e6
 
-    ld a, [wLeftOrDownSideFacingTileID]
+    ld a, [wSubordinateFacingTileID]
     cp $3f
     jr nz, jr_021_68e6
 
@@ -6482,7 +6482,7 @@ jr_021_68e6:
     cp $40
     jr nz, jr_021_690a
 
-    ld a, [wLeftOrDownSideFacingTileID]
+    ld a, [wSubordinateFacingTileID]
     cp $40
     jr nz, jr_021_690a
 
@@ -6637,15 +6637,15 @@ Call_021_69cd:
 
 
 Call_021_69fa:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -6690,7 +6690,7 @@ Call_021_6a38:
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -6850,7 +6850,7 @@ Call_021_6b13:
     cp $ff
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -6869,7 +6869,7 @@ jr_021_6b37:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     ld a, $06
@@ -8186,7 +8186,7 @@ Call_021_7221:
     ld [$c910], a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
     ld [$b88c], a
     ld a, $ff

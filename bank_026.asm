@@ -57,7 +57,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
@@ -66,7 +66,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld a, $88
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     call Call_000_25c5
     ld a, $e3
@@ -90,9 +90,9 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     inc d
     ld [bc], a
     call Call_000_0d90
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -498,9 +498,9 @@ jr_026_42a6:
     ld a, $05
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [$c910], a
     ret
@@ -605,9 +605,9 @@ jr_026_4336:
     ld a, $05
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [$c910], a
     ret
@@ -1704,7 +1704,7 @@ jr_026_4780:
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
@@ -1845,9 +1845,9 @@ Call_026_4883:
     ld b, [hl]
     nop
     call Call_000_0d90
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -2848,7 +2848,7 @@ jr_026_4cd8:
     ld a, $00
     ldh [rSTAT], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     inc a
     ld [$c910], a
     ld [$c0a6], a

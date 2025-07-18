@@ -26,7 +26,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
     ld [$c800], a
     ld [$c880], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld hl, $478a
     ld c, $2b
     ld de, $8800
@@ -49,7 +49,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
 
 
     call Call_000_2d67
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -82,7 +82,7 @@ jr_027_4081:
 Jump_027_4094:
 jr_027_4094:
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$ccc1]
     or a
     jr z, jr_027_40c6
@@ -152,7 +152,7 @@ Call_027_40f3:
 
 
 Call_027_40fb:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
@@ -11600,7 +11600,7 @@ jr_027_7020:
     ld [$cb53], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -11623,7 +11623,7 @@ jr_027_7020:
     ld [$cb53], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -11665,7 +11665,7 @@ jr_027_7092:
     ld [$cb53], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -11699,7 +11699,7 @@ jr_027_70c7:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -11748,7 +11748,7 @@ jr_027_7111:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -12219,7 +12219,7 @@ jr_027_7413:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     xor a
@@ -12321,7 +12321,7 @@ Jump_027_74ea:
     ld [$cb53], a
     ld [$cb54], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     jr jr_027_7522
 
     ret
@@ -12360,7 +12360,7 @@ jr_027_752a:
     ld [$cb54], a
     ld [$cb55], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ret
 
 
@@ -12380,7 +12380,7 @@ jr_027_7562:
 
 
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ret
 
 

@@ -10,11 +10,11 @@ TickGameClock:
     or a
     ret nz
 
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -114,7 +114,7 @@ UpdateHourTileData: ; 00x070b
     ld [$b917], a
     ld a, [hli]
     ld [$b918], a
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -192,7 +192,7 @@ UpdateDayOfTheWeekTileData:
     ld [sDayOfTheWeekTileIndex3], a
     ld a, [hl]
     ld [sDayOfTheWeekTileIndex4], a
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 

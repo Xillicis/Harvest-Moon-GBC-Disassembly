@@ -153,7 +153,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
 
 
     call Call_000_0d90
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -164,7 +164,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -3218,7 +3218,7 @@ jr_022_50a8:
     ld [$cb5d], a
     ld [$cb5e], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextID], a
     ld [wTVAnimationTimer], a
     ld [wTVIsTurnedOn], a
@@ -3312,7 +3312,7 @@ jr_022_5191:
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $ff
     ld [wTVBlinkingIndicator], a
     call Call_000_11c2
@@ -3329,7 +3329,7 @@ jr_022_5191:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     call Call_000_3efc
     call Call_000_3dfd
@@ -3584,7 +3584,7 @@ Jump_022_5356:
     ld a, $02
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $01
     ld [$c910], a
     ld a, $01
@@ -3599,15 +3599,15 @@ Jump_022_5356:
 
 
 Call_022_537d:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -4404,7 +4404,7 @@ jr_022_57fe:
     ld a, $1b
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     pop hl
@@ -4415,7 +4415,7 @@ jr_022_5823:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $00
     ld [$c910], a
     xor a
@@ -4429,7 +4429,7 @@ jr_022_5838:
     ld a, $22
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     xor a
@@ -4447,7 +4447,7 @@ jr_022_5857:
     ld a, $0d
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -4459,7 +4459,7 @@ jr_022_5857:
     ld a, $00
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $03
     ld [$c910], a
     xor a
@@ -4468,7 +4468,7 @@ jr_022_5857:
 
 
 Call_022_5880:
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -4484,7 +4484,7 @@ Call_022_5880:
     and $02
     ret z
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -4492,7 +4492,7 @@ Call_022_5880:
     and $01
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $0a
     jr z, jr_022_58e5
 

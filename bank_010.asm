@@ -72,7 +72,7 @@ jr_010_4063:
     ld [$c840], a
     ld [$c860], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     call Call_010_448d
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -133,9 +133,9 @@ jr_010_40c6:
     cp c
     call Call_000_0d90
     call Call_000_2d67
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -528,7 +528,7 @@ jr_010_4342:
     ld a, $03
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -1012,7 +1012,7 @@ jr_010_4fbe:
     ld [$cb5d], a
     ld [$cb5e], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     call Call_010_563c
     call Call_010_5663
     ld a, $83
@@ -1055,9 +1055,9 @@ jr_010_4fbe:
 
 
 Call_010_508c:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -1414,9 +1414,9 @@ jr_010_523a:
     ret nz
 
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [$c910], a
     xor a
@@ -1935,9 +1935,9 @@ Call_010_5502:
     xor a
 
 Call_010_554f:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -1995,11 +1995,11 @@ Call_010_554f:
     ret nz
 
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$ba43], a
     ld a, $26

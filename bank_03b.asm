@@ -1329,7 +1329,7 @@ jr_03b_4644:
     ld a, $1d
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld h, b
     ld l, c
     ret
@@ -1338,7 +1338,7 @@ jr_03b_4644:
     ld a, $1e
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld h, b
     ld l, c
     ret
@@ -1347,7 +1347,7 @@ jr_03b_4644:
     ld a, $1f
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld h, b
     ld l, c
     ret
@@ -14323,7 +14323,7 @@ Call_03b_7c9f:
     ld a, $19
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -14334,7 +14334,7 @@ Call_03b_7c9f:
     ld a, $19
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 

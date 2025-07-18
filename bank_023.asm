@@ -35,7 +35,7 @@ SECTION "ROM Bank $023", ROMX[$4000], BANK[$23]
     ld [$cb5e], a
     xor a
     ld [wMapChangeFreezeTimer], a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $44
     ldh [$ff91], a
     ld a, $20
@@ -45,7 +45,7 @@ SECTION "ROM Bank $023", ROMX[$4000], BANK[$23]
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     ld [$b90c], a
     xor a
@@ -289,9 +289,9 @@ jr_023_4150:
 
 
 Call_023_4278:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     jr nz, jr_023_42bd
 
@@ -329,7 +329,7 @@ jr_023_42a1:
     ld a, $25
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
 
 jr_023_42bd:
     call Call_023_4323
@@ -340,9 +340,9 @@ jr_023_42bd:
 
 
 Call_023_42ca:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     jr nz, jr_023_4316
 
@@ -384,7 +384,7 @@ jr_023_42fa:
     ld a, $23
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
 
 jr_023_4316:
     call Call_023_4323
@@ -1386,7 +1386,7 @@ jr_023_487d:
 
 
 Call_023_4893:
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -1398,7 +1398,7 @@ Call_023_4893:
     and $01
     jr z, jr_023_48bb
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $05
     jp z, Jump_023_4cdb
 
@@ -2101,11 +2101,11 @@ jr_023_4cc6:
     or a
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $1d
     jr z, jr_023_4d07
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $04
     jp z, Jump_023_4dac
 
@@ -2531,7 +2531,7 @@ jr_023_4f38:
     cp $21
     jr z, jr_023_4f8a
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jr z, jr_023_4f8a
 
@@ -2577,7 +2577,7 @@ jr_023_4f95:
     cp $21
     jp z, Jump_023_5155
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jp z, Jump_023_5142
 
@@ -2606,7 +2606,7 @@ jr_023_4f95:
     cp $21
     jr z, jr_023_5003
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jr z, jr_023_5003
 
@@ -2648,7 +2648,7 @@ jr_023_500e:
     cp $21
     jp z, Jump_023_5155
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jp z, Jump_023_5142
 
@@ -2677,7 +2677,7 @@ jr_023_500e:
     cp $21
     jr z, jr_023_507d
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jr z, jr_023_507d
 
@@ -2719,7 +2719,7 @@ jr_023_5088:
     cp $21
     jp z, Jump_023_5155
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $20
     jp z, Jump_023_5142
 
@@ -2887,15 +2887,15 @@ jr_023_516a:
     ret z
 
 Call_023_51a6:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -3726,7 +3726,7 @@ jr_023_563a:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $01
     ld [$c910], a
     ret
@@ -3736,7 +3736,7 @@ jr_023_5654:
     ld a, $07
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 

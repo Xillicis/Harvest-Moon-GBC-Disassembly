@@ -44,7 +44,7 @@ Jump_01d_402a:
     ld a, $70
     ldh [$ff91], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $07
     ldh [$ff96], a
     ld a, $00
@@ -63,7 +63,7 @@ Jump_01d_402a:
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
@@ -82,9 +82,9 @@ Jump_01d_402a:
     ret
 
 
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -597,7 +597,7 @@ jr_01d_430c:
     ld a, $04
     ld [$cd62], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $11
     ld [wSTAT_HandlerIndex], a
     ld a, $01
@@ -708,7 +708,7 @@ Call_01d_434b:
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld hl, $4461
     ld a, l
     ld [$cd28], a
@@ -784,7 +784,7 @@ Data_01d_4448: ; 1dx4448
     db $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01, $0E, $01
 
 Label_01d_4458: ; 1dx4458
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
     call Call_01d_4113
@@ -1016,7 +1016,7 @@ jr_01d_4559:
     ld a, $00
     ldh [rSTAT], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     inc a
     ld [$c0a6], a
     ld a, $12
@@ -1026,7 +1026,7 @@ jr_01d_4559:
     ret
 
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -1036,7 +1036,7 @@ jr_01d_4559:
     ldh [rSTAT], a
     di
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $03
     ld [$c910], a
     ld a, [$b90a]
@@ -1046,7 +1046,7 @@ jr_01d_4559:
     ld a, $28
     ld [$cb50], a
     ld a, $02
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -1054,7 +1054,7 @@ jr_01d_45a5:
     ld a, $02
     ld [$cb50], a
     ld a, $02
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -1346,7 +1346,7 @@ jr_01d_474d:
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $4e
     ld hl, $cd6b
     ld [hl+], a
@@ -1359,7 +1359,7 @@ jr_01d_474d:
     ld a, h
     ld [$cd29], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld hl, wShadowOAM
     ld bc, $00a0
     call ZeroOutHL
@@ -1380,9 +1380,9 @@ jr_01d_474d:
     ret
 
 
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -1749,7 +1749,7 @@ Jump_01d_48b7:
     ld a, $24
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -1805,7 +1805,7 @@ Call_01d_49c7:
     ld h, b
     ld l, c
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $11
     ld [$cb50], a
     ret
@@ -3550,9 +3550,9 @@ INCLUDE "engine/new_game.asm"
 
 
     call Call_000_0d90
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -3620,11 +3620,11 @@ Call_01d_538e:
     ld a, $01
     ld [$b89c], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     pop hl
     ret
 
@@ -3640,7 +3640,7 @@ jr_01d_53b8:
     ld a, $03
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     pop hl
     ret
 
@@ -3753,7 +3753,7 @@ jr_01d_5452:
     call CopyHLToDE4Bytes
     pop hl
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [$cd2b], a
     ld a, $07
@@ -3761,7 +3761,7 @@ jr_01d_5452:
     ld a, $19
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -4250,7 +4250,7 @@ jr_01d_56b1:
     jr z, jr_01d_5754
 
     xor a
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld hl, $57be
     ld a, l
     ld [$cd28], a
@@ -4264,7 +4264,7 @@ jr_01d_56b1:
 
 jr_01d_5754:
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld hl, $57b2
     ld a, l
     ld [$cd28], a
@@ -4285,7 +4285,7 @@ jr_01d_576e:
     ld [$cb1c], a
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     xor a
     ldh [$ff91], a
     ldh [$ff93], a
@@ -4305,9 +4305,9 @@ jr_01d_576e:
     ret
 
 
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -4448,7 +4448,7 @@ jr_01d_5812:
     ld a, $10
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
 
@@ -9501,7 +9501,7 @@ jr_01d_6e6c:
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
@@ -9533,7 +9533,7 @@ jr_01d_6e6c:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb53], a
     ld [$cb54], a
     ld [$cb55], a
@@ -9551,9 +9551,9 @@ jr_01d_6e6c:
 
 
 Call_01d_6f51:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -9833,7 +9833,7 @@ Jump_01d_7100:
 
 Jump_01d_7126:
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$ccc1]
     or a
     jr z, jr_01d_7137
@@ -10282,7 +10282,7 @@ jr_01d_72d1:
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
     ld [$cb4a], a
     ld [wPlayerIsCarryingItem], a
@@ -10316,7 +10316,7 @@ jr_01d_72d1:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb53], a
     ld [$cb54], a
     ld [$cb55], a
@@ -10334,9 +10334,9 @@ jr_01d_72d1:
 
 
 Call_01d_73ef:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
@@ -10495,7 +10495,7 @@ jr_01d_747a:
 
 Jump_01d_74f4:
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$ccc1]
     or a
     jr z, jr_01d_750a

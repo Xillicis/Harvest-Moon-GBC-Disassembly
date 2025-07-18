@@ -1101,7 +1101,7 @@ Call_000_0de8:
     ld [$c910], a
     ld [wDestinationWarpID], a
     ld [wMapChangeFreezeTimer], a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
     ld a, $ff
     ld [wTextID], a
@@ -1259,9 +1259,9 @@ Call_000_0f0f:
     xor a
     ld [$cb2f], a
     ld [wcb30], a
-    ld [wLeftOrDownSideFacingTileID], a
+    ld [wSubordinateFacingTileID], a
     ld [wcb32], a
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld [$cb34], a
     ld [$cb37], a
     ld [$cb38], a
@@ -7470,6 +7470,7 @@ Jump_000_3408:
     reti
 
 Data_000_3421:
+    
     db $01, $45, $07, $2C, $45, $07, $57, $45, $07, $57, $45, $07, $AD, $45, $07, $D8,
     db $45, $07, $03, $46, $07, $03, $46, $07, $2E, $46, $07, $84, $46, $07, $30, $47,
     db $07, $86, $47, $07, $D2, $47, $07, $28, $48, $07, $A9, $48, $07, $FF, $48, $07,
@@ -7723,7 +7724,7 @@ jr_000_3837:
     ret
 
 Jump_000_383d:
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret z
 
@@ -8168,7 +8169,7 @@ jr_000_3b2c:
 
 Call_000_3b32:
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
     call Call_000_3efc
     ld a, [$b906]
@@ -8387,7 +8388,7 @@ Call_000_3c44:
 jr_000_3c6d:
     call Call_000_3fa2
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
     call Call_000_3efc
     ld a, $01
@@ -8419,7 +8420,7 @@ jr_000_3c6d:
 jr_000_3cb2:
     call Call_000_3fa2
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
     call Call_000_3efc
     ld a, $50
@@ -8475,7 +8476,7 @@ jr_000_3d07:
     ret
 
 jr_000_3d17:
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     cp $00
     jr z, jr_000_3d7b
 
@@ -8489,7 +8490,7 @@ jr_000_3d17:
 
     call Call_000_3efc
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
@@ -8510,7 +8511,7 @@ jr_000_3d41:
     ld a, $01
     ld [$cbf6], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cbeb], a
     ld [wTVIsTurnedOn], a
     ld [$cb5f], a
@@ -8538,11 +8539,11 @@ jr_000_3d7b:
     and $04
     ret z
 
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -8559,7 +8560,7 @@ jr_000_3d7b:
     ld a, $03
     ld [wInputFreezeTimer], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ret
 
 Call_000_3db3:
@@ -8783,7 +8784,7 @@ Call_000_3f26:
     ld [$cb54], a
     ld [$cb55], a
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     ld a, [$b906]
     or a
@@ -8806,7 +8807,7 @@ InitializeTextIDAndDisplay:
     ld a, b
     ld [wTextID], a
     ld a, $01
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
     ld [$cc1b], a
     call Call_000_3f0b

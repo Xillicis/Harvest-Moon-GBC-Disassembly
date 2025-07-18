@@ -45,7 +45,7 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
     ldh [$ff95], a
     ld [$c820], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     ld [$b90c], a
     xor a
@@ -93,15 +93,15 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
 
 
 Call_025_40d2:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -164,7 +164,7 @@ Call_025_412b:
     and $01
     jp z, Jump_025_4295
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     or a
     jp z, Jump_025_4295
 
@@ -185,7 +185,7 @@ Call_025_412b:
     ld [hl], a
     ld a, $35
     call Call_000_25ce
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     dec a
     ld h, $00
     ld l, a
@@ -266,7 +266,7 @@ jr_025_418a:
     ld [hl+], a
     ld a, $01
     ld [hl], a
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     dec a
     cp $1d
     jr nz, jr_025_41cf
@@ -522,7 +522,7 @@ Jump_025_4328:
     ld a, $06
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$cb51]
     ld [$cbe8], a
     xor a
@@ -531,7 +531,7 @@ Jump_025_4328:
 
 
 Call_025_433d:
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
@@ -623,7 +623,7 @@ jr_025_43bd:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, [$cb51]
     ld [$cbe8], a
     ld a, $03
@@ -685,7 +685,7 @@ jr_025_4413:
     ld a, $08
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     xor a
     ld [$cc79], a
     ld [$cc7b], a
@@ -3420,7 +3420,7 @@ jr_025_501e:
     ld e, a
     add hl, de
     ld a, [hli]
-    ld [wLeftOrDownSideFacingTileID], a
+    ld [wSubordinateFacingTileID], a
     ld a, [hli]
     ld [wcb32], a
     pop hl
@@ -3441,7 +3441,7 @@ jr_025_501e:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret
@@ -3544,7 +3544,7 @@ Jump_025_516e:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTileID], a
+    ld [wSubordinateFacingTileID], a
     ld a, [hl+]
     ld [wcb32], a
     pop hl
@@ -3565,7 +3565,7 @@ Jump_025_516e:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ld a, [wPlayerIsRidingHorse]
@@ -3767,7 +3767,7 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTileID], a
+    ld [wSubordinateFacingTileID], a
     ld a, [hl+]
     ld [wcb32], a
     ldh a, [$ffa6]
@@ -3790,7 +3790,7 @@ jr_025_5256:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret
@@ -3898,7 +3898,7 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wLeftOrDownSideFacingTileID], a
+    ld [wSubordinateFacingTileID], a
     ld a, [hl+]
     ld [wcb32], a
     ldh a, [$ffa6]
@@ -3921,7 +3921,7 @@ jr_025_5256:
     ld a, l
     ld [$cb36], a
     ld a, [hl+]
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     ld a, [hl+]
     ld [$cb34], a
     ret
@@ -5663,7 +5663,7 @@ Jump_025_5f9c:
 
 
 Jump_025_5fc1:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     cp $0c
     ret nc
 

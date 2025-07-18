@@ -10715,7 +10715,7 @@ jr_012_7917:
     cp $05
     jr nz, jr_012_792a
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     cp $00
     ret nz
 

@@ -990,7 +990,7 @@ PlayerInteraction_A_Pressed:
     or a
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $6a
     jr c, .checkForBushTile
 
@@ -1003,7 +1003,7 @@ PlayerInteraction_A_Pressed:
     jp Jump_001_5517
 
 .checkForBushTile
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp BUSH_TILE
     jr nz, .checkForStoneTile
 
@@ -1069,7 +1069,7 @@ PlayerInteraction_A_Pressed:
     and $40
     ret z
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $60
     jr z, jr_001_536f
     cp $88
@@ -1424,7 +1424,7 @@ Call_001_557f:
     or a
     ret z
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -1437,7 +1437,7 @@ Call_001_557f:
     ret nz
 
 jr_001_55a3:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $41
     jr z, jr_001_55c0
 

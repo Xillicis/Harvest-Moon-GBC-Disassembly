@@ -62,13 +62,13 @@ SetupNewGameData: ; 1dx5192
     ld h, b
     ld l, c
     xor a
-    ld [$cb56], a
+    ld [wFreezePlayerInTextWindowOrInTown], a
     inc a
     ld [$c910], a
     ld a, $0e
     ld [$cb50], a
     ld a, $02
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ret
 
     ret

@@ -42,7 +42,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld a, $68
     ldh [$ff95], a
     ld a, $1d
-    ld [$cb4e], a
+    ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
     ld [$b90c], a
     xor a
@@ -132,7 +132,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     call Call_024_4254
     call Call_024_4268
     call Call_024_427c
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -308,15 +308,15 @@ Call_024_427c:
 
 
 Call_024_4290:
-    ld a, [$cb4e]
+    ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
 
-    ld a, [$cb4f]
+    ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
 
-    ld a, [$cb56]
+    ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
@@ -1066,7 +1066,7 @@ jr_024_46a4:
     ld a, $01
     ld [$cb50], a
     ld a, $1d
-    ld [$cb4f], a
+    ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $02
     ld [$c910], a
     ret
@@ -2101,7 +2101,7 @@ jr_024_4d34:
     or a
     jp z, Jump_024_4f48
 
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $05
     jr z, jr_024_4d8b
 
@@ -2262,7 +2262,7 @@ jr_024_4e0e:
 
 
 Jump_024_4e4d:
-    ld a, [wRightOrUpSideFacingTileID]
+    ld a, [wDominantFacingTileID]
     cp $10
     jr z, jr_024_4e99
 
@@ -2701,7 +2701,7 @@ jr_024_50e0:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     call Call_024_583c
     ld a, [de]
     cp $02
@@ -2746,7 +2746,7 @@ jr_024_5118:
     call RST_TableJumpBankSwitch
     xor a
     ld [$cb4a], a
-    ld [wRightOrUpSideFacingTileID], a
+    ld [wDominantFacingTileID], a
     call Call_024_583c
     ld a, [de]
     cp $02
