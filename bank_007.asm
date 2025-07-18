@@ -790,340 +790,79 @@ jr_007_44fb:
     inc a
     dec b
     jr nz, jr_007_44fb
-
     ret
 
-
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, b
-    ld [hl], b
-    nop
-    nop
-    or c
-    db $ec
-    and h
-    and l
-    and [hl]
-    and a
-    xor b
-    xor c
-    ret z
-
-    ret
-
-
-    xor $f0
-    db $ed
-    xor e
-    xor d
-    inc c
-    rst $28
-    xor h
-    xor l
-    xor [hl]
-    xor a
-    or b
-    or $ef
-    rst $28
-    rst $28
-    or d
-    or e
-    or h
-    or l
-    or [hl]
-    ld b, $ff
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, b
-    ld [hl], b
-    nop
-    nop
-    rst $28
-    rrca
-    ld e, $2d
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    inc de
-    ld [hl+], a
-    ld h, $1e
-
-jr_007_4545:
-    dec hl
-    rst $28
-    rlca
-    jr z, jr_007_4575
-
-    inc l
-    ld e, $ef
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    inc c
-    ld e, $26
-    jr z, jr_007_4545
-
-    rst $38
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, b
-    ld [hl], b
-    nop
-    nop
-    ld [de], a
-    ld hl, $3028
-    rst $28
-    dec l
-    ld hl, $ef1e
-    ld [hl+], a
-    dec l
-    ld e, $26
-    inc l
-
-jr_007_456f:
-    rst $28
-    rst $28
-    dec l
-    ld hl, $2d1a
-
-jr_007_4575:
-    rst $28
-    dec hl
-    ld e, $25
-    ld a, [de]
-    dec l
-    ld e, $ef
-    dec l
-    jr z, jr_007_456f
-
-    jp hl
-
-
-    cp $00
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, b
-    ld [hl], b
-    nop
-    nop
-    dec l
-    ld hl, $ef1e
-    nop
-    rst $28
-    dec de
-    ld l, $2d
-    dec l
-    jr z, jr_007_45bf
-
-    ld b, c
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    jr jr_007_45a3
-
-    ld [de], a
-    rst $28
-    rst $28
-    rst $28
-
-jr_007_45a3:
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    dec c
-    ld c, $ef
-    rst $28
-    rst $38
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld a, b
-    ld [hl], b
-    nop
-    nop
-    ret z
-
-    ret
-
-
-    xor $f0
-    db $ed
-    xor e
-    xor d
-    inc c
-
-jr_007_45bf:
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    ret nc
-
-    pop de
-    jp nc, $d4d3
-
-    push de
-    sub $d7
-    ret c
-
-    pop af
-    ldh a, [c]
-    di
-    db $f4
-    push af
-    rst $28
-    rst $28
-
-jr_007_45d7:
-    rst $38
-    ld bc, $0000
-    ld b, b
-    ld c, h
-    nop
-    and a
-    ld [hl], b
-    nop
-    nop
-    ld b, $28
-    rst $28
-    dec l
-    jr z, jr_007_45d7
-
-    inc l
-    dec h
-    ld e, $1e
-    add hl, hl
-    ld b, c
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    jr jr_007_45f9
-
-    ld [de], a
-    rst $28
-    rst $28
-    rst $28
-
-jr_007_45f9:
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    dec c
-    ld c, $ef
-    cp $01
-    nop
-    nop
-    ld b, b
-    ld c, h
-    nop
-    ld l, $71
-    nop
-    nop
-    inc b
-    ld sp, $211c
-    ld a, [de]
-    daa
-    jr nz, $4633
-
-    ld b, c
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    rst $28
-    jr jr_007_4624
-
-    ld [de], a
-    rst $28
-    rst $28
-    rst $28
-
-jr_007_4624:
-    db $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF, $FE, 
-Data_007_462e:
-    db $00, $00, $00, $00, $0C, $00, 
-Data_007_4634:
-    db $78, $70, $00, $00
+; I Think this is the beginning of all the text in the game.
+Data_007_4501:
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $B1, $EC, $A4, $A5, $A6, $A7,
+    db $A8, $A9, $C8, $C9, $EE, $F0, $ED, $AB, $AA, $0C, $EF, $AC, $AD, $AE, $AF, $B0,
+    db $F6, $EF, $EF, $EF, $B2, $B3, $B4, $B5, $B6, $06 
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db " Pet       Timer"
+    db " Horse     Memo "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Show the items  "
+    db "that relate to ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "the A button?   "
+    db " YES        NO  "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $C8, $C9, $EE, $F0, $ED, $AB, $AA, $0C, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $D0, $D1, $D2, $D3, $D4, $D5, $D6, $D7, $D8, $F1,
+    db $F2, $F3, $F4, $F5, $EF, $EF, $FF, $01, $00, $00, $40, $4C, $00, $A7, $70, $00,
+    db $00, 
+    db "Go to sleep?    "
+    db " YES         NO "
+    db $FE, $01, $00, $00, $40, $4C, $00, $2E, $71, $00, $00
+    db "Exchange?       "
+    db " YES         NO "
+    db $FE, $00, $00, $00, $00, $0C, $00, $78, $70, $00, $00
 Data_007_4638:
-    db "Confirm the     origin of fire!"
-    db $E9, $FE, $00, $00, $00, $00, $0C, $00, $78, $70, $00, $00
-    db "Everything is   alright!!       "
-    db $FF,
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, "What! "
-    db $13, $21, $1E, $2B, $1E, $EF, $22, $2C, $EF, $EF, $26, $28, $27, $1E, $32, $EF,
-    db $22, $27, $EF, $2D, $21, $1E, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00,
-    db $00, $78, $70, $00, $00, $1D, $2B, $1A, $30, $1E, $2B, $4C, $EF, $16, $1A, $2C,
-    db $EF, $2D, $21, $22, $2C, $20, $2B, $1A, $27, $1D, $29, $1A, $53, $EF, $2B, $1A,
-    db $22, $27, $32, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
-    db $1D, $1A, $32, $EF, $26, $28, $27, $1E, $32, $41, $EF, $08, $2D, $53, $EF, $EF,
-    db $26, $22, $27, $1E, $EF, $27, $28, $30, $40, $40, $EF, $EF, $EF, $EF, $EF, $E9,
-    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $11, $1E, $1C, $1E, $22,
-    db $2F, $1E, $1D, $EF, $35, $34, $34, $34, $06, $40, $40, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00,
-    db $00, $00, $78, $70, $00, $00, $0B, $1E, $2D, $EF, $26, $1E, $EF, $2C, $1E, $1E,
-    db $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00,
-    db $00, $04, $2F, $1E, $2B, $32, $2D, $21, $22, $27, $20, $EF, $22, $2C, $EF, $EF,
-    db $EF, $1A, $25, $2B, $22, $20, $21, $2D, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $BA, $00, $01, $00,
-    db $12, $00, $44, $00, $34, $00, $02, $00, $81, $00, $92, $00, $02, $00, $A0, $00,
+    db "Confirm the     "
+    db "origin of fire!▽"
+    db $FE, $00, $00, $00, $00, $0C, $00, $78, $70, $00, $00
+    db "Everything is   "
+    db "alright!!       "
+    db $ff, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "What! There is  "
+    db "money in the   ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "drawer. Was this"
+    db "grandpa's rainy ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "day money? It's  "
+    db "mine now!!     ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Received 1000G!!                "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Let me see...   "
+    db "               ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Everything is   "
+    db "alright!        "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $BA, $00, $01, $00, $12, $00, $44, $00, $34, $00, $02
+    db $00, $81, $00, $92, $00, $02, $00, $A0, $00,
     db $12, $00, $83, $00, $30, $00, $03, $00, $BA, $00, $DA, $00, $C8, $00, $12, $00,
     db $B1, $00, $92, $00, $02, $00, $44, $00, $52, $00, $02, $00, $13, $00, $01, $00,
     db $AC, $00, $10, $00, $40, $00, $6B, $00, $FD, $00, $FD, $00, $FF, $FF, $00, $00,
-    db $00, $00, $00, $00, $78, $70, $00, $00, $08, $2D, $EF, $21, $1A, $2C, $EF, $1B,
-    db $1E, $1E, $27, $EF, $30, $1A, $2B, $26, $1E, $2F, $1E, $2B, $32, $1D, $1A, $32,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78,
-    db $70, $00, $00, $13, $28, $26, $28, $2B, $2B, $28, $30, $EF, $30, $22, $25, $25,
-    db $EF, $1B, $1E, $1A, $EF, $1F, $22, $27, $1E, $EF, $1D, $1A, $32, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $08, $2D,
-    db $EF, $30, $22, $25, $25, $EF, $1B, $1E, $EF, $1A, $EF, $EF, $EF, $EF, $2B, $1A,
-    db $22, $27, $32, $EF, $1D, $1A, $32, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE, $00,
-    db $00, $00, $00, $00, $00, $78, $70, $00, $00, $2D, $28, $26, $28, $2B, $2B, $28,
-    db $30, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $1C, $1A, $2E, $2C, $22, $27, $20,
-    db $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00,
-    db $78, $70, $00, $00, $1F, $25, $28, $30, $1E, $2B, $2C, $EF, $2D, $28, $EF, $1F,
-    db $1A, $25, $25, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $08,
-    db $2D, $EF, $21, $1A, $2C, $EF, $1B, $1E, $1E, $27, $EF, $21, $28, $2D, $EF, $1E,
+    db $00, $00, $00, $00, $78, $70, $00, $00
+    db "It has been warm"
+    db "everyday.      ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Tomorrow will be"
+    db "a fine day.     "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "It will be a    "
+    db "rainy day      ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "tomorrow,       "
+    db "causing the    ▽"
+    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "flowers to fall."
+    db "                "
+    db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $08, $2D, $EF, $21, $1A, $2C, $EF, $1B, $1E, $1E, $27, $EF, $21, $28, $2D, $EF, $1E,
     db $2F, $1E, $2B, $32, $1D, $1A, $32, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE,
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $13, $28, $26, $28, $2B, $2B,
     db $28, $30, $EF, $30, $22, $25, $25, $EF, $1B, $1E, $1A, $EF, $2C, $2E, $27, $27,

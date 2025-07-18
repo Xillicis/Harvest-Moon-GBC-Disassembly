@@ -63,7 +63,14 @@
     charmap "9", $3d
 
     charmap "!", $40
+    charmap "?", $41
 
-    charmap "<CONT>", $e9
+    charmap ".", $4c
 
+    charmap "'s", $53
+
+    charmap ",", $8e
+
+    charmap "▽", $e9
     charmap " ", $ef
+    charmap "@", $ff
