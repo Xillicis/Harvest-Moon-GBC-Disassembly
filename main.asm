@@ -5,6 +5,7 @@
 
 INCLUDE "hardware.inc"
 INCLUDE "charmap.asm"
+INCLUDE "macros/data.asm"
 INCLUDE "macros/const.asm"
 INCLUDE "macros/gfx.asm"
 INCLUDE "macros/farcall.asm"

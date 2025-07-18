@@ -7469,9 +7469,13 @@ Jump_000_3408:
     pop af
     reti
 
-Data_000_3421:
-    
-    db $01, $45, $07, $2C, $45, $07, $57, $45, $07, $57, $45, $07, $AD, $45, $07, $D8,
+Data_000_3421: 
+    dwb Data_007_4501, $07 ; bank number
+    dwb Data_007_452c, $07
+    dwb Data_007_4557, $07
+    dwb Data_007_4557, $07
+    db $AD, $45, $07
+    db $D8
     db $45, $07, $03, $46, $07, $03, $46, $07, $2E, $46, $07, $84, $46, $07, $30, $47,
     db $07, $86, $47, $07, $D2, $47, $07, $28, $48, $07, $A9, $48, $07, $FF, $48, $07,
     db $55, $49, $07, $D6, $49, $07, $2C, $4A, $07, $82, $4A, $07, $D8, $4A, $07, $D8,
@@ -7522,23 +7526,18 @@ Call_000_36f4:
     ld a, [$cb14]
     or a
     ret nz
-
     ld a, [$cb15]
     or a
     ret nz
-
     ld a, [$cb16]
     or a
     ret nz
-
     ld a, [$cb17]
     or a
     ret nz
-
     ld a, [$cb18]
     or a
     ret nz
-
     ld a, [$cb19]
     or a
     ret nz
@@ -7628,8 +7627,8 @@ jr_000_3785:
     or $80
     ld e, a
     push af
-    ld hl, $4001
-    ld a, $11
+    ld hl, TextFontTileset
+    ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
     pop af
