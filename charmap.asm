@@ -65,6 +65,8 @@
     charmap "!", $40
     charmap "?", $41
 
+    charmap "-", $44
+
     charmap ".", $4c
 
     charmap "'s", $53
@@ -73,4 +75,6 @@
 
     charmap "▽", $e9
     charmap " ", $ef
-    charmap "@", $ff
+
+    charmap "<PROMPT>", $fe
+    charmap "<DONE>", $ff
