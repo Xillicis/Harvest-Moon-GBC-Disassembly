@@ -6059,9 +6059,9 @@ Call_00f_62dc:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     call Call_000_1259
     xor a
     ld [$4000], a
@@ -6095,9 +6095,9 @@ Call_00f_62dc:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [$b88c], a
     ld [wFreezePlayerInTextWindowOrInTown], a

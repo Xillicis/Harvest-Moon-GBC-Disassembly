@@ -9534,9 +9534,9 @@ jr_01d_6e6c:
     ld [wTextID], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld a, $e9
     call InitializeTextIDAndDisplay
     ret
@@ -10317,9 +10317,9 @@ jr_01d_72d1:
     ld [wTextID], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld a, $ec
     call InitializeTextIDAndDisplay
     ret

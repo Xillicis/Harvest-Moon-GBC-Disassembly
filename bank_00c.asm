@@ -11819,9 +11819,9 @@ jr_00c_7d74:
     ld a, [$cbe8]
     ld c, $2b
     call Multiply8Bit
-    ld a, [$cb54]
+    ld a, [wTextNavigator+1]
     ld d, a
-    ld a, [$cb53]
+    ld a, [wTextNavigator]
     ld e, a
     ld a, e
     add l
@@ -11830,9 +11830,9 @@ jr_00c_7d74:
     adc h
     ld h, a
     ld a, l
-    ld [$cb53], a
+    ld [wTextNavigator], a
     ld a, h
-    ld [$cb54], a
+    ld [wTextNavigator+1], a
     ret
 
 
@@ -11847,9 +11847,9 @@ jr_00c_7d74:
     ret
 
 
-    ld a, [$cb53]
+    ld a, [wTextNavigator]
     ld l, a
-    ld a, [$cb54]
+    ld a, [wTextNavigator+1]
     ld h, a
     ld e, $56
     ld d, $00
@@ -11859,15 +11859,15 @@ jr_00c_7d74:
     ld a, d
     adc h
     ld h, a
-    ld [$cb54], a
+    ld [wTextNavigator+1], a
     ld a, l
-    ld [$cb53], a
+    ld [wTextNavigator], a
     ret
 
 
-    ld a, [$cb53]
+    ld a, [wTextNavigator]
     ld l, a
-    ld a, [$cb54]
+    ld a, [wTextNavigator+1]
     ld h, a
     ld e, $2b
     ld d, $00
@@ -11877,9 +11877,9 @@ jr_00c_7d74:
     ld a, d
     adc h
     ld h, a
-    ld [$cb54], a
+    ld [wTextNavigator+1], a
     ld a, l
-    ld [$cb53], a
+    ld [wTextNavigator], a
     ret
 
 

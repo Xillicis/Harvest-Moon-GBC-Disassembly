@@ -4322,9 +4322,9 @@ jr_001_6ca4:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -5467,10 +5467,10 @@ Call_001_7336:
     ld a, $ff
     ld [wTextID], a
     ld a, $00
-    ld [$cb53], a
-    ld [$cb54], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
     ld a, $00
-    ld [$cb55], a
+    ld [wTextCharacterCounter], a
     ld [$cb5f], a
     ret
 

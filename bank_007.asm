@@ -17,9 +17,9 @@ SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ldh [$ff91], a
     call ClearBGMap0
@@ -129,9 +129,9 @@ jr_007_40d3:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ret
 
 
@@ -10466,8 +10466,8 @@ jr_007_7070:
 
 jr_007_7083:
     xor a
-    ld [$cb53], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -10489,8 +10489,8 @@ jr_007_7083:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -10531,8 +10531,8 @@ jr_007_70f5:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -10564,9 +10564,9 @@ jr_007_712a:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -10613,9 +10613,9 @@ jr_007_7174:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -10903,11 +10903,11 @@ jr_007_7358:
 
 jr_007_7373:
     call ClearOldTextOnTextBox
-    ld hl, $cb53
+    ld hl, wTextNavigator
     ld bc, $0081
     call AddBCtoWordAtHL
     xor a
-    ld [$cb55], a
+    ld [wTextCharacterCounter], a
     ld [$b8fe], a
     ret
 
@@ -11084,9 +11084,9 @@ jr_007_7476:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
@@ -11161,11 +11161,11 @@ jr_007_7516:
     jr z, jr_007_7585
 
     call ClearOldTextOnTextBox
-    ld hl, $cb53
+    ld hl, wTextNavigator
     ld bc, $0081
     call AddBCtoWordAtHL
     xor a
-    ld [$cb55], a
+    ld [wTextCharacterCounter], a
     jr jr_007_758d
 
     ret
@@ -11186,9 +11186,9 @@ Jump_007_754d:
     call Call_000_3f0b
     xor a
     ld [$cb58], a
-    ld [$cb55], a
-    ld [$cb53], a
-    ld [$cb54], a
+    ld [wTextCharacterCounter], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     jr jr_007_7585
@@ -11225,9 +11225,9 @@ jr_007_758d:
     call Call_000_3f0b
     xor a
     ld [$cb58], a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     ret

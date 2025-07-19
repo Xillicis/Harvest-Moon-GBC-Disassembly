@@ -97,7 +97,7 @@ ds 1 ; 0xcb4b
 ;; Either 1 or 0, for whether the textbox is displayed
 wTextBoxIsDisplayed:: db ; 0xcb4c
 
-ds 1 ; 0xcb4d
+wTempTextID:: db ; 0xcb4d
 
 ; Seems like these are probably used to stall the player while data loads.
 wFreezePlayerWhenEnteringNewMap:: db ; 0xcb4e
@@ -109,7 +109,12 @@ ds 1 ; 0xcb51
 
 wTextID:: db ; 0xcb52
 
-ds 3
+; Seems to help navigate the text data and track which letter/number we're on.
+wTextNavigator:: dw ; 0xcb53
+
+; Tracks which charater in the text data is to be printed by counting.
+; $10 characters per line, so $20 characters can fit in the text box.
+wTextCharacterCounter:: db ; 0xcb55
 
 wFreezePlayerInTextWindowOrInTown:: db ; 0xcb56
 

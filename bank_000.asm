@@ -340,7 +340,7 @@ Call_000_04c7:
     ld [$c0a9], a ; overwise bump a second counter
 .next1
     call LinearCongruentialGenerator ; update PRNG
-    call Call_000_2195
+    call PollJoypadWithOptionalLogging
     ld hl, $c0ba
     inc [hl]
     ld a, [$cb5e]
@@ -1105,11 +1105,11 @@ Call_000_0de8:
     ld [$cb57], a
     ld a, $ff
     ld [wTextID], a
-    ld [$cb4d], a
+    ld [wTempTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld [$cb5f], a
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a
@@ -4257,7 +4257,11 @@ BankSwitchCallHL:
 JumpHL:
     jp hl
 
-Call_000_2195:
+; Poll the joypad lines, debounce & edge‑detect, and if enabled log each sample to SRAM
+PollJoypadWithOptionalLogging: ; 00x2195
+    ; In:  [$CBF1] = 1 → log-mode, else direct mode
+    ; Out: $FFA4 = raw state, $FF8B = new-press edges, $FF8A/$FF8C updated
+    ;      Logs to SRAM at A000 via [$CBEE/$CBEF] if [$CBF0] = 1
     ld a, [$cbf1]
     or a
     jr z, jr_000_21d4
@@ -7599,7 +7603,7 @@ Call_000_36f4:
     call z, Call_000_38c1
 
     ld a, [wTextID]
-    ld [$cb4d], a
+    ld [wTempTextID], a
     ld l, a
     ld h, $00
     add hl, hl
@@ -7622,14 +7626,14 @@ Call_000_36f4:
     ld a, [hl]
     ld h, a
     ld l, c
-    ld a, [$cb54]
+    ld a, [wTextNavigator+1]
     ld d, a
-    ld a, [$cb53]
+    ld a, [wTextNavigator]
     ld e, a
     add hl, de
-    ld a, [$cb55]
+    ld a, [wTextCharacterCounter]
     or a
-    call z, CopyTextTileDataToVRAM
+    call z, InitializeTextData
     ld a, [hl]
     cp "<DONE>"
     jr z, jr_000_37d7
@@ -7665,7 +7669,7 @@ jr_000_3785:
     jr z, jr_000_37c4
 
     ld c, a
-    ld a, [$cb55]
+    ld a, [wTextCharacterCounter]
     or $80
     ld e, a
     push af
@@ -7699,10 +7703,10 @@ jr_000_3785:
     call Call_000_0a93
 
 jr_000_37c4:
-    ld hl, $cb53
+    ld hl, wTextNavigator
     ld bc, $0001
     call AddBCtoWordAtHL
-    ld hl, $cb55
+    ld hl, wTextCharacterCounter
     inc [hl]
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
@@ -7718,9 +7722,9 @@ jr_000_37e1:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld a, [$cb6e]
     ld l, a
     ld a, [$cb6f]
@@ -7747,11 +7751,11 @@ jr_000_3813:
     jr z, jr_000_3837
 
     call ClearOldTextOnTextBox
-    ld hl, $cb53
+    ld hl, wTextNavigator
     ld bc, $0001
     call AddBCtoWordAtHL
     xor a
-    ld [$cb55], a
+    ld [wTextCharacterCounter], a
     ld a, [$cb6e]
     ld l, a
     ld a, [$cb6f]
@@ -7773,7 +7777,7 @@ Jump_000_383d:
     or a
     ret nz
 
-    ld a, [$cb4d]
+    ld a, [wTempTextID]
     cp $ff
     ret z
 
@@ -7783,19 +7787,19 @@ Jump_000_383d:
     ret
 
 jr_000_3854:
-    ld a, [$cb4d]
+    ld a, [wTempTextID]
     cp $00
     jr z, jr_000_3871
 
-    ld a, [$cb4d]
+    ld a, [wTempTextID]
     cp $01
     jr z, jr_000_387f
 
-    ld a, [$cb4d]
+    ld a, [wTempTextID]
     cp $3c
     jr z, jr_000_389b
 
-    ld a, [$cb4d]
+    ld a, [wTempTextID]
     cp $03
     jr z, jr_000_389b
     ret
@@ -7803,7 +7807,7 @@ jr_000_3854:
 jr_000_3871:
     call Call_000_3f26
     ld a, $ff
-    ld [$cb4d], a
+    ld [wTempTextID], a
     ld a, $51
     call Call_000_25cb
     ret
@@ -7818,7 +7822,7 @@ jr_000_387f:
     ld [$cb57], a
     ld [$cb5f], a
     ld a, $ff
-    ld [$cb4d], a
+    ld [wTempTextID], a
     ld a, $51
     call Call_000_25cb
     ret
@@ -7830,7 +7834,7 @@ jr_000_389b:
     ld [$cb58], a
     ld [$cb5f], a
     ld a, $ff
-    ld [$cb4d], a
+    ld [wTempTextID], a
     xor a
     ld [$cb5f], a
     ld a, $01
@@ -7842,7 +7846,7 @@ jr_000_389b:
     ret
 
 Call_000_38c1:
-    ld a, [$cb55]
+    ld a, [wTextCharacterCounter]
     cp $20
     ret nz
 
@@ -7856,12 +7860,12 @@ Call_000_38c1:
     call InitializeTextIDAndDisplay
     xor a
     ld [$cb58], a
-    ld [$cb55], a
-    ld [$cb53], a
-    ld [$cb54], a
+    ld [wTextCharacterCounter], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
     ld [$cb5f], a
     ld a, $ff
-    ld [$cb4d], a
+    ld [wTempTextID], a
     xor a
     ld [$cb5f], a
     ld a, $01
@@ -7889,14 +7893,13 @@ Call_000_38fb:
     call Call_000_3f26
     ret
 
-; TODO: Double check this subroutine...
-CopyTextTileDataToVRAM: ; 00x3913
-    ld a, [$cb53]
+InitializeTextData: ; 00x3913
+    ld a, [wTextNavigator]
     add $0a
-    ld [$cb53], a
-    ld a, [$cb54]
+    ld [wTextNavigator], a
+    ld a, [wTextNavigator+1]
     adc $00
-    ld [$cb54], a
+    ld [wTextNavigator+1], a
     ld a, [hl+]
     ld [$cb69], a
     ld a, [hl+]
@@ -8020,14 +8023,13 @@ jr_000_39dd:
     ld c, $2b
     call Multiply8Bit
     ld a, l
-    ld [$cb53], a
+    ld [wTextNavigator], a
     ld a, h
-    ld [$cb54], a
+    ld [wTextNavigator+1], a
     call ClearOldTextOnTextBox
     xor a
-    ld [$cb55], a
+    ld [wTextCharacterCounter], a
 
-Call_000_3a09:
 jr_000_3a09:
     ld a, [$cb6e]
     ld l, a
@@ -8371,9 +8373,9 @@ Jump_000_3c10:
     xor a
     ld [$cb58], a
     ld [$cb57], a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld a, $ff
     ld [wTextID], a
     call Call_000_3f26
@@ -8822,9 +8824,9 @@ Call_000_3f26:
     ld a, $ff
     ld [wTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a

@@ -86,11 +86,11 @@ InitializeMoreGameData: ; 1dx521e
     call BankSwitchCallHL
     ld a, $ff
     ld [wTextID], a
-    ld [$cb4d], a
+    ld [wTempTextID], a
     xor a
-    ld [$cb53], a
-    ld [$cb54], a
-    ld [$cb55], a
+    ld [wTextNavigator], a
+    ld [wTextNavigator+1], a
+    ld [wTextCharacterCounter], a
     ld [$cb5f], a
     call InitializeFarmMap
     ld a, 1

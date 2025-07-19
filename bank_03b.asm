@@ -2221,7 +2221,7 @@ jr_03b_4a27:
     ld c, d
     add l
     ld b, e
-    call nz, Call_000_3a09
+    call nz, $3a09
     ld c, d
     pop af
     ld b, e
