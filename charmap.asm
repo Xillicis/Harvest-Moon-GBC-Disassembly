@@ -61,10 +61,13 @@
     charmap "7", $3b
     charmap "8", $3c
     charmap "9", $3d
+    charmap "[", $3e
+    charmap "]", $3f
 
     charmap "!", $40
     charmap "?", $41
 
+    charmap "…", $43
     charmap "-", $44
 
     charmap ".", $4c
