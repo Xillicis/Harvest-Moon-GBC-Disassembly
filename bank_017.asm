@@ -12859,14 +12859,14 @@ jr_017_772b:
     nop
     rra
     ld bc, $78ff
+
+Label_017_7739:
     sub $a0
     sla a
-    ld hl, $774c
+    ld hl, Data_017_774c
     add l
     ld l, a
     ld a, $00
-
-jr_017_7745:
     adc h
     ld h, a
     ld a, [hl+]
@@ -12875,7 +12875,7 @@ jr_017_7745:
     ld b, a
     ret
 
-
+Data_017_774c:
     db $f4
     cp b
     push af
@@ -12935,7 +12935,7 @@ jr_017_7745:
     ld l, $b9
     cpl
     cp c
-    jr nc, jr_017_7745
+    jr nc, $7745
 
     ld sp, $32b9
     cp c

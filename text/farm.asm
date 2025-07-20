@@ -1,3 +1,5 @@
+;;; This is text that plays occurs outside around the farmstead.
+
 TooLateText1::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Oops! It's       "

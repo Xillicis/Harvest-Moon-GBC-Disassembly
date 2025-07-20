@@ -7473,29 +7473,34 @@ Jump_000_3408:
     pop af
     reti
 
+MACRO text_pointer
+    dw \1
+    db BANK(\1)
+ENDM
+
 TextPointerTable: ; 00x3421
-    dwb Data_007_4501, $07 ; bank number
-    dwb Data_007_452c, $07
-    dwb Data_007_4557, $07
-    dwb Data_007_4557, $07
-    db $AD, $45, $07
-    db $D8, $45, $07
-    db $03, $46, $07
-    db $03, $46, $07
-    db $2E, $46, $07
-    db $84, $46, $07
-    db $30, $47, $07
-    db $86, $47, $07
-    db $D2, $47, $07
-    db $28, $48, $07
-    db $A9, $48, $07
-    db $FF, $48, $07
-    db $55, $49, $07
-    db $D6, $49, $07
-    db $2C, $4A, $07
-    db $82, $4A, $07
-    db $D8, $4A, $07
-    db $D8, $4A, $07
+    text_pointer Data_007_4501
+    text_pointer Data_007_452c
+    text_pointer Data_007_4557
+    text_pointer Data_007_4557
+    text_pointer Data_007_45ad
+    text_pointer GoToSleepText
+    text_pointer ExchangeText
+    text_pointer ExchangeText
+    text_pointer StoveTopText
+    text_pointer MoneyInDresserText
+    text_pointer EmptyDresserText
+    text_pointer Data_007_4786
+    text_pointer SpringSunnyDayText
+    text_pointer SpringRainyDayText
+    text_pointer SummerSunnyDayText
+    text_pointer SummerRainyDayText
+    text_pointer AutumnSunnyDayText
+    text_pointer AutumnRainyDayText
+    text_pointer WinterSunnyDayText
+    text_pointer WinterSnowyDayText
+    text_pointer HurricaneText
+    text_pointer HurricaneText
     db $DA, $4B, $07
     db $5B, $4C, $07
     db $B1, $4C, $07
@@ -7646,6 +7651,8 @@ Call_000_36f4:
     cp $a0
     jr c, jr_000_3785
 
+; I think this code here loads SRAM addresses for use in text.
+; So for example, printing the Player's name or the Pet's name, etc...
     push bc
     ld a, [hl]
     ld b, a

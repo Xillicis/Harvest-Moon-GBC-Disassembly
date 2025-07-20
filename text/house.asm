@@ -1,8 +1,10 @@
-GoToSleepText::
+GoToSleepText:: ; 07x45d8
     db $01, $00, $00, $40, $4C, $00, $A7, $70, $00, $00, 
     db "Go to sleep?    "
     db " YES         NO "
     prompt
+
+ExchangeText::
     db $01, $00, $00, $40, $4C, $00, $2E, $71, $00, $00
     db "Exchange?       "
     db " YES         NO "
@@ -36,7 +38,7 @@ MoneyInDresserText::
     db "                "
     done
 
-EmptryDresserText::
+EmptyDresserText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Let me see...   "
     db "               ▽"
@@ -46,6 +48,7 @@ EmptryDresserText::
     db "alright!        "
     done
 
+Data_007_4786::
 ; Not sure what this is here...
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db $BA, $00, $01, $00, $12, $00, $44, $00, $34, $00
@@ -144,7 +147,7 @@ WinterSnowyDayText::
     db "                "
     done
 
-HurricaneText::
+HurricaneText:: ; 07x4ad8
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Hurricane Bob   "
     db "has just       ▽"
