@@ -829,158 +829,101 @@ ElipsesText::
 
 INCLUDE "text/farm.asm"
 
+PicnicInvitationText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Current Material"
-    db "      ", $BC, $BD, $BE, " Pieces" ; need to figure out the data loading here.
-    done
+    db "Hello. Tomorrow "
+    db "morning we are ▽"
+    prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "    [Stable]    "
+    db "going on a      "
+    db "picnic.        ▽"
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Could we have it"
+    db "here?          ▽"
+    prompt
+    db $01, $04, $06, $40, $4C, $00, $68, $71, $00, $00
     db "                "
-    done
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Current Fodder  "
-    db "      ", $BF, $C0, $C1, " Pieces"
-    done
-
-; dunno
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $B1, $EC, $A4, $A5, $A6, $A7, $A8, $A9, $C8, $C9, $EE, $F0, $ED, $AB, $AA
-    db $0C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $CA, $CB, $18,
-    db $04, $00, $11, $FF, 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Good Morning    "
-    db $A0, $A1, $A2, $A3, ". It's me.  ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "How are you     "
-    db "doing?         ▽"
+    db " YES         NO "
     prompt
 
-HorseIsLostText::
+PicnicInvitationAcceptText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "It seems that   "
-    db "this horse is  ▽"
+    db "YEAH! That is   "
+    db "great! We will ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "lost. Would you "
-    db "please take    ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "care of this    "
-    db "horse on your  ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "ranch? Please   "
-    db "name him.       "
-    done
+    db "have lots of    "
+    db "fun.            "
+    done 
 
-ProduceShippedText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
-    db "Is this all for "
-    db "today's         ▽"
-    prompt
+PicnicInvitationDeclineText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "shipment? It    "
-    db "will be  ", $B7, $B8, $B9, $BA, $BB, "G▽"
+    db "Really? Why...  "
+    db "That's no fun!   "
+    done 
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Hello ", $A0, $A1, $A2, $A3, ".     "
+    db "I hope you     ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "The money will  "
-    db "be transferred ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "tomorrow!       "
-    db "Well, see you!! "
-    done
 
-NoShipmentText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "There is no     "
-    db "shipment today?▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Well, see you   "
-    db "tomorrow.       "
-    done
+    db "weren", $4B, "t too     "
+    db "busy.          ▽"
+    prompt 
 
-CarpenterEarthquakeText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $A0, $A1, $A2, $A3, " are you    "
-    db "alright?       ▽"
+    db $00, $00, $00, $00, $00, $00, $79, $71, $00, $00
+    db "Let's go on the  "
+    db "picnic...       "
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "That earthquake "
-    db "a little while ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "ago was huge!   "
-    db "               ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Was anything    "
-    db "damaged by the ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "earthquake?     "
-    db "Be sure to     ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "examine every-  "
-    db "thing. Good Bye."
-    done
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
 
-    db $07, $1E, $25, $25, $28, $4C, $EF, $13, $28, $26, $28, $2B,
-    db $2B, $28, $30, $EF, $26, $28, $2B, $27, $22, $27, $20, $EF, $30, $1E, $EF, $1A,
-    db $2B, $1E, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $20,
-    db $28, $22, $27, $20, $EF, $28, $27, $EF, $1A, $EF, $EF, $EF, $EF, $EF, $EF, $29,
-    db $22, $1C, $27, $22, $1C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE,
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $02, $28, $2E, $25, $1D, $EF,
-    db $30, $1E, $EF, $21, $1A, $2F, $1E, $EF, $22, $2D, $21, $1E, $2B, $1E, $41, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE, $01, $04, $06, $40, $4C,
-    db $00, $68, $71, $00, $00, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $0D, $0E, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
-    db $18, $04, $00, $07, $40, $EF, $13, $21, $1A, $2D, $EF, $22, $2C, $EF, $EF, $EF,
-    db $20, $2B, $1E, $1A, $2D, $40, $EF, $16, $1E, $EF, $30, $22, $25, $25, $EF, $E9,
-    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $21, $1A, $2F, $1E, $EF,
-    db $25, $28, $2D, $2C, $EF, $28, $1F, $EF, $EF, $EF, $EF, $1F, $2E, $27, $4C, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00,
-    db $00, $00, $78, $70, $00, $00, $11, $1E, $1A, $25, $25, $32, $41, $EF, $16, $21,
-    db $32, $4C, $4C, $4C, $EF, $EF, $13, $21, $1A, $2D, $53, $EF, $27, $28, $EF, $1F,
-    db $2E, $27, $40, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00,
-    db $00, $07, $1E, $25, $25, $28, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $08, $EF, $21, $28, $29, $1E, $EF, $32, $28, $2E, $EF, $EF, $EF, $EF, $EF,
-    db $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $30, $1E, $2B, $1E,
-    db $27, $4B, $2D, $EF, $2D, $28, $28, $EF, $EF, $EF, $EF, $EF, $1B, $2E, $2C, $32,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00,
-    db $00, $00, $00, $79, $71, $00, $00, $0B, $1E, $2D, $53, $EF, $20, $28, $EF, $28,
-    db $27, $EF, $2D, $21, $1E, $EF, $EF, $29, $22, $1C, $27, $22, $1C, $4C, $4C, $4C,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70,
-    db $00, $00, $07, $22, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $13, $21, $22, $2C, $EF, $22, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $16, $22, $25,
-    db $1D, $EF, $06, $2B, $1A, $29, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $09, $2E, $22,
-    db $1C, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00,
-    db $00, $00, $00, $00, $78, $70, $00, $00, $08, $EF, $24, $27, $28, $30, $EF, $2D,
-    db $21, $22, $2C, $EF, $22, $2C, $EF, $EF, $1A, $EF, $25, $22, $2D, $2D, $25, $1E,
-    db $EF, $2C, $30, $1E, $1E, $2D, $8E, $E9, $FE, $00, $00, $00, $00, $00, $00, $A8,
-    db $71, $00, $00, $1B, $2E, $2D, $EF, $29, $25, $1E, $1A, $2C, $1E, $EF, $21, $1A,
-    db $2F, $1E, $EF, $2C, $28, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $08, $EF,
-    db $26, $1A, $1D, $1E, $EF, $2D, $28, $28, $EF, $26, $1A, $27, $32, $EF, $1C, $28,
-    db $28, $24, $22, $1E, $2C, $EF, $1F, $28, $2B, $EF, $2D, $21, $1E, $E9, $FE, $00,
-    db $00, $00, $00, $00, $00, $78, $70, $00, $00, $07, $1A, $2B, $2F, $1E, $2C, $2D,
-    db $EF, $05, $1E, $2C, $2D, $22, $2F, $1A, $25, $A0, $A1, $A2, $A3, $8E, $08, $EF,
-    db $30, $28, $2E, $25, $1D, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00,
-    db $E2, $71, $00, $00, $25, $22, $24, $1E, $EF, $32, $28, $2E, $EF, $2D, $28, $EF,
-    db $21, $1A, $2F, $1E, $2D, $21, $1E, $26, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $0E,
-    db $21, $EF, $0D, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0E,
-    db $21, $EF, $0D, $28, $40, $EF, $0C, $32, $EF, $1B, $22, $2B, $1D, $EF, $E9, $FE,
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $2B, $1A, $27, $EF, $1A, $30,
-    db $1A, $32, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0F, $25, $1E, $1A, $2C, $1E,
-    db $EF, $21, $1E, $25, $29, $EF, $26, $1E, $EF, $E9, $FE, $01, $03, $05, $40, $4C,
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Hi ", $A0, $A1, $A2, $A3, ".        "
+    db "This is        ▽"
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Wild Grape      "
+    db "Juice.         ▽"
+    prompt 
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "I know this is  "
+    db "a little sweet,▽"
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $A8, $71, $00, $00
+    db "but please have "
+    db "some.           "
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "I made too many "
+    db "cookies for the▽"
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Harvest Festival"
+    db $A0, $A1, $A2, $A3, ",I would   ▽"
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $E2, $71, $00, $00
+    db "like you to have"
+    db "them.           "
+    prompt 
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Oh No!          "
+    db "Oh No! My bird ▽"
+    prompt
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "ran away.       "
+    db "Please help me ▽"
+    prompt
+
+    db $01, $03, $05, $40, $4C,
     db $00, $05, $72, $00, $00, $1F, $22, $27, $1D, $EF, $21, $22, $26, $41, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $0D, $0E, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
