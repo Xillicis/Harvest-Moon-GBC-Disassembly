@@ -55,7 +55,7 @@ ShippingBoxText::
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Good Morning    "
-    db $A0, $A1, $A2, $A3, ". It's me.  ▽"
+    db "<PLAYER>. It's me.  ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "How are you     "
@@ -111,7 +111,7 @@ NoShipmentText::
 
 CarpenterEarthquakeText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $A0, $A1, $A2, $A3, " are you    "
+    db "<PLAYER> are you    "
     db "alright?       ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00

@@ -864,7 +864,7 @@ PicnicInvitationDeclineText::
     done 
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Hello ", $A0, $A1, $A2, $A3, ".     "
+    db "Hello <PLAYER>.     "
     db "I hope you     ▽"
     prompt 
 
@@ -879,7 +879,7 @@ PicnicInvitationDeclineText::
     prompt
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Hi ", $A0, $A1, $A2, $A3, ".        "
+    db "Hi <PLAYER>.        "
     db "This is        ▽"
     prompt
 
@@ -905,7 +905,7 @@ PicnicInvitationDeclineText::
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Harvest Festival"
-    db $A0, $A1, $A2, $A3, ",I would   ▽"
+    db "<PLAYER>,I would   ▽"
     prompt
 
     db $00, $00, $00, $00, $00, $00, $E2, $71, $00, $00

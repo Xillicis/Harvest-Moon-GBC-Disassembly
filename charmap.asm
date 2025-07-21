@@ -76,6 +76,8 @@
 
     charmap ",", $8e
 
+    charmap "<PLAYER>", $a0, $a1, $a2, $a3
+
     charmap "▽", $e9
     charmap " ", $ef
 

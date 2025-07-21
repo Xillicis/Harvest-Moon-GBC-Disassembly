@@ -7645,11 +7645,11 @@ Call_000_36f4:
     cp "<PROMPT>"
     jp z, Jump_000_3804
     cp " "
-    jr z, jr_000_3785
+    jr z, .printAvailableCharacter
     cp "▽"
-    jr z, jr_000_3785
+    jr z, .printAvailableCharacter
     cp $a0
-    jr c, jr_000_3785
+    jr c, .printAvailableCharacter
 
 ; This routine here loads the text byte from SRAM addresses for use in the text.
 ; So for example, printing the Player's name or the Pet's name, etc...
@@ -7667,7 +7667,7 @@ Call_000_36f4:
     ld h, a
     pop bc
 
-jr_000_3785:
+.printAvailableCharacter
     ld a, [hl]
     cp " "
     jr z, jr_000_37c4
@@ -7740,7 +7740,7 @@ jr_000_37e1:
     ret
 
 Jump_000_3804:
-    ld a, [$cb69]
+    ld a, [wPlayerTextInputFlag]
     or a
     jr z, jr_000_3813
 
@@ -7899,13 +7899,13 @@ Call_000_38fb:
 
 InitializeTextData: ; 00x3913
     ld a, [wTextNavigator]
-    add $0a
+    add 10 ;
     ld [wTextNavigator], a
     ld a, [wTextNavigator+1]
     adc $00
     ld [wTextNavigator+1], a
     ld a, [hl+]
-    ld [$cb69], a
+    ld [wPlayerTextInputFlag], a
     ld a, [hl+]
     ld [$cb6a], a
     ld a, [hl+]
@@ -8383,7 +8383,6 @@ Jump_000_3c10:
     ld a, $ff
     ld [wTextID], a
     call Call_000_3f26
-
 Call_000_3c28:
     ret
 

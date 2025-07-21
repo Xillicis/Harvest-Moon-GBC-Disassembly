@@ -117,8 +117,28 @@ wTextNavigator:: dw ; 0xcb53
 wTextCharacterCounter:: db ; 0xcb55
 
 wFreezePlayerInTextWindowOrInTown:: db ; 0xcb56
+ds 1 ; 0xcb57
+ds 1 ; 0xcb58
+ds 1 ; 0xcb59
+ds 1 ; 0xcb5a
+ds 1 ; 0xcb5b
+ds 1 ; 0xcb5c
+ds 1 ; 0xcb5d
+ds 1 ; 0xcb5e
+ds 1 ; 0xcb5f
+ds 1 ; 0xcb60
 
-ds 31
+ds 8 ; 
+
+; This is 0 if it's a normal text box window and 1 if the player can pick YES/NO.
+wPlayerTextInputFlag:: db ; 0xcb69
+ds 1 ; 0xcb6a
+ds 1 ; 0xcb6b
+ds 1 ; 0xcb6c
+ds 1 ; 0xcb6d
+ds 1 ; 0xcb6e
+
+ds 7
 
 ; This starts a countdown for the animation of the weather girl moving
 ; then it gets into a small loop just for the animation of the blinking sun (or other weather thing)
