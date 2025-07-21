@@ -7501,16 +7501,16 @@ TextPointerTable: ; 00x3421
     text_pointer WinterSnowyDayText
     text_pointer HurricaneText
     text_pointer HurricaneText
-    db $DA, $4B, $07
-    db $5B, $4C, $07
-    db $B1, $4C, $07
+    text_pointer TooLateText1
+    text_pointer TooLateText2
+    text_pointer ShippingBoxText
     db $07, $4D, $07
     db $07, $4D, $07
     db $32, $4D, $07
     db $5D, $4D, $07
     db $88, $4D, $07
     db $B3, $4D, $07
-    db $B5, $4E, $07
+    text_pointer ProduceShippedText
     db $61, $4F, $07
     db $B7, $4F, $07
     db $B9, $50, $07
@@ -7651,17 +7651,14 @@ Call_000_36f4:
     cp $a0
     jr c, jr_000_3785
 
-; I think this code here loads SRAM addresses for use in text.
+; This routine here loads the text byte from SRAM addresses for use in the text.
 ; So for example, printing the Player's name or the Pet's name, etc...
     push bc
     ld a, [hl]
     ld b, a
     push hl
     push af
-    ld l, $39
-    ld h, $77
-    ld a, $17
-    call BankSwitchCallHL
+    callfar2 GetSRAMText
     pop af
     pop hl
     ld a, c
