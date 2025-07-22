@@ -1339,7 +1339,7 @@ jr_001_54e0:
     ret
 
 Jump_001_5517:
-    ld a, [$b938]
+    ld a, [sNumberOfFencePosts]
     ld b, a
     ld a, [$b939]
     or b
@@ -1363,7 +1363,7 @@ Jump_001_5517:
     call RST_TableJumpBankSwitch
     ld a, $1a
     ld [wInputFreezeTimer], a
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, $fffe
     call AddBCtoWordAtHL
     call Call_000_0f73

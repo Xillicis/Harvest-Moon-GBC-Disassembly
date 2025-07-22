@@ -12888,12 +12888,34 @@ Data_017_774c:
     dw sPlayerName+1 
     dw sPlayerName+2
     dw sPlayerName+3
-    db $12, $B9, $13, $B9
-    db $4F, $BA, $50, $BA,
-    db $51, $BA, $52, $BA
-    db $15, $B9, $18, $B9, $44, $BA, $45, $BA, $46, $BA, $47, $BA,
-    db $48, $BA, $14, $B9, $28, $B9, $29, $B9, $2A, $B9, $2B, $B9, $2C, $B9, $33, $B9,
-    db $34, $B9, $35, $B9, $36, $B9, $37, $B9, $2D, $B9, $2E, $B9, $2F, $B9, $30, $B9,
+    db $12, $B9,
+    db $13, $B9
+    db $4F, $BA,
+    db $50, $BA,
+    db $51, $BA,
+    db $52, $BA
+    db $15, $B9,
+    db $18, $B9,
+    db $44, $BA,
+    db $45, $BA,
+    db $46, $BA,
+    db $47, $BA,
+    db $48, $BA,
+    db $14, $B9,
+    db $28, $B9,
+    db $29, $B9,
+    db $2A, $B9,
+    db $2B, $B9,
+    db $2C, $B9,
+    db $33, $B9,
+    db $34, $B9,
+    db $35, $B9,
+    db $36, $B9,
+    db $37, $B9,
+    db $2D, $B9,
+    db $2E, $B9,
+    dw sNumberOfFencePostsTileIndex1
+    db $30, $B9,
     db $31, $B9, $32, $B9, $13, $CC, $14, $CC, $00, $CC, $01, $CC, $02, $CC, $03, $CC,
     db $19, $B9, $1A, $B9, $EC, $CB, $ED, $CB, $24, $B9, $25, $B9, $26, $B9, $27, $B9,
     db $1B, $B9, $1C, $B9, $1D, $B9, $1E, $B9, $1F, $B9, $20, $B9, $21, $B9, $22, $B9,

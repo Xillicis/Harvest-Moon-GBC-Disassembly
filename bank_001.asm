@@ -1942,7 +1942,7 @@ Jump_001_5878:
     ld [wInputFreezeTimer], a
     ld a, $15
     call RST_TableJumpBankSwitch
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, $0002
     call AddBCtoWordAtHL
     call Call_000_0f73

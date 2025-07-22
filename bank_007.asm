@@ -3807,7 +3807,7 @@ jr_007_7306:
     cp $00
     jr z, jr_007_7373
 
-    ld a, [$b938]
+    ld a, [sNumberOfFencePosts]
     cp $2c
     jr nc, jr_007_732e
 
@@ -3836,7 +3836,7 @@ jr_007_7349:
     or a
     jr nz, jr_007_7358
 
-    ld a, [$b938]
+    ld a, [sNumberOfFencePosts]
     cp $64
     jr nc, jr_007_7358
 
@@ -3878,7 +3878,7 @@ jr_007_7387:
     cp $00
     jr z, jr_007_73ac
 
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, -300
     call AddBCtoWordAtHL
     ld hl, sPlayerMoney
@@ -3890,7 +3890,7 @@ jr_007_7387:
 
 
 jr_007_73ac:
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, -100
     call AddBCtoWordAtHL
     ld hl, sPlayerMoney

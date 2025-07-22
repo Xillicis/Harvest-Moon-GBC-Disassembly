@@ -1002,7 +1002,7 @@ jr_008_468f:
     ld [$c611], a
     xor a
     ld [$cb45], a
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, $0006
     call AddBCtoWordAtHL
     call Call_000_0f73
@@ -1441,7 +1441,7 @@ jr_008_492f:
     call BankSwitchCallHL
     xor a
     ld [$cb45], a
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld bc, $0006
     call AddBCtoWordAtHL
     call Call_000_0f73

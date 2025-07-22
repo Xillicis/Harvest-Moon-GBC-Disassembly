@@ -199,7 +199,9 @@ sb92b::  db
 sb92c::  db 
 sb92d::  db 
 sb92e::  db 
-sb92f::  db 
+; This stored the tile index (see charmap.asm) for the first digit when printing the number
+; of fence posts.
+sNumberOfFencePostsTileIndex1:: db ; 0xb92f
 sb930::  db 
 sb931::  db 
 sb932::  db 
@@ -208,7 +210,7 @@ sb934::  db
 sb935::  db 
 sb936::  db 
 sb937::  db 
-sb938::  db 
+sNumberOfFencePosts::  db ; 0xb938
 sb939::  db 
 sb93a::  db 
 sb93b::  db 

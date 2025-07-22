@@ -2866,7 +2866,7 @@ Call_009_4de0:
     call Call_009_4b09
     xor a
     ld [$cd33], a
-    ld hl, $b938
+    ld hl, sNumberOfFencePosts
     ld a, [hl+]
     ld h, [hl]
     ld l, a
