@@ -109,7 +109,7 @@ UpdateHourTileData: ; 00x070b
     ld de, AMPMHourText
     add hl, de
     ld a, [hli]
-    ld [$b915], a
+    ld [sAMorPMTileIndex], a
     ld a, [hli]
     ld [$b917], a
     ld a, [hli]
@@ -136,7 +136,7 @@ UpdateHourTileData: ; 00x070b
     ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [$b915]
+    ld a, [sAMorPMTileIndex]
     ld c, a
     ld e, $86
     ld hl, TextFontTileset
@@ -160,7 +160,7 @@ UpdateDayOfTheWeekTileData:
     ld de, DayOfTheMonthTileIndices
     add hl, de
     ld a, [hli]
-    ld [$b914], a
+    ld [sDayOfTheMonthSecondDigitTileIndex], a
     ld a, [hli]
     ld [$ba53], a
     ld a, [sCurrentSeason]

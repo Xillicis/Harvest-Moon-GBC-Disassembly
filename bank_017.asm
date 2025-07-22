@@ -12871,7 +12871,7 @@ GetSRAMText: ; 17x7739
     ld a, b
     sub $a0
     sla a
-    ld hl, Data_017_774c
+    ld hl, TileIndexSRAMPointerTable
     add l
     ld l, a
     ld a, $00
@@ -12883,25 +12883,25 @@ GetSRAMText: ; 17x7739
     ld b, a
     ret
 
-Data_017_774c:
+TileIndexSRAMPointerTable:
     dw sPlayerName
     dw sPlayerName+1 
     dw sPlayerName+2
     dw sPlayerName+3
-    db $12, $B9,
-    db $13, $B9
-    db $4F, $BA,
-    db $50, $BA,
-    db $51, $BA,
-    db $52, $BA
-    db $15, $B9,
+    dw sSeasonTileIDPart1
+    dw sSeasonTileIDPart1+1
+    dw sSeasonTileIDPart2
+    dw sSeasonTileIDPart2+1
+    dw sSeasonTileIDPart2+2
+    dw sSeasonTileIDPart2+3
+    dw sAMorPMTileIndex
     db $18, $B9,
     db $44, $BA,
     db $45, $BA,
     db $46, $BA,
     db $47, $BA,
     db $48, $BA,
-    db $14, $B9,
+    dw sDayOfTheMonthSecondDigitTileIndex
     db $28, $B9,
     db $29, $B9,
     db $2A, $B9,

@@ -70,6 +70,7 @@
     charmap "…", $43
     charmap "-", $44
 
+    charmap "'", $4b
     charmap ".", $4c
 
     charmap "'s", $53
@@ -77,6 +78,12 @@
     charmap ",", $8e
 
     charmap "<PLAYER>", $a0, $a1, $a2, $a3
+    charmap "<SEASON>", $a4, $a5, $a6, $a7, $a8, $a9
+
+    charmap "<A_OR_P>", $aa
+
+    charmap "<DAY_DIGIT2>", $b1
+    charmap "<DAY>", $b1, $ec
 
     charmap "▽", $e9
     charmap " ", $ef

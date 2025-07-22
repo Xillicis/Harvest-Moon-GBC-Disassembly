@@ -7504,10 +7504,10 @@ TextPointerTable: ; 00x3421
     text_pointer TooLateText1
     text_pointer TooLateText2
     text_pointer ShippingBoxText
-    db $07, $4D, $07
-    db $07, $4D, $07
-    db $32, $4D, $07
-    db $5D, $4D, $07
+    text_pointer FencePostShedText
+    text_pointer FencePostShedText
+    text_pointer StableSignText
+    text_pointer SiloSignText
     db $88, $4D, $07
     db $B3, $4D, $07
     text_pointer ProduceShippedText

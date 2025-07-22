@@ -33,15 +33,19 @@ ShippingBoxText::
     db "5PM everyday.   "
     db "     From Trader"
     done
-
+FencePostShedText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Current Material"
     db "      ", $BC, $BD, $BE, " Pieces" ; need to figure out the data loading here.
     done
+
+StableSignText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "    [Stable]    "
     db "                "
     done
+
+SiloSignText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Current Fodder  "
     db "      ", $BF, $C0, $C1, " Pieces"
@@ -49,9 +53,9 @@ ShippingBoxText::
 
 ; dunno
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $B1, $EC, $A4, $A5, $A6, $A7, $A8, $A9, $C8, $C9, $EE, $F0, $ED, $AB, $AA
-    db $0C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $CA, $CB, $18,
-    db $04, $00, $11, $FF, 
+    db "<DAY_DIGIT2>", $EC, "<SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M"
+    db "          ", $CA, $CB, "YEAR"
+    done
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Good Morning    "
@@ -61,7 +65,6 @@ ShippingBoxText::
     db "How are you     "
     db "doing?         ▽"
     prompt
-
 
 HorseIsLostText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00

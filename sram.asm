@@ -172,8 +172,9 @@ sHouseExpansionFlag::  db ; 0xb911
 ; in Japanese? I have no idea.
 sSeasonTileIDPart1::  dw ; 0xb912
 
-sb914::  db 
-sb915::  db 
+sDayOfTheMonthSecondDigitTileIndex::  db ; 0xb914
+; Keeps track of the tile index for "A" or "P" in AM and PM.
+sAMorPMTileIndex::  db ; 0xb915
 sb916::  db 
 sb917::  db 
 sb918::  db 
