@@ -21,8 +21,11 @@ const TEXT_TV_WINTER_SUNNY_DAY    ; $12
 const TEXT_TV_WINTER_SNOWY_DAY    ; $13
 const TEXT_14                     ; $14
 const TEXT_TV_SUMMER_WINDY_DAY    ; $15
-
-const_skip 46
+const_skip 2
+const TEXT_SHIPPING_BOX_SIGN      ; $18
+const_skip
+const TEXT_FENCE_POST_SIGN        ; $1a
+const_skip 41
 
 const TEXT_44 ; $44
 const TEXT_NO_FLOWERS             ; $45

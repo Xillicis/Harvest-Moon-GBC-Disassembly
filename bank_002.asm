@@ -1132,7 +1132,6 @@ Call_002_4689:
     call Call_002_4742
     ret
 
-
 Call_002_46bb:
     ld a, [sCurrentYear]
     or a
@@ -3487,7 +3486,6 @@ jr_002_53e5:
     call AddBCtoWordAtHL
     ret
 
-
 Jump_002_540a:
     ld a, $02
     ld [$cb50], a
@@ -3496,7 +3494,7 @@ Jump_002_540a:
     ld [wPlayerIdleWhenExitingCurrentMap], a
     ld a, $01
     ld [$c910], a
-    ld a, $01
+    ld a, FACING_LEFT
     ld [wPlayerFacingDirection], a
     ld a, [sCurrentDayCounter]
     ld [sDayOfPreviousSleep], a
@@ -3506,20 +3504,16 @@ Jump_002_540a:
     ld [sMinuteOfPreviousSleep], a
     ret
 
-
 Call_002_5433:
     ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
-
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
-
     ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
-
     ld a, [wTextID]
     cp $ff
     ret nz

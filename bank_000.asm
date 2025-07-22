@@ -7508,11 +7508,11 @@ TextPointerTable: ; 00x3421
     text_pointer FencePostShedText
     text_pointer StableSignText
     text_pointer SiloSignText
-    db $88, $4D, $07
+    text_pointer CalendarText
     db $B3, $4D, $07
     text_pointer ProduceShippedText
-    db $61, $4F, $07
-    db $B7, $4F, $07
+    text_pointer NoShipmentText
+    text_pointer CarpenterEarthquakeText
     db $B9, $50, $07
     db $E6, $51, $07
     db $67, $52, $07

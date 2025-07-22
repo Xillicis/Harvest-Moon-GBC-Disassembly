@@ -1388,7 +1388,7 @@ Jump_001_5517:
     ld e, h
     ld b, c
     daa
-    jr z, jr_001_55a3
+    jr z, $55a3
 
     jr c, jr_001_556e
 
@@ -1436,52 +1436,41 @@ Call_001_557f:
     cp $81
     ret nz
 
-jr_001_55a3:
     ld a, [wDominantFacingTileID]
     cp $41
-    jr z, jr_001_55c0
-
-    cp $42
-    jr z, jr_001_55cb
-
-    cp $43
-    jr z, jr_001_55d6
-
-    cp $44
+    jr z, .jr_001_55c0
+    cp SHIPPING_BOX_SIGN_TILE
+    jr z, .printShippingBoxSignText
+    cp FENCE_POST_SIGN_TILE
+    jr z, .printFencePostSignText
+    cp STABLE_SIGN_TILE
     jr z, jr_001_55e1
-
-    cp $45
+    cp SILO_SIGN_TILE
     jr z, jr_001_55ec
-
     cp $d6
     jp z, Jump_001_5647
-
     ret
 
-
-jr_001_55c0:
+.jr_001_55c0
     ld a, $19
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
+.printShippingBoxSignText
+    ld a, TEXT_SHIPPING_BOX_SIGN
+    call InitializeTextIDAndDisplay
+    ld a, 0
+    call RST_TableJumpBankSwitch
+    ret
 
-jr_001_55cb:
-    ld a, $18
+.printFencePostSignText
+    ld a, TEXT_FENCE_POST_SIGN
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
-
-jr_001_55d6:
-    ld a, $1a
-    call InitializeTextIDAndDisplay
-    ld a, $00
-    call RST_TableJumpBankSwitch
-    ret
-
 
 jr_001_55e1:
     ld a, $1b

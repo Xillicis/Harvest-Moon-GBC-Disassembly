@@ -51,7 +51,7 @@ SiloSignText::
     db "      ", $BF, $C0, $C1, " Pieces"
     done
 
-; dunno
+CalendarText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "<DAY_DIGIT2>", $EC, "<SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M"
     db "          ", $CA, $CB, "YEAR"

@@ -12,7 +12,7 @@ const TURNIP     ; $12
 const POTATO     ; $13
 const MUSHROOM   ; $30
 
-; Tile IDs
+; Tile IDs in the farm
 const_def 1
 const FENCE_POST_TILE             ; $01
 const BUSH_TILE                   ; $02
@@ -36,9 +36,10 @@ DEF WATER_BOTTOM_LEFT_TILE   EQU $2a
 DEF WATER_BOTTOM_CENTER_TILE EQU $2b
 DEF WATER_BOTTOM_RIGHT_TILE  EQU $2c
 
-
-
-DEF SIGN_TILE EQU $44
+DEF SHIPPING_BOX_SIGN_TILE EQU $42
+DEF FENCE_POST_SIGN_TILE EQU $43
+DEF STABLE_SIGN_TILE EQU $44
+DEF SILO_SIGN_TILE EQU $45
 
 DEF PLANTED_SEEDS_TILE EQU $90 ; might be different for different seeds planted...
 
