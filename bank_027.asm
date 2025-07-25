@@ -132,21 +132,21 @@ Call_027_40db:
     ld a, $25
     call BankSwitchCallHL
     call Call_027_40fb
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 
 
 Call_027_40eb:
     call Call_027_4398
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 
 
 Call_027_40f3:
     call Call_027_43e0
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 

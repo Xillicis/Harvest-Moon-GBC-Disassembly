@@ -251,7 +251,7 @@ jr_021_41cf:
     call Call_000_3cf8
     call Call_021_43c4
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_021_6a38
     call Call_021_69fa
     call Call_021_6b64

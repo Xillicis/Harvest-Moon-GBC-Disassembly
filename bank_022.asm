@@ -3356,7 +3356,7 @@ jr_022_5191:
     call Call_022_5dbe
     call Call_022_537d
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_022_6601
     call Call_000_0ec5
     ret

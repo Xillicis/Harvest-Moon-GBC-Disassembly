@@ -187,7 +187,7 @@ jr_00e_4158:
 
     call Call_00e_53a8
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5285
     call Call_00e_539f
     call $1e32
@@ -199,7 +199,7 @@ jr_00e_4179:
     call Call_00e_5480
     call Call_00e_424f
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5285
     call Call_00e_5468
     call Call_00e_41a1
@@ -917,7 +917,7 @@ jr_00e_45a5:
     or a
     jr nz, jr_00e_45ca
 
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     jr nz, jr_00e_45ca
 
@@ -957,7 +957,7 @@ jr_00e_45ca:
     call CheckForNoEnergyAnimation
 
 jr_00e_45eb:
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     ret nz
 
@@ -1001,7 +1001,7 @@ jr_00e_4631:
     or a
     jp nz, Jump_00e_470e
 
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     ret nz
 
@@ -3718,7 +3718,7 @@ jr_00e_55ee:
     call Call_00e_560d
     call Call_00e_56a5
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5468
     call Call_00e_41a1
     call $1e32
@@ -4728,7 +4728,7 @@ jr_00e_5c15:
     call Call_00e_5c3a
     call Call_00e_5e73
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5468
     call Call_00e_5285
     call Call_00e_44aa
@@ -5775,7 +5775,7 @@ Call_00e_616c:
     call Call_00e_5480
     call Call_00e_62d9
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5285
     call Call_00e_5468
     call Call_00e_41a1
@@ -6582,7 +6582,7 @@ jr_00e_669f:
     call Call_000_3cf8
     call Call_00e_424f
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_00e_5468
     call Call_00e_41a1
     call $1e32

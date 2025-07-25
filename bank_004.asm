@@ -132,7 +132,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     call Call_000_3cf8
     call Call_004_429d
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL
@@ -2090,7 +2090,7 @@ jr_004_4cf9:
 
 
 jr_004_4d39:
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     jr z, jr_004_4d41
     ret

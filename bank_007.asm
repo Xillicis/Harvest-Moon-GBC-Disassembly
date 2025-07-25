@@ -140,21 +140,21 @@ Call_007_40e8:
     ld a, $05
     call BankSwitchCallHL
     call Call_007_4108
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 
 
 Call_007_40f8:
     call Call_007_43fb
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 
 
 Call_007_4100:
     call Call_007_4443
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     pop hl
     ret
 
@@ -959,12 +959,12 @@ PicnicInvitationDeclineText::
     prompt
 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $16, $1E, $25, $25, $8E, $EF, $2D, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF
-    db $1F, $28, $2B, $EF, $1B, $1E, $22, $27, $20, $EF, $30, $22, $2D, $21, $EF, $E9
+    db "Well, thank you "
+    db "for being with ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $3D, $72, $00, $00
-    db $26, $1E, $8E, $EF, $20, $28, $EF, $1A, $27, $1D, $EF, $1B, $1E, $EF, $EF, $EF
-    db $1F, $2B, $1E, $1E, $EF, $27, $28, $30, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $E9
+    db "me, go and be   "
+    db "free now...    ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $3E, $72, $00, $00
     db $06, $28, $28, $1D, $EF, $1B, $32, $1E, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF
@@ -983,15 +983,19 @@ PicnicInvitationDeclineText::
     db "                "
     prompt 
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $A0, $A1, $A2, $A3, $4C, $EF, $13, $21, $1E, $EF, $21, $2E,
-    db $2B, $2B, $22, $44, $1C, $1A, $27, $1E, $EF, $32, $1E, $2C, $2D, $1E, $2B, $1D,
-    db $1A, $32, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $30,
-    db $1A, $2C, $EF, $2C, $2D, $2B, $28, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF, $08,
-    db $EF, $25, $28, $2C, $2D, $EF, $26, $32, $EF, $EF, $EF, $EF, $EF, $EF, $E9, $FE,
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $30, $1E, $1A, $2D, $21, $1E,
-    db $2B, $EF, $2F, $1A, $22, $27, $EF, $1D, $2E, $44, $2B, $22, $27, $20, $EF, $2D,
-    db $21, $1E, $EF, $2C, $2D, $28, $2B, $26, $8E, $E9, $FE, $00, $00, $00, $00, $00,
-    db $00, $78, $70, $00, $00, $1D, $22, $1D, $EF, $32, $28, $2E, $EF, $2C, $1E, $1E,
+    db $A0, $A1, $A2, $A3, $4C, $EF, $13, $21, $1E, $EF, $21, $2E, $2B, $2B, $22, $44
+    db $1C, $1A, $27, $1E, $EF, $32, $1E, $2C, $2D, $1E, $2B, $1D, $1A, $32, $EF, $E9
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $30, $1A, $2C, $EF, $2C, $2D, $2B, $28, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF
+    db $08, $EF, $25, $28, $2C, $2D, $EF, $26, $32, $EF, $EF, $EF, $EF, $EF, $EF, $E9
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $30, $1E, $1A, $2D, $21, $1E, $2B, $EF, $2F, $1A, $22, $27, $EF, $1D, $2E, $44
+    db $2B, $22, $27, $20, $EF, $2D, $21, $1E, $EF, $2C, $2D, $28, $2B, $26, $8E, $E9
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1D, $22, $1D, $EF, $32, $28
+    db $2E, $EF, $2C, $1E, $1E,
     db $EF, $22, $2D, $41, $EF, $08, $2D, $EF, $26, $22, $20, $21, $2D, $EF, $21, $1A,
     db $2F, $1E, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
     db $1B, $1E, $1E, $27, $EF, $1B, $25, $28, $30, $27, $EF, $EF, $EF, $EF, $EF, $EF,

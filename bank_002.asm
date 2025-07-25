@@ -3263,7 +3263,7 @@ jr_002_5271:
     call AnimateTV
     call Call_002_5433
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_002_6694
     call Call_000_0ec5
     ret
@@ -3532,7 +3532,6 @@ Call_002_5433:
     ld a, $01
     call BankSwitchCallHL
     ret
-
 
 jr_002_5462:
     ldh a, [$ff8a]

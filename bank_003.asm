@@ -150,7 +150,7 @@ jr_003_410e:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_003_4285
     ret
 
@@ -163,7 +163,7 @@ jr_003_4147:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_003_42d7
     ret
 
@@ -172,7 +172,7 @@ jr_003_415d:
     call Call_000_3cf8
     call Call_003_51ec
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL
@@ -181,7 +181,7 @@ jr_003_415d:
     call Call_003_4344
     call Call_003_4358
     call Call_003_436c
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     ret nz
 
@@ -1430,7 +1430,7 @@ Call_003_48cc:
     or a
     ret nz
 
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     or a
     ret nz
 
@@ -1934,7 +1934,7 @@ jr_003_4bad:
     or a
     jp z, Jump_003_4cf7
 
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     ret nz
 
@@ -2138,7 +2138,7 @@ jr_003_4cd5:
 
 
 Jump_003_4cf7:
-    ld a, [$cc1b]
+    ld a, [wPlayerInteractingInTextFlag]
     cp $00
     jr z, jr_003_4cff
 

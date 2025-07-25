@@ -265,7 +265,7 @@ jr_001_41de:
     call Call_000_3cf8
     call Call_001_43f3
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_001_6ba5
     call Call_001_6b67
     call Call_001_6cd1

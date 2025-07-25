@@ -1041,7 +1041,7 @@ jr_010_4fbe:
     ld [wPlayerMovementY], a
     call Call_010_508c
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ret
 
 
@@ -1050,7 +1050,7 @@ jr_010_4fbe:
     ld [wPlayerMovementY], a
     call Call_010_554f
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ret
 
 

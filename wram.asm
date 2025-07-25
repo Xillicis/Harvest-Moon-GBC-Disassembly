@@ -169,7 +169,14 @@ ds 1
 ; a flag to indicate the player is or is not holding a pet (0 or 1)
 wPlayerHoldingPet:: db ; 0xcb8b
 
-ds $13e ; $17f
+;ds $13e
+ds $8f
+
+; If the player is reading a sign, TV, etc... then this flag is used
+; to indicate that. Doesn't seem enabled when in the town shops.
+wPlayerInteractingInTextFlag:: db ; 0xcc1b
+
+ds $ae
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

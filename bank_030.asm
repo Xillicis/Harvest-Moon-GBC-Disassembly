@@ -3108,7 +3108,7 @@ jr_030_4f2d:
     ld [wPlayerMovementY], a
     call Call_030_4fee
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ret
 
 
@@ -3117,7 +3117,7 @@ jr_030_4f2d:
     ld [wPlayerMovementY], a
     call Call_030_54ba
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ret
 
 

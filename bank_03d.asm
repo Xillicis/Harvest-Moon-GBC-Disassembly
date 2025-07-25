@@ -9458,7 +9458,7 @@ jr_03d_6d1c:
 
 
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_03d_6df4
     call Call_000_0e54
     call Call_03d_6fe8
@@ -10235,7 +10235,7 @@ jr_03d_7174:
 
 
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_03d_7285
     call Call_000_0e54
     call Call_03d_73ae

@@ -6134,7 +6134,7 @@ jr_02f_64a1:
 jr_02f_64a4:
     call Call_02f_68e9
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ld hl, $6a38
     ld a, $21
     call BankSwitchCallHL
@@ -7566,7 +7566,7 @@ jr_02f_6c1a:
     call Call_02f_6cf5
     call Call_02f_6dc0
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     ret
 
 

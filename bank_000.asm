@@ -848,7 +848,8 @@ Call_000_0ac1:
     ld bc, -$20 
     add hl, bc
     ld b, 0
-jr_000_0ac7:
+; `de = $cb63`
+.loop
     ld a, [de]
     cp $ff
     ret z
@@ -862,7 +863,7 @@ jr_000_0ac7:
 
     inc b
     inc hl
-    jr jr_000_0ac7
+    jr .loop
 
 jr_000_0ad8:
     push hl
@@ -7721,7 +7722,7 @@ TextPointerTable: ; 00x3421
     db $66, $54, $0A,
     db $59, $61, $10, 
 
-Call_000_36f4:
+LoadCharacterTileIntoVRAM:
     ld a, [$cb14]
     or a
     ret nz
@@ -7788,11 +7789,11 @@ Call_000_36f4:
     cp "<PROMPT>"
     jp z, Jump_000_3804
     cp " "
-    jr z, .printAvailableCharacter
+    jr z, .loadCharacter
     cp "▽"
-    jr z, .printAvailableCharacter
+    jr z, .loadCharacter
     cp $a0
-    jr c, .printAvailableCharacter
+    jr c, .loadCharacter
 
 ; This routine here loads the text byte from SRAM addresses for use in the text.
 ; So for example, printing the Player's name or the Pet's name, etc...
@@ -7810,15 +7811,15 @@ Call_000_36f4:
     ld h, a
     pop bc
 
-.printAvailableCharacter
+.loadCharacter
     ld a, [hl]
     cp " "
-    jr z, jr_000_37c4
+    jr z, .done
 
-    ld c, a
+    ld c, a ; tile index (source)
     ld a, [wTextCharacterCounter]
     or $80
-    ld e, a
+    ld e, a ; tile index (destination)
     push af
     ld hl, TextFontTileset
     ld a, BANK(TextFontTileset)
@@ -7849,7 +7850,7 @@ Call_000_36f4:
     ld h, a
     call Call_000_0a93
 
-jr_000_37c4:
+.done
     ld hl, wTextNavigator
     ld bc, $0001
     call AddBCtoWordAtHL
@@ -7862,10 +7863,10 @@ jr_000_37c4:
 jr_000_37d7:
     ld a, [wTextID]
     cp $04
-    jr nz, jr_000_37e1
+    jr nz, .endText
     call Call_000_3e1a
 
-jr_000_37e1:
+.endText
     ld a, $ff
     ld [wTextID], a
     xor a
@@ -8724,7 +8725,7 @@ jr_000_3d41:
 
 jr_000_3d7b:
     xor a
-    ld [$cc1b], a
+    ld [wPlayerInteractingInTextFlag], a
     ldh a, [$ff8b]
     and $04
     ret z
@@ -8818,7 +8819,7 @@ Call_000_3dfd:
     ld [wTextID], a
     call Call_000_3f0b
     ld a, $01
-    ld [$cc1b], a
+    ld [wPlayerInteractingInTextFlag], a
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -8999,7 +9000,7 @@ InitializeTextIDAndDisplay:
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb5f], a
-    ld [$cc1b], a
+    ld [wPlayerInteractingInTextFlag], a
     call Call_000_3f0b
     ret
 

@@ -87,7 +87,7 @@ SECTION "ROM Bank $025", ROMX[$4000], BANK[$25]
     call Call_000_3cf8
     call Call_025_40d2
     call Call_000_2d67
-    call Call_000_36f4
+    call LoadCharacterTileIntoVRAM
     call Call_025_433d
     ret
 
