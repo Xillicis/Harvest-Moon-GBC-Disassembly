@@ -782,7 +782,7 @@ UseTurnipSeeds:
 
 Call_001_644c:
     ld a, $50
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     ret
 
 UsePotatoSeeds:

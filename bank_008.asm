@@ -10,6 +10,7 @@ SECTION "ROM Bank $008", ROMX[$4000], BANK[$8]
     db $fa, $02, $c6, $c7, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41
 ; 08x4011
     db $71, $41, $71, $41, $09, $44, $09, $44, $09, $44, $09, $44, $71, $41, $71, $41
+; 08x4021
     db $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41
     db $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41, $71, $41
     db $71, $41, $71, $41, $bb, $41, $9a, $42, $bd, $46, $bd, $46, $bd, $46, $bd, $46
@@ -287,23 +288,21 @@ jr_008_42db:
     ld h, a
     ld a, [hl]
     cp NO_ITEM
-    jr nz, jr_008_42f5
+    jr nz, .itemSearch
 
     ld b, $1f
     jr jr_008_4302
 
-jr_008_42f5:
+.itemSearch
     ld c, a
-    ld hl, $1b20
-    ld b, $00
-
-jr_008_42fb:
+    ld hl, Data_000_1b20
+    ld b, 0
+.loop
     ld a, [hl+]
     cp c
     jr z, jr_008_4302
-
     inc b
-    jr jr_008_42fb
+    jr .loop
 
 jr_008_4302:
     ld a, b
@@ -353,60 +352,44 @@ jr_008_4302:
     call Call_008_456e
     ret
 
-
-    ld a, [$cb8f]
+Label_008_4341:
+    ld a, [wThrowingSeedsAnimationTimer]
     or a
     ret z
 
     dec a
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     cp $0e
     jp z, Jump_008_43f1
-
     cp $0d
     jp z, Jump_008_438d
-
     cp $0c
     jp z, Jump_008_438d
-
     cp $0b
     jp z, Jump_008_438d
-
     cp $0a
     jp z, Jump_008_438d
-
     cp $09
     jp z, Jump_008_438d
-
     cp $08
     jr z, jr_008_438d
-
     cp $07
     jr z, jr_008_438d
-
     cp $06
     jr z, jr_008_438d
-
     cp $05
     jr z, jr_008_438d
-
     cp $04
     jr z, jr_008_438d
-
     cp $03
     jr z, jr_008_438d
-
     cp $02
     jr z, jr_008_438d
-
     cp $01
     jr z, jr_008_438d
-
     cp $00
     jr z, jr_008_438d
-
     ret
-
 
 Jump_008_438d:
 jr_008_438d:
@@ -463,7 +446,7 @@ jr_008_43b4:
     add hl, de
     ld de, $1b3f
     add hl, de
-    ld a, [$cb8f]
+    ld a, [wThrowingSeedsAnimationTimer]
     ld b, a
     ld a, $0d
     sub b
@@ -485,7 +468,6 @@ jr_008_43b4:
     call BankedSyncCopyTileToVRAM
     call Call_008_456e
     ret
-
 
 Jump_008_43f1:
     ld hl, sInventory
@@ -767,7 +749,6 @@ jr_008_4563:
     ld [$cb80], a
     ret
 
-
 Call_008_456e:
     ld hl, sInventory
     ld a, [sItemSlot]
@@ -786,15 +767,13 @@ Call_008_456e:
 .compareItem
     ld c, a
     ld hl, Data_000_1b20
-    ld b, $00
-
-jr_008_4589:
+    ld b, 0
+.loop
     ld a, [hl+]
     cp c
     jr z, jr_008_4590
-
     inc b
-    jr jr_008_4589
+    jr .loop
 
 jr_008_4590:
     ld a, b

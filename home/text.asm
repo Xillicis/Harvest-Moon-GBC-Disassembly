@@ -1169,16 +1169,14 @@ Jump_000_3cf2:
     ret
 
 Call_000_3cf8:
-    ld a, [$cb8f]
+    ld a, [wThrowingSeedsAnimationTimer]
     or a
-    jr z, jr_000_3d07
+    jr z, .notThrowingSeeds
 
-    ld hl, $4341
-    ld a, $08
-    call BankSwitchCallHL
+    callfar Label_008_4341
     ret
 
-jr_000_3d07:
+.notThrowingSeeds
     ld a, [wTextID]
     cp $ff
     ret nz
@@ -1213,7 +1211,6 @@ jr_000_3d17:
     ld [$cb58], a
     call Call_000_3f0b
     ret
-
 
 jr_000_3d41:
     call Call_000_3ded
@@ -1276,5 +1273,77 @@ jr_000_3d7b:
     ld [wInputFreezeTimer], a
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
+    ret
+
+Call_000_3db3:
+    ld a, [wInputFreezeTimer]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [$c90d]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [wPlayerIsCarryingItem]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [$c640]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [wPlayerIsRidingHorse]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [wPlayerHoldingPet]
+    or a
+    jr nz, jr_000_3deb
+
+    ld a, [wPlayerSpriteID]
+    cp PLAYER_SPRINTING_DOWN_POSE
+    jr z, jr_000_3deb
+
+    cp PLAYER_SPRINTING_LEFT_POSE
+    jr z, jr_000_3deb
+
+    cp PLAYER_SPRINTING_RIGHT_POSE
+    jr z, jr_000_3deb
+
+    cp PLAYER_SPRINTING_UP_POSE
+    jr z, jr_000_3deb
+    ret
+
+jr_000_3deb:
+    pop hl
+    ret
+
+Call_000_3ded:
+    ld a, [$b88c]
+    or a
+    ret z
+
+    ld a, [$cbf6]
+    or a
+    ret nz
+
+    ld a, $b4
+    ld [$cbf6], a
+    ret
+
+Call_000_3dfd:
+    ld a, [$b906]
+    or a
+    ret nz
+
+    ld a, $04
+    ld [wTextID], a
+    call Call_000_3f0b
+    ld a, $01
+    ld [wPlayerInteractingInTextFlag], a
+    xor a
+    ld [$cb58], a
+    ld [$cb57], a
+    ld [$cb5f], a
     ret
 

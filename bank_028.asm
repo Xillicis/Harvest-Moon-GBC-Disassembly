@@ -686,12 +686,12 @@ jr_028_4302:
     ret
 
 
-    ld a, [$cb8f]
+    ld a, [wThrowingSeedsAnimationTimer]
     or a
     ret z
 
     dec a
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     cp $0e
     jp z, Jump_028_43f1
 
@@ -795,7 +795,7 @@ jr_028_43b4:
     add hl, de
     ld de, $1b3f
     add hl, de
-    ld a, [$cb8f]
+    ld a, [wThrowingSeedsAnimationTimer]
     ld b, a
     ld a, $0d
     sub b

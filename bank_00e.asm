@@ -173,7 +173,7 @@ jr_00e_410d:
     jr nz, jr_00e_4158
 
     ld a, $50
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     xor a
     ld [$cc9a], a
 
@@ -4709,7 +4709,7 @@ Call_00e_5ad2:
     jr nz, jr_00e_5c05
 
     ld a, $50
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     xor a
     ld [$cc9a], a
 

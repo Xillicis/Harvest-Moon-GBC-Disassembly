@@ -5442,7 +5442,7 @@ Jump_021_6310:
 
 Call_021_633a:
     ld a, $50
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     ret
 
 

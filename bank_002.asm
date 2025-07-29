@@ -7736,7 +7736,7 @@ jr_002_6f7a:
     ld a, NO_ITEM
     ld [sInventory], a
     ld a, $10
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     call $4341
     ret
 
@@ -7745,7 +7745,7 @@ jr_002_6f88:
     ld a, NO_ITEM
     ld [sInventory+1], a
     ld a, $10
-    ld [$cb8f], a
+    ld [wThrowingSeedsAnimationTimer], a
     call $4341
     ret
 
