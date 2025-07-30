@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
 
-    rlca
+    db $07 ; bank number
+
     push hl
     push af
     ld l, $2c
@@ -863,36 +864,33 @@ PicnicInvitationDeclineText::
     db "That's no fun!   "
     done 
 
+MariaGoToPicnicText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Hello <PLAYER>.     "
     db "I hope you     ▽"
     prompt 
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "weren't too     "
     db "busy.          ▽"
     prompt 
-
     db $00, $00, $00, $00, $00, $00, $79, $71, $00, $00
     db "Let's go on the  "
     db "picnic...       "
     prompt
 
+EveJuicePicnicText::
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Hi <PLAYER>.        "
     db "This is        ▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Wild Grape      "
     db "Juice.         ▽"
     prompt 
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "I know this is  "
     db "a little sweet,▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $A8, $71, $00, $00
     db "but please have "
     db "some.           "
@@ -902,12 +900,10 @@ PicnicInvitationDeclineText::
     db "I made too many "
     db "cookies for the▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Harvest Festival"
     db "<PLAYER>,I would   ▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $E2, $71, $00, $00
     db "like you to have"
     db "them.           "
@@ -927,22 +923,20 @@ PicnicInvitationDeclineText::
     db "find him?       "
     db " YES         NO "
     prompt 
-
+; Yes option
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Thank You.      "
     db "Please let me  ▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "know as soon as "
     db "you find him.   "
     done
-
+; No option
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Oh, I didn't    "
     db "know you were  ▽"
     prompt 
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "busy.           "
     db "I am sorry.     "
@@ -952,12 +946,10 @@ PicnicInvitationDeclineText::
     db "Oh I'm sorry... "
     db "Do you want to ▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "be free?        "
     db "               ▽"
     prompt
-
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db "Well, thank you "
     db "for being with ▽"
@@ -967,69 +959,90 @@ PicnicInvitationDeclineText::
     db "free now...    ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $3E, $72, $00, $00
-    db $06, $28, $28, $1D, $EF, $1B, $32, $1E, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF
-    db $08, $4B, $26, $EF, $27, $28, $2D, $EF, $2C, $1A, $1D, $4C, $EF, $EF, $EF, $E9
+    db "Good bye...     "
+    db "I'm not sad.   ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $49, $72, $00, $00
-    db $08, $EF, $30, $22, $25, $25, $EF, $1B, $1E, $EF, $0E, $0A, $4C, $4C, $4C, $EF
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $1F, $28, $2B, $EF, $EF, $E9
+    db "I will be OK... "
+    db "Thank you for  ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $21, $1E, $25, $29, $22, $27, $20, $EF, $26, $1E, $EF, $1F, $22, $27, $1D, $EF
-    db $26, $32, $EF, $1B, $22, $2B, $1D, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $E9
+    db "helping me find "
+    db "my bird...     ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $5C, $72, $00, $00
-    db $16, $1E, $25, $25, $8E, $EF, $20, $28, $28, $1D, $EF, $1B, $32, $1E, $4C, $EF
+    db "Well, good bye. "
     db "                "
     prompt 
+
+
+
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $A0, $A1, $A2, $A3, $4C, $EF, $13, $21, $1E, $EF, $21, $2E, $2B, $2B, $22, $44
-    db $1C, $1A, $27, $1E, $EF, $32, $1E, $2C, $2D, $1E, $2B, $1D, $1A, $32, $EF, $E9
+    db "<PLAYER>. The hurri-"
+    db "cane yesterday ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $30, $1A, $2C, $EF, $2C, $2D, $2B, $28, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF
-    db $08, $EF, $25, $28, $2C, $2D, $EF, $26, $32, $EF, $EF, $EF, $EF, $EF, $EF, $E9
+    db "was strong.     "
+    db "I lost my      ▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $30, $1E, $1A, $2D, $21, $1E, $2B, $EF, $2F, $1A, $22, $27, $EF, $1D, $2E, $44
-    db $2B, $22, $27, $20, $EF, $2D, $21, $1E, $EF, $2C, $2D, $28, $2B, $26, $8E, $E9
+    db "weather vain du-"
+    db "ring the storm,▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1D, $22, $1D, $EF, $32, $28
-    db $2E, $EF, $2C, $1E, $1E,
-    db $EF, $22, $2D, $41, $EF, $08, $2D, $EF, $26, $22, $20, $21, $2D, $EF, $21, $1A,
-    db $2F, $1E, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
-    db $1B, $1E, $1E, $27, $EF, $1B, $25, $28, $30, $27, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $2C, $28, $26, $1E, $30, $21, $1E, $2B, $1E, $EF, $28, $27, $EF, $EF, $EF, $E9,
-    db $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $32, $28, $2E, $2B, $EF,
-    db $2B, $1A, $27, $1C, $21, $4C, $4C, $4C, $EF, $EF, $EF, $02, $28, $2E, $25, $1D,
-    db $EF, $32, $28, $2E, $EF, $21, $1E, $25, $29, $EF, $E9, $FE, $01, $07, $09, $40,
-    db $4C, $00, $73, $72, $00, $00, $26, $1E, $EF, $1F, $22, $27, $1D, $EF, $22, $2D,
-    db $41, $EF, $EF, $EF, $EF, $EF, $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $0D, $0E, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00,
-    db $00, $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $8E, $EF, $A0, $A1, $A2, $A3,
-    db $EF, $13, $21, $1A, $2D, $53, $EF, $30, $21, $32, $EF, $08, $EF, $EF, $EF, $EF,
-    db $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $25, $22, $24, $1E,
-    db $EF, $32, $28, $2E, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00,
-    db $00, $00, $00, $78, $70, $00, $00, $16, $21, $1A, $2D, $40, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $08, $EF, $30, $1A, $2C, $EF, $1A, $EF, $1F,
-    db $28, $28, $25, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70,
-    db $00, $00, $1F, $28, $2B, $EF, $1A, $2C, $24, $22, $27, $20, $EF, $32, $28, $2E,
-    db $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $0E, $21, $8E,
-    db $EF, $1D, $22, $1D, $EF, $32, $28, $2E, $EF, $1F, $22, $27, $1D, $22, $2D, $41,
-    db $EF, $06, $28, $28, $1D, $EF, $23, $28, $1B, $4C, $EF, $EF, $E9, $FE, $00, $00,
-    db $00, $00, $00, $00, $78, $70, $00, $00, $13, $21, $22, $2C, $EF, $30, $1E, $1A,
-    db $2D, $21, $1E, $2B, $2F, $1A, $27, $1E, $22, $2C, $EF, $1A, $EF, $26, $1E, $26,
-    db $1E, $27, $2D, $28, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $78,
-    db $70, $00, $00, $1F, $2B, $28, $26, $EF, $26, $32, $EF, $26, $28, $2D, $21, $1E,
-    db $2B, $4C, $EF, $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $1F, $28, $2B,
-    db $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $B0, $72, $00, $00, $1F, $1A,
-    db $22, $27, $1D, $22, $27, $20, $EF, $22, $2D, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00,
-    db $00, $00, $00, $00, $00, $78, $70, $00, $00, $08, $EF, $26, $1A, $1D, $1E, $EF,
-    db $1A, $EF, $27, $1E, $30, $EF, $EF, $EF, $EF, $24, $22, $27, $1D, $EF, $28, $1F,
-    db $EF, $1F, $2B, $2E, $22, $2D, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "did you see it? "
+    db "It might have  ▽"
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    db "been blown      "
+    db "somewhere on   ▽"
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "your ranch...   "
+    db "Could you help ▽"
+    prompt
+    db $01, $07, $09, $40, $4C, $00, $73, $72, $00, $00
+    db "me find it?     "
+    db " YES         NO "
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Thank you, <PLAYER> "
+    db "That's why I    ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "like you <PLAYER>.  "
+    db "                "
+    done 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "What!           "
+    db "I was a fool   ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "for asking you! "
+    db "                "
+    done 
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db "Oh, did you find"
+    db "it? Good job.  ▽"
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $13, $21, $22, $2C, $EF, $30, $1E, $1A, $2D, $21, $1E, $2B, $2F, $1A, $27, $1E
+    db $22, $2C, $EF, $1A, $EF, $26, $1E, $26, $1E, $27, $2D, $28, $EF, $EF, $EF, $E9
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $1F, $2B, $28, $26, $EF, $26, $32, $EF, $26, $28, $2D, $21, $1E, $2B, $4C, $EF
+    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $1F, $28, $2B, $EF, $EF, $E9
+    prompt
+    db $00, $00, $00, $00, $00, $00, $B0, $72, $00, $00
+    db $1F, $1A, $22, $27, $1D, $22, $27, $20, $EF, $22, $2D, $4C, $EF, $EF, $EF, $EF
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF
+    prompt
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $08, $EF, $26, $1A, $1D, $1E, $EF, $1A, $EF, $27, $1E, $30, $EF, $EF, $EF, $EF
+    db $24, $22, $27, $1D, $EF, $28, $1F, $EF, $1F, $2B, $2E, $22, $2D, $EF, $EF, $E9
+    prompt 
+    db $00, $00, $00, $00, $00, $00,
     db $C5, $71, $00, $00, $23, $2E, $22, $1C, $1E, $4C, $EF, $16, $28, $2E, $25, $1D,
     db $EF, $32, $28, $2E, $25, $22, $24, $1E, $EF, $2D, $28, $EF, $2D, $2B, $32, $EF,
     db $22, $2D, $41, $E9, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $08,
