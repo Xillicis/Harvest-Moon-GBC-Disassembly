@@ -3038,15 +3038,15 @@ jr_002_50ec:
     ld hl, $70ae
     ld c, $02
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $785b
     ld c, $11
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $66d8
     ld c, $17
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $af
     ld [$cb5c], a
     ld a, $ae
@@ -3109,14 +3109,14 @@ Jump_002_5191:
     ld hl, $780c
     ld c, $17
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     ld a, $01
     ldh [c], a
     ld hl, $6994
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -3134,14 +3134,14 @@ jr_002_51d1:
     ld hl, $7bff
     ld c, $07
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     ld a, $01
     ldh [c], a
     ld hl, $6840
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -3151,14 +3151,14 @@ jr_002_51f2:
     ld hl, $7d4b
     ld c, $07
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     ld a, $01
     ldh [c], a
     ld hl, $68e8
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a

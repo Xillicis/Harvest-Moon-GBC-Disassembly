@@ -20,11 +20,11 @@ SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
     ld hl, $6de8
     ld c, $10
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6691
     ld c, $10
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $40ea
     ld a, [$cc28]
     call LoadWordFromTableHL
@@ -38,25 +38,25 @@ SECTION "ROM Bank $010", ROMX[$4000], BANK[$10]
     ld hl, $496f
     ld c, $10
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_010_4063
 
     ld hl, $4c35
     ld c, $10
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_010_4063
 
     ld hl, $459d
     ld c, $10
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_010_4063:
     ld hl, $44c4
     ld c, $10
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $66
     ld [$cb5c], a
     ld a, $04
@@ -997,15 +997,15 @@ jr_010_4fbe:
     ld hl, $6445
     ld c, $10
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6220
     ld c, $10
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6a42
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $00
     ld [$cb5c], a
     ld a, $77

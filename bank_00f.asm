@@ -6045,15 +6045,15 @@ Call_00f_62dc:
     ld hl, $6de8
     ld c, $10
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6691
     ld c, $10
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7920
     ld c, $10
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $ff
@@ -7572,15 +7572,15 @@ jr_00f_6c70:
     ld hl, $7729
     ld c, $10
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $72aa
     ld c, $10
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $77d5
     ld c, $10
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $5fa1
     ld a, $0d
     call BankSwitchCallHL

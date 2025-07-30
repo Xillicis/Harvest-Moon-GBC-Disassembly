@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
 
-    rra
+    db $1f ; bank number
+
     nop
     inc b
     or b
@@ -213,11 +214,11 @@ SECTION "ROM Bank $01f", ROMX[$4000], BANK[$1f]
     ld hl, $7614
     ld c, $1d
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $79d4
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4762
     ld a, l
     ld [$cd28], a
@@ -2452,15 +2453,15 @@ jr_01f_4bde:
     ld hl, $7614
     ld c, $1d
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $79f0
     ld c, $0b
     ld de, $8ec0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7a2e
     ld c, $0b
     ld de, $8f80
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $98ec
     ld a, $ec
     call Call_01f_4c2b
@@ -2487,7 +2488,7 @@ Call_01f_4c2b:
     ld hl, $7aad
     ld c, $0b
     ld de, $8380
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     call Call_01f_416e
     ld hl, $4f01
     ld a, $11
@@ -2503,14 +2504,14 @@ Call_01f_4c2b:
     ld hl, $4001
     ld c, $1f
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
     ld hl, $57ae
     ld c, $1c
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $8000
 
 jr_01f_4c73:
@@ -10800,7 +10801,7 @@ Label_01f_7819:
     ld hl, $76e8
     ld c, $1f
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -10815,7 +10816,7 @@ Label_01f_783a:
     ld hl, $7777
     ld c, $1f
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -10958,7 +10959,7 @@ jr_01f_78ef:
     ld hl, $761a
     ld c, $1f
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a

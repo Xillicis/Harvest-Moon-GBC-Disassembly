@@ -13,11 +13,11 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ld hl, $74aa
     ld c, $3d
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7b00
     ld c, $25
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4665
     ld a, l
     ld [$cd28], a
@@ -2295,15 +2295,15 @@ jr_03f_4ae1:
     ld hl, $74aa
     ld c, $3d
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7af6
     ld c, $2b
     ld de, $8ec0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7b34
     ld c, $2b
     ld de, $8f80
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $98ec
     ld a, $ec
     call Call_03f_4b2e
@@ -2330,7 +2330,7 @@ Call_03f_4b2e:
     ld hl, $7bb3
     ld c, $2b
     ld de, $8380
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     call Call_03f_4092
     ld hl, $4f01
     ld a, $31
@@ -2343,7 +2343,7 @@ Call_03f_4b2e:
     ld hl, $5936
     ld c, $3c
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $8000
 
 jr_03f_4b62:

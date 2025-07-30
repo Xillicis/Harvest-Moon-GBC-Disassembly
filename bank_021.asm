@@ -46,50 +46,50 @@ jr_021_402b:
     ld hl, $478a
     ld c, $2b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4001
     ld c, $2b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_021_4098
 
 jr_021_4052:
     ld hl, $54c8
     ld c, $2b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4c4e
     ld c, $2b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_021_4098
 
 jr_021_406a:
     ld hl, $6205
     ld c, $2b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $5a75
     ld c, $2b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_021_4098
 
 jr_021_4082:
     ld hl, $6ec3
     ld c, $2b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $66c9
     ld c, $2b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_021_4098:
     ld hl, $7195
     ld c, $34
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, [$b8ea]
     cp $00
     jr z, jr_021_40cc
@@ -106,14 +106,14 @@ jr_021_40b4:
     ld hl, $7443
     ld c, $33
     ld de, $81d0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_021_40cc
 
 jr_021_40c1:
     ld hl, $7711
     ld c, $33
     ld de, $81d0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_021_40cc:
     ld a, [sCatOrDog]
@@ -123,7 +123,7 @@ jr_021_40cc:
     ld hl, $7a05
     ld c, $33
     ld de, $85a0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7e94
     ld de, $8ae0
     ld b, $20

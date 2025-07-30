@@ -15,15 +15,15 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld hl, $769e
     ld c, $24
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7004
     ld c, $24
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7b5f
     ld c, $24
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $08
     ld [$cb5c], a
     ld a, $07
@@ -32,7 +32,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld hl, $6ec8
     ld c, $24
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $24
     ldh [$ff91], a
     xor a

@@ -28,19 +28,19 @@ SECTION "ROM Bank $009", ROMX[$4000], BANK[$9]
     ld hl, $45e1
     ld c, $1c
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4001
     ld c, $1c
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4bf9
     ld c, $1c
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4fea
     ld c, $1c
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -3962,11 +3962,11 @@ Call_009_5435:
     ld hl, $5618
     ld c, $1c
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $519a
     ld c, $1c
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     pop hl
     ld e, [hl]
     inc hl
@@ -3978,7 +3978,7 @@ Call_009_5435:
     ld h, d
     ld l, e
     ld de, $9500
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     pop hl
     ld e, [hl]
     inc hl
@@ -3990,7 +3990,7 @@ Call_009_5435:
     ld h, d
     ld l, e
     ld de, $8a00
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     pop hl
     ld e, [hl]
     inc hl
@@ -4002,7 +4002,7 @@ Call_009_5435:
     ld h, d
     ld l, e
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $99a0
     ld de, vBGMap1
     ld b, $c0
@@ -4151,15 +4151,15 @@ jr_009_559c:
     ld hl, $7771
     ld c, $06
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6e55
     ld c, $1e
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $780d
     ld c, $1c
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $9030
     ld de, $9000
     ld b, $10
@@ -4279,11 +4279,11 @@ Call_009_5680:
     ld hl, $6aae
     ld c, $09
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $79d4
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $9980
     ld de, vBGMap1
     ld b, $c0
@@ -7406,7 +7406,7 @@ jr_009_6593:
     ld hl, $79d4
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $b949
     ld c, $16
     call Call_009_662f
@@ -7829,7 +7829,7 @@ Call_009_67b9:
     ld hl, $79d4
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $b9a7
 
 jr_009_67e5:

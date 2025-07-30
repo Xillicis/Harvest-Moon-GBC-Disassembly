@@ -533,7 +533,7 @@ Label_020_556c: ; 20x556c
     ldh [c], a
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -569,7 +569,7 @@ Call_020_567f:
     ld hl, $5593
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1048,7 +1048,7 @@ Jump_020_5959:
     ld hl, $5b6c
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1374,7 +1374,7 @@ Data_020_69a7:
 Label_020_6ba0:
     ld c, $13
     ld de, $85a0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, Data_020_4149
     ld de, $8ae0
     ld b, $20
@@ -1431,7 +1431,7 @@ Label_020_6ba0:
     ld hl, $5960
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1444,7 +1444,7 @@ Label_020_6ba0:
     ld hl, $4429
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1461,7 +1461,7 @@ Label_020_6ba0:
     ld hl, $4566
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1478,7 +1478,7 @@ Label_020_6ba0:
     ld hl, $4618
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1493,7 +1493,7 @@ Label_020_6ba0:
     ld hl, $46b0
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1508,7 +1508,7 @@ Label_020_6ba0:
     ld hl, $4741
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1523,7 +1523,7 @@ Label_020_6ba0:
     ld hl, $47c9
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1538,7 +1538,7 @@ Label_020_6ba0:
     ld hl, $48ca
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1555,7 +1555,7 @@ Label_020_6ba0:
     ld hl, $4b48
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1572,11 +1572,11 @@ Label_020_6ba0:
     ld hl, $49b7
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $49b7
     ld c, $20
     ld de, vBGMap1
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1593,7 +1593,7 @@ Label_020_6ba0:
     ld hl, $4c14
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1621,7 +1621,7 @@ Label_020_6ba0:
     ld hl, $4cd3
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1638,7 +1638,7 @@ Label_020_6ba0:
     ld hl, $4e13
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -1666,7 +1666,7 @@ Label_020_6ba0:
     ld hl, $4f1d
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a
@@ -2379,7 +2379,7 @@ jr_020_7197:
     ld hl, $59ee
     ld c, $20
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld c, $4f
     xor a
     ldh [c], a

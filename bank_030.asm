@@ -15,11 +15,11 @@ Jump_030_4002:
     ld hl, $6d5c
     ld c, $30
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $65d3
     ld c, $30
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $40cf
     ld a, [$cc28]
     call LoadWordFromTableHL
@@ -32,25 +32,25 @@ Jump_030_4002:
     ld hl, $4909
     ld c, $30
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_030_4056
 
     ld hl, $4bcf
     ld c, $30
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_030_4056
 
     ld hl, $4582
     ld c, $30
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_030_4056:
     ld hl, $44a9
     ld c, $30
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $66
     ld [$cb5c], a
     ld a, $04
@@ -3064,15 +3064,15 @@ jr_030_4f2d:
     ld hl, $638b
     ld c, $30
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6166
     ld c, $30
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7d1c
     ld c, $2b
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $00
     ld [$cb5c], a
     ld a, $77

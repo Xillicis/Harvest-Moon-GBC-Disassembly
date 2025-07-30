@@ -23,7 +23,7 @@ SECTION "ROM Bank $006", ROMX[$4000], BANK[$6]
     ld hl, $79d4
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $9980
     ld de, vBGMap1
     ld b, $c0
@@ -1698,19 +1698,19 @@ jr_006_47f7:
     ld hl, $6e1f
     ld c, $09
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7db9
     ld c, $02
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $72d0
     ld c, $09
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $7c5e
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     call Call_006_489f
     ld de, $48f6
     call ExecuteVRAMBlitCommands

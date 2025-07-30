@@ -3203,15 +3203,15 @@ jr_022_50a8:
     ld hl, $7003
     ld c, $22
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $785b
     ld c, $31
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $66d8
     ld c, $37
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $af
     ld [$cb5c], a
     ld a, $ae
@@ -3274,7 +3274,7 @@ Jump_022_514d:
     ld hl, $7824
     ld c, $37
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $34
     ld [$9835], a
     ld a, $35
@@ -3289,14 +3289,14 @@ jr_022_5179:
     ld hl, $7b7c
     ld c, $27
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_022_5191
 
 jr_022_5186:
     ld hl, $7cc8
     ld c, $27
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_022_5191:
     ld a, $22

@@ -5,7 +5,9 @@
 
 SECTION "ROM Bank $00b", ROMX[$4000], BANK[$b]
 
-    db $0B, $00, $08, $FF, $20, $20, $8C, $8C, $00, $00, $66, $66, $FF, $08, $08, $05
+    db $0b ; bank number
+
+    db $00, $08, $FF, $20, $20, $8C, $8C, $00, $00, $66, $66, $FF, $08, $08, $05
     db $05, $C0, $C0, $15, $15, $FF, $BD, $BD, $FA, $FA, $7F, $7F, $D7, $D7, $FF, $ED
     db $ED, $7F, $7F, $DA, $DA, $7F, $7F, $FF, $F7, $F7, $AD, $AD, $FF, $F3, $77, $6B
     db $FF, $FE, $E6, $F7, $F7, $BE, $BE, $F7, $F7, $FF, $00, $00, $0F, $08, $3A, $27
@@ -1553,6 +1555,8 @@ jr_00b_474c:
     or [hl]
     rst $38
     ld c, a
+
+Data_00b_4758:
     nop
     ld [$2f00], sp
     ld bc, $001f

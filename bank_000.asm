@@ -4906,7 +4906,7 @@ Call_000_24ea:
     ld de, $8800
 
 Call_000_24fa:
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
@@ -6991,11 +6991,13 @@ Data_000_310a:
     db $34, $87, $55, $34, $87, $55, $34, $87, $64, $34, $87, $64, $34, $87, $64, $34,
     db $87, $64, $34, $8D, $64, $37, 
 
-; Something very complicated...
-; `hl` points to some data
-; `de` looks like pointing to some VRAM memory
-; `c` is the bank to load the data from
-Call_000_31a0:
+; Draw an 8‑pixel‑wide masked/transparent tile block from ROM to VRAM,
+; clipped horizontally between X_start…X_end and vertically for RowCount rows.
+; Inputs:
+;   HL → ROM data stream (mask, pixel-values…)
+;   DE → VRAM destination base (tile row address)
+;   C  → ROM bank to use
+DrawMaskedClippedTile:
     ld a, [MBC3SRamBank]
     push af
     ld a, c

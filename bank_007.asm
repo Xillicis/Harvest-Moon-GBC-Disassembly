@@ -39,11 +39,11 @@ SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
     ld hl, $4758
     ld c, $0b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4001
     ld c, $0b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     call Call_007_4275
     ld a, [$c90b]
     cp $00
@@ -430,7 +430,7 @@ Call_007_4298:
     ld hl, $75d2
     ld c, $07
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $a8
     ld [$cb5c], a
     ld a, $d9
@@ -477,7 +477,7 @@ Call_007_4308:
     ld hl, $76ab
     ld c, $07
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, $a8
     ld [$cb5c], a
     ld a, $d9
@@ -541,15 +541,15 @@ Call_007_4360:
     ld hl, $717e
     ld c, $05
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6acc
     ld c, $05
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $69ed
     ld c, $05
     ld de, $9800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     call Call_007_4497
     ld a, $cd
     ld [$cb5c], a

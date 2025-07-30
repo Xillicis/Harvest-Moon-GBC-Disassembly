@@ -5,8 +5,9 @@
 
 SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 
-; OBJ Color Palette data
-    db $01
+    db $01 ; bank number
+
+; OBJ Color Palette data (not sure what colors these are associated to)
 ; 0x4001
     RGB 28,19,19, 4,4,0, 18,13,14, 31,27,17
 ; 0x4009
@@ -20,10 +21,7 @@ Label_001_4019:
     call ClearShadowOAMBuffer
     push hl
     push af
-    ld l, $8d
-    ld h, $78
-    ld a, $1f
-    call BankSwitchCallHL
+    callfar2 UploadPetPalette
     pop af
     pop hl
     ld hl, $4001
@@ -44,12 +42,12 @@ Label_001_4019:
 
     ld a, [$c0bd]
     or a
-    jr z, jr_001_405d
+    jr z, .spring
 
     dec a
     jr jr_001_405f
 
-jr_001_405d:
+.spring
     ld a, $03
 
 jr_001_405f:
@@ -69,51 +67,51 @@ jr_001_4062:
     ld hl, $4758
     ld c, $0b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 ; loads the dirt tile into the BGMap1 I think...
     ld hl, $4001
     ld c, $0b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_001_40cf
 
 jr_001_4089:
     ld hl, $5457
     ld c, $0b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $4c1a
     ld c, $0b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_001_40cf
 
 jr_001_40a1:
     ld hl, $6150
     ld c, $0b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $59fa
     ld c, $0b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_001_40cf
 
 jr_001_40b9:
     ld hl, $6dc8
     ld c, $0b
     ld de, $8800
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld hl, $6612
     ld c, $0b
     ld de, $9000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_001_40cf:
     ld hl, $7195
     ld c, $14
     ld de, $8000
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     ld a, [$b8ea]
     cp $00
     jr z, jr_001_4103
@@ -130,14 +128,14 @@ jr_001_40eb:
     ld hl, $7443
     ld c, $13
     ld de, $81d0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     jr jr_001_4103
 
 jr_001_40f8:
     ld hl, $76c1
     ld c, $13
     ld de, $81d0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
 
 jr_001_4103:
     ld a, [sCatOrDog]
@@ -147,7 +145,7 @@ jr_001_4103:
     ld hl, $79a1
     ld c, $13
     ld de, $85a0
-    call Call_000_31a0
+    call DrawMaskedClippedTile
     push hl
     push af
     ld l, $9d
