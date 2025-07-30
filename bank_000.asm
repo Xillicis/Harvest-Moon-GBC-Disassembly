@@ -7002,41 +7002,42 @@ DrawMaskedClippedTile:
     push af
     ld a, c
     ld [MBC3RomBank], a
+; Store VRAM address
     ld a, d
-    ldh [$ffb9], a
+    ldh [hVRAMDestination+1], a
     ld a, e
-    ldh [$ffb8], a
+    ldh [hVRAMDestination], a
     ld a, [hl+]
-    ldh [$ffba], a
+    ldh [hXClipStart], a
     add e
-    ldh [$ffbc], a
+    ldh [hXClipEnd], a
     ld a, [hl+]
-    ldh [$ffbb], a
+    ldh [hXClipStart+1], a
     adc d
-    ldh [$ffbd], a
-    ld c, $00
+    ldh [hXClipEnd+1], a
+    ld c, 0
 
-jr_000_31bc:
+.outerLoop
     ld a, c
     and a
-    jr nz, jr_000_31c4
+    jr nz, .jr_000_31c4
 
     ld a, [hli]
     ld b, a
     ld c, $08
 
-jr_000_31c4:
+.jr_000_31c4
     dec c
     srl b
     push bc
-    jr nc, jr_000_31cf
+    jr nc, .jr_000_31cf
 
     ld a, [hl+]
     ld [de], a
     inc de
-    jr jr_000_3224
+    jr .jr_000_3224
 
-jr_000_31cf:
+.jr_000_31cf
     ld a, [hl+]
     ld c, a
     and $0f
@@ -7061,16 +7062,16 @@ jr_000_31cf:
     ld a, d
     sbc b
     ld b, a
-    ldh a, [$ffb9]
+    ldh a, [hVRAMDestination+1]
     cp b
-    jr c, jr_000_3218
-    jr nz, jr_000_31ff
-    ldh a, [$ffb8]
+    jr c, .jr_000_3218
+    jr nz, .jr_000_31ff
+    ldh a, [hVRAMDestination]
     cp c
-    jr c, jr_000_3218
-    jr z, jr_000_3218
+    jr c, .jr_000_3218
+    jr z, .jr_000_3218
 
-jr_000_31ff:
+.jr_000_31ff
     ld a, c
     xor $ff
     inc a
@@ -7079,57 +7080,56 @@ jr_000_31ff:
     ld c, a
     xor a
 
-jr_000_3208:
+.jr_000_3208
     ld [de], a
     inc de
     dec c
-    jr z, jr_000_3223
+    jr z, .jr_000_3223
 
     dec b
-    jr nz, jr_000_3208
+    jr nz, .jr_000_3208
 
-    ld hl, $ffb8
+    ld hl, hVRAMDestination
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    jr jr_000_321d
+    jr .jr_000_321d
 
-jr_000_3218:
+.jr_000_3218
     ld h, b
     ld l, c
     ldh a, [$ffbe]
     ld c, a
 
-jr_000_321d:
+.jr_000_321d
     ld a, [hl+]
     ld [de], a
     inc de
     dec c
-    jr nz, jr_000_321d
+    jr nz, .jr_000_321d
 
-jr_000_3223:
+.jr_000_3223
     pop hl
 
-jr_000_3224:
-    ldh a, [$ffbd]
+.jr_000_3224
+    ldh a, [hXClipEnd+1]
     ld b, a
     ld a, d
     cp b
-    jr c, jr_000_3234
+    jr c, .jr_000_3234
+    jr nz, .done
 
-    jr nz, jr_000_3237
-
-    ldh a, [$ffbc]
+    ldh a, [hXClipEnd]
     ld c, a
     ld a, e
     cp c
-    jr nc, jr_000_3237
+    jr nc, .done
 
-jr_000_3234:
+.jr_000_3234
     pop bc
-    jr jr_000_31bc
+    jr .outerLoop
 
-jr_000_3237:
+.done
     pop bc
     pop af
     ld [MBC3RomBank], a

@@ -6,7 +6,7 @@
 .SECONDARY:
 
 ROM := harvestmoon.gbc
-OBJS := main.o wram.o sram.o vram.o
+OBJS := main.o wram.o sram.o vram.o hram.o
 
 ifeq (,$(shell which md5sum))
 MD5 := md5sum

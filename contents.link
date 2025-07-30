@@ -39,3 +39,7 @@ SRAM 0
 WRAM0
         org $c000
         "WRAM 0"
+
+HRAM 0
+	org $ff80
+	"HRAM 0"
