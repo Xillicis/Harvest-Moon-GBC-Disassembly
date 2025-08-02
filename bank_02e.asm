@@ -1165,7 +1165,6 @@ Jump_02e_4726:
     ld a, [sSpriteEventFlags]
     bit EVENT_TALKED_TO_SPRITE_FIRST_TIME, a
     jr nz, jr_02e_474d
-
     set EVENT_TALKED_TO_SPRITE_FIRST_TIME, a
     ld [sSpriteEventFlags], a
     ld a, 1
@@ -2834,7 +2833,7 @@ jr_02e_50e9:
 
 Call_02e_50f0:
     ld a, [wPlayerFacingDirection]
-    ld hl, $511b
+    ld hl, Label_02e_511b
     add l
     ld l, a
     ld a, $00
@@ -2851,21 +2850,22 @@ Call_02e_50f0:
     jr nz, jr_02e_5115
 
     ld a, [sSpriteEventFlags+1]
-    bit 0, a
+    bit EVENT_BOULDER_ON_SPRITE, a
     jr z, jr_02e_5115
-
     ret
 
-
 jr_02e_5115:
-    ld a, $00
+    ld a, 0
     call Call_000_18e6
     ret
 
-
+; This should be some data. I think just 4 bytes of data???
+Label_02e_511b:
     inc bc
     ld [bc], a
     ld bc, $2100
+
+; This might not be beginning of routine.
     adc b
     ld d, c
     ld a, [$cc7a]

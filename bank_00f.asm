@@ -5,7 +5,9 @@
 
 SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
 
-    rrca
+    db $0f ; bank number
+
+Data_00f_4001:
     ld a, [wPlayerFacingDirection]
     rst $00
     dec c
@@ -5687,7 +5689,6 @@ jr_00f_61ca:
     ld [wPlayerIsFacingSprite], a
     ret
 
-
 jr_00f_61d0:
     ld a, 1
     ld [wPlayerIsFacingSprite], a
@@ -5733,7 +5734,7 @@ UpdateSpriteTotalHappiness: ; 0fx61d6
     call nz, MediumHappinessIncrease
     ld a, [sSpriteDailyHappiness]
     bit 1, a
-    call z, Call_00f_6240
+    call z, ReduceHappiness
     xor a
     ld [sSpriteDailyHappiness], a
     ld a, [sSpriteTotalHappiness]
@@ -5758,18 +5759,17 @@ MediumHappinessIncrease:
     ld [sSpriteTotalHappiness], a
     ret
 
-Call_00f_6240:
+; If the player doesn't give a berry, reduce happiness by 3.
+ReduceHappiness:
     ld a, [sSpriteTotalHappiness]
     cp 3
-    jr c, jr_00f_624e
-
+    jr c, .zero
     dec a
     dec a
     dec a
     ld [sSpriteTotalHappiness], a
     ret nc
-
-jr_00f_624e:
+.zero
     ld a, 0
     ld [sSpriteTotalHappiness], a
     ret

@@ -6206,12 +6206,8 @@ Call_002_67a1:
     or b
     jr z, jr_002_67f9 ; first day of spring
 
-    ld hl, Label_003_63c5
-    ld a, $03
-    call BankSwitchCallHL
-    ld hl, Label_004_6da9
-    ld a, $04
-    call BankSwitchCallHL
+    callfar Label_003_63c5
+    callfar Label_004_6da9
     callfar UpdateSpriteTotalHappiness
 
 jr_002_67f9:
@@ -6419,7 +6415,7 @@ UpdateCalendarDate:
     jr nz, .skipCalendarUpdate
 
     ld a, [sHourOfPreviousSleep]
-    cp $06
+    cp TIME_6_AM
     jr c, .skipCalendarUpdate
 
     xor a
@@ -6483,8 +6479,8 @@ Call_002_6988:
     push hl
     push bc
     dec hl
-    ld a, [hl-]
-    cp $00
+    ld a, [hld]
+    cp 0
     jr nz, jr_002_69b8
 
     ld a, [hl]
@@ -7387,7 +7383,8 @@ Call_002_6d7a:
     cp 2
     ret nz
 
-    ld a, $01
+; Some special event for windy day on year 2???
+    ld a, 1
     ld [$b89e], a
     ret
 
