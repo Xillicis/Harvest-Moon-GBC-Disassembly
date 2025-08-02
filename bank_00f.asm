@@ -5516,7 +5516,7 @@ jr_00f_6068:
     jr nc, jr_00f_60c2
 
 jr_00f_60bc:
-    ld a, $00
+    ld a, 0
     ld [$cc75], a
     ret
 

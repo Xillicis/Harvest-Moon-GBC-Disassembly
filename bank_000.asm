@@ -1280,7 +1280,7 @@ Call_000_0f0f:
 
 Call_000_0f47:
     ld b, a
-    and $80
+    and %10000000
     jr nz, jr_000_0f5c
 
     ld a, [$b8f2]

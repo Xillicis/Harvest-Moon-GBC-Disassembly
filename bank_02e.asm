@@ -1055,14 +1055,14 @@ jr_02e_4671:
     jr nz, jr_02e_46ac
 
     ld a, [sSpriteTotalHappiness]
-    add $0a
-    cp $64
+    add 10
+    cp 100
     jr c, jr_02e_4697
-    ld a, $63
+    ld a, 99
 
 jr_02e_4697:
     ld [sSpriteTotalHappiness], a
-    ld a, $0a
+    ld a, 10
     call Call_000_0f47
     ld a, $01
     ld [$ba0e], a

@@ -10,7 +10,17 @@ ds 4
 
 wSTAT_HandlerIndex:: db ; 0xc0a7
 
-ds 1112
+ds $10
+
+ds 1 ; 0xc0b8
+
+ds 1 ; 0xc0b9
+
+ds 3 ; 0xc0ba
+
+wSeasonPaletteID:: db ; 0xc0bd
+
+ds 1090
 
 wVRAMBlitCommandList:: db ; 0xc500
 

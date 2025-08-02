@@ -3821,7 +3821,7 @@ jr_030_53bb:
 
 jr_030_53d9:
     ld a, [sNumPowerBerriesEaten]
-    cp $06
+    cp 6
     jr c, jr_030_5402
 
     ld a, [$ba11]

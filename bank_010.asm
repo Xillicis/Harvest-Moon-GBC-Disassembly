@@ -1751,7 +1751,7 @@ jr_010_5450:
 
 jr_010_546e:
     ld a, [sNumPowerBerriesEaten]
-    cp $06
+    cp 6
     jr c, jr_010_5497
 
     ld a, [$ba11]
@@ -1803,7 +1803,7 @@ jr_010_54a9:
 
 Call_010_54ac:
     ld a, [sNumPowerBerriesEaten]
-    cp $06
+    cp 6
     jr c, jr_010_54db
 
     ld a, [$ba11]

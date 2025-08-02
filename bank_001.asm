@@ -31,7 +31,7 @@ Label_001_4019:
     ld hl, $4011
     call SyncLoadSpritePalette3
     ld a, [sCurrentSeason]
-    ld [$c0bd], a
+    ld [wSeasonPaletteID], a
     ld a, [sCurrentDayCounter]
     or a
     jr nz, jr_001_4062
@@ -39,31 +39,28 @@ Label_001_4019:
     ld a, [sCurrentHour]
     cp TIME_6_AM
     jr nc, jr_001_4062
-
-    ld a, [$c0bd]
+; Seems like some kind of special case when when we are at the
+; first day of the year... I think when the new year wraps around
+; we don't want to change the season "stuff" until we start the next day.
+    ld a, [wSeasonPaletteID]
     or a
     jr z, .spring
-
     dec a
-    jr jr_001_405f
-
+    jr .previousSeason
 .spring
-    ld a, $03
-
-jr_001_405f:
-    ld [$c0bd], a
+    ld a, WINTER
+.previousSeason
+    ld [wSeasonPaletteID], a
 
 jr_001_4062:
-    ld a, [$c0bd]
-    cp $01
-    jr z, jr_001_4089
-
-    cp $02
-    jr z, jr_001_40a1
-
-    cp $03
+    ld a, [wSeasonPaletteID]
+    cp SUMMER
+    jr z, .summer
+    cp AUTUMN
+    jr z, .autumn
+    cp WINTER
     jr z, jr_001_40b9
-
+; Spring
     ld hl, $4758
     ld c, $0b
     ld de, $8800
@@ -75,7 +72,7 @@ jr_001_4062:
     call DrawMaskedClippedTile
     jr jr_001_40cf
 
-jr_001_4089:
+.summer
     ld hl, $5457
     ld c, $0b
     ld de, $8800
@@ -86,7 +83,7 @@ jr_001_4089:
     call DrawMaskedClippedTile
     jr jr_001_40cf
 
-jr_001_40a1:
+.autumn
     ld hl, $6150
     ld c, $0b
     ld de, $8800
@@ -286,7 +283,7 @@ Call_001_4224:
     or a
     ret z
 
-    ld a, $01
+    ld a, 1
     ld [wPlayerIsInsideOrAtTown], a
     ld a, [wMapChangeFreezeTimer]
     dec a

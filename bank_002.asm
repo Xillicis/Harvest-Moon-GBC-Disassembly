@@ -517,10 +517,10 @@ jr_002_4337:
     set 2, a
     ld [$ba0d], a
     ld a, [sSpriteTotalHappiness]
-    cp $0a
+    cp 10
     jr c, jr_002_434c
 
-    sub $0a
+    sub 10
     ld [sSpriteTotalHappiness], a
     ret
 
@@ -546,17 +546,13 @@ jr_002_4351:
     add b
     cp $20
     jr nc, jr_002_4337
-
     ret
-
 
 jr_002_436c:
     add b
-    cp $06
+    cp TIME_6_AM
     jr nc, jr_002_4337
-
     ret
-
 
 Call_002_4372:
     ld a, [$cbe4]
@@ -574,7 +570,6 @@ jr_002_4383:
     ld [$ba4e], a
     ret
 
-
 jr_002_4388:
     ld a, [$cbe4]
     ld h, a
@@ -590,17 +585,13 @@ jr_002_4388:
     add b
     cp $20
     jr nc, jr_002_4383
-
     ret
-
 
 jr_002_43a3:
     add b
-    cp $06
+    cp TIME_6_AM
     jr nc, jr_002_4383
-
     ret
-
 
 Call_002_43a9:
     ld a, [$ba38]
@@ -609,22 +600,22 @@ Call_002_43a9:
 
     ld a, [$cbe4]
     or a
-    jr nz, jr_002_43c9
+    jr nz, .setSuperSickle
 
     ld a, [$cbe5]
     ld l, a
     cp $0c
-    jr nc, jr_002_43c9
+    jr nc, .setSuperSickle
 
     ld a, [$ba38]
     add l
     cp $0c
-    jr nc, jr_002_43c9
+    jr nc, .setSuperSickle
 
     ld [$ba38], a
     ret
 
-jr_002_43c9:
+.setSuperSickle
     ld a, 1
     ld [sShedSuperSickleFlag], a
     ld a, $ff
@@ -782,7 +773,6 @@ jr_002_4482:
     ld [sClockFrameCount], a
     ret
 
-
 jr_002_44d5:
     ld a, [sCurrentHour]
     sub $06
@@ -800,7 +790,6 @@ jr_002_44d5:
     ld [sClockFrameCount], a
     ret
 
-
 Call_002_44f7:
     ld a, [$b89c]
     cp $01
@@ -809,13 +798,11 @@ Call_002_44f7:
     ld a, [$b8ea]
     cp $00
     jr z, jr_002_4506
-
     ret
-
 
 jr_002_4506:
     ld a, [sCurrentYear]
-    cp $00
+    cp 0
     ret nz
 
     ld a, [$b8ea]
@@ -844,7 +831,6 @@ jr_002_4528:
     ld a, $80
     ld [$b8eb], a
     ret
-
 
 Call_002_4533:
     ld a, [sCurrentSeason]

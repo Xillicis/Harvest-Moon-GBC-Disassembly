@@ -5710,10 +5710,10 @@ jr_02f_61d0:
     jr nz, jr_02f_6202
 
     ld a, [sSpriteTotalHappiness]
-    cp $0a
+    cp 10
     jr c, jr_02f_61fc
 
-    sub $0a
+    sub 10
     ld [sSpriteTotalHappiness], a
     jr jr_02f_6202
 
@@ -5744,13 +5744,11 @@ jr_02f_6202:
     ld [sSpriteTotalHappiness], a
     ret
 
-
 Call_02f_622e:
     ld a, [sSpriteTotalHappiness]
     inc a
     ld [sSpriteTotalHappiness], a
     ret
-
 
 Call_02f_6236:
     ld a, [sSpriteTotalHappiness]

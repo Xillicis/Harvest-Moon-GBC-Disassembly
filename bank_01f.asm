@@ -10876,7 +10876,7 @@ jr_01f_787c:
     ldh [rLYC], a
     ret
 
-UploadPetPalette:
+UploadPetPalette: ; 07x788d
     ld hl, DogPalette
     ld a, [sCatOrDog]
     cp DOG
@@ -10886,15 +10886,13 @@ UploadPetPalette:
     call BGPBackgroundPaletteUpload
     ret
 
-
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     jr c, jr_01f_78ce
-
-    cp $12
+    cp TIME_6_PM
     jr nc, jr_01f_78ce
 
-    ld a, [$c0bd]
+    ld a, [wSeasonPaletteID]
     cp $01
     jr z, jr_01f_78bd
 
@@ -10924,7 +10922,7 @@ jr_01f_78ca:
 
 
 jr_01f_78ce:
-    ld a, [$c0bd]
+    ld a, [wSeasonPaletteID]
     cp $01
     jr z, jr_01f_78e2
 

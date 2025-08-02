@@ -1002,7 +1002,7 @@ jr_00e_4631:
     jp nz, Jump_00e_470e
 
     ld a, [wPlayerInteractingInTextFlag]
-    cp $00
+    cp 0
     ret nz
 
     ld a, [wCollisionNoMovement]
@@ -1012,7 +1012,6 @@ jr_00e_4631:
     ld a, [$cc75]
     or a
     jr nz, jr_00e_464b
-
     ret
 
 ; Something with interacting with the Sprites, but I'm not completely sure
@@ -1074,21 +1073,21 @@ jr_00e_4694:
     jr nz, ManageSpriteAnger
 
     ld a, [$cc79]
-    cp $00
+    cp 0
     jr nz, ManageSpriteAnger
 
     ld a, [sSpriteTotalHappiness]
-    add $0a
-    cp $64
+    add 10
+    cp 100
     jr c, jr_00e_46ba
 
-    ld a, $63
+    ld a, 99
 
 jr_00e_46ba:
     ld [sSpriteTotalHappiness], a
-    ld a, $0a
+    ld a, 10
     call Call_000_0f47
-    ld a, $01
+    ld a, 1
     ld [$ba0e], a
     ret
 
@@ -1099,21 +1098,20 @@ jr_00e_46c8:
     ret
 
 ManageSpriteAnger:
-    ld a, $01
+    ld a, 1
     ld [$cc6e], a
     ld a, [sSpriteDailyAnger]
     inc a
     ld [sSpriteDailyAnger], a
-    cp $05
+    cp 5
     ret c
-
+; subtract happiness if attacked too much
     xor a
     ld [sSpriteDailyAnger], a
     ld a, [sSpriteTotalHappiness]
-    sub $0a
+    sub 10
     ld [sSpriteTotalHappiness], a
     ret nc
-
     xor a
     ld [sSpriteTotalHappiness], a
     ret
@@ -1135,14 +1133,11 @@ jr_00e_46f0:
 
     cp $65
     jp z, Jump_00e_489a
-
     ret
-
 
 Jump_00e_470e:
     call Call_00e_4954
     ret
-
 
 Jump_00e_4712:
     ld a, $ae
@@ -1151,7 +1146,6 @@ Jump_00e_4712:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_00e_471d:
     ld a, $af
     call InitializeTextIDAndDisplay
@@ -1159,14 +1153,12 @@ Jump_00e_471d:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_00e_4728:
     ld a, $b0
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Jump_00e_4733:
     ld a, [$ba0d]
@@ -1220,14 +1212,12 @@ jr_00e_4770:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_478d:
     ld a, $b4
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_00e_4798:
     ld a, [sSpriteEventFlags]
@@ -1240,14 +1230,12 @@ jr_00e_4798:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_47aa:
     ld a, $b7
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 jr_00e_47b5:
     ld a, [sSpriteEventFlags]
@@ -1260,14 +1248,12 @@ jr_00e_47b5:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_47c7:
     ld a, $bb
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Jump_00e_47d2:
     ld a, [$cc79]
@@ -1284,7 +1270,6 @@ Jump_00e_47d2:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_00e_47ed:
     ld a, $e1
     call InitializeTextIDAndDisplay
@@ -1293,7 +1278,6 @@ Jump_00e_47ed:
     ld a, $04
     call Call_000_18e6
     ret
-
 
 Jump_00e_47fd:
     ld a, [sSpriteEventFlags]
@@ -1308,11 +1292,13 @@ Jump_00e_47fd:
     call RST_TableJumpBankSwitch
     jp Jump_00e_4749
 
+
     ret
+
 
 jr_00e_4817:
     ld a, [sSpriteTotalHappiness]
-    cp $1e
+    cp 30
     jp c, Jump_00e_4749
 
     ld a, [sSpriteEventFlags]
@@ -1326,12 +1312,11 @@ jr_00e_4817:
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_00e_4749
-
     ret
 
 jr_00e_4839:
     ld a, [sSpriteTotalHappiness]
-    cp $32
+    cp 50
     jp c, Jump_00e_4749
 
     ld a, [sSpriteEventFlags]
@@ -1345,14 +1330,12 @@ jr_00e_4839:
     ld a, $00
     call RST_TableJumpBankSwitch
     jp Jump_00e_4749
-
     ret
 
 Jump_00e_485c:
     ld a, [wInputFreezeTimer]
     or a
     ret nz
-
     ret
 
 Jump_00e_4862:
@@ -1374,7 +1357,7 @@ jr_00e_4867:
 
 Jump_00e_4880:
     ld a, [wPlayerFacingDirection]
-    cp $03
+    cp FACING_UP
     ret nz
 
     ld a, $01
@@ -1383,7 +1366,7 @@ Jump_00e_4880:
 
 Jump_00e_488d:
     ld a, [wPlayerFacingDirection]
-    cp $03
+    cp FACING_UP
     ret nz
 
     ld a, $02
@@ -1416,7 +1399,6 @@ Jump_00e_489a:
     ld [$cc96], a
     ret
 
-
 Jump_00e_48c7:
     ld a, [wDominantFacingTileID]
     cp $26
@@ -1425,9 +1407,7 @@ Jump_00e_48c7:
     ld a, [$cc75]
     or a
     jp nz, Jump_00e_4733
-
     ret
-
 
 jr_00e_48d6:
     ld a, $03
@@ -1495,7 +1475,6 @@ jr_00e_491b:
     call Call_00e_537f
     ret
 
-
 Call_00e_4954:
     ld a, [$cc75]
     or a
@@ -1506,9 +1485,7 @@ Call_00e_4954:
 
     cp $32
     jp z, Jump_00e_4a29
-
     ret
-
 
 Call_00e_4968:
     ld a, [$cb4a]
@@ -1520,13 +1497,11 @@ Call_00e_4968:
 
     cp $32
     jr z, jr_00e_4978
-
     ret
-
 
 jr_00e_4978:
     ld a, [sSpriteTotalHappiness]
-    cp $3c
+    cp 60
     jr nc, jr_00e_498a
 
     ld a, $bc
@@ -1535,9 +1510,8 @@ jr_00e_4978:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_498a:
-    cp $5a
+    cp 90
     jr nc, jr_00e_4999
 
     ld a, $ee
@@ -1546,7 +1520,6 @@ jr_00e_498a:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_4999:
     ld a, $ef
     call InitializeTextIDAndDisplay
@@ -1554,10 +1527,8 @@ jr_00e_4999:
     call RST_TableJumpBankSwitch
     ret
 
-
 jr_00e_49a4:
     ret
-
 
 jr_00e_49a5:
     ld a, [$cc75]
@@ -1586,7 +1557,6 @@ jr_00e_49a5:
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
-
 
 jr_00e_49d6:
     ld a, $15
@@ -1632,7 +1602,6 @@ Jump_00e_4a06:
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
-
 
 Jump_00e_4a29:
     ld a, [$cc75]

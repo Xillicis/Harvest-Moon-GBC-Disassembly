@@ -10,7 +10,7 @@ SECTION "ROM Bank $021", ROMX[$4000], BANK[$21]
     call ClearBGMap1
     call ClearShadowOAMBuffer
     ld a, [sCurrentSeason]
-    ld [$c0bd], a
+    ld [wSeasonPaletteID], a
     ld a, [sCurrentDayCounter]
     or a
     jr nz, jr_021_402b
@@ -19,7 +19,7 @@ SECTION "ROM Bank $021", ROMX[$4000], BANK[$21]
     cp TIME_6_AM
     jr nc, jr_021_402b
 
-    ld a, [$c0bd]
+    ld a, [wSeasonPaletteID]
     or a
     jr z, jr_021_4026
 
@@ -30,10 +30,10 @@ jr_021_4026:
     ld a, $03
 
 jr_021_4028:
-    ld [$c0bd], a
+    ld [wSeasonPaletteID], a
 
 jr_021_402b:
-    ld a, [$c0bd]
+    ld a, [wSeasonPaletteID]
     cp $01
     jr z, jr_021_4052
 

@@ -5075,7 +5075,7 @@ jr_01d_5b0f:
     nop
     ld d, b
     and b
-    ld bc, $c0bd
+    ld bc, wSeasonPaletteID
     ld bc, $fefc
     and d
     ld bc, $0062
