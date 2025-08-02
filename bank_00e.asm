@@ -112,7 +112,7 @@ jr_00e_4022:
     call BankSwitchCallHL
     ld a, $00
     call RST_TableJumpBankSwitch
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 2, a
     jr nz, jr_00e_4101
 
@@ -351,7 +351,7 @@ Call_00e_424f:
     or a
     jr nz, jr_00e_42b5
 
-    ld a, [$cc6e]
+    ld a, [wPlayerAttackingSprite]
     or a
     jp nz, Jump_00e_485c
 
@@ -399,7 +399,7 @@ Jump_00e_42bb:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -435,7 +435,7 @@ Jump_00e_42f4:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -471,7 +471,7 @@ Jump_00e_432d:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -507,7 +507,7 @@ Jump_00e_4366:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -987,7 +987,7 @@ jr_00e_45eb:
     jr z, jr_00e_4629
     cp PICK_AX
     jr z, jr_00e_4629
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jp nz, Jump_00e_4733
 
@@ -1009,7 +1009,7 @@ jr_00e_4631:
     or a
     jr nz, jr_00e_464b
 
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, jr_00e_464b
     ret
@@ -1058,11 +1058,11 @@ jr_00e_464b:
 
 
 jr_00e_4694:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret z
 
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 0, a
     jr z, ManageSpriteAnger
 
@@ -1092,14 +1092,14 @@ jr_00e_46ba:
     ret
 
 jr_00e_46c8:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, ManageSpriteAnger
     ret
 
 ManageSpriteAnger:
     ld a, 1
-    ld [$cc6e], a
+    ld [wPlayerAttackingSprite], a
     ld a, [sSpriteDailyAnger]
     inc a
     ld [sSpriteDailyAnger], a
@@ -1117,7 +1117,7 @@ ManageSpriteAnger:
     ret
 
 jr_00e_46f0:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, ManageSpriteAnger
 
@@ -1161,11 +1161,11 @@ Jump_00e_4728:
     ret
 
 Jump_00e_4733:
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 2, a
     jr nz, jr_00e_4741
 
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     or a
     jp nz, Jump_00e_47d2
 
@@ -1260,7 +1260,7 @@ Jump_00e_47d2:
     cp $00
     jp nz, Jump_00e_4741
 
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 1, a
     jp nz, Jump_00e_47ed
 
@@ -1404,7 +1404,7 @@ Jump_00e_48c7:
     cp $26
     jr z, jr_00e_48d6
 
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jp nz, Jump_00e_4733
     ret
@@ -1476,7 +1476,7 @@ jr_00e_491b:
     ret
 
 Call_00e_4954:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     call nz, Call_00e_4968
     ld a, [$cb4a]
@@ -1531,7 +1531,7 @@ jr_00e_49a4:
     ret
 
 jr_00e_49a5:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, jr_00e_49d6
 
@@ -1604,7 +1604,7 @@ Jump_00e_4a06:
     ret
 
 Jump_00e_4a29:
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, jr_00e_4a6d
 
@@ -2695,7 +2695,7 @@ jr_00e_5027:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -2730,7 +2730,7 @@ jr_00e_506e:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -2765,7 +2765,7 @@ jr_00e_50a5:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -2800,7 +2800,7 @@ Jump_00e_50dc:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -2841,7 +2841,7 @@ Call_00e_5113:
     ld h, a
     ld a, [hl]
     ld [$c82d], a
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 2, a
     jr nz, jr_00e_5138
 
@@ -2849,7 +2849,7 @@ Call_00e_5113:
     or a
     jr nz, jr_00e_5138
 
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 0, a
     jr z, jr_00e_5138
 
@@ -3243,7 +3243,7 @@ Call_00e_530d:
     or a
     ret nz
 
-    ld a, [$cc6e]
+    ld a, [wPlayerAttackingSprite]
     or a
     ret nz
 
@@ -3407,7 +3407,7 @@ jr_00e_53cd:
 
 
 Call_00e_541e:
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 2, a
     ret nz
 
@@ -3415,7 +3415,7 @@ Call_00e_541e:
     or a
     ret nz
 
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 1, a
     jr z, jr_00e_543b
 
@@ -3441,9 +3441,9 @@ jr_00e_543b:
     call $16d1
     ld a, $02
     ld [$ba0e], a
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     set 1, a
-    ld [$ba0d], a
+    ld [sSpriteEventFlags+1], a
     ld a, $e1
     call InitializeTextIDAndDisplay
     ld a, $04
@@ -3462,7 +3462,7 @@ Call_00e_5468:
     or a
     ret nz
 
-    ld a, [$cc6e]
+    ld a, [wPlayerAttackingSprite]
     or a
     ret nz
 
@@ -3473,7 +3473,7 @@ Call_00e_5468:
 
 
 Call_00e_5480:
-    ld a, [$cc6e]
+    ld a, [wPlayerAttackingSprite]
     or a
     ret z
 
@@ -3485,7 +3485,7 @@ Call_00e_5480:
     ld a, $be
     call InitializeTextIDAndDisplay
     xor a
-    ld [$cc6e], a
+    ld [wPlayerAttackingSprite], a
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
@@ -4843,7 +4843,7 @@ Jump_00e_5cfc:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -4879,7 +4879,7 @@ Jump_00e_5d35:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -4915,7 +4915,7 @@ Jump_00e_5d6e:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -4951,7 +4951,7 @@ Jump_00e_5da7:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5456,7 +5456,7 @@ jr_00e_6080:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5491,7 +5491,7 @@ jr_00e_60c7:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5526,7 +5526,7 @@ jr_00e_60fe:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5561,7 +5561,7 @@ Jump_00e_6135:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5840,7 +5840,7 @@ Jump_00e_633e:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5876,7 +5876,7 @@ Jump_00e_6377:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5912,7 +5912,7 @@ Jump_00e_63b0:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -5948,7 +5948,7 @@ Jump_00e_63e9:
     ld a, $01
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -6241,7 +6241,7 @@ jr_00e_655c:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52d4
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -6276,7 +6276,7 @@ jr_00e_65a3:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52b9
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -6311,7 +6311,7 @@ jr_00e_65da:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52c2
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 
@@ -6346,7 +6346,7 @@ Jump_00e_6611:
     ld a, $02
     call RST_TableJumpBankSwitch
     call Call_00e_52cb
-    ld a, [$cc75]
+    ld a, [wPlayerIsFacingSprite]
     or a
     ret nz
 

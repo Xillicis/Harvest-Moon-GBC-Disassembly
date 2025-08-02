@@ -371,9 +371,10 @@ sb9d3::  db
 sb9d4::  db 
 sb9d5::  db 
 sb9d6::  db 
+; Seems like it gets capped at 99 happiness
 sSpriteTotalHappiness::  db 
 sSpriteDailyHappiness::  db 
-sSpriteDailyAnger::  db 
+sSpriteDailyAnger::  db  ; 0xb9d9
 sb9da::  db 
 sb9db::  db 
 sb9dc::  db 
@@ -424,8 +425,7 @@ sba08::  db
 sba09::  db 
 sba0a::  db 
 sba0b::  db 
-sSpriteEventFlags::  db  ; 0xba0c
-sba0d::  db 
+sSpriteEventFlags::  dw  ; 0xba0c
 sba0e::  db 
 sba0f::  db 
 sba10::  db 

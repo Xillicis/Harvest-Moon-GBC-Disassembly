@@ -503,7 +503,7 @@ Call_022_42fc:
     ld a, [sSpriteEventFlags]
     bit 6, a
     call nz, Call_022_43c6
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 0, a
     ret z
 
@@ -524,9 +524,9 @@ Call_022_42fc:
     jr z, jr_022_4343
 
 jr_022_4329:
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     set 2, a
-    ld [$ba0d], a
+    ld [sSpriteEventFlags+1], a
     ld a, [sSpriteTotalHappiness]
     cp $0a
     jr c, jr_022_433e
@@ -1223,9 +1223,9 @@ jr_022_471b:
     ld [$ba08], a
     ld [$ba09], a
     ld [$ba0a], a
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     set 0, a
-    ld [$ba0d], a
+    ld [sSpriteEventFlags+1], a
     ld a, $80
     ld [$b8a2], a
     ret
@@ -7014,9 +7014,9 @@ jr_022_6638:
     ld [$ba08], a
     ld [$ba09], a
     ld [$ba0a], a
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     set 0, a
-    ld [$ba0d], a
+    ld [sSpriteEventFlags+1], a
     ret
 
 

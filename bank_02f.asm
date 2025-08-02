@@ -5517,13 +5517,13 @@ jr_02f_6068:
 
 jr_02f_60bc:
     ld a, $00
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_02f_60c2:
     ld a, $01
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5573,13 +5573,13 @@ jr_02f_60c2:
 
 jr_02f_6116:
     ld a, $00
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_02f_611c:
     ld a, $01
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5629,13 +5629,13 @@ jr_02f_611c:
 
 jr_02f_6170:
     ld a, $00
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_02f_6176:
     ld a, $01
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5685,19 +5685,19 @@ jr_02f_6176:
 
 jr_02f_61ca:
     ld a, $00
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_02f_61d0:
     ld a, $01
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
     xor a
     ld [sPrayedFlag], a
-    ld a, [$ba0d]
+    ld a, [sSpriteEventFlags+1]
     bit 0, a
     jr z, jr_02f_6202
 
@@ -5705,7 +5705,7 @@ jr_02f_61d0:
     jr nz, jr_02f_6202
 
     set 2, a
-    ld [$ba0d], a
+    ld [sSpriteEventFlags+1], a
     bit 1, a
     jr nz, jr_02f_6202
 

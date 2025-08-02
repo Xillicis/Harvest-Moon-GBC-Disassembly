@@ -194,7 +194,26 @@ ds $8b
 ; to indicate that. Doesn't seem enabled when in the town shops.
 wPlayerInteractingInTextFlag:: db ; 0xcc1b
 
-ds $ae
+ds $50
+
+ds 1 ; 0xcc6c
+
+ds 1 ; 0xcc6d
+
+; 1 if the player is attacking the Sprites and 0 otherwise.
+wPlayerAttackingSprite:: db ; 0xcc6e
+
+ds 1 ; 0xcc6f
+
+ds 1 ; 0xcc70
+
+ds 3
+
+ds 1 ; 0xcc74
+
+wPlayerIsFacingSprite:: db ; 0xcc75
+
+ds $54
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

@@ -492,14 +492,14 @@ Call_002_430a:
     ld a, [sSpriteEventFlags]
     bit 6, a
     call nz, Call_002_43d4
-    ld a, [$ba0d]
-    bit 0, a
+    ld a, [sSpriteEventFlags+1]
+    bit EVENT_BOULDER_ON_SPRITE, a
     ret z
 
-    bit 2, a
+    bit EVENT_DAY_AFTER_SAVING_SPRITE, a
     ret nz
 
-    bit 1, a
+    bit EVENT_BROKE_BOULDER_ON_SPRITE, a
     ret nz
 
     ld a, [$cbe4]
@@ -513,19 +513,17 @@ Call_002_430a:
     jr z, jr_002_4351
 
 jr_002_4337:
-    ld a, [$ba0d]
-    set 2, a
-    ld [$ba0d], a
+    ld a, [sSpriteEventFlags+1]
+    set EVENT_DAY_AFTER_SAVING_SPRITE, a
+    ld [sSpriteEventFlags+1], a
     ld a, [sSpriteTotalHappiness]
     cp 10
-    jr c, jr_002_434c
-
+    jr c, .zeroOutHappiness
     sub 10
     ld [sSpriteTotalHappiness], a
     ret
 
-
-jr_002_434c:
+.zeroOutHappiness
     xor a
     ld [sSpriteTotalHappiness], a
     ret
@@ -1182,13 +1180,13 @@ jr_002_4709:
     ret
 
 jr_002_4729:
-    ld a, $01
+    ld a, 1
     ld [$ba08], a
     ld [$ba09], a
     ld [$ba0a], a
-    ld a, [$ba0d]
-    set 0, a
-    ld [$ba0d], a
+    ld a, [sSpriteEventFlags+1]
+    set EVENT_BOULDER_ON_SPRITE, a
+    ld [sSpriteEventFlags+1], a
     ld a, $80
     ld [$b8a2], a
     ret
@@ -2881,13 +2879,13 @@ jr_002_4ff7:
 
 Call_002_5002:
     ld a, [sSpriteTotalHappiness]
-    cp $5a
+    cp 90
     jr nc, jr_002_5016
 
-    cp $3c
+    cp 60
     jr nc, jr_002_501d
 
-    cp $1e
+    cp 30
     jr nc, jr_002_5023
 
     xor a
@@ -6135,9 +6133,9 @@ jr_002_66cb:
     ld [$ba08], a
     ld [$ba09], a
     ld [$ba0a], a
-    ld a, [$ba0d]
-    set 0, a
-    ld [$ba0d], a
+    ld a, [sSpriteEventFlags+1]
+    set EVENT_BOULDER_ON_SPRITE, a
+    ld [sSpriteEventFlags+1], a
     ret
 
 

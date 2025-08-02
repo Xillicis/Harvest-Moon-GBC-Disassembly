@@ -5517,13 +5517,12 @@ jr_00f_6068:
 
 jr_00f_60bc:
     ld a, 0
-    ld [$cc75], a
+    ld [wPlayerIsFacingSprite], a
     ret
 
-
 jr_00f_60c2:
-    ld a, $01
-    ld [$cc75], a
+    ld a, 1
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5572,14 +5571,14 @@ jr_00f_60c2:
     jr nc, jr_00f_611c
 
 jr_00f_6116:
-    ld a, $00
-    ld [$cc75], a
+    ld a, 0
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_00f_611c:
-    ld a, $01
-    ld [$cc75], a
+    ld a, 1
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5628,14 +5627,14 @@ jr_00f_611c:
     jr nc, jr_00f_6176
 
 jr_00f_6170:
-    ld a, $00
-    ld [$cc75], a
+    ld a, 0
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_00f_6176:
-    ld a, $01
-    ld [$cc75], a
+    ld a, 1
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
@@ -5684,45 +5683,46 @@ jr_00f_6176:
     jr nc, jr_00f_61d0
 
 jr_00f_61ca:
-    ld a, $00
-    ld [$cc75], a
+    ld a, 0
+    ld [wPlayerIsFacingSprite], a
     ret
 
 
 jr_00f_61d0:
-    ld a, $01
-    ld [$cc75], a
+    ld a, 1
+    ld [wPlayerIsFacingSprite], a
     ret
 
 UpdateSpriteTotalHappiness: ; 0fx61d6
     xor a
     ld [sPrayedFlag], a
-    ld a, [$ba0d]
-    bit 0, a
-    jr z, jr_00f_6202
+    ld a, [sSpriteEventFlags+1]
+    bit EVENT_BOULDER_ON_SPRITE, a
+    jr z, .updateSpriteHappiness
 
-    bit 2, a
-    jr nz, jr_00f_6202
+    bit EVENT_DAY_AFTER_SAVING_SPRITE, a
+    jr nz, .updateSpriteHappiness
 
-    set 2, a
-    ld [$ba0d], a
-    bit 1, a
-    jr nz, jr_00f_6202
+    set EVENT_DAY_AFTER_SAVING_SPRITE, a
+    ld [sSpriteEventFlags+1], a
+    bit EVENT_BROKE_BOULDER_ON_SPRITE, a
+    jr nz, .updateSpriteHappiness
 
+; If the player didn't save the Sprite, then reduce the sprite happiness
     ld a, [sSpriteTotalHappiness]
-    cp $0a
-    jr c, jr_00f_61fc
+    cp 10
+    jr c, .decrementHappiness
 
-    sub $0a
+    sub 10
     ld [sSpriteTotalHappiness], a
-    jr jr_00f_6202
+    jr .updateSpriteHappiness
 
-jr_00f_61fc:
+.decrementHappiness
     xor a
     ld [sSpriteTotalHappiness], a
-    jr jr_00f_6202
+    jr .updateSpriteHappiness
 
-jr_00f_6202:
+.updateSpriteHappiness
     xor a
     ld [$ba4e], a
     ld a, [sSpriteDailyHappiness]
@@ -5737,10 +5737,10 @@ jr_00f_6202:
     xor a
     ld [sSpriteDailyHappiness], a
     ld a, [sSpriteTotalHappiness]
-    cp $64
+    cp 100
     ret c
 
-    ld a, $63
+    ld a, 99
     ld [sSpriteTotalHappiness], a
     ret
 
@@ -5760,7 +5760,7 @@ MediumHappinessIncrease:
 
 Call_00f_6240:
     ld a, [sSpriteTotalHappiness]
-    cp $03
+    cp 3
     jr c, jr_00f_624e
 
     dec a
@@ -5770,7 +5770,7 @@ Call_00f_6240:
     ret nc
 
 jr_00f_624e:
-    ld a, $00
+    ld a, 0
     ld [sSpriteTotalHappiness], a
     ret
 
