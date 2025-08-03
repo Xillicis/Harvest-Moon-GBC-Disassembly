@@ -160,7 +160,7 @@ Call_025_412b:
     cp $01
     ret nz
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     jp z, Jump_025_4295
 
@@ -369,7 +369,7 @@ Jump_025_426d:
 jr_025_426d:
     xor a
     ld [wCollisionNoMovement], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     push bc
     ld a, $03
     call RST_TableJumpBankSwitch
@@ -3443,7 +3443,7 @@ jr_025_501e:
     ld a, [hl+]
     ld [wDominantFacingTileID], a
     ld a, [hl+]
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ret
 
 
@@ -3567,7 +3567,7 @@ Jump_025_516e:
     ld a, [hl+]
     ld [wDominantFacingTileID], a
     ld a, [hl+]
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, [wPlayerIsRidingHorse]
     or a
     call nz, Call_025_51ff
@@ -3792,7 +3792,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wDominantFacingTileID], a
     ld a, [hl+]
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ret
 
 
@@ -3923,7 +3923,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wDominantFacingTileID], a
     ld a, [hl+]
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ret
 
 

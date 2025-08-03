@@ -1088,9 +1088,7 @@ Call_000_0de8:
     call UpdateSeasonTileData
     call Call_000_1002
     call Call_000_0f73
-    ld hl, Call_008_456e
-    ld a, BANK(Call_008_456e)
-    call BankSwitchCallHL
+    callfar Call_008_456e
     xor a
     ld [$cb14], a
     ld [$cb15], a
@@ -1263,7 +1261,7 @@ Call_000_0f0f:
     ld [wSubordinateFacingTileID], a
     ld [wcb32], a
     ld [wDominantFacingTileID], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld [$cb37], a
     ld [$cb38], a
     ld [$cb39], a
@@ -2238,9 +2236,7 @@ Call_000_1502:
     ret
 
 Call_000_150b:
-    ld hl, $52f7
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_52f7
     ret
 
 Call_000_1514:

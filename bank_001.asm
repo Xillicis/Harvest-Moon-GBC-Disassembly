@@ -722,7 +722,7 @@ jr_001_44fd:
     ret nc
 
 jr_001_4500:
-    ld a, $01
+    ld a, 1
     ld [$cb82], a
     ret
 
@@ -774,7 +774,7 @@ jr_001_4536:
     cp $05
     ret nc
 
-    ld a, $01
+    ld a, 1
     ld [$cb82], a
     ret
 
@@ -1091,9 +1091,8 @@ jr_001_46e3:
     cp FENCE_POST_TILE
     jr z, jr_001_4745
 
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_4745
-
     ret
 
 
@@ -1188,7 +1187,7 @@ Jump_001_479a:
     cp FENCE_POST_TILE
     jr z, jr_001_47ea
 
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_47ea
     ret
 
@@ -1282,7 +1281,7 @@ Jump_001_483c:
     cp FENCE_POST_TILE
     jr z, jr_001_488c
 
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_488c
     ret
 
@@ -1377,11 +1376,9 @@ Jump_001_48e1:
     cp FENCE_POST_TILE
     jr z, jr_001_4931
 
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_4931
-
     ret
-
 
 jr_001_4931:
     ld a, $12
@@ -1434,16 +1431,16 @@ jr_001_497f:
 
 Jump_001_4983:
     ld a, [wDominantFacingTileID]
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_4990
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_001_4990:
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1452,16 +1449,16 @@ jr_001_4990:
 
 Jump_001_499d:
     ld a, [wDominantFacingTileID]
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_49aa
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_001_49aa:
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1470,16 +1467,16 @@ jr_001_49aa:
 
 Jump_001_49b7:
     ld a, [wDominantFacingTileID]
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_49c4
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_001_49c4:
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1489,16 +1486,16 @@ jr_001_49c4:
 
 Jump_001_49d1:
     ld a, [wDominantFacingTileID]
-    cp $0f
+    cp SOLID_FENCE_TILE
     jr z, jr_001_49de
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_001_49de:
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -2764,7 +2761,6 @@ jr_001_5bf4:
     ld a, $36
     call Call_000_25ce
     ret
-
 
 Call_001_5dfa:
     xor a
@@ -5474,9 +5470,8 @@ Call_001_7374:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ret
-
 
 Call_001_737f:
     ld a, [wPlayerXPosition]
@@ -5923,7 +5918,7 @@ jr_001_762b:
     ld [wPlayerIsInsideOrAtTown], a
     xor a
     ld [sCurrentMinute], a
-    ld a, $01
+    ld a, 1
     ld [sClockFrameCount], a
     ld a, [$b88c]
     cp $01
@@ -6405,7 +6400,6 @@ jr_001_794a:
     pop hl
     ret
 
-
 jr_001_7951:
     ld a, $ff
     ld [$cbeb], a
@@ -6462,7 +6456,6 @@ Jump_001_798f:
     call RST_TableJumpBankSwitch
     ret
 
-
 Jump_001_79be:
     xor a
     ld [$cb90], a
@@ -6484,7 +6477,6 @@ Jump_001_79be:
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
-
 
 Call_001_79ed:
     ld a, [$b88c]

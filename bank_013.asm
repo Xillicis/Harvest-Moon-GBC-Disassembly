@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $013", ROMX[$4000], BANK[$13]
 
-    inc de
+    db $13 ; bank number
+
     nop
     ld bc, $4141
     nop

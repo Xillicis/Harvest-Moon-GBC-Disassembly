@@ -794,7 +794,7 @@ Jump_021_4510:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -851,7 +851,7 @@ Jump_021_456e:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -909,7 +909,7 @@ Jump_021_45cf:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -967,7 +967,7 @@ Jump_021_4630:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $02
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -1069,7 +1069,7 @@ jr_021_46c9:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
 
 jr_021_46d7:
     ld a, [wPlayerFacingDirection]
@@ -1488,13 +1488,13 @@ Jump_021_4977:
     cp $0f
     jr z, jr_021_4984
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_021_4984:
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1507,13 +1507,13 @@ Jump_021_4991:
     cp $0f
     jr z, jr_021_499e
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_021_499e:
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1526,13 +1526,13 @@ Jump_021_49ab:
     cp $0f
     jr z, jr_021_49b8
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_021_49b8:
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -1545,13 +1545,13 @@ Jump_021_49c5:
     cp $0f
     jr z, jr_021_49d2
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
 jr_021_49d2:
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -2682,7 +2682,7 @@ jr_021_5273:
     cp $70
     jr nc, jr_021_52ac
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     cp $81
     jr nz, jr_021_52ac
 
@@ -2731,7 +2731,7 @@ jr_021_52da:
 
 
 jr_021_52ee:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $40
     ret z
 
@@ -3030,7 +3030,7 @@ Call_021_549e:
     and $01
     ret z
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     cp $81
     ret nz
 

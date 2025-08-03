@@ -729,12 +729,12 @@ jr_004_44fa:
 
 Jump_004_4501:
 jr_004_4501:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -743,12 +743,12 @@ jr_004_4501:
 
 
 Jump_004_4514:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -758,12 +758,12 @@ Jump_004_4514:
 
 Jump_004_4527:
 jr_004_4527:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -773,12 +773,12 @@ jr_004_4527:
 
 Jump_004_453a:
 jr_004_453a:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -2220,7 +2220,7 @@ jr_004_4e02:
 jr_004_4e1b:
     xor a
     ld [sChickenFeedFlag], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $11

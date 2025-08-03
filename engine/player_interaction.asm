@@ -997,7 +997,7 @@ PlayerInteraction_A_Pressed:
     cp $70
     jr nc, .checkForBushTile
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     cp $81
     jr nz, .checkForBushTile
     jp Jump_001_5517
@@ -1065,7 +1065,7 @@ PlayerInteraction_A_Pressed:
     jp Jump_001_5458
 
 .checkForFullyGrownCrop
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $40
     ret z
 
@@ -1432,7 +1432,7 @@ Call_001_557f:
     and $01
     ret z
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     cp $81
     ret nz
 

@@ -6222,7 +6222,7 @@ jr_02f_6500:
 
 
 jr_02f_6527:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret z
 

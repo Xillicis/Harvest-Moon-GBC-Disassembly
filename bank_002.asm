@@ -2876,7 +2876,6 @@ jr_002_4ff7:
     pop hl
     ret
 
-
 Call_002_5002:
     ld a, [sSpriteTotalHappiness]
     cp 90
@@ -3934,12 +3933,12 @@ jr_002_56e9:
 
 
 Jump_002_56f0:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -3948,12 +3947,12 @@ Jump_002_56f0:
 
 
 Jump_002_5703:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -3962,12 +3961,12 @@ Jump_002_5703:
 
 
 Jump_002_5716:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -3976,12 +3975,12 @@ Jump_002_5716:
 
 
 Jump_002_5729:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4351,7 +4350,7 @@ Call_002_5913:
     or a
     ret z
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $02
     ret z
 
@@ -7945,7 +7944,7 @@ Call_002_70a3:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ret
 
 Data_002_70ae:

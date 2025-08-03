@@ -95,9 +95,13 @@ wcb30:: db
 wSubordinateFacingTileID:: db
 ;; Same as the above, but regarding the "right" or "up" side object
 wcb32:: db ; 0xcb32
-wDominantFacingTileID:: db ; 0xcb33
 
-ds $16
+wDominantFacingTileID:: db ; 0xcb33
+; Seems to be used to identify the different properties of the.
+; It differentiates between say Signs, Rocks, and Doors.
+wDominantFacingTileProperty:: db ; 0xcb34
+
+ds $15
 
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a

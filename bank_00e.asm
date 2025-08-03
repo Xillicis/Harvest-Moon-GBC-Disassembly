@@ -538,12 +538,12 @@ jr_00e_439b:
 
 
 Jump_00e_439f:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -552,12 +552,12 @@ Jump_00e_439f:
 
 
 Jump_00e_43b2:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -566,12 +566,12 @@ Jump_00e_43b2:
 
 
 Jump_00e_43c5:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -580,12 +580,12 @@ Jump_00e_43c5:
 
 
 Jump_00e_43d8:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -752,7 +752,7 @@ Call_00e_44aa:
     or b
     ret nz
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret z
 
@@ -3974,7 +3974,7 @@ Jump_00e_5794:
     ret nc
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -3988,7 +3988,7 @@ Jump_00e_57b1:
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4002,7 +4002,7 @@ Jump_00e_57c8:
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4020,7 +4020,7 @@ Jump_00e_57e5:
     ld a, $20
     call RST_TableJumpBankSwitch
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4157,12 +4157,12 @@ jr_00e_58c2:
 
 
 Jump_00e_58c6:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4171,12 +4171,12 @@ Jump_00e_58c6:
 
 
 Jump_00e_58d9:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4185,12 +4185,12 @@ Jump_00e_58d9:
 
 
 Jump_00e_58ec:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4199,12 +4199,12 @@ Jump_00e_58ec:
 
 
 Jump_00e_58ff:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4982,12 +4982,12 @@ jr_00e_5ddc:
 
 
 Jump_00e_5de0:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4996,12 +4996,12 @@ Jump_00e_5de0:
 
 
 Jump_00e_5df3:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -5979,12 +5979,12 @@ jr_00e_641e:
 
 
 Jump_00e_6422:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -5993,12 +5993,12 @@ Jump_00e_6422:
 
 
 Jump_00e_6435:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -6007,12 +6007,12 @@ Jump_00e_6435:
 
 
 Jump_00e_6448:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -6021,12 +6021,12 @@ Jump_00e_6448:
 
 
 Jump_00e_645b:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 

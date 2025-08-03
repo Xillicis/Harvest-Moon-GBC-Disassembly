@@ -637,7 +637,7 @@ Call_022_439b:
 
 
 jr_022_43bb:
-    ld a, $01
+    ld a, 1
     ld [sShedSuperSickleFlag], a
     ld a, $ff
     ld [$ba38], a
@@ -3679,7 +3679,7 @@ Jump_022_53e7:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -3720,7 +3720,7 @@ Jump_022_542d:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -3761,7 +3761,7 @@ Jump_022_5473:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -3802,7 +3802,7 @@ Jump_022_54b9:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
     ld a, $02
     ld [wPlayerFacingDirection], a
     ld a, $01
@@ -3890,7 +3890,7 @@ jr_022_553a:
     xor a
     ld [wcb30], a
     ld [wcb32], a
-    ld [$cb34], a
+    ld [wDominantFacingTileProperty], a
 
 jr_022_5547:
     ld a, [wPlayerFacingDirection]
@@ -4063,12 +4063,12 @@ jr_022_5656:
 
 
 Jump_022_565d:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_150b
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4077,12 +4077,12 @@ Jump_022_565d:
 
 
 Jump_022_5670:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1514
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4091,12 +4091,12 @@ Jump_022_5670:
 
 
 Jump_022_5683:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_1502
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4105,12 +4105,12 @@ Jump_022_5683:
 
 
 Jump_022_5696:
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
     call Call_000_14f9
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
 
@@ -4480,7 +4480,7 @@ Call_022_5880:
     or a
     ret z
 
-    ld a, [$cb34]
+    ld a, [wDominantFacingTileProperty]
     and $02
     ret z
 
