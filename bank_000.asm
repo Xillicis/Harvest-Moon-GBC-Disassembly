@@ -7732,12 +7732,13 @@ Call_000_3fae:
     ret
 
 
+Label_000_3fba:
     ld a, $22
-
 Jump_000_3fbc:
     jr jr_000_3fdc
 
     ld a, $2a
+Label_000_3fbf:
     jr jr_000_3fdc
 
     ld a, $26
@@ -7758,6 +7759,7 @@ Jump_000_3fbc:
     ld a, $1e
     jr jr_000_3fdc
 
+Label_000_3fda:
     ld a, $1b
 
 jr_000_3fdc:

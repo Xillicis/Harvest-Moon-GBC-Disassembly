@@ -107,14 +107,19 @@ Call_000_0061:
     or a
     rst $08
 
+MACRO HomeTablePointer
+    dw \1
+    db 0
+ENDM
+
 Data_000_0066:
-    db $df, $3f, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ce, $0e, $00
-    db $ba, $3f, $00
+    HomeTablePointer $3fdf
+    HomeTablePointer Call_000_0ece
+    HomeTablePointer Call_000_0ece
+    HomeTablePointer Call_000_0ece
+    HomeTablePointer Call_000_0ece
+    HomeTablePointer Call_000_0ece
+    HomeTablePointer Label_000_3fba
     db $be, $3f, $00
     db $c2, $3f, $00
     db $c2, $3f, $00
@@ -145,7 +150,7 @@ Data_000_0066:
     db $ba, $3f, $00
     db $ce, $3f, $00
     db $df, $3f, $00
-    db $da, $3f, $00
+    HomeTablePointer Label_000_3fda
     db $e0, $3f, $00
     db $e0, $3f, $00
     db $df, $3f, $00
