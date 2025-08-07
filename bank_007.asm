@@ -787,48 +787,31 @@ jr_007_44fb:
 
 INCLUDE "text.asm"
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "Huh, really? Is "
-    db "it strange...  ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "I thought it    "
-    db "would taste    ▽"
-    prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "good", $54, " but thank "
-    db "you anyway.    ▽"
-    prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db "I will try      "
-    db "again...        "
-    done 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "You work hard   "
     db "everyday, <PLAYER>.▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Do you have a   "
     db "Water Can?     ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "I can make a    "
     db "Sprinkler by   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "modifying a     "
     db "water can.     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "I need 7days to "
     db "complete the   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "sprinkler. Make "
     db "sure you come  ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing
     db "and buy one.    "
     db "                "
     done 
@@ -3259,6 +3242,8 @@ jr_007_7070:
     rst $28
     rst $28
     rst $38
+
+Text_DoNothing:
     ret
 
 

@@ -397,9 +397,9 @@ jr_000_37d7:
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
     ld [wTextCharacterCounter], a
-    ld a, [$cb6e]
+    ld a, [wTextPointer]
     ld l, a
-    ld a, [$cb6f]
+    ld a, [wTextPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
@@ -428,9 +428,9 @@ jr_000_3813:
     call AddBCtoWordAtHL
     xor a
     ld [wTextCharacterCounter], a
-    ld a, [$cb6e]
+    ld a, [wTextPointer]
     ld l, a
-    ld a, [$cb6f]
+    ld a, [wTextPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
@@ -584,9 +584,9 @@ InitializeTextData: ; 00x3913
     ld [$cb6d], a
     inc hl
     ld a, [hl+]
-    ld [$cb6e], a
+    ld [wTextPointer], a
     ld a, [hl+]
-    ld [$cb6f], a
+    ld [wTextPointer+1], a
     inc hl
     inc hl
     xor a
@@ -703,9 +703,9 @@ jr_000_39dd:
     ld [wTextCharacterCounter], a
 
 jr_000_3a09:
-    ld a, [$cb6e]
+    ld a, [wTextPointer]
     ld l, a
-    ld a, [$cb6f]
+    ld a, [wTextPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL

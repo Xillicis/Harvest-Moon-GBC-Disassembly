@@ -1,25 +1,25 @@
 ; I Think this is the beginning of all the text in the game.
 Data_007_4501:
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "<DAY><SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M ", $AC, $AD, $AE, $AF, $B0,
     db $F6, "   ", $B2, $B3, $B4, $B5, $B6, $06 
     done
 Data_007_452c:
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db " Pet       Timer"
     db " Horse     Memo "
     done
 Data_007_4557:
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Show the items  "
     db "that relate to ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "the A button?   "
     db " YES        NO  "
     done
 Data_007_45ad:
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $C8, $C9, $EE, $F0, $ED, $AB, $AA, $0C, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $D0, $D1, $D2, $D3, $D4, $D5, $D6, $D7, $D8, $F1,
     db $F2, $F3, $F4, $F5, $EF, $EF, $FF
@@ -47,98 +47,97 @@ StoveTopText::
     done
 
 MoneyInDresserText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "What! There is  "
     db "money in the   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "drawer. Was this"
     db "grandpa's rainy ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "day money? It's  "
     db "mine now!!     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Received 1000G!!"
     db "                "
     done
 
 EmptyDresserText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Let me see...   "
     db "               ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Everything is   "
     db "alright!        "
     done
 
 Data_007_4786::
+    text Text_DoNothing
 ; Not sure what this is here...
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $BA, $00, $01, $00, $12, $00, $44, $00, $34, $00
-    db $02, $00, $81, $00, $92, $00, $02, $00, $A0, $00
-    db $12, $00, $83, $00, $30, $00, $03, $00, $BA, $00
-    db $DA, $00, $C8, $00, $12, $00, $B1, $00, $92, $00
-    db $02, $00, $44, $00, $52, $00, $02, $00, $13, $00, 
+    db $BA, $00, $01, $00, $12, $00, $44, $00, $34, $00, $02, $00, $81, $00, $92, $00,
+    db $02, $00, $A0, $00, $12, $00, $83, $00, $30, $00, $03, $00, $BA, $00, $DA, $00,
+    db $C8, $00, $12, $00, $B1, $00, $92, $00, $02, $00, $44, $00, $52, $00, $02, $00,
+    db $13, $00, 
     db $01, $00, $AC, $00, $10, $00, $40, $00, $6B, $00
     db $FD, $00, $FD, $00, $FF, $FF
 
 SpringSunnyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It has been warm"
     db "everyday.      ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Tomorrow will be"
     db "a fine day.     "
     done
 
 SpringRainyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It will be a    "
     db "rainy day      ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "tomorrow,       "
     db "causing the    ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "flowers to fall."
     db "                "
     done
 
 SummerSunnyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It has been hot "
     db "everyday.      ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Tomorrow will be"
     db "a sunny day.    "
     done
 
 SummerRainyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It will rain    "
     db "heavily all day▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing
     db "tomorrow.       "
     db "                "
     done
 
 AutumnSunnyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "The mountains   "
     db "are beautifully▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "colored.        "
     db "The sky will be▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "clear tomorrow. "
     db "                "
     done
@@ -598,4 +597,19 @@ EveJuicePicnicText::
     db "Ha ha ha.       "
     done 
 
-
+    text Text_DoNothing
+    db "Huh, really? Is "
+    db "it strange...  ▽"
+    prompt
+    text Text_DoNothing
+    db "I thought it    "
+    db "would taste    ▽"
+    prompt
+    text Text_DoNothing
+    db "good", $54, " but thank "
+    db "you anyway.    ▽"
+    prompt 
+    text Text_DoNothing
+    db "I will try      "
+    db "again...        "
+    done 

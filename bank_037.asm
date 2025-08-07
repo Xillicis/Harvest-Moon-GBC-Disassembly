@@ -10925,7 +10925,7 @@ jr_037_6e07:
 
 jr_037_6e18:
     cp $6e
-    call c, $cb6e
+    call c, wTextPointer
     ld l, [hl]
     ld sp, $206f
     ld l, a

@@ -150,9 +150,11 @@ ds 1 ; 0xcb6a
 ds 1 ; 0xcb6b
 ds 1 ; 0xcb6c
 ds 1 ; 0xcb6d
-ds 1 ; 0xcb6e
+wTextPointer:: dw ; 0xcb6e
 
-ds 7
+ds 1 ; 0xcb70
+
+ds 5
 
 ; This starts a countdown for the animation of the weather girl moving
 ; then it gets into a small loop just for the animation of the blinking sun (or other weather thing)
