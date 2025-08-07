@@ -3243,7 +3243,7 @@ jr_007_7070:
     rst $28
     rst $38
 
-Text_DoNothing:
+Text_DoNothing: ; 07x7078
     ret
 
 
@@ -3255,7 +3255,6 @@ Text_DoNothing:
 
 
 ;;;;;; REAL CODE BELOW HERE!
-
 
 
     ld a, [$cb72]
@@ -3402,7 +3401,7 @@ jr_007_7174:
     ld [$b893], a
     ret
 
-
+Label_007_7179:
     xor a
     ld [$b893], a
     ld a, $0a

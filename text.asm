@@ -92,6 +92,7 @@ SpringSunnyDayText::
     db "It has been warm"
     db "everyday.      ▽"
     prompt
+
     text Text_DoNothing
     db "Tomorrow will be"
     db "a fine day.     "
@@ -102,10 +103,12 @@ SpringRainyDayText::
     db "It will be a    "
     db "rainy day      ▽"
     prompt
+
     text Text_DoNothing
     db "tomorrow,       "
     db "causing the    ▽"
     prompt
+
     text Text_DoNothing
     db "flowers to fall."
     db "                "
@@ -116,6 +119,7 @@ SummerSunnyDayText::
     db "It has been hot "
     db "everyday.      ▽"
     prompt
+
     text Text_DoNothing
     db "Tomorrow will be"
     db "a sunny day.    "
@@ -126,6 +130,7 @@ SummerRainyDayText::
     db "It will rain    "
     db "heavily all day▽"
     prompt
+
     text Text_DoNothing
     db "tomorrow.       "
     db "                "
@@ -136,72 +141,80 @@ AutumnSunnyDayText::
     db "The mountains   "
     db "are beautifully▽"
     prompt
+
     text Text_DoNothing
     db "colored.        "
     db "The sky will be▽"
     prompt
+
     text Text_DoNothing
     db "clear tomorrow. "
     db "                "
     done
 
 AutumnRainyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It's getting col-"
     db "der day by day.▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "It will rain all"
     db "day tomorrow.   "
     done
 
 WinterSunnyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It's getting col-"
     db "der day by day.▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "It will be sunny"
     db "tomorrow.       "
     done
 
 WinterSnowyDayText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It's cold every- "
     db "day. It will   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "snow tomorrow.  "
     db "                "
     done
 
 HurricaneText:: ; 07x4ad8
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Hurricane Bob   "
     db "has just       ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "reached the     "
     db "coast. It will ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "be stormy all   "
     db "day tomorrow.   "
     done
 
 StrongWindsText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Whoa! What      "
     db "strong winds.  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "Better stay     "
     db "inside today.   "
     done
 
 ; Is this used in game? 
 ElipsesText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "…………………………………………"
     db "………………………………………."
     done
@@ -209,63 +222,67 @@ ElipsesText::
 ;;; This is text that plays occurs outside around the farmstead.
 
 TooLateText1::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Oops! It's       "
     db "already 6AM.   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "I better go home"
     db "and have       ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "something to    "
     db "eat.            "
     done
 
 TooLateText2::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Oh My! It's      "
     db "already 6AM.   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "I better get    "
     db "going home!     "
     done
 
 ShippingBoxText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db " [Shipping Box] "
     db "Pick up is at  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "5PM everyday.   "
     db "     From Trader"
     done
 FencePostShedText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Current Material"
     db "      ", $BC, $BD, $BE, " Pieces" ; need to figure out the data loading here.
     done
 
 StableSignText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "    [Stable]    "
     db "                "
     done
 
 SiloSignText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Current Fodder  "
     db "      ", $BF, $C0, $C1, " Pieces"
     done
 
 CalendarText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "<DAY_DIGIT2>", $EC, "<SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M"
     db "          ", $CA, $CB, "YEAR"
     done
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Good Morning    "
     db "<PLAYER>. It's me.  ▽"
     prompt
@@ -275,135 +292,155 @@ CalendarText::
     prompt
 
 HorseIsLostText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "It seems that   "
     db "this horse is  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "lost. Would you "
     db "please take    ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "care of this    "
     db "horse on your  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "ranch? Please   "
     db "name him.       "
     done
 
 ProduceShippedText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing
     db "Is this all for "
     db "today's         ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "shipment? It    "
     db "will be  ", $B7, $B8, $B9, $BA, $BB, "G▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "The money will  "
     db "be transferred ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "tomorrow!       "
     db "Well, see you!! "
     done
 
 NoShipmentText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "There is no     "
     db "shipment today?▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "Well, see you   "
     db "tomorrow.       "
     done
 
 CarpenterEarthquakeText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "<PLAYER> are you    "
     db "alright?       ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "That earthquake "
     db "a little while ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "ago was huge!   "
     db "               ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "Was anything    "
     db "damaged by the ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "earthquake?     "
     db "Be sure to     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "examine every-  "
     db "thing. Good Bye."
     done
 
 PicnicInvitationText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Hello. Tomorrow "
     db "morning we are ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "going on a      "
     db "picnic.        ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "Could we have it"
     db "here?          ▽"
     prompt
+
     db $01, $04, $06, $40, $4C, $00, $68, $71, $00, $00
     db "                "
     db " YES         NO "
     prompt
 
 PicnicInvitationAcceptText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "YEAH! That is   "
     db "great! We will ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "have lots of    "
     db "fun.            "
     done 
 
 PicnicInvitationDeclineText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Really? Why...  "
     db "That's no fun!   "
     done 
 
 MariaGoToPicnicText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Hello <PLAYER>.     "
     db "I hope you     ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "weren't too     "
     db "busy.          ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $79, $71, $00, $00
+
+    text Label_007_7179
     db "Let's go on the  "
     db "picnic...       "
     prompt
 
 EveJuicePicnicText::
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Hi <PLAYER>.        "
     db "This is        ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "Wild Grape      "
     db "Juice.         ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "I know this is  "
     db "a little sweet,▽"
     prompt
