@@ -1,8 +1,8 @@
 ; I Think this is the beginning of all the text in the game.
 Data_007_4501:
     text Text_DoNothing
-    db "<DAY><SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M ", $AC, $AD, $AE, $AF, $B0,
-    db $F6, "   ", $B2, $B3, $B4, $B5, $B6, $06 
+    db "<DAY><SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M"
+    db " ", $AC, $AD, $AE, $AF, $B0, $F6, "   ", $B2, $B3, $B4, $B5, $B6, $06 
     done
 
 Data_007_452c:
@@ -28,7 +28,9 @@ Data_007_45ad:
     db $F2, $F3, $F4, $F5, $EF, $EF, $FF
 
 GoToSleepText:: ; 07x45d8
-    db $01, $00, $00, $40, $4C, $00, $A7, $70, $00, $00, 
+    db $01, $00, $00, $40, $4C, $00
+    dw Label_007_70a7
+    db $00, $00, 
     db "Go to sleep?    "
     db " YES         NO "
     prompt

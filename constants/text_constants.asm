@@ -1,4 +1,8 @@
 const_def
+const YES ; 0
+const NO ; 1
+
+const_def
 const TEXT_00
 const TEXT_01
 const TEXT_02

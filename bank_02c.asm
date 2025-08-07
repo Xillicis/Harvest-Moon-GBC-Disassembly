@@ -13390,7 +13390,7 @@ jr_02c_7ca9:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_02c_7cce
 

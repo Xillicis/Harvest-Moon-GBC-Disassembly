@@ -11866,7 +11866,7 @@ jr_037_7218:
     ld [hl], d
     rrca
     ld [hl], e
-    call c, $cb72
+    call c, wYesOrNo
     ld [hl], d
     ld sp, $2073
     ld [hl], e

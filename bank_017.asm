@@ -12895,7 +12895,7 @@ TileIndexSRAMPointerTable:
     dw sSeasonTileIDPart2+2
     dw sSeasonTileIDPart2+3
     dw sAMorPMTileIndex
-    db $18, $B9,
+    dw sTimeOfDayTileIndex+1
     db $44, $BA,
     db $45, $BA,
     db $46, $BA,

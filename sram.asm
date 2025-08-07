@@ -176,8 +176,9 @@ sDayOfTheMonthSecondDigitTileIndex::  db ; 0xb914
 ; Keeps track of the tile index for "A" or "P" in AM and PM.
 sAMorPMTileIndex::  db ; 0xb915
 sb916::  db 
-sb917::  db 
-sb918::  db 
+
+sTimeOfDayTileIndex:: dw ; 0xb917
+
 sDayOfTheWeekTileIndex1::  db  ; 0xb919
 sDayOfTheWeekTileIndex2::  db  ; 0xb91a
 sb91b::  db 

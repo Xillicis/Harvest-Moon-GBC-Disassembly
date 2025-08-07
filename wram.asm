@@ -154,7 +154,12 @@ wTextPointer:: dw ; 0xcb6e
 
 ds 1 ; 0xcb70
 
-ds 5
+ds 1 ; 0xcb71
+
+; 0 = YES, 1 = NO  ; Seems a bit backwards but whatever
+wYesOrNo:: db ; 0xcb72
+
+ds 3
 
 ; This starts a countdown for the animation of the weather girl moving
 ; then it gets into a small loop just for the animation of the blinking sun (or other weather thing)

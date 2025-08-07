@@ -4933,7 +4933,7 @@ jr_00a_549d:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_00a_54df
 

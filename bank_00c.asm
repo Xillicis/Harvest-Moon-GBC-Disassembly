@@ -11677,7 +11677,7 @@ jr_00c_7cff:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_00c_7d24
 

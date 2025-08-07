@@ -11588,7 +11588,7 @@ jr_027_700d:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     ret nz
 
@@ -11613,7 +11613,7 @@ jr_027_7020:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7092
 
@@ -11655,7 +11655,7 @@ jr_027_7092:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_70c7
 
@@ -11684,7 +11684,7 @@ jr_027_70c7:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_70fc
 
@@ -11720,7 +11720,7 @@ jr_027_70fc:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7111
 
@@ -11802,7 +11802,7 @@ jr_027_7111:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_71d5
 
@@ -11865,7 +11865,7 @@ jr_027_71d5:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7248
 
@@ -11912,7 +11912,7 @@ jr_027_7248:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7275
 
@@ -11927,7 +11927,7 @@ jr_027_7275:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7299
 
@@ -11964,7 +11964,7 @@ jr_027_72a3:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jp nz, Jump_027_7362
 
@@ -12079,7 +12079,7 @@ Jump_027_7362:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7373
 
@@ -12094,7 +12094,7 @@ jr_027_7373:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7389
 
@@ -12202,7 +12202,7 @@ jr_027_7413:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7483
 
@@ -12251,7 +12251,7 @@ jr_027_7483:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_74b3
 
@@ -12283,7 +12283,7 @@ jr_027_74b3:
 
     xor a
     ld [$cb5f], a
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jp nz, Jump_027_74ea
 
@@ -12364,7 +12364,7 @@ jr_027_752a:
     ret
 
 
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     or a
     jr nz, jr_027_7562
 

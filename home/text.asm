@@ -590,7 +590,7 @@ InitializeTextData: ; 00x3913
     inc hl
     inc hl
     xor a
-    ld [$cb72], a
+    ld [wYesOrNo], a
     ld a, [$cb6d]
     ld de, vBGMap1 + $22
     add e
@@ -614,8 +614,8 @@ InitializeTextData: ; 00x3913
     ret
 
 Call_000_396d:
-    ld a, [$cb72]
-    cp $00
+    ld a, [wYesOrNo]
+    cp YES
     jr z, jr_000_39a9
 
     ld a, [$cb6d]
@@ -643,7 +643,7 @@ Call_000_396d:
     jr z, jr_000_39dd
     call Call_000_3fae
     xor a
-    ld [$cb72], a
+    ld [wYesOrNo], a
     jr jr_000_39dd
 
 jr_000_39a9:
@@ -671,8 +671,8 @@ jr_000_39a9:
     and $10
     jr z, jr_000_39dd
 
-    ld a, $01
-    ld [$cb72], a
+    ld a, NO
+    ld [wYesOrNo], a
     call Call_000_3fae
 
 jr_000_39dd:
@@ -682,7 +682,7 @@ jr_000_39dd:
 
     call Call_000_3fa2
     ld hl, $cb6a
-    ld a, [$cb72]
+    ld a, [wYesOrNo]
     add l
     ld l, a
     ld a, $00

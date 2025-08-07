@@ -111,9 +111,9 @@ UpdateHourTileData: ; 00x070b
     ld a, [hli]
     ld [sAMorPMTileIndex], a
     ld a, [hli]
-    ld [$b917], a
+    ld [sTimeOfDayTileIndex], a
     ld a, [hli]
-    ld [$b918], a
+    ld [sTimeOfDayTileIndex+1], a
     ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
@@ -122,14 +122,14 @@ UpdateHourTileData: ; 00x070b
     or a
     ret nz
 
-    ld a, [$b917]
+    ld a, [sTimeOfDayTileIndex]
     ld c, a
     ld e, $84
     ld hl, TextFontTileset
     ld a, BANK(TextFontTileset)
     ld d, a
     call BankedSyncCopyTileToVRAM
-    ld a, [$b918]
+    ld a, [sTimeOfDayTileIndex+1]
     ld c, a
     ld e, $85
     ld hl, TextFontTileset
