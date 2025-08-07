@@ -9,8 +9,6 @@ SECTION "ROM Bank $011", ROMX[MBC3SRamBank], BANK[$11]
 
 TextFontTileset::
     INCBIN "gfx/font.2bpp"
-Data_011_4801:
-    INCBIN "gfx/misc_tileset.2bpp"
 
 INCLUDE "data/farm_tile_data.asm"
 

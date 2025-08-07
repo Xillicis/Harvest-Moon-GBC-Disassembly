@@ -4,11 +4,13 @@ Data_007_4501:
     db "<DAY><SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M ", $AC, $AD, $AE, $AF, $B0,
     db $F6, "   ", $B2, $B3, $B4, $B5, $B6, $06 
     done
+
 Data_007_452c:
     text Text_DoNothing
     db " Pet       Timer"
     db " Horse     Memo "
     done
+
 Data_007_4557:
     text Text_DoNothing
     db "Show the items  "
@@ -18,6 +20,7 @@ Data_007_4557:
     db "the A button?   "
     db " YES        NO  "
     done
+
 Data_007_45ad:
     text Text_DoNothing
     db $C8, $C9, $EE, $F0, $ED, $AB, $AA, $0C, $EF, $EF,
