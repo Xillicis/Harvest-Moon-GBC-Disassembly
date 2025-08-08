@@ -806,7 +806,7 @@ jr_000_3aa6:
     ret
 
 jr_000_3ab9:
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
@@ -887,7 +887,7 @@ Call_000_3b32:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, [$b906]
     or a
     ret nz
@@ -903,7 +903,7 @@ Call_000_3b32:
 
 
 jr_000_3b54:
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
@@ -1075,7 +1075,7 @@ Call_000_3c44:
 
     ld a, [$b906]
     ld [$cbea], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $03
     ld [wTextID], a
     ld [$cb57], a
@@ -1089,7 +1089,7 @@ jr_000_3c6d:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $01
     ld [$cbff], a
     ld a, $3c
@@ -1121,7 +1121,7 @@ jr_000_3cb2:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cb57], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $50
     ld [$cbfe], a
     xor a
@@ -1185,7 +1185,7 @@ jr_000_3d17:
     or a
     ret nz
 
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld a, $01
@@ -1215,7 +1215,7 @@ jr_000_3d41:
     or a
     ret nz
 
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, [$b906]
     or a
     ret nz

@@ -6096,7 +6096,7 @@ Call_02f_62dd:
     ld [$b88c], a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     call Call_000_3dfd
     xor a
     ld [wInputFreezeTimer], a

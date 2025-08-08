@@ -3213,7 +3213,7 @@ jr_002_5271:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     call Call_000_3dfd
     ld a, $40
     ldh [rSTAT], a

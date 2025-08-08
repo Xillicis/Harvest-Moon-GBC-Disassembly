@@ -11602,7 +11602,7 @@ jr_027_7020:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -11625,7 +11625,7 @@ jr_027_7020:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -11667,7 +11667,7 @@ jr_027_7092:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -11701,7 +11701,7 @@ jr_027_70c7:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -11750,7 +11750,7 @@ jr_027_7111:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -12221,7 +12221,7 @@ jr_027_7413:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a

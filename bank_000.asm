@@ -7591,8 +7591,7 @@ Data_000_3ebc:
     db $80, $0D, $C0, $06, $50, $07, $E0, $07, $70, $08, $00, $09, $90, $09, $20, $0A
     db $B0, $0A, $40, $0B, $B0, $11, $90, $10, $20, $11, $10, $0E, $A0, $0E, $00, $00 
 
-Call_000_3efc:
-jr_000_3efc:
+EnableDisplay_GameplayMode:
     call SyncToBlankPeriod
     ld a, 1 << rLCDC_ENABLE | 1 << rLCDC_WINDOW_TILEMAP | 1 << rLCDC_SPRITES_ENABLE | 1 << rLCDC_BG_PRIORITY
     ld [wLCDCTempStorage], a
@@ -7627,7 +7626,7 @@ Call_000_3f26:
     ld [wTextBoxIsDisplayed], a
     ld a, [$b906]
     or a
-    jr nz, jr_000_3efc
+    jr nz, EnableDisplay_GameplayMode
 
     ld a, $04
     ld [wTextID], a

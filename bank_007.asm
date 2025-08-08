@@ -3253,12 +3253,12 @@ jr_007_704a:
     nop
     nop
     ld [$30ef], sp
-    jr z, jr_007_7083
+    jr z, $7083
 
     dec e
     ld e, $2b
     rst $28
-    jr nc, jr_007_7083
+    jr nc, $7083
 
     ld e, $27
     rst $28
@@ -3304,15 +3304,13 @@ Text_DoNothing: ; 07x7078
 
     ld a, $ff
     ld [wTextID], a
-
-jr_007_7083:
     xor a
     ld [wTextNavigator], a
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -3336,7 +3334,7 @@ Text_GoToSleep:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -3377,7 +3375,7 @@ Text_GoToSleep:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -3411,7 +3409,7 @@ jr_007_712a:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -3458,7 +3456,7 @@ Label_007_7179:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -3915,7 +3913,7 @@ jr_007_7476:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     xor a
     ld [$cb58], a
     ld [$cb57], a

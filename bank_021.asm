@@ -6871,7 +6871,7 @@ jr_021_6b37:
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
-    call Call_000_3efc
+    call EnableDisplay_GameplayMode
     ld a, $06
     ld [wDestinationWarpID], a
     ld a, $20
