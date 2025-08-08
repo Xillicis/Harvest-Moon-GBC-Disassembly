@@ -1341,7 +1341,7 @@ jr_001_54e0:
 Jump_001_5517:
     ld a, [sNumberOfFencePosts]
     ld b, a
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     or b
     ret z
 

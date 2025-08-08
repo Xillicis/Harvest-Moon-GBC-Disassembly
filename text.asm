@@ -29,7 +29,7 @@ Data_007_45ad:
 
 GoToSleepText:: ; 07x45d8
     db $01, $00, $00, $40, $4C, $00
-    dw Label_007_70a7
+    dw Text_GoToSleep
     db $00, $00, 
     db "Go to sleep?    "
     db " YES         NO "
@@ -46,6 +46,7 @@ StoveTopText::
     db "Confirm the     "
     db "origin of fire!▽"
     prompt
+
     db $00, $00, $00, $00, $0C, $00, $78, $70, $00, $00
     db "Everything is   "
     db "alright!!       "
@@ -288,7 +289,8 @@ CalendarText::
     db "Good Morning    "
     db "<PLAYER>. It's me.  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+    text Text_DoNothing
     db "How are you     "
     db "doing?         ▽"
     prompt
@@ -446,7 +448,10 @@ EveJuicePicnicText::
     db "I know this is  "
     db "a little sweet,▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $A8, $71, $00, $00
+
+    db $00, $00, $00, $00, $00, $00
+    dw Label_007_71a8
+    db $00, $00
     db "but please have "
     db "some.           "
     prompt

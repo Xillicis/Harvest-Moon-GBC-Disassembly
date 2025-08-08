@@ -9645,7 +9645,7 @@ Jump_009_6ff6:
     db $e4
     ret c
 
-    jp nz, Jump_000_3c3c
+    jp nz, $3c3c
 
     ret nz
 

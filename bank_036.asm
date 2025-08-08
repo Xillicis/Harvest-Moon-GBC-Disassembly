@@ -10905,7 +10905,7 @@ jr_036_6ee2:
     nop
     nop
     nop
-    call nc, Call_000_3c28
+    call nc, $3c28
     ret nz
 
     xor h

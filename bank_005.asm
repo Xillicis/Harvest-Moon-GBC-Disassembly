@@ -8646,7 +8646,7 @@ jr_005_718c:
     ld c, a
     sbc b
     rla
-    call z, Call_000_3c03
+    call z, $3c03
     dec bc
     inc [hl]
     rst $38

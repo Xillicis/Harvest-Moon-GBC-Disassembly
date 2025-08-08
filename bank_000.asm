@@ -1109,7 +1109,7 @@ Call_000_0de8:
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
     ld [wTextCharacterCounter], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a
     ld a, [sCurrentDayCounter] ; $ff happens in the intro cut scene
@@ -1316,11 +1316,11 @@ jr_000_0f6e:
     ret
 
 Call_000_0f73:
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     cp $ff
     jr z, jr_000_0f9a
 
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     cp $04
     jr nc, jr_000_0f8e
     cp $03
@@ -1335,20 +1335,20 @@ jr_000_0f8e:
     ld a, $e7
     ld [sNumberOfFencePosts], a
     ld a, $03
-    ld [$b939], a
+    ld [sNumberOfFencePosts+1], a
     jr jr_000_0fa1
 
 jr_000_0f9a:
     xor a
     ld [sNumberOfFencePosts], a
-    ld [$b939], a
+    ld [sNumberOfFencePosts+1], a
 
 jr_000_0fa1:
     xor a
     ld [$cccc], a
     ld a, [sNumberOfFencePosts]
     ld [wTempPlayerMoney], a
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     ld [$cccb], a
     call LoadDecimalMoneyTileData
     ld a, [wDecimalPlayerMoneyTileID+2]
@@ -7598,7 +7598,7 @@ jr_000_3efc:
     ld [wLCDCTempStorage], a
     ldh [rLCDC], a
     xor a
-    ld [wTextBoxIsDisplayed], a
+    ld [wUnusedCB4C], a
     ret
 
 Call_000_3f0b:
@@ -7612,7 +7612,7 @@ Call_000_3f0b:
     ld [wLCDCTempStorage], a
     ldh [rLCDC], a
     ld a, 1
-    ld [wTextBoxIsDisplayed], a
+    ld [wUnusedCB4C], a
     ret
 
 Call_000_3f26:
@@ -7624,7 +7624,7 @@ Call_000_3f26:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, [$b906]
     or a
     jr nz, jr_000_3efc
@@ -7647,7 +7647,7 @@ InitializeTextIDAndDisplay:
     ld [wTextID], a
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld [wPlayerInteractingInTextFlag], a
     call Call_000_3f0b
     ret

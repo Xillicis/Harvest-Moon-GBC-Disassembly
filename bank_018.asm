@@ -7987,7 +7987,7 @@ jr_018_61ef:
     inc a
     pop bc
     ld a, [hl]
-    jp nz, Jump_000_3c3c
+    jp nz, $3c3c
 
     ret nz
 
@@ -9358,7 +9358,7 @@ jr_018_6798:
     nop
     db $fc
     nop
-    call c, Call_000_3c28
+    call c, $3c28
     ret z
 
 jr_018_679f:

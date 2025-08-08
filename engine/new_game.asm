@@ -91,7 +91,7 @@ InitializeMoreGameData: ; 1dx521e
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
     ld [wTextCharacterCounter], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call InitializeFarmMap
     ld a, 1
     ld [wPlayerIsInsideOrAtTown], a

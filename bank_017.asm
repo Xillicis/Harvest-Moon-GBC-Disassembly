@@ -4289,7 +4289,7 @@ jr_017_513a:
     ld a, b
     ld a, [bc]
     db $f4
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     ld [$0e07], sp
@@ -4713,7 +4713,7 @@ jr_017_5315:
     call nc, $36cb
     dec b
     ld a, [$f40a]
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     add hl, bc
@@ -4739,7 +4739,7 @@ jr_017_5315:
     cp b
     ld a, [bc]
     db $f4
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     inc c
@@ -9473,7 +9473,7 @@ jr_017_67b8:
     rst $38
     ld l, l
     sub d
-    jp nc, Jump_000_3c0c
+    jp nc, $3c0c
 
     ret nz
 

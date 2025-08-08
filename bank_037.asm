@@ -4280,7 +4280,7 @@ jr_037_513a:
     ld a, b
     ld a, [bc]
     db $f4
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     ld [$0e07], sp
@@ -4726,7 +4726,7 @@ jr_037_5313:
     cp b
     ld a, [bc]
     db $f4
-    jp nc, Jump_000_3c2c
+    jp nc, $3c2c
 
     nop
     dec c

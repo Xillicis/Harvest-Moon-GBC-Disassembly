@@ -6365,7 +6365,7 @@ jr_01c_5b0e:
     cp $bc
     ld b, d
     cp h
-    jp nz, Jump_000_3c3c
+    jp nz, $3c3c
 
     cp $e0
     rla

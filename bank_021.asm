@@ -2947,7 +2947,7 @@ jr_021_5418:
 Jump_021_5443:
     ld a, [sNumberOfFencePosts]
     ld b, a
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     or b
     ret z
 
@@ -6870,7 +6870,7 @@ jr_021_6b37:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     ld a, $06
     ld [wDestinationWarpID], a
@@ -8196,7 +8196,7 @@ Call_021_7221:
     ld [wTextNavigator+1], a
     ld a, $00
     ld [wTextCharacterCounter], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ret
 
 

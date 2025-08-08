@@ -3330,7 +3330,7 @@ jr_022_5191:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     call Call_000_3dfd
     ld a, $40

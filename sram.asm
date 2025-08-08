@@ -212,8 +212,9 @@ sb934::  db
 sb935::  db 
 sb936::  db 
 sb937::  db 
-sNumberOfFencePosts::  db ; 0xb938
-sb939::  db 
+
+sNumberOfFencePosts::  dw ; 0xb938
+
 sb93a::  db 
 sb93b::  db 
 ; This is used for determining the payment for the item you deposit in the shipping container.

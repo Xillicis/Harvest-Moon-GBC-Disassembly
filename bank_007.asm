@@ -816,59 +816,64 @@ INCLUDE "text.asm"
     db "                "
     done 
 
+UpgradeHousePropositionText::
     text Text_DoNothing
-    db $07, $1E, $32, $40, $40, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF
-    db $12, $28, $EF, $2D, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $E9
+    db "Hey!! <PLAYER>.     "
+    db "So this is the ▽"
     prompt 
 
     text Text_DoNothing
-    db $21, $28, $2E, $2C, $1E, $EF, $32, $28, $2E, $EF, $30, $1A, $27, $2D, $EF, $EF
-    db $2D, $28, $EF, $1E, $31, $29, $1A, $27, $1D, $4C, $4C, $4C, $EF, $EF, $EF, $E9
+    db "house you want  "
+    db "to expand...   ▽"
     prompt 
 
     text Text_DoNothing
-    db $16, $1E, $25, $25, $4C, $4C, $4C, $32, $28, $2E, $EF, $27, $1E, $1E, $1D, $EF
-    db $E8, $FB, $EA, $EB, $06, $EF, $1A, $27, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $E9
+    db "Well...you need "
+    db $E8, $FB, $EA, $EB, "G and      ▽"
     prompt 
 
     text Text_DoNothing
-    db $EF, $E5, $E6, $E7, $EF, $26, $1A, $2D, $1E, $2B, $22, $1A, $25, $2C, $EF, $EF
-    db $12, $21, $1A, $25, $25, $EF, $08, $EF, $1E, $31, $29, $1A, $27, $1D, $EF, $E9
+    db " ", $E5, $E6, $E7, $EF, "materials  "
+    db "Shall I expand ▽"
     prompt 
 
-    db $01, $05, $0B, $40, $4C, $00, $0C, $73, $00, $00
-    db $2D, $21, $1E, $EF, $21, $28, $2E, $2C, $1E, $41, $EF, $EF, $EF, $EF, $EF, $EF
-    db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF
+    db $01, $05, $0B, $40, $4C, $00
+    dw Text_HouseExpansion
+    db $00, $00
+    db "the house?      "
+    db " YES         NO "
+    prompt
+
+UpgradeHouseYesText::
+    text Text_DoNothing
+    db "Alright! It will"
+    db "take me 3 days ▽"
     prompt
 
     text Text_DoNothing
-    db $00, $25, $2B, $22, $20, $21, $2D, $40, $EF, $08, $2D, $EF, $30, $22, $25, $25
-    db $2D, $1A, $24, $1E, $EF, $26, $1E, $EF, $37, $EF, $1D, $1A, $32, $2C, $EF, $E9
+    db "to complete,    "
+    db "starting       ▽"
     prompt
 
     text Text_DoNothing
-    db $2D, $28, $EF, $1C, $28, $26, $29, $25, $1E, $2D, $1E, $8E, $EF, $EF, $EF, $EF
-    db $2C, $2D, $1A, $2B, $2D, $22, $27, $20, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9
-    prompt
-
-    text Text_DoNothing
-    db $2D, $28, $26, $28, $2B, $2B, $28, $30, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF
+    db "tomorrow.       "
+    db "                "
     done
 
+NotEnoughMaterialsText::
     text Text_DoNothing
-    db $16, $1A, $22, $2D, $EF, $28, $27, $1E, $EF, $26, $22, $27, $2E, $2D, $1E, $40
-    db $18, $28, $2E, $EF, $1D, $28, $27, $4B, $2D, $EF, $21, $1A, $2F, $1E, $EF, $E9
+    db "Wait one minute!"
+    db "You don't have ▽"
     prompt
 
     text Text_DoNothing
-    db $1E, $27, $28, $2E, $20, $21, $EF, $2D, $28, $EF, $1D, $28, $EF, $2D, $21, $1E,
-    db $23, $28, $1B, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "enough to do the"
+    db "job.           ▽"
     prompt
 
     text Text_DoNothing
-    db $08, $2D, $EF, $1C, $1A, $27, $4B, $2D, $EF, $1B, $1E, $EF, $1D, $28, $27, $1E
-    db $27, $28, $30, $4C, $EF, $12, $1E, $1E, $EF, $32, $1A, $4C, $EF, $EF, $EF, $EF
+    db "It can't be done"
+    db "now. See ya.    "
     done
 
     text Text_DoNothing
@@ -3275,6 +3280,11 @@ jr_007_7070:
     rst $28
     rst $38
 
+
+
+
+
+
 Text_DoNothing: ; 07x7078
     ret
 
@@ -3301,7 +3311,7 @@ jr_007_7083:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -3313,10 +3323,10 @@ jr_007_7083:
     ret
 
 
-Label_007_70a7:
+Text_GoToSleep:
     ld a, [wYesOrNo]
     or a
-    jr nz, jr_007_70f5
+    jr nz, .noSleep
 
     ld a, $ff
     ld [wTextID], a
@@ -3325,7 +3335,7 @@ Label_007_70a7:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -3350,8 +3360,7 @@ Label_007_70a7:
     ld [$b899], a
     ret
 
-
-jr_007_70f5:
+.noSleep
     call Call_000_3f26
     ret
 
@@ -3367,7 +3376,7 @@ jr_007_70f5:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -3401,7 +3410,7 @@ jr_007_712a:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -3448,14 +3457,14 @@ Label_007_7179:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
     ld [$cb57], a
     ret
 
-
+Label_007_71a8:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $ff
@@ -3662,92 +3671,80 @@ jr_007_7306:
     ld [sInventory], a
     ret
 
-
+Text_HouseExpansion:
     ld a, [wYesOrNo]
     or a
-    jp nz, Jump_007_73c5
+    jp nz, DeclineHouseExpansion
 
     ld a, [sHouseExpansionFlag]
-    cp $00
-    jr z, jr_007_7349
+    cp 0
+    jr z, .firstHouseExpansion
 
-    ld a, [$b939]
+; Requires 300 materials for second house expansion
+    ld a, [sNumberOfFencePosts+1]
     cp $02
-    jr nc, jr_007_732e
-
+    jr nc, .secondHouseExpansion
     cp $00
-    jr z, jr_007_7373
-
+    jr z, .cantDoHouseExpansion
     ld a, [sNumberOfFencePosts]
     cp $2c
-    jr nc, jr_007_732e
+    jr nc, .secondHouseExpansion
+    jr .cantDoHouseExpansion
 
-    jr jr_007_7373
-
-jr_007_732e:
+.secondHouseExpansion
     ld a, [sPlayerMoney+2]
     cp $00
-    jr nz, jr_007_7387
-
+    jr nz, .doHouseExpansion
     ld a, [sPlayerMoney+1]
     cp $14
-    jr nc, jr_007_7387
-
+    jr nc, .doHouseExpansion
     cp $13
-    jr c, jr_007_7373
-
+    jr c, .cantDoHouseExpansion
     ld a, [sPlayerMoney]
     cp $88
-    jr nc, jr_007_7387
+    jr nc, .doHouseExpansion
+    jr .cantDoHouseExpansion
 
-    jr jr_007_7373
-
-jr_007_7349:
-    ld a, [$b939]
+.firstHouseExpansion
+    ld a, [sNumberOfFencePosts+1]
     or a
-    jr nz, jr_007_7358
-
+    jr nz, .checkFirstExpansionCost
     ld a, [sNumberOfFencePosts]
-    cp $64
-    jr nc, jr_007_7358
+    cp 100
+    jr nc, .checkFirstExpansionCost
+    jr .cantDoHouseExpansion
 
-    jr jr_007_7373
-
-jr_007_7358:
+; I think it costs 2500
+.checkFirstExpansionCost
     ld a, [sPlayerMoney+2]
     cp $00
-    jr nz, jr_007_7387
-
+    jr nz, .doHouseExpansion
     ld a, [sPlayerMoney+1]
     cp $0a
-    jr nc, jr_007_7387
-
+    jr nc, .doHouseExpansion
     cp $09
-    jr c, jr_007_7373
-
+    jr c, .cantDoHouseExpansion
     ld a, [sPlayerMoney]
     cp $c4
-    jr nc, jr_007_7387
+    jr nc, .doHouseExpansion
+    jr .cantDoHouseExpansion
 
-    jr jr_007_7373
-
-jr_007_7373:
+.cantDoHouseExpansion
     call ClearOldTextOnTextBox
     ld hl, wTextNavigator
-    ld bc, $0081
+    ld bc, 3 * TEXT_BLOCK_BYTE_LENGTH
     call AddBCtoWordAtHL
     xor a
     ld [wTextCharacterCounter], a
     ld [$b8fe], a
     ret
 
-
-jr_007_7387:
+.doHouseExpansion
     ld a, $02
     ld [$b8fe], a
     ld a, [sHouseExpansionFlag]
-    cp $00
-    jr z, jr_007_73ac
+    cp 0
+    jr z, .doFirstHouseExpansion
 
     ld hl, sNumberOfFencePosts
     ld bc, -300
@@ -3759,8 +3756,7 @@ jr_007_7387:
     call UpdatePlayerMoneyTileData
     ret
 
-
-jr_007_73ac:
+.doFirstHouseExpansion
     ld hl, sNumberOfFencePosts
     ld bc, -100
     call AddBCtoWordAtHL
@@ -3771,8 +3767,7 @@ jr_007_73ac:
     call UpdatePlayerMoneyTileData
     ret
 
-
-Jump_007_73c5:
+DeclineHouseExpansion:
     xor a
     ld [$b8fe], a
     ret
@@ -3919,7 +3914,7 @@ jr_007_7476:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -3981,7 +3976,7 @@ jr_007_7516:
 
 
     xor a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, [wYesOrNo]
     or a
     jp nz, Jump_007_754d

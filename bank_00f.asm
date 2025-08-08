@@ -6101,7 +6101,7 @@ Call_00f_62dc:
     xor a
     ld [$b88c], a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     call Call_000_3dfd
     xor a

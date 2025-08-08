@@ -3642,7 +3642,7 @@ Call_03d_51d9:
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
     ld [wTextCharacterCounter], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call InitializeFarmMap
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a

@@ -4318,7 +4318,7 @@ jr_001_6ca4:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     ld a, $06
     ld [wDestinationWarpID], a
@@ -5462,7 +5462,7 @@ Call_001_7336:
     ld [wTextNavigator+1], a
     ld a, $00
     ld [wTextCharacterCounter], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ret
 
 

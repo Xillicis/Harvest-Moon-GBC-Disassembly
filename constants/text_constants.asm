@@ -2,6 +2,8 @@ const_def
 const YES ; 0
 const NO ; 1
 
+DEF TEXT_BLOCK_BYTE_LENGTH EQU 43
+
 const_def
 const TEXT_00
 const TEXT_01

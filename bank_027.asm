@@ -11601,7 +11601,7 @@ jr_027_7020:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -11624,7 +11624,7 @@ jr_027_7020:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -11666,7 +11666,7 @@ jr_027_7092:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -11700,7 +11700,7 @@ jr_027_70c7:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -11749,7 +11749,7 @@ jr_027_7111:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -11972,7 +11972,7 @@ jr_027_72a3:
     cp $00
     jr z, jr_027_72e6
 
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     cp $02
     jr nc, jr_027_72cb
 
@@ -12004,7 +12004,7 @@ jr_027_72cb:
     jr jr_027_7310
 
 jr_027_72e6:
-    ld a, [$b939]
+    ld a, [sNumberOfFencePosts+1]
     or a
     jr nz, jr_027_72f5
 
@@ -12220,7 +12220,7 @@ jr_027_7413:
     ld [wTextCharacterCounter], a
     xor a
     ld [wFreezePlayerInTextWindowOrInTown], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     call Call_000_3efc
     xor a
     ld [$cb58], a
@@ -12282,7 +12282,7 @@ jr_027_74b3:
 
 
     xor a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, [wYesOrNo]
     or a
     jp nz, Jump_027_74ea

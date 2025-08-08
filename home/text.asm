@@ -492,7 +492,7 @@ jr_000_387f:
     xor a
     ld [$cb58], a
     ld [$cb57], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $ff
     ld [wTempTextID], a
     ld a, $51
@@ -504,11 +504,11 @@ jr_000_389b:
     call InitializeTextIDAndDisplay
     xor a
     ld [$cb58], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $ff
     ld [wTempTextID], a
     xor a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $01
     ld [$cb57], a
     ld a, [$cbea]
@@ -535,11 +535,11 @@ Call_000_38c1:
     ld [wTextCharacterCounter], a
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $ff
     ld [wTempTextID], a
     xor a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, $01
     ld [$cb57], a
     pop hl
@@ -975,7 +975,6 @@ Jump_000_3b88:
 
     cp $80
     jr z, jr_000_3bfe
-
     ret
 
 
@@ -984,7 +983,6 @@ jr_000_3bc2:
     inc [hl]
     call Call_000_3c44
     ret
-
 
 jr_000_3bca:
     ld a, [$cb58]
@@ -997,7 +995,6 @@ jr_000_3bca:
     call Call_000_3fae
     ret
 
-
 jr_000_3bdb:
     ld a, [$cb58]
     and $01
@@ -1008,7 +1005,6 @@ jr_000_3bdb:
     inc [hl]
     call Call_000_3fae
     ret
-
 
 jr_000_3bec:
     ld a, [$cb58]
@@ -1022,24 +1018,18 @@ jr_000_3bec:
     call Call_000_3fae
     ret
 
-
 Call_000_3bfe:
 jr_000_3bfe:
     ld a, [$cb58]
     and $02
-
-Call_000_3c03:
     ret nz
 
     call Call_000_3c29
     ld hl, $cb58
     inc [hl]
     inc [hl]
-
-Jump_000_3c0c:
     call Call_000_3fae
     ret
-
 
 Jump_000_3c10:
     xor a
@@ -1051,14 +1041,10 @@ Jump_000_3c10:
     ld a, $ff
     ld [wTextID], a
     call Call_000_3f26
-Call_000_3c28:
     ret
-
 
 Call_000_3c29:
     ld hl, $3a67
-
-Jump_000_3c2c:
     ld a, [$cb58]
     sla a
     add l
@@ -1071,8 +1057,6 @@ Jump_000_3c2c:
     ld a, [hl]
     ld h, a
     ld l, e
-
-Jump_000_3c3c:
     call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [hl], a
@@ -1197,7 +1181,7 @@ jr_000_3d17:
     cp $04
     jr nz, jr_000_3d41
 
-    ld a, [$cb5f]
+    ld a, [wTextBoxIsDisplayed]
     or a
     ret nz
 
@@ -1226,7 +1210,7 @@ jr_000_3d41:
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [$cbeb], a
     ld [wTVIsTurnedOn], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ld a, [$b88c]
     or a
     ret nz
@@ -1344,6 +1328,6 @@ Call_000_3dfd:
     xor a
     ld [$cb58], a
     ld [$cb57], a
-    ld [$cb5f], a
+    ld [wTextBoxIsDisplayed], a
     ret
 

@@ -10729,7 +10729,7 @@ jr_016_6eed:
     nop
     nop
     nop
-    call c, Call_000_3c28
+    call c, $3c28
     ret nz
 
     xor h
@@ -13325,7 +13325,7 @@ jr_016_7a35:
     ld a, [hl]
     add c
     ld a, [hl]
-    jp nz, Jump_000_3c3c
+    jp nz, $3c3c
 
     nop
     nop

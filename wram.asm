@@ -109,7 +109,7 @@ wHeldObject:: db ; 0xcb4a
 ds 1 ; 0xcb4b
 
 ;; Either 1 or 0, for whether the textbox is displayed
-wTextBoxIsDisplayed:: db ; 0xcb4c
+wUnusedCB4C:: db ; 0xcb4c
 
 wTempTextID:: db ; 0xcb4d
 
@@ -139,7 +139,9 @@ ds 1 ; 0xcb5b
 ds 1 ; 0xcb5c
 ds 1 ; 0xcb5d
 ds 1 ; 0xcb5e
-ds 1 ; 0xcb5f
+
+wTextBoxIsDisplayed:: db ; 0xcb5f
+
 ds 1 ; 0xcb60
 
 ds 8 ; 
