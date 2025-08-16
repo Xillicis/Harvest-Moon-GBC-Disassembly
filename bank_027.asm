@@ -11725,18 +11725,18 @@ jr_027_70fc:
     jr nz, jr_027_7111
 
     ld a, $01
-    ld [$b893], a
+    ld [sGoOnPicnicFlag], a
     ret
 
 
 jr_027_7111:
     xor a
-    ld [$b893], a
+    ld [sGoOnPicnicFlag], a
     ret
 
 
     xor a
-    ld [$b893], a
+    ld [sGoOnPicnicFlag], a
     ld a, $0a
     ld [wDestinationWarpID], a
     ld a, $20

@@ -33,7 +33,10 @@ sb88f::  db
 sb890::  db 
 sb891::  db 
 sb892::  db 
-sb893::  db 
+
+; 1 - if going on the picnic, 0 - not going on picnic
+; This gets used to set the weather to sunny and does something else.
+sGoOnPicnicFlag::  db 
 sb894::  db 
 sb895::  db 
 sb896::  db 

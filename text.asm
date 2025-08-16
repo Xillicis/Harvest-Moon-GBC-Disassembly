@@ -395,7 +395,9 @@ PicnicInvitationText::
     db "here?          ▽"
     prompt
 
-    db $01, $04, $06, $40, $4C, $00, $68, $71, $00, $00
+    db $01, $04, $06, $40, $4C, $00
+    dw Text_PicnicInvitation
+    db $00, $00
     db "                "
     db " YES         NO "
     prompt
@@ -422,13 +424,11 @@ MariaGoToPicnicText::
     db "Hello <PLAYER>.     "
     db "I hope you     ▽"
     prompt 
-
     text Text_DoNothing
     db "weren't too     "
     db "busy.          ▽"
     prompt 
-
-    text Label_007_7179
+    text Text_HeadToPicnic
     db "Let's go on the  "
     db "picnic...       "
     prompt
@@ -438,87 +438,82 @@ EveJuicePicnicText::
     db "Hi <PLAYER>.        "
     db "This is        ▽"
     prompt
-
     text Text_DoNothing
     db "Wild Grape      "
     db "Juice.         ▽"
     prompt 
-
     text Text_DoNothing
     db "I know this is  "
     db "a little sweet,▽"
     prompt
-
-    db $00, $00, $00, $00, $00, $00
-    dw Label_007_71a8
-    db $00, $00
+    text Label_007_71a8
     db "but please have "
     db "some.           "
     prompt
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "I made too many "
     db "cookies for the▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Harvest Festival"
     db "<PLAYER>,I would   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $E2, $71, $00, $00
+    text Label_007_71e2
     db "like you to have"
     db "them.           "
     prompt 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+RescueBirdText::
+    text Text_DoNothing
     db "Oh No!          "
     db "Oh No! My bird ▽"
     prompt
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "ran away.       "
     db "Please help me ▽"
     prompt
-
     db $01, $03, $05, $40, $4C, $00, $05, $72, $00, $00
     db "find him?       "
     db " YES         NO "
-    prompt 
-; Yes option
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    prompt
+
+RescueBirdAcceptText::
+    text Text_DoNothing
     db "Thank You.      "
     db "Please let me  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "know as soon as "
     db "you find him.   "
     done
-; No option
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+RescueBirdDeclineText::
+    text Text_DoNothing
     db "Oh, I didn't    "
     db "know you were  ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "busy.           "
     db "I am sorry.     "
     done 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Oh I'm sorry... "
     db "Do you want to ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "be free?        "
     db "               ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Well, thank you "
     db "for being with ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $3D, $72, $00, $00
+    text Label_007_723d
     db "me, go and be   "
     db "free now...    ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $3E, $72, $00, $00
+    text Label_007_723e
     db "Good bye...     "
     db "I'm not sad.   ▽"
     prompt
@@ -526,7 +521,7 @@ EveJuicePicnicText::
     db "I will be OK... "
     db "Thank you for  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "helping me find "
     db "my bird...     ▽"
     prompt
@@ -535,49 +530,52 @@ EveJuicePicnicText::
     db "                "
     prompt 
 
-
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+FindWeatherVaneText::
+    text Text_DoNothing
     db "<PLAYER>. The hurri-"
     db "cane yesterday ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "was strong.     "
     db "I lost my      ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "weather vain du-"
     db "ring the storm,▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "did you see it? "
     db "It might have  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing
     db "been blown      "
     db "somewhere on   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "your ranch...   "
     db "Could you help ▽"
     prompt
     db $01, $07, $09, $40, $4C, $00, $73, $72, $00, $00
     db "me find it?     "
     db " YES         NO "
-    prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    prompt
+
+FindWeatherVaneAcceptText::
+    text Text_DoNothing
     db "Thank you, <PLAYER> "
     db "That's why I    ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "like you <PLAYER>.  "
     db "                "
-    done 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    done
+
+FindWeatherVaneDeclineText::
+    text Text_DoNothing
     db "What!           "
     db "I was a fool   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "for asking you! "
     db "                "
     done 

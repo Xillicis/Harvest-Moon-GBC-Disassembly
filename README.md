@@ -10,6 +10,12 @@ It builds the following rom:
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
+## My other projects
+
+-  [**Shade over Kanto: Purple Version**][SoK]
+
+[SoK]: https://romhackplaza.org/romhacks/shade-over-kanto-purple-version-game-boy/
+
 ## See also
 
 - **Discord:** [pret][discord]

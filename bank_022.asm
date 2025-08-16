@@ -1128,7 +1128,7 @@ Call_022_467b:
     ld [$b88e], a
     ld [$b890], a
     ld [$b891], a
-    ld [$b893], a
+    ld [sGoOnPicnicFlag], a
     ld [$b896], a
     ld [$b899], a
     ld [$b89a], a
@@ -4971,7 +4971,7 @@ Jump_022_5b38:
 
 
 Call_022_5b4d:
-    ld a, [$b893]
+    ld a, [sGoOnPicnicFlag]
     or a
     jr nz, jr_022_5b8d
 
@@ -8388,7 +8388,7 @@ jr_022_6cff:
     xor a
     ld [$b88c], a
     call Call_022_6f1a
-    ld a, [$b893]
+    ld a, [sGoOnPicnicFlag]
     or a
     call nz, Call_022_6e41
     ld a, [sCurrentDayCounter]

@@ -1100,7 +1100,7 @@ Call_002_4689:
     ld [$b88e], a
     ld [$b890], a
     ld [$b891], a
-    ld [$b893], a
+    ld [sGoOnPicnicFlag], a
     ld [$b896], a
     ld [$b899], a
     ld [$b89a], a
@@ -4701,7 +4701,7 @@ GetAutumnWeather:
     ret
 
 Call_002_5be0:
-    ld a, [$b893]
+    ld a, [sGoOnPicnicFlag]
     or a
     jr nz, jr_002_5c20
 
@@ -7405,7 +7405,7 @@ jr_002_6d9f:
     xor a
     ld [$b88c], a
     call Call_002_6fba
-    ld a, [$b893]
+    ld a, [sGoOnPicnicFlag]
     or a
     call nz, Call_002_6ee1
     ld a, [sCurrentDayCounter]
