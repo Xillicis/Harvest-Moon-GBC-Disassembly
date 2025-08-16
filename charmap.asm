@@ -85,6 +85,9 @@
     charmap "<DAY_DIGIT2>", $b1
     charmap "<DAY>", $b1, $ec
 
+    charmap "<NUM_MATERIAL>", $bc, $bd, $be
+    charmap "<NUM_FODDER>", $bf, $c0, $c1
+
     charmap "▽", $e9
     charmap " ", $ef
 

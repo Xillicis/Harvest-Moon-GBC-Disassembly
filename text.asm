@@ -86,9 +86,8 @@ Data_007_4786::
     db $BA, $00, $01, $00, $12, $00, $44, $00, $34, $00, $02, $00, $81, $00, $92, $00,
     db $02, $00, $A0, $00, $12, $00, $83, $00, $30, $00, $03, $00, $BA, $00, $DA, $00,
     db $C8, $00, $12, $00, $B1, $00, $92, $00, $02, $00, $44, $00, $52, $00, $02, $00,
-    db $13, $00, 
-    db $01, $00, $AC, $00, $10, $00, $40, $00, $6B, $00
-    db $FD, $00, $FD, $00, $FF, $FF
+    db $13, $00, $01, $00, $AC, $00, $10, $00, $40, $00, $6B, $00, $FD, $00, $FD, $00,
+    db $FF, $FF
 
 SpringSunnyDayText::
     text Text_DoNothing
@@ -215,7 +214,6 @@ StrongWindsText::
     db "inside today.   "
     done
 
-; Is this used in game? 
 ElipsesText::
     text Text_DoNothing
     db "…………………………………………"
@@ -264,7 +262,7 @@ ShippingBoxText::
 FencePostShedText::
     text Text_DoNothing
     db "Current Material"
-    db "      ", $BC, $BD, $BE, " Pieces" ; need to figure out the data loading here.
+    db "      <NUM_MATERIAL> Pieces"
     done
 
 StableSignText::
@@ -276,7 +274,7 @@ StableSignText::
 SiloSignText::
     text Text_DoNothing
     db "Current Fodder  "
-    db "      ", $BF, $C0, $C1, " Pieces"
+    db "      <NUM_FODDER> Pieces"
     done
 
 CalendarText::
@@ -580,15 +578,15 @@ FindWeatherVaneDeclineText::
     db "                "
     done 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "Oh, did you find"
     db "it? Good job.  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "This weathervane"
     db "is a memento   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "from my mother. "
     db "Thank you for  ▽"
     prompt
@@ -658,3 +656,95 @@ FindWeatherVaneDeclineText::
     db "I will try      "
     db "again...        "
     done 
+
+    text Text_DoNothing
+    db "You work hard   "
+    db "everyday, <PLAYER>.▽"
+    prompt 
+    text Text_DoNothing
+    db "Do you have a   "
+    db "Water Can?     ▽"
+    prompt 
+    text Text_DoNothing
+    db "I can make a    "
+    db "Sprinkler by   ▽"
+    prompt 
+    text Text_DoNothing
+    db "modifying a     "
+    db "water can.     ▽"
+    prompt
+    text Text_DoNothing
+    db "I need 7days to "
+    db "complete the   ▽"
+    prompt 
+    text Text_DoNothing
+    db "sprinkler. Make "
+    db "sure you come  ▽"
+    prompt 
+    text Text_DoNothing
+    db "and buy one.    "
+    db "                "
+    done 
+
+UpgradeHousePropositionText::
+    text Text_DoNothing
+    db "Hey!! <PLAYER>.     "
+    db "So this is the ▽"
+    prompt 
+
+    text Text_DoNothing
+    db "house you want  "
+    db "to expand...   ▽"
+    prompt 
+
+    text Text_DoNothing
+    db "Well...you need "
+    db $E8, $FB, $EA, $EB, "G and      ▽"
+    prompt 
+
+    text Text_DoNothing
+    db " ", $E5, $E6, $E7, $EF, "materials  "
+    db "Shall I expand ▽"
+    prompt 
+
+    db $01, $05, $0B, $40, $4C, $00
+    dw Text_HouseExpansion
+    db $00, $00
+    db "the house?      "
+    db " YES         NO "
+    prompt
+
+UpgradeHouseYesText::
+    text Text_DoNothing
+    db "Alright! It will"
+    db "take me 3 days ▽"
+    prompt
+    text Text_DoNothing
+    db "to complete,    "
+    db "starting       ▽"
+    prompt
+    text Text_DoNothing
+    db "tomorrow.       "
+    db "                "
+    done
+
+NotEnoughMaterialsOrMoneyText::
+    text Text_DoNothing
+    db "Wait one minute!"
+    db "You don't have ▽"
+    prompt
+    text Text_DoNothing
+    db "enough to do the"
+    db "job.           ▽"
+    prompt
+    text Text_DoNothing
+    db "It can't be done"
+    db "now. See ya.    "
+    done
+
+DeclineHouseUpgradeText::
+    text Text_DoNothing
+    db "Oh, I see.      "
+    db "Bye then.       "
+    done
+
