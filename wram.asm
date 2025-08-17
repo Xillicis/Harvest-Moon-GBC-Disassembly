@@ -38,7 +38,11 @@ ds 2
 wPlayerXPosition:: dw ; 0xc606
 wPlayerYPosition:: dw ; 0xc608
 
-ds 3
+ds 1 ; 0xc609
+
+ds 1 ; 0xc60a
+
+ds 1 ; 0xc60b
 
 ; 0 - Facing down
 ; 1 - Facing left

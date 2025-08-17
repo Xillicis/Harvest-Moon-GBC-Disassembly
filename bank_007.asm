@@ -428,9 +428,8 @@ Call_007_4298:
     ld a, $d9
     ld [$cb5d], a
     ld [$cb5e], a
-    ld hl, $0455
-    ld a, $00
-    call BankSwitchCallHL
+; an unnecessary callfar (bank switch) since its calling the home bank
+    callfar LoadTextBoxTilesIntoBGMap1
     ld a, $15
     call Call_000_151d
     ld a, FACING_LEFT
@@ -440,8 +439,8 @@ Call_007_4298:
     ld a, $28
     ld [$c60b], a
     ld a, $1f
-    call $16d1
-    ld a, $01
+    call Call_000_16d1
+    ld a, 1
     ld [wPlayerIsCarryingItem], a
     ld a, $80
     ld [$c62f], a
@@ -475,9 +474,7 @@ Call_007_4308:
     ld a, $d9
     ld [$cb5d], a
     ld [$cb5e], a
-    ld hl, $0455
-    ld a, $00
-    call BankSwitchCallHL
+    callfar LoadTextBoxTilesIntoBGMap1
     ld a, $4a
     call Call_000_151d
     ld a, $03
@@ -511,10 +508,7 @@ Call_007_4360:
     pop hl
     push hl
     push af
-    ld l, $3e
-    ld h, $48
-    ld a, $05
-    call BankSwitchCallHL
+    callfar2 Call_005_483e
     pop af
     pop hl
     ld c, $4f
@@ -552,9 +546,7 @@ Call_007_4360:
     ldh [$ff96], a
     ld a, $00
     ldh [$ff95], a
-    ld hl, $44a2
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Call_005_44a2
     ld a, $4a
     call Call_000_151d
     ld a, $03
@@ -575,7 +567,6 @@ Call_007_4360:
     call InitializeTextIDAndDisplay
     pop hl
     ret
-
 
 Call_007_43fb:
     ld a, [$c0a8]
@@ -602,9 +593,7 @@ Call_007_43fb:
 
     cp $03
     jr z, jr_007_4440
-
     ret
-
 
 jr_007_4422:
     inc a
@@ -613,14 +602,12 @@ jr_007_4422:
     call InitializeTextIDAndDisplay
     ret
 
-
 jr_007_442c:
     inc a
     ld [$c613], a
     ld a, $49
     call InitializeTextIDAndDisplay
     ret
-
 
 jr_007_4436:
     inc a
@@ -629,10 +616,8 @@ jr_007_4436:
     call InitializeTextIDAndDisplay
     ret
 
-
 jr_007_4440:
     jp Jump_007_40a1
-
 
 Call_007_4443:
     ld a, [$c0a8]

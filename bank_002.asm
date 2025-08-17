@@ -20,8 +20,8 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld de, $9010
     ld bc, $07f0
     call BankedCopyHLtoDEBig
-    ld hl, $47f1
-    ld a, $11
+    ld hl, TextFontTileset + $7f0
+    ld a, BANK(TextFontTileset)
     ld de, $8800
     ld bc, $0800
     call BankedCopyHLtoDEBig
@@ -211,7 +211,6 @@ jr_002_4170:
     ld [$ba4d], a
     ret
 
-
 Call_002_41dc:
     ld b, $12
 .loop
@@ -222,7 +221,6 @@ Call_002_41dc:
     dec b
     jr nz, .loop
     ret
-
 
 Call_002_41e6:
     ld de, $420c

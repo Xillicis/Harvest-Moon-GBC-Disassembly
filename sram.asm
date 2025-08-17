@@ -430,6 +430,9 @@ sba08::  db
 sba09::  db 
 sba0a::  db 
 sba0b::  db 
+; First byte
+; 0 - When you talk to the sprites for the first time, this gets set
+; 1 - When you receive your first berry from the sprite
 sSpriteEventFlags::  dw  ; 0xba0c
 sba0e::  db 
 sba0f::  db 

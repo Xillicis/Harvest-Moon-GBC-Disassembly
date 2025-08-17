@@ -767,7 +767,6 @@ jr_005_446c:
     ld [$c7cb], a
     ret
 
-
 Call_005_44a2:
     ld hl, vBGMap1
     ld de, Data_005_44b0

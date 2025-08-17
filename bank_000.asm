@@ -3154,7 +3154,7 @@ jr_000_19e9:
     ret nc
 
 jr_000_19ec:
-    ld a, $01
+    ld a, 1
     ld [wPlayerInFrontOfPet], a
     ret
 
