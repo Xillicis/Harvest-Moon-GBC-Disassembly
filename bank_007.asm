@@ -855,79 +855,80 @@ FindNinaDeclineText::
     db "for a while?    "
     db " YES         NO "
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $2F, $1E, $2B, $32, $EF, $EF,
-    db $26, $2E, $1C, $21, $EF, $1F, $28, $2B, $EF, $32, $28, $2E, $2B, $EF, $EF, $E9,
+
+    text Text_DoNothing
+    db "Thank you very  "
+    db "much for your  ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $24, $22, $27, $1D, $27, $1E, $2C, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing
+    db "kindness.       "
+    db "                "
     done
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $11, $1E, $1A, $25, $25, $32, $41, $EF, $08, $EF, $2C, $1E, $1E, $4C, $EF, $EF,
-    db $08, $4B, $26, $EF, $2C, $28, $2B, $2B, $32, $8E, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Really? I see.  "
+    db "I'm sorry,     ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $08, $EF, $1A, $2C, $24, $1E, $1D, $EF, $1F, $28, $2B, $EF, $2D, $28, $28, $EF,
-    db $26, $2E, $1C, $21, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing
+    db "I asked for too "
+    db "much.           "
     done 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
-    db $08, $EF, $24, $27, $28, $30, $EF, $2B, $1A, $27, $1C, $21, $EF, $EF, $EF, $EF,
-    db $30, $28, $2B, $24, $EF, $22, $2C, $EF, $1D, $22, $1F, $1F, $22, $44, $EF, $E9,
+    text Text_DoNothing
+    db "I know ranch    "
+    db "work is diffi- ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $1C, $2E, $25, $2D, $EF, $1B, $2E, $2D, $EF, $24, $1E, $1E, $29, $EF, $2E, $29,
-    db $2D, $21, $1E, $EF, $20, $28, $28, $1D, $EF, $30, $28, $2B, $24, $4C, $EF, $EF,
+    text Text_DoNothing
+    db "cult but keep up"
+    db "the good work.  "
     done
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $0C, $1A, $2B, $22, $1A, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $08, $EF, $1A, $26, $EF, $2C, $28, $2B, $2B, $32, $4C, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Maria,          "
+    db "I am sorry.    ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $0F, $25, $1E, $1A, $2C, $1E, $EF, $1C, $28, $26, $1E, $EF, $EF, $EF, $EF, $EF,
-    db $1B, $1A, $1C, $24, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Please come     "
+    db "back.          ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $0D, $28, $8E, $EF, $08, $EF, $1A, $26, $EF, $27, $28, $2D, $EF, $EF, $EF, $EF,
-    db $2B, $1E, $1A, $1D, $32, $EF, $2D, $28, $EF, $20, $1E, $2D, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "No, I am not    "
+    db "ready to get   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $26, $1A, $2B, $2B, $22, $1E, $1D, $EF, $32, $1E, $2D, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "married yet.    "
+    db "               ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $16, $21, $32, $41, $EF, $13, $21, $1E, $2B, $1E, $EF, $22, $2C, $EF, $EF, $EF,
-    db $27, $28, $EF, $28, $27, $1E, $EF, $1B, $1E, $2D, $2D, $1E, $2B, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Why? There is   "
+    db "no one better  ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $2D, $21, $1A, $27, $EF, $21, $22, $26, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF,
-    db $26, $1A, $2B, $2B, $32, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "than him to     "
+    db "marry.         ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $08, $EF, $1D, $28, $EF, $27, $28, $2D, $EF, $25, $22, $24, $1E, $EF, $EF, $EF,
-    db $32, $28, $2E, $2B, $EF, $30, $1A, $32, $EF, $28, $1F, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "I do not like   "
+    db "your way of    ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $2D, $21, $22, $27, $24, $22, $27, $20, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $1F, $1A, $2D, $21, $1E, $2B, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "thinking,       "
+    db "father.        ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $0C, $1A, $2B, $22, $1A, $8E, $EF, $1C, $28, $26, $1E, $EF, $1B, $1A, $1C, $24,
-    db $21, $28, $26, $1E, $EF, $1A, $27, $1D, $EF, $30, $1E, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Maria, come back"
+    db "home and we    ▽"
     prompt 
     db $00, $00, $00, $00, $00, $00, $F6, $73, $00, $00
-    db $30, $22, $25, $25, $EF, $1D, $22, $2C, $1C, $2E, $2C, $2C, $EF, $22, $2D, $4C,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "will discuss it."
+    db "               ▽"
     done 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $A0, $A1, $A2, $A3, $8E, $EF, $08, $EF, $30, $22, $25, $25, $EF, $1B, $1E, $EF,
     db $20, $28, $22, $27, $20, $EF, $21, $28, $26, $1E, $EF, $27, $28, $30, $4C, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $2F, $1E, $2B, $32, $EF, $EF,
     db $26, $2E, $1C, $21, $EF, $1F, $28, $2B, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt 
@@ -935,11 +936,11 @@ FindNinaDeclineText::
     db $25, $1E, $2D, $2D, $22, $27, $20, $EF, $26, $1E, $EF, $2C, $2D, $1A, $32, $EF,
     db $1A, $2D, $EF, $32, $28, $2E, $2B, $EF, $2B, $1A, $27, $1C, $21, $4C, $EF, $EF,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $2D, $28, $25, $1D, $EF,
     db $26, $1E, $EF, $2D, $28, $EF, $1B, $2E, $32, $EF, $1A, $27, $EF, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing
     db $1E, $20, $20, $4C, $EF, $02, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $EF,
     db $29, $25, $1E, $1A, $2C, $1E, $EF, $2C, $1E, $25, $25, $EF, $26, $1E, $EF, $E9,
     prompt 
@@ -947,11 +948,11 @@ FindNinaDeclineText::
     db $1A, $27, $EF, $1E, $20, $20, $41, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $0E, $21, $EF, $27, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $30, $22, $25, $25, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $1B, $1E, $EF, $1A, $27, $20, $2B, $32, $EF, $30, $22, $2D, $21, $EF, $EF, $EF,
     db $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     done 
@@ -980,6 +981,7 @@ FindNinaDeclineText::
     db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
     db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $4C, $EF, $EF,
     done 
+
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
     db $0E, $21, $EF, $27, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $16, $21, $1A, $2D, $EF, $30, $22, $25, $25, $EF, $08, $EF, $1D, $28, $41, $E9,
@@ -1001,7 +1003,7 @@ FindNinaDeclineText::
     db $08, $EF, $23, $2E, $2C, $2D, $EF, $2C, $2D, $28, $29, $29, $1E, $1D, $EF, $EF,
     db $1B, $32, $EF, $2D, $28, $EF, $1E, $2C, $1C, $1A, $29, $1E, $EF, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $1F, $2B, $28, $26, $EF, $2D, $21, $1E, $EF, $21, $1E, $1A, $2D, $4C, $EF, $EF,
     db $0F, $25, $1E, $1A, $2C, $1E, $EF, $23, $28, $22, $27, $EF, $26, $1E, $EF, $E9,
     prompt 
@@ -1009,11 +1011,11 @@ FindNinaDeclineText::
     db $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $06, $28, $28, $1D, $EF, $1E, $2F, $1E, $27, $22, $27, $20, $4C, $EF, $EF, $EF,
     db $16, $21, $1A, $2D, $EF, $1A, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $1B, $1E, $1A, $2E, $2D, $22, $1F, $2E, $25, $EF, $26, $28, $28, $27, $EF, $EF,
     db $2D, $28, $27, $22, $20, $21, $2D, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt 
@@ -1021,21 +1023,19 @@ FindNinaDeclineText::
     db $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $22, $2C, $EF, $21, $1E, $2B, $1E,
     db $27, $28, $30, $8E, $EF, $25, $1E, $2D, $53, $EF, $20, $28, $4C, $EF, $EF, $EF,
     prompt 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $08, $2D, $53, $EF, $1C, $28, $26, $29, $25, $1E, $2D, $1E, $1D, $4C, $EF, $EF,
     db $08, $EF, $21, $1A, $2F, $1E, $EF, $27, $1A, $26, $1E, $1D, $EF, $22, $2D, $E9,
     prompt 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $03, $1E, $25, $2E, $31, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $16, $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E, $4C, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $08, $EF, $30, $22, $25, $25, $EF, $20, $22, $2F, $1E, $EF, $32, $28, $2E, $EF,
     db $2D, $21, $22, $2C, $EF, $12, $2E, $29, $1E, $2B, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $07, $1A, $26, $26, $1E, $2B, $4C, $EF, $18, $28, $2E, $EF, $1C, $1A, $27, $EF,
     db $1B, $2B, $1E, $1A, $24, $EF, $1A, $EF, $21, $2E, $20, $1E, $EF, $EF, $EF, $E9,
     prompt
@@ -1115,50 +1115,77 @@ FindNinaDeclineText::
     db $0E, $0A, $40, $EF, $01, $2E, $2D, $EF, $2B, $1E, $26, $1E, $26, $1B, $1E, $2B,
     db $2D, $21, $1E, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $EF, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $12, $29, $2B, $22, $2D, $1E,
-    db $2C, $EF, $1C, $1A, $27, $EF, $28, $27, $25, $32, $21, $1E, $25, $29, $EF, $32,
-    db $28, $2E, $EF, $28, $27, $1C, $1E, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00,
-    db $00, $99, $75, $00, $00, $1E, $2F, $1E, $2B, $32, $EF, $36, $38, $EF, $21, $28,
-    db $2E, $2B, $2C, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    text Text_DoNothing 
+    db $12, $29, $2B, $22, $2D, $1E, $2C, $EF, $1C, $1A, $27, $EF, $28, $27, $25, $32,
+    db $21, $1E, $25, $29, $EF, $32, $28, $2E, $EF, $28, $27, $1C, $1E, $EF, $EF, $E9,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $99, $75, $00, $00
+    db $1E, $2F, $1E, $2B, $32, $EF, $36, $38, $EF, $21, $28, $2E, $2B, $2C, $40, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    prompt 
+    text Text_DoNothing 
     db $08, $EF, $2C, $1E, $1E, $4C, $4C, $4C, $EF, $0C, $1A, $32, $1B, $1E, $EF, $EF,
     db $08, $EF, $1C, $1A, $27, $EF, $21, $1E, $25, $29, $EF, $32, $28, $2E, $EF, $E9,
-    db $FE, $00, $00, $00, $00, $00, $00, $99, $75, $00, $00, $27, $1E, $31, $2D, $EF,
-    db $2D, $22, $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00,
-    db $00, $00, $78, $70, $00, $00, $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21,
-    db $1E, $EF, $EF, $EF, $EF, $EF, $12, $21, $22, $29, $29,
-    db $22, $27, $20, $EF, $01, $28, $31, $EF, $2D, $28, $EF, $FF, $00, $00, $00, $00,
-    db $00, $00, $78, $70, $00, $00, $2C, $21, $22, $29, $EF, $1C, $2B, $28, $29, $2C,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $13, $21, $1E, $EF, $2D, $2B, $1A, $1D, $1E, $2B,
-    db $EF, $30, $22, $25, $25, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00,
-    db $00, $29, $22, $1C, $24, $EF, $2E, $29, $EF, $32, $28, $2E, $2B, $EF, $EF, $EF,
-    db $EF, $2C, $21, $22, $29, $26, $1E, $27, $2D, $EF, $1A, $2D, $EF, $39, $0F, $0C,
-    db $4C, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $13, $21, $1E, $2C,
-    db $1E, $EF, $2D, $30, $28, $EF, $2D, $28, $30, $1E, $2B, $2C, $1A, $2B, $1E, $EF,
-    db $12, $22, $25, $28, $2C, $EF, $2E, $2C, $1E, $1D, $EF, $EF, $FF, $00, $00, $00,
-    db $00, $00, $00, $78, $70, $00, $00, $2D, $28, $EF, $2C, $2D, $28, $2B, $1E, $EF,
-    db $1F, $28, $1D, $1D, $1E, $2B, $4C, $0E, $27, $EF, $2D, $21, $1E, $EF, $2B, $22,
-    db $20, $21, $2D, $EF, $28, $1F, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70,
-    db $00, $00, $2D, $21, $1E, $EF, $2C, $22, $25, $28, $2C, $EF, $22, $2C, $EF, $2D,
-    db $21, $1E, $02, $21, $22, $1C, $24, $1E, $27, $EF, $02, $28, $28, $29, $EF, $1A,
-    db $27, $1D, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $28, $27, $EF,
-    db $2D, $21, $1E, $EF, $25, $1E, $1F, $2D, $EF, $22, $2C, $EF, $EF, $2D, $21, $1E,
-    db $EF, $02, $28, $30, $EF, $01, $1A, $2B, $27, $4C, $EF, $EF, $EF, $FF, $00, $00,
-    db $00, $00, $00, $00, $78, $70, $00, $00, $13, $21, $22, $2C, $EF, $22, $2C, $EF,
-    db $2D, $21, $1E, $EF, $12, $21, $1E, $1D, $30, $21, $1E, $2B, $1E, $EF, $32, $28,
-    db $2E, $2B, $EF, $22, $2D, $1E, $26, $2C, $FF, $00, $00, $00, $00, $00, $00, $78,
-    db $70, $00, $00, $1A, $2B, $1E, $EF, $24, $1E, $29, $2D, $4C, $4C, $4C, $4C, $4C,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $99, $75, $00, $00
+    db $27, $1E, $31, $2D, $EF, $2D, $22, $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    prompt 
+    text Text_DoNothing
+    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $EF,
+    db $12, $21, $22, $29, $29, $22, $27, $20, $EF, $01, $28, $31, $EF, $2D, $28, $EF,
+    done
+    text Text_DoNothing 
+    db $2C, $21, $22, $29, $EF, $1C, $2B, $28, $29, $2C, $4C, $EF, $EF, $EF, $EF, $EF,
+    db $13, $21, $1E, $EF, $2D, $2B, $1A, $1D, $1E, $2B, $EF, $30, $22, $25, $25, $EF,
+    done 
+    text Text_DoNothing 
+    db $29, $22, $1C, $24, $EF, $2E, $29, $EF, $32, $28, $2E, $2B, $EF, $EF, $EF, $EF,
+    db $2C, $21, $22, $29, $26, $1E, $27, $2D, $EF, $1A, $2D, $EF, $39, $0F, $0C, $4C,
+    done 
+    text Text_DoNothing 
+    db $13, $21, $1E, $2C, $1E, $EF, $2D, $30, $28, $EF, $2D, $28, $30, $1E, $2B, $2C,
+    db $1A, $2B, $1E, $EF, $12, $22, $25, $28, $2C, $EF, $2E, $2C, $1E, $1D, $EF, $EF,
+    done
+    text Text_DoNothing 
+    db $2D, $28, $EF, $2C, $2D, $28, $2B, $1E, $EF, $1F, $28, $1D, $1D, $1E, $2B, $4C,
+    db $0E, $27, $EF, $2D, $21, $1E, $EF, $2B, $22, $20, $21, $2D, $EF, $28, $1F, $EF,
+    done
+    text Text_DoNothing 
+    db $2D, $21, $1E, $EF, $2C, $22, $25, $28, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E,
+    db $02, $21, $22, $1C, $24, $1E, $27, $EF, $02, $28, $28, $29, $EF, $1A, $27, $1D,
+    done 
+    text Text_DoNothing 
+    db $28, $27, $EF, $2D, $21, $1E, $EF, $25, $1E, $1F, $2D, $EF, $22, $2C, $EF, $EF,
+    db $2D, $21, $1E, $EF, $02, $28, $30, $EF, $01, $1A, $2B, $27, $4C, $EF, $EF, $EF,
+    done 
+
+    text Text_DoNothing
+    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $12, $21, $1E, $1D,
+    db $30, $21, $1E, $2B, $1E, $EF, $32, $28, $2E, $2B, $EF, $22, $2D, $1E, $26, $2C,
+    done 
+
+    text Text_DoNothing 
+    db $1A, $2B, $1E, $EF, $24, $1E, $29, $2D, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C,
     db $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C,
-    db $4C, $4C, $4C, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1E, $31,
-    db $29, $25, $1A, $27, $1A, $2D, $22, $28, $27, $2C, $EF, $28, $27, $EF, $2D, $21,
-    db $1E, $EF, $2D, $28, $28, $25, $2C, $EF, $1A, $27, $1D, $EF, $EF, $EF, $FF, $00,
-    db $00, $00, $00, $00, $00, $78, $70, $00, $00, $2D, $21, $1E, $22, $2B, $EF, $2E,
-    db $2C, $1A, $20, $1E, $8E, $EF, $1B, $2E, $2D, $08, $EF, $1A, $26, $EF, $1A, $EF,
-    db $25, $22, $2D, $2D, $25, $1E, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00,
-    db $78, $70, $00, $00, $08, $EF, $1A, $26, $EF, $1A, $EF, $25, $22, $2D, $2D, $25,
-    db $1E, $EF, $EF, $EF, $2D, $22, $2B, $1E, $1D, $4C, $4C, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1A,
+    done 
+
+    text Text_DoNothing 
+    db $1E, $31, $29, $25, $1A, $27, $1A, $2D, $22, $28, $27, $2C, $EF, $28, $27, $EF,
+    db $2D, $21, $1E, $EF, $2D, $28, $28, $25, $2C, $EF, $1A, $27, $1D, $EF, $EF, $EF,
+    done 
+
+    text Text_DoNothing 
+    db $2D, $21, $1E, $22, $2B, $EF, $2E, $2C, $1A, $20, $1E, $8E, $EF, $1B, $2E, $2D,
+    db $08, $EF, $1A, $26, $EF, $1A, $EF, $25, $22, $2D, $2D, $25, $1E, $EF, $EF, $EF,
+    done 
+
+    text Text_DoNothing 
+    db $08, $EF, $1A, $26, $EF, $1A, $EF, $25, $22, $2D, $2D, $25, $1E, $EF, $EF, $EF,
+    db $2D, $22, $2B, $1E, $1D, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1A,
     db $2D, $EF, $26, $32, $EF, $1B, $28, $28, $24, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF,
     db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $25, $28, $2D, $EF, $28, $1F,
@@ -1201,19 +1228,9 @@ FindNinaDeclineText::
     db $8E, $EF, $21, $26, $26, $26, $4C, $EF, $EF, $FF, 
 
 
-
 Text_DoNothing: ; 07x7078
     ret
 
-
-
-
-
-
-
-
-
-;;;;;; REAL CODE BELOW HERE!
 Label_007_7079:
     ld a, [wYesOrNo]
     or a
@@ -1236,7 +1253,6 @@ Label_007_7079:
     ld [wInputFreezeTimer], a
     call Call_000_0f0f
     ret
-
 
 Text_GoToSleep:
     ld a, [wYesOrNo]
@@ -1303,7 +1319,6 @@ Label_007_70f9:
     call Call_000_0f0f
     ret
 
-
 jr_007_712a:
     call Call_000_3f26
     ret
@@ -1331,7 +1346,6 @@ Label_007_712e:
     ld [$cb58], a
     ld [$cb57], a
     ret
-
 
 jr_007_715f:
     call Call_000_3f26
@@ -1446,7 +1460,6 @@ Label_007_71e2:
     ld a, $0a
     call Call_000_0f47
     ret
-
 
 jr_007_7238:
     xor a
