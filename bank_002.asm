@@ -4584,7 +4584,7 @@ Call_002_5b01:
     ld [sSeasonOfNextDay], a
 
 jr_002_5b28:
-    call Call_002_5be0
+    call SetSpecialDaySunnyWeather
     ld a, [sCurrentWeather]
     cp WINDY_DAY
     jr nz, jr_002_5b38
@@ -4700,55 +4700,49 @@ GetAutumnWeather:
     ld [sNextDayWeather], a
     ret
 
-Call_002_5be0:
+SetSpecialDaySunnyWeather:
     ld a, [sGoOnPicnicFlag]
     or a
-    jr nz, jr_002_5c20
-
+    jr nz, .setPicnicWeather
     ld a, [sSeasonOfNextDay]
     cp SUMMER
-    jr z, jr_002_5bfc
-
+    jr z, .jr_002_5bfc
     ld a, [sSeasonOfNextDay]
     cp AUTUMN
-    jr z, jr_002_5c04
-
+    jr z, .jr_002_5c04
     ld a, [sSeasonOfNextDay]
     cp WINTER
-    jr z, jr_002_5c0c
+    jr z, .jr_002_5c0c
     ret
 
-
-jr_002_5bfc:
+.jr_002_5bfc
     ld a, [sNextDayCounter]
-    cp $13
-    jr z, jr_002_5c19
+    cp 19
+    jr z, .jr_002_5c19
     ret
 
-
-jr_002_5c04:
+.jr_002_5c04
     ld a, [sNextDayCounter]
-    cp $09
-    jr z, jr_002_5c19
+    cp 9
+    jr z, .jr_002_5c19
     ret
 
-jr_002_5c0c:
+.jr_002_5c0c
     ld a, [sCurrentYear]
     or a
     ret nz
-
     ld a, [sNextDayCounter]
-    cp $13
-    jr z, jr_002_5c19
+    cp 19
+    jr z, .jr_002_5c19
     ret
 
-jr_002_5c19:
-    ld a, $00
+.jr_002_5c19
+    ld a, SUNNY_DAY
     ld [sNextDayWeather], a
     pop hl
     ret
 
-jr_002_5c20:
+.setPicnicWeather
     ld a, SUNNY_DAY
     ld [sCurrentWeather], a
     pop hl
