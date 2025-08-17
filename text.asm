@@ -507,7 +507,7 @@ RescueBirdDeclineText::
     db "Well, thank you "
     db "for being with ▽"
     prompt
-    text Label_007_723d
+    text Text_DoNothing2
     db "me, go and be   "
     db "free now...    ▽"
     prompt
@@ -515,7 +515,7 @@ RescueBirdDeclineText::
     db "Good bye...     "
     db "I'm not sad.   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $49, $72, $00, $00
+    text Label_007_7249
     db "I will be OK... "
     db "Thank you for  ▽"
     prompt
@@ -523,7 +523,7 @@ RescueBirdDeclineText::
     db "helping me find "
     db "my bird...     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $5C, $72, $00, $00
+    text Label_007_725c
     db "Well, good bye. "
     db "                "
     prompt 
@@ -553,7 +553,9 @@ FindWeatherVaneText::
     db "your ranch...   "
     db "Could you help ▽"
     prompt
-    db $01, $07, $09, $40, $4C, $00, $73, $72, $00, $00
+    db $01, $07, $09, $40, $4C, $00
+    dw Text_FindWeatherVane
+    db $00, $00
     db "me find it?     "
     db " YES         NO "
     prompt

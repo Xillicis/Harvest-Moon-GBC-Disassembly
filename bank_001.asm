@@ -4395,7 +4395,7 @@ jr_001_6d18:
     ld [$c8a0], a
     ld [$c8c0], a
     ld [$c8e0], a
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     jr z, jr_001_6d77
 
@@ -5170,7 +5170,7 @@ Call_001_712d:
     or a
     ret nz
 
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     ret nz
 
@@ -6234,7 +6234,7 @@ Call_001_783c:
     ld [sClockFrameCount], a
     xor a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a

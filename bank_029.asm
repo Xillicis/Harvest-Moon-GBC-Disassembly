@@ -452,7 +452,7 @@ jr_029_4254:
     or a
     jr nz, jr_029_4239
 
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     jr nz, jr_029_4239
 
@@ -542,7 +542,7 @@ jr_029_42cf:
 
     xor a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a

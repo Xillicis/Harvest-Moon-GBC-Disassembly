@@ -3136,12 +3136,12 @@ jr_021_5522:
 
 
 Jump_021_5566:
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     ret z
 
     xor a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a
@@ -6949,7 +6949,7 @@ jr_021_6bab:
     ld [$c8a0], a
     ld [$c8c0], a
     ld [$c8e0], a
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     jr z, jr_021_6c0a
 
@@ -7920,7 +7920,7 @@ Call_021_7032:
     or a
     ret nz
 
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     ret nz
 
@@ -8961,7 +8961,7 @@ Call_021_771c:
     ld [sClockFrameCount], a
     xor a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a

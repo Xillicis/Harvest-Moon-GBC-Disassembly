@@ -1127,7 +1127,7 @@ Call_022_467b:
     xor a
     ld [$b88e], a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [sGoOnPicnicFlag], a
     ld [$b896], a
     ld [$b899], a

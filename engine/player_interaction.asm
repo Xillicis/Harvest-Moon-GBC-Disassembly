@@ -1527,12 +1527,12 @@ jr_001_5603:
 
 
 Jump_001_5647:
-    ld a, [$b891]
+    ld a, [sFindWeatherVaneFlag]
     or a
     ret z
 
     xor a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a

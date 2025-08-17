@@ -11635,7 +11635,7 @@ jr_027_7020:
     call Call_000_0f0f
     xor a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a
@@ -11870,7 +11870,7 @@ jr_027_71d5:
     jr nz, jr_027_7248
 
     ld a, $01
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld a, $22
     call Call_000_15e4
     ld a, $88
@@ -11894,7 +11894,7 @@ jr_027_71d5:
 
 jr_027_7248:
     xor a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ret
 
 

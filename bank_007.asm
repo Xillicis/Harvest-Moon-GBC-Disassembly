@@ -419,7 +419,7 @@ Call_007_4298:
     callfar2 Label_01f_7819
     pop af
     pop hl
-    ld hl, $75d2
+    ld hl, Label_007_75d2
     ld c, $07
     ld de, $9800
     call DrawMaskedClippedTile
@@ -1181,7 +1181,7 @@ Text_GoToSleep:
     call Call_000_0f0f
     xor a
     ld [$b890], a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ld [$c760], a
     ld a, $10
     ld [$ae30], a
@@ -1340,7 +1340,7 @@ Label_007_71e2:
     call $1ae6
     ret
 
-
+Label_007_7205:
     ld a, [wYesOrNo]
     or a
     jr nz, jr_007_7238
@@ -1370,7 +1370,7 @@ jr_007_7238:
     ld [$b890], a
     ret
 
-Label_007_723d:
+Text_DoNothing2: ; 07x723d
     ret
 
 Label_007_723e:
@@ -1380,7 +1380,7 @@ Label_007_723e:
     ld [wInputFreezeTimer], a
     ret
 
-
+Label_007_7249:
     ld a, $04
     ld [$c811], a
     ld a, $02
@@ -1390,7 +1390,7 @@ Label_007_723e:
     call Call_000_3f26
     ret
 
-
+Label_007_725c:
     xor a
     ld [$c810], a
     ld a, $ff
@@ -1402,13 +1402,13 @@ Label_007_723e:
     call Call_000_3f26
     ret
 
-
+Text_FindWeatherVane: ; 07x7273
     ld a, [wYesOrNo]
     or a
     jr nz, jr_007_72ab
 
-    ld a, $01
-    ld [$b891], a
+    ld a, 1
+    ld [sFindWeatherVaneFlag], a
     ld a, $22
     call Call_000_15e4
     ld a, $88
@@ -1429,10 +1429,9 @@ Label_007_723e:
     ld [$ae31], a
     ret
 
-
 jr_007_72ab:
     xor a
-    ld [$b891], a
+    ld [sFindWeatherVaneFlag], a
     ret
 
 Label_007_72b0:
@@ -1598,17 +1597,14 @@ DeclineHouseExpansion:
     ld [$b8fe], a
     ret
 
-
+Label_007_73ca:
     ld a, [wYesOrNo]
     or a
-    jr nz, jr_007_73d6
-
+    jr nz, .jr_007_73d6
     ld a, $01
     ld [$b899], a
     ret
-
-
-jr_007_73d6:
+.jr_007_73d6
     xor a
     ld [$b899], a
     ret
@@ -1616,45 +1612,42 @@ jr_007_73d6:
 Label_007_73db:
     ld a, [wYesOrNo]
     or a
-    jr nz, jr_007_73ec
-
+    jr nz, .jr_007_73ec
     ld a, $01
     ld [$b89a], a
     ld a, $0a
     call Call_000_0f47
     ret
 
-jr_007_73ec:
+.jr_007_73ec
     xor a
     ld [$b89a], a
     ld a, $f6
     call Call_000_0f47
     ret
 
-
+Label_007_73f6:
     call Call_000_3f26
     ld a, [sHouseExpansionFlag]
-    cp $00
-    jr z, jr_007_740a
-
-    cp $01
-    jr z, jr_007_7410
-
+    cp 0
+    jr z, .jr_007_740a
+    cp 1
+    jr z, .jr_007_7410
     ld a, $72
     ld [$c831], a
     ret
 
-jr_007_740a:
+.jr_007_740a
     ld a, $5a
     ld [$c831], a
     ret
 
-jr_007_7410:
+.jr_007_7410
     ld a, $83
     ld [$c831], a
     ret
 
-
+Label_007_7416:
     xor a
     ld [$b89a], a
     ld a, [sHouseExpansionFlag]
@@ -1715,7 +1708,7 @@ jr_007_7476:
     ld [$c811], a
     ret
 
-
+Label_007_7498:
     ld a, [wYesOrNo]
     or a
     jr nz, jr_007_74e6
@@ -1755,7 +1748,7 @@ jr_007_74e6:
     ld [$b88e], a
     ret
 
-
+Label_007_74eb:
     call Call_000_3f26
     xor a
     ld [$c813], a
@@ -1763,7 +1756,7 @@ jr_007_74e6:
     ld [$cbf6], a
     ret
 
-
+Label_007_74f8:
     ld a, [wYesOrNo]
     or a
     jr nz, jr_007_7516
@@ -1779,7 +1772,6 @@ jr_007_74e6:
     call Call_000_0f47
     ret
 
-
 jr_007_7516:
     xor a
     ld [$b88e], a
@@ -1787,13 +1779,13 @@ jr_007_7516:
     call Call_000_0f47
     ret
 
-
+Label_007_7520:
     call Call_000_3f26
     ld a, $02
     ld [$c813], a
     ret
 
-
+Label_007_7529:
     xor a
     ld [wTextBoxIsDisplayed], a
     ld a, [wYesOrNo]
@@ -1811,6 +1803,7 @@ jr_007_7516:
     xor a
     ld [wTextCharacterCounter], a
     jr jr_007_758d
+
 
     ret
 
@@ -1836,6 +1829,7 @@ Jump_007_754d:
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     jr jr_007_7585
+
 
     ret
 
@@ -1891,455 +1885,50 @@ jr_007_75c5:
     ld [$ba41], a
     ret
 
-
+Label_007_75cb:
     ld a, $01
     ld [wFreezePlayerInTextWindowOrInTown], a
     ret
 
-
+Label_007_75d1:
     ret
 
+Label_007_75d2:
+    db $00, $04, $E6, $13, $00, $01, $01, $AF, $01, $B3, $01, $A6, $A6, $01, $7A, $12,
+    db $00, $A6, $10, $00, $00, $00, $05, $06, $AD, $03, $EB, $A7, $A7, $03, $02, $A7,
+    db $10, $00, $00, $00, $15, $01, $16, $AF, $05, $25, $00, $01, $04, $1F, $00, $07,
+    db $02, $01, $04, $1F, $00, $00, $0F, $04, $4B, $08, $0F, $04, $4B, $08, $0D, $04,
+    db $21, $0C, $69, $0C, $0D, $04, $F8, $21, $0C, $69, $0C, $E3, $0F, $21, $22, $23,
+    db $60, $A6, $E7, $A6, $03, $04, $0F, $0A, $E3, $11, $31, $32, $33, $DF, $70, $A7,
+    db $A7, $13, $14, $0F, $02, $01, $01, $FF, $07, $08, $01, $01, $41, $42, $43, $2F,
+    db $FC, $01, $14, $2F, $04, $01, $01, $17, $18, $01, $01, $0F, $BA, $BB, $C9, $3F,
+    db $01, $14, $2F, $04, $81, $17, $45, $00, $63, $20, $40, $27, $00, $07, $18, $27,
+    db $00, $30, $50, $27, $00, $00, $0B, $1E, $87, $1B, $2F, $1C, $4B, $13, $2F, $1C,
+    db $1F, $00, $1F, $00, $1F, $00, $00, $1F, $00, $1F, $00, $1F, $00, $1F, $00, $1F,
+    db $00, $1F, $00, $1F, $00, $1F, $00, $00, $1F, $00, $1F, $00, $1F, $00, $1F, $00,
+    db $1F, $00, $1F, $00, $1F, $00, $1F, $00, $00, $1F, $00, $1F, $00, $1F, $00, $1F,
+    db $00, $1F, $00, $1F, $00, $1F, $00, $17, $00, $00, $04, $FD, $BD, $12, $00, $5A,
+    db $F0, $F1, $F2, $F3, $F4, $BC, $52, $00, $13, $01, $BD, $5A, $20, $40, $02, $02,
+    db $AA, $6A, $12, $00, $7D, $07, $02, $7C, $24, $01, $30, $50, $02, $04, $8F, $B0,
+    db $B1, $B1, $B2, $0B, $02, $24, $01, $04, $04, $E9, $BF, $69, $6A, $F8, $E8, $E8,
+    db $6D, $07, $06, $6C, $BC, $24, $01, $04, $04, $B3, $79, $7A, $B4, $00, $06, $C6,
+    db $2F, $C7, $C8, $E6, $E7, $52, $00, $7C, $24, $01, $04, $08, $FF, $B7, $6B, $7B,
+    db $B8, $B6, $B6, $B9, $D6, $2F, $D7, $D8, $F6, $F7, $52, $00, $B5, $24, $01, $04,
+    db $08, $37, $00, $01, $01, $B5, $0C, $07, $08, $29, $01, $04, $0C, $26, $08, $02,
+    db $17, $18, $29, $03, $04, $0C, $01, $1F, $00, $0A, $04, $00, $DF, $01, $04, $02,
+    db $05, $08, $29, $08, $99, $15, $05, $08, $0F, $02, $93, $17, $5A, $04, $14, $04,
+    db $23, $0C, $AB, $AC, $14, $00, $AD, $51, $19, $AF, $05, $06, $05, $06, $04, $18,
+    db $14, $23, $0E, $BC, $7A, $15, $00, $59, $51, $1B, $15, $16, $15, $16, $0B, $08,
+    db $E0, $0B, $02, $21, $04, $0B, $08, $0D, $02, $07, $04, $05, $06, $01, $87, $01,
+    db $05, $06, $70, $20, $31, $06, $A0, $20, $0D, $0C, $15, $1F, $16, $01, $01, $15,
+    db $16, $60, $1F, $A1, $22, $A0, $20, $0C, $0C, $0C, $02, $04, $00, $00, $60, $21,
+    db $A4, $20, $0F, $04, $04, $02, $27, $B3, $69, $6A, $A1, $1E, $0C, $10, $09, $23,
+    db $1C, $01, $02, $74, $A3, $20, $0C, $0C, $0A, $23, $1E, $B5, $B6, $B6, $A4, $20,
+    db $22, $0C, $0C, $0B, $27, $20, $89, $16, $06, $14, $1C, $0F, $02, $0B, $10, $00,
+    db $39, $1E, $E9, $03, $09, $1C, $0D, $02, $E1, $17, $04, $30, $80, $02, $2F, $00,
+    db $3F, $20, $40, 
 
-    nop
-    inc b
-    and $13
-    nop
-    ld bc, $af01
-    ld bc, $01b3
-    and [hl]
-    and [hl]
-    ld bc, $127a
-    nop
-    and [hl]
-    stop
-    nop
-    nop
-    dec b
-    ld b, $ad
-    inc bc
-    db $eb
-    and a
-    and a
-    inc bc
-    ld [bc], a
-    and a
-    stop
-    nop
-    nop
-    dec d
-    ld bc, $af16
-    dec b
-    dec h
-    nop
-    ld bc, $1f04
-    nop
-    rlca
-    ld [bc], a
-    ld bc, $1f04
-    nop
-    nop
-    rrca
-    inc b
-    ld c, e
-    ld [$040f], sp
-    ld c, e
-    ld [$040d], sp
-    ld hl, $690c
-    inc c
-    dec c
-    inc b
-    ld hl, sp+$21
-    inc c
-    ld l, c
-    inc c
-    db $e3
-    rrca
-    ld hl, $2322
-    ld h, b
-    and [hl]
-    rst $20
-    and [hl]
-    inc bc
-    inc b
-    rrca
-    ld a, [bc]
-    db $e3
-    ld de, $3231
-    inc sp
-    rst $18
-    ld [hl], b
-    and a
-    and a
-    inc de
-    inc d
-    rrca
-    ld [bc], a
-    ld bc, rSB
-    rlca
-    ld [$0101], sp
-    ld b, c
-    ld b, d
-    ld b, e
-    cpl
-    db $fc
-    ld bc, $2f14
-    inc b
-    ld bc, $1701
-    jr @+$03
-
-    ld bc, $ba0f
-    cp e
-    ret
-
-
-    ccf
-    ld bc, $2f14
-    inc b
-    add c
-    rla
-    ld b, l
-    nop
-    ld h, e
-    jr nz, jr_007_769d
-
-    daa
-    nop
-    rlca
-    jr jr_007_7689
-
-    nop
-    jr nc, jr_007_76b5
-
-    daa
-    nop
-    nop
-    dec bc
-    ld e, $87
-    dec de
-    cpl
-    inc e
-    ld c, e
-    inc de
-    cpl
-    inc e
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-
-jr_007_7689:
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-
-jr_007_769d:
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rla
-    nop
-    nop
-    inc b
-    db $fd
-    cp l
-    ld [de], a
-    nop
-    ld e, d
-    ldh a, [$fff1]
-    ldh a, [c]
-
-jr_007_76b5:
-    di
-    db $f4
-    cp h
-    ld d, d
-    nop
-    inc de
-    ld bc, $5abd
-    jr nz, jr_007_7700
-
-    ld [bc], a
-    ld [bc], a
-    xor d
-    ld l, d
-    ld [de], a
-    nop
-    ld a, l
-    rlca
-    ld [bc], a
-    ld a, h
-    inc h
-    ld bc, $5030
-    ld [bc], a
-    inc b
-    adc a
-    or b
-    or c
-    or c
-    or d
-    dec bc
-    ld [bc], a
-    inc h
-    ld bc, $0404
-    jp hl
-
-
-    cp a
-    ld l, c
-    ld l, d
-    ld hl, sp-$18
-    add sp, $6d
-    rlca
-    ld b, $6c
-    cp h
-    inc h
-    ld bc, $0404
-    or e
-    ld a, c
-    ld a, d
-    or h
-    nop
-    ld b, $c6
-    cpl
-    rst $00
-    ret z
-
-    and $e7
-    ld d, d
-    nop
-    ld a, h
-    inc h
-    ld bc, $0804
-    rst $38
-    or a
-
-jr_007_7700:
-    ld l, e
-    ld a, e
-    cp b
-    or [hl]
-    or [hl]
-    cp c
-    sub $2f
-    rst $10
-    ret c
-
-    or $f7
-    ld d, d
-    nop
-    or l
-    inc h
-    ld bc, $0804
-    scf
-    nop
-    ld bc, $b501
-    inc c
-    rlca
-    ld [$0129], sp
-    inc b
-    inc c
-    ld h, $08
-    ld [bc], a
-    rla
-    jr @+$2b
-
-    inc bc
-    inc b
-    inc c
-    ld bc, $001f
-    ld a, [bc]
-    inc b
-    nop
-    rst $18
-    ld bc, $0204
-    dec b
-    ld [$0829], sp
-    sbc c
-    dec d
-    dec b
-    ld [$020f], sp
-    sub e
-    rla
-    ld e, d
-    inc b
-    inc d
-    inc b
-
-jr_007_7742:
-    inc hl
-    inc c
-    xor e
-    xor h
-    inc d
-    nop
-    xor l
-    ld d, c
-    add hl, de
-    xor a
-    dec b
-    ld b, $05
-
-jr_007_774f:
-    ld b, $04
-    jr @+$16
-
-    inc hl
-    ld c, $bc
-    ld a, d
-    dec d
-    nop
-    ld e, c
-    ld d, c
-    dec de
-    dec d
-    ld d, $15
-    ld d, $0b
-    ld [$0be0], sp
-    ld [bc], a
-    ld hl, $0b04
-    ld [$020d], sp
-    rlca
-    inc b
-    dec b
-    ld b, $01
-    add a
-    ld bc, $0605
-    ld [hl], b
-    jr nz, @+$33
-
-    ld b, $a0
-    jr nz, jr_007_7788
-
-    inc c
-    dec d
-    rra
-    ld d, $01
-    ld bc, $1615
-    ld h, b
-    rra
-    and c
-    ld [hl+], a
-    and b
-
-jr_007_7788:
-    jr nz, jr_007_7796
-
-    inc c
-    inc c
-    ld [bc], a
-    inc b
-    nop
-    nop
-    ld h, b
-    ld hl, $20a4
-    rrca
-    inc b
-
-jr_007_7796:
-    inc b
-    ld [bc], a
-    daa
-    or e
-    ld l, c
-    ld l, d
-    and c
-    ld e, $0c
-    db $10
-    add hl, bc
-    inc hl
-    inc e
-    ld bc, $7402
-    and e
-    jr nz, jr_007_77b5
-
-    inc c
-    ld a, [bc]
-    inc hl
-    ld e, $b5
-    or [hl]
-    or [hl]
-    and h
-    jr nz, jr_007_77d5
-
-    inc c
-    inc c
-
-jr_007_77b5:
-    dec bc
-    daa
-    jr nz, jr_007_7742
-
-    ld d, $06
-    inc d
-    inc e
-    rrca
-    ld [bc], a
-    dec bc
-    stop
-    add hl, sp
-    ld e, $e9
-    inc bc
-    add hl, bc
-    inc e
-    dec c
-    ld [bc], a
-    pop hl
-    rla
-    inc b
-    jr nc, jr_007_774f
-
-    ld [bc], a
-    cpl
-    nop
-    ccf
-    jr nz, jr_007_7815
-
-jr_007_77d5:
+Label_007_77d5:
     and [hl]
     and [hl]
     ld d, h
@@ -2373,6 +1962,7 @@ jr_007_77d5:
     ld d, $80
     jp hl
 
+;;;; Not sure where the real code is...
 
     dec bc
     add hl, bc
