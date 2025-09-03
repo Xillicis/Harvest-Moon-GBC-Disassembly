@@ -814,51 +814,51 @@ INCLUDE "text.asm"
     done 
 
     text Text_DoNothing
-    db $A0, $A1, $A2, $A3, $8E, $EF, $08, $EF, $30, $22, $25, $25, $EF, $1B, $1E, $EF,
-    db $20, $28, $22, $27, $20, $EF, $21, $28, $26, $1E, $EF, $27, $28, $30, $4C, $E9,
+    db "<PLAYER>, I will be "
+    db "going home now.▽"
     prompt 
     text Text_DoNothing
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $2F, $1E, $2B, $32, $EF, $EF,
-    db $26, $2E, $1C, $21, $EF, $1F, $28, $2B, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Thank you very  "
+    db "much for       ▽"
     prompt 
     db $00, $00, $00, $00, $00, $00, $16, $74, $00, $00
-    db $25, $1E, $2D, $2D, $22, $27, $20, $EF, $26, $1E, $EF, $2C, $2D, $1A, $32, $EF,
-    db $1A, $2D, $EF, $32, $28, $2E, $2B, $EF, $2B, $1A, $27, $1C, $21, $4C, $EF, $EF,
+    db "letting me stay "
+    db "at your ranch.  "
     prompt 
     text Text_DoNothing
-    db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $2D, $28, $25, $1D, $EF,
-    db $26, $1E, $EF, $2D, $28, $EF, $1B, $2E, $32, $EF, $1A, $27, $EF, $EF, $EF, $E9,
+    db "My grandma told "
+    db "me to buy an   ▽"
     prompt 
     text Text_DoNothing
-    db $1E, $20, $20, $4C, $EF, $02, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $EF,
-    db $29, $25, $1E, $1A, $2C, $1E, $EF, $2C, $1E, $25, $25, $EF, $26, $1E, $EF, $E9,
+    db "egg. Could you  "
+    db "please sell me ▽"
     prompt 
     db $01, $00, $03, $40, $4C, $00, $98, $74, $00, $00
-    db $1A, $27, $EF, $1E, $20, $20, $41, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF,
+    db "an egg?         "
+    db " YES         NO "
     prompt 
     text Text_DoNothing
-    db $0E, $21, $EF, $27, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $30, $22, $25, $25, $E9,
+    db "Oh no!          "
+    db "My grandma will▽"
     prompt 
     text Text_DoNothing
-    db $1B, $1E, $EF, $1A, $27, $20, $2B, $32, $EF, $30, $22, $2D, $21, $EF, $EF, $EF,
-    db $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "be angry with   "
+    db "me!!            "
     done 
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $07, $1E, $2B, $1E, $EF, $22, $2C, $EF, $3B, $39, $06, $EF, $1F, $28, $2B, $EF,
-    db $2D, $21, $1E, $EF, $1E, $20, $20, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "Here is 75G for "
+    db "the egg.       ▽"
     prompt 
     db $00, $00, $00, $00, $00, $00, $EB, $74, $00, $00
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $1A, $27, $1D, $EF, $EF, $EF,
-    db $2C, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $4C, $EF, $EF,
+    db "Thank you and   "
+    db "see you later.  "
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $08, $EF, $1B, $1E, $25, $22, $1E, $2F, $1E, $EF, $08, $EF, $29, $1A, $22, $1D,
-    db $2D, $28, $28, $EF, $26, $2E, $1C, $21, $EF, $1F, $28, $2B, $EF, $EF, $EF, $E9,
+    text Text_DoNothing
+    db "I believe I paid"
+    db "too much for   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $2D, $21, $1E, $EF, $1E, $20, $20, $4C, $EF, $16, $28, $2E, $25, $1D, $EF, $EF,
     db $32, $28, $2E, $EF, $29, $25, $1E, $1A, $2C, $1E, $EF, $20, $22, $2F, $1E, $E9,
     prompt 
@@ -866,29 +866,27 @@ INCLUDE "text.asm"
     db $26, $1E, $EF, $26, $32, $EF, $1C, $21, $1A, $27, $20, $1E, $41, $EF, $EF, $EF,
     db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
     db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $4C, $EF, $EF,
     done 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $0E, $21, $EF, $27, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $16, $21, $1A, $2D, $EF, $30, $22, $25, $25, $EF, $08, $EF, $1D, $28, $41, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $EF, $EF, $EF, $EF, $EF,
     db $30, $22, $25, $25, $EF, $1B, $1E, $EF, $1A, $27, $20, $2B, $32, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $30, $22, $2D, $21, $EF, $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     done 
-
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $07, $22, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $04, $2F, $1E, $2B, $32, $1D, $44,
     db $1A, $32, $EF, $22, $2C, $EF, $2C, $28, $EF, $21, $28, $2D, $4C, $4C, $4C, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db $08, $EF, $23, $2E, $2C, $2D, $EF, $2C, $2D, $28, $29, $29, $1E, $1D, $EF, $EF,
     db $1B, $32, $EF, $2D, $28, $EF, $1E, $2C, $1C, $1A, $29, $1E, $EF, $EF, $EF, $E9,
     prompt 
@@ -1060,29 +1058,33 @@ INCLUDE "text.asm"
     done 
 
     text Text_DoNothing 
-    db $1E, $31, $29, $25, $1A, $27, $1A, $2D, $22, $28, $27, $2C, $EF, $28, $27, $EF,
-    db $2D, $21, $1E, $EF, $2D, $28, $28, $25, $2C, $EF, $1A, $27, $1D, $EF, $EF, $EF,
+    db "explanations on "
+    db "the tools and   "
     done 
 
     text Text_DoNothing 
-    db $2D, $21, $1E, $22, $2B, $EF, $2E, $2C, $1A, $20, $1E, $8E, $EF, $1B, $2E, $2D,
-    db $08, $EF, $1A, $26, $EF, $1A, $EF, $25, $22, $2D, $2D, $25, $1E, $EF, $EF, $EF,
+    db "their usage, but"
+    db "I am a little   "
     done 
 
     text Text_DoNothing 
-    db $08, $EF, $1A, $26, $EF, $1A, $EF, $25, $22, $2D, $2D, $25, $1E, $EF, $EF, $EF,
-    db $2D, $22, $2B, $1E, $1D, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "I am a little   "
+    db "tired...        "
     done
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $1A,
-    db $2D, $EF, $26, $32, $EF, $1B, $28, $28, $24, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF,
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $25, $28, $2D, $EF, $28, $1F,
-    db $EF, $26, $22, $25, $24, $4C, $EF, $EF, $EF, $EF, $0E, $1F, $EF, $1C, $28, $2E,
-    db $2B, $2C, $1E, $EF, $1D, $28, $EF, $27, $28, $2D, $FF, $00, $00, $00, $00, $00,
-    db $00, $78, $70, $00, $00, $1F, $28, $2B, $20, $1E, $2D, $EF, $2D, $28, $EF, $1F,
-    db $1E, $1E, $1D, $EF, $EF, $2D, $21, $1E, $26, $EF, $1E, $2F, $1E, $2B, $32, $1D,
-    db $1A, $32, $4C, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    db $1A, $2D, $EF, $26, $32, $EF, $1B, $28, $28, $24, $4C, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    done
+    text Text_DoNothing
+    db $25, $28, $2D, $EF, $28, $1F, $EF, $26, $22, $25, $24, $4C, $EF, $EF, $EF, $EF,
+    db $0E, $1F, $EF, $1C, $28, $2E, $2B, $2C, $1E, $EF, $1D, $28, $EF, $27, $28, $2D,
+    done
+    text Text_DoNothing 
+    db $1F, $28, $2B, $20, $1E, $2D, $EF, $2D, $28, $EF, $1F, $1E, $1E, $1D, $EF, $EF,
+    db $2D, $21, $1E, $26, $EF, $1E, $2F, $1E, $2B, $32, $1D, $1A, $32, $4C, $EF, $EF,
+    done 
+    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00,
     db $1C, $21, $22, $1C, $24, $1E, $27, $2C, $EF, $30, $22, $25, $25, $EF, $EF, $EF,
     db $27, $28, $2D, $EF, $25, $1A, $32, $EF, $1A, $27, $32, $EF, $1E, $20, $20, $2C,
     db $FF, $00, $00, $00, $00, $00, $00, $78, $70, $00, $00, $0D, $1E, $2F, $1E, $2B,

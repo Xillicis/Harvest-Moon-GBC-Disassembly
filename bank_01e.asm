@@ -5,8 +5,8 @@
 
 SECTION "ROM Bank $01e", ROMX[$4000], BANK[$1e]
 
-Data_01e_4000:
-    db $1E
+    db $1E ; bank number
+
 Data_01e_4001:
     db $32, $00, $69, $41, $4B, $01, $18, $42, $64, $02, $2F, $43, $7D, $03, $68, $43
 Data_01e_4011:

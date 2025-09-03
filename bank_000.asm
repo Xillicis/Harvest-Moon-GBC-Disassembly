@@ -5046,16 +5046,19 @@ jr_000_25c0:
     ld [$d3a2], a
     ret
 
-
+; call 4x
 Call_000_25c5:
     call Call_000_25ce
 
+; call 3x
 Call_000_25c8:
     call Call_000_25ce
 
+; call 2x
 Call_000_25cb:
     call Call_000_25ce
 
+; call 1x
 Call_000_25ce:
     push bc
     push de
@@ -5084,7 +5087,7 @@ Call_000_25ce:
     jr z, jr_000_2613
 
     inc hl
-    ld a, [hl-]
+    ld a, [hld]
     ld b, $ee
     and $03
     jr z, jr_000_260c
