@@ -859,28 +859,28 @@ INCLUDE "text.asm"
     db "too much for   ▽"
     prompt 
     text Text_DoNothing
-    db $2D, $21, $1E, $EF, $1E, $20, $20, $4C, $EF, $16, $28, $2E, $25, $1D, $EF, $EF,
-    db $32, $28, $2E, $EF, $29, $25, $1E, $1A, $2C, $1E, $EF, $20, $22, $2F, $1E, $E9,
+    db "the egg. Would  "
+    db "you please give▽"
     prompt 
     db $01, $03, $04, $40, $4C, $00, $F8, $74, $00, $00
-    db $26, $1E, $EF, $26, $32, $EF, $1C, $21, $1A, $27, $20, $1E, $41, $EF, $EF, $EF,
-    db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF,
+    db "me my change?   "
+    db " YES         NO "
     prompt 
     text Text_DoNothing
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $4C, $EF, $EF,
+    db "Thank you.      "
+    db "See you later.  "
     done 
     text Text_DoNothing
-    db $0E, $21, $EF, $27, $28, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $16, $21, $1A, $2D, $EF, $30, $22, $25, $25, $EF, $08, $EF, $1D, $28, $41, $E9,
+    db "Oh no!          "
+    db "What will I do?▽"
     prompt 
     text Text_DoNothing
-    db $0C, $32, $EF, $20, $2B, $1A, $27, $1D, $26, $1A, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $30, $22, $25, $25, $EF, $1B, $1E, $EF, $1A, $27, $20, $2B, $32, $EF, $EF, $E9,
+    db "My grandma      "
+    db "will be angry  ▽"
     prompt 
     text Text_DoNothing
-    db $30, $22, $2D, $21, $EF, $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "with me!!       "
+    db "                "
     done 
     text Text_DoNothing
     db $07, $22, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $04, $2F, $1E, $2B, $32, $1D, $44,
