@@ -845,3 +845,212 @@ FindNinaDeclineText::
     db "the good work.  "
     done
 
+    text Text_DoNothing
+    db "Maria,          "
+    db "I am sorry.    ▽"
+    prompt 
+    text Text_DoNothing
+    db "Please come     "
+    db "back.          ▽"
+    prompt 
+    text Text_DoNothing
+    db "No, I am not    "
+    db "ready to get   ▽"
+    prompt 
+    text Text_DoNothing
+    db "married yet.    "
+    db "               ▽"
+    prompt 
+    text Text_DoNothing
+    db "Why? There is   "
+    db "no one better  ▽"
+    prompt 
+    text Text_DoNothing
+    db "than him to     "
+    db "marry.         ▽"
+    prompt 
+    text Text_DoNothing
+    db "I do not like   "
+    db "your way of    ▽"
+    prompt 
+    text Text_DoNothing
+    db "thinking,       "
+    db "father.        ▽"
+    prompt 
+    text Text_DoNothing
+    db "Maria, come back"
+    db "home and we    ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $F6, $73, $00, $00
+    db "will discuss it."
+    db "               ▽"
+    done 
+
+    text Text_DoNothing
+    db "<PLAYER>, I will be "
+    db "going home now.▽"
+    prompt 
+    text Text_DoNothing
+    db "Thank you very  "
+    db "much for       ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $16, $74, $00, $00
+    db "letting me stay "
+    db "at your ranch.  "
+    prompt 
+    text Text_DoNothing
+    db "My grandma told "
+    db "me to buy an   ▽"
+    prompt 
+    text Text_DoNothing
+    db "egg. Could you  "
+    db "please sell me ▽"
+    prompt 
+    db $01, $00, $03, $40, $4C, $00, $98, $74, $00, $00
+    db "an egg?         "
+    db " YES         NO "
+    prompt 
+    text Text_DoNothing
+    db "Oh no!          "
+    db "My grandma will▽"
+    prompt 
+    text Text_DoNothing
+    db "be angry with   "
+    db "me!!            "
+    done 
+
+    text Text_DoNothing
+    db "Here is 75G for "
+    db "the egg.       ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $EB, $74, $00, $00
+    db "Thank you and   "
+    db "see you later.  "
+    prompt
+    text Text_DoNothing
+    db "I believe I paid"
+    db "too much for   ▽"
+    prompt 
+    text Text_DoNothing
+    db "the egg. Would  "
+    db "you please give▽"
+    prompt 
+    db $01, $03, $04, $40, $4C, $00, $F8, $74, $00, $00
+    db "me my change?   "
+    db " YES         NO "
+    prompt 
+    text Text_DoNothing
+    db "Thank you.      "
+    db "See you later.  "
+    done 
+    text Text_DoNothing
+    db "Oh no!          "
+    db "What will I do?▽"
+    prompt 
+    text Text_DoNothing
+    db "My grandma      "
+    db "will be angry  ▽"
+    prompt 
+    text Text_DoNothing
+    db "with me!!       "
+    db "                "
+    done 
+
+    text Text_DoNothing
+    db "Hi <PLAYER>. Everyd-"
+    db "ay is so hot...▽"
+    prompt 
+    text Text_DoNothing
+    db "I just stopped  "
+    db "by to escape   ▽"
+    prompt 
+    text Text_DoNothing
+    db "from the heat.  "
+    db "Please join me ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $20, $75, $00, $00,
+    db "<PLAYER>.           "
+    db "                "
+    prompt 
+
+    text Text_DoNothing
+    db "Good evening.   "
+    db "What a         ▽"
+    prompt 
+    text Text_DoNothing
+    db "beautiful moon  "
+    db "tonight.       ▽"
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $20, $75, $00, $00, 
+    db "Everyone is here"
+    db "now, let's go.   "
+    prompt 
+
+    text Text_DoNothing
+    db "It's completed.  "
+    db "I have named it▽"
+    prompt 
+    text Text_DoNothing
+    db "Deluxe          "
+    db "Wood House.    ▽"
+    prompt
+    text Text_DoNothing
+    db "I will give you "
+    db "this Super     ▽"
+    prompt
+    text Text_DoNothing
+    db "Hammer. You can "
+    db "break a huge   ▽"
+    prompt
+    text Text_DoNothing
+    db "rock with one   "
+    db "swing.         ▽"
+    prompt 
+    text Text_DoNothing
+    db "Well, I will be "
+    db "leaving. Come  ▽"
+    prompt
+    text Text_DoNothing 
+    db "see me if you   "
+    db "need anything.  "
+    done
+
+    text Text_DoNothing
+    db "It's finally com-"
+    db "pleted. It's now▽"
+    prompt 
+    text Text_DoNothing
+    db "a Ultra-Deluxe  "
+    db "Wood House.    ▽"
+    prompt
+    text Text_DoNothing 
+    db "Well, I'll be   "
+    db "leaving. Come  ▽"
+    prompt 
+    text Text_DoNothing
+    db "see me if you   "
+    db "need anything.  "
+    done
+
+    text Text_DoNothing 
+    db "Happy New Year  "
+    db "<PLAYER>!!         ▽"
+    prompt 
+    text Text_DoNothing 
+    db "I hope you have "
+    db "a wonderful    ▽"
+    prompt 
+    text Text_DoNothing 
+    db "new year.       "
+    db "                "
+    done 
+
+    text Text_DoNothing 
+    db "Do you want the "
+    db "Harvest Sprite ▽"
+    prompt 
+    db $01, $02, $0A, $40, $4C, $00, $29, $75, $00, $00, 
+    db "help?           "
+    db " YES         NO "
+    prompt
+
