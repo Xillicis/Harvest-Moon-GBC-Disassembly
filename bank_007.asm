@@ -805,57 +805,56 @@ INCLUDE "text.asm"
     db "                "
     prompt 
     text Text_DoNothing 
-    db $08, $EF, $2C, $1E, $1E, $4C, $4C, $4C, $EF, $0C, $1A, $32, $1B, $1E, $EF, $EF,
-    db $08, $EF, $1C, $1A, $27, $EF, $21, $1E, $25, $29, $EF, $32, $28, $2E, $EF, $E9,
+    db "I see... Maybe  "
+    db "I can help you ▽"
     prompt 
     db $00, $00, $00, $00, $00, $00, $99, $75, $00, $00
-    db $27, $1E, $31, $2D, $EF, $2D, $22, $26, $1E, $40, $40, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "next time!!     "
+    db "                "
     prompt 
+
+
+;;; This might be the beginning tutorial text I think.
     text Text_DoNothing
-    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $EF,
-    db $12, $21, $22, $29, $29, $22, $27, $20, $EF, $01, $28, $31, $EF, $2D, $28, $EF,
+    db "This is the     "
+    db "Shipping Box to "
     done
     text Text_DoNothing 
-    db $2C, $21, $22, $29, $EF, $1C, $2B, $28, $29, $2C, $4C, $EF, $EF, $EF, $EF, $EF,
-    db $13, $21, $1E, $EF, $2D, $2B, $1A, $1D, $1E, $2B, $EF, $30, $22, $25, $25, $EF,
+    db "ship crops.     "
+    db "The trader will "
     done 
     text Text_DoNothing 
-    db $29, $22, $1C, $24, $EF, $2E, $29, $EF, $32, $28, $2E, $2B, $EF, $EF, $EF, $EF,
-    db $2C, $21, $22, $29, $26, $1E, $27, $2D, $EF, $1A, $2D, $EF, $39, $0F, $0C, $4C,
+    db "pick up your    "
+    db "shipment at 5PM."
     done 
     text Text_DoNothing 
-    db $13, $21, $1E, $2C, $1E, $EF, $2D, $30, $28, $EF, $2D, $28, $30, $1E, $2B, $2C,
-    db $1A, $2B, $1E, $EF, $12, $22, $25, $28, $2C, $EF, $2E, $2C, $1E, $1D, $EF, $EF,
+    db "These two towers"
+    db "are Silos used  "
     done
     text Text_DoNothing 
-    db $2D, $28, $EF, $2C, $2D, $28, $2B, $1E, $EF, $1F, $28, $1D, $1D, $1E, $2B, $4C,
-    db $0E, $27, $EF, $2D, $21, $1E, $EF, $2B, $22, $20, $21, $2D, $EF, $28, $1F, $EF,
+    db "to store fodder."
+    db "On the right of "
     done
     text Text_DoNothing 
-    db $2D, $21, $1E, $EF, $2C, $22, $25, $28, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E,
-    db $02, $21, $22, $1C, $24, $1E, $27, $EF, $02, $28, $28, $29, $EF, $1A, $27, $1D,
+    db "the silos is the"
+    db "Chicken Coop and"
     done 
     text Text_DoNothing 
-    db $28, $27, $EF, $2D, $21, $1E, $EF, $25, $1E, $1F, $2D, $EF, $22, $2C, $EF, $EF,
-    db $2D, $21, $1E, $EF, $02, $28, $30, $EF, $01, $1A, $2B, $27, $4C, $EF, $EF, $EF,
+    db "on the left is  "
+    db "the Cow Barn.   "
     done 
-
     text Text_DoNothing
-    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $12, $21, $1E, $1D,
-    db $30, $21, $1E, $2B, $1E, $EF, $32, $28, $2E, $2B, $EF, $22, $2D, $1E, $26, $2C,
+    db "This is the Shed"
+    db "where your items"
     done 
-
     text Text_DoNothing 
-    db $1A, $2B, $1E, $EF, $24, $1E, $29, $2D, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C,
-    db $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C, $4C,
+    db "are kept........"
+    db "................"
     done 
-
     text Text_DoNothing 
     db "explanations on "
     db "the tools and   "
     done 
-
     text Text_DoNothing 
     db "their usage, but"
     db "I am a little   "
@@ -866,65 +865,68 @@ INCLUDE "text.asm"
     db "tired...        "
     done
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
-    db $1A, $2D, $EF, $26, $32, $EF, $1B, $28, $28, $24, $4C, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+;;; Weird hanging sentence here...
+    text Text_DoNothing 
+    db "at my book.     "
+    db "                "
     done
     text Text_DoNothing
-    db $25, $28, $2D, $EF, $28, $1F, $EF, $26, $22, $25, $24, $4C, $EF, $EF, $EF, $EF,
-    db $0E, $1F, $EF, $1C, $28, $2E, $2B, $2C, $1E, $EF, $1D, $28, $EF, $27, $28, $2D,
+    db "lot of milk.    "
+    db "Of course do not"
     done
     text Text_DoNothing 
-    db $1F, $28, $2B, $20, $1E, $2D, $EF, $2D, $28, $EF, $1F, $1E, $1E, $1D, $EF, $EF,
-    db $2D, $21, $1E, $26, $EF, $1E, $2F, $1E, $2B, $32, $1D, $1A, $32, $4C, $EF, $EF,
+    db "forget to feed  "
+    db "them everyday.  "
     done 
     text Text_DoNothing
-    db $1C, $21, $22, $1C, $24, $1E, $27, $2C, $EF, $30, $22, $25, $25, $EF, $EF, $EF,
-    db $27, $28, $2D, $EF, $25, $1A, $32, $EF, $1A, $27, $32, $EF, $1E, $20, $20, $2C,
+    db "chickens will   "
+    db "not lay any eggs"
     done 
     text Text_DoNothing
-    db $0D, $1E, $2F, $1E, $2B, $EF, $1F, $28, $2B, $20, $1E, $2D, $4C, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Never forget.   "
+    db "                "
+    done
+
+    text Text_DoNothing
+    db "  Ranch Master  "
+    db "     Mark       "
+    prompt 
+    text Text_DoNothing
+    db "This is the mark"
+    db "of a great     ▽"
+    prompt
+    text Text_DoNothing
+    db "Ranch Master.   "
+    db "Everyone       ▽"
+    prompt 
+    text Text_DoNothing
+    db "respects a Ranch"
+    db "Master and     ▽"
+    prompt
+    text Text_DoNothing
+    db "longs to be one "
+    db "themselves.     "
+    done 
+
+    text Text_DoNothing
+    db "Don't touch this"
+    db "plant!!        ▽"
+    prompt
+    text Text_DoNothing
+    db "Hmm.. I wonder  "
+    db "if this was    ▽"
+    prompt 
+    text Text_DoNothing
+    db "grandpa's plant? "
+    db "                "
     done
     text Text_DoNothing
-    db $EF, $EF, $11, $1A, $27, $1C, $21, $EF, $0C, $1A, $2C, $2D, $1E, $2B, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $0C, $1A, $2B, $24, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    prompt 
-    text Text_DoNothing
-    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $21, $1E, $EF, $26, $1A, $2B, $24,
-    db $28, $1F, $EF, $1A, $EF, $20, $2B, $1E, $1A, $2D, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Whoa? It has a  "
+    db "flower on it.  ▽"
     prompt
     text Text_DoNothing
-    db $11, $1A, $27, $1C, $21, $EF, $0C, $1A, $2C, $2D, $1E, $2B, $4C, $EF, $EF, $EF,
-    db $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt 
-    text Text_DoNothing
-    db $2B, $1E, $2C, $29, $1E, $1C, $2D, $2C, $EF, $1A, $EF, $11, $1A, $27, $1C, $21,
-    db $0C, $1A, $2C, $2D, $1E, $2B, $EF, $1A, $27, $1D, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt
-    text Text_DoNothing
-    db $25, $28, $27, $20, $2C, $EF, $2D, $28, $EF, $1B, $1E, $EF, $28, $27, $1E, $EF,
-    db $2D, $21, $1E, $26, $2C, $1E, $25, $2F, $1E, $2C, $4C, $EF, $EF, $EF, $EF, $EF,
-    done 
-    text Text_DoNothing
-    db $03, $28, $27, $4B, $2D, $EF, $2D, $28, $2E, $1C, $21, $EF, $2D, $21, $22, $2C,
-    db $29, $25, $1A, $27, $2D, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt
-    text Text_DoNothing
-    db $07, $26, $26, $4C, $4C, $EF, $08, $EF, $30, $28, $27, $1D, $1E, $2B, $EF, $EF,
-    db $22, $1F, $EF, $2D, $21, $22, $2C, $EF, $30, $1A, $2C, $EF, $EF, $EF, $EF, $E9,
-    prompt 
-    text Text_DoNothing
-    db $20, $2B, $1A, $27, $1D, $29, $1A, $53, $EF, $29, $25, $1A, $27, $2D, $41, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    done
-    text Text_DoNothing
-    db $16, $21, $28, $1A, $41, $EF, $08, $2D, $EF, $21, $1A, $2C, $EF, $1A, $EF, $EF,
-    db $1F, $25, $28, $30, $1E, $2B, $EF, $28, $27, $EF, $22, $2D, $4C, $EF, $EF, $E9,
-    prompt
-    text Text_DoNothing
-    db $08, $EF, $30, $28, $27, $1D, $1E, $2B, $EF, $30, $21, $1E, $27, $EF, $22, $2D,
-    db $1B, $25, $28, $28, $26, $1E, $1D, $8E, $EF, $21, $26, $26, $26, $4C, $EF, $EF,
+    db "I wonder when it"
+    db "bloomed, hmmm.  "
     done 
 
 Text_DoNothing: ; 07x7078
