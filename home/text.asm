@@ -38,14 +38,14 @@ TextPointerTable: ; 00x3421
     text_pointer ProduceShippedText
     text_pointer NoShipmentText
     text_pointer CarpenterEarthquakeText
-    db $B9, $50, $07
-    db $E6, $51, $07
-    db $67, $52, $07
+    text_pointer PicnicInvitationText
+    text_pointer MariaGoToPicnicText
+    text_pointer EveJuicePicnicText
     db $13, $53, $07
-    db $94, $53, $07 
+    text_pointer RescueBirdText
     db $C1, $54, $07
     db $C3, $55, $07
-    db $19, $56, $07
+    text_pointer FindWeatherVaneText
     db $F2, $57, $07
     db $9E, $58, $07
     db $23, $5B, $07
@@ -692,7 +692,9 @@ jr_000_39dd:
     or a
     jr z, jr_000_3a09
 
-    ld c, $2b
+; Each text block is 43 bytes of data, so if [hl] is nonzero, then this tells how many blocks to jump
+; from the beginning of the initial text (very first text of the dialog).
+    ld c, 43
     call Multiply8Bit
     ld a, l
     ld [wTextNavigator], a

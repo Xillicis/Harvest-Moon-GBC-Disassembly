@@ -393,7 +393,8 @@ PicnicInvitationText::
     db "here?          ▽"
     prompt
 
-    db $01, $04, $06, $40, $4C, $00
+    yes_no_text PicnicInvitationText, PicnicInvitationAcceptText, PicnicInvitationDeclineText
+    db $40, $4C, $00
     dw Text_PicnicInvitation
     db $00, $00
     db "                "
@@ -470,7 +471,8 @@ RescueBirdText::
     db "ran away.       "
     db "Please help me ▽"
     prompt
-    db $01, $03, $05, $40, $4C, $00, $05, $72, $00, $00
+    yes_no_text RescueBirdText, RescueBirdAcceptText, RescueBirdDeclineText
+    db $40, $4C, $00, $05, $72, $00, $00
     db "find him?       "
     db " YES         NO "
     prompt
@@ -553,7 +555,8 @@ FindWeatherVaneText::
     db "your ranch...   "
     db "Could you help ▽"
     prompt
-    db $01, $07, $09, $40, $4C, $00
+    yes_no_text FindWeatherVaneText, FindWeatherVaneAcceptText, FindWeatherVaneDeclineText
+    db $40, $4C, $00
     dw Text_FindWeatherVane
     db $00, $00
     db "me find it?     "
@@ -767,7 +770,8 @@ FindNinaText::
     db "busy, but could "
     db "you please help▽"
     prompt
-    db $01, $05, $08, $40, $4C, $00, $CA, $73, $00, $00
+    yes_no_text FindNinaText, FindNinaAcceptText, FindNinaDeclineText
+    db $40, $4C, $00, $CA, $73, $00, $00
     db "find her.       "
     db " YES         NO "
     prompt
@@ -1053,4 +1057,163 @@ FindNinaDeclineText::
     db "help?           "
     db " YES         NO "
     prompt
+
+    text Text_DoNothing 
+    db "Not yet.        "
+    db "You must first ▽"
+    prompt 
+    text Text_DoNothing 
+    db "talk to the     "
+    db "Harvest Sprites▽"
+    prompt
+    text Label_007_7599
+    db "at the cave.    "
+    db "                "
+    prompt 
+    text Text_DoNothing 
+    db "What should     "
+    db "the length of  ▽"
+    prompt 
+    db $01, $07, $07, $40, $4B, $00
+    dw Label_007_75ba
+    db $00, $00
+    db "a day be?       "
+    db " Slow       Fast"
+    prompt 
+    text Text_DoNothing 
+    db "OK! But remember"
+    db "the Harvest    ▽"
+    prompt 
+    text Text_DoNothing 
+    db "Sprites can only"
+    db "help you once  ▽"
+    prompt 
+    text Label_007_7599
+    db "every 24 hours! "
+    db "                "
+    prompt 
+    text Text_DoNothing 
+    db "I see... Maybe  "
+    db "I can help you ▽"
+    prompt 
+    text Label_007_7599
+    db "next time!!     "
+    db "                "
+    prompt 
+
+
+;;; This might be the beginning tutorial text I think.
+    text Text_DoNothing
+    db "This is the     "
+    db "Shipping Box to "
+    done
+    text Text_DoNothing 
+    db "ship crops.     "
+    db "The trader will "
+    done 
+    text Text_DoNothing 
+    db "pick up your    "
+    db "shipment at 5PM."
+    done 
+    text Text_DoNothing 
+    db "These two towers"
+    db "are Silos used  "
+    done
+    text Text_DoNothing 
+    db "to store fodder."
+    db "On the right of "
+    done
+    text Text_DoNothing 
+    db "the silos is the"
+    db "Chicken Coop and"
+    done 
+    text Text_DoNothing 
+    db "on the left is  "
+    db "the Cow Barn.   "
+    done 
+    text Text_DoNothing
+    db "This is the Shed"
+    db "where your items"
+    done 
+    text Text_DoNothing 
+    db "are kept........"
+    db "................"
+    done 
+    text Text_DoNothing 
+    db "explanations on "
+    db "the tools and   "
+    done 
+    text Text_DoNothing 
+    db "their usage, but"
+    db "I am a little   "
+    done 
+
+    text Text_DoNothing 
+    db "I am a little   "
+    db "tired...        "
+    done
+
+;;; Weird hanging sentence here...
+    text Text_DoNothing 
+    db "at my book.     "
+    db "                "
+    done
+    text Text_DoNothing
+    db "lot of milk.    "
+    db "Of course do not"
+    done
+    text Text_DoNothing 
+    db "forget to feed  "
+    db "them everyday.  "
+    done 
+    text Text_DoNothing
+    db "chickens will   "
+    db "not lay any eggs"
+    done 
+    text Text_DoNothing
+    db "Never forget.   "
+    db "                "
+    done
+
+    text Text_DoNothing
+    db "  Ranch Master  "
+    db "     Mark       "
+    prompt 
+    text Text_DoNothing
+    db "This is the mark"
+    db "of a great     ▽"
+    prompt
+    text Text_DoNothing
+    db "Ranch Master.   "
+    db "Everyone       ▽"
+    prompt 
+    text Text_DoNothing
+    db "respects a Ranch"
+    db "Master and     ▽"
+    prompt
+    text Text_DoNothing
+    db "longs to be one "
+    db "themselves.     "
+    done 
+
+    text Text_DoNothing
+    db "Don't touch this"
+    db "plant!!        ▽"
+    prompt
+    text Text_DoNothing
+    db "Hmm.. I wonder  "
+    db "if this was    ▽"
+    prompt 
+    text Text_DoNothing
+    db "grandpa's plant? "
+    db "                "
+    done
+    text Text_DoNothing
+    db "Whoa? It has a  "
+    db "flower on it.  ▽"
+    prompt
+    text Text_DoNothing
+    db "I wonder when it"
+    db "bloomed, hmmm.  "
+    done 
 
