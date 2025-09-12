@@ -28,7 +28,8 @@ Data_007_45ad:
     db $F2, $F3, $F4, $F5, $EF, $EF, $FF
 
 GoToSleepText:: ; 07x45d8
-    db $01, $00, $00, $40, $4C, $00
+    yes_no_text 
+    db $40, $4C, $00
     dw Text_GoToSleep
     db $00, $00, 
     db "Go to sleep?    "
@@ -283,6 +284,7 @@ CalendarText::
     db "          ", $CA, $CB, "YEAR"
     done
 
+HorseIsLostText::
     text Text_DoNothing
     db "Good Morning    "
     db "<PLAYER>. It's me.  ▽"
@@ -293,7 +295,6 @@ CalendarText::
     db "doing?         ▽"
     prompt
 
-HorseIsLostText::
     text Text_DoNothing
     db "It seems that   "
     db "this horse is  ▽"
@@ -449,6 +450,9 @@ EveJuicePicnicText::
     db "but please have "
     db "some.           "
     prompt
+
+; Need a better label name here (don't forget to update in home/text.asm)
+CookiesText::
     text Text_DoNothing
     db "I made too many "
     db "cookies for the▽"
@@ -497,6 +501,7 @@ RescueBirdDeclineText::
     db "I am sorry.     "
     done 
 
+FoundBirdText::
     text Text_DoNothing
     db "Oh I'm sorry... "
     db "Do you want to ▽"
@@ -521,6 +526,8 @@ RescueBirdDeclineText::
     db "I will be OK... "
     db "Thank you for  ▽"
     prompt
+
+BirdFlewAwayThankYouText::
     text Text_DoNothing
     db "helping me find "
     db "my bird...     ▽"
@@ -662,6 +669,7 @@ FindWeatherVaneDeclineText::
     db "again...        "
     done 
 
+MakeSprinklerText::
     text Text_DoNothing
     db "You work hard   "
     db "everyday, <PLAYER>.▽"

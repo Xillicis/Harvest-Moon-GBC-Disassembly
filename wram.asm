@@ -152,8 +152,9 @@ ds 8 ;
 
 ; This is 0 if it's a normal text box window and 1 if the player can pick YES/NO.
 wPlayerTextInputFlag:: db ; 0xcb69
-ds 1 ; 0xcb6a
-ds 1 ; 0xcb6b
+wYesTextBlockJump:: db ; 0xcb6a
+wNoTextBlockJump:: db ; 0xcb6b
+
 ds 1 ; 0xcb6c
 ds 1 ; 0xcb6d
 wTextPointer:: dw ; 0xcb6e

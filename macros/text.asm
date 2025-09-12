@@ -6,9 +6,13 @@ ENDM
 
 ; This macro is for pointing to different text depending on if the player picks YES or NO (or whatever option).
 MACRO yes_no_text
-	db 1
-	db (\2 - \1)/43
-        db (\3 - \1)/43
+	IF _NARG == 3
+		db 1
+		db (\2 - \1)/43
+        	db (\3 - \1)/43
+	ELSE
+		db 1, 0, 0
+	ENDC
 ENDM
 
 MACRO prompt

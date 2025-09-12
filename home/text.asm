@@ -34,17 +34,17 @@ TextPointerTable: ; 00x3421
     text_pointer StableSignText
     text_pointer SiloSignText
     text_pointer CalendarText
-    db $B3, $4D, $07
+    text_pointer HorseIsLostText
     text_pointer ProduceShippedText
     text_pointer NoShipmentText
     text_pointer CarpenterEarthquakeText
     text_pointer PicnicInvitationText
     text_pointer MariaGoToPicnicText
     text_pointer EveJuicePicnicText
-    db $13, $53, $07
+    text_pointer CookiesText
     text_pointer RescueBirdText
-    db $C1, $54, $07
-    db $C3, $55, $07
+    text_pointer FoundBirdText
+    text_pointer BirdFlewAwayThankYouText
     text_pointer FindWeatherVaneText
     db $F2, $57, $07
     db $9E, $58, $07
@@ -575,9 +575,9 @@ InitializeTextData: ; 00x3913
     ld a, [hl+]
     ld [wPlayerTextInputFlag], a
     ld a, [hl+]
-    ld [$cb6a], a
+    ld [wYesTextBlockJump], a
     ld a, [hl+]
-    ld [$cb6b], a
+    ld [wNoTextBlockJump], a
     ld a, [hl+]
     ld [$cb6c], a
     ld a, [hl+]
@@ -681,16 +681,16 @@ jr_000_39dd:
     ret z
 
     call Call_000_3fa2
-    ld hl, $cb6a
+    ld hl, wYesTextBlockJump
     ld a, [wYesOrNo]
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
     or a
-    jr z, jr_000_3a09
+    jr z, .callTextScript
 
 ; Each text block is 43 bytes of data, so if [hl] is nonzero, then this tells how many blocks to jump
 ; from the beginning of the initial text (very first text of the dialog).
@@ -704,7 +704,7 @@ jr_000_39dd:
     xor a
     ld [wTextCharacterCounter], a
 
-jr_000_3a09:
+.callTextScript
     ld a, [wTextPointer]
     ld l, a
     ld a, [wTextPointer+1]
