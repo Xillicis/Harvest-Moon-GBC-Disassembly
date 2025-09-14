@@ -68,19 +68,20 @@ SECTION "ROM Bank $00a", ROMX[$4000], BANK[$a]
     db $0F, $2E, $2D, $EF, $2D, $21, $1E, $EF, $26, $1A, $2D, $1E, $1D, $EF, $EF, $EF,
     db $1C, $28, $30, $2C, $EF, $22, $27, $EF, $21, $1E, $2B, $1E, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
-    db $2E, $27, $2D, $22, $25, $EF, $2D, $21, $1E, $32, $EF, $20, $22, $2F, $1E, $EF,
-    db $1B, $22, $2B, $2D, $21, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+
+    text text_do_nothing
+    db "until they give "
+    db "birth!          "
     done
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
-    db $EF, $3E, $13, $1A, $24, $1E, $EF, $1F, $28, $1D, $1D, $1E, $2B, $3F, $EF, $EF,
-    db $EF, $EF, $3E, $1F, $2B, $28, $26, $EF, $21, $1E, $2B, $1E, $3F, $EF, $EF, $E9,
+    text text_do_nothing
+    db " [Take fodder]  "
+    db "  [from here]  ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
-    db $13, $21, $1E, $EF, $1F, $28, $1D, $1D, $1E, $2B, $EF, $1C, $28, $26, $1E, $2C,
-    db $1F, $2B, $28, $26, $EF, $2D, $21, $1E, $EF, $12, $22, $25, $28, $4C, $EF, $EF,
+    text text_do_nothing
+    db "The fodder comes"
+    db "from the Silo.  "
     done
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
+    text text_do_nothing
     db $3E, $05, $1E, $1E, $1D, $22, $27, $20, $EF, $12, $2D, $1A, $25, $25, $3F, $EF,
     db $0F, $2E, $2D, $EF, $1F, $1E, $1E, $1D, $EF, $21, $1E, $2B, $1E, $EF, $EF, $E9,
     prompt
@@ -112,16 +113,16 @@ done
     db "Come on, ", $C4, $C5, $C6, $C7, ".  " 
     done 
     text text_do_nothing 
-    db $13, $21, $22, $2C, $EF, $22, $2C, $EF, $2D, $1E, $2B, $2B, $22, $1B, $25, $1E,
-    db $C4, $C5, $C6, $C7, $EF, $22, $2C, $EF, $2C, $22, $1C, $24, $4C, $EF, $EF, $E9,
+    db "This is terrible"
+    db $C4, $C5, $C6, $C7, " is sick.  ▽"
     prompt
     text text_do_nothing
-    db $0B, $1E, $2D, $53, $EF, $1C, $2E, $2B, $1E, $EF, $22, $2D, $EF, $EF, $EF, $EF,
-    db $30, $22, $2D, $21, $EF, $26, $1E, $1D, $22, $1C, $22, $27, $1E, $40, $EF, $EF, 
+    db "Let's cure it    "
+    db "with medicine!  "
     done
     text text_do_nothing
-    db $18, $1E, $1A, $21, $40, $EF, $00, $EF, $1B, $1A, $1B, $32, $EF, $1C, $28, $30,
-    db $22, $2C, $EF, $1B, $28, $2B, $27, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Yeah! A baby cow"
+    db "is born.       ▽"
     prompt 
     text text_do_nothing
     db "Let's name it.   "
