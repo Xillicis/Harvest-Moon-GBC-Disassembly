@@ -164,13 +164,13 @@ TextPointerTable: ; 00x3421
     db $D1, $75, $07,
     db $D1, $75, $07,
     db $D1, $75, $07,
-    db $23, $43, $0A,
-    db $79, $43, $0A,
-    db $CF, $43, $0A,
-    db $25, $44, $0A,
-    db $7B, $44, $0A,
-    db $D1, $44, $0A,
-    db $27, $45, $0A,
+    text_pointer Intro_ShippingMilkText
+    text_pointer Intro_CowBirthText
+    text_pointer Intro_FodderText
+    text_pointer Intro_FeedingStallText
+    text_pointer Intro_ShippingEggText
+    text_pointer Intro_HatchEggText
+    text_pointer HelloCowText
     db $52, $45, $0A,
     db $A8, $45, $0A,
     db $FE, $45, $0A,

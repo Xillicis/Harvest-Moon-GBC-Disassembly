@@ -57,22 +57,29 @@ SECTION "ROM Bank $00a", ROMX[$4000], BANK[$a]
     db $7E, $14, $F3, $F9, $7D, $16, $F3, $F1, $7C, $14, $80, $12, $43, $12, $43, $12,
     db $43, $12, $43, $15, $43, $15, $43, $15, $43, $15, $43, $1E, $43, $12, $43, $12,
     db $43, $F0, $00, $FF, $0F, $00, $0F, $01, $0F, $02, $0F, $03, $FF, $0F, $00, $0F,
-    db $01, $FF, $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00, $EF, $3E, $12, $21,
-    db $22, $29, $29, $22, $27, $20, $EF, $01, $28, $31, $3F, $EF, $EF, $EF, $EF, $3E,
-    db $1F, $28, $2B, $EF, $0C, $22, $25, $24, $3F, $EF, $EF, $E9, $FE, $00, $00, $00,
-    db $00, $00, $00, $BC, $54, $00, $00, $12, $21, $22, $29, $EF, $26, $22, $25, $24,
-    db $EF, $1F, $2B, $28, $26, $EF, $EF, $21, $1E, $2B, $1E, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, 
-    db $FF
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
-    db $0F, $2E, $2D, $EF, $2D, $21, $1E, $EF, $26, $1A, $2D, $1E, $1D, $EF, $EF, $EF,
-    db $1C, $28, $30, $2C, $EF, $22, $27, $EF, $21, $1E, $2B, $1E, $EF, $EF, $EF, $E9,
-    prompt
+    db $01, $FF, 
 
+Intro_ShippingMilkText::
+    text text_do_nothing
+    db " [Shipping Box] "
+    db "   [for Milk]  ▽"
+    prompt 
+    text text_do_nothing
+    db "Ship milk from  "
+    db "here.           "
+    done
+
+Intro_CowBirthText::
+    text text_do_nothing
+    db "Put the mated   "
+    db "cows in here   ▽"
+    prompt
     text text_do_nothing
     db "until they give "
     db "birth!          "
     done
+
+Intro_FodderText::
     text text_do_nothing
     db " [Take fodder]  "
     db "  [from here]  ▽"
@@ -81,28 +88,42 @@ SECTION "ROM Bank $00a", ROMX[$4000], BANK[$a]
     db "The fodder comes"
     db "from the Silo.  "
     done
+
+Intro_FeedingStallText::
     text text_do_nothing
-    db $3E, $05, $1E, $1E, $1D, $22, $27, $20, $EF, $12, $2D, $1A, $25, $25, $3F, $EF,
-    db $0F, $2E, $2D, $EF, $1F, $1E, $1E, $1D, $EF, $21, $1E, $2B, $1E, $EF, $EF, $E9,
+    db "[Feeding Stall] "
+    db "Put feed here  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00
-    db $1E, $2F, $1E, $2B, $32, $1D, $1A, $32, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00,
-    db $BC, $54, $00, $00, $EF, $3E, $12, $21, $22, $29, $29, $22, $27, $20, $EF, $01,
-db $28, $31, $3F, $EF, $EF, $EF, $EF, $3E, $1F, $28, $2B, $EF, $04, $20, $20, $3F,
-db $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00, $12,
-db $21, $22, $29, $EF, $1E, $20, $20, $2C, $EF, $1F, $2B, $28, $26, $EF, $EF, $21,
-db $1E, $2B, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF,
-db $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00, $0F, $25, $1A, $1C, $1E, $EF,
-db $2D, $28, $EF, $21, $1A, $2D, $1C, $21, $EF, $EF, $04, $20, $20, $2C, $4C, $EF,
-db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00,
-db $00, $BC, $54, $00, $00, $0F, $25, $1E, $1A, $2C, $1E, $EF, $29, $25, $1A, $1C,
-db $1E, $EF, $EF, $EF, $EF, $1E, $20, $20, $2C, $EF, $21, $1E, $2B, $1E, $4C, $EF,
-db $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $BC, $54, $00, $00,
-db $07, $1E, $25, $25, $28, $EF, $C4, $C5, $C6, $C7, $4C, $EF, $18, $28, $2E, $EF,
-db $25, $28, $28, $24, $EF, $1F, $22, $27, $1E, $EF, $2D, $28, $1D, $1A, $32, $4C,
-done
+    text text_do_nothing
+    db "everyday!!      "
+    db "                "
+    done 
+
+Intro_ShippingEggText::
+    text text_do_nothing
+    db " [Shipping Box] "
+    db "   [for Egg]   ▽"
+    prompt 
+    text text_do_nothing
+    db "Ship eggs from  "
+    db "here.           "
+    done
+
+Intro_HatchEggText::
+    text text_do_nothing
+    db "Place to hatch  "
+    db "Eggs.           "
+    prompt
+    text text_do_nothing
+    db "Please place    "
+    db "eggs here.      "
+    done
+
+HelloCowText::
+    text text_do_nothing
+    db "Hello ", $C4, $C5, $C6, $C7, ". You "
+    db "look fine today."
+    done
 
     text text_do_nothing
     db $C2, $C3, " more days    "
@@ -149,28 +170,29 @@ done
     db "with medicine!! "
     done
     text text_do_nothing
-    db $18, $1E, $1A, $21, $40, $EF, $00, $EF, $1B, $1A, $1B, $32, $EF, $1C, $28, $30,
-    db $22, $2C, $EF, $1B, $28, $2B, $27, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Yeah! A baby cow"
+    db "is born.       ▽"
     prompt 
     text text_do_nothing
-    db $0B, $1E, $2D, $53, $EF, $27, $1A, $26, $1E, $EF, $22, $2D, $4C, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Let's name it.   "
+    db "                "
     done
     text text_do_nothing
-    db $06, $28, $28, $1D, $EF, $1F, $28, $2B, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $26, $2E, $2C, $1C, $25, $1E, $EF, $29, $1A, $22, $27, $2C, $EF, $EF, $EF, $E9,
+    db "Good for        "
+    db "muscle pains   ▽"
     prompt
     text text_do_nothing
-    db $1A, $27, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $2C, $2D, $1A, $26, $22, $27, $1A, $EF, $2B, $1E, $1C, $28, $2F, $1E, $2B, $32,
+    db "and             "
+    db "stamina recovery"
     done 
+
     text text_do_nothing
-    db $03, $28, $27, $4B, $2D, $EF, $2D, $21, $2B, $28, $30, $EF, $EF, $EF, $EF, $EF,
-    db $28, $1B, $23, $1E, $1C, $2D, $2C, $EF, $22, $27, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Don't throw     "
+    db "objects in     ▽"
     prompt
     text text_do_nothing
-    db $2D, $21, $1E, $EF, $12, $29, $2B, $22, $27, $20, $4C, $EF, $05, $2B, $28, $26,
-    db $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $06, $28, $1D, $1D, $1E, $2C, $2C, $4C,
+    db "the Spring. From"
+    db "Harvest Goddess."
     done 
     text text_do_nothing
 
