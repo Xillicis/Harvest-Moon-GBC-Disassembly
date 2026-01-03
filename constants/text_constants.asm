@@ -46,8 +46,12 @@ const TEXT_AA
 const TEXT_AB
 const TEXT_AC
 const TEXT_AD
-const TEXT_AE
-const TEXT_AF
-const TEXT_B0
+const TEXT_CAVE_SIGN_HOT_SPRING   ; $ae
+const TEXT_CAVE_SIGN_DONT_THROW   ; $af
+const TEXT_CAVE_SIGN_PICKAX       ; $b0
 const TEXT_SPRITE_TALK_FIRST_TIME ; $b1
 const TEXT_SPRITE_HOWDY           ; $b2
+const_skip 2
+const TEXT_SPRITE_GOOD_EVENING    ; $b5
+const_skip 3
+const TEXT_SPRITE_GOOD_MORNING    ; $b9

@@ -171,19 +171,19 @@ TextPointerTable: ; 00x3421
     text_pointer Intro_ShippingEggText
     text_pointer Intro_HatchEggText
     text_pointer HelloCowText
-    db $52, $45, $0A,
-    db $A8, $45, $0A,
-    db $FE, $45, $0A,
-    db $54, $46, $0A,
-    db $7F, $46, $0A,
-    db $D5, $46, $0A,
-    db $2B, $47, $0A,
-    db $81, $47, $0A,
-    db $D7, $47, $0A,
-    db $2D, $48, $0A,
-    db $83, $48, $0A,
-    db $DB, $49, $0A,
-    db $31, $4A, $0A,
+    text_pointer CowBirthDateText
+    text_pointer CowIsSickText
+    text_pointer BabyCowIsBornText
+    text_pointer HellowCowText_duplicate
+    text_pointer CowBirthDateText_duplicate
+    text_pointer CowIsSickText_duplicate
+    text_pointer BabyCowIsBornText_duplicate
+    text_pointer Text_4781
+    text_pointer DontThrowObjectsText
+    text_pointer PickaxPassThroughText
+    text_pointer HarvestSpriteIntroText
+    text_pointer SpriteHowdyText
+    text_pointer SpriteEarthquakeText
     db $B2, $4A, $0A,
     db $08, $4B, $0A,
     db $5E, $4B, $0A,

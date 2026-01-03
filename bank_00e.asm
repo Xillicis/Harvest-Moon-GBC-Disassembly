@@ -224,7 +224,7 @@ Call_00e_41a1:
     ret nz
 
     ld a, [sCurrentHour]
-    cp $05
+    cp TIME_5_AM
     ret nz
 
     ld a, [sCurrentMinute]
@@ -394,7 +394,7 @@ jr_00e_42b5:
 
 
 Jump_00e_42bb:
-    ld a, $00
+    ld a, FACING_DOWN
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -430,7 +430,7 @@ jr_00e_42f0:
 
 
 Jump_00e_42f4:
-    ld a, $01
+    ld a, FACING_LEFT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -466,7 +466,7 @@ jr_00e_4329:
 
 
 Jump_00e_432d:
-    ld a, $02
+    ld a, FACING_RIGHT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -918,7 +918,7 @@ jr_00e_45a5:
     jr nz, jr_00e_45ca
 
     ld a, [wPlayerInteractingInTextFlag]
-    cp $00
+    cp 0
     jr nz, jr_00e_45ca
 
     ld a, [wCollisionNoMovement]
@@ -927,13 +927,13 @@ jr_00e_45a5:
 
     ld a, [wDominantFacingTileID]
     cp $08
-    jp z, Jump_00e_4712
+    jp z, PrintSignHotSpringText
 
     cp $09
-    jp z, Jump_00e_471d
+    jp z, PrintSignDontThrowText
 
     cp $0a
-    jp z, Jump_00e_4728
+    jp z, PrintSignPickAx
 
 jr_00e_45ca:
     ld a, [sItemSlot]
@@ -1007,24 +1007,23 @@ jr_00e_4631:
 
     ld a, [wCollisionNoMovement]
     or a
-    jr nz, jr_00e_464b
+    jr nz, Cave_UseItem_SpriteInteraction
 
     ld a, [wPlayerIsFacingSprite]
     or a
-    jr nz, jr_00e_464b
+    jr nz, Cave_UseItem_SpriteInteraction
     ret
 
-; Something with interacting with the Sprites, but I'm not completely sure
-jr_00e_464b:
+; Checks if we are interacting with a sign in the caves or are using
+; an item on an interactable object (like a harvest sprite or Mushroom berry thing).
+Cave_UseItem_SpriteInteraction:
     ld a, [wDominantFacingTileID]
     cp $08
-    jp z, Jump_00e_4712
-
+    jp z, PrintSignHotSpringText
     cp $09
-    jp z, Jump_00e_471d
-
+    jp z, PrintSignDontThrowText
     cp $0a
-    jp z, Jump_00e_4728
+    jp z, PrintSignPickAx
 
     ld a, [sItemSlot]
     ld hl, sInventory
@@ -1037,33 +1036,32 @@ jr_00e_464b:
     cp NO_ITEM
     jp z, Jump_00e_48c7
     cp SICKLE
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp HOE
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp HAMMER
-    jr z, jr_00e_4694
+    jr z, .checkForHarvestSpriteOrBoulder
     cp AX
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp SUPER_SICKLE
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp SUPER_HOE
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp SUPER_HAMMER
-    jr z, jr_00e_4694
+    jr z, .checkForHarvestSpriteOrBoulder
     cp SUPER_AX
-    jr z, jr_00e_46c8
+    jr z, .checkForHarvestSprite
     cp PICK_AX
-    jr z, jr_00e_46f0
+    jr z, UsePickAx
     ret
 
-
-jr_00e_4694:
+.checkForHarvestSpriteOrBoulder
     ld a, [wPlayerIsFacingSprite]
     or a
     ret z
 
     ld a, [sSpriteEventFlags+1]
-    bit 0, a
+    bit EVENT_BOULDER_ON_SPRITE, a
     jr z, ManageSpriteAnger
 
     bit 2, a
@@ -1079,11 +1077,9 @@ jr_00e_4694:
     ld a, [sSpriteTotalHappiness]
     add 10
     cp 100
-    jr c, jr_00e_46ba
-
-    ld a, 99
-
-jr_00e_46ba:
+    jr c, .happinessCap
+    ld a, 99 ; cap the happiness at 99
+.happinessCap
     ld [sSpriteTotalHappiness], a
     ld a, 10
     call Call_000_0f47
@@ -1091,7 +1087,7 @@ jr_00e_46ba:
     ld [$ba0e], a
     ret
 
-jr_00e_46c8:
+.checkForHarvestSprite
     ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, ManageSpriteAnger
@@ -1116,7 +1112,7 @@ ManageSpriteAnger:
     ld [sSpriteTotalHappiness], a
     ret
 
-jr_00e_46f0:
+UsePickAx:
     ld a, [wPlayerIsFacingSprite]
     or a
     jr nz, ManageSpriteAnger
@@ -1139,22 +1135,22 @@ Jump_00e_470e:
     call Call_00e_4954
     ret
 
-Jump_00e_4712:
-    ld a, $ae
+PrintSignHotSpringText:
+    ld a, TEXT_CAVE_SIGN_HOT_SPRING
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-Jump_00e_471d:
-    ld a, $af
+PrintSignDontThrowText:
+    ld a, TEXT_CAVE_SIGN_DONT_THROW
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
     ret
 
-Jump_00e_4728:
-    ld a, $b0
+PrintSignPickAx:
+    ld a, TEXT_CAVE_SIGN_PICKAX
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -1224,7 +1220,7 @@ jr_00e_4798:
     bit 5, a
     jr nz, jr_00e_47aa
 
-    ld a, $b5
+    ld a, TEXT_SPRITE_GOOD_EVENING
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -1242,7 +1238,7 @@ jr_00e_47b5:
     bit 5, a
     jr nz, jr_00e_47c7
 
-    ld a, $b9
+    ld a, TEXT_SPRITE_GOOD_MORNING
     call InitializeTextIDAndDisplay
     ld a, $00
     call RST_TableJumpBankSwitch
