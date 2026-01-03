@@ -770,7 +770,7 @@ jr_007_44fb:
     jr nz, jr_007_44fb
     ret
 
-INCLUDE "text.asm"
+INCLUDE "text/text_1.asm"
 
 Text_DoNothing: ; 07x7078
     ret

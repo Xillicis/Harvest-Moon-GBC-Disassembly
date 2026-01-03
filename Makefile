@@ -28,18 +28,6 @@ $(ROM): $(OBJS) contents.link
 	rgblink -n $(ROM:.gbc=.sym) -m $(ROM:.gbc=.map) -l contents.link -o $@ $(OBJS)
 	rgbfix -jsvc -k E9 -l 0x33 -m 0x10 -p 0 -r 02 -t "HARVEST-MOO" -i "N GB" $@
 
-#main.o: main.asm bank_*.asm
-#	rgbasm -o main.o main.asm
-#
-#sram.o: sram.asm
-#	rgbasm -o sram.o sram.asm
-
-#game.gbc: game.o
-#	rgblink -n game.sym -m game.map -o $@ $<
-#	rgbfix -v -p 255 $@
-#
-#	@if which md5sum &>/dev/null; then md5sum $@; else md5 $@; fi
-
 # For contributors to make sure a change didn't affect the contents of the rom.
 compare: $(ROM)
 	@$(MD5) -c rom.md5
@@ -61,4 +49,16 @@ clean: tidy
 
 %.1bpp: %.png
 	rgbgfx -d 1 -o $@ $<
+
+#main.o: main.asm bank_*.asm
+#	rgbasm -o main.o main.asm
+#
+#sram.o: sram.asm
+#	rgbasm -o sram.o sram.asm
+
+#game.gbc: game.o
+#	rgblink -n game.sym -m game.map -o $@ $<
+#	rgbfix -v -p 255 $@
+#
+#	@if which md5sum &>/dev/null; then md5sum $@; else md5 $@; fi
 
