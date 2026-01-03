@@ -949,19 +949,15 @@ PlayerInteraction_A_Pressed:
     ld a, [wHeldObject]
     or a
     jr nz, .useHeldObject
-
     ld a, [$cb82]
     or a
     jp nz, JumpOnHorse
-
     ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, JumpOffHorse
-
     ld a, [wPlayerInFrontOfPet]
     or a
     jp nz, PickPetUp
-
     ld a, [wPlayerHoldingPet]
     or a
     jp nz, PutPetDown

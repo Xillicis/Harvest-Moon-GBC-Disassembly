@@ -3096,7 +3096,7 @@ Label_005_50c9:
     ld a, [wPlayerIsRidingHorse]
     or a
     call nz, Call_005_5296
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     call nz, Call_005_5296
     ld a, [wPlayerHoldingPet]

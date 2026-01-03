@@ -1094,7 +1094,7 @@ jr_028_4552:
 
 jr_028_4563:
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld [$cb80], a
     ret

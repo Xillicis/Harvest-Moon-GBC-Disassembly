@@ -364,7 +364,7 @@ Jump_007_4244:
     xor a
     ld [$c611], a
     ld [wPlayerIsCarryingItem], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld hl, $5ef6
     ld a, $01
     call BankSwitchCallHL

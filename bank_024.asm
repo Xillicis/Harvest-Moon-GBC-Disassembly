@@ -816,7 +816,7 @@ jr_024_4561:
 
 
 jr_024_4568:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -1027,7 +1027,7 @@ jr_024_466c:
 
 
 Call_024_4673:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -1058,7 +1058,7 @@ jr_024_4687:
     ld a, [$cc4b]
     ld [hl], a
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
 
 jr_024_46a4:
@@ -1945,7 +1945,7 @@ jr_024_4c30:
     res 7, c
 
 Call_024_4c3d:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jp nz, Jump_024_4f68
 
@@ -1994,7 +1994,7 @@ jr_024_4c65:
     jr z, jr_024_4ca9
 
     ld a, $27
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $74
     call $16d1
     ld a, $35
@@ -2008,7 +2008,7 @@ jr_024_4c65:
 
 jr_024_4ca9:
     ld a, $28
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $75
     call $16d1
     ld a, $35
@@ -2076,7 +2076,7 @@ jr_024_4cec:
     ld [hl], a
     ld a, [$cc4b]
     ld a, $26
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $73
     call $16d1
     ld a, $35
@@ -2295,7 +2295,7 @@ Jump_024_4e4d:
     ld [$b93a], a
     call Call_000_1002
     ld a, $20
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $19
     call $16d1
     ld a, $35
@@ -2357,7 +2357,7 @@ Jump_024_4ed8:
 
 jr_024_4eed:
     ld a, $24
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $05
     ld [$cc16], a
     xor a
@@ -2385,7 +2385,7 @@ Jump_024_4f10:
     ld [hl+], a
     ld [hl], a
     ld a, $25
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $05
     ld [$cc16], a
     xor a
@@ -2427,7 +2427,7 @@ Jump_024_4f68:
 
 
 Call_024_4f6c:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     ld hl, $4f73
     rst $00
     rst $10
@@ -2536,7 +2536,7 @@ Call_024_4f6c:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $33
     call $16d1
     ld a, $36
@@ -2557,7 +2557,7 @@ Call_024_4f6c:
     jr z, jr_024_5013
 
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $1c
     call $16d1
     ld a, $36
@@ -2598,7 +2598,7 @@ jr_024_502b:
     jr jr_024_50ae
 
 jr_024_503f:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $20
     jr z, jr_024_5055
 
@@ -2618,7 +2618,7 @@ jr_024_5055:
     jr jr_024_50d1
 
 jr_024_5064:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $20
     jr z, jr_024_507a
 
@@ -2638,7 +2638,7 @@ jr_024_507a:
     jr jr_024_50d1
 
 jr_024_5089:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $20
     jr z, jr_024_509f
 
@@ -2658,7 +2658,7 @@ jr_024_509f:
     jr jr_024_50d1
 
 jr_024_50ae:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $20
     jr z, jr_024_50c4
 
@@ -2677,12 +2677,12 @@ jr_024_50c4:
     ld [$b9a6], a
 
 jr_024_50d1:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $20
     jr z, jr_024_50e0
 
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ret
 
@@ -2692,7 +2692,7 @@ jr_024_50e0:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ret
 
@@ -2700,7 +2700,7 @@ jr_024_50e0:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wDominantFacingTileID], a
     call Call_024_583c
     ld a, [de]
@@ -2745,7 +2745,7 @@ jr_024_5118:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wDominantFacingTileID], a
     call Call_024_583c
     ld a, [de]
@@ -2803,7 +2803,7 @@ jr_024_5169:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
@@ -2959,7 +2959,7 @@ jr_024_526d:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
@@ -3099,7 +3099,7 @@ jr_024_526d:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
@@ -3228,7 +3228,7 @@ Jump_024_545a:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ret
 
@@ -3238,7 +3238,7 @@ Jump_024_546d:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ret
 
@@ -3933,19 +3933,19 @@ Jump_024_57db:
 
 
     ld a, $21
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $27
     call $16d1
     jr jr_024_5826
 
     ld a, $22
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $25
     call $16d1
     jr jr_024_5826
 
     ld a, $23
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $23
     call $16d1
 

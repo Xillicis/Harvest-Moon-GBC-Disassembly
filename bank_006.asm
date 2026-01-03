@@ -4797,7 +4797,7 @@ jr_006_55d3:
     db $11, $80
 
 Label_006_55e4:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_006_5627
 
@@ -4854,7 +4854,7 @@ jr_006_5627:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_006_566e
 
@@ -4907,7 +4907,7 @@ jr_006_566e:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_006_5695
 
@@ -4941,7 +4941,7 @@ jr_006_5695:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_006_56c5
 

@@ -9655,7 +9655,7 @@ jr_01d_6f6f:
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $23
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $03
     call RST_TableJumpBankSwitch
     call Call_01d_713d
@@ -9704,7 +9704,7 @@ jr_01d_702d:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     call Call_01d_713d
     ret
@@ -9747,7 +9747,7 @@ jr_01d_708a:
     ld a, $19
     call $16d1
     ld a, $20
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $1a
@@ -9795,7 +9795,7 @@ jr_01d_70be:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     call Call_01d_713d
     ret
@@ -10284,7 +10284,7 @@ jr_01d_72d1:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld [$c800], a
     ld [$cb5a], a
@@ -10400,7 +10400,7 @@ jr_01d_740d:
     ld a, $19
     call $16d1
     ld a, $20
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $1a
@@ -10441,7 +10441,7 @@ jr_01d_747a:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $03
     call Call_000_18d0

@@ -3044,7 +3044,7 @@ jr_002_50ec:
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerInFrontOfPet], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld [$c90d], a
     ld [$cb91], a

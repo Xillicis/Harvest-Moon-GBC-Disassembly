@@ -3571,7 +3571,7 @@ Jump_025_516e:
     ld a, [wPlayerIsRidingHorse]
     or a
     call nz, Call_025_51ff
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     call nz, Call_025_51ff
     ld a, [wPlayerHoldingPet]

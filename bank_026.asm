@@ -4730,7 +4730,7 @@ jr_026_551a:
     nop
     nop
     add b
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_026_556e
 
@@ -4787,7 +4787,7 @@ jr_026_556e:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_026_55b5
 
@@ -4840,7 +4840,7 @@ jr_026_55b5:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_026_55dc
 
@@ -4874,7 +4874,7 @@ jr_026_55dc:
     ret
 
 
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_026_560c
 

@@ -783,7 +783,7 @@ Call_00e_44aa:
 
 
 jr_00e_44da:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     ret nz
 
@@ -913,29 +913,27 @@ Jump_00e_457b:
     call Call_00e_52d4
 
 jr_00e_45a5:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
-    jr nz, jr_00e_45ca
+    jr nz, .interactOrUseItem
 
     ld a, [wPlayerInteractingInTextFlag]
     cp 0
-    jr nz, jr_00e_45ca
+    jr nz, .interactOrUseItem
 
     ld a, [wCollisionNoMovement]
     or a
-    jr nz, jr_00e_45ca
+    jr nz, .interactOrUseItem
 
     ld a, [wDominantFacingTileID]
     cp $08
     jp z, PrintSignHotSpringText
-
     cp $09
     jp z, PrintSignDontThrowText
-
     cp $0a
     jp z, PrintSignPickAx
 
-jr_00e_45ca:
+.interactOrUseItem
     ld a, [sItemSlot]
     ld hl, sInventory
     add l
@@ -949,14 +947,14 @@ jr_00e_45ca:
 
     ld a, [sPlayerEnergy]
     or a
-    jr nz, jr_00e_45eb
+    jr nz, .useItem
 
     ld a, $01
     ld [wInputFreezeTimer], a
     ld b, $00
     call CheckForNoEnergyAnimation
 
-jr_00e_45eb:
+.useItem
     ld a, [wPlayerInteractingInTextFlag]
     cp $00
     ret nz
@@ -970,34 +968,31 @@ jr_00e_45eb:
     ld h, a
     ld a, [hl]
     cp SICKLE
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp HOE
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp HAMMER
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp AX
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp SUPER_SICKLE
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp SUPER_HOE
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp SUPER_HAMMER
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp SUPER_AX
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     cp PICK_AX
-    jr z, jr_00e_4629
+    jr z, .useItem_interaction
     ld a, [wPlayerIsFacingSprite]
     or a
     jp nz, Jump_00e_4733
-
-jr_00e_4629:
-    ld hl, $527d
-    ld a, $01
-    call BankSwitchCallHL
+.useItem_interaction
+    callfar PlayerInteraction_A_Pressed
 
 jr_00e_4631:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jp nz, Jump_00e_470e
 
@@ -1411,7 +1406,7 @@ jr_00e_48d6:
     ld a, $3c
     call $16d1
     ld a, $30
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $35
     call Call_000_25ce
     ld a, $1a
@@ -1460,7 +1455,7 @@ jr_00e_491b:
     ld a, $18
     call $16d1
     ld a, $01
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $35
     call Call_000_25ce
     ld a, $1a
@@ -1475,7 +1470,7 @@ Call_00e_4954:
     ld a, [wPlayerIsFacingSprite]
     or a
     call nz, Call_00e_4968
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $30
     jr z, jr_00e_49a5
 
@@ -1484,7 +1479,7 @@ Call_00e_4954:
     ret
 
 Call_00e_4968:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     cp $30
     jr z, jr_00e_4978
 
@@ -1545,7 +1540,7 @@ jr_00e_49a5:
     ld a, $15
     call RST_TableJumpBankSwitch
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $3d
     call $16d1
     ld a, $36
@@ -1560,7 +1555,7 @@ jr_00e_49d6:
     ld a, $3c
     call Call_000_16d1
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
@@ -1592,7 +1587,7 @@ Jump_00e_4a06:
     ld a, $32
     call $16d1
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1620,7 +1615,7 @@ Jump_00e_4a29:
     ld a, $41
     call $16d1
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1644,7 +1639,7 @@ jr_00e_4a6d:
     ld a, $40
     call $16d1
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
     call Call_000_25ce
@@ -1696,7 +1691,7 @@ Jump_00e_4ac3:
     ld a, $32
     call $16d1
     xor a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $36
     call Call_000_25ce
     ld a, $08
@@ -1726,7 +1721,7 @@ Jump_00e_4af9:
     ld [$cc16], a
     xor a
     ld [$cc17], a
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ret
 
@@ -3911,7 +3906,7 @@ jr_00e_5719:
     ld h, $28
 
 Jump_00e_5742:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_00e_574f
 
@@ -5244,7 +5239,7 @@ Jump_00e_5f0b:
     ld a, $40
     call $16d1
     ld a, $32
-    ld [$cb4a], a
+    ld [wHeldObject], a
     ld a, $35
     call Call_000_25ce
     ld a, $1a
@@ -5280,7 +5275,7 @@ Jump_00e_5f0b:
 
 
 Jump_00e_5f95:
-    ld a, [$cb4a]
+    ld a, [wHeldObject]
     or a
     jr nz, jr_00e_5ffd
 
@@ -5365,9 +5360,7 @@ jr_00e_5ffd:
     bit 5, a
     jr nz, jr_00e_6034
 
-    ld hl, $527d
-    ld a, $01
-    call BankSwitchCallHL
+    callfar PlayerInteraction_A_Pressed
     ld a, $01
     ld [$cc98], a
     ret
