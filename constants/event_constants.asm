@@ -1,6 +1,9 @@
+; Harvest Sprite events sSpriteEventFlags
 const_def
 const EVENT_TALKED_TO_SPRITE_FIRST_TIME
 const EVENT_SPRITE_GAVE_BERRY
+const_skip 5
+const EVENT_IMPROVE_SICKLE
 
 DEF EVENT_POST_EARTHQUAKE_CONVERSATION EQU $09
 

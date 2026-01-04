@@ -182,20 +182,20 @@ TextPointerTable: ; 00x3421
     text_pointer DontThrowObjectsText
     text_pointer PickaxPassThroughText
     text_pointer HarvestSpriteIntroText
-    text_pointer SpriteHowdyText
-    text_pointer SpriteEarthquakeText
-    db $B2, $4A, $0A,
-    db $08, $4B, $0A,
-    db $5E, $4B, $0A,
-    db $B4, $4B, $0A,
-    db $0A, $4C, $0A,
-    db $8B, $4C, $0A,
-    db $E1, $4C, $0A,
-    db $37, $4D, $0A,
-    db $8D, $4D, $0A,
+    text_pointer HarvestSpriteHowdyText
+    text_pointer HarvestSpriteEarthquakeText
+    text_pointer HarvestSpriteBeautifulGoddessText
+    text_pointer HarvestSpriteGoodEveningText
+    text_pointer HarvestSpriteEarthquake2Text
+    text_pointer HarvestGoddessIsFriendlyText
+    text_pointer HarvestSpriteFishingRodText
+    text_pointer HarvestSpriteGoodMorningText
+    text_pointer HarvestSpriteStillShakingText
+    text_pointer HarvestSpriteSeeTheHarvestGoddessText
+    text_pointer ThanksText
     db $B8, $4D, $0A,
-    db $04, $4E, $0A,
-    db $2F, $4E, $0A,
+    text_pointer AttackHarvestSpriteText
+    text_pointer HarvestSpriteSickleQuestionText
     db $8D, $6D, $0C,
     db $E7, $6F, $0C,
     db $16, $72, $0C,

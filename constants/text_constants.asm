@@ -55,3 +55,5 @@ const_skip 2
 const TEXT_SPRITE_GOOD_EVENING    ; $b5
 const_skip 3
 const TEXT_SPRITE_GOOD_MORNING    ; $b9
+const_skip 5
+const TEXT_SPRITE_OFFER_SICKLE_UPGRADE ; $bf

@@ -600,7 +600,7 @@ Call_002_43a9:
 
     ld a, [$cbe5]
     ld l, a
-    cp $0c
+    cp 12
     jr nc, .setSuperSickle
 
     ld a, [$ba38]
