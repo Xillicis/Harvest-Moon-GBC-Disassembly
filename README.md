@@ -1,14 +1,21 @@
 # Harvest Moon GBC
 
-This is a disassembly of Harvest Moon GBC. 
+This is a disassembly project of Harvest Moon GBC. 
 Currently, I (Xillicis) am the only one doing the disassembly, so it takes some time.
 The goal is to have a completely reverse engineered game so people can make hacks, translations, etc...
+
+The first objective is to reverse engineer all of the in-game text so
+translations can be made. This is currently in progress.
+
+Iv you'd like to make a language translation, you may want to message me (on
+Discord) about how we can set up the translation. There are some details that
+must be considered.
+
+The project is currently using RGBDS Version 0.9.0
 
 It builds the following rom:
 
 * Harvest Moon GBC (U) [C][!].gb `md5: 498c0a50a5e5cde16127617a97ad6162` 
-
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
 
 ## My other projects
 
