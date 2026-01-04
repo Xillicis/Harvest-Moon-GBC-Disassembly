@@ -375,112 +375,113 @@ HarvestSpriteSickleYesText::
 
 HarvestSpriteSickleNoText::
     text text_do_nothing
-    db $11, $1E, $1A, $25, $25, $32, $41, $40, $41, $EF, $0C, $32, $EF, $EF, $EF, $EF,
-    db $2C, $24, $22, $25, $25, $2C, $EF, $26, $2E, $2C, $2D, $EF, $EF, $EF, $EF, $E9,
+    db "Really?!? My    "
+    db "skills must    ▽"
     prompt 
     text text_do_nothing
-    db $21, $1A, $2F, $1E, $EF, $1B, $1E, $1C, $28, $26, $1E, $EF, $EF, $EF, $EF, $EF,
-    db $2B, $2E, $2C, $2D, $32, $EF, $28, $2B, $EF, $32, $28, $2E, $EF, $EF, $EF, $E9,
+    db "have become     "
+    db "rusty or you   ▽"
     prompt
     text text_do_nothing
-    db $1D, $28, $27, $4B, $2D, $EF, $24, $27, $28, $30, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $21, $28, $30, $EF, $2D, $28, $EF, $2E, $2C, $1E, $EF, $22, $2D, $40, $EF, $EF,
+    db "don't know      "
+    db "how to use it!  "
     done 
 
     text text_do_nothing
-    db $0C, $1A, $24, $1E, $EF, $2C, $2E, $2B, $1E, $EF, $2D, $21, $1A, $2D, $EF, $EF,
-    db $32, $28, $2E, $EF, $1F, $1E, $1E, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Make sure that  "
+    db "you feed        "
     done 
 
     text text_do_nothing
-    db $2D, $21, $1E, $26, $EF, $1E, $2F, $1E, $2B, $32, $1D, $1A, $32, $4C, $EF, $EF,
-    db $0E, $2D, $21, $1E, $2B, $30, $22, $2C, $1E, $8E, $EF, $32, $28, $2E, $2B, $EF,
+    db "them everyday.  "
+    db "Otherwise, your "
     done 
 
     text text_do_nothing
-    db $16, $1E, $25, $25, $8E, $EF, $22, $2D, $EF, $2C, $1E, $1E, $26, $2C, $EF, $EF,
-    db $08, $EF, $21, $1A, $2F, $1E, $EF, $2C, $2D, $1A, $32, $1E, $1D, $EF, $EF, $E9,
+    db "Well, it seems  "
+    db "I have stayed  ▽"
     prompt 
     text text_do_nothing
-    db $2D, $28, $EF, $25, $28, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $06, $28, $28, $1D, $EF, $27, $22, $20, $21, $2D, $4C, $EF, $EF, $EF, $EF, $EF,
+    db "to long.        "
+    db "Good night.     "
     done 
 
+NewGameIntroText::
     text text_do_nothing
-    db $A0, $A1, $A2, $A3, $4C, $4C, $4C, $16, $1A, $24, $1E, $EF, $2E, $29, $8E, $EF,
-    db $A0, $A1, $A2, $A3, $4C, $EF, $08, $EF, $21, $1A, $2F, $1E, $EF, $1A, $EF, $E9,
+    db "<PLAYER>...Wake up, "
+    db "<PLAYER>. I have a ▽"
     prompt 
     text text_do_nothing
-    db $1F, $1A, $2F, $28, $2B, $EF, $2D, $28, $EF, $1A, $2C, $24, $EF, $28, $1F, $EF,
-    db $32, $28, $2E, $4C, $EF, $0C, $32, $EF, $2B, $1A, $27, $1C, $21, $EF, $EF, $E9,
+    db "favor to ask of "
+    db "you. My ranch  ▽"
     prompt
     text text_do_nothing
-    db $21, $1A, $2C, $EF, $1B, $1E, $1E, $27, $EF, $27, $1E, $44, $EF, $EF, $EF, $EF,
-    db $20, $25, $1E, $1C, $2D, $1E, $1D, $EF, $1B, $1E, $1C, $1A, $2E, $2C, $1E, $E9,
+    db "has been ne-    "
+    db "glected because▽"
     prompt 
     text text_do_nothing
-    db $08, $EF, $1D, $22, $1D, $EF, $27, $28, $2D, $EF, $21, $1A, $2F, $1E, $EF, $1A,
-    db $2C, $2E, $1C, $1C, $1E, $2C, $2C, $28, $2B, $40, $EF, $12, $28, $8E, $EF, $E9,
+    db "I did not have a"
+    db "successor! So, ▽"
     prompt 
     text text_do_nothing
-    db $08, $EF, $30, $1A, $27, $2D, $EF, $32, $28, $2E, $EF, $2D, $28, $EF, $EF, $EF,
-    db $2D, $1A, $24, $1E, $EF, $26, $32, $EF, $29, $25, $1A, $1C, $1E, $EF, $EF, $E9,
+    db "I want you to   "
+    db "take my place  ▽"
     prompt 
     text text_do_nothing
-    db $2D, $28, $EF, $2B, $1E, $2C, $2D, $28, $2B, $1E, $EF, $26, $32, $EF, $EF, $EF,
-    db $2B, $1A, $27, $1C, $21, $EF, $EF, $EF, $1A, $27, $1D, $EF, $EF, $EF, $EF, $E9,
+    db "to restore my   "
+    db "ranch   and    ▽"
     prompt 
     text text_do_nothing
-    db $2C, $2E, $2B, $29, $1A, $2C, $2C, $EF, $26, $1E, $EF, $1A, $2C, $EF, $EF, $EF,
-    db $11, $1A, $27, $1C, $21, $EF, $0C, $1A, $2C, $2D, $1E, $2B, $40, $40, $EF, $E9,
+    db "surpass me as   "
+    db "Ranch Master!! ▽"
     prompt
     text text_do_nothing
-    db $14, $27, $1F, $28, $2B, $2D, $2E, $27, $1A, $2D, $1E, $25, $32, $8E, $EF, $08,
-    db $1C, $1A, $27, $EF, $27, $28, $2D, $EF, $21, $1E, $25, $29, $EF, $EF, $EF, $E9,
+    db "Unfortunately, I"
+    db "can not help   ▽"
     prompt 
     text text_do_nothing
-    db $32, $28, $2E, $EF, $1B, $1E, $1C, $1A, $2E, $2C, $1E, $EF, $08, $EF, $1A, $26,
-    db $1A, $EF, $2C, $29, $22, $2B, $22, $2D, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "you because I am"
+    db "a spirit.      ▽"
     prompt 
     text text_do_nothing
-    db $00, $2D, $EF, $2D, $21, $1E, $EF, $1E, $27, $1D, $EF, $28, $1F, $EF, $EF, $EF,
-    db $30, $22, $27, $2D, $1E, $2B, $8E, $EF, $08, $EF, $1C, $1A, $27, $EF, $EF, $E9,
+    db "At the end of   "
+    db "winter, I can  ▽"
     prompt 
     text text_do_nothing
-    db $1C, $28, $26, $1E, $EF, $1A, $27, $1D, $EF, $1C, $21, $1E, $1C, $24, $EF, $EF,
-    db $2E, $29, $EF, $28, $27, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "come and check  "
+    db "up on you.     ▽"
     prompt
     text text_do_nothing
-    db $08, $EF, $26, $2E, $2C, $2D, $EF, $1B, $1E, $EF, $20, $28, $22, $27, $20, $EF,
-    db $27, $28, $30, $4C, $EF, $06, $28, $28, $1D, $EF, $0B, $2E, $1C, $24, $EF, $E9,
+    db "I must be going "
+    db "now. Good Luck ▽"
     prompt
     text text_do_nothing
-    db $1F, $2E, $2D, $2E, $2B, $1E, $EF, $11, $1A, $27, $1C, $21, $EF, $EF, $EF, $EF,
-    db $0C, $1A, $2C, $2D, $1E, $2B, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "future Ranch    "
+    db "Master!        ▽"
     prompt
     text text_do_nothing
-    db $0E, $21, $8E, $EF, $08, $EF, $1F, $28, $2B, $20, $28, $2D, $EF, $2D, $28, $EF,
-    db $2D, $1E, $25, $25, $EF, $32, $28, $2E, $EF, $2D, $21, $1A, $2D, $EF, $EF, $E9,
+    db "Oh, I forgot to "
+    db "tell you that  ▽"
     prompt
     text text_do_nothing
-    db $2D, $21, $1E, $EF, $1C, $2B, $28, $29, $2C, $EF, $30, $22, $25, $25, $EF, $EF,
-    db $1D, $22, $1E, $EF, $30, $21, $1E, $27, $EF, $2D, $21, $1E, $EF, $EF, $EF, $E9,
+    db "the crops will  "
+    db "die when the   ▽"
     prompt 
     text text_do_nothing
-    db $2C, $1E, $1A, $2C, $28, $27, $2C, $EF, $1C, $21, $1A, $27, $20, $1E, $40, $EF,
-    db $01, $1E, $EF, $2C, $2E, $2B, $1E, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "seasons change! "
+    db "Be sure to     ▽"
     prompt
     text text_do_nothing
-    db $1C, $21, $1E, $1C, $24, $EF, $2D, $21, $1E, $EF, $1D, $1A, $2D, $1E, $EF, $EF,
-    db $28, $27, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "check the date  "
+    db "on the         ▽"
     prompt 
     text text_do_nothing
-    db $1C, $1A, $25, $1E, $27, $1D, $1A, $2B, $40, $40, $EF, $08, $2D, $EF, $22, $2C,
-    db $1E, $2C, $2C, $1E, $27, $2D, $22, $1A, $25, $EF, $1F, $28, $2B, $EF, $EF, $E9,
+    db "calendar!! It is"
+    db "essential for  ▽"
     prompt
     text text_do_nothing
-    db $20, $2B, $28, $30, $22, $27, $20, $EF, $1C, $2B, $28, $29, $2C, $40, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "growing crops!  "
+    db "                "
     done
 
     text text_do_nothing
