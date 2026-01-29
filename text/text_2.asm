@@ -484,17 +484,18 @@ NewGameIntroText::
     db "                "
     done
 
+ThankYouText::
     text text_do_nothing
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Thank you.      "
+    db "                "
     done
 
     text text_do_nothing
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $2F, $1E, $2B, $32, $EF, $EF,
-    db $26, $2E, $1C, $21, $40, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Thank you very  "
+    db "much!!!        ▽"
     prompt
     text text_do_nothing
-    db $16, $1E, $EF, $30, $22, $25, $25, $EF, $1A, $25, $2C, $28, $EF, $2D, $2B, $32,
-    db $2D, $28, $EF, $21, $1E, $25, $29, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF,
+    db "We will also try"
+    db "to help you.    "
     done
 
