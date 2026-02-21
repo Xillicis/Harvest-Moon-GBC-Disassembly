@@ -6145,7 +6145,7 @@ jr_018_59d5:
     jr @-$02
 
     ld a, b
-    call c, Call_000_1fe0
+    call c, $1fe0
     nop
     cpl
     db $10

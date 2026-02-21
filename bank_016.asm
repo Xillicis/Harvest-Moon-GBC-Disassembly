@@ -1487,7 +1487,7 @@ jr_016_4695:
     jp c, Jump_016_56fc
 
     db $fc
-    jp nc, Jump_000_1ffc
+    jp nc, $1ffc
 
     ccf
     rla

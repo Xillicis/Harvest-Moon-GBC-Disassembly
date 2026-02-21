@@ -1576,7 +1576,7 @@ LoadHouseExpansionTileDataIntoSRAM:
     ret
 
 Call_000_1147:
-    ld a, [$b90b]
+    ld a, [sMapExpansionRightSide]
     or a
     ret z
 
@@ -3792,19 +3792,21 @@ jr_000_1fa7:
     pop hl
     ret
 
-
-Call_000_1fb5:
-    ldh [$ffaa], a
+; A = some index for accessing Data_000_1fd8
+; HL = destination (BG attr map or SRAM (so far))
+; writes attribute/property from ROM table at $1FD8 + A
+WriteTilePropertyFromTable:
+    ldh [hTemp], a ; load tile ID
     push hl
     ld c, rVBK_c
-    ld a, $01
+    ld a, 1 ; switch VRAM bank
     ldh [c], a
     call SyncToBlankPeriod
-    ldh a, [$ffaa]
-    ld hl, $1fd8
+    ldh a, [hTemp]
+    ld hl, Data_000_1fd8
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
@@ -3814,279 +3816,27 @@ Call_000_1fb5:
     xor a
     ldh [c], a
     call SyncToBlankPeriod
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ret
 
-
-    nop
-    inc b
-    nop
-    inc bc
-    inc bc
-    ld bc, $0001
-
-Call_000_1fe0:
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    inc bc
-    inc bc
-    inc bc
-
-Call_000_1fe8:
-    nop
-    nop
-    nop
-    inc bc
-
-Jump_000_1fec:
-    inc bc
-    ld bc, $0001
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    inc bc
-    inc bc
-    nop
-    nop
-    nop
-    nop
-
-Jump_000_1ffc:
-    inc bc
-
-Jump_000_1ffd:
-    inc bc
-    inc bc
-    dec b
-
-Call_000_2000:
-    dec b
-    rlca
-    rlca
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    inc bc
-    inc bc
-    dec b
-    dec b
-    rlca
-    rlca
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc bc
-    inc bc
-    inc bc
-    dec b
-    dec b
-    nop
-    ld bc, $0001
-    nop
-    ld b, $05
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    dec b
-    dec b
-    inc b
-    inc b
-
-Call_000_2033:
-    nop
-    nop
-    nop
-    ld b, $05
-    nop
-    nop
-    nop
-    nop
-
-Jump_000_203c:
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-
-Call_000_203f:
-    ld b, $06
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld b, $05
-    nop
-    nop
-    nop
-    nop
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld b, $06
-
-Jump_000_2051:
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld b, $05
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-
-Call_000_205f:
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc b
-    inc b
-    inc b
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    inc b
-    inc b
-    nop
-    nop
-    inc b
-    inc b
-    inc b
-    inc b
-    inc b
-    nop
-    inc b
-    inc b
-    inc b
-    nop
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    inc b
-    inc b
-    inc b
-    inc b
-    inc b
-    nop
-    inc b
-    inc b
-    inc b
-    nop
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    inc b
-    inc b
-    inc b
-    inc b
-    inc b
-    nop
-    inc b
-
-Jump_000_20bf:
-    inc b
-    nop
-    nop
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    inc b
-    inc b
-    inc b
-    inc b
-    inc b
-    nop
-    inc b
-    inc b
-    nop
-    nop
-    ld b, $06
-    dec b
-    dec b
-    nop
-    nop
-    nop
-    ld a, [bc]
-    ld c, $12
-
-Call_000_20dc:
-    ld a, [bc]
-    ld a, [de]
+Data_000_1fd8:
+    db $00, $04, $00, $03, $03, $01, $01, $00, $00, $00, $00, $00, $03, $03, $03, $03,
+    db $00, $00, $00, $03, $03, $01, $01, $00, $00, $00, $00, $00, $00, $03, $03, $03,
+    db $00, $00, $00, $00, $03, $03, $03, $05, $05, $07, $07, $06, $06, $05, $05, $00,
+    db $00, $00, $00, $00, $03, $03, $03, $05, $05, $07, $07, $06, $06, $05, $05, $00,
+    db $00, $00, $00, $00, $03, $03, $03, $05, $05, $00, $01, $01, $00, $00, $06, $05,
+    db $00, $00, $00, $00, $02, $02, $02, $05, $05, $04, $04, $00, $00, $00, $06, $05,
+    db $00, $00, $00, $00, $02, $02, $02, $06, $06, $00, $00, $00, $00, $00, $06, $05,
+    db $00, $00, $00, $00, $02, $02, $02, $06, $06, $00, $00, $00, $00, $00, $06, $05,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $04, $04, $04, $00, $00,
+    db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $04, $04, $00, $00,
+    db $04, $04, $04, $04, $04, $00, $04, $04, $04, $00, $06, $06, $05, $05, $00, $00,
+    db $04, $04, $04, $04, $04, $00, $04, $04, $04, $00, $06, $06, $05, $05, $00, $00,
+    db $04, $04, $04, $04, $04, $00, $04, $04, $00, $00, $06, $06, $05, $05, $00, $00,
+    db $04, $04, $04, $04, $04, $00, $04, $04, $00, $00, $06, $06, $05, $05, $00, $00,
+    db $00, $0A, $0E, $12, $0A, $1A
 
 Call_000_20de:
 Jump_000_20de:
@@ -6372,7 +6122,7 @@ Call_000_2df2:
     ld a, [hli]
     ldh [$ffa9], a
     ld a, [hli]
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ldh a, [$ffa4]
     cp $02
     jr z, jr_000_2e22
@@ -6632,7 +6382,7 @@ Jump_000_2f3f:
     ld d, a
     ldh a, [$ffa9]
     ld c, a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld b, a
     call Call_000_2f9f
 

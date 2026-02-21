@@ -1691,7 +1691,7 @@ jr_010_53ec:
     ld a, $00
     call Call_010_5502
     ld a, $01
-    ld [$b90b], a
+    ld [sMapExpansionRightSide], a
     ld [$ccb6], a
     call Call_000_1147
     jp Jump_010_54a7

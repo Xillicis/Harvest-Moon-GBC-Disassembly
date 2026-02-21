@@ -3202,10 +3202,10 @@ Call_008_5327:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa6]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa7]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -3216,10 +3216,10 @@ Call_008_5327:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa8]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa9]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ret
 
@@ -7128,10 +7128,10 @@ Call_008_68c8:
     ld l, a
     add hl, bc
     ldh a, [$ffa4]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa5]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, [wPlayerXPosition]
     and $08
@@ -7221,10 +7221,10 @@ jr_008_6974:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa6]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa7]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -7235,9 +7235,9 @@ jr_008_6974:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa8]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ldh a, [$ffa9]
     ld [hl], a
     pop af
@@ -7271,10 +7271,10 @@ Call_008_69a4:
     ld a, [$cb44]
     ld l, a
     ldh a, [$ffa4]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa5]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, [wPlayerFacingDirection]
     cp $00
@@ -7409,12 +7409,12 @@ jr_008_6a80:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa6]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa7]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -7425,12 +7425,12 @@ jr_008_6a80:
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa8]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_000_199a
     call SyncToBlankPeriod
     ldh a, [$ffa9]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ret
 
@@ -8915,7 +8915,7 @@ jr_008_7206:
 
     push af
     dec [hl]
-    ld [$ffaa], a
+    ld [hTemp], a
     rst $18
     rst $38
     ld l, b

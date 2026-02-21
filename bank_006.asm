@@ -3501,7 +3501,7 @@ jr_006_5061:
     ld d, b
     ld a, c
     ld c, a
-    jp Jump_000_2051
+    jp $2051
 
 
     ld h, b

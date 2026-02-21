@@ -326,9 +326,9 @@ jr_001_423d:
     call Call_000_195e
     call SyncToBlankPeriod
     ld a, $a9
-    call Call_000_1fb5
-    ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
+    ld [hli], a
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -339,9 +339,9 @@ jr_001_423d:
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $a9
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -352,9 +352,9 @@ jr_001_423d:
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $a9
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     pop hl
     ret
@@ -1742,19 +1742,19 @@ jr_001_5748:
     xor a
     ld [wHeldObject], a
     ld a, $03
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $01
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     call Call_001_691e
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $03
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $04
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -1765,10 +1765,10 @@ jr_001_5748:
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $13
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $14
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     xor a
     ld [wPlayerIsCarryingItem], a
@@ -1892,19 +1892,19 @@ jr_001_5811:
     xor a
     ld [wHeldObject], a
     ld a, $01
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $01
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     call Call_001_691e
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $20
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $40
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -1915,10 +1915,10 @@ jr_001_5811:
     call Call_000_199a
     call SyncToBlankPeriod
     ld a, $30
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, $50
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     xor a
     ld [wPlayerIsCarryingItem], a
@@ -3031,9 +3031,9 @@ Jump_001_6541:
     jr nz, jr_001_6560
 
     ld a, $00
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     jr jr_001_65bd
 
@@ -3044,13 +3044,13 @@ jr_001_6560:
 jr_001_6564:
     push hl
     ld a, $00
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     pop hl
     ld a, [$b90c]
@@ -3060,13 +3060,13 @@ jr_001_6564:
     adc h
     ld h, a
     ld a, $00
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     jr jr_001_65bd
 
@@ -3241,9 +3241,9 @@ jr_001_6668:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -3254,9 +3254,9 @@ jr_001_6668:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ret
 
@@ -3271,17 +3271,17 @@ Jump_001_669e:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     pop hl
     push hl
@@ -3294,17 +3294,17 @@ Jump_001_669e:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     pop hl
     ld a, $40
@@ -3317,17 +3317,17 @@ Jump_001_669e:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     pop hl
     ld a, $20
@@ -3339,17 +3339,17 @@ Jump_001_669e:
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call Call_001_6767
     call Call_000_199a
     call SyncToBlankPeriod
     xor a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ret
 
@@ -3544,7 +3544,7 @@ Call_001_682d:
     ret c
 
 jr_001_6843:
-    ld a, [$b90b]
+    ld a, [sMapExpansionRightSide]
     or a
     jr z, jr_001_6859
 
@@ -3612,57 +3612,57 @@ Call_001_689f:
     ld [$c611], a
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$b90b]
+    ld a, [sMapExpansionRightSide]
     or a
-    jr z, jr_001_68cb
+    jr z, .noRightSideMapExpansion
 
     ld a, [wPlayerXPosition+1]
     cp $03
-    jr nz, jr_001_68bb
+    jr nz, .PlayerPositionCheck_MapExpansion
 
     ld a, [wPlayerXPosition]
     cp $e8
     ret nc
 
-jr_001_68bb:
+.PlayerPositionCheck_MapExpansion
     ld a, [wPlayerXPosition+1]
-    cp $03
-    jr nz, jr_001_68e6
+    cp $03 ; This is the maxmimum X-axis cap
+    jr nz, .jr_001_68e6
 
     ld a, [wPlayerXPosition]
-    cp $b0
-    jr nc, jr_001_6917
+    cp $b0 ; 
+    jr nc, .jr_001_6917
 
-    jr jr_001_68e6
+    jr .jr_001_68e6
 
-jr_001_68cb:
+.noRightSideMapExpansion
     ld a, [wPlayerXPosition+1]
     cp $02
-    jr nz, jr_001_68d8
+    jr nz, .jr_001_68d8
 
     ld a, [wPlayerXPosition]
     cp $f8
     ret nc
 
-jr_001_68d8:
+.jr_001_68d8
     ld a, [wPlayerXPosition+1]
     cp $02
-    jr nz, jr_001_68e6
+    jr nz, .jr_001_68e6
 
     ld a, [wPlayerXPosition]
     cp $c0
-    jr nc, jr_001_6917
+    jr nc, .jr_001_6917
 
-jr_001_68e6:
+.jr_001_68e6
     ld a, [wPlayerXPosition+1]
     cp $00
-    jr nz, jr_001_68f4
+    jr nz, .jr_001_68f4
 
     ld a, [wPlayerXPosition]
     cp $50
-    jr c, jr_001_6917
+    jr c, .jr_001_6917
 
-jr_001_68f4:
+.jr_001_68f4
     ld hl, wPlayerMovementX
     dec [hl]
     ld hl, $ff93
@@ -3672,7 +3672,7 @@ jr_001_68f4:
     cp $00
     call z, Call_001_7538
 
-jr_001_6905:
+.updatePlayerXPosition
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -3684,11 +3684,10 @@ jr_001_6905:
     ld [wPlayerXPosition+1], a
     ret
 
-
-jr_001_6917:
+.jr_001_6917
     ld hl, $c60a
     inc [hl]
-    jr jr_001_6905
+    jr .updatePlayerXPosition
 
     ret
 

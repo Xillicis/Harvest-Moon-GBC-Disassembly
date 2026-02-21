@@ -7231,7 +7231,7 @@ jr_02a_5e53:
     rst $20
     ld a, b
     add b
-    ldh [$ffaa], a
+    ldh [hTemp], a
 
 jr_02a_5e8f:
     add hl, bc
@@ -12048,7 +12048,7 @@ jr_02a_736f:
     ld e, b
     rst $38
     ld e, a
-    jp nz, Jump_000_1ffd
+    jp nz, $1ffd
 
     ldh [$ffe0], a
     nop
@@ -12510,7 +12510,7 @@ jr_02a_754b:
     nop
     sbc [hl]
     ld a, a
-    call z, Call_000_203f
+    call z, $203f
     rst $18
     rst $38
     xor h

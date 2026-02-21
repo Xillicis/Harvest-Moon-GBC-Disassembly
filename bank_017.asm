@@ -4790,7 +4790,7 @@ jr_017_5368:
     nop
     ld [de], a
     inc c
-    call z, Call_000_2000
+    call z, $2000
     ret nz
 
     db $10

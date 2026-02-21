@@ -9314,7 +9314,7 @@ jr_028_7202:
 
     push af
     dec [hl]
-    ld [$ffaa], a
+    ld [hTemp], a
     rst $18
     rst $38
     ld l, b

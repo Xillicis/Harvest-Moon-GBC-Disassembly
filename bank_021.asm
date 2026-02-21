@@ -6080,7 +6080,7 @@ Call_021_66c0:
     ret c
 
 jr_021_66d6:
-    ld a, [$b90b]
+    ld a, [sMapExpansionRightSide]
     or a
     jr z, jr_021_66ec
 
@@ -6148,7 +6148,7 @@ Call_021_6732:
     ld [$c611], a
     xor a
     ld [wCollisionNoMovement], a
-    ld a, [$b90b]
+    ld a, [sMapExpansionRightSide]
     or a
     jr z, jr_021_675e
 

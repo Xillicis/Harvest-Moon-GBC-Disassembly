@@ -160,7 +160,8 @@ sCurrentWaterInWateringCan::  db
 ; Seems to just load 1 on the first interaction.
 sSpriteFirstInteractionFlag::  db  ; 0xb909
 sb90a::  db 
-sb90b::  db 
+; Allows you to see the right side map expansion, but it doesn't remove the solid fence.
+sMapExpansionRightSide::  db ; 0xb90b
 sb90c::  db 
 sb90d::  db 
 sb90e::  db 

@@ -1497,7 +1497,7 @@ jr_036_4695:
     jp c, Jump_036_56fc
 
     db $fc
-    jp nc, Jump_000_1ffc
+    jp nc, $1ffc
 
     ccf
     rla
@@ -4188,7 +4188,7 @@ jr_036_5216:
 
     and b
     add sp, $30
-    call c, Call_000_1fe8
+    call c, $1fe8
     nop
     inc a
     dec de
@@ -14441,7 +14441,7 @@ jr_036_7ddc:
     ld hl, sp+$14
     ld hl, sp+$14
     ld hl, sp-$44
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     db $f4
     ld e, [hl]
     and b

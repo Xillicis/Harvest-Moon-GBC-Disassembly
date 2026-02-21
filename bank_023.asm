@@ -1511,7 +1511,7 @@ jr_023_4931:
 
 jr_023_4952:
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $09
     add l
@@ -1536,7 +1536,7 @@ jr_023_4952:
     ret nz
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -1556,7 +1556,7 @@ jr_023_4952:
     ld [sItemSlot], a
     ld a, $ff
     ld [$cc19], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $4c
     ld [$cc25], a
@@ -1591,7 +1591,7 @@ jr_023_49ca:
     ret z
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -1605,7 +1605,7 @@ jr_023_49ca:
 
     set 0, a
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $66
     ld [$cc25], a
@@ -1644,7 +1644,7 @@ jr_023_4a11:
     ret nz
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     sla a
     add l
     ld l, a
@@ -1656,7 +1656,7 @@ jr_023_4a11:
     ld l, a
     ld b, $0a
     call Call_023_75c5
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     or $10
     ld [$cc24], a
     ld a, $34
@@ -1712,7 +1712,7 @@ jr_023_4a6c:
     ret nz
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $02
     ld [hl], a
@@ -1731,7 +1731,7 @@ jr_023_4a6c:
 
 jr_023_4a92:
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -1745,7 +1745,7 @@ jr_023_4a92:
 
     set 7, a
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $40
     ld [$cc25], a
@@ -1787,7 +1787,7 @@ jr_023_4ad8:
     ret nz
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $14
     add l
@@ -1797,7 +1797,7 @@ jr_023_4ad8:
     ld h, a
     ld a, $1e
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $40
     ld [$cc25], a
@@ -1832,7 +1832,7 @@ jr_023_4b20:
     ret z
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, [hl]
     cp $04
@@ -1848,7 +1848,7 @@ jr_023_4b20:
     ld h, a
     xor a
     ld [hl+], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $40
     ld [$cc25], a
@@ -1909,7 +1909,7 @@ jr_023_4b74:
     ld h, b
     ld c, h
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $01
     add l
@@ -1943,7 +1943,7 @@ jr_023_4bc2:
 
 jr_023_4bcc:
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -1957,7 +1957,7 @@ jr_023_4bcc:
 
     set 2, a
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $02
     ld [$cc25], a
@@ -1965,7 +1965,7 @@ jr_023_4bcc:
 
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $01
     add l
@@ -2011,7 +2011,7 @@ jr_023_4c34:
 
 jr_023_4c3e:
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -2025,7 +2025,7 @@ jr_023_4c3e:
 
     set 2, a
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $02
     ld [$cc25], a
@@ -2033,7 +2033,7 @@ jr_023_4c3e:
 
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $01
     add l
@@ -2067,7 +2067,7 @@ jr_023_4c92:
 
 jr_023_4c9c:
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0a
     add l
@@ -2081,7 +2081,7 @@ jr_023_4c9c:
 
     set 2, a
     ld [hl], a
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc24], a
     ld a, $02
     ld [$cc25], a
@@ -3134,7 +3134,7 @@ jr_023_5316:
     jr c, jr_023_537b
 
     ld hl, $5196
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0b
     add l
@@ -3149,7 +3149,7 @@ jr_023_5316:
     ld a, $00
     ld [hl], a
     ld hl, $519e
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $0d
     add l
@@ -3186,10 +3186,10 @@ jr_023_5316:
     ret c
 
     inc hl
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     ld [$cc28], a
     ld hl, $519e
-    ldh a, [$ffaa]
+    ldh a, [hTemp]
     call LoadWordFromTableHL
     ld a, $00
     ld [hl], a
@@ -4302,7 +4302,7 @@ Call_023_59b0:
     ld a, [$b949]
     ldh [$ffa9], a
     ld a, $00
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $00
     jr z, jr_023_5a43
@@ -4370,7 +4370,7 @@ jr_023_5a43:
     ld a, [$b95f]
     ldh [$ffa9], a
     ld a, $01
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $01
     jr z, jr_023_5ab8
@@ -4438,7 +4438,7 @@ jr_023_5ab8:
     ld a, [$b975]
     ldh [$ffa9], a
     ld a, $02
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $02
     jr z, jr_023_5b2c
@@ -4506,7 +4506,7 @@ jr_023_5b2c:
     ld a, [$b98b]
     ldh [$ffa9], a
     ld a, $03
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $03
     jr z, jr_023_5ba0
@@ -4605,7 +4605,7 @@ Call_023_5baa:
     ld a, [$b949]
     ldh [$ffa9], a
     ld a, $00
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $00
     jr z, jr_023_5c3d
@@ -4675,7 +4675,7 @@ jr_023_5c3d:
     ld a, [$b95f]
     ldh [$ffa9], a
     ld a, $01
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $01
     jr z, jr_023_5cb2
@@ -4743,7 +4743,7 @@ jr_023_5cb2:
     ld a, [$b975]
     ldh [$ffa9], a
     ld a, $02
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $02
     jr z, jr_023_5d26
@@ -4811,7 +4811,7 @@ jr_023_5d26:
     ld a, [$b98b]
     ldh [$ffa9], a
     ld a, $03
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $03
     jr z, jr_023_5d9a
@@ -4910,7 +4910,7 @@ Call_023_5da4:
     ld a, [$b949]
     ldh [$ffa9], a
     ld a, $00
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $00
     jr z, jr_023_5e37
@@ -4978,7 +4978,7 @@ jr_023_5e37:
     ld a, [$b95f]
     ldh [$ffa9], a
     ld a, $01
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $01
     jr z, jr_023_5eac
@@ -5046,7 +5046,7 @@ jr_023_5eac:
     ld a, [$b975]
     ldh [$ffa9], a
     ld a, $02
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $02
     jr z, jr_023_5f20
@@ -5114,7 +5114,7 @@ jr_023_5f20:
     ld a, [$b98b]
     ldh [$ffa9], a
     ld a, $03
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $03
     jr z, jr_023_5f94
@@ -5213,7 +5213,7 @@ Call_023_5f9e:
     ld a, [$b949]
     ldh [$ffa9], a
     ld a, $00
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $00
     jr z, jr_023_6031
@@ -5281,7 +5281,7 @@ jr_023_6031:
     ld a, [$b95f]
     ldh [$ffa9], a
     ld a, $01
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $01
     jr z, jr_023_60a6
@@ -5351,7 +5351,7 @@ jr_023_60a6:
     ld a, [$b975]
     ldh [$ffa9], a
     ld a, $02
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $02
     jr z, jr_023_611a
@@ -5419,7 +5419,7 @@ jr_023_611a:
     ld a, [$b98b]
     ldh [$ffa9], a
     ld a, $03
-    ldh [$ffaa], a
+    ldh [hTemp], a
     ld a, [$cc28]
     cp $03
     jr z, jr_023_618e

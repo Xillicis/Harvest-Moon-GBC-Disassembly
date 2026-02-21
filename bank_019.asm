@@ -10283,7 +10283,7 @@ jr_019_6b9c:
     nop
     inc a
     nop
-    jp Jump_000_203c
+    jp $203c
 
 
     rra

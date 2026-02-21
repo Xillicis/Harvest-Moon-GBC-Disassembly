@@ -9968,7 +9968,7 @@ jr_025_74f9:
     ldh a, [$fff0]
     ld a, [bc]
     ld h, b
-    jp z, Jump_000_20bf
+    jp z, $20bf
 
     jp z, $eaf4
 

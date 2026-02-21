@@ -1563,7 +1563,7 @@ jr_035_4661:
     db $fc
     ldh [$ffee], a
     inc d
-    jp nc, Jump_000_1fec
+    jp nc, $1fec
 
 jr_035_4682:
     inc bc
@@ -5174,7 +5174,7 @@ jr_035_557c:
     db $fc
     ldh [$ffee], a
     inc d
-    jp nc, Jump_000_1fec
+    jp nc, $1fec
 
 jr_035_5592:
     inc bc

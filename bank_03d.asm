@@ -5609,7 +5609,7 @@ jr_03d_5b99:
     ld d, a
     call c, $00ef
     ld [hl-], a
-    call z, Call_000_2033
+    call z, $2033
     nop
     ld [hl-], a
     call $df32

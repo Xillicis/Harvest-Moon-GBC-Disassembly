@@ -6976,7 +6976,7 @@ Jump_02b_5dba:
     and $36
     ret z
 
-    jp Jump_000_1ffd
+    jp $1ffd
 
 
     cpl

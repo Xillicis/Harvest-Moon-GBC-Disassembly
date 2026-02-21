@@ -1248,10 +1248,10 @@ jr_001_5458:
     ld a, [$cb36]
     ld l, a
     ldh a, [$ffa4]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ldh a, [$ffa5]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     ld a, [wPlayerFacingDirection]
     cp FACING_DOWN
@@ -1308,11 +1308,11 @@ jr_001_54d3:
 jr_001_54e0:
     call SyncToBlankPeriod
     ldh a, [$ffa6]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call SyncToBlankPeriod
     ldh a, [$ffa7]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $1f
     add l
@@ -1322,11 +1322,11 @@ jr_001_54e0:
     ld h, a
     call SyncToBlankPeriod
     ldh a, [$ffa8]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl+], a
     call SyncToBlankPeriod
     ldh a, [$ffa9]
-    call Call_000_1fb5
+    call WriteTilePropertyFromTable
     ld [hl], a
     ld a, $03
     call RST_TableJumpBankSwitch

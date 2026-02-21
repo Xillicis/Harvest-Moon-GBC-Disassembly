@@ -1905,7 +1905,7 @@ jr_030_49f3:
     xor h
     ret nc
 
-    call c, Call_000_1fe8
+    call c, $1fe8
     ld a, [bc]
     jr nz, jr_030_49fb
 
@@ -3761,7 +3761,7 @@ jr_030_5357:
     ld a, $00
     call Call_030_546d
     ld a, $01
-    ld [$b90b], a
+    ld [sMapExpansionRightSide], a
     ld [$ccb6], a
     call Call_000_1147
     jp Jump_030_5412

@@ -4843,7 +4843,7 @@ jr_039_54f0:
 
     xor h
     cp [hl]
-    call z, Call_000_20dc
+    call z, $20dc
     ld [hl], h
     jr jr_039_558a
 
@@ -5278,7 +5278,7 @@ jr_039_56b0:
 
 jr_039_56ee:
     ldh [$ff2a], a
-    call c, Call_000_205f
+    call c, $205f
     or a
     ld l, a
     rst $18
@@ -13660,7 +13660,7 @@ jr_039_7af7:
     rst $30
     ld e, b
     cp $54
-    call nc, Call_000_1fe8
+    call nc, $1fe8
     inc c
     inc d
     rrca
