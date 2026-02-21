@@ -2839,14 +2839,14 @@ jr_00e_533b:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
 
 jr_00e_536e:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     pop hl
     ret
@@ -2854,7 +2854,7 @@ jr_00e_536e:
 
 jr_00e_5378:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
@@ -4775,7 +4775,7 @@ Jump_00e_5f0b:
     ld a, [hl]
     ld e, a
     ld a, $00
-    call Call_000_151d
+    call LoadPlayerSpriteID
     xor a
     ld [$cc72], a
     ld [$cc73], a
@@ -4817,7 +4817,7 @@ Jump_00e_5f0b:
     ld a, $4c
     call $16d1
     ld a, $00
-    call Call_000_151d
+    call LoadPlayerSpriteID
     xor a
     ld [$cc72], a
     ld [$cc73], a
@@ -4829,7 +4829,7 @@ Jump_00e_5f0b:
     ld a, $4d
     call $16d1
     ld a, $00
-    call Call_000_151d
+    call LoadPlayerSpriteID
     xor a
     ld [$cc72], a
     ld [$cc73], a
@@ -4875,7 +4875,7 @@ Jump_00e_5f95:
     jr z, jr_00e_5ff2
 
     ld a, $86
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $18
     ld [wInputFreezeTimer], a
     ld a, $36

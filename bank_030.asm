@@ -7065,7 +7065,7 @@ jr_030_613a:
     ld a, $06
     ld [$cb8d], a
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 

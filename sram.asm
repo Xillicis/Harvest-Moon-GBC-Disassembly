@@ -26,8 +26,8 @@ sTimeElapsed::  db ; 0xb889
 sSeasonOfNextDay::  db ; 0xb88a
 sNextDayCounter::  db  ; 0xb88b
 
-sb88c::  db 
-sb88d::  db 
+sb88c::  db ; 0xb88c
+sb88d::  db ; 0xb88d
 sb88e::  db 
 sb88f::  db 
 sb890::  db 
@@ -377,8 +377,8 @@ sb9d4::  db
 sb9d5::  db 
 sb9d6::  db 
 ; Seems like it gets capped at 99 happiness
-sSpriteTotalHappiness::  db 
-sSpriteDailyHappiness::  db 
+sSpriteTotalHappiness::  db ; 0xb9d7
+sSpriteDailyHappiness::  db ; 0xb9d8
 sSpriteDailyAnger::  db  ; 0xb9d9
 sb9da::  db 
 sb9db::  db 
@@ -483,7 +483,7 @@ sba3b::  db
 sba3c::  db 
 sba3d::  db 
 sba3e::  db 
-sPrayedFlag::  db 
+sPrayedFlag::  db ; 0xba3f
 ; This is set if the player stayed up too late.
 s6AMFlag::  db 
 sba41::  db 

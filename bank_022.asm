@@ -3489,7 +3489,7 @@ Call_022_52a2:
 
 jr_022_52c4:
     ld a, $01
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -3538,7 +3538,7 @@ jr_022_52e4:
 
 jr_022_5309:
     ld a, $53
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, [$c60a]
     add $ff
     ld [$c60a], a
@@ -6021,7 +6021,7 @@ jr_022_6055:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
@@ -6055,14 +6055,14 @@ jr_022_60a3:
 
 jr_022_60bc:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
 
 jr_022_60c5:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -6134,7 +6134,7 @@ jr_022_6114:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
@@ -6167,14 +6167,14 @@ jr_022_6162:
 
 jr_022_6178:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
 
 jr_022_6181:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -6247,7 +6247,7 @@ jr_022_61d1:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
@@ -6281,13 +6281,13 @@ jr_022_6223:
 
 jr_022_6239:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_022_623f:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 

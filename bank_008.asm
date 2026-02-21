@@ -3168,7 +3168,7 @@ Jump_008_5307:
     ld a, $07
     ld [$cb8d], a
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 

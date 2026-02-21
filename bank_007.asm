@@ -302,7 +302,7 @@ Jump_007_41db:
     xor a
     ld [$c611], a
     ld a, $11
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $24
     ld [$c90d], a
     ld a, $33
@@ -316,7 +316,7 @@ Jump_007_41f4:
     xor a
     ld [$c611], a
     ld a, $15
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -328,7 +328,7 @@ Jump_007_4203:
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $4c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -340,7 +340,7 @@ Jump_007_4217:
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $14
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -431,7 +431,7 @@ Call_007_4298:
 ; an unnecessary callfar (bank switch) since its calling the home bank
     callfar LoadTextBoxTilesIntoBGMap1
     ld a, $15
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, FACING_LEFT
     ld [wPlayerFacingDirection], a
     ld a, $e0
@@ -476,7 +476,7 @@ Call_007_4308:
     ld [$cb5e], a
     callfar LoadTextBoxTilesIntoBGMap1
     ld a, $4a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
@@ -548,7 +548,7 @@ Call_007_4360:
     ldh [$ff95], a
     callfar Call_005_44a2
     ld a, $4a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
@@ -941,7 +941,7 @@ Label_007_71a8:
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_3f26
     ld a, $01
     ld [$cbf6], a
@@ -957,7 +957,7 @@ Label_007_71c5:
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld b, $1e
     call $1ae6
     call Call_000_3f26
@@ -969,7 +969,7 @@ Label_007_71e2:
     ld a, $06
     ld [$cb8d], a
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_3f26
     ld a, $01
     ld [$cbf6], a

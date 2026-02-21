@@ -293,7 +293,7 @@ Jump_027_41ce:
     xor a
     ld [$c611], a
     ld a, $11
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $24
     ld [$c90d], a
     ld a, $33
@@ -307,7 +307,7 @@ Jump_027_41e7:
     xor a
     ld [$c611], a
     ld a, $15
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -319,7 +319,7 @@ Jump_027_41f6:
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $4c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -331,7 +331,7 @@ Jump_027_420a:
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $14
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -415,7 +415,7 @@ Call_027_428b:
     ld a, $21
     call BankSwitchCallHL
     ld a, $15
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $e0
@@ -454,7 +454,7 @@ Call_027_42e1:
     ld a, $21
     call BankSwitchCallHL
     ld a, $4a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
@@ -502,7 +502,7 @@ Call_027_432c:
     ld a, $25
     call BankSwitchCallHL
     ld a, $4a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
@@ -11762,7 +11762,7 @@ jr_027_7111:
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_3f26
     ld a, $01
     ld [$cbf6], a
@@ -11778,7 +11778,7 @@ jr_027_7111:
     ld a, $ff
     ld [$cb8d], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld b, $1e
     call $1ae6
     call Call_000_3f26
@@ -11790,7 +11790,7 @@ jr_027_7111:
     ld a, $06
     ld [$cb8d], a
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_3f26
     ld a, $01
     ld [$cbf6], a

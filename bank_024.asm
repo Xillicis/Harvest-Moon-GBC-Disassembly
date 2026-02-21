@@ -3881,28 +3881,28 @@ jr_024_5797:
 
 jr_024_57bf:
     ld a, $8a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 
 jr_024_57c6:
     ld a, $8b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 
 jr_024_57cd:
     ld a, $8c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 
 jr_024_57d4:
     ld a, $8d
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 

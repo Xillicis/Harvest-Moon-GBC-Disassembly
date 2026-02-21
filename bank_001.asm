@@ -4213,7 +4213,7 @@ jr_001_6bde:
     jr z, jr_001_6c21
 
     ld a, $9f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $e4
     ld [$cb7c], a
     ret
@@ -4221,7 +4221,7 @@ jr_001_6bde:
 
 jr_001_6c21:
     ld a, $a0
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -4233,7 +4233,7 @@ jr_001_6c2c:
     jr z, jr_001_6c3d
 
     ld a, $99
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $9f
     ld [$cb7c], a
     ret
@@ -4241,7 +4241,7 @@ jr_001_6c2c:
 
 jr_001_6c3d:
     ld a, $9a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $f8
     ld [$cb7c], a
     ret
@@ -4253,7 +4253,7 @@ jr_001_6c48:
     jr z, jr_001_6c59
 
     ld a, $9b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $3e
     ld [$cb7c], a
     ret
@@ -4261,7 +4261,7 @@ jr_001_6c48:
 
 jr_001_6c59:
     ld a, $9c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $e1
     ld [$cb7c], a
     ret
@@ -4273,7 +4273,7 @@ jr_001_6c64:
     jr z, jr_001_6c75
 
     ld a, $9d
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -4281,7 +4281,7 @@ jr_001_6c64:
 
 jr_001_6c75:
     ld a, $9e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -6381,14 +6381,14 @@ jr_001_790d:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
 
 jr_001_7940:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     pop hl
     ret
@@ -6396,7 +6396,7 @@ jr_001_7940:
 
 jr_001_794a:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
@@ -6735,7 +6735,7 @@ Jump_001_7b8e:
     ld a, $ff
     ld [wInputFreezeTimer], a
     ld a, $48
-    call Call_000_151d
+    call LoadPlayerSpriteID
     xor a
     ld [$cbf6], a
     ld a, $53

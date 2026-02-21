@@ -17,7 +17,7 @@ JumpOnHorse:
     ld [$cb86], a
     ld a, [wPlayerFacingDirection]
     add $0c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 Call_001_4a92:
@@ -564,7 +564,7 @@ Jump_001_4f0e:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     add $68
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 

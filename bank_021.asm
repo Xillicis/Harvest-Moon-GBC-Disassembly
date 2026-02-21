@@ -1672,7 +1672,7 @@ Jump_021_4a5e:
     ld [$cb86], a
     ld a, [wPlayerFacingDirection]
     add $0c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -2242,7 +2242,7 @@ Jump_021_4f02:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     add $68
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
@@ -4963,7 +4963,7 @@ Jump_021_603b:
     xor a
     ld [$cb45], a
     ld a, $84
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $50
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -4987,7 +4987,7 @@ Jump_021_606b:
     ld b, $03
     call CheckForNoEnergyAnimation
     ld a, $85
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $56
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5282,7 +5282,7 @@ Jump_021_621b:
     ld b, $03
     call CheckForNoEnergyAnimation
     ld a, $63
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $69
     ld [wInputFreezeTimer], a
     ld a, [sSeasonOfNextDay]
@@ -5306,7 +5306,7 @@ jr_021_623d:
     ld b, $02
     call CheckForNoEnergyAnimation
     ld a, $63
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $60
     ld [wInputFreezeTimer], a
     ret
@@ -5356,7 +5356,7 @@ Jump_021_6293:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5378,7 +5378,7 @@ Jump_021_62bc:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5400,7 +5400,7 @@ Jump_021_62e6:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5422,7 +5422,7 @@ Jump_021_6310:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5450,7 +5450,7 @@ Jump_021_6340:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5472,7 +5472,7 @@ Jump_021_636a:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5494,7 +5494,7 @@ Jump_021_6394:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5516,7 +5516,7 @@ Jump_021_63be:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -5538,7 +5538,7 @@ Jump_021_63e8:
     ld b, $01
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -6758,7 +6758,7 @@ jr_021_6a71:
     jr z, jr_021_6ab4
 
     ld a, $9f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $e4
     ld [$cb7c], a
     ret
@@ -6766,7 +6766,7 @@ jr_021_6a71:
 
 jr_021_6ab4:
     ld a, $a0
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -6778,7 +6778,7 @@ jr_021_6abf:
     jr z, jr_021_6ad0
 
     ld a, $99
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $9f
     ld [$cb7c], a
     ret
@@ -6786,7 +6786,7 @@ jr_021_6abf:
 
 jr_021_6ad0:
     ld a, $9a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $f8
     ld [$cb7c], a
     ret
@@ -6798,7 +6798,7 @@ jr_021_6adb:
     jr z, jr_021_6aec
 
     ld a, $9b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $3e
     ld [$cb7c], a
     ret
@@ -6806,7 +6806,7 @@ jr_021_6adb:
 
 jr_021_6aec:
     ld a, $9c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $e1
     ld [$cb7c], a
     ret
@@ -6818,7 +6818,7 @@ jr_021_6af7:
     jr z, jr_021_6b08
 
     ld a, $9d
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -6826,7 +6826,7 @@ jr_021_6af7:
 
 jr_021_6b08:
     ld a, $9e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $4e
     ld [$cb7c], a
     ret
@@ -9108,14 +9108,14 @@ jr_021_77ed:
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld a, $8e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     ret
 
 
 jr_021_7820:
     ld a, $b5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     call Call_000_1afe
     pop hl
     ret
@@ -9123,7 +9123,7 @@ jr_021_7820:
 
 jr_021_782a:
     ld a, $20
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
@@ -9465,7 +9465,7 @@ Jump_021_7a6e:
     ld a, $ff
     ld [wInputFreezeTimer], a
     ld a, $48
-    call Call_000_151d
+    call LoadPlayerSpriteID
     xor a
     ld [$cbf6], a
     ld a, $53

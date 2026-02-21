@@ -4818,14 +4818,14 @@ Label_006_55e4:
 jr_006_55fd:
     ld a, [wPlayerFacingDirection]
     add $a9
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_5606:
     ld a, [wPlayerFacingDirection]
     add $47
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -4836,21 +4836,21 @@ jr_006_560f:
 
     ld a, [wPlayerFacingDirection]
     add $78
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_561e:
     ld a, [wPlayerFacingDirection]
     add $70
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_5627:
     ld a, [wPlayerFacingDirection]
     add $4b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -4871,14 +4871,14 @@ jr_006_5627:
 jr_006_5644:
     ld a, [wPlayerFacingDirection]
     add $a1
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_564d:
     ld a, [wPlayerFacingDirection]
     add $00
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -4889,21 +4889,21 @@ jr_006_5656:
 
     ld a, [wPlayerFacingDirection]
     add $74
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_5665:
     ld a, [wPlayerFacingDirection]
     add $6c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_566e:
     ld a, [wPlayerFacingDirection]
     add $14
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -4917,27 +4917,27 @@ jr_006_566e:
 
     ld a, [wPlayerFacingDirection]
     add $a1
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_568c:
     ld a, [wPlayerFacingDirection]
     add $04
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_5695:
     ld a, [wPlayerFacingDirection]
     add $18
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $08
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
@@ -4951,189 +4951,189 @@ jr_006_5695:
 
     ld a, [wPlayerFacingDirection]
     add $a5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_56bc:
     ld a, [wPlayerFacingDirection]
     add $0c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
 jr_006_56c5:
     ld a, [wPlayerFacingDirection]
     add $10
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $1c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $22
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $26
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 ; Exhausted Animation goes here
     ld a, [wPlayerFacingDirection]
     add $2a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $2e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $32
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $36
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 Call_006_570d: ; watering can goes here...
     ld a, [wPlayerFacingDirection]
     add $3a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $3f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $43
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $80
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $a1
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $a5
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $a9
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $ad
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $b1
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $4f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $57
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $5b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $5f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $64
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $8f
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, [wPlayerFacingDirection]
     add $93
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $97
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $98
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $86
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $87
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $88
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 
     ld a, $89
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ret
 
 Label_006_57c1:

@@ -1179,25 +1179,25 @@ jr_000_0e81:
 
 jr_000_0ea9:
     ld a, $8a
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 jr_000_0eb0:
     ld a, $8b
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 jr_000_0eb7:
     ld a, $8c
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
 jr_000_0ebe:
     ld a, $8d
-    call Call_000_151d
+    call LoadPlayerSpriteID
     pop hl
     ret
 
@@ -2245,10 +2245,11 @@ Call_000_1514:
     call BankSwitchCallHL
     ret
 
-Call_000_151d:
+LoadPlayerSpriteID: ; 00x151d
     ld hl, wPlayerSpriteID
     cp [hl]
     ret z
+
     ld [hli], a
     ld a, $ff
     ld [hli], a
@@ -3011,7 +3012,7 @@ Call_000_1923:
     ld a, $38
     ld [wInputFreezeTimer], a
     ld a, PLAYER_HOLDING_ITEM_POSE
-    call Call_000_151d
+    call LoadPlayerSpriteID
 ; Rotate item slot
     ld a, [sItemSlot]
     inc a

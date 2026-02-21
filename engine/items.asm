@@ -328,7 +328,7 @@ UseSuperSickle:
     xor a
     ld [$cb45], a
     ld a, $84
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $50
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -350,7 +350,7 @@ UseSprinkler:
     ld b, LARGE_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $85
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $56
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -627,7 +627,7 @@ Jump_001_632d:
     ld b, LARGE_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $63
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $69
     ld [wInputFreezeTimer], a
     ld a, [sSeasonOfNextDay]
@@ -651,7 +651,7 @@ jr_001_634f:
     ld b, MEDIUM_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $63
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $60
     ld [wInputFreezeTimer], a
     ret
@@ -700,7 +700,7 @@ UseGrassSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -721,7 +721,7 @@ UseTomatoSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -742,7 +742,7 @@ UseCornSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -763,7 +763,7 @@ UseTurnipSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -789,7 +789,7 @@ UsePotatoSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -811,7 +811,7 @@ UseEggplantSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -832,7 +832,7 @@ UsePeanutSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -853,7 +853,7 @@ UseCarrotSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
@@ -874,7 +874,7 @@ UseBrocolliSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
     ld a, $3e
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]

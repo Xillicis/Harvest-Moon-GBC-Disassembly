@@ -6086,7 +6086,7 @@ jr_025_61f5:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $48
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $02
     ld [$c811], a
     ld a, $01
@@ -6229,7 +6229,7 @@ jr_025_62f1:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $48
-    call Call_000_151d
+    call LoadPlayerSpriteID
     ld a, $02
     ld [$c811], a
     ld a, $01
