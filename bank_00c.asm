@@ -748,7 +748,9 @@ UpgradeHoeText::
     db "Does it        ▽"
     prompt 
     yes_no_text UpgradeHoeText, UpgradeHoe_YesText, UpgradeHoe_NoText
-    db $40, $4C, $00, $02, $7D, $00, $00
+    db $40, $4C, $00, 
+    dw UpgradeHoe
+    db $00, $00
     db "plow well?      "
     db " YES         NO "
     prompt 
@@ -801,61 +803,67 @@ UpgradeHoe_NoText::
     db "                "
     done 
 
+GoldenAxText::
     text Text_DoNothing_0C
-    db $07, $1E, $25, $25, $28, $40, $EF, $18, $28, $2E, $EF, $1A, $2B, $1E, $EF, $EF,
-    db $2D, $21, $1E, $EF, $28, $30, $27, $1E, $2B, $EF, $28, $1F, $EF, $EF, $EF, $E9,
+    db "Hello! You are  "
+    db "the owner of   ▽"
     prompt
     text Text_DoNothing_0C
-    db $2D, $21, $22, $2C, $EF, $2B, $1A, $27, $1C, $21, $41, $EF, $EF, $03, $28, $EF,
-    db $32, $28, $2E, $EF, $24, $27, $28, $30, $EF, $21, $28, $30, $EF, $08, $EF, $E9,
+    db "this ranch?  Do "
+    db "you know how I ▽"
     prompt 
     text Text_DoNothing_0C
-    db $24, $27, $28, $30, $41, $EF, $07, $26, $26, $8E, $EF, $22, $2D, $EF, $22, $2C,
-    db $1A, $EF, $29, $22, $1E, $1C, $1E, $EF, $28, $1F, $EF, $1C, $1A, $24, $1E, $E9,
+    db "know? Hmm, it is"
+    db "a piece of cake▽"
     prompt 
     text Text_DoNothing_0C
-    db $1F, $28, $2B, $EF, $2D, $21, $1E, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF,
-    db $06, $28, $1D, $1D, $1E, $2C, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "for the Harvest "
+    db "Goddess.       ▽"
     prompt 
     text Text_DoNothing_0C
-    db $01, $32, $EF, $2D, $21, $1E, $EF, $30, $1A, $32, $8E, $EF, $1D, $22, $1D, $EF,
-    db $32, $28, $2E, $EF, $1D, $2B, $28, $29, $EF, $2D, $21, $22, $2C, $EF, $EF, $E9,
+    db "By the way, did "
+    db "you drop this  ▽"
     prompt 
     db $01, $0B, $06, $40, $4C, $00, $01, $7D, $00, $00
-    db $06, $28, $25, $1D, $1E, $27, $EF, $00, $31, $41, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $18, $04, $12, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0D, $0E, $EF,
+    db "Golden Ax?      "
+    db " YES         NO "
     prompt
-    db $00, $00, $00, $00, $00, $00, $2A, $7D, $00, $00
-    db $16, $28, $30, $40, $EF, $16, $21, $1A, $2D, $EF, $1A, $27, $EF, $21, $28, $44,
-    db $27, $1E, $2C, $2D, $EF, $29, $1E, $2B, $2C, $28, $27, $EF, $32, $28, $2E, $E9,
-    prompt
-    text Text_DoNothing_0C
-    db $1A, $2B, $1E, $40, $EF, $05, $28, $2B, $EF, $32, $28, $2E, $2B, $EF, $EF, $EF,
-    db $21, $28, $27, $1E, $2C, $2D, $32, $8E, $EF, $08, $EF, $30, $22, $25, $25, $E9,
-    prompt
-    text Text_DoNothing_0C
-    db $20, $22, $2F, $1E, $EF, $32, $28, $2E, $EF, $2D, $21, $22, $2C, $EF, $EF, $EF,
-    db $06, $28, $25, $1D, $1E, $27, $EF, $00, $31, $4C, $EF, $EF, $EF, $EF, $EF, $E9,
+
+GoldenAx_NoText::
+    db $00, $00, $00, $00, $00, $00, 
+    dw UpgradeAx
+    db $00, $00
+    db "Wow! What an ho-"
+    db "nest person you▽"
     prompt
     text Text_DoNothing_0C
-    db $0D, $28, $EF, $27, $1E, $1E, $1D, $EF, $2D, $28, $EF, $29, $1A, $32, $EF, $EF,
-    db $26, $1E, $EF, $1F, $28, $2B, $EF, $22, $2D, $4C, $EF, $01, $2E, $2D, $8E, $E9,
+    db "are! For your   "
+    db "honesty, I will▽"
     prompt
     text Text_DoNothing_0C
-    db $29, $25, $1E, $1A, $2C, $1E, $EF, $2C, $2D, $1A, $32, $EF, $EF, $EF, $EF, $EF,
-    db $21, $28, $27, $1E, $2C, $2D, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "give you this   "
+    db "Golden Ax.     ▽"
+    prompt
+    text Text_DoNothing_0C
+    db "No need to pay  "
+    db "me for it. But,▽"
+    prompt
+    text Text_DoNothing_0C
+    db "please stay     "
+    db "honest.         "
     done 
 
+GoldenAx_YesText::
     text Text_DoNothing_0C
-    db $01, $33, $33, $33, $33, $33, $2D, $40, $EF, $18, $28, $2E, $EF, $EF, $EF, $EF,
-    db $0B, $22, $1A, $2B, $40, $EF, $18, $28, $2E, $EF, $1D, $28, $27, $4B, $2D, $E9,
+    db "Bzzzzzt! You    "
+    db "Liar! You don't▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $20, $1E, $2D, $EF, $1A, $27, $32, $2D, $21, $22, $27, $20, $4C, $EF, $EF, $EF,
-    db $06, $0E, $0E, $0E, $0E, $03, $EF, $01, $18, $18, $18, $04, $04, $04, $40, $EF,
+    text Text_DoNothing_0C
+    db "get anything.   "
+    db "GOOOOD BYYYEEE! "
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $08, $EF, $1F, $28, $2E, $27, $1D, $EF, $2D, $21, $22, $2C, $EF, $EF, $EF, $EF,
     db $25, $1A, $2C, $2D, $EF, $27, $22, $20, $21, $2D, $4C, $EF, $EF, $EF, $EF, $E9,
     prompt 
@@ -864,175 +872,227 @@ UpgradeHoe_NoText::
     db $2D, $28, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     done 
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $16, $1E, $25, $25, $8E, $A0, $A1, $A2, $A3, $4C, $EF, $0B, $1E, $2D, $2C, $EF,
     db $2C, $2E, $26, $26, $1A, $2B, $22, $33, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $2D, $21, $22, $2C, $EF, $32, $1E, $1A, $2B, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $01, $EF, $01, $2E, $2D, $2D, $28, $27, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF,
     db $1C, $1A, $27, $1C, $1E, $25, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     done
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+
+    text Text_DoNothing_0C
     db $16, $1E, $25, $25, $EF, $1D, $28, $27, $1E, $40, $EF, $05, $28, $2B, $EF, $EF,
     db $32, $28, $2E, $2B, $EF, $21, $1A, $2B, $1D, $EF, $30, $28, $2B, $24, $8E, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $08, $EF, $30, $22, $25, $25, $EF, $20, $22, $2F, $1E, $EF, $1A, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $D9, $DA, $DB, $DC, $DD, $DE, $DF, $F7, $F8, $F9, $FA, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $2D, $28, $EF, $32, $28, $2E, $4C, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $13, $21, $22, $2C, $EF, $22, $2D, $1E, $26, $EF, $22, $2C, $EF, $28, $27, $1E,
     db $28, $1F, $EF, $1A, $EF, $24, $22, $27, $1D, $40, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $08, $2D, $EF, $22, $2C, $EF, $2F, $1E, $2B, $32, $EF, $2F, $1A, $25, $2E, $44,
     db $1A, $1B, $25, $1E, $EF, $1A, $27, $1D, $EF, $32, $28, $2E, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $30, $22, $25, $25, $EF, $27, $28, $2D, $EF, $1F, $22, $27, $1D, $EF, $EF, $EF,
     db $1A, $27, $28, $2D, $21, $1E, $2B, $EF, $25, $22, $24, $1E, $EF, $22, $2D, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $22, $27, $EF, $2D, $21, $1E, $EF, $30, $28, $2B, $25, $1D, $40, $40, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $8E, $EF, $EF,
     db $1A, $27, $1D, $EF, $2D, $1A, $24, $1E, $EF, $1C, $1A, $2B, $1E, $EF, $EF, $E9,
     prompt 
-
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $28, $1F, $EF, $32, $28, $2E, $2B, $2C, $1E, $25, $1F, $4C, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     done
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+
+    text Text_DoNothing_0C
     db $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $1D, $28, $27, $1E, $EF, $EF, $EF,
     db $0E, $0A, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00,
+    text Text_DoNothing_0C
     db $21, $28, $30, $1E, $2F, $1E, $2B, $EF, $2D, $21, $1A, $2D, $EF, $22, $2C, $EF,
     db $27, $28, $2D, $EF, $1E, $27, $28, $2E, $20, $21, $4C, $EF, $EF, $EF, $EF, $E9,
     prompt
-
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $08, $EF, $1D, $28, $EF, $27, $28, $2D, $EF, $2D, $21, $22, $27, $24, $EF, $EF,
     db $32, $28, $2E, $EF, $1A, $2B, $1E, $EF, $2B, $1E, $1A, $1D, $32, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $2D, $28, $EF, $2D, $1A, $24, $1E, $EF, $28, $2F, $1E, $2B, $EF, $26, $32, $EF,
     db $29, $28, $2C, $22, $2D, $22, $28, $27, $EF, $32, $1E, $2D, $4C, $EF, $EF, $E9,
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    text Text_DoNothing_0C
     db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $8E, $EF, $EF,
     db $1A, $27, $1D, $EF, $2D, $1A, $24, $1E, $EF, $1C, $1A, $2B, $1E, $EF, $EF, $E9,
     prompt
-
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $28, $1F, $EF, $32,
-    db $28, $2E, $2B, $2C, $1E, $25, $1F, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00,
-    db $00, $00, $00, $67, $7D, $00, $00, $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $02, $28, $30, $2C, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $E0, $FE, $00, $00, $00, $00, $00, $00, $8E, $7D,
-    db $00, $00, $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $02, $21, $22, $1C, $24, $1E, $27, $2C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E0, $FE, $00, $00, $00, $00, $00, $00, $B2, $7D, $00, $00, $02, $2E, $25,
-    db $2D, $22, $2F, $1A, $2D, $1E, $1D, $EF, $00, $2B, $1E, $1A, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $E0, $E1, $E2, $E3, $EF, $01, $25, $28, $1C, $24, $2C, $FE, $00, $00,
-    db $00, $00, $00, $00, $05, $7E, $00, $00, $13, $28, $2D, $1A, $25, $EF, $12, $21,
-    db $22, $29, $26, $1E, $27, $2D, $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2, $E3,
-    db $E4, $EF, $0F, $22, $1E, $1C, $1E, $2C, $FE, $00, $00, $00, $00, $00, $00, $E6,
-    db $7D, $00, $00, $13, $21, $1E, $EF, $12, $22, $33, $1E, $EF, $28, $1F, $EF, $2D,
-    db $21, $1E, $EF, $21, $28, $2E, $2C, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $1E, $7E, $00, $00, $EF, $EF,
+    text Text_DoNothing_0C
+    db $28, $1F, $EF, $32, $28, $2E, $2B, $2C, $1E, $25, $1F, $4C, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $16, $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E, $FE, $00,
-    db $00, $00, $00, $00, $00, $38, $7E, $00, $00, $03, $1E, $25, $2E, $31, $1E, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $16,
-    db $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E, $FE, $00, $00, $00, $00, $00, $00,
-    db $01, $7D, $00, $00, $14, $25, $2D, $2B, $1A, $44, $03, $1E, $25, $2E, $31, $1E,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $16, $28, $28, $1D, $EF, $07,
-    db $28, $2E, $2C, $1E, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $0C,
-    db $1A, $31, $22, $26, $2E, $26, $EF, $02, $28, $30, $EF, $EF, $EF, $EF, $EF, $00,
-    db $1F, $1F, $1E, $1C, $2D, $22, $28, $27, $EF, $11, $1A, $2D, $1E, $EF, $E9, $FE,
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $C4, $C5, $C6, $C7, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E0, $E1, $E2, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00,
-    db $00, $52, $7E, $00, $00, $0B, $1A, $2D, $1E, $2C, $2D, $EF, $05, $2E, $27, $1D,
-    db $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $B2, $B3,
-    db $B4, $B5, $B6, $EF, $06, $FE, $00, $00, $00, $00, $00, $00, $6B, $7E, $00, $00,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $67, $7D, $00, $00
+    db $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $02, $28, $30, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $8E, $7D, $00, $00
+    db $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $02, $21, $22, $1C, $24, $1E, $27, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $B2, $7D, $00, $00
+    db $02, $2E, $25, $2D, $22, $2F, $1A, $2D, $1E, $1D, $EF, $00, $2B, $1E, $1A, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2, $E3, $EF, $01, $25, $28, $1C, $24, $2C,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $05, $7E, $00, $00
+    db $13, $28, $2D, $1A, $25, $EF, $12, $21, $22, $29, $26, $1E, $27, $2D, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $E0, $E1, $E2, $E3, $E4, $EF, $0F, $22, $1E, $1C, $1E, $2C,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $E6, $7D, $00, $00
+    db $13, $21, $1E, $EF, $12, $22, $33, $1E, $EF, $28, $1F, $EF, $2D, $21, $1E, $EF,
+    db $21, $28, $2E, $2C, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $1E, $7E, $00, $00
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $16, $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $38, $7E, $00, $00
+    db $03, $1E, $25, $2E, $31, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $16, $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E,
+    prompt
+    text Text_DoNothing_0C
+    db $14, $25, $2D, $2B, $1A, $44, $03, $1E, $25, $2E, $31, $1E, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $16, $28, $28, $1D, $EF, $07, $28, $2E, $2C, $1E,
+    prompt 
+    text Text_DoNothing_0C
+    db $0C, $1A, $31, $22, $26, $2E, $26, $EF, $02, $28, $30, $EF, $EF, $EF, $EF, $EF,
+    db $00, $1F, $1F, $1E, $1C, $2D, $22, $28, $27, $EF, $11, $1A, $2D, $1E, $EF, $E9,
+    prompt
+    text Text_DoNothing_0C
+    db $EF, $EF, $EF, $EF, $EF, $EF, $C4, $C5, $C6, $C7, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2, $EF, $EF, $EF, $EF, $EF, $EF,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $52, $7E, $00, $00
+    db $0B, $1A, $2D, $1E, $2C, $2D, $EF, $05, $2E, $27, $1D, $2C, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $B2, $B3, $B4, $B5, $B6, $EF, $06,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $6B, $7E, $00, $00
     db $07, $1A, $29, $29, $22, $27, $1E, $2C, $2C, $EF, $08, $27, $1D, $1E, $31, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2,
-    db $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $0D, $2E, $26, $1B, $1E,
-    db $2B, $EF, $28, $1F, $EF, $0F, $28, $30, $1E, $2B, $EF, $01, $1E, $2B, $2B, $22,
-    db $1E, $2C, $EF, $04, $1A, $2D, $1E, $27, $EF, $EF, $E9, $FE, $00, $00, $00, $00,
-    db $00, $00, $7E, $7E, $00, $00, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $EF, $01,
-    db $1E, $2B, $2B, $22, $1E, $2C, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00,
-    db $00, $13, $21, $1E, $EF, $2D, $22, $26, $1E, $EF, $21, $1E, $25, $29, $1E, $1D,
-    db $EF, $1B, $32, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $EF, $EF, $EF, $EF,
-    db $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $12, $29, $2B, $22,
-    db $2D, $1E, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $E0, $E1, $E2, $E3, $EF, $07, $28, $2E, $2B, $2C, $FF, $00, $00, $00,
-    db $00, $00, $00, $01, $7D, $00, $00, $00, $21, $40, $EF, $18, $28, $2E, $EF, $21,
-    db $1A, $2F, $1E, $EF, $EF, $EF, $EF, $1C, $1A, $2E, $20, $21, $2D, $EF, $2E, $29,
-    db $EF, $2D, $28, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D,
-    db $00, $00, $26, $1E, $40, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF,
-    db $EF, $EF, $20, $2B, $28, $30, $27, $EF, $22, $27, $2D, $28, $EF, $1A, $EF, $EF,
-    db $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $1F, $22, $27,
-    db $1E, $EF, $26, $1A, $27, $EF, $0F, $25, $1E, $1A, $2C, $1E, $EF, $24, $1E, $1E,
-    db $29, $EF, $2E, $29, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00,
-    db $00, $00, $00, $00, $01, $7D, $00, $00, $20, $2B, $1E, $1A, $2D, $EF, $30, $28,
-    db $2B, $24, $40, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00, $00, $00, $00, $00, $01,
-    db $7D, $00, $00, $16, $28, $30, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E,
-    db $EF, $EF, $EF, $26, $1A, $1D, $1E, $EF, $22, $27, $1C, $2B, $1E, $1D, $22, $1B,
-    db $25, $1E, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $29, $2B,
-    db $28, $20, $2B, $1E, $2C, $2C, $8E, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $11, $1A,
-    db $27, $1C, $21, $EF, $30, $28, $2B, $24, $EF, $22, $2C, $EF, $EF, $E9, $FE, $00,
-    db $00, $00, $00, $00, $00, $01, $7D, $00, $00, $27, $28, $2D, $EF, $1E, $1A, $2C,
-    db $32, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $1B, $2E, $2D, $EF, $32, $28, $2E,
-    db $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00,
-    db $01, $7D, $00, $00, $1D, $28, $27, $1E, $EF, $1A, $27, $EF, $1A, $26, $1A, $33,
-    db $22, $27, $20, $EF, $23, $28, $1B, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $0F,
-    db $25, $1E, $1A, $2C, $1E, $EF, $24, $1E, $1E, $29, $EF, $2E, $29, $EF, $EF, $2D,
-    db $21, $1E, $EF, $20, $2B, $1E, $1A, $2D, $EF, $30, $28, $2B, $24, $40, $40, $FF,
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $13, $21, $1E, $EF, $30, $1E,
-    db $1A, $2D, $21, $1E, $2B, $EF, $22, $2C, $EF, $EF, $27, $22, $1C, $1E, $EF, $2D,
-    db $28, $1D, $1A, $32, $4C, $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00,
-    db $00, $01, $7D, $00, $00, $08, $EF, $30, $1A, $2C, $EF, $25, $28, $28, $24, $22,
-    db $27, $20, $EF, $EF, $EF, $1F, $28, $2B, $30, $1A, $2B, $1D, $EF, $2D, $28, $EF,
-    db $EF, $EF, $EF, $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F, $EF, $0F, $28, $30, $1E, $2B, $EF,
+    db $01, $1E, $2B, $2B, $22, $1E, $2C, $EF, $04, $1A, $2D, $1E, $27, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $7E, $7E, $00, $00
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $EF, $01, $1E, $2B, $2B, $22, $1E, $2C,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $13, $21, $1E, $EF, $2D, $22, $26, $1E, $EF, $21, $1E, $25, $29, $1E, $1D, $EF,
+    db $1B, $32, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $EF, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $12, $29, $2B, $22, $2D, $1E, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2, $E3, $EF, $07, $28, $2E, $2B, $2C,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db "Ah! You have    "
+    db $1C, $1A, $2E, $20, $21, $2D, $EF, $2E, $29, $EF, $2D, $28, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $26, $1E, $40, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF,
+    db $20, $2B, $28, $30, $27, $EF, $22, $27, $2D, $28, $EF, $1A, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $1F, $22, $27, $1E, $EF, $26, $1A, $27, $EF, $0F, $25, $1E, $1A, $2C, $1E, $EF,
+    db $24, $1E, $1E, $29, $EF, $2E, $29, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $20, $2B, $1E, $1A, $2D, $EF, $30, $28, $2B, $24, $40, $40, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $16, $28, $30, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF,
+    db $26, $1A, $1D, $1E, $EF, $22, $27, $1C, $2B, $1E, $1D, $22, $1B, $25, $1E, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $29, $2B, $28, $20, $2B, $1E, $2C, $2C, $8E, $EF, $A0, $A1, $A2, $A3, $4C, $EF,
+    db $11, $1A, $27, $1C, $21, $EF, $30, $28, $2B, $24, $EF, $22, $2C, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $27, $28, $2D, $EF, $1E, $1A, $2C, $32, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $1B, $2E, $2D, $EF, $32, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF, $E9,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $1D, $28, $27, $1E, $EF, $1A, $27, $EF, $1A, $26, $1A, $33, $22, $27, $20, $EF,
+    db $23, $28, $1B, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $0F, $25, $1E, $1A, $2C, $1E, $EF, $24, $1E, $1E, $29, $EF, $2E, $29, $EF, $EF,
+    db $2D, $21, $1E, $EF, $20, $2B, $1E, $1A, $2D, $EF, $30, $28, $2B, $24, $40, $40,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $13, $21, $1E, $EF, $30, $1E, $1A, $2D, $21, $1E, $2B, $EF, $22, $2C, $EF, $EF,
+    db $27, $22, $1C, $1E, $EF, $2D, $28, $1D, $1A, $32, $4C, $EF, $EF, $EF, $EF, $E9,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $08, $EF, $30, $1A, $2C, $EF, $25, $28, $28, $24, $22, $27, $20, $EF, $EF, $EF,
+    db $1F, $28, $2B, $30, $1A, $2B, $1D, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00,
     db $21, $1A, $2F, $22, $27, $20, $EF, $1A, $EF, $29, $22, $1C, $27, $22, $1C, $40,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $FF, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $0E, $1C, $1C, $1A, $2C,
-    db $22, $28, $27, $1A, $25, $25, $32, $8E, $EF, $22, $2D, $22, $2C, $EF, $20, $28,
-    db $28, $1D, $EF, $2D, $28, $EF, $2D, $1A, $24, $1E, $E9, $FE, $00, $00, $00, $00,
-    db $00, $00, $01, $7D, $00, $00, $1A, $EF, $1D, $1A, $32, $EF, $28, $1F, $1F, $4C,
+    done
+
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $0E, $1C, $1C, $1A, $2C, $22, $28, $27, $1A, $25, $25, $32, $8E, $EF, $22, $2D,
+    db $22, $2C, $EF, $20, $28, $28, $1D, $EF, $2D, $28, $EF, $2D, $1A, $24, $1E, $E9,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $1A, $EF, $1D, $1A, $32, $EF, $28, $1F, $1F, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
     db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00,
-    db $00, $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $27, $1E, $1E, $1D, $2C, $EF,
-    db $EF, $2D, $28, $EF, $2B, $1E, $25, $1A, $31, $8E, $EF, $22, $2D, $EF, $EF, $EF,
-    db $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $21, $1E, $25, $29,
-    db $2C, $EF, $1C, $2B, $1E, $1A, $2D, $1E, $EF, $1A, $EF, $EF, $2C, $2D, $2B, $28,
-    db $27, $20, $EF, $26, $22, $27, $1D, $4C, $EF, $EF, $EF, $EF, $FF, $00, $00, $00,
-    db $00, $00, $00, $01, $7D, $00, $00, $16, $21, $1A, $2D, $EF, $1A, $EF, $1B, $1E,
-    db $1A, $2E, $2D, $22, $1F, $2E, $25, $1D, $1A, $32, $EF, $A0, $A1, $A2, $A3, $4C,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FE, $00, $00, $00, $00, $00, $00, $01, $7D,
-    db $00, $00, $08, $EF, $30, $22, $2C, $21, $EF, $04, $2F, $1E, $EF, $1A, $27, $1D,
-    db $EF, $EF, $00, $27, $27, $EF, $1C, $28, $2E, $25, $1D, $EF, $21, $1A, $2F, $1E,
-    db $EF, $E9, $FE, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $1C, $28, $26,
-    db $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $FF, $00, $00,
-    db $00, $00, $00, $00, $01, $7D, $00, $00, $00, $30, $4C, $4C, $4C, $0B, $28, $28,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $27, $1E, $1E, $1D, $2C, $EF, $EF,
+    db $2D, $28, $EF, $2B, $1E, $25, $1A, $31, $8E, $EF, $22, $2D, $EF, $EF, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $21, $1E, $25, $29, $2C, $EF, $1C, $2B, $1E, $1A, $2D, $1E, $EF, $1A, $EF, $EF,
+    db $2C, $2D, $2B, $28, $27, $20, $EF, $26, $22, $27, $1D, $4C, $EF, $EF, $EF, $EF,
+    done
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $16, $21, $1A, $2D, $EF, $1A, $EF, $1B, $1E, $1A, $2E, $2D, $22, $1F, $2E, $25,
+    db $1D, $1A, $32, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    prompt 
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $08, $EF, $30, $22, $2C, $21, $EF, $04, $2F, $1E, $EF, $1A, $27, $1D, $EF, $EF,
+    db $00, $27, $27, $EF, $1C, $28, $2E, $25, $1D, $EF, $21, $1A, $2F, $1E, $EF, $E9,
+    prompt
+    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+    db $1C, $28, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    done
+db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $00, $30, $4C, $4C, $4C, $0B,
+db $28, $28,
     db $24, $EF, $1A, $2D, $EF, $2D, $21, $1E, $2D, $22, $26, $1E, $4C, $EF, $16, $1E,
     db $EF, $2C, $21, $28, $2E, $25, $1D, $E9, $FE, $00, $00, $00, $00, $00, $00, $01,
     db $7D, $00, $00, $1B, $1E, $EF, $20, $28, $22, $27, $20, $EF, $21, $28, $26, $1E,
@@ -1063,84 +1123,53 @@ UpgradeHoe_NoText::
 Text_DoNothing_0C:
     ret
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
-
+UpgradeHoe:
     ld a, [wYesOrNo]
     or a
-    jr nz, jr_00c_7d24
+    jr nz, .noSelected
 
     ld hl, sInventory
     ld a, [hl]
-    cp $0c
-    jr z, jr_00c_7d16
-
+    cp HOE
+    jr z, .hoeInInventory
     inc hl
     ld a, [hl]
-    cp $0c
-    jr nz, jr_00c_7d1c
+    cp HOE
+    jr nz, .jr_00c_7d1c
 
-jr_00c_7d16:
+.hoeInInventory
     ld a, $ff
     ld [hl], a
     ld [$cc9a], a
 
-jr_00c_7d1c:
+.jr_00c_7d1c
     xor a
-    ld [$b8a4], a
+    ld [sShedHoeFlag], a
     ld [$ba39], a
     ret
 
-
-jr_00c_7d24:
+.noSelected
     ld a, $ff
     ld [$ba39], a
     ret
 
-
+UpgradeAx:
     ld hl, sInventory
     ld a, [hl]
-    cp $0e
-    jr z, jr_00c_7d38
+    cp AX
+    jr z, .axInInventory
 
     inc hl
     ld a, [hl]
-    cp $0e
-    jr nz, jr_00c_7d3e
+    cp AX
+    jr nz, .loadSuperAx
 
-jr_00c_7d38:
+.axInInventory
     ld a, $ff
     ld [hl], a
     ld [$cc9a], a
 
-jr_00c_7d3e:
+.loadSuperAx
     xor a
     ld [$b8a6], a
     ld a, $01
