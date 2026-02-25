@@ -2760,8 +2760,8 @@ Call_002_4f68:
     push hl
     push bc
     dec hl
-    ld a, [hl-]
-    cp $00
+    ld a, [hld]
+    cp 0
     jr nz, jr_002_4f98
 
     ld a, [hl]
@@ -2972,11 +2972,11 @@ jr_002_5023:
     jr z, jr_002_50ec
 
     ld a, [sInventory+1]
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_002_50ec
 
     ld a, [$b8fa]
-    cp $16
+    cp SUPER_HAMMER
     jr z, jr_002_50ec
 
     ld a, [sHouseExpansionFlag]

@@ -1530,7 +1530,7 @@ Label_007_75cb:
     ld [wFreezePlayerInTextWindowOrInTown], a
     ret
 
-Label_007_75d1:
+BlankText_ret:: ; 07x75d1
     ret
 
 Label_007_75d2:

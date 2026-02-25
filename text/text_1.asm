@@ -1,4 +1,5 @@
-; I Think this is the beginning of all the text in the game.
+; Bank $07
+
 Data_007_4501:
     text Text_DoNothing
     db "<DAY><SEASON>", $C8, $C9, $EE, $F0, $ED, $AB, "<A_OR_P>M"
@@ -590,6 +591,7 @@ FindWeatherVaneDeclineText::
     db "                "
     done 
 
+FoundWeatherVaneText::
     text Text_DoNothing
     db "Oh, did you find"
     db "it? Good job.  ▽"
@@ -607,27 +609,28 @@ FindWeatherVaneDeclineText::
     db "                "
     prompt
 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+NewJuiceText::
+    text Text_DoNothing
     db "I made a new    "
     db "kind of fruit  ▽"
     prompt 
     db $00, $00, $00, $00, $00, $00, $C5, $71, $00, $00
     db "juice. Would you"
     db "like to try it?▽"
-    prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    prompt
+    text Text_DoNothing
     db "It is made from "
     db "wild grapes,   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "lemons, honey,  "
     db "apples,        ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "cranberries,    "
     db "figs, kiwis,   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "and limes. Would"
     db "you like a     ▽"
     prompt 
@@ -635,23 +638,26 @@ FindWeatherVaneDeclineText::
     db "glass of juice? "
     db " YES         NO "
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+
+AcceptJuiceText::
+    text Text_DoNothing
     db "Oh Thank you, I "
     db "was wondering  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "how it would    "
     db "taste. It will ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "be in the stores"
     db "soon, please   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $78, $70, $00, $00
+    text Text_DoNothing
     db "look for it.    "
     db "Ha ha ha.       "
     done 
 
+DeclineJuiceText::
     text Text_DoNothing
     db "Huh, really? Is "
     db "it strange...  ▽"
@@ -816,7 +822,7 @@ FindNinaDeclineText::
     db "                "
     done 
 
-;;;
+VisitorStayAtRanchText::
     text Text_DoNothing
     db "<PLAYER>.           "
     db "can I please   ▽"
@@ -830,6 +836,7 @@ FindNinaDeclineText::
     db " YES         NO "
     prompt 
 
+AcceptVisitorText::
     text Text_DoNothing
     db "Thank you very  "
     db "much for your  ▽"
@@ -839,6 +846,7 @@ FindNinaDeclineText::
     db "                "
     done
 
+DeclineVisitorText::
     text Text_DoNothing
     db "Really? I see.  "
     db "I'm sorry,     ▽"
@@ -848,6 +856,7 @@ FindNinaDeclineText::
     db "much.           "
     done 
 
+RanchWorkIsToughText::
     text Text_DoNothing
     db "I know ranch    "
     db "work is diffi- ▽"
@@ -857,6 +866,7 @@ FindNinaDeclineText::
     db "the good work.  "
     done
 
+MariaMarriageText::
     text Text_DoNothing
     db "Maria,          "
     db "I am sorry.    ▽"
@@ -898,6 +908,7 @@ FindNinaDeclineText::
     db "               ▽"
     done 
 
+VisitorLeavingText::
     text Text_DoNothing
     db "<PLAYER>, I will be "
     db "going home now.▽"
@@ -910,6 +921,8 @@ FindNinaDeclineText::
     db "letting me stay "
     db "at your ranch.  "
     prompt 
+
+ChildBuyEggText::
     text Text_DoNothing
     db "My grandma told "
     db "me to buy an   ▽"
@@ -922,6 +935,8 @@ FindNinaDeclineText::
     db "an egg?         "
     db " YES         NO "
     prompt 
+
+DontSellEggText::
     text Text_DoNothing
     db "Oh no!          "
     db "My grandma will▽"
@@ -931,6 +946,7 @@ FindNinaDeclineText::
     db "me!!            "
     done 
 
+SellEggText::
     text Text_DoNothing
     db "Here is 75G for "
     db "the egg.       ▽"
@@ -939,6 +955,8 @@ FindNinaDeclineText::
     db "Thank you and   "
     db "see you later.  "
     prompt
+
+ChildGiveChangeText::
     text Text_DoNothing
     db "I believe I paid"
     db "too much for   ▽"
@@ -968,6 +986,7 @@ FindNinaDeclineText::
     db "                "
     done 
 
+HotDayVisitText::
     text Text_DoNothing
     db "Hi <PLAYER>. Everyd-"
     db "ay is so hot...▽"
@@ -985,6 +1004,7 @@ FindNinaDeclineText::
     db "                "
     prompt 
 
+NameMe_Text::
     text Text_DoNothing
     db "Good evening.   "
     db "What a         ▽"
@@ -998,6 +1018,7 @@ FindNinaDeclineText::
     db "now, let's go.   "
     prompt 
 
+DeluxeWoodHouseCompleteText::
     text Text_DoNothing
     db "It's completed.  "
     db "I have named it▽"
@@ -1027,6 +1048,7 @@ FindNinaDeclineText::
     db "need anything.  "
     done
 
+UltraDeluxeWoodHouseCompleteText::
     text Text_DoNothing
     db "It's finally com-"
     db "pleted. It's now▽"
@@ -1044,6 +1066,7 @@ FindNinaDeclineText::
     db "need anything.  "
     done
 
+HappyNewYearText::
     text Text_DoNothing 
     db "Happy New Year  "
     db "<PLAYER>!!         ▽"
@@ -1057,6 +1080,7 @@ FindNinaDeclineText::
     db "                "
     done 
 
+HarvestSpriteHelpText::
     text Text_DoNothing 
     db "Do you want the "
     db "Harvest Sprite ▽"
@@ -1066,6 +1090,7 @@ FindNinaDeclineText::
     db " YES         NO "
     prompt
 
+HarvestSpriteHelp_NotYetText::
     text Text_DoNothing 
     db "Not yet.        "
     db "You must first ▽"
@@ -1078,6 +1103,8 @@ FindNinaDeclineText::
     db "at the cave.    "
     db "                "
     prompt 
+
+HarvestSpriteHelp_SetLengthText::
     text Text_DoNothing 
     db "What should     "
     db "the length of  ▽"
@@ -1088,6 +1115,8 @@ FindNinaDeclineText::
     db "a day be?       "
     db " Slow       Fast"
     prompt 
+
+HarvestSpriteHelp_AcceptText::
     text Text_DoNothing 
     db "OK! But remember"
     db "the Harvest    ▽"
@@ -1100,6 +1129,8 @@ FindNinaDeclineText::
     db "every 24 hours! "
     db "                "
     prompt 
+
+HarvestSpriteHelp_DeclineText::
     text Text_DoNothing 
     db "I see... Maybe  "
     db "I can help you ▽"
@@ -1109,44 +1140,52 @@ FindNinaDeclineText::
     db "                "
     prompt 
 
-
-;;; This might be the beginning tutorial text I think.
+Tutorial_ShippingBoxText1::
     text Text_DoNothing
     db "This is the     "
     db "Shipping Box to "
     done
+Tutorial_ShippingBoxText2:: ; 07x6c1a
     text Text_DoNothing 
     db "ship crops.     "
     db "The trader will "
     done 
+Tutorial_ShippingBoxText3:: ; 07x6c45
     text Text_DoNothing 
     db "pick up your    "
     db "shipment at 5PM."
     done 
+Tutorial_SiloText1::
     text Text_DoNothing 
     db "These two towers"
     db "are Silos used  "
     done
+Tutorial_SiloText2:: ; 07x6c9b
     text Text_DoNothing 
     db "to store fodder."
     db "On the right of "
     done
+Tutorial_ChickenCoop:: ; 07x6cc6
     text Text_DoNothing 
     db "the silos is the"
     db "Chicken Coop and"
     done 
+Tutorial_CowBarn:: ; 07x6cf1
     text Text_DoNothing 
     db "on the left is  "
     db "the Cow Barn.   "
     done 
+Tutorial_ShedText1::
     text Text_DoNothing
     db "This is the Shed"
     db "where your items"
     done 
+Tutorial_ShedText2:: ; 07x6d47
     text Text_DoNothing 
     db "are kept........"
     db "................"
     done 
+Tutorial_ShedText3:: ; 07x6d72
     text Text_DoNothing 
     db "explanations on "
     db "the tools and   "
@@ -1156,16 +1195,19 @@ FindNinaDeclineText::
     db "I am a little   "
     done 
 
+Tutorial_TiredText:: ; 07x6dc8
     text Text_DoNothing 
     db "I am a little   "
     db "tired...        "
     done
 
 ;;; Weird hanging sentence here...
+AtMyBook_Text:: ; 07x6df3
     text Text_DoNothing 
     db "at my book.     "
     db "                "
     done
+
     text Text_DoNothing
     db "lot of milk.    "
     db "Of course do not"
@@ -1183,6 +1225,7 @@ FindNinaDeclineText::
     db "                "
     done
 
+RanchMasterMarkText:: ; 07x6eca
     text Text_DoNothing
     db "  Ranch Master  "
     db "     Mark       "
@@ -1204,6 +1247,7 @@ FindNinaDeclineText::
     db "themselves.     "
     done 
 
+HousePlantText::
     text Text_DoNothing
     db "Don't touch this"
     db "plant!!        ▽"

@@ -46,124 +46,124 @@ TextPointerTable: ; 00x3421
     text_pointer FoundBirdText
     text_pointer BirdFlewAwayThankYouText
     text_pointer FindWeatherVaneText
-    db $F2, $57, $07
-    db $9E, $58, $07
-    db $23, $5B, $07
-    db $23, $5B, $07
-    db $50, $5C, $07
-    db $54, $5E, $07
-    db $58, $60, $07
-    db $85, $61, $07
-    db $DB, $61, $07
-    db $89, $63, $07
-    db $0A, $64, $07
-    db $E1, $64, $07
-    db $37, $65, $07
-    db $64, $66, $07
-    db $10, $67, $07
-    db $91, $67, $07
-    db $BE, $68, $07
-    db $6A, $69, $07
-    db $EB, $69, $07
-    db $EF, $6B, $07
-    db $1A, $6C, $07
-    db $70, $6C, $07
-    db $9B, $6C, $07
-    db $1C, $6D, $07
-    db $47, $6D, $07
-    db $72, $6D, $07
-    db $59, $4B, $07
+    text_pointer FoundWeatherVaneText
+    text_pointer NewJuiceText
+    text_pointer MakeSprinklerText
+    text_pointer MakeSprinklerText
+    text_pointer UpgradeHousePropositionText
+    text_pointer FindNinaText
+    text_pointer VisitorStayAtRanchText
+    text_pointer RanchWorkIsToughText
+    text_pointer MariaMarriageText
+    text_pointer VisitorLeavingText
+    text_pointer ChildBuyEggText
+    text_pointer SellEggText
+    text_pointer ChildGiveChangeText
+    text_pointer HotDayVisitText
+    text_pointer NameMe_Text
+    text_pointer DeluxeWoodHouseCompleteText
+    text_pointer UltraDeluxeWoodHouseCompleteText
+    text_pointer HappyNewYearText
+    text_pointer HarvestSpriteHelpText
+    text_pointer Tutorial_ShippingBoxText1
+    text_pointer Tutorial_ShippingBoxText2
+    text_pointer Tutorial_SiloText1
+    text_pointer Tutorial_SiloText2
+    text_pointer Tutorial_ShedText1
+    text_pointer Tutorial_ShedText2
+    text_pointer Tutorial_ShedText3
+    db $59, $4B, $07 ; this is between previous text chunks maybe forgotten pointer
     db $A1, $6F, $07
     db $22, $70, $07
     db $AF, $4B, $07
-    db $45, $6C, $07
-    db $C6, $6C, $07
-    db $F1, $6C, $07
+    text_pointer Tutorial_ShippingBoxText3
+    text_pointer Tutorial_ChickenCoop
+    text_pointer Tutorial_CowBarn
     db $9D, $6D, $07
-    db $C8, $6D, $07
-    db $F3, $6D, $07
+    text_pointer Tutorial_TiredText
+    text_pointer AtMyBook_Text
     db $1E, $6E, $07
     db $49, $6E, $07
     db $74, $6E, $07
     db $9F, $6E, $07
-    db $CA, $6E, $07
+    text_pointer RanchMasterMarkText
     db $F4, $58, $07
-    db $D1, $75, $07
-    db $D1, $75, $07
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
-    db $D1, $75, $07,
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
+    text_pointer BlankText_ret
     text_pointer Intro_ShippingMilkText
     text_pointer Intro_CowBirthText
     text_pointer Intro_FodderText

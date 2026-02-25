@@ -96,7 +96,7 @@ ds $21d
 wcb30:: db
 ;; This address is used to store the object ID that is in the respective space.
 ;; Need to catalog all the possible IDs here.
-wSubordinateFacingTileID:: db
+wSubordinateFacingTileID:: db ; 0xcb31
 ;; Same as the above, but regarding the "right" or "up" side object
 wcb32:: db ; 0xcb32
 

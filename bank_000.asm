@@ -3772,17 +3772,17 @@ Call_000_1f91:
     ld a, $01
     ldh [c], a
     ld a, [hl]
-    ld hl, $1fd8
+    ld hl, Data_000_1fd8
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
 
-jr_000_1fa7:
+.jr_000_1fa7
     ldh a, [rSTAT]
     and $02
-    jr nz, jr_000_1fa7
+    jr nz, .jr_000_1fa7
 
     ld a, [hl]
     ld [de], a
