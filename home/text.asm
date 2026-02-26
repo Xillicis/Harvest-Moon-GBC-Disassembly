@@ -196,13 +196,13 @@ TextPointerTable: ; 00x3421
     db $B8, $4D, $0A,
     text_pointer AttackHarvestSpriteText
     text_pointer HarvestSpriteSickleQuestionText
-    db $8D, $6D, $0C,
-    db $E7, $6F, $0C,
+    text_pointer UpgradeHoeText
+    text_pointer GoldenAxText
     db $16, $72, $0C,
     db $6C, $72, $0C,
     db $ED, $72, $0C,
     db $70, $74, $0C,
-    db $72, $75, $0C,
+    text_pointer EndOfYearStatisticsText
     db $22, $78, $0C,
     db $CE, $78, $0C,
     db $0A, $51, $0A,
