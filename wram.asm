@@ -235,7 +235,7 @@ ds $54
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 
-wDecimalPlayerMoneyTileID:: ds 5 ; 0xcccd
+wDecimalDigitTileID:: ds 5 ; 0xcccd
 
 ds $a3
 

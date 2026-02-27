@@ -577,10 +577,10 @@ jr_03b_42c3:
 Call_03b_42e0:
     ld a, [$cd93]
     call Call_000_3304
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld bc, $7068
     call Call_03b_4330
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld bc, $7070
     call Call_03b_4330
     ret
@@ -592,19 +592,19 @@ Call_03b_42f9:
     ld h, [hl]
     ld l, a
     call Call_000_325c
-    ld a, [wDecimalPlayerMoneyTileID]
+    ld a, [wDecimalDigitTileID]
     ld bc, $8050
     call Call_03b_4330
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld bc, $8058
     call Call_03b_4330
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld bc, $8060
     call Call_03b_4330
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld bc, $8068
     call Call_03b_4330
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld bc, $8070
     call Call_03b_4330
     ret
@@ -14153,7 +14153,7 @@ jr_03b_7bdc:
     ld a, [hl]
     call Call_03b_7c72
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld de, $cd87
     ld b, $05
     call CopyHLtoDE
@@ -14198,7 +14198,7 @@ jr_03b_7bf7:
     ld a, [hl]
     call Call_03b_7c72
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld de, $cd82
     ld b, $05
     call CopyHLtoDE
@@ -14362,7 +14362,7 @@ Call_03b_7c9f:
 jr_03b_7d06:
     call Call_03b_7c82
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld de, $cd87
     ld b, $05
     call CopyHLtoDE
@@ -14414,7 +14414,7 @@ jr_03b_7d1b:
     ld a, [hl]
     call Call_03b_7c82
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld de, $cd82
     ld b, $05
     call CopyHLtoDE

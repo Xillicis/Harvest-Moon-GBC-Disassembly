@@ -198,23 +198,23 @@ TextPointerTable: ; 00x3421
     text_pointer HarvestSpriteSickleQuestionText
     text_pointer UpgradeHoeText
     text_pointer GoldenAxText
-    db $16, $72, $0C,
-    db $6C, $72, $0C,
-    db $ED, $72, $0C,
-    db $70, $74, $0C,
+    text_pointer SpriteGivePowerBerryText
+    text_pointer SummarizeTheYearText
+    text_pointer EndOfYear_GreatWorkText
+    text_pointer EndOfYear_OKWorkText
     text_pointer EndOfYearStatisticsText
-    db $22, $78, $0C,
-    db $CE, $78, $0C,
+    text_pointer EndOfYear_CaughtUpText
+    text_pointer EndOfYear_IncredibleProgressText
     db $0A, $51, $0A,
-    db $A5, $79, $0C,
-    db $26, $7A, $0C,
-    db $7C, $7A, $0C,
-    db $D2, $7A, $0C,
-    db $FD, $7A, $0C,
-    db $53, $7B, $0C,
-    db $A9, $7B, $0C,
-    db $2A, $7C, $0C,
-    db $80, $7C, $0C,
+    text_pointer SpringPicnicMariaText
+    text_pointer SpringPicnicElen1Text
+    text_pointer SpringPicnicElen2Text
+    text_pointer SpringPicnicNina1Text
+    text_pointer SpringPicnicNina2Text
+    text_pointer SpringPicnicGetGoingText
+    text_pointer MoonlightNight1Text
+    text_pointer MoonlightNight2Text
+    text_pointer MoonlightNight3Text
     db $B4, $50, $0A,
     db $9B, $57, $10,
     db $1C, $58, $10,

@@ -830,9 +830,7 @@ GoldenAxText:: ; 0cx6fe7
     prompt
 
 GoldenAx_NoText::
-    db $00, $00, $00, $00, $00, $00, 
-    dw UpgradeAx
-    db $00, $00
+    text UpgradeAx
     db "Wow! What an ho-"
     db "nest person you▽"
     prompt
@@ -863,18 +861,17 @@ GoldenAx_YesText::
     db "GOOOOD BYYYEEE! "
     done
 
+SpriteGivePowerBerryText:: ;0cx7216
     text Text_DoNothing_0C
     db "I found this    "
     db "last night.    ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00
-    dw SpriteGivePowerBerry
-    db $00, $00
+    text SpriteGivePowerBerry
     db "I will give it  "
     db "to you.         "
     done 
 
-SummarizeTheYearText::
+SummarizeTheYearText:: ; 0cx726c
     text Text_DoNothing_0C
     db "Well,<PLAYER>. Lets "
     db "summarize      ▽"
@@ -888,7 +885,7 @@ SummarizeTheYearText::
     db "cancel.        ▽"
     done
 
-EndOfYear_GreatWorkText::
+EndOfYear_GreatWorkText:: ; 0cx72ed
     text Text_DoNothing_0C
     db "Well done! For  "
     db "your hard work,▽"
@@ -926,7 +923,7 @@ EndOfYear_GreatWorkText::
     db "                "
     done
 
-EndOfYear_OKWorkText::
+EndOfYear_OKWorkText:: ; 0cx7470
     text Text_DoNothing_0C
     db "You have done   "
     db "OK,            ▽"
@@ -953,33 +950,31 @@ EndOfYear_OKWorkText::
     done
 
 EndOfYearStatisticsText:: ; 0cx7572
-    db $00, $00, $00, $00, $00, $00
-    dw Label_00c_7d67
-    db $00, $00
+    text Label_00c_7d67
     db "Number of       "
     db "Cows           ", $E0
     prompt
-    db $00, $00, $00, $00, $00, $00, $8E, $7D, $00, $00
+    text Label_00c_7d8e
     db "Number of       "
     db "Chickens       ", $E0
     prompt
-    db $00, $00, $00, $00, $00, $00, $B2, $7D, $00, $00
+    text Label_00c_7db2
     db "Cultivated Area "
     db "     ", $E0, $E1, $E2, $E3, " Blocks"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $05, $7E, $00, $00
+    text Label_00c_7e05
     db "Total Shipment  "
     db "    ", $E0, $E1, $E2, $E3, $E4, " Pieces"
     prompt
-    db $00, $00, $00, $00, $00, $00, $E6, $7D, $00, $00
+    text Label_00c_7de6
     db "The Size of the "
     db "house          ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $1E, $7E, $00, $00
+    text Label_00c_7e1e
     db "                "
     db "      Wood House"
     prompt
-    db $00, $00, $00, $00, $00, $00, $38, $7E, $00, $00
+    text Label_00c_7e38
     db "Deluxe          "
     db "      Wood House"
     prompt
@@ -995,151 +990,164 @@ EndOfYearStatisticsText:: ; 0cx7572
     db "      ", $C4, $C5, $C6, $C7, "      "
     db "       ", $E0, $E1, $E2, "      "
     prompt
-    db $00, $00, $00, $00, $00, $00, $52, $7E, $00, $00
+    text EndOfYear_LatestFunds
     db "Latest Funds    "
     db "         ", $B2, $B3, $B4, $B5, $B6, " G"
     prompt
-    db $00, $00, $00, $00, $00, $00, $6B, $7E, $00, $00
-    db $07, $1A, $29, $29, $22, $27, $1E, $2C, $2C, $EF, $08, $27, $1D, $1E, $31, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2,
+    text EndOfYear_HappinessIndex
+    db "Happiness Index "
+    db "             ", $E0, $E1, $E2
     prompt
     text Text_DoNothing_0C
-    db $0D, $2E, $26, $1B, $1E, $2B, $EF, $28, $1F, $EF, $0F, $28, $30, $1E, $2B, $EF,
-    db $01, $1E, $2B, $2B, $22, $1E, $2C, $EF, $04, $1A, $2D, $1E, $27, $EF, $EF, $E9,
+    db "Number of Power "
+    db "Berries Eaten  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $7E, $7E, $00, $00
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $EF, $01, $1E, $2B, $2B, $22, $1E, $2C,
-    prompt
-    text Text_DoNothing_0C
-    db $13, $21, $1E, $EF, $2D, $22, $26, $1E, $EF, $21, $1E, $25, $29, $1E, $1D, $EF,
-    db $1B, $32, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $EF, $EF, $EF, $EF, $E9,
+    text EndOfYear_PowerBerriesEaten
+    db "                "
+    db "      ", $E0, $E1, " Berries"
     prompt
     text Text_DoNothing_0C
-    db $12, $29, $2B, $22, $2D, $1E, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $E0, $E1, $E2, $E3, $EF, $07, $28, $2E, $2B, $2C,
+    db "The time helped "
+    db "by Harvest     ▽"
+    prompt
+    text Text_DoNothing_0C
+    db "Sprites         "
+    db "      ", $E0, $E1, $E2, $E3, " Hours"
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
+EndOfYear_CaughtUpText:: ; 0cx7822
+    text Text_DoNothing_0C
     db "Ah! You have    "
-    db $1C, $1A, $2E, $20, $21, $2D, $EF, $2E, $29, $EF, $2D, $28, $EF, $EF, $EF, $E9,
+    db "caught up to   ▽"
     prompt
     text Text_DoNothing_0C
-    db $26, $1E, $40, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF,
-    db $20, $2B, $28, $30, $27, $EF, $22, $27, $2D, $28, $EF, $1A, $EF, $EF, $EF, $E9,
+    db "me!! You have   "
+    db "grown into a   ▽"
     prompt
     text Text_DoNothing_0C
-    db $1F, $22, $27, $1E, $EF, $26, $1A, $27, $EF, $0F, $25, $1E, $1A, $2C, $1E, $EF,
-    db $24, $1E, $1E, $29, $EF, $2E, $29, $EF, $2D, $21, $1E, $EF, $EF, $EF, $EF, $E9,
+    db "fine man Please "
+    db "keep up the    ▽"
     prompt
     text Text_DoNothing_0C
-    db $20, $2B, $1E, $1A, $2D, $EF, $30, $28, $2B, $24, $40, $40, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "great work!!    "
+    db "                "
     done
 
+EndOfYear_IncredibleProgressText:: ; 0cx78ce
     text Text_DoNothing_0C
-    db $16, $28, $30, $40, $EF, $18, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF,
-    db $26, $1A, $1D, $1E, $EF, $22, $27, $1C, $2B, $1E, $1D, $22, $1B, $25, $1E, $E9,
+    db "Wow! You have   "
+    db "made incredible▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $29, $2B, $28, $20, $2B, $1E, $2C, $2C, $8E, $EF, $A0, $A1, $A2, $A3, $4C, $EF,
-    db $11, $1A, $27, $1C, $21, $EF, $30, $28, $2B, $24, $EF, $22, $2C, $EF, $EF, $E9,
+    text Text_DoNothing_0C
+    db "progress, <PLAYER>. "
+    db "Ranch work is  ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $27, $28, $2D, $EF, $1E, $1A, $2C, $32, $8E, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $1B, $2E, $2D, $EF, $32, $28, $2E, $EF, $21, $1A, $2F, $1E, $EF, $EF, $EF, $E9,
+    text Text_DoNothing_0C
+    db "not easy,       "
+    db "but you have   ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1D, $28, $27, $1E, $EF, $1A, $27, $EF, $1A, $26, $1A, $33, $22, $27, $20, $EF,
-    db $23, $28, $1B, $40, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing_0C
+    db "done an amazing "
+    db "job!           ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $0F, $25, $1E, $1A, $2C, $1E, $EF, $24, $1E, $1E, $29, $EF, $2E, $29, $EF, $EF,
-    db $2D, $21, $1E, $EF, $20, $2B, $1E, $1A, $2D, $EF, $30, $28, $2B, $24, $40, $40,
+    text Text_DoNothing_0C
+    db "Please keep up  "
+    db "the great work!!"
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $13, $21, $1E, $EF, $30, $1E, $1A, $2D, $21, $1E, $2B, $EF, $22, $2C, $EF, $EF,
-    db $27, $22, $1C, $1E, $EF, $2D, $28, $1D, $1A, $32, $4C, $EF, $EF, $EF, $EF, $E9,
+SpringPicnicMariaText:: ; 0cx79a5
+    text Text_DoNothing_0C
+    db "The weather is  "
+    db "nice today.    ▽"
     prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $08, $EF, $30, $1A, $2C, $EF, $25, $28, $28, $24, $22, $27, $20, $EF, $EF, $EF,
-    db $1F, $28, $2B, $30, $1A, $2B, $1D, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF, $E9,
+    text Text_DoNothing_0C
+    db "I was looking   "
+    db "forward to     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00,
-    db $21, $1A, $2F, $22, $27, $20, $EF, $1A, $EF, $29, $22, $1C, $27, $22, $1C, $40,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing_0C
+    db "having a picnic!"
+    db "                "
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $0E, $1C, $1C, $1A, $2C, $22, $28, $27, $1A, $25, $25, $32, $8E, $EF, $22, $2D,
-    db $22, $2C, $EF, $20, $28, $28, $1D, $EF, $2D, $28, $EF, $2D, $1A, $24, $1E, $E9,
-    prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1A, $EF, $1D, $1A, $32, $EF, $28, $1F, $1F, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $27, $1E, $1E, $1D, $2C, $EF, $EF,
-    db $2D, $28, $EF, $2B, $1E, $25, $1A, $31, $8E, $EF, $22, $2D, $EF, $EF, $EF, $E9,
+SpringPicnicElen1Text:: ; 0cx7a26
+    text Text_DoNothing_0C
+    db "Occasionally, it"
+    db "is good to take▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $21, $1E, $25, $29, $2C, $EF, $1C, $2B, $1E, $1A, $2D, $1E, $EF, $1A, $EF, $EF,
-    db $2C, $2D, $2B, $28, $27, $20, $EF, $26, $22, $27, $1D, $4C, $EF, $EF, $EF, $EF,
-    done
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $16, $21, $1A, $2D, $EF, $1A, $EF, $1B, $1E, $1A, $2E, $2D, $22, $1F, $2E, $25,
-    db $1D, $1A, $32, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing_0C
+    db "a day off.      "
+    db "                "
     prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $08, $EF, $30, $22, $2C, $21, $EF, $04, $2F, $1E, $EF, $1A, $27, $1D, $EF, $EF,
-    db $00, $27, $27, $EF, $1C, $28, $2E, $25, $1D, $EF, $21, $1A, $2F, $1E, $EF, $E9,
+SpringPicnicElen2Text:: ; 0cx7a7c
+    text Text_DoNothing_0C
+    db "Everyone needs  "
+    db "to relax, it   ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1C, $28, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing_0C
+    db "helps create a  "
+    db "strong mind.    "
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $00, $30, $4C, $4C, $4C, $0B, $28, $28, $24, $EF, $1A, $2D, $EF, $2D, $21, $1E,
-    db $2D, $22, $26, $1E, $4C, $EF, $16, $1E, $EF, $2C, $21, $28, $2E, $25, $1D, $E9,
+SpringPicnicNina1Text:: ; 0cx7ad2
+    text Text_DoNothing_0C
+    db "What a beautiful"
+    db "day <PLAYER>.       "
     prompt 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1B, $1E, $EF, $20, $28, $22, $27, $20, $EF, $21, $28, $26, $1E, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    done
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $0E, $21, $8E, $EF, $30, $21, $1A, $2D, $EF, $1A, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $2C, $2E, $2B, $29, $2B, $22, $2C, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+SpringPicnicNina2Text:: ; 0cx7afd
+    text Text_DoNothing_0C
+    db "I wish Eve and  "
+    db "Ann could have ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $18, $28, $2E, $EF, $1A, $25, $2C, $28, $EF, $1C, $1A, $26, $1E, $EF, $2D, $28,
-    db $1E, $27, $23, $28, $32, $EF, $2D, $21, $22, $2C, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1C, $28, $28, $25, $EF, $27, $22, $20, $21, $2D, $41, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $13, $21, $1E, $EF, $12, $2E, $26, $26, $1E, $2B, $EF, $27, $22, $20, $21, $2D,
-    db $2C, $24, $32, $EF, $22, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1B, $1E, $1A, $2E, $2D, $22, $1F, $2E, $25, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $00, $21, $21, $21, $21, $21, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing_0C
+    db "come.           "
+    db "                "
     done
 
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $13, $21, $1E, $EF, $2C, $2D, $1A, $2B, $2C, $EF, $22, $27, $EF, $2D, $21, $1E,
-    db $2C, $24, $32, $EF, $1A, $2B, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+SpringPicnicGetGoingText:: ; 0cx7b53
+    text Text_DoNothing_0C
+    db "Aw...Look at the"
+    db "time. We should▽"
+    prompt 
+    text Text_DoNothing_0C
+    db "be going home.  "
+    db "                "
+    done
+
+MoonlightNight1Text:: ; 0cx7ba9
+    text Text_DoNothing_0C
+    db "Oh, what a      "
+    db "surprise.      ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $1D, $1A, $33, $33, $25, $22, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $08, $EF, $30, $22, $2C, $21, $EF, $08, $EF, $1C, $28, $2E, $25, $1D, $EF, $E9,
+    text Text_DoNothing_0C
+    db "You also came to"
+    db "enjoy this     ▽"
     prompt
-    db $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00
-    db $20, $28, $EF, $2D, $21, $1E, $2B, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    text Text_DoNothing_0C
+    db "cool night?     "
+    db "               ▽"
+    prompt
+MoonlightNight2Text:: ; 0cx7c2a
+    text Text_DoNothing_0C
+    db "The Summer night"
+    db "sky is         ▽"
+    prompt
+    text Text_DoNothing_0C
+    db "beautiful.      "
+    db "Ahhhhh...       "
+    done
+
+MoonlightNight3Text:: ; 0cx7c80
+    text Text_DoNothing_0C
+    db "The stars in the"
+    db "sky are        ▽"
+    prompt
+    text Text_DoNothing_0C
+    db "dazzling.       "
+    db "I wish I could ▽"
+    prompt
+    text Text_DoNothing_0C
+    db "go there.       "
+    db "                "
     done
 
 Text_DoNothing_0C:
@@ -1219,14 +1227,14 @@ Label_00c_7d67:
     ld c, $04
     ld hl, $b9a7
 
-jr_00c_7d6e:
+.jr_00c_7d6e
     ld a, [hl]
     cp $ff
-    jr z, jr_00c_7d74
+    jr z, .jr_00c_7d74
 
     inc b
 
-jr_00c_7d74:
+.jr_00c_7d74
     ld a, $0c
     add l
     ld l, a
@@ -1234,10 +1242,10 @@ jr_00c_7d74:
     adc h
     ld h, a
     dec c
-    jr nz, jr_00c_7d6e
+    jr nz, .jr_00c_7d6e
 
     ld a, b
-    ld hl, $7ea2
+    ld hl, Data_00c_7ea2
     add l
     ld l, a
     ld a, $00
@@ -1247,23 +1255,23 @@ jr_00c_7d74:
     ld [$ccad], a
     ret
 
-
+Label_00c_7d8e:
     ld a, [$cc9c]
     ld h, a
     ld a, [$cc9b]
     ld l, a
     call Call_000_325c
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$ccae], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccaf], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccb0], a
     ret
 
-
+Label_00c_7db2:
     ld a, [$b941]
     ld [$cccc], a
     ld a, [$b940]
@@ -1271,19 +1279,19 @@ jr_00c_7d74:
     ld a, [sNumProduceShipped]
     ld [wTempPlayerMoney], a
     call LoadDecimalMoneyTileData
-    ld a, [wDecimalPlayerMoneyTileID]
+    ld a, [wDecimalDigitTileID]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld [$ccae], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$ccaf], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccb0], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccb1], a
     ret
 
-
+Label_00c_7de6:
     ld a, [$cbe8]
     ld c, $2b
     call Multiply8Bit
@@ -1303,18 +1311,18 @@ jr_00c_7d74:
     ld [wTextNavigator+1], a
     ret
 
-
+Label_00c_7e05:
     ld a, [$cc15]
     call Call_000_3304
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccae], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccaf], a
     ret
 
-
+Label_00c_7e1e:
     ld a, [wTextNavigator]
     ld l, a
     ld a, [wTextNavigator+1]
@@ -1332,7 +1340,7 @@ jr_00c_7d74:
     ld [wTextNavigator], a
     ret
 
-
+Label_00c_7e38:
     ld a, [wTextNavigator]
     ld l, a
     ld a, [wTextNavigator+1]
@@ -1350,378 +1358,64 @@ jr_00c_7d74:
     ld [wTextNavigator], a
     ret
 
-
+EndOfYear_LatestFunds:
     ld a, [$b8f2]
     call Call_000_3304
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccae], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccaf], a
     ret
 
-
+EndOfYear_HappinessIndex:
     ld a, [sNumPowerBerriesEaten]
     call Call_000_3304
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccae], a
     ret
 
-
+EndOfYear_PowerBerriesEaten:
     ld a, [$ba11]
     ld h, a
     ld a, [$ba10]
     ld l, a
     call Call_000_325c
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld [$ccad], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$ccae], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$ccaf], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$ccb0], a
     ret
 
+Data_00c_7ea2:
+    db $34, $35, $36, $37, $38, $39, $3A, $3B, $3C, $3D, $49, $B9, $5F, $B9, $75, $B9,
+    db $8B, $B9, $00, $00, $00, $00, $00, $00, $01, $7D, $00, $00, $A3, $00, $94, $00,
+    db $B0, $00, $01, $00, $44, $00, $AF, $00, $21, $00, $00, $00, $73, $00, $23, $00,
+    db $21, $00, $22, $00, $02, $00, $50, $00, $AC, $00, $AC, $00, $AF, $00, $AF, $00,
+    db $AF, $00, $AF, $00, $AF, $00, $AF, $00, $AF, $00, $AD, $CC, $AE, $CC, $AF, $CC,
+    db $D7, $00, $06, $00, $99, $00, $39, $00, $BD, $00, $22, $00
 
-    inc [hl]
-    dec [hl]
-    ld [hl], $37
-    jr c, jr_00c_7ee1
-
-    ld a, [hl-]
-    dec sp
-    inc a
-    dec a
-    ld c, c
-    cp c
-    ld e, a
-    cp c
-    ld [hl], l
-    cp c
-    adc e
-    cp c
-    nop
-    nop
-    nop
-    nop
-    nop
-    nop
-    ld bc, $007d
-    nop
-    and e
-    nop
-    sub h
-    nop
-    or b
-    nop
-    ld bc, $4400
-    nop
-    xor a
-    nop
-    ld hl, $0000
-    nop
-    ld [hl], e
-    nop
-    inc hl
-    nop
-    ld hl, $2200
-    nop
-    ld [bc], a
-    nop
-    ld d, b
-    nop
-    xor h
-    nop
-    xor h
-    nop
-    xor a
-    nop
-    xor a
-
-jr_00c_7ee1:
-    nop
-    xor a
-    nop
-    xor a
-    nop
-    xor a
-    nop
-    xor a
-    nop
-    xor a
-    nop
-    xor l
-    call z, $ccae
-    xor a
-    call z, $00d7
-    ld b, $00
-    sbc c
-    nop
-    add hl, sp
-    nop
-    cp l
-    nop
-    ld [hl+], a
-    nop
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF,
+    db $FF, $FF, 

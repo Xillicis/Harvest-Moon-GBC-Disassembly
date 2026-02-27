@@ -1456,19 +1456,19 @@ Call_009_4747:
     ld a, [hl+]
     ld [de], a
     call LoadDecimalMoneyTileData
-    ld a, [wDecimalPlayerMoneyTileID]
+    ld a, [wDecimalDigitTileID]
     ld bc, $8060
     call Call_009_4794
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld bc, $8068
     call Call_009_4794
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld bc, $8070
     call Call_009_4794
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld bc, $8078
     call Call_009_4794
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld bc, $8080
     call Call_009_4794
     pop hl
@@ -4613,7 +4613,7 @@ Call_009_5867:
     ld b, $03
     call CopyHLtoDE
     call LoadDecimalMoneyTileData
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld de, vBGMap0 + $6d
     ld b, $05
     call CopyHLtoDE
@@ -4897,7 +4897,7 @@ Jump_009_5a17:
     ld a, $16
     sub [hl]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -4938,7 +4938,7 @@ Jump_009_5a74:
     ld h, [hl]
     ld l, a
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID+2
+    ld hl, wDecimalDigitTileID+2
     ld de, $9928
     ld b, $03
     call CopyHLtoDE
@@ -5213,7 +5213,7 @@ jr_009_5bd0:
     ld a, [$b9a5]
     and $7f
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5249,7 +5249,7 @@ jr_009_5c31:
     ld h, [hl]
     ld l, a
     call Call_000_325c
-    ld hl, wDecimalPlayerMoneyTileID+2
+    ld hl, wDecimalDigitTileID+2
     ld de, $9908
     ld b, $03
     call CopyHLtoDE
@@ -5376,7 +5376,7 @@ jr_009_5c94:
     ld b, h
     ld a, [sNumCroissant]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5386,7 +5386,7 @@ jr_009_5c94:
     ld [$986a], a
     ld a, [sNumRiceBall]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5396,7 +5396,7 @@ jr_009_5c94:
     ld [$98ea], a
     ld a, [sNumMeatDumpling]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5411,7 +5411,7 @@ jr_009_5c94:
 
     ld a, [sNumWildGrapeJuice]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5421,7 +5421,7 @@ jr_009_5c94:
     ld [$986c], a
     ld a, [sNumGreenTea]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5431,7 +5431,7 @@ jr_009_5c94:
     ld [$98ec], a
     ld a, [$b8cc]
     call Call_000_3304
-    ld hl, wDecimalPlayerMoneyTileID+3
+    ld hl, wDecimalDigitTileID+3
     ld a, [hl+]
     ld h, [hl]
     ld l, a

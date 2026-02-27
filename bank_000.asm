@@ -1351,11 +1351,11 @@ jr_000_0fa1:
     ld a, [sNumberOfFencePosts+1]
     ld [$cccb], a
     call LoadDecimalMoneyTileData
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$b92d], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$b92e], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [sNumberOfFencePostsTileIndex1], a
     ret
 
@@ -1427,11 +1427,11 @@ jr_000_1030:
     ld a, [$b93b]
     ld [$cccb], a
     call LoadDecimalMoneyTileData
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$b930], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$b931], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
 
 Jump_000_1052:
     ld [$b932], a
@@ -1487,15 +1487,15 @@ UpdatePlayerMoneyTileData:
     ld a, [sPlayerMoney]
     ld [wTempPlayerMoney], a
     call LoadDecimalMoneyTileData
-    ld a, [wDecimalPlayerMoneyTileID]
+    ld a, [wDecimalDigitTileID]
     ld [$b928], a
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld [$b929], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$b92a], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$b92b], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$b92c], a
     ret
 
@@ -1505,15 +1505,15 @@ Call_000_10cb:
     ld a, [sShipmentPayment+1]
     ld h, a
     call Call_000_325c
-    ld a, [wDecimalPlayerMoneyTileID]
+    ld a, [wDecimalDigitTileID]
     ld [$b933], a
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     ld [$b934], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     ld [$b935], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$b936], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$b937], a
     ret
 
@@ -6920,11 +6920,15 @@ Call_000_325c:
     xor a
     ld [wTempPlayerMoney+2], a
 
+
+; XIL: This is actually a more generic subroutine for loading data to print 
+; numbers on the screen I believe. Not just about money...
+
 ; Convert a 24-bit money value at wTempPlayerMoney into 5 decimal digits
 ; placed at $CCCD–$CCD1 (most significant first).
 LoadDecimalMoneyTileData:
     xor a
-    ld hl, wDecimalPlayerMoneyTileID
+    ld hl, wDecimalDigitTileID
     ld [hli], a
     ld [hli], a
     ld [hli], a
@@ -6934,7 +6938,7 @@ LoadDecimalMoneyTileData:
     ld a, [hli]
     ld h, [hl]
     ld l, a
-    ld de, wDecimalPlayerMoneyTileID
+    ld de, wDecimalDigitTileID
     ld a, [wTempPlayerMoney+2]
     or a
     jr z, .highByteDone
@@ -7004,10 +7008,10 @@ LoadDecimalMoneyTileData:
     ld a, l
     ld [de], a
     ld hl, DigitList
-    ld de, wDecimalPlayerMoneyTileID
+    ld de, wDecimalDigitTileID
     ld c, $04
 
-jr_000_32ce:
+.jr_000_32ce
     ld a, [de]
     or a
     jr nz, .jr_000_32dd
@@ -7019,7 +7023,7 @@ jr_000_32ce:
     inc de
     dec c
     jr z, .loadDigit
-    jr jr_000_32ce
+    jr .jr_000_32ce
 
 .jr_000_32dd
     ld a, [de]

@@ -291,10 +291,10 @@ Call_002_4224:
     ld h, $00
     call Call_000_325c
     pop hl
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     inc a
     ld [hl+], a
     ret
@@ -2506,16 +2506,16 @@ Call_002_4e2f:
     ld h, a
     call Call_000_325c
     ld hl, $9928
-    ld a, [wDecimalPlayerMoneyTileID+1]
+    ld a, [wDecimalDigitTileID+1]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     inc a
     ld [hl], a
     ret
@@ -2528,13 +2528,13 @@ Call_002_4e52:
     ld h, a
     call Call_000_325c
     ld hl, $9989
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     inc a
     ld [hl], a
     ret
@@ -2546,13 +2546,13 @@ Call_002_4e70:
     ld h, $00
     call Call_000_325c
     ld hl, $99e9
-    ld a, [wDecimalPlayerMoneyTileID+2]
+    ld a, [wDecimalDigitTileID+2]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     inc a
     ld [hl+], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     inc a
     ld [hl], a
     ret
@@ -4431,9 +4431,9 @@ jr_002_599c:
     ld l, a
     ld h, $00
     call Call_000_325c
-    ld a, [wDecimalPlayerMoneyTileID+3]
+    ld a, [wDecimalDigitTileID+3]
     ld [$cbec], a
-    ld a, [wDecimalPlayerMoneyTileID+4]
+    ld a, [wDecimalDigitTileID+4]
     ld [$cbed], a
     ld a, $1d
     call InitializeTextIDAndDisplay
