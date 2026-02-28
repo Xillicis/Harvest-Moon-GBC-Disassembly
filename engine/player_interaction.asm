@@ -1000,7 +1000,7 @@ PlayerInteraction_A_Pressed:
 
 .checkForBushTile
     ld a, [wDominantFacingTileID]
-    cp BUSH_TILE
+    cp BUSH_INDEX
     jr nz, .checkForStoneTile
 
     push hl
@@ -1021,7 +1021,7 @@ PlayerInteraction_A_Pressed:
     jp Jump_001_5458
 
 .checkForStoneTile
-    cp STONE_TILE
+    cp STONE_INDEX
     jr nz, .checkForFencePostTile
 
     push hl

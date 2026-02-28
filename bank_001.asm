@@ -2384,7 +2384,6 @@ Call_001_5a58:
     ld c, l
     ret
 
-
 Call_001_5b54:
     call Call_001_69ee
     ld a, [de]
@@ -2997,29 +2996,6 @@ jr_001_5f10:
     ret
 
 INCLUDE "engine/items.asm"
-
-Call_001_6524:
-    ld a, [wPlayerFacingDirection]
-    cp FACING_DOWN
-    jr z, jr_001_6539
-    cp FACING_LEFT
-    jp z, Jump_001_653d
-    cp FACING_RIGHT
-    jp z, Jump_001_6541
-    call Call_000_18f6
-    ret
-
-jr_001_6539:
-    call Call_000_18ff
-    ret
-
-Jump_001_653d:
-    call Call_000_1908
-    ret
-
-Jump_001_6541:
-    call Call_000_1911
-    ret
 
 
     ld a, [$cb43]

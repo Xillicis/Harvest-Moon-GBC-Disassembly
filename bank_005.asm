@@ -3452,7 +3452,7 @@ Label_005_52f7:
     ld [wDominantFacingTileProperty], a
     ret
 
-
+Label_005_54cd:
     ld a, [wPlayerXPosition]
     sub $07
     ld l, a
@@ -3570,11 +3570,10 @@ Label_005_52f7:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
-
 
     ld a, [wPlayerXPosition]
     sub $07
@@ -3697,7 +3696,7 @@ Label_005_52f7:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -3834,7 +3833,7 @@ Label_005_5689:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -3965,7 +3964,7 @@ Label_005_5689:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -5616,7 +5615,7 @@ jr_005_628c:
     call InitializeTextIDAndDisplay
     ld a, $01
     ld [wPlayerFacingDirection], a
-    ld a, $48
+    ld a, PLAYER_SPRITE_FACING_LEFT
     call LoadPlayerSpriteID
     ld a, $02
     ld [$c811], a
@@ -5761,7 +5760,7 @@ jr_005_6388:
     call InitializeTextIDAndDisplay
     ld a, $01
     ld [wPlayerFacingDirection], a
-    ld a, $48
+    ld a, PLAYER_SPRITE_FACING_LEFT
     call LoadPlayerSpriteID
     ld a, $02
     ld [$c811], a

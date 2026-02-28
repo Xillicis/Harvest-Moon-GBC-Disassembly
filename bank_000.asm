@@ -1272,7 +1272,7 @@ Call_000_0f0f:
     ld [$cb3e], a
     ld [$cb3f], a
     ld [$cb40], a
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld [$cb42], a
     ret
 
@@ -2956,9 +2956,7 @@ Jump_000_18f3:
     call c, Call_000_1278
 
 Call_000_18f6:
-    ld hl, $54cd
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_54cd
     ret
 
 
@@ -3011,7 +3009,7 @@ Call_000_1923:
     call Call_000_25cb
     ld a, $38
     ld [wInputFreezeTimer], a
-    ld a, PLAYER_HOLDING_ITEM_POSE
+    ld a, PLAYER_ANIM_HOLD_UP_ITEM
     call LoadPlayerSpriteID
 ; Rotate item slot
     ld a, [sItemSlot]

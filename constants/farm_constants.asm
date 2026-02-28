@@ -15,8 +15,8 @@ const MUSHROOM   ; $30
 ; Tile IDs in the farm
 const_def 1
 const FENCE_POST_TILE             ; $01
-const BUSH_TILE                   ; $02
-const STONE_TILE                  ; $03
+const BUSH_INDEX                  ; $02
+const STONE_INDEX                 ; $03
 const BIG_STONE_TOP_LEFT_TILE     ; $04
 const BIG_STONE_TOP_RIGHT_TILE    ; $05
 const BIG_STONE_BOTTOM_LEFT_TILE  ; $06

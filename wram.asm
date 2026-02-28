@@ -105,7 +105,21 @@ wDominantFacingTileID:: db ; 0xcb33
 ; It differentiates between say Signs, Rocks, and Doors.
 wDominantFacingTileProperty:: db ; 0xcb34
 
-ds $15
+wcb35:: db 
+wcb36:: db
+wcb37:: db
+wcb38:: db
+wcb39:: db
+wcb3a:: db
+wcb3b:: db
+wcb3c:: db
+wcb3d:: db
+wcb3e:: db
+wcb3f:: db
+wcb40:: db
+wInteractingMapObjectID:: db ; 0xcb41
+
+ds 8
 
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a

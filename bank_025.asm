@@ -4044,7 +4044,7 @@ jr_025_5256:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -4171,7 +4171,7 @@ jr_025_5256:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -4302,7 +4302,7 @@ jr_025_5256:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret
@@ -4433,7 +4433,7 @@ jr_025_5256:
     ld a, l
     ld [$cb44], a
     ld a, [hl+]
-    ld [$cb41], a
+    ld [wInteractingMapObjectID], a
     ld a, [hl+]
     ld [$cb42], a
     ret

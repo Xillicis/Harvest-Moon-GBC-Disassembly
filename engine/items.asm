@@ -88,20 +88,20 @@ UseSickle:
     ld a, [wPlayerFacingDirection]
     call Call_000_191a
     ld a, [wPlayerFacingDirection]
-    call Call_001_6524
+    call DetermineFacingObjectForTool
     ld a, [$cb42]
     or a
     ret z
 
-    ld a, [$cb41]
-    cp $02
-    jr z, jr_001_603a
+    ld a, [wInteractingMapObjectID]
+    cp BUSH_INDEX
+    jr z, .cutBush
 
     ld a, [$cb42]
     and $40
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     ld b, a
     and $f0
     cp $49
@@ -128,7 +128,7 @@ UseSickle:
     jr z, jr_001_608c
     ret
 
-jr_001_603a:
+.cutBush
     ld a, $01
     ld [$cb45], a
     ret
@@ -231,22 +231,21 @@ UseHammer:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_001_6524
+    call DetermineFacingObjectForTool
     ld a, [$cb42]
     or a
     ret z
 
-    ld a, [$cb41]
-    cp $03
-    jr nz, jr_001_60d7
+    ld a, [wInteractingMapObjectID]
+    cp STONE_INDEX
+    jr nz, .breakBigStone
 
     ld a, $01
     ld [$cb45], a
     ret
 
-
-jr_001_60d7:
-    ld a, [$cb41]
+.breakBigStone
+    ld a, [wInteractingMapObjectID]
     cp $04
     jr z, jr_001_60eb
     cp $05
@@ -287,11 +286,11 @@ UseAx:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_001_6524
+    call DetermineFacingObjectForTool
     ld a, [$cb42]
     or a
     ret z
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $08
     jr z, jr_001_6135
     cp $09
@@ -367,12 +366,12 @@ UseSuperHammer:
     ld a, $3e
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_001_6524
+    call DetermineFacingObjectForTool
     ld a, [$cb42]
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $03
     jr nz, jr_001_61be
     ld a, $01
@@ -380,7 +379,7 @@ UseSuperHammer:
     ret
 
 jr_001_61be:
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $04
     jr z, jr_001_61d2
     cp $05
@@ -421,12 +420,12 @@ UseSuperAx:
     ld a, $44
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_001_6524
+    call DetermineFacingObjectForTool
     ld a, [$cb42]
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $08
     jr z, jr_001_621c
 
@@ -699,7 +698,7 @@ jr_001_6395:
 UseGrassSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -741,7 +740,7 @@ UseTomatoSeeds:
 UseCornSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -762,7 +761,7 @@ UseCornSeeds:
 UseTurnipSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -788,7 +787,7 @@ Call_001_644c:
 UsePotatoSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -831,7 +830,7 @@ UseEggplantSeeds:
 UsePeanutSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -852,7 +851,7 @@ UsePeanutSeeds:
 UseCarrotSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -873,7 +872,7 @@ UseCarrotSeeds:
 UseBrocolliSeeds:
     ld b, SMALL_ENERGY
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -891,3 +890,25 @@ UseBrocolliSeeds:
     call Call_001_644c
     ret
 
+DetermineFacingObjectForTool:
+    ld a, [wPlayerFacingDirection]
+    cp FACING_DOWN
+    jr z, .facingDown
+    cp FACING_LEFT
+    jp z, .facingLeft
+    cp FACING_RIGHT
+    jp z, .facingRight
+    call Call_000_18f6
+    ret
+
+.facingDown
+    call Call_000_18ff
+    ret
+
+.facingLeft
+    call Call_000_1908
+    ret
+
+.facingRight
+    call Call_000_1911
+    ret

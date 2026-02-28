@@ -4757,7 +4757,7 @@ jr_026_5544:
 
 jr_026_554d:
     ld a, [wPlayerFacingDirection]
-    add $47
+    add PLAYER_SPRITE_FACING_DOWN
     call LoadPlayerSpriteID
     ret
 
@@ -4901,60 +4901,50 @@ jr_026_560c:
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
     add $1c
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
-    add $22
+    add PLAYER_ANIM_SICKLE
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
-    add $26
+    add PLAYER_ANIM_HOE
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
-    add $2a
+    add PLAYER_ANIM_HAMMER
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
-    add $2e
+    add PLAYER_ANIM_AX
     call LoadPlayerSpriteID
     ret
-
 
     ld a, [wPlayerFacingDirection]
     add $32
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
     add $36
     call LoadPlayerSpriteID
     ret
-
 
     ld a, [wPlayerFacingDirection]
     add $3a
     call LoadPlayerSpriteID
     ret
 
-
     ld a, [wPlayerFacingDirection]
     add $3f
     call LoadPlayerSpriteID
     ret
-
 
     ld a, [wPlayerFacingDirection]
     add $43

@@ -2691,7 +2691,7 @@ jr_021_5273:
 
 jr_021_52ac:
     ld a, [wDominantFacingTileID]
-    cp BUSH_TILE
+    cp BUSH_INDEX
     jr nz, jr_021_52c6
 
     ld a, BUSH
@@ -4650,27 +4650,27 @@ Jump_021_5e25:
     cp CHICKEN_FEED
     jp z, Jump_021_6253
     cp GRASS_SEEDS
-    jp z, Jump_021_6293
+    jp z, SpreadGrassSeeds
     cp TOMATO_SEEDS
-    jp z, Jump_021_62bc
+    jp z, SpreadTomatoSeeds
     cp CORN_SEEDS
-    jp z, Jump_021_62e6
+    jp z, SpreadCornSeeds
     cp TURNIP_SEEDS
-    jp z, Jump_021_6310
+    jp z, SpreadTurnipSeeds
     cp POTATO_SEEDS
-    jp z, Jump_021_6340
+    jp z, SpreadPotatoSeeds
     cp EGGPLANT_SEEDS
-    jp z, Jump_021_636a
+    jp z, SpreadEggplantSeeds
     cp PEANUT_SEEDS
-    jp z, Jump_021_6394
+    jp z, SpreadPeanutSeeds
     cp CARROT_SEEDS
-    jp z, Jump_021_63be
+    jp z, SpreadCarrotSeeds
     cp BROCOLLI_SEEDS
-    jp z, Jump_021_63e8
+    jp z, SpreadBrocolliSeeds
     ret
 
 Jump_021_5ec4:
-    ld b, $02
+    ld b, MEDIUM_ENERGY
     call CheckForNoEnergyAnimation
     xor a
     ld [$cb45], a
@@ -4686,7 +4686,7 @@ Jump_021_5ec4:
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $02
     jr z, jr_021_5f28
 
@@ -4694,44 +4694,32 @@ Jump_021_5ec4:
     and $40
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     ld b, a
     and $f0
     cp $49
     jr z, jr_021_5f2e
-
     cp $50
     jr z, jr_021_5f34
-
     cp $60
     jr z, jr_021_5f34
-
     cp $70
     jr z, jr_021_5f3e
-
     cp $80
     jr z, jr_021_5f3e
-
     cp $90
     jr z, jr_021_5f48
-
     cp $a0
     jr z, jr_021_5f52
-
     cp $b0
     jr z, jr_021_5f5c
-
     cp $c0
     jr z, jr_021_5f66
-
     cp $d0
     jr z, jr_021_5f70
-
     cp $e0
     jr z, jr_021_5f7a
-
     ret
-
 
 jr_021_5f28:
     ld a, $01
@@ -4852,7 +4840,7 @@ Jump_021_5f9a:
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $03
     jr nz, jr_021_5fc5
 
@@ -4862,7 +4850,7 @@ Jump_021_5f9a:
 
 
 jr_021_5fc5:
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $04
     jr z, jr_021_5fd9
 
@@ -4917,7 +4905,7 @@ Jump_021_5ff1:
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $08
     jr z, jr_021_6023
 
@@ -5010,7 +4998,7 @@ Jump_021_6081:
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $03
     jr nz, jr_021_60ac
 
@@ -5020,7 +5008,7 @@ Jump_021_6081:
 
 
 jr_021_60ac:
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $04
     jr z, jr_021_60c0
 
@@ -5075,7 +5063,7 @@ Jump_021_60d8:
     or a
     ret z
 
-    ld a, [$cb41]
+    ld a, [wInteractingMapObjectID]
     cp $08
     jr z, jr_021_610a
 
@@ -5351,11 +5339,10 @@ Jump_021_6253:
     call Call_021_633a
     ret
 
-
-Jump_021_6293:
+SpreadGrassSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5373,11 +5360,10 @@ Jump_021_6293:
     call Call_021_633a
     ret
 
-
-Jump_021_62bc:
+SpreadTomatoSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5395,11 +5381,10 @@ Jump_021_62bc:
     call Call_021_633a
     ret
 
-
-Jump_021_62e6:
+SpreadCornSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5417,11 +5402,10 @@ Jump_021_62e6:
     call Call_021_633a
     ret
 
-
-Jump_021_6310:
+SpreadTurnipSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5439,17 +5423,15 @@ Jump_021_6310:
     call Call_021_633a
     ret
 
-
 Call_021_633a:
     ld a, $50
     ld [wThrowingSeedsAnimationTimer], a
     ret
 
-
-Jump_021_6340:
+SpreadPotatoSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5467,11 +5449,10 @@ Jump_021_6340:
     call Call_021_633a
     ret
 
-
-Jump_021_636a:
+SpreadEggplantSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5489,11 +5470,10 @@ Jump_021_636a:
     call Call_021_633a
     ret
 
-
-Jump_021_6394:
+SpreadPeanutSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5511,11 +5491,10 @@ Jump_021_6394:
     call Call_021_633a
     ret
 
-
-Jump_021_63be:
+SpreadCarrotSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5533,11 +5512,10 @@ Jump_021_63be:
     call Call_021_633a
     ret
 
-
-Jump_021_63e8:
+SpreadBrocolliSeeds:
     ld b, $01
     call CheckForNoEnergyAnimation
-    ld a, $3e
+    ld a, PLAYER_ANIM_SPREAD_SEEDS
     call LoadPlayerSpriteID
     ld a, $55
     ld [wInputFreezeTimer], a
@@ -5555,31 +5533,24 @@ Jump_021_63e8:
     call Call_021_633a
     ret
 
-
 Call_021_6412:
     ld a, [wPlayerFacingDirection]
-    cp $00
+    cp FACING_DOWN
     jr z, jr_021_6427
-
-    cp $01
+    cp FACING_LEFT
     jp z, Jump_021_642b
-
-    cp $02
+    cp FACING_RIGHT
     jp z, Jump_021_642f
-
     call Call_000_18f6
     ret
-
 
 jr_021_6427:
     call Call_000_18ff
     ret
 
-
 Jump_021_642b:
     call Call_000_1908
     ret
-
 
 Jump_021_642f:
     call Call_000_1911
@@ -6777,7 +6748,7 @@ jr_021_6abf:
     and $01
     jr z, jr_021_6ad0
 
-    ld a, $99
+    ld a, PLAYER_ANIM_STRETCHING1
     call LoadPlayerSpriteID
     ld a, $9f
     ld [$cb7c], a
@@ -6785,7 +6756,7 @@ jr_021_6abf:
 
 
 jr_021_6ad0:
-    ld a, $9a
+    ld a, PLAYER_ANIM_STRETCHING2
     call LoadPlayerSpriteID
     ld a, $f8
     ld [$cb7c], a
@@ -9464,7 +9435,7 @@ Jump_021_7a6e:
 
     ld a, $ff
     ld [wInputFreezeTimer], a
-    ld a, $48
+    ld a, PLAYER_SPRITE_FACING_LEFT
     call LoadPlayerSpriteID
     xor a
     ld [$cbf6], a

@@ -791,7 +791,7 @@ UpgradeAx:
 
 .loadSuperAx
     xor a
-    ld [$b8a6], a
+    ld [sShedAxFlag], a
     ld a, $01
     ld [sShedSuperAxFlag], a
     ret
