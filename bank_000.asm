@@ -3035,7 +3035,7 @@ Call_000_1923:
 
 
 Call_000_195e:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add b
     ld l, a
     ld h, $00
@@ -3077,22 +3077,20 @@ Call_000_195e:
 
 Call_000_199a:
     ld a, h
-    cp $98
+    cp 152
     jr c, jr_000_19a6
 
-    cp $9c
+    cp 156
     ret c
 
-    sub $04
+    sub 4
     ld h, a
     ret
-
 
 jr_000_19a6:
-    add $04
+    add 4
     ld h, a
     ret
-
 
 Call_000_19aa:
     ld a, [wPlayerIsRidingHorse]
@@ -3105,7 +3103,7 @@ Call_000_19aa:
     or a
     ret z
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add d
     ld b, a
     ld a, [$c7aa]

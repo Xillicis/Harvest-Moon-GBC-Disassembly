@@ -191,7 +191,7 @@ Jump_027_412c:
 
     inc a
     ld [$c611], a
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     ld bc, $ffff
     call AddBCtoWordAtHL
     ret
@@ -204,7 +204,7 @@ Jump_027_4142:
 
     inc a
     ld [$c611], a
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     ld bc, $ffff
     call AddBCtoWordAtHL
     ld a, [$c90d]
@@ -223,7 +223,7 @@ Jump_027_4161:
 
     inc a
     ld [$c611], a
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     ld bc, $ffff
     call AddBCtoWordAtHL
     ret
@@ -419,7 +419,7 @@ Call_027_428b:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $e0
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $28
     ld [$c60b], a
     ld a, $1f
@@ -458,7 +458,7 @@ Call_027_42e1:
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $58
     ld [$c60b], a
     xor a
@@ -506,7 +506,7 @@ Call_027_432c:
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $50
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $58
     ld [$c60b], a
     xor a

@@ -12090,7 +12090,7 @@ jr_032_7988:
     jr nc, jr_032_79d6
 
     inc [hl]
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $00
     ld [$c62a], a
     ld a, [$c60b]
@@ -12106,7 +12106,7 @@ jr_032_79a2:
     jr nc, jr_032_79d6
 
     inc [hl]
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $10
     ld [$c62a], a
     ld a, [$c60b]
@@ -12122,7 +12122,7 @@ jr_032_79bc:
     jr nc, jr_032_79d6
 
     inc [hl]
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $10
     ld [$c62a], a
     ld a, [$c60b]
@@ -12132,7 +12132,7 @@ jr_032_79bc:
 
 
 jr_032_79d6:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $01
     ld [$c62a], a
     ld a, [$c90d]
@@ -12210,7 +12210,7 @@ Jump_032_7a29:
 
 
 jr_032_7a38:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $18
     ld [$c62a], a
     ld a, [$c60b]
@@ -12220,7 +12220,7 @@ jr_032_7a38:
 
 
 jr_032_7a49:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $10
     ld [$c62a], a
     ld a, [$c60b]
@@ -12230,7 +12230,7 @@ jr_032_7a49:
     cp $01
     ret z
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $18
     ld [$c62a], a
     ret

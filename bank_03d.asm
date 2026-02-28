@@ -9647,13 +9647,13 @@ jr_03d_6f12:
     ret
 
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     cp $b0
     jr z, jr_03d_6f2d
 
     inc a
     inc a
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $02
     ld [wPlayerFacingDirection], a
     ld a, $02
@@ -9676,13 +9676,13 @@ jr_03d_6f2d:
     ret
 
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     cp $58
     jr z, jr_03d_6f61
 
     dec a
     dec a
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $02
@@ -10320,12 +10320,12 @@ jr_03d_72a3:
     ret
 
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     cp $60
     jr z, jr_03d_7310
 
     dec a
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $01

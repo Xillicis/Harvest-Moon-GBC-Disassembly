@@ -5817,7 +5817,7 @@ ReduceHappiness:
     inc hl
     xor a
     ld [hl], a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld [$c80a], a
     xor a
     ld [$c80b], a

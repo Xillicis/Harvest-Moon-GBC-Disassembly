@@ -485,7 +485,7 @@ jr_028_41ee:
 
     ld a, $37
     call $16d1
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -499,7 +499,7 @@ jr_028_41ee:
 jr_028_422a:
     ld a, $43
     call $16d1
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -513,7 +513,7 @@ jr_028_422a:
 jr_028_4245:
     ld a, $42
     call $16d1
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -527,7 +527,7 @@ jr_028_4245:
 jr_028_4260:
     ld a, $45
     call $16d1
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -541,7 +541,7 @@ jr_028_4260:
 jr_028_427b:
     ld a, $44
     call $16d1
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -1442,7 +1442,7 @@ Call_028_4741:
     cp $02
     jr z, jr_028_4783
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld [$c64a], a
     ld a, [$c60b]
     sub $18
@@ -1451,7 +1451,7 @@ Call_028_4741:
 
 
 jr_028_4762:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     inc a
     ld [$c64a], a
     ld a, [$c60b]
@@ -1461,7 +1461,7 @@ jr_028_4762:
 
 
 jr_028_4772:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -1471,7 +1471,7 @@ jr_028_4772:
 
 
 jr_028_4783:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $0a
     ld [$c64a], a
     ld a, [$c60b]
@@ -1495,7 +1495,7 @@ jr_028_4794:
     cp $02
     jr z, jr_028_47db
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld [$c64a], a
     ld a, [$c60b]
     sub $18
@@ -1503,7 +1503,7 @@ jr_028_4794:
     jr jr_028_47eb
 
 jr_028_47b8:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     inc a
     ld [$c64a], a
     ld a, [$c60b]
@@ -1512,7 +1512,7 @@ jr_028_47b8:
     jr jr_028_47eb
 
 jr_028_47c9:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $08
     ld [$c64a], a
     ld a, [$c60b]
@@ -1521,7 +1521,7 @@ jr_028_47c9:
     jr jr_028_47eb
 
 jr_028_47db:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $08
     ld [$c64a], a
     ld a, [$c60b]
@@ -4019,7 +4019,7 @@ jr_028_554d:
     ld a, h
     sbc b
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add c
     ld c, a
     ld a, $00
@@ -4655,7 +4655,7 @@ Call_028_592d:
     cp $02
     jr z, jr_028_597d
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld b, a
     ld a, [$c78a]
     add d
@@ -4712,7 +4712,7 @@ jr_028_5974:
 
 
 jr_028_597d:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld b, a
     ld a, [$c78a]
     add d
@@ -4863,7 +4863,7 @@ jr_028_5a44:
     ld a, h
     sbc b
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add c
     ld c, a
     ld a, $00
@@ -6356,7 +6356,7 @@ Call_028_637e:
     cp $02
     jr z, jr_028_63ce
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld b, a
     ld a, [$c7aa]
     add d
@@ -6413,7 +6413,7 @@ jr_028_63c5:
 
 
 jr_028_63ce:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld b, a
     ld a, [$c7aa]
     add d
@@ -6580,7 +6580,7 @@ Call_028_6442:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add b
     ld [hl+], a
     ld a, [$c60b]
@@ -6663,7 +6663,7 @@ Call_028_64a9:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add b
     ld [hl+], a
     ld a, [$c60b]
@@ -7988,7 +7988,7 @@ Call_028_6b9c:
 
     ld a, $01
     call Call_000_15ae
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     ld [$c76a], a
     inc a
     ld a, [$c60b]
@@ -8000,7 +8000,7 @@ Call_028_6b9c:
 jr_028_6bc9:
     ld a, $04
     call Call_000_15ae
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     inc a
     ld [$c76a], a
     ld a, [$c60b]
@@ -8012,7 +8012,7 @@ jr_028_6bc9:
 jr_028_6bde:
     ld a, $03
     call Call_000_15ae
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $14
     ld [$c76a], a
     ld a, [$c60b]
@@ -8024,7 +8024,7 @@ jr_028_6bde:
 jr_028_6bf4:
     ld a, $02
     call Call_000_15ae
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $14
     ld [$c76a], a
     ld a, [$c60b]

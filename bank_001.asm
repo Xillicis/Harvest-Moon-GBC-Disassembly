@@ -674,7 +674,7 @@ Call_001_44b4:
     cp $02
     jr z, jr_001_4506
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add d
     ld b, a
     ld a, [$c78a]
@@ -727,7 +727,7 @@ jr_001_4500:
     ret
 
 jr_001_4506:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add d
     ld b, a
     ld a, [$c78a]
@@ -2771,7 +2771,7 @@ Call_001_5dfa:
     cp $02
     jr z, jr_001_5e40
 
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add d
     ld b, a
     ld a, [$c78a]
@@ -2825,7 +2825,7 @@ jr_001_5e3b:
 
 
 jr_001_5e40:
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add d
     ld b, a
     ld a, [$c78a]
@@ -3576,13 +3576,15 @@ jr_001_6886:
 
 
 jr_001_6898:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_001_6886
 
     ret
 
-
+; Seems like an a subroutine that updates the players position into a special WRAM address
+; And also bifurcates when near the map boundary. My guess is when near the boundary,
+; the camera stops scrolling?
 Call_001_689f:
     ld a, $05
     ld [$c611], a
@@ -3607,7 +3609,7 @@ Call_001_689f:
 
     ld a, [wPlayerXPosition]
     cp $b0 ; 
-    jr nc, .jr_001_6917
+    jr nc, .nearXAxisMapBoundary
 
     jr .jr_001_68e6
 
@@ -3627,7 +3629,7 @@ Call_001_689f:
 
     ld a, [wPlayerXPosition]
     cp $c0
-    jr nc, .jr_001_6917
+    jr nc, .nearXAxisMapBoundary
 
 .jr_001_68e6
     ld a, [wPlayerXPosition+1]
@@ -3636,7 +3638,7 @@ Call_001_689f:
 
     ld a, [wPlayerXPosition]
     cp $50
-    jr c, .jr_001_6917
+    jr c, .nearXAxisMapBoundary
 
 .jr_001_68f4
     ld hl, wPlayerMovementX
@@ -3660,10 +3662,11 @@ Call_001_689f:
     ld [wPlayerXPosition+1], a
     ret
 
-.jr_001_6917
-    ld hl, $c60a
+.nearXAxisMapBoundary
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr .updatePlayerXPosition
+
 
     ret
 
@@ -3689,7 +3692,7 @@ Call_001_691e:
 
 
 jr_001_693b:
-    cp $01
+    cp FACING_LEFT
     jr nz, jr_001_696c
 
     ld a, [wPlayerYPosition]

@@ -156,7 +156,7 @@ Jump_030_4101:
     and $01
     ret nz
 
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     ld hl, wPlayerXPosition
     dec [hl]
@@ -457,7 +457,7 @@ jr_030_42c2:
     cp $40
     jr z, jr_030_42f2
 
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     dec [hl]
     ld hl, wPlayerXPosition
@@ -523,7 +523,7 @@ jr_030_4327:
     and $01
     ret nz
 
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     ld hl, wPlayerXPosition
     dec [hl]
@@ -674,7 +674,7 @@ jr_030_4347:
     and $01
     ret nz
 
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     ld hl, wPlayerXPosition
     dec [hl]

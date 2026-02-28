@@ -703,7 +703,7 @@ jr_00e_4472:
 
 
 jr_00e_4477:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_00e_4472
 
@@ -737,7 +737,7 @@ jr_00e_449e:
 
 
 jr_00e_44a3:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_00e_449e
 
@@ -3395,7 +3395,7 @@ jr_00e_56e2:
 
 
 jr_00e_56e7:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_00e_56e2
 
@@ -3430,7 +3430,7 @@ jr_00e_570d:
 
 
 jr_00e_5712:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_00e_570d
 
@@ -3862,7 +3862,7 @@ jr_00e_5986:
 
 
 jr_00e_598b:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_00e_5986
 
@@ -3896,7 +3896,7 @@ jr_00e_59b2:
 
 
 jr_00e_59b7:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_00e_59b2
 
@@ -5687,7 +5687,7 @@ jr_00e_64e8:
 
 
 jr_00e_64ed:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_00e_64e8
 
@@ -5717,7 +5717,7 @@ jr_00e_650e:
 
 
 jr_00e_6513:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_00e_650e
 

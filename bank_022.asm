@@ -3521,9 +3521,9 @@ jr_022_52e4:
     ld h, a
     ld a, [hl]
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add b
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, b
     or a
     ret z
@@ -3539,9 +3539,9 @@ jr_022_52e4:
 jr_022_5309:
     ld a, $53
     call LoadPlayerSpriteID
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add $ff
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, [$c60b]
     add $f3
     ld [$c60b], a
@@ -3565,9 +3565,9 @@ jr_022_5331:
     ld h, a
     ld a, [hl]
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add b
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld a, b
     or a
     ret z
@@ -4253,7 +4253,7 @@ jr_022_5757:
 
 
 jr_022_575c:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_022_5757
 
@@ -4263,7 +4263,7 @@ jr_022_575c:
 jr_022_5763:
     ld hl, wPlayerXPosition
     dec [hl]
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     ret
 
@@ -4292,7 +4292,7 @@ jr_022_5785:
 
 
 jr_022_578a:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     dec [hl]
     jr jr_022_5785
 
@@ -4333,7 +4333,7 @@ jr_022_57bc:
 
 
 jr_022_57c1:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_022_57bc
 
@@ -4343,7 +4343,7 @@ jr_022_57c1:
 jr_022_57c8:
     ld hl, wPlayerXPosition
     inc [hl]
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     ret
 
@@ -4367,7 +4367,7 @@ jr_022_57e3:
 
 
 jr_022_57e8:
-    ld hl, $c60a
+    ld hl, wPlayerXPositionNearBoundary
     inc [hl]
     jr jr_022_57e3
 
@@ -7001,10 +7001,10 @@ jr_022_6638:
     ld hl, wPlayerXPosition
     ld bc, $0002
     call AddBCtoWordAtHL
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     inc a
     inc a
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld hl, wPetXPosition
     ld bc, $0002
     call AddBCtoWordAtHL
@@ -7025,10 +7025,10 @@ jr_022_6677:
     dec a
     dec a
     ldh [$ff93], a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     dec a
     dec a
-    ld [$c60a], a
+    ld [wPlayerXPositionNearBoundary], a
     ld hl, wPlayerXPosition
     ld bc, $fffe
     call AddBCtoWordAtHL

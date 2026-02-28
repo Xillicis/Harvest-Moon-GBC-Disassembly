@@ -377,7 +377,7 @@ jr_025_426d:
     ld a, b
     call $16d1
     ld hl, $c62a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     sub $00
     ld [hl+], a
     ld a, [$c60b]
@@ -5559,7 +5559,7 @@ Jump_025_5f22:
     ld a, h
     sbc b
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add c
     ld c, a
     ld a, $00
@@ -5802,7 +5802,7 @@ Call_025_6080:
     ld a, h
     sbc b
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add c
     ld c, a
     ld a, $00
@@ -5945,7 +5945,7 @@ jr_025_6139:
     ld a, h
     sbc b
     ld b, a
-    ld a, [$c60a]
+    ld a, [wPlayerXPositionNearBoundary]
     add c
     ld c, a
     ld a, $00
