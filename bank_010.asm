@@ -1039,8 +1039,8 @@ jr_010_4fbe:
 
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_010_508c
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
@@ -1048,8 +1048,8 @@ jr_010_4fbe:
 
 
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_010_554f
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM

@@ -3104,8 +3104,8 @@ jr_030_4f2d:
 
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_030_4fee
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
@@ -3113,8 +3113,8 @@ jr_030_4f2d:
 
 
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_030_54ba
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM

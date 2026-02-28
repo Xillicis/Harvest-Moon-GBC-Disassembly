@@ -252,8 +252,8 @@ jr_001_41de:
 
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_001_6c80
     call Call_001_6a00
     call Call_001_557f
@@ -649,7 +649,7 @@ jr_001_44a8:
     ret
 
 jr_001_44ac:
-    call Call_001_689f
+    call UpdatePlayerXPosition
     ret
 
 jr_001_44b0:
@@ -984,7 +984,7 @@ jr_001_467a:
     ret
 
 jr_001_469d:
-    call Call_001_689f
+    call UpdatePlayerXPosition
     ret
 
 
@@ -1415,7 +1415,7 @@ jr_001_4931:
     ret
 
 jr_001_496c:
-    call Call_001_689f
+    call UpdatePlayerXPosition
     call Call_000_1514
     ld a, [wcb30]
     ld b, a
@@ -1426,7 +1426,7 @@ jr_001_496c:
     ret
 
 jr_001_497f:
-    call Call_001_689f
+    call UpdatePlayerXPosition
     ret
 
 Jump_001_4983:
@@ -1462,7 +1462,7 @@ jr_001_49aa:
     and $01
     ret nz
 
-    call Call_001_689f
+    call UpdatePlayerXPosition
     ret
 
 Jump_001_49b7:
@@ -1568,7 +1568,7 @@ jr_001_4a32:
 Jump_001_4a3c:
 jr_001_4a3c:
     push bc
-    call Call_001_689f
+    call UpdatePlayerXPosition
     pop bc
     dec b
     jr nz, jr_001_4a3c
@@ -3414,7 +3414,7 @@ jr_001_6799:
     jr c, jr_001_67ca
 
 jr_001_67a7:
-    ld hl, wPlayerMovementY
+    ld hl, wPlayerMovementYType
     dec [hl]
     ld hl, $ff91
     inc [hl]
@@ -3476,7 +3476,7 @@ jr_001_67f5:
     jr c, jr_001_6826
 
 jr_001_6803:
-    ld hl, wPlayerMovementY
+    ld hl, wPlayerMovementYType
     inc [hl]
     ld hl, $ff91
     dec [hl]
@@ -3553,7 +3553,7 @@ jr_001_6867:
     jr c, jr_001_6898
 
 jr_001_6875:
-    ld hl, wPlayerMovementX
+    ld hl, wPlayerMovementXType
     inc [hl]
     ld hl, $ff93
     dec [hl]
@@ -3585,7 +3585,7 @@ jr_001_6898:
 ; Seems like an a subroutine that updates the players position into a special WRAM address
 ; And also bifurcates when near the map boundary. My guess is when near the boundary,
 ; the camera stops scrolling?
-Call_001_689f:
+UpdatePlayerXPosition:
     ld a, $05
     ld [$c611], a
     xor a
@@ -3605,33 +3605,32 @@ Call_001_689f:
 .PlayerPositionCheck_MapExpansion
     ld a, [wPlayerXPosition+1]
     cp $03 ; This is the maxmimum X-axis cap
-    jr nz, .jr_001_68e6
+    jr nz, .checkNearBoundary_LeftSide
 
     ld a, [wPlayerXPosition]
-    cp $b0 ; 
+    cp $b0 ; $3b0 is the rightmost pixel position in the map expansion
     jr nc, .nearXAxisMapBoundary
-
-    jr .jr_001_68e6
+    jr .checkNearBoundary_LeftSide
 
 .noRightSideMapExpansion
     ld a, [wPlayerXPosition+1]
     cp $02
-    jr nz, .jr_001_68d8
+    jr nz, .checkNearBoundary_NoMapExpansion
 
     ld a, [wPlayerXPosition]
-    cp $f8
-    ret nc
+    cp $f8 ; $2f8 is the rightmost pixel position with no map expansion
+    ret nc ; return if we go out of bounds
 
-.jr_001_68d8
+.checkNearBoundary_NoMapExpansion
     ld a, [wPlayerXPosition+1]
     cp $02
-    jr nz, .jr_001_68e6
+    jr nz, .checkNearBoundary_LeftSide
 
     ld a, [wPlayerXPosition]
-    cp $c0
+    cp $c0 ; near the map boundary
     jr nc, .nearXAxisMapBoundary
 
-.jr_001_68e6
+.checkNearBoundary_LeftSide
     ld a, [wPlayerXPosition+1]
     cp $00
     jr nz, .jr_001_68f4
@@ -3640,8 +3639,9 @@ Call_001_689f:
     cp $50
     jr c, .nearXAxisMapBoundary
 
+; something special possibly for heading to the town?
 .jr_001_68f4
-    ld hl, wPlayerMovementX
+    ld hl, wPlayerMovementXType
     dec [hl]
     ld hl, $ff93
     inc [hl]

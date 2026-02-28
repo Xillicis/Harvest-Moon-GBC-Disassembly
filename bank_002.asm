@@ -3235,8 +3235,8 @@ jr_002_5271:
     pop hl
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_002_52d6
     call Call_002_5356
     call Call_002_5913
@@ -4000,7 +4000,7 @@ Call_002_573c:
     jr jr_002_575d
 
 jr_002_5750:
-    ld hl, wPlayerMovementY
+    ld hl, wPlayerMovementYType
     dec [hl]
     ld hl, $ff91
     inc [hl]
@@ -4063,7 +4063,7 @@ Call_002_578a:
     jr jr_002_57b1
 
 jr_002_57a4:
-    ld hl, wPlayerMovementY
+    ld hl, wPlayerMovementYType
     inc [hl]
     ld hl, $ff91
     dec [hl]
@@ -4109,7 +4109,7 @@ Call_002_57b8:
     jr c, jr_002_57ef
 
 jr_002_57e2:
-    ld hl, wPlayerMovementX
+    ld hl, wPlayerMovementXType
     inc [hl]
     ld hl, $ff93
     dec [hl]
@@ -4189,7 +4189,7 @@ Call_002_5824:
     cp $58
     jr c, jr_002_5854
 
-    ld hl, wPlayerMovementX
+    ld hl, wPlayerMovementXType
     dec [hl]
     ld hl, $ff93
     inc [hl]

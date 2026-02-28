@@ -153,8 +153,13 @@ wFreezePlayerInTextWindowOrInTown:: db ; 0xcb56
 ds 1 ; 0xcb57
 ds 1 ; 0xcb58
 ds 1 ; 0xcb59
-ds 1 ; 0xcb5a
-ds 1 ; 0xcb5b
+; 0   - Not moving
+; 1   - walking left
+; 2   - running left
+; $ff - walking right
+; $fe - running right
+wPlayerMovementXType:: db ; 0xcb5a
+wPlayerMovementYType:: db ; 0xcb5b
 ds 1 ; 0xcb5c
 ds 1 ; 0xcb5d
 ds 1 ; 0xcb5e

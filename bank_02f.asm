@@ -5795,7 +5795,7 @@ jr_02f_624e:
     ld hl, $c88a
     ld a, [hl]
     ld b, a
-    ld a, [wPlayerMovementX]
+    ld a, [wPlayerMovementXType]
     add b
     ld [hl+], a
     ld a, [hl]
@@ -6105,8 +6105,8 @@ Call_02f_62dd:
 
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_02f_64b6
     call Call_02f_64be
     ld a, [$ccb7]
@@ -7559,8 +7559,8 @@ jr_02f_6c1a:
 
     call Call_000_0d90
     xor a
-    ld [wPlayerMovementX], a
-    ld [wPlayerMovementY], a
+    ld [wPlayerMovementXType], a
+    ld [wPlayerMovementYType], a
     call Call_02f_6cf5
     call Call_02f_6dc0
     call Call_000_2d67
