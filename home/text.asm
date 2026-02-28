@@ -216,17 +216,17 @@ TextPointerTable: ; 00x3421
     text_pointer MoonlightNight2Text
     text_pointer MoonlightNight3Text
     db $B4, $50, $0A,
-    db $9B, $57, $10,
-    db $1C, $58, $10,
-    db $72, $58, $10,
-    db $F3, $58, $10,
-    db $49, $59, $10,
-    db $9F, $59, $10,
+    text_pointer MoonlightNight4Text
+    text_pointer MoonlightNight5Text
+    text_pointer SnowFlower1Text
+    text_pointer SnowFlower2Text
+    text_pointer BakedCake1Text
+    text_pointer NameMe2Text
     db $F5, $59, $10,
     db $4B, $5A, $10,
-    db $A1, $5A, $10,
+    text_pointer QuietEvening1Text
     db $22, $5B, $10,
-    db $A3, $5B, $10,
+    text_pointer QuietEvening2Text
     db $24, $5C, $10,
     db $7A, $5C, $10,
     db $D0, $5C, $10,

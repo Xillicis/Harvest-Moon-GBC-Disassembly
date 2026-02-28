@@ -2163,6 +2163,7 @@ db $F4, $FF, $BC, $10, $F4, $F7, $BB, $10, $EC, $FF, $A1, $11, $EC, $F7, $A0, $1
 db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
 
 ;;;; Text
+MoonlightNight4Text:: ; 10x579b
     text Text_010_DoNothing
     db "The moon is very"
     db "bright tonight.▽"
@@ -2175,6 +2176,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "coming from it……"
     db "…….            ▽"
     prompt
+MoonlightNight5Text:: ; 10x581c
     text Text_010_DoNothing
     db "Or maybe I am   "
     db "just acting    ▽"
@@ -2184,6 +2186,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "                "
     done
 
+SnowFlower1Text:: ; 10x5872
     text Text_010_DoNothing
     db "Isn't this a    "
     db "beautiful      ▽"
@@ -2196,6 +2199,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "Snow Flower. It "
     db "will be Spring ▽"
     prompt
+SnowFlower2Text:: ; 10x58f3
     text Text_010_DoNothing
     db "soon, and the   "
     db "flowers will   ▽"
@@ -2205,6 +2209,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "wait!           "
     done
 
+BakedCake1Text:: ; 10x5949
     text Text_010_DoNothing
     db "I baked this    "
     db "cake, please   ▽"
@@ -2213,6 +2218,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "have some.      "
     db "                "
     prompt
+NameMe2Text:: ; 10x599f
     text Text_010_DoNothing
     db "This year will  "
     db "end soon. How  ▽"
@@ -2239,6 +2245,7 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "a glass of it.  "
     done
 
+QuietEvening1Text:: ; 10x5aa1
     text Text_010_DoNothing
     db "Oh well...it is "
     db "too bad we     ▽"
@@ -2264,140 +2271,143 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "a quiet evening."
     done
 
+QuietEvening2Text:: ; 10x5ba3
     text Text_010_DoNothing
-    db $0E, $21, $EF, $30, $1E, $25, $25, $4C, $4C, $4C, $22, $2D, $EF, $22, $2C, $EF,
-    db $2D, $28, $28, $EF, $1B, $1A, $1D, $EF, $30, $1E, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "Oh well...it is "
+    db "too bad we     ▽"
     prompt
     text Text_010_DoNothing
-    db $1C, $28, $2E, $25, $1D, $EF, $27, $28, $2D, $EF, $21, $1A, $2F, $1E, $EF, $EF,
-    db $21, $1A, $1D, $EF, $1A, $EF, $2A, $2E, $22, $1E, $2D, $EF, $EF, $EF, $EF, $E9,
+    db "could not have  "
+    db "had a quiet    ▽"
     prompt
     text Text_010_DoNothing
-    db $1E, $2F, $1E, $27, $22, $27, $20, $EF, $2D, $28, $20, $1E, $2D, $21, $44, $EF,
-    db $1E, $2B, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "evening togeth- "
+    db "er.             "
     prompt
     text Text_010_DoNothing
-    db $03, $28, $27, $4B, $2D, $EF, $1B, $1E, $EF, $1E, $26, $1B, $1A, $44, $EF, $EF,
-    db $2B, $2B, $1A, $2C, $2C, $1E, $1D, $EF, $2C, $22, $25, $25, $32, $8E, $EF, $E9,
+    db "Don't be emba-  "
+    db "rrassed silly, ▽"
     prompt
     text Text_010_DoNothing
-    db $08, $EF, $1D, $22, $1D, $27, $4B, $2D, $EF, $26, $1E, $1A, $27, $EF, $EF, $EF,
-    db $2D, $21, $1A, $2D, $40, $EF, $07, $1A, $EF, $21, $1A, $EF, $21, $1A, $EF, $EF,
+    db "I didn't mean   "
+    db "that! Ha ha ha  "
     done
 
     text Text_010_DoNothing
-    db $0E, $2E, $1C, $21, $40, $EF, $13, $21, $22, $2C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $2B, $1E, $1A, $25, $25, $32, $EF, $21, $2E, $2B, $2D, $2C, $40, $EF, $EF, $E9,
+    db "Ouch! This      "
+    db "really hurts!  ▽"
     prompt
     text Text_010_DoNothing
-    db $0F, $25, $1E, $1A, $2C, $1E, $EF, $1B, $2B, $1E, $1A, $24, $EF, $2D, $21, $1E,
-    db $2B, $28, $1C, $24, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Please break the"
+    db "rock...         "
     done
 
     text Text_010_DoNothing
-    db $00, $21, $8E, $EF, $2D, $21, $1A, $2D, $EF, $30, $1A, $2C, $EF, $EF, $EF, $EF,
-    db $2F, $1E, $2B, $32, $EF, $29, $1A, $22, $27, $1F, $2E, $25, $4C, $EF, $EF, $E9,
+    db "Ah, that was    "
+    db "very painful.  ▽"
     prompt
     text Text_010_DoNothing
-    db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E, $EF, $1F, $28, $2B, $EF, $EF, $EF,
-    db $21, $1E, $25, $29, $22, $27, $20, $EF, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF,
+    db "Thank you for   "
+    db "helping me.     "
     done
 
+; a lot of duplicate text here
+LetsPrayText::
     text Text_010_DoNothing
-    db $0B, $1E, $2D, $53, $EF, $29, $2B, $1A, $32, $4C, $EF, $C4, $C5, $C6, $C7, $EF,
-    db $26, $1A, $32, $EF, $32, $28, $2E, $EF, $2B, $1E, $2C, $2D, $EF, $22, $27, $E9,
+    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $EE, $61, $00, $00
-    db $29, $1E, $1A, $1C, $1E, $4C, $EF, $16, $1E, $EF, $30, $22, $25, $25, $EF, $EF,
-    db $26, $22, $2C, $2C, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "peace. We will  "
+    db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db $0B, $1E, $2D, $53, $EF, $29, $2B, $1A, $32, $4C, $EF, $C4, $C5, $C6, $C7, $EF,
-    db $26, $1A, $32, $EF, $32, $28, $2E, $EF, $2B, $1E, $2C, $2D, $EF, $22, $27, $E9,
+    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $FB, $61, $00, $00
-    db $29, $1E, $1A, $1C, $1E, $4C, $EF, $16, $1E, $EF, $30, $22, $25, $25, $EF, $EF,
-    db $26, $22, $2C, $2C, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "peace. We will  "
+    db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db $0B, $1E, $2D, $53, $EF, $29, $2B, $1A, $32, $4C, $EF, $C4, $C5, $C6, $C7, $EF,
-    db $26, $1A, $32, $EF, $32, $28, $2E, $EF, $2B, $1E, $2C, $2D, $EF, $22, $27, $E9,
+    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $08, $62, $00, $00
-    db $29, $1E, $1A, $1C, $1E, $4C, $EF, $16, $1E, $EF, $30, $22, $25, $25, $EF, $EF,
-    db $26, $22, $2C, $2C, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "peace. We will  "
+    db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db $0B, $1E, $2D, $53, $EF, $29, $2B, $1A, $32, $4C, $EF, $C4, $C5, $C6, $C7, $EF,
-    db $26, $1A, $32, $EF, $32, $28, $2E, $EF, $2B, $1E, $2C, $2D, $EF, $22, $27, $E9,
+    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $13, $62, $00, $00
-    db $29, $1E, $1A, $1C, $1E, $4C, $EF, $16, $1E, $EF, $30, $22, $25, $25, $EF, $EF,
-    db $26, $22, $2C, $2C, $EF, $32, $28, $2E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "peace. We will  "
+    db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db $B1, $EC, $EF, $A4, $A5, $A6, $A7, $A8, $A9, $EF, $30, $1E, $EF, $EF, $EF, $EF,
-    db $30, $22, $25, $25, $EF, $27, $28, $2D, $EF, $1F, $28, $2B, $20, $1E, $2D, $E9,
+    db $B1, $EC, " <SEASON> we    "
+    db "will not forget▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $19, $62, $00, $00
-    db $2D, $21, $22, $2C, $EF, $1D, $1A, $32, $4C, $4C, $4C, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "this day...     "
+    db "                "
     done
 
     text Text_010_DoNothing
-    db $00, $21, $1A, $8E, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $4C, $4C, $4C, $14, $26,
-    db $16, $21, $1A, $2D, $EF, $1A, $2B, $1E, $EF, $32, $28, $2E, $EF, $EF, $EF, $E9,
+    db "Aha, <PLAYER>. ...Um"
+    db "What are you   ▽"
     prompt
     text Text_010_DoNothing
-    db $1D, $28, $22, $27, $20, $EF, $21, $1E, $2B, $1E, $8E, $EF, $EF, $EF, $EF, $EF,
-    db $0D, $22, $27, $1A, $41, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "doing here,     "
+    db "Nina?          ▽"
     prompt
     text Text_010_DoNothing
-    db $08, $EF, $2D, $21, $28, $2E, $20, $21, $2D, $EF, $08, $EF, $30, $1A, $2C, $EF,
-    db $29, $22, $1C, $24, $22, $27, $20, $EF, $30, $22, $25, $1D, $EF, $EF, $EF, $E9,
+    db "I thought I was "
+    db "picking wild   ▽"
     prompt
     text Text_010_DoNothing
-    db $1F, $25, $28, $30, $1E, $2B, $2C, $EF, $1A, $27, $1D, $EF, $EF, $EF, $EF, $EF,
-    db $1D, $1A, $27, $1C, $22, $27, $20, $EF, $30, $22, $2D, $21, $EF, $EF, $EF, $E9,
+    db "flowers and     "
+    db "dancing with   ▽"
     prompt 
     text Text_010_DoNothing
-    db $2D, $21, $1E, $EF, $07, $1A, $2B, $2F, $1E, $2C, $2D, $EF, $EF, $EF, $EF, $EF,
-    db $12, $29, $2B, $22, $2D, $1E, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "the Harvest     "
+    db "Sprites.       ▽"
     prompt
     text Text_010_DoNothing
-    db $16, $21, $1A, $2D, $40, $EF, $04, $2F, $1E, $2B, $32, $28, $27, $1E, $EF, $EF,
-    db $22, $2C, $EF, $25, $28, $28, $24, $22, $27, $20, $EF, $1F, $28, $2B, $EF, $E9,
+    db "What! Everyone  "
+    db "is looking for ▽"
     prompt
     text Text_010_DoNothing
-    db $26, $1E, $41, $EF, $08, $EF, $2D, $21, $28, $2E, $20, $21, $2D, $EF, $EF, $EF,
-    db $08, $EF, $30, $1A, $2C, $EF, $28, $27, $25, $32, $EF, $1A, $30, $1A, $32, $E9,
+    db "me? I thought   "
+    db "I was only away▽"
     prompt
     text Text_010_DoNothing
-    db $1F, $28, $2B, $EF, $1A, $27, $EF, $21, $28, $2E, $2B, $4C, $4C, $4C, $EF, $EF,
-    db $16, $21, $1A, $2D, $40, $EF, $08, $2D, $53, $EF, $1B, $1E, $1E, $27, $EF, $E9,
+    db "for an hour...  "
+    db "What! It's been ▽"
     prompt
     text Text_010_DoNothing
-    db $28, $2F, $1E, $2B, $EF, $1A, $EF, $1D, $1A, $32, $41, $40, $EF, $EF, $EF, $EF,
-    db $16, $1E, $25, $25, $8E, $EF, $08, $EF, $1B, $1E, $2D, $2D, $1E, $2B, $EF, $E9,
+    db "over a day?!    "
+    db "Well, I better ▽"
     prompt
     text Text_010_DoNothing
-    db $21, $2E, $2B, $2B, $32, $EF, $21, $28, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF,
-    db $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $A0, $A1, $A2, $A3, $4C, $EF, $EF, $EF,
+    db "hurry home.     "
+    db "See you <PLAYER>.   "
     done
 
     text Text_010_DoNothing
-    db $0E, $21, $EF, $27, $28, $4C, $EF, $13, $21, $1E, $EF, $1C, $28, $30, $8E, $EF,
-    db $22, $2D, $EF, $1D, $22, $1E, $1D, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "Oh no. The cow, "
+    db "it died.        "
     done
 
     text Text_010_DoNothing
-    db $0E, $21, $EF, $27, $28, $4C, $EF, $0C, $32, $EF, $1C, $28, $30, $4C, $4C, $4C,
-    db $26, $32, $EF, $1C, $28, $30, $EF, $1D, $22, $1E, $1D, $4C, $EF, $EF, $EF, $EF,
+    db "Oh no. My cow..."
+    db "my cow died.    "
     done
 
     text Text_010_DoNothing
-    db $01, $2B, $2E, $2C, $21, $EF, $32, $28, $2E, $2B, $EF, $1C, $28, $30, $EF, $EF,
-    db $1E, $2F, $1E, $2B, $1D, $1A, $32, $EF, $30, $22, $2D, $21, $EF, $EF, $EF, $EF,
+    db "Brush your cow  "
+    db "everday with    "
     done
 
     text Text_010_DoNothing
@@ -2415,12 +2425,12 @@ db $80, $94, $57, $0F, $00, $0F, $01, $0F, $02, $FF
     db "your ranch and ▽"
     prompt
     text Text_010_DoNothing
-    db $08, $EF, $30, $22, $25, $25, $EF, $1E, $31, $29, $1E, $1C, $2D, $EF, $EF, $EF,
-    db $32, $28, $2E, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
+    db "I will expect   "
+    db "you to         ▽"
     prompt
     text Text_010_DoNothing
-    db $30, $28, $2B, $24, $EF, $21, $1A, $2B, $1D, $1E, $2B, $EF, $EF, $EF, $EF, $EF,
-    db $2D, $21, $1A, $27, $EF, $25, $1A, $2C, $2D, $EF, $32, $1E, $1A, $2B, $4C, $EF,
+    db "work harder     "
+    db "than last year. "
     done 
 
 Text_010_DoNothing: ; 10x61da
