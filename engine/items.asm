@@ -505,7 +505,7 @@ jr_001_6260:
     cp $02
     jp z, Jump_001_62a3
 
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -515,7 +515,7 @@ jr_001_6260:
     jr CheckForFillingWateringCan
 
 jr_001_6285:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -525,7 +525,7 @@ jr_001_6285:
     jr CheckForFillingWateringCan
 
 jr_001_6294:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -536,7 +536,7 @@ jr_001_6294:
 
 ; Seems like it gets the tile type. Something like what we are watering...
 Jump_001_62a3: ; 01x62a3
-    ld a, [$cb48] ; contains the sram address for the tile we are looking at I think...
+    ld a, [wFarmTilemapCellPointer] ; contains the sram address for the tile we are looking at I think...
     ld h, a
     ld a, [$cb49]
     ld l, a

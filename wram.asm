@@ -120,7 +120,12 @@ wcb3f:: db
 wcb40:: db
 wInteractingMapObjectID:: db ; 0xcb41
 
-ds 8
+ds 6
+
+wFarmTilemapCellPointer:: dw ; 0xcb48
+
+;wcb48:: db ; 0xcb48
+;wcb49:: db ; 0xcb49
 
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a
@@ -208,7 +213,11 @@ ds 2
 
 wPlayerIsRidingHorse:: db ; 0xcb84
 
-ds 4
+; If 1 for these two memory addresses the the player auto moves, I haven't figured out why this happens though...
+wcb85:: db ; 0xcb85
+wcb86:: db ; 0xcb86
+
+ds 2
 
 wPlayerInFrontOfPet:: db ; 0xcb89
 

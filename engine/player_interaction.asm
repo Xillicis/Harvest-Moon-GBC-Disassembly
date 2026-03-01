@@ -14,7 +14,7 @@ JumpOnHorse:
     ld [$cb82], a
     ld a, $10
     ld [wInputFreezeTimer], a
-    ld [$cb86], a
+    ld [wcb86], a
     ld a, [wPlayerFacingDirection]
     add $0c
     call LoadPlayerSpriteID
@@ -38,11 +38,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld hl, wPlayerYPosition
     ld bc, $0008
@@ -53,11 +53,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
     ret
 
 .jumpOnHorse_FacingDown
@@ -70,11 +70,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld hl, wPlayerYPosition
     ld bc, -$0008
@@ -85,11 +85,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
     ret
 
 .jumpOnHorse_FacingLeft
@@ -102,11 +102,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
 
     ld hl, wPlayerXPosition
     ld bc, $0008
@@ -117,11 +117,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jp nz, Jump_001_4bc9
+    jp nz, .popHL_ret
     ret
 
 .jumpOnHorse_FacingRight
@@ -134,11 +134,11 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
 
     ld hl, wPlayerXPosition
     ld bc, $fff8
@@ -149,15 +149,14 @@ Call_001_4a92:
     call AddBCtoWordAtHL
     ld a, [$cb38]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
 
     ld a, [$cb3a]
     and $01
-    jr nz, jr_001_4bc9
+    jr nz, .popHL_ret
     ret
 
-Jump_001_4bc9:
-jr_001_4bc9:
+.popHL_ret
     pop hl
     ret
 
@@ -1407,19 +1406,15 @@ Call_001_557f:
     ld a, [wHeldObject]
     or a
     ret nz
-
     ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
-
     ld a, [wPlayerHoldingPet]
     or a
     ret nz
-
     ld a, [wCollisionNoMovement]
     or a
     ret z
-
     ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
@@ -1427,7 +1422,6 @@ Call_001_557f:
     ldh a, [$ff8b]
     and $01
     ret z
-
     ld a, [wDominantFacingTileProperty]
     cp $81
     ret nz

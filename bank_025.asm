@@ -4489,7 +4489,7 @@ jr_025_5256:
     dec hl
     dec hl
     ld a, h
-    ld [$cb48], a
+    ld [wFarmTilemapCellPointer], a
     ld a, l
     ld [$cb49], a
     ret

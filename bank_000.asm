@@ -2866,7 +2866,7 @@ Call_000_1887:
 Call_000_18a0:
     or $74
     ld [de], a
-    jr jr_000_191a
+    jr $191a
 
     ld [de], a
     ld a, [hl-]
@@ -2982,13 +2982,9 @@ Call_000_1911:
     call BankSwitchCallHL
     ret
 
-
 Call_000_191a:
 Jump_000_191a:
-jr_000_191a:
-    ld hl, $585f
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_585f
     ret
 
 

@@ -3969,7 +3969,7 @@ Label_005_5689:
     ld [$cb42], a
     ret
 
-
+Label_005_585f:
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -4013,14 +4013,17 @@ Label_005_5689:
     ld a, [$b90e]
     ld e, a
     add hl, de
+; HL should be pointing to an SRAM address to the tile that we are operating on
+; e.g. the grass we are cutting, the plot of land we are plowing, the wood piece we are cutting, etc...
     ld a, [hl+]
     ld [$cb46], a
     ld a, [hl+]
     ld [$cb47], a
     dec hl
     dec hl
+; save address for later
     ld a, h
-    ld [$cb48], a
+    ld [wFarmTilemapCellPointer], a
     ld a, l
     ld [$cb49], a
     ret
@@ -4212,7 +4215,6 @@ Label_005_5689:
     ld a, [hl+]
     ld [$cb3a], a
     ret
-
 
     ld a, [wPlayerYPosition]
     add $03

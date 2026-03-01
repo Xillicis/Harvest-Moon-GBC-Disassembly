@@ -1006,7 +1006,7 @@ jr_008_46b7:
     cp $01
     ret nz
 
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1209,7 +1209,7 @@ Jump_008_4801:
 
     ld a, $01
     ldh [$ffa4], a
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1446,7 +1446,7 @@ jr_008_4971:
     ldh [$ffaf], a
     xor a
     ldh [$ffa4], a
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1458,7 +1458,7 @@ jr_008_4971:
     xor a
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1470,7 +1470,7 @@ jr_008_4971:
     ld a, $01
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1482,7 +1482,7 @@ jr_008_4971:
     ld a, $02
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1494,7 +1494,7 @@ jr_008_4971:
     ld a, $03
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1506,7 +1506,7 @@ jr_008_4971:
     ld a, $04
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1518,7 +1518,7 @@ jr_008_4971:
     ld a, $05
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1530,7 +1530,7 @@ jr_008_4971:
     ld a, $06
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1542,7 +1542,7 @@ jr_008_4971:
     ld a, $07
     ldh [$ffac], a
     call Call_008_4a72
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1700,7 +1700,7 @@ jr_008_4b2c:
     cp $01
     ret nz
 
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1712,7 +1712,7 @@ jr_008_4b2c:
     xor a
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1724,7 +1724,7 @@ jr_008_4b2c:
     ld a, $01
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1736,7 +1736,7 @@ jr_008_4b2c:
     ld a, $02
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1748,7 +1748,7 @@ jr_008_4b2c:
     ld a, $03
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1760,7 +1760,7 @@ jr_008_4b2c:
     ld a, $04
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1772,7 +1772,7 @@ jr_008_4b2c:
     ld a, $05
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1784,7 +1784,7 @@ jr_008_4b2c:
     ld a, $06
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1796,7 +1796,7 @@ jr_008_4b2c:
     ld a, $07
     ldh [$ffac], a
     call Call_008_4faa
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -1827,7 +1827,7 @@ Jump_008_4c16:
 
     ld a, $01
     ldh [$ffa4], a
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2426,7 +2426,7 @@ jr_008_4f1f:
     cp $02
     jp z, Jump_008_4f94
 
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2440,7 +2440,7 @@ jr_008_4f1f:
 
 
 jr_008_4f67:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2454,7 +2454,7 @@ jr_008_4f67:
 
 
 jr_008_4f7d:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2468,7 +2468,7 @@ jr_008_4f7d:
 
 
 Jump_008_4f94:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2800,7 +2800,7 @@ jr_008_5127:
     ldh [$ffa4], a
 
 jr_008_512b:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2822,7 +2822,7 @@ jr_008_5145:
     call Call_008_68c8
 
 jr_008_514c:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2844,7 +2844,7 @@ jr_008_5166:
     call Call_008_68c8
 
 jr_008_516c:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2866,7 +2866,7 @@ jr_008_5186:
     call Call_008_68c8
 
 jr_008_518c:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2888,7 +2888,7 @@ jr_008_51a6:
     call Call_008_68c8
 
 jr_008_51ad:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2910,7 +2910,7 @@ jr_008_51c7:
     call Call_008_68c8
 
 jr_008_51cd:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2932,7 +2932,7 @@ jr_008_51e7:
     call Call_008_68c8
 
 jr_008_51ed:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2954,7 +2954,7 @@ jr_008_5207:
     call Call_008_68c8
 
 jr_008_520e:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -2976,7 +2976,7 @@ jr_008_5228:
     call Call_008_68c8
 
 jr_008_522e:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -7122,7 +7122,7 @@ Call_008_68c8:
     ld a, [hl+]
     ldh [$ffa9], a
     push de
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a

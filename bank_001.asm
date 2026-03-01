@@ -594,7 +594,7 @@ Call_001_4459:
     ld a, [$cb85]
     or a
     jr nz, jr_001_4466
-    ld a, [$cb86]
+    ld a, [wcb86]
     or a
     jr nz, jr_001_4489
     ret
@@ -626,7 +626,7 @@ jr_001_4485:
 
 jr_001_4489:
     dec a
-    ld [$cb86], a
+    ld [wcb86], a
     cp $00
     jr nz, jr_001_4495
 

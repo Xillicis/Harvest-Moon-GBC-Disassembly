@@ -584,7 +584,7 @@ Call_021_442a:
     or a
     jr nz, jr_021_4437
 
-    ld a, [$cb86]
+    ld a, [wcb86]
     or a
     jr nz, jr_021_445a
 
@@ -625,7 +625,7 @@ jr_021_4456:
 
 jr_021_445a:
     dec a
-    ld [$cb86], a
+    ld [wcb86], a
     cp $00
     jr nz, jr_021_4466
 
@@ -1669,7 +1669,7 @@ Jump_021_4a5e:
     ld [$cb82], a
     ld a, $10
     ld [wInputFreezeTimer], a
-    ld [$cb86], a
+    ld [wcb86], a
     ld a, [wPlayerFacingDirection]
     add $0c
     call LoadPlayerSpriteID
@@ -5143,7 +5143,7 @@ jr_021_614e:
     cp $02
     jp z, Jump_021_6191
 
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -5153,7 +5153,7 @@ jr_021_614e:
     jr jr_021_619e
 
 jr_021_6173:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -5163,7 +5163,7 @@ jr_021_6173:
     jr jr_021_619e
 
 jr_021_6182:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
@@ -5173,7 +5173,7 @@ jr_021_6182:
     jr jr_021_619e
 
 Jump_021_6191:
-    ld a, [$cb48]
+    ld a, [wFarmTilemapCellPointer]
     ld h, a
     ld a, [$cb49]
     ld l, a
