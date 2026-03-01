@@ -118,14 +118,12 @@ wcb3d:: db
 wcb3e:: db
 wcb3f:: db
 wcb40:: db
-wInteractingMapObjectID:: db ; 0xcb41
 
-ds 6
+wInteractingMapObjectID:: dw ; 0xcb41
+
+ds 5
 
 wFarmTilemapCellPointer:: dw ; 0xcb48
-
-;wcb48:: db ; 0xcb48
-;wcb49:: db ; 0xcb49
 
 ;; The item you hold above your head
 wHeldObject:: db ; 0xcb4a

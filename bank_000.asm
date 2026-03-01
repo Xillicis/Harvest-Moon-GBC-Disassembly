@@ -1273,7 +1273,7 @@ Call_000_0f0f:
     ld [$cb3f], a
     ld [$cb40], a
     ld [wInteractingMapObjectID], a
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 Call_000_0f47:
@@ -2966,25 +2966,16 @@ Call_000_18ff:
     call BankSwitchCallHL
     ret
 
-
-Call_000_1908:
-    ld hl, $5689
-    ld a, $05
-    call BankSwitchCallHL
-
-Call_000_1910:
+StoreTilemapCellDataLeftOfPlayerPosition:
+    callfar _StoreTilemapCellDataLeftOfPlayerPosition
     ret
 
-
-Call_000_1911:
-    ld hl, $5774
-    ld a, $05
-    call BankSwitchCallHL
+StoreTilemapCellDataRightOfPlayerPosition:
+    callfar _StoreTilemapCellDataRightOfPlayerPosition
     ret
 
-Call_000_191a:
-Jump_000_191a:
-    callfar Label_005_585f
+StoreTilemapCellDataForPlayersCurrentPosition:
+    callfar _StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 

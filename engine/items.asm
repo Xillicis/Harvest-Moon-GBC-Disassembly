@@ -86,10 +86,10 @@ UseSickle:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, [wPlayerFacingDirection]
     call DetermineFacingObjectForTool
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -97,7 +97,7 @@ UseSickle:
     cp BUSH_INDEX
     jr z, .cutBush
 
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     and $40
     ret z
 
@@ -218,7 +218,7 @@ UseHoe:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 UseHammer:
@@ -232,7 +232,7 @@ UseHammer:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call DetermineFacingObjectForTool
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -287,7 +287,7 @@ UseAx:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call DetermineFacingObjectForTool
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
     ld a, [wInteractingMapObjectID]
@@ -331,7 +331,7 @@ UseSuperSickle:
     ld a, $50
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 UseSuperHoe:
@@ -342,7 +342,7 @@ UseSuperHoe:
     ld a, $44
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 UseSprinkler:
@@ -353,7 +353,7 @@ UseSprinkler:
     ld a, $56
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 UseSuperHammer:
@@ -367,7 +367,7 @@ UseSuperHammer:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call DetermineFacingObjectForTool
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -421,7 +421,7 @@ UseSuperAx:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call DetermineFacingObjectForTool
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -494,7 +494,7 @@ UseWateringCan:
 
 jr_001_6260:
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_001_6285
@@ -507,7 +507,7 @@ jr_001_6260:
 
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $ff80
     add hl, bc
@@ -517,7 +517,7 @@ jr_001_6260:
 jr_001_6285:
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $0080
     add hl, bc
@@ -527,7 +527,7 @@ jr_001_6285:
 jr_001_6294:
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $fffe
     add hl, bc
@@ -538,7 +538,7 @@ jr_001_6294:
 Jump_001_62a3: ; 01x62a3
     ld a, [wFarmTilemapCellPointer] ; contains the sram address for the tile we are looking at I think...
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $0002
     add hl, bc
@@ -589,19 +589,19 @@ UseMedicine:
     jr z, .usedUpMPotion
     xor a
     ld [sShedPMedicineFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 .usedUpCowMedicine
     xor a
     ld [sShedCowMedicineFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 .usedUpMPotion
     xor a
     ld [sShedMPotionFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseCowBell:
@@ -680,7 +680,7 @@ UseAnimalFeed:
 
     xor a
     ld [sChickenFeedFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 jr_001_6395:
@@ -691,7 +691,7 @@ jr_001_6395:
 
     xor a
     ld [sCowFeedFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 
@@ -703,7 +703,7 @@ UseGrassSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     xor a
     ld [$cb74], a
     ld a, [sNumGrassSeeds]
@@ -713,7 +713,7 @@ UseGrassSeeds:
     ret nz
 
     ld [sShedGrassSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseTomatoSeeds:
@@ -724,7 +724,7 @@ UseTomatoSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $01
     ld [$cb74], a
     ld a, [sNumTomatoSeeds]
@@ -734,7 +734,7 @@ UseTomatoSeeds:
     ret nz
 
     ld [sShedTomatoSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseCornSeeds:
@@ -745,7 +745,7 @@ UseCornSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $02
     ld [$cb74], a
     ld a, [sNumCornSeeds]
@@ -755,7 +755,7 @@ UseCornSeeds:
     ret nz
 
     ld [sShedCornSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseTurnipSeeds:
@@ -766,7 +766,7 @@ UseTurnipSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $03
     ld [$cb74], a
     ld a, [sNumTurnipSeeds]
@@ -776,10 +776,10 @@ UseTurnipSeeds:
     ret nz
 
     ld [sShedTurnipSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
-Call_001_644c:
+SetSeedThrowingAnimationTimer:
     ld a, $50
     ld [wThrowingSeedsAnimationTimer], a
     ret
@@ -792,7 +792,7 @@ UsePotatoSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $04
     ld [$cb74], a
     ld a, [sNumPotatoSeeds]
@@ -802,7 +802,7 @@ UsePotatoSeeds:
     ret nz
 
     ld [sShedPotatoSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 
@@ -814,7 +814,7 @@ UseEggplantSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $05
     ld [$cb74], a
     ld a, [sNumEggplantSeeds]
@@ -824,7 +824,7 @@ UseEggplantSeeds:
     ret nz
 
     ld [sShedEggplantSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UsePeanutSeeds:
@@ -835,7 +835,7 @@ UsePeanutSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $06
     ld [$cb74], a
     ld a, [sNumPeanutSeeds]
@@ -845,7 +845,7 @@ UsePeanutSeeds:
     ret nz
 
     ld [sShedPeanutSeedsFlag], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseCarrotSeeds:
@@ -856,7 +856,7 @@ UseCarrotSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $07
     ld [$cb74], a
     ld a, [sNumCarrotSeeds]
@@ -866,7 +866,7 @@ UseCarrotSeeds:
     ret nz
 
     ld [$b8bb], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 UseBrocolliSeeds:
@@ -877,7 +877,7 @@ UseBrocolliSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $08
     ld [$cb74], a
     ld a, [sNumBrocolliSeeds]
@@ -887,7 +887,7 @@ UseBrocolliSeeds:
     ret nz
 
     ld [$b8bc], a
-    call Call_001_644c
+    call SetSeedThrowingAnimationTimer
     ret
 
 DetermineFacingObjectForTool:
@@ -906,9 +906,9 @@ DetermineFacingObjectForTool:
     ret
 
 .facingLeft
-    call Call_000_1908
+    call StoreTilemapCellDataLeftOfPlayerPosition
     ret
 
 .facingRight
-    call Call_000_1911
+    call StoreTilemapCellDataRightOfPlayerPosition
     ret

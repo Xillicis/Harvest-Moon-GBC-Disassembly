@@ -5264,7 +5264,7 @@ Jump_02e_5f4a:
     cp $02
     jr nz, jr_02e_5fb2
 
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     call Call_000_1514
     ld hl, sInventory
     ld a, [sItemSlot]
@@ -5332,7 +5332,7 @@ jr_02e_5fb2:
     cp $03
     jr nz, jr_02e_5fe9
 
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, [$cb46]
     cp $43
     jr nz, jr_02e_5fe9

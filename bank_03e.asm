@@ -8711,7 +8711,7 @@ jr_03e_6673:
     inc hl
     inc c
     dec b
-    ld bc, $cb42
+    ld bc, wInteractingMapObjectID+1
 
 jr_03e_6689:
     rst $38

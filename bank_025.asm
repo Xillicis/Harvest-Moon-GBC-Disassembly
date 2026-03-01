@@ -4046,7 +4046,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 
@@ -4173,7 +4173,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 
@@ -4304,7 +4304,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 
@@ -4435,7 +4435,7 @@ jr_025_5256:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 
@@ -4491,7 +4491,7 @@ jr_025_5256:
     ld a, h
     ld [wFarmTilemapCellPointer], a
     ld a, l
-    ld [$cb49], a
+    ld [wFarmTilemapCellPointer+1], a
     ret
 
 
@@ -10076,7 +10076,7 @@ jr_025_7585:
 
 jr_025_7586:
     ld [$c404], sp
-    jp nz, Jump_000_191a
+    jp nz, $191a
 
     db $fd
     ld h, l

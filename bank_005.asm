@@ -3572,7 +3572,7 @@ Label_005_54cd:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
     ld a, [wPlayerXPosition]
@@ -3698,11 +3698,11 @@ Label_005_54cd:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
 ; I think hammer animation goes here?
-Label_005_5689:
+_StoreTilemapCellDataLeftOfPlayerPosition:
     ld a, [wPlayerYPosition]
     add $02
     ld l, a
@@ -3835,10 +3835,10 @@ Label_005_5689:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
-
+_StoreTilemapCellDataRightOfPlayerPosition:
     ld a, [wPlayerYPosition]
     add $02
     ld l, a
@@ -3966,10 +3966,10 @@ Label_005_5689:
     ld a, [hl+]
     ld [wInteractingMapObjectID], a
     ld a, [hl+]
-    ld [$cb42], a
+    ld [wInteractingMapObjectID+1], a
     ret
 
-Label_005_585f:
+_StoreTilemapCellDataForPlayersCurrentPosition:
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -4025,7 +4025,7 @@ Label_005_585f:
     ld a, h
     ld [wFarmTilemapCellPointer], a
     ld a, l
-    ld [$cb49], a
+    ld [wFarmTilemapCellPointer+1], a
     ret
 
 

@@ -14299,7 +14299,7 @@ Jump_037_7cbf:
     jr nc, jr_037_7cf1
 
     ccf
-    call c, Call_000_1910
+    call c, $1910
     nop
     ld [de], a
     pop bc

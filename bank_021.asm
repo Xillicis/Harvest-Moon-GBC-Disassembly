@@ -4679,10 +4679,10 @@ Jump_021_5ec4:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, [wPlayerFacingDirection]
     call Call_021_6412
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -4690,7 +4690,7 @@ Jump_021_5ec4:
     cp $02
     jr z, jr_021_5f28
 
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     and $40
     ret z
 
@@ -4821,7 +4821,7 @@ Jump_021_5f84:
     ld a, $34
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 
@@ -4836,7 +4836,7 @@ Jump_021_5f9a:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call Call_021_6412
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -4901,7 +4901,7 @@ Jump_021_5ff1:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call Call_021_6412
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -4955,7 +4955,7 @@ Jump_021_603b:
     ld a, $50
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 
@@ -4967,7 +4967,7 @@ Jump_021_6055:
     ld a, $44
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 
@@ -4979,7 +4979,7 @@ Jump_021_606b:
     ld a, $56
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
 
@@ -4994,7 +4994,7 @@ Jump_021_6081:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call Call_021_6412
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -5059,7 +5059,7 @@ Jump_021_60d8:
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
     call Call_021_6412
-    ld a, [$cb42]
+    ld a, [wInteractingMapObjectID+1]
     or a
     ret z
 
@@ -5132,7 +5132,7 @@ jr_021_6149:
 
 jr_021_614e:
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_021_6173
@@ -5145,7 +5145,7 @@ jr_021_614e:
 
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $ff80
     add hl, bc
@@ -5155,7 +5155,7 @@ jr_021_614e:
 jr_021_6173:
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $0080
     add hl, bc
@@ -5165,7 +5165,7 @@ jr_021_6173:
 jr_021_6182:
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $fffe
     add hl, bc
@@ -5175,7 +5175,7 @@ jr_021_6182:
 Jump_021_6191:
     ld a, [wFarmTilemapCellPointer]
     ld h, a
-    ld a, [$cb49]
+    ld a, [wFarmTilemapCellPointer+1]
     ld l, a
     ld bc, $0002
     add hl, bc
@@ -5347,7 +5347,7 @@ SpreadGrassSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     xor a
     ld [$cb74], a
     ld a, [sNumGrassSeeds]
@@ -5368,7 +5368,7 @@ SpreadTomatoSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $01
     ld [$cb74], a
     ld a, [sNumTomatoSeeds]
@@ -5389,7 +5389,7 @@ SpreadCornSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $02
     ld [$cb74], a
     ld a, [sNumCornSeeds]
@@ -5410,7 +5410,7 @@ SpreadTurnipSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $03
     ld [$cb74], a
     ld a, [sNumTurnipSeeds]
@@ -5436,7 +5436,7 @@ SpreadPotatoSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $04
     ld [$cb74], a
     ld a, [sNumPotatoSeeds]
@@ -5457,7 +5457,7 @@ SpreadEggplantSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $05
     ld [$cb74], a
     ld a, [sNumEggplantSeeds]
@@ -5478,7 +5478,7 @@ SpreadPeanutSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $06
     ld [$cb74], a
     ld a, [sNumPeanutSeeds]
@@ -5499,7 +5499,7 @@ SpreadCarrotSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $07
     ld [$cb74], a
     ld a, [sNumCarrotSeeds]
@@ -5520,7 +5520,7 @@ SpreadBrocolliSeeds:
     ld a, $55
     ld [wInputFreezeTimer], a
     ld a, [wPlayerFacingDirection]
-    call Call_000_191a
+    call StoreTilemapCellDataForPlayersCurrentPosition
     ld a, $08
     ld [$cb74], a
     ld a, [sNumBrocolliSeeds]
@@ -5549,11 +5549,11 @@ jr_021_6427:
     ret
 
 Jump_021_642b:
-    call Call_000_1908
+    call StoreTilemapCellDataLeftOfPlayerPosition 
     ret
 
 Jump_021_642f:
-    call Call_000_1911
+    call StoreTilemapCellDataRightOfPlayerPosition
     ret
 
 
