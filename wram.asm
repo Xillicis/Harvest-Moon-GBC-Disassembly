@@ -258,7 +258,13 @@ ds 1 ; 0xcc74
 
 wPlayerIsFacingSprite:: db ; 0xcc75
 
-ds $54
+wcc76:: db ; 0xcc76
+wcc77:: db ; 0xcc77
+wcc78:: db ; 0xcc78
+wcc79:: db ; 0xcc79
+wcc7a:: db ; 0xcc7a
+
+ds $4f
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

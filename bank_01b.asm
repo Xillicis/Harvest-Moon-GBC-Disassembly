@@ -1124,26 +1124,26 @@ jr_01b_453b:
     ld [bc], a
     ld [bc], a
     inc b
+
+; maybe starts here?
     push bc
     ld a, [sPlayerMaxEnergy]
     ld d, a
     ld a, [sPlayerEnergy]
-    add $0a
+    add 10
     cp d
-    jr c, jr_01b_457e
-
+    jr c, .updateEnergy
     ld a, d
 
-jr_01b_457e:
+.updateEnergy
     ld [sPlayerEnergy], a
-    ld a, [$b8f2]
-    add $0a
-    jr nc, jr_01b_458a
-
+    ld a, [sPlayerHappiness]
+    add 10
+    jr nc, .updateHappiness
     ld a, $ff
 
-jr_01b_458a:
-    ld [$b8f2], a
+.updateHappiness
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
@@ -1152,63 +1152,62 @@ jr_01b_458a:
     ld l, c
     ret
 
-
+;;; Another label should go here
+Label_01b_something:
     push bc
     ld a, [sPlayerEnergy]
-    sub $0a
-    jr nc, jr_01b_459b
-
+    sub 10
+    jr nc, .lowerEnergy
     xor a
 
-jr_01b_459b:
+.lowerEnergy ; 1bx459b
     ld [sPlayerEnergy], a
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $0a
-    jr nc, jr_01b_45a6
-
+    jr nc, .lowerHappiness
     xor a
 
-jr_01b_45a6:
-    ld [$b8f2], a
+.lowerHappiness ; 1bx45a6
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
-
+;;; Label goes here
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     add $14
     jr nc, jr_01b_45b5
 
     ld a, $ff
 
 jr_01b_45b5:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
-
+;;; Another label 
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $28
     jr nc, jr_01b_45c3
 
     xor a
 
 jr_01b_45c3:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
-
+;;; And another label
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $14
     jr nc, jr_01b_45d1
 
     xor a
 
 jr_01b_45d1:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 

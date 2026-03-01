@@ -136,7 +136,7 @@ sPlayerEnergy::  db  ; 0xb8ed
 sPlayerMaxEnergy::  db ; 0xb8ee
 ; little endian
 sPlayerMoney:: ds 3 ; 0xb8ef
-sb8f2::  db ; 0xb8f2
+sPlayerHappiness::  db ; 0xb8f2
 sb8f3::  db ; 0xb8f3
 sPlayerName::  ds 4 ; 0xb8f4
 sInventory::  ds 3 ; 0xb8f8

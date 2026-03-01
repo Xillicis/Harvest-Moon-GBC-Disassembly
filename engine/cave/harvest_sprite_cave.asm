@@ -416,7 +416,10 @@ ImproveSickleCheck:
     ld a, $00
     call RST_TableJumpBankSwitch
     jp TalkToHarvestSprite1
+
+
     ret
+
 
 jr_00e_4839:
     ld a, [sSpriteTotalHappiness]
@@ -424,7 +427,7 @@ jr_00e_4839:
     jp c, TalkToHarvestSprite1
 
     ld a, [sSpriteEventFlags]
-    bit 6, a
+    bit 6, a ; I think this is for improving the other tool
     jp nz, TalkToHarvestSprite1
 
     set 6, a

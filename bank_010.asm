@@ -1764,7 +1764,7 @@ jr_010_546e:
     cp $f1
     jr nc, jr_010_5497
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     cp $fa
     jr c, jr_010_5497
 
@@ -1816,7 +1816,7 @@ Call_010_54ac:
     cp $f1
     jr nc, jr_010_54db
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     cp $fa
     jr c, jr_010_54db
 

@@ -912,3 +912,4 @@ DetermineFacingObjectForTool:
 .facingRight
     call StoreTilemapCellDataRightOfPlayerPosition
     ret
+

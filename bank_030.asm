@@ -3832,7 +3832,7 @@ jr_030_53d9:
     cp $f1
     jr nc, jr_030_5402
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     cp $fa
     jr c, jr_030_5402
 
@@ -3884,7 +3884,7 @@ Call_030_5417:
     cp $f1
     jr nc, jr_030_5446
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     cp $fa
     jr c, jr_030_5446
 

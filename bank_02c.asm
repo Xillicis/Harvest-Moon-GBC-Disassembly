@@ -13596,7 +13596,7 @@ jr_02c_7d1e:
     ret
 
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     call Call_000_3304
     ld a, [wDecimalDigitTileID+2]
     ld [$ccad], a

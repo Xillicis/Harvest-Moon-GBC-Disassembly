@@ -1281,16 +1281,16 @@ Call_000_0f47:
     and %10000000
     jr nz, jr_000_0f5c
 
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     add b
     jr c, jr_000_0f56
 
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     ret
 
 jr_000_0f56:
     ld a, $ff
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     ret
 
 jr_000_0f5c:
@@ -1303,16 +1303,16 @@ jr_000_0f5c:
 
 jr_000_0f63:
     ld b, a
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub b
     jr c, jr_000_0f6e
 
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     ret
 
 jr_000_0f6e:
     xor a
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     ret
 
 Call_000_0f73:

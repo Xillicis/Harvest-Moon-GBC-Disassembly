@@ -1138,14 +1138,14 @@ jr_03b_453b:
 
 jr_03b_457e:
     ld [sPlayerEnergy], a
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     add $0a
     jr nc, jr_03b_458a
 
     ld a, $ff
 
 jr_03b_458a:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
@@ -1164,53 +1164,53 @@ jr_03b_458a:
 
 jr_03b_459b:
     ld [sPlayerEnergy], a
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $0a
     jr nc, jr_03b_45a6
 
     xor a
 
 jr_03b_45a6:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
 
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     add $14
     jr nc, jr_03b_45b5
 
     ld a, $ff
 
 jr_03b_45b5:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
 
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $28
     jr nc, jr_03b_45c3
 
     xor a
 
 jr_03b_45c3:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
 
     push bc
-    ld a, [$b8f2]
+    ld a, [sPlayerHappiness]
     sub $14
     jr nc, jr_03b_45d1
 
     xor a
 
 jr_03b_45d1:
-    ld [$b8f2], a
+    ld [sPlayerHappiness], a
     pop hl
     ret
 
