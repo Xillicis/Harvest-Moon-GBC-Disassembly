@@ -4215,7 +4215,7 @@ jr_009_55e0:
     ldh [rIE], a
     ret
 
-
+Label_009_5641:
     call Call_000_0d90
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
@@ -4227,10 +4227,7 @@ jr_009_55e0:
     call Call_009_46ed
     push hl
     push af
-    ld l, $01
-    ld h, $40
-    ld a, $1b
-    call BankSwitchCallHL
+    callfar2 Label_01b_4001
     pop af
     pop hl
     ret

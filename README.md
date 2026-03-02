@@ -3,9 +3,12 @@
 This is a disassembly project of Harvest Moon GBC. 
 Currently, I (Xillicis) am the only one doing the disassembly, so it takes some time.
 The goal is to have a completely reverse engineered game so people can make hacks, translations, etc...
+The general process is to work in each of the `bank_XXX`'s and once enough code has become readable, then I'll port it into it's own file. 
+You can see this with things like `engine/items.asm`.
 
-The first objective is to reverse engineer all of the in-game text so
-translations can be made. This is currently in progress.
+The main objective is to reverse engineer all of the in-game text so
+translations can be made. 
+This is currently in progress.
 
 Iv you'd like to make a language translation, you may want to message me (on
 Discord) about how we can set up the translation. There are some details that
