@@ -615,20 +615,19 @@ Call_01b_42f9:
 
 Call_01b_4330:
     cp $af
-    jr nz, jr_01b_433b
+    jr nz, .jr_01b_433b
 
     ld hl, $4380
     call Call_000_20de
     ret
 
-
-jr_01b_433b:
+.jr_01b_433b
     sub $34
     ld l, a
     add a
     add a
     add l
-    ld hl, $434e
+    ld hl, Label_01b_434e
     add l
     ld l, a
     ld a, $00
@@ -637,7 +636,7 @@ jr_01b_433b:
     call Call_000_20de
     ret
 
-
+Label_01b_434e:
     nop
     nop
     ldh [c], a
@@ -2378,8 +2377,6 @@ ChurchTextPointerList:: ; 1bx620c
     db $21, $40, $CC, $66,
     db $20, $80, $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
 
-
-
 ChurchMaria1Text:: ; 1bx644c
     db "Good Afternoon  "
     db "    .          ▽"
@@ -2540,7 +2537,7 @@ LunchBoxText::
     db " Buy   Don't Buy"
 
 CroissantText::
-    db "That", $4B, $2C, " a Croiss-"
+    db "That's a Croiss-"
     db "ant which I    ▽"
     db "handmade. The   "
     db "cost is 300G   ▽"
@@ -2808,15 +2805,15 @@ GrassSeedPriceText::
     db $40, $2D, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $3D, $7A, $10, $80, $8F,
     db $46, $11, $77, 
 ; text
-    db $01, $2E, $32, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $01, $2E, $32, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $EF, $EF,
-    db $02, $28, $30, $EF, $05, $1E, $1E, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $02, $21, $22, $1C, $24, $1E, $27, $EF, $05, $1E, $1E, $1D, $EF, $EF, $EF, $EF,
-    db $02, $28, $30, $EF, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF, $EF, $EF, $EF,
-    db $0C, $4C, $0F, $28, $2D, $22, $28, $27, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0F, $4C, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $EF,
+    db "Buy a cow       "
+    db "Buy a chicken   "
+    db "Cow Feed        "
+    db "Chicken Feed    "
+    db "Cow Medicine    "
+    db "M.Potion        "
+    db "P.Medicine      "
+    db "Sell a cow      "
+    db "Sell a chicken  "
 
     db $21, $40, $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
     db $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $9F, $7A, $10, $80, $8F, $46, $11,
@@ -2824,11 +2821,11 @@ GrassSeedPriceText::
     db $80, $8F, $46, $11, $77, 
 
 ; text
-    db $02, $1A, $24, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0B, $2E, $27, $1C, $21, $EF, $01, $28, $31, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $02, $2B, $28, $22, $2C, $2C, $1A, $27, $2D, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $11, $22, $1C, $1E, $EF, $01, $1A, $25, $25, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0C, $1E, $1A, $2D, $EF, $03, $2E, $26, $29, $25, $22, $27, $20, $EF, $EF, $EF,
+    db "Cake            "
+    db "Lunch Box       "
+    db "Croissant       "
+    db "Rice Ball       "
+    db "Meat Dumpling   "
 
     db $21, $40, $01, $7B, $10, $80, $8F, $46, $11, $77, $21,
     db $40, $11, $7B, $10, $80, $8F, $46, $11, $77, $21, $40, $21, $7B, $10, $80, $8F,
@@ -2840,9 +2837,9 @@ GrassSeedPriceText::
     db $00, $29, $29, $25, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $EF, $EF, $EF, $EF,
     db $16, $22, $25, $1D, $EF, $06, $2B, $1A, $29, $1E, $EF, $09, $2E, $22, $1C, $1E,
     db $06, $2B, $1E, $1E, $27, $EF, $13, $1E, $1A, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0C, $22, $25, $24, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, 
+    db $0C, $22, $25, $24, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF
 
-    rst $28
+Label_01b_something:
     ld h, b
     ld l, c
     push hl

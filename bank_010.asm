@@ -1086,7 +1086,7 @@ Jump_010_5095:
     ld d, d
     or d
     ld d, d
-    jp nz, Jump_000_2152
+    jp nz, $2152
 
     and a
     call z, $fe7e

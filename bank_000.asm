@@ -3917,8 +3917,6 @@ jr_000_214c:
     ld [de], a
     inc hl
     inc e
-
-Jump_000_2152:
     ld a, e
     cp $a0
     jr nz, jr_000_210f
