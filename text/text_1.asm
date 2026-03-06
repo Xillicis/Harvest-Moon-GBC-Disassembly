@@ -61,10 +61,10 @@ MoneyInDresserText::
     prompt
     text Text_DoNothing
     db "drawer. Was this"
-    db "grandpa's rainy ▽"
+    db "grandpa<'s> rainy ▽"
     prompt
     text Text_DoNothing
-    db "day money? It's  "
+    db "day money? It<'s>  "
     db "mine now!!     ▽"
     prompt
     text Text_DoNothing
@@ -158,7 +158,7 @@ AutumnSunnyDayText::
 
 AutumnRainyDayText::
     text Text_DoNothing
-    db "It's getting col-"
+    db "It<'s> getting col-"
     db "der day by day.▽"
     prompt
 
@@ -169,7 +169,7 @@ AutumnRainyDayText::
 
 WinterSunnyDayText::
     text Text_DoNothing
-    db "It's getting col-"
+    db "It<'s> getting col-"
     db "der day by day.▽"
     prompt
 
@@ -180,7 +180,7 @@ WinterSunnyDayText::
 
 WinterSnowyDayText::
     text Text_DoNothing
-    db "It's cold every- "
+    db "It<'s> cold every- "
     db "day. It will   ▽"
     prompt
 
@@ -226,7 +226,7 @@ ElipsesText::
 
 TooLateText1::
     text Text_DoNothing
-    db "Oops! It's       "
+    db "Oops! It<'s>       "
     db "already 6AM.   ▽"
     prompt
 
@@ -242,7 +242,7 @@ TooLateText1::
 
 TooLateText2::
     text Text_DoNothing
-    db "Oh My! It's      "
+    db "Oh My! It<'s>      "
     db "already 6AM.   ▽"
     prompt
 
@@ -288,7 +288,7 @@ CalendarText::
 HorseIsLostText::
     text Text_DoNothing
     db "Good Morning    "
-    db "<PLAYER>. It's me.  ▽"
+    db "<PLAYER>. It<'s> me.  ▽"
     prompt
 
     text Text_DoNothing
@@ -319,7 +319,7 @@ HorseIsLostText::
 ProduceShippedText::
     text Text_DoNothing
     db "Is this all for "
-    db "today's         ▽"
+    db "today<'s>         ▽"
     prompt
 
     text Text_DoNothing
@@ -417,7 +417,7 @@ PicnicInvitationAcceptText::
 PicnicInvitationDeclineText::
     text Text_DoNothing
     db "Really? Why...  "
-    db "That's no fun!   "
+    db "That<'s> no fun!   "
     done 
 
 MariaGoToPicnicText::
@@ -430,7 +430,7 @@ MariaGoToPicnicText::
     db "busy.          ▽"
     prompt 
     text Text_HeadToPicnic
-    db "Let's go on the  "
+    db "Let<'s> go on the  "
     db "picnic...       "
     prompt
 
@@ -574,7 +574,7 @@ FindWeatherVaneText::
 FindWeatherVaneAcceptText::
     text Text_DoNothing
     db "Thank you, <PLAYER> "
-    db "That's why I    ▽"
+    db "That<'s> why I    ▽"
     prompt 
     text Text_DoNothing
     db "like you <PLAYER>.  "
@@ -1015,12 +1015,12 @@ NameMe_Text::
     prompt 
     db $00, $00, $00, $00, $00, $00, $20, $75, $00, $00, 
     db "Everyone is here"
-    db "now, let's go.   "
+    db "now, let<'s> go.   "
     prompt 
 
 DeluxeWoodHouseCompleteText::
     text Text_DoNothing
-    db "It's completed.  "
+    db "It<'s> completed.  "
     db "I have named it▽"
     prompt 
     text Text_DoNothing
@@ -1050,8 +1050,8 @@ DeluxeWoodHouseCompleteText::
 
 UltraDeluxeWoodHouseCompleteText::
     text Text_DoNothing
-    db "It's finally com-"
-    db "pleted. It's now▽"
+    db "It<'s> finally com-"
+    db "pleted. It<'s> now▽"
     prompt 
     text Text_DoNothing
     db "a Ultra-Deluxe  "
@@ -1257,7 +1257,7 @@ HousePlantText::
     db "if this was    ▽"
     prompt 
     text Text_DoNothing
-    db "grandpa's plant? "
+    db "grandpa<'s> plant? "
     db "                "
     done
     text Text_DoNothing

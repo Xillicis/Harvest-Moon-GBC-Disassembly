@@ -73,7 +73,8 @@
     charmap "'", $4b
     charmap ".", $4c
 
-    charmap "'s", $53
+    ;charmap "<'s>", $4b, $2c
+    charmap "<'s>", $53
 
     charmap ",", $8e
 

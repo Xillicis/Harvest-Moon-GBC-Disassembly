@@ -80,7 +80,7 @@ CowIsSickText::
     db $C4, $C5, $C6, $C7, " is sick.  ▽"
     prompt
     text text_do_nothing
-    db "Let's cure it    "
+    db "Let<'s> cure it    "
     db "with medicine!  "
     done
 
@@ -90,7 +90,7 @@ BabyCowIsBornText::
     db "is born.       ▽"
     prompt 
     text text_do_nothing
-    db "Let's name it.   "
+    db "Let<'s> name it.   "
     db "                "
     done
 
@@ -117,7 +117,7 @@ CowIsSickText_duplicate::
     db $C4, $C5, $C6, $C7, " is sick.  ▽"
     prompt
     text text_do_nothing
-    db "Let's cure it    "
+    db "Let<'s> cure it    "
     db "with medicine!! "
     done
 
@@ -127,7 +127,7 @@ BabyCowIsBornText_duplicate::
     db "is born.       ▽"
     prompt 
     text text_do_nothing
-    db "Let's name it.   "
+    db "Let<'s> name it.   "
     db "                "
     done
 
@@ -168,7 +168,7 @@ HarvestSpriteIntroText::
     prompt 
     text text_do_nothing 
     db "inherited your  "
-    db "grandpa's ranch?▽"
+    db "grandpa<'s> ranch?▽"
     prompt 
     text text_do_nothing 
     db "We are Harvest  "

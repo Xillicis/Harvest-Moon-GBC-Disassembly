@@ -2314,7 +2314,7 @@ QuietEvening2Text:: ; 10x5ba3
 ; a lot of duplicate text here
 LetsPrayText::
     text Text_010_DoNothing
-    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "Let<'s> pray. ", $C4, $C5, $C6, $C7, " "
     db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $EE, $61, $00, $00
@@ -2322,7 +2322,7 @@ LetsPrayText::
     db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "Let<'s> pray. ", $C4, $C5, $C6, $C7, " "
     db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $FB, $61, $00, $00
@@ -2330,7 +2330,7 @@ LetsPrayText::
     db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "Let<'s> pray. ", $C4, $C5, $C6, $C7, " "
     db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $08, $62, $00, $00
@@ -2338,7 +2338,7 @@ LetsPrayText::
     db "miss you.      ▽"
     prompt
     text Text_010_DoNothing
-    db "Let's pray. ", $C4, $C5, $C6, $C7, " "
+    db "Let<'s> pray. ", $C4, $C5, $C6, $C7, " "
     db "may you rest in▽"
     prompt
     db $00, $00, $00, $00, $00, $00, $13, $62, $00, $00
@@ -2384,7 +2384,7 @@ LetsPrayText::
     prompt
     text Text_010_DoNothing
     db "for an hour...  "
-    db "What! It's been ▽"
+    db "What! It<'s> been ▽"
     prompt
     text Text_010_DoNothing
     db "over a day?!    "

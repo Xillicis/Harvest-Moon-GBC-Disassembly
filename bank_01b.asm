@@ -2508,7 +2508,7 @@ PrayersWillBeHeardText::
     db "Would you like ▽"
     db "to have         "
     db "something?     ▽"
-    db "That", $4B, $2C, " a Cake.  " ; Need to change the `'s` charmap...
+    db "That's a Cake.  "
     db "It is a little ▽"
     db "sweet, but it is"
     db "very delicious.▽"
@@ -2530,7 +2530,7 @@ PrayersWillBeHeardText::
     db "Oh, I see...    "
 
 LunchBoxText::
-    db "That's a Lunch   "
+    db "That<'s> a Lunch   "
     db "Box.           ▽"
     db "It is very tasty"
     db "and it will    ▽"
@@ -2548,7 +2548,7 @@ CroissantText::
     db " Buy   Don't Buy"
 
 RiceBallText::
-    db "That's a Rice    "
+    db "That<'s> a Rice    "
     db "Ball which was ▽"
     db "just prepared   "
     db "from a famous  ▽"
@@ -2558,7 +2558,7 @@ RiceBallText::
     db " Buy   Don't Buy"
 
 MeatDumplingText::
-    db "That's a Meat Du-"
+    db "That<'s> a Meat Du-"
     db "mpling. They   ▽"
     db "were just made, "
     db "so they are    ▽"
@@ -2659,6 +2659,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "to buy anything?"
     db "                "
 
+PotatoSeedsText::
     db "Those are Potato"
     db "Seeds.         ▽"
     db "They grow a     "
@@ -2666,6 +2667,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "than turnips.   "
     db "               ▽"
 
+TomatoSeedsText::
     db "Those are Tomato"
     db "Seeds. If you  ▽"
     db "water them      "
@@ -2673,6 +2675,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "they will keep  "
     db "growing.       ▽"
 
+CornSeedsText::
     db "Those are Corn  "
     db "Seeds.         ▽"
     db "They require    "
@@ -2680,6 +2683,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "attention, but  "
     db "are delicious. ▽"
 
+EggplantSeedsText::
     db "Those are       "
     db "Eggplant Seeds.▽"
     db "They grow fast, "
@@ -2687,6 +2691,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "worth much.     "
     db "               ▽"
 
+PeanuSeedsText::
     db "Those are Peanut"
     db "Seeds.         ▽"
     db "They grow       "
@@ -2694,6 +2699,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "than eggplants. "
     db "               ▽"
 
+CarrotSeedsText::
     db "Those are Carrot"
     db "Seeds.         ▽"
     db "They grow       "
@@ -2701,6 +2707,7 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "than eggplants. "
     db "               ▽"
 
+BroccoliSeedsText::
     db "Those are Brocc-"
     db "oli Seeds.     ▽"
     db "They require    "
@@ -2710,97 +2717,130 @@ db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $F1, $76, $20, $80, $34, $4
     db "them many times."
     db "               ▽"
 
-db $13, $21, $28, $2C, $1E, $EF, $1A, $2B, $1E, $EF, $06, $2B, $1A, $2C, $2C, $EF,
-db $12, $1E, $1E, $1D, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-db $14, $2C, $1E, $EF, $20, $2B, $1A, $2C, $2C, $EF, $2D, $28, $EF, $EF, $EF, $EF,
-db $1F, $1E, $1E, $1D, $EF, $32, $28, $2E, $2B, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-db $1A, $27, $22, $26, $1A, $25, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-db $13, $21, $1A, $27, $24, $EF, $32, $28, $2E,
-    db $EF, $2F, $1E, $2B, $32, $EF, $EF, $26, $2E, $1C, $21, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $32, $28, $2E, $EF, $1D, $28, $27, $4B, $2D,
-    db $EF, $21, $1A, $2F, $1E, $EF, $EF, $1E, $27, $28, $2E, $20, $21, $EF, $26, $28,
-    db $27, $1E, $32, $4C, $EF, $EF, $EF, $12, $22, $27, $1C, $1E, $EF, $2D, $21, $22,
-    db $2C, $EF, $22, $2C, $EF, $EF, $EF, $32, $28, $2E, $2B, $EF, $1F, $22, $2B, $2C,
-    db $2D, $EF, $EF, $EF, $EF, $EF, $E9, $29, $2E, $2B, $1C, $21, $1A, $2C, $1E, $8E,
-    db $EF, $08, $EF, $30, $22, $25, $25, $20, $22, $2F, $1E, $EF, $32, $28, $2E, $EF,
-    db $2D, $21, $22, $2C, $EF, $EF, $E9, $16, $1A, $2D, $1E, $2B, $EF, $02, $1A, $27,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0A, $1E, $1E, $29, $EF, $2E, $29, $EF, $2D,
-    db $21, $1E, $EF, $20, $28, $28, $1D, $30, $28, $2B, $24, $40, $EF, $01, $32, $1E,
-    db $44, $01, $32, $1E, $4C, $EF, $EF, $07, $28, $30, $EF, $26, $1A, $27, $32, $EF,
-    db $1D, $28, $EF, $32, $28, $2E, $EF, $30, $1A, $27, $2D, $41, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $E9, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $08, $2D, $EF, $22, $2C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $06, $4C, $EF, $E6, $40, $34, $40, $8F, $46, $15, $77, $21,
-    db $40, $73, $77, $20, $80, $8F, $46, $11, $77, $21, $40, $93, $77, $20, $80, $8F,
-    db $46, $11, $77, $21, $40, $B3, $77, $20, $80, $8F, $46, $11, $77, $21, $40, $D3,
-    db $77, $20, $80, $8F, $46, $11, $77, $21, $40, $F3, $77, $20, $80, $8F, $46, $11,
-    db $77, $21, $40, $13, $78, $20, $80, $8F, $46, $11, $77, $21, $40, $33, $78, $20,
-    db $80, $8F, $46, $11, $77, $21, $40, $53, $78, $20, $80, $8F, $46, $11, $77, $21,
-    db $40, $73, $78, $20, $80, $8F, $46, $11, $77, $13, $2E, $2B, $27, $22, $29, $EF,
-    db $12, $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $35, $36, $34, $06, $4C, $EF, $EF, $0F, $28, $2D, $1A, $2D, $28, $EF,
-    db $12, $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $35, $39, $34, $06, $4C, $EF, $EF, $13, $28, $26, $1A, $2D, $28, $EF,
-    db $12, $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $36, $34, $34, $06, $4C, $EF, $EF, $02, $28, $2B, $27, $EF, $12, $1E,
-    db $1E, $1D, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $37, $34, $34, $06, $4C, $EF, $EF, $04, $20, $20, $29, $25, $1A, $27,
-    db $2D, $EF, $12, $1E, $1E, $1D, $2C, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $35, $39, $34, $06, $4C, $EF, $EF, $0F, $1E, $1A, $27, $2E, $2D, $EF,
-    db $12, $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $36, $34, $34, $06, $4C, $EF, $EF, $02, $1A, $2B, $2B, $28, $2D, $EF,
-    db $12, $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $37, $34, $34, $06, $4C, $EF, $EF, $01, $2B, $28, $1C, $1C, $28, $25,
-    db $22, $EF, $12, $1E, $1E, $1D, $2C, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $39, $34, $34, $06, $4C, $EF, $EF, $06, $2B, $1A, $2C, $2C, $EF, $12,
-    db $1E, $1E, $1D, $2C, $EF, $EF, $EF, $EF, $EF, $35, $EF, $1B, $1A, $20, $EF, $22,
-    db $2C, $EF, $39, $34, $34, $06, $4C, $EF, $EF, $21, $40, $A7, $78, $10, $80, $8F,
-    db $46, $11, $77, $21, $40, $B7, $78, $10, $80, $8F, $46, $11, $77, $0C, $1A, $2D,
-    db $1E, $2B, $22, $1A, $25, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $07, $28, $26,
-    db $1E, $EF, $04, $31, $29, $1A, $27, $2C, $22, $28, $27, $EF, $EF, $21, $40, $03,
-    db $79, $10, $80, $8F, $46, $11, $77, $21, $40, $13, $79, $10, $80, $8F, $46, $11,
-    db $77, $21, $40, $23, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $33, $79, $10,
+GrassSeedsText::
+    db "Those are Grass "
+    db "Seeds.         ▽"
+    db "Use grass to    "
+    db "feed your      ▽"
+    db "animals.        "
+    db "               ▽"
+
+    db "Thank you very  "
+    db "much.           "
+
+    db "you don't have  "
+    db "enough money.   "
+
+    db "Since this is   "
+    db "your first     ▽"
+    db "purchase, I will"
+    db "give you this  ▽"
+    db "Water Can.      "
+    db "                "
+
+    db "Keep up the good"
+    db "work! Bye-Bye.  "
+    db "How many do you "
+    db "want?          ▽"
+    db "                "
+    db "It is        G. "
+    db $E6, $40, $34, $40, $8F, $46, $15, $77, $21, $40, $73, $77, $20, $80, $8F, $46,
+    db $11, $77, $21, $40, $93, $77, $20, $80, $8F, $46, $11, $77, $21, $40, $B3, $77,
+    db $20, $80, $8F, $46, $11, $77, $21, $40, $D3, $77, $20, $80, $8F, $46, $11, $77,
+    db $21, $40, $F3, $77, $20, $80, $8F, $46, $11, $77, $21, $40, $13, $78, $20, $80,
+    db $8F, $46, $11, $77, $21, $40, $33, $78, $20, $80, $8F, $46, $11, $77, $21, $40,
+    db $53, $78, $20, $80, $8F, $46, $11, $77, $21, $40, $73, $78, $20, $80, $8F, $46,
+    db $11, $77, 
+TurnipSeedPriceText::
+    db "Turnip Seeds    "
+    db "1 bag is 120G.  "
+
+PotatoSeedPriceText::
+    db "Potato Seeds    "
+    db "1 bag is 150G.  "
+
+TomatoSeedPriceText::
+    db "Tomato Seeds    "
+    db "1 bag is 200G.  "
+
+CornSeedPriceText::
+    db "Corn Seeds      "
+    db "1 bag is 300G.  "
+
+EggplantSeedPriceText::
+    db "Eggplant Seeds  "
+    db "1 bag is 150G.  "
+
+PeanutSeedPriceText::
+    db "Peanut Seeds    "
+    db "1 bag is 200G.  "
+
+CarrotSeedPriceText::
+    db "Carrot Seeds    "
+    db "1 bag is 300G.  "
+
+BroccoliSeedPriceText::
+    db "Broccoli Seeds  "
+    db "1 bag is 500G.  "
+
+GrassSeedPriceText::
+    db "Grass Seeds     "
+    db "1 bag is 500G.  "
+    db $21, $40, $A7, $78, $10, $80, $8F, $46, $11, $77, $21, $40, $B7, $78, $10, $80,
+    db $8F, $46, $11, $77, $0C, $1A, $2D, $1E, $2B, $22, $1A, $25, $EF, $EF, $EF, $EF,
+    db $EF, $EF, $EF, $EF, $07, $28, $26, $1E, $EF, $04, $31, $29, $1A, $27, $2C, $22,
+    db $28, $27, $EF, $EF, $21, $40, $03, $79, $10, $80, $8F, $46, $11, $77, $21, $40,
+    db $13, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $23, $79, $10, $80, $8F, $46,
+    db $11, $77, $21, $40, $33, $79, $10,
     db $80, $8F, $46, $11, $77, $21, $40, $43, $79, $10, $80, $8F, $46, $11, $77, $21,
-    db $40, $53, $79, $10, $80, $8F, $46, $11, $77, $12, $29, $2B, $22, $27, $24, $25,
-    db $1E, $2B, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $01, $2B, $2E, $2C, $21, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $12, $1A, $1D, $1D, $25, $1E, $1B,
-    db $1A, $20, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0C, $22, $25, $24, $1E, $2B, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $02, $21, $1E, $1E, $2C, $1E, $EF,
-    db $0C, $1A, $24, $1E, $2B, $EF, $EF, $EF, $EF, $01, $2E, $2D, $2D, $1E, $2B, $EF,
-    db $0C, $1A, $24, $1E, $2B, $EF, $EF, $EF, $EF, $21, $40, $BD, $79, $10, $80, $8F,
-    db $46, $11, $77, $21, $40, $CD, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $DD,
-    db $79, $10, $80, $8F, $46, $11, $77, $21, $40, $ED, $79, $10, $80, $8F, $46, $11,
-    db $77, $21, $40, $FD, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $0D, $7A, $10,
-    db $80, $8F, $46, $11, $77, $21, $40, $1D, $7A, $10, $80, $8F, $46, $11, $77, $21,
+    db $40, $53, $79, $10, $80, $8F, $46, $11, $77, 
+    db "Sprinkler       "
+    db "Brush           "
+    db "Saddlebag       "
+    db "Milker          "
+    db "Cheese Maker    "
+    db "Butter Maker    "
+    db $21, $40, $BD, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $CD, $79, $10, $80,
+    db $8F, $46, $11, $77, $21, $40, $DD, $79, $10, $80, $8F, $46, $11, $77, $21, $40,
+    db $ED, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $FD, $79, $10, $80, $8F, $46,
+    db $11, $77, $21, $40, $0D, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $1D, $7A,
+    db $10, $80, $8F, $46, $11, $77, $21,
     db $40, $2D, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $3D, $7A, $10, $80, $8F,
-    db $46, $11, $77, $01, $2E, $32, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E, $27,
-    db $EF, $EF, $EF, $02, $28, $30, $EF, $05, $1E, $1E, $1D, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $02, $21, $22, $1C, $24, $1E, $27, $EF, $05, $1E, $1E, $1D, $EF,
-    db $EF, $EF, $EF, $02, $28, $30, $EF, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF,
-    db $EF, $EF, $EF, $0C, $4C, $0F, $28, $2D, $22, $28, $27, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $0F, $4C, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E,
-    db $27, $EF, $EF, $21, $40, $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
+    db $46, $11, $77, 
+; text
+    db $01, $2E, $32, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $01, $2E, $32, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $EF, $EF,
+    db $02, $28, $30, $EF, $05, $1E, $1E, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $02, $21, $22, $1C, $24, $1E, $27, $EF, $05, $1E, $1E, $1D, $EF, $EF, $EF, $EF,
+    db $02, $28, $30, $EF, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF, $EF, $EF, $EF,
+    db $0C, $4C, $0F, $28, $2D, $22, $28, $27, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $0F, $4C, $0C, $1E, $1D, $22, $1C, $22, $27, $1E, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $28, $30, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $12, $1E, $25, $25, $EF, $1A, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $EF,
+
+    db $21, $40, $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
     db $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $9F, $7A, $10, $80, $8F, $46, $11,
     db $77, $21, $40, $AF, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $BF, $7A, $10,
-    db $80, $8F, $46, $11, $77, $02, $1A, $24, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $0B, $2E, $27, $1C, $21, $EF, $01, $28, $31, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $02, $2B, $28, $22, $2C, $2C, $1A, $27, $2D, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $11, $22, $1C, $1E, $EF, $01, $1A, $25, $25, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $0C, $1E, $1A, $2D, $EF, $03, $2E, $26, $29, $25, $22,
-    db $27, $20, $EF, $EF, $EF, $21, $40, $01, $7B, $10, $80, $8F, $46, $11, $77, $21,
+    db $80, $8F, $46, $11, $77, 
+
+; text
+    db $02, $1A, $24, $1E, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $0B, $2E, $27, $1C, $21, $EF, $01, $28, $31, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $02, $2B, $28, $22, $2C, $2C, $1A, $27, $2D, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $11, $22, $1C, $1E, $EF, $01, $1A, $25, $25, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $0C, $1E, $1A, $2D, $EF, $03, $2E, $26, $29, $25, $22, $27, $20, $EF, $EF, $EF,
+
+    db $21, $40, $01, $7B, $10, $80, $8F, $46, $11, $77, $21,
     db $40, $11, $7B, $10, $80, $8F, $46, $11, $77, $21, $40, $21, $7B, $10, $80, $8F,
     db $46, $11, $77, $21, $40, $31, $7B, $10, $80, $8F, $46, $11, $77, $21, $40, $41,
-    db $7B, $10, $80, $8F, $46, $11, $77, $0E, $2B, $1A, $27, $20, $1E, $EF, $09, $2E,
-    db $22, $1C, $1E, $EF, $EF, $EF, $EF, $00, $29, $29, $25, $1E, $EF, $09, $2E, $22,
-    db $1C, $1E, $EF, $EF, $EF, $EF, $EF, $16, $22, $25, $1D, $EF, $06, $2B, $1A, $29,
-    db $1E, $EF, $09, $2E, $22, $1C, $1E, $06, $2B, $1E, $1E, $27, $EF, $13, $1E, $1A,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $0C, $22, $25, $24, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, 
+    db $7B, $10, $80, $8F, $46, $11, $77, 
+
+; text
+    db $0E, $2B, $1A, $27, $20, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $EF, $EF, $EF,
+    db $00, $29, $29, $25, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $EF, $EF, $EF, $EF,
+    db $16, $22, $25, $1D, $EF, $06, $2B, $1A, $29, $1E, $EF, $09, $2E, $22, $1C, $1E,
+    db $06, $2B, $1E, $1E, $27, $EF, $13, $1E, $1A, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
+    db $0C, $22, $25, $24, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, 
 
     rst $28
     ld h, b
