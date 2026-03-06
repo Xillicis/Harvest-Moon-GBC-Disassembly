@@ -270,7 +270,22 @@ wTempPlayerMoney:: ds 3 ; 0xccca
 
 wDecimalDigitTileID:: ds 5 ; 0xcccd
 
-ds $a3
+ds $9a
+
+wcd6c:: db
+wcd6d:: db
+wcd6e:: db
+wcd6f:: db
+wcd70:: db
+wcd71:: db
+
+; This WRAM address spans 32 bytes for storing one menu of text (2 lines, 16 characters each line)
+UNION
+wVillageTextBuffer:: ds 32
+NEXTU
+wcd72:: db
+wcd73:: db
+wcd74:: db
 
 wPlayerName:: ds 4 ; 0xcd75
 
@@ -278,7 +293,7 @@ wPlayerGenderSelection:: db ; 0xcd79
 
 wCatOrDogSelection:: db ; 0xcd7a
 wPetName:: ds 4 ; 0xcd7b
-
+ENDU
 
 
 ;DEF hROMBankTemp EQU $ffa4

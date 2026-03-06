@@ -217,12 +217,13 @@ jr_01b_4101:
     pop hl
     ret
 
-Label_01b_4113:
+LoadTextString_Village: ; 1bx4113
     ld h, b
     ld l, c
-    call Call_01b_4118
+    call LoadTextBuffer
 
-Call_01b_4118:
+; second time getting here seems to load sPlayerName pointer in DE.
+LoadTextBuffer: ; 1bx4118
     ld a, [hl+]
     ld e, a
     ld a, [hl+]
@@ -235,15 +236,14 @@ Call_01b_4118:
     push hl
     ld h, b
     ld l, c
-    ld b, a
+    ld b, a ; loop counter
 
-jr_01b_4125:
-    ld a, [de]
+.loadTextLoop
+    ld a, [de] ; DE points to the text address
     inc de
-    ld [hl+], a
+    ld [hl+], a ; HL is a WRAM buffer address
     dec b
-    jr nz, jr_01b_4125
-
+    jr nz, .loadTextLoop
     pop hl
     ret
 
@@ -2257,69 +2257,124 @@ jr_01b_4f8a:
 
 ChurchTextPointerList:: ; 1bx620c
     dw Village_TextWindowClear
-    dw Label_01b_4113
+    dw LoadTextString_Village
     dw ChurchMaria1Text
-    db $72, $CD, $20, $F4, $B8, $82, $CD, $04, $21, $40,
-    db $72, $CD, $20, $80, $34, $40, $34, $41,
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    dw sPlayerName
+    dw wVillageTextBuffer + $10
+    db NAME_TEXT_LENGTH
+
+    dw Label_01b_4021
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41,
     dw Village_TextWindowClear
-    db $21, $40,
+
+    dw Label_01b_4021
     dw ChurchMaria2Text
     db $20, $80,
     db $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, 
+
+    dw Label_01b_4021
     dw ChurchMaria3Text
     db $20, $80, 
     db $34, $40, $2D, $41,
     db $74, $44, $46, $62, $1E, $63, $2B, $64, $67, $63, 
     dw Village_TextWindowClear 
-    db $21, $40, 
+
+    dw Label_01b_4021
     dw PrayText
-    db $20, $80, $34, $40, $34, $41, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $CC, $64, $20, $80, $34, $40,
+
+    dw Label_01b_4021
+    db $CC, $64, $20, $80, $34, $40,
     db $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $EC, $64, $20, $80, $34, $40, $23, $45, $2A, $45,
+
+    dw Label_01b_4021
+    db $EC, $64, $20, $80, $34, $40, $23, $45, $2A, $45,
     db $FF, $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
     dw Village_TextWindowClear 
-    db $21, $40, $6C, $68, $20, $80, $34, $40, $34, $41, 
+
+    dw Label_01b_4021
+    db $6C, $68, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $8C, $68,
+
+    dw Label_01b_4021
+    db $8C, $68,
     db $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
     dw Village_TextWindowClear 
-    db $21, $40, $6C, $67, $20, $80, $34, $40, $34, $41, 
+
+    dw Label_01b_4021
+    db $6C, $67, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $8C,
+
+    dw Label_01b_4021
+    db $8C,
     db $67, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $AC, $67, $20, $80, $34,
+
+    dw Label_01b_4021
+    db $AC, $67, $20, $80, $34,
     db $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $CC, $67, $20, $80, $34, $40, $34, $41
+
+    dw Label_01b_4021
+    db $CC, $67, $20, $80, $34, $40, $34, $41
     dw Village_TextWindowClear 
-    db $21, $40, $EC, $67, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
+
+    dw Label_01b_4021
+    db $EC, $67, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
     db $24, $62, $EC, $46, $1F, $E5, $62, $7A, $62, $2A, $47, 
     dw Village_TextWindowClear 
-    db $21, $40, $6C,
+
+    dw Label_01b_4021
+    db $6C,
     db $67, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
-    db $21, $40, $0C, $68, $20, $80, $34,
+
+    dw Label_01b_4021
+    db $0C, $68, $20, $80, $34,
     db $40, $34, $41, 
+
     dw Village_TextWindowClear 
-    db $21, $40, $2C, $68, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $4C, $68, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
+    dw Label_01b_4021
+    db $2C, $68, $20, $80, $34, $40, $34, $41, $E6,
+    db $40, 
+    dw Label_01b_4021
+
+    db $4C, $68, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
     db $24, $62, 
+
     dw Village_TextWindowClear
-    db $21, $40, 
-    dw AskForFortuneText
-    db $20, $80, $34, $40, $34, $41,
+    dw Label_01b_4021
+    dw AskForFortune1Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41,
+
     dw Village_TextWindowClear
-    db $21, $40,
-    db $2C, $65, $20, $80, $34, $40, $34, $41, 
+    dw Label_01b_4021
+    dw AskForFortune2Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, 
+
     dw Village_TextWindowClear 
-    db $13, $41, $4C, $65,
-    db $72, $CD, $20, $F4, $B8, $79, $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40,
+    dw LoadTextString_Village
+    dw AskForFortune3Text
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    dw sPlayerName
+    dw wVillageTextBuffer + $07
+    db NAME_TEXT_LENGTH
+
+    dw Label_01b_4021
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40,
     db $34, $41, 
     dw Village_TextWindowClear
     db $21, $40, $6C, $65, $20, $80, $34, $40, $34, $41, $23, $45,
@@ -2334,37 +2389,51 @@ ChurchTextPointerList:: ; 1bx620c
     db $21, $40, $2C, $67, $20, $80, $34, $40, $34, $41, $79,
     db $47, 
     dw Village_TextWindowClear 
-    db $85, $47, $21, $40, $72, $CD, $20, $80, $34, $40, $97, $47, $8D, $63,
+    db $85, $47, $21, $40, 
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $97, $47, $8D, $63,
     db $EB, $47, 
     dw Village_TextWindowClear 
     db $21, $40, $4C, $67, $20, $80, $34, $40, $23, $45, $2A, $45,
     db $FF, $8F, $46, $24, $62
+
     dw Village_TextWindowClear 
     dw Label_01b_4021
     dw GoodFortuneText
-    db $20, $80, $34, $40, $34, $41, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear
-    db $21, $40
+
+    dw Label_01b_4021
     db $AC, $65, $20, $80, $34, $40, $34, $41, $70, $45
     dw Village_TextWindowClear 
-    db $21, $40, $CC, $65, $20, $80, $34, $40, $23, $45, $2A, $45, $C8, $8F, $46,
+
+    dw Label_01b_4021
+    db $CC, $65, $20, $80, $34, $40, $23, $45, $2A, $45, $C8, $8F, $46,
     db $24, $62
     dw Village_TextWindowClear 
-    db $21, $40, 
+
+    dw Label_01b_4021
     dw NormalFortune1Text
-    db $20, $80, $34, $40, $34, $41, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear
     db $21, $40
     dw NormalFortune2Text
-    db $20, $80, $34, $40, $34, $41, $8F, $45, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, $8F, $45, 
     dw Village_TextWindowClear
+
     dw Label_01b_4021
     dw NormalFortune3Text
-    db $20, $80, $8F, $46, $D4, $63, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $8F, $46, $D4, $63, 
     dw Village_TextWindowClear
     db $21, $40, 
     dw BadFortune1Text
-    db $20, $80, $34, $40, $34, $41, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear
     db $21, $40
     dw BadFortune2Text 
@@ -2372,7 +2441,10 @@ ChurchTextPointerList:: ; 1bx620c
     dw Village_TextWindowClear 
     db $21, $40, $8C, $66, $20, $80, $8F, $46, $D4, $63
     dw Village_TextWindowClear 
-    db $21, $40, $AC, $66, $20, $80, $34, $40, $34, $41
+    db $21, $40,
+    dw GoodLuckGoodFortuneText
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db $80, $34, $40, $34, $41
     dw Village_TextWindowClear 
     db $21, $40, $CC, $66,
     db $20, $80, $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
@@ -2395,13 +2467,16 @@ PrayText:: ; 1bx64ac
     db "and join        "
     db "the service.    "
 
-AskForFortuneText:: ; 1bx650c
+AskForFortune1Text:: ; 1bx650c
     db "Would you like  "
     db "me to tell you ▽"
+AskForFortune2Text:: ; 1bx652c
     db "your fortune?   "
     db "I am happy to  ▽"
+AskForFortune3Text:: ; 1bx654c
     db "do it.     ,    "
     db "your fortune   ▽"
+AskForFortune4Text:: ; 1bx656c
     db "today is ....   "
     db "               ▽"
 
@@ -2429,9 +2504,11 @@ BadFortune1Text:: ; 1bx664c
 BadFortune2Text:: ; 1bx666c
     db "good I hope     "
     db "something good ▽"
+BadFortune3Text:: ; 1bx668c
     db "will happen for "
     db "you tomorrow.   "
 
+GoodLuckGoodFortuneText:: ; 1bx66ac
     db "Wishing you     "
     db "good luck and  ▽"
     db "good fortune.   "
@@ -2970,8 +3047,8 @@ jr_01b_7bf7:
     push hl
     ld l, e
     ld h, a
-    ld de, $cd72
-    ld b, $20
+    ld de, wVillageTextBuffer
+    ld b, VILLAGE_MAX_NUM_CHARACTERS
     call CopyHLtoDE
     pop hl
     ret
@@ -3179,8 +3256,8 @@ jr_01b_7d1b:
     push hl
     ld l, e
     ld h, a
-    ld de, $cd72
-    ld b, $20
+    ld de, wVillageTextBuffer
+    ld b, VILLAGE_MAX_NUM_CHARACTERS
     call CopyHLtoDE
     pop hl
     ret
