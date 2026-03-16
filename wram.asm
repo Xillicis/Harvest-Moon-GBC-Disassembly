@@ -274,10 +274,12 @@ ds $9a
 
 wcd6c:: db
 wcd6d:: db
-wcd6e:: db
-wcd6f:: db
-wcd70:: db
-wcd71:: db
+
+wcd6e::
+wVillageTextCharacterCounter:: db
+wVillageTextTileNumber:: db ; 0xcd6f
+; Stores a pointer to the specific character in wVillageTextBuffer
+wVillageCharacterPointer:: dw ; 0xcd70
 
 ; This WRAM address spans 32 bytes for storing one menu of text (2 lines, 16 characters each line)
 UNION

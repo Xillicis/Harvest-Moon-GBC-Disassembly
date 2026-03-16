@@ -3,6 +3,16 @@
 ; mgbdis v2.0 - Game Boy ROM disassembler by Matt Currie and contributors.
 ; https://github.com/mattcurrie/mgbdis
 
+MACRO text_block 
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    dw \1
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4134
+ENDM
+
 SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
 
     db $1b ; Bank number
@@ -33,26 +43,26 @@ Label_01b_4014:
     inc [hl]
     ret
 
-Label_01b_4021:
+PrepareTextBlock: ; 1bx4021
     ld h, b
     ld l, c
     ld a, [hl+]
-    ld [$cd70], a
+    ld [wVillageCharacterPointer], a
     ld a, [hl+]
-    ld [$cd71], a
+    ld [wVillageCharacterPointer+1], a
     ld a, [hl+]
-    ld [$cd6e], a
+    ld [wVillageTextCharacterCounter], a
     ld a, [hl+]
-    ld [$cd6f], a
+    ld [wVillageTextTileNumber], a
     ret
 
-Label_01b_4034:
+VillagePrintCharacter: ; 1bx4034
     ld h, b
     ld l, c
     push hl
-    ld a, [$cd70]
+    ld a, [wVillageCharacterPointer]
     ld e, a
-    ld a, [$cd71]
+    ld a, [wVillageCharacterPointer+1]
     ld d, a
     ld a, [de]
     cp $af
@@ -62,28 +72,27 @@ jr_01b_4044:
     push af
     inc de
     ld a, e
-    ld [$cd70], a
+    ld [wVillageCharacterPointer], a
     ld a, d
-    ld [$cd71], a
+    ld [wVillageCharacterPointer+1], a
     pop af
     ld c, a
-    ld a, [$cd6f]
+    ld a, [wVillageTextTileNumber]
     ld e, a
     push af
     inc a
-    ld [$cd6f], a
+    ld [wVillageTextTileNumber], a
     ld hl, TextFontTileset
-    ld d, $11
+    ld d, BANK(TextFontTileset)
     call Call_000_095c
     pop af
     ld b, a
-    ld de, $99c2
-    cp $90
-    jr c, jr_01b_406d
+    ld de, vBGMap0 + $1c2
+    cp $90 ; end of first line (tile number)
+    jr c, .printCharacter
+    ld de, vBGMap0 + $1f2
 
-    ld de, $99f2
-
-jr_01b_406d:
+.printCharacter
     sub $80
     add e
     ld e, a
@@ -105,17 +114,16 @@ jr_01b_406d:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [$cd6e]
+    ld a, [wVillageTextCharacterCounter]
     dec a
-    ld [$cd6e], a
-    jr z, jr_01b_4096
+    ld [wVillageTextCharacterCounter], a
+    jr z, .finishedPrintingLine
 
     dec hl
     dec hl
     ret
 
-
-jr_01b_4096:
+.finishedPrintingLine
     xor a
     ld [$cd98], a
     ret
@@ -123,12 +131,12 @@ jr_01b_4096:
 
 jr_01b_409b:
     inc de
-    ld a, [$cd6f]
+    ld a, [wVillageTextTileNumber]
     inc a
-    ld [$cd6f], a
-    ld a, [$cd6e]
+    ld [wVillageTextTileNumber], a
+    ld a, [wVillageTextCharacterCounter]
     dec a
-    ld [$cd6e], a
+    ld [wVillageTextCharacterCounter], a
     jr z, jr_01b_40b3
 
     ld a, [de]
@@ -254,7 +262,7 @@ LoadTextBuffer: ; 1bx4118
     ld [$cd99], a
     ret
 
-
+Label_01b_4134:
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -262,7 +270,7 @@ LoadTextBuffer: ; 1bx4118
     jr nz, jr_01b_4167
 
     push hl
-    ld de, $9a11
+    ld de, vBGMap0 + $211
     ld a, [$cd9b]
     ld b, a
     ld a, [$cd98]
@@ -2131,129 +2139,148 @@ jr_01b_4f8a:
     db $34, $41, $E6, $40, $21, $40, $8C, $5E, $20, $80, $34, $40, $34, $41, $E6, $40,
     db $21, $40, $AC, $5E, $20, $80, $8F, $46, $AB, $59, $E6, $40, $21, $40, $CC, $5B,
     db $20, $80, $8F, $46, $AB, $59, $E6, $40, $21, $40, $CC, $5A, $20, $80, $8F, $46,
-    db $AB, $59, $07, $28, $30, $EF, $1A, $2B, $1E, $EF, $32, $28, $2E, $EF, $EF, $EF,
-    db $EF, $EF, $1D, $28, $22, $27, $20, $EF, $2D, $28, $1D, $1A, $32, $41, $EF, $EF,
-    db $EF, $E9, $00, $EF, $1C, $28, $30, $EF, $1C, $28, $2C, $2D, $2C, $EF, $39, $34,
-    db $34, $34, $06, $4C, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $EF,
-    db $EF, $E9, $25, $22, $24, $1E, $EF, $2D, $28, $EF, $1B, $2E, $32, $EF, $28, $27,
-    db $1E, $41, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $08, $2C, $EF, $2D, $21, $1A, $2D, $EF, $2C, $28, $41, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $00, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $1C, $28, $2C, $2D,
-    db $2C, $EF, $39, $34, $34, $06, $4C, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28,
-    db $2E, $E9, $08, $1F, $EF, $32, $28, $2E, $EF, $1B, $2E, $32, $EF, $2D, $28, $28,
-    db $EF, $EF, $26, $1A, $27, $32, $EF, $1A, $27, $22, $26, $1A, $25, $2C, $EF, $1A,
-    db $2D, $E9, $28, $27, $1C, $1E, $8E, $EF, $2D, $21, $1E, $32, $EF, $30, $22, $25,
-    db $25, $EF, $20, $1E, $2D, $EF, $2E, $29, $2C, $1E, $2D, $4C, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $18, $28, $2E, $EF, $2C, $21, $28, $2E, $25, $1D, $EF, $2C, $2D, $28,
-    db $29, $EF, $1B, $2E, $32, $22, $27, $20, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $13, $21, $1A, $2D, $53, $EF, $02, $28, $30, $EF, $0C, $1E, $1D, $22,
-    db $1C, $44, $22, $27, $1E, $4C, $01, $1E, $EF, $2C, $2E, $2B, $1E, $EF, $2D, $28,
-    db $EF, $E9, $1F, $1A, $1C, $1E, $EF, $2D, $21, $1E, $EF, $1C, $28, $30, $EF, $EF,
-    db $EF, $EF, $30, $21, $1E, $27, $EF, $2E, $2C, $22, $27, $20, $EF, $22, $2D, $4C,
-    db $EF, $E9, $08, $2D, $EF, $22, $2C, $EF, $35, $34, $34, $34, $06, $4C, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $E9, $13, $21, $1A, $27, $24, $EF, $18, $28, $2E, $40, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $13, $21, $1A, $2D, $EF, $22, $2C, $EF, $1A, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $0C, $4C, $EF, $0F, $28, $2D, $22, $28, $27, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $1F, $28, $2B, $EF, $1B, $2B, $1E, $1E, $1D, $22, $27, $20, $EF, $EF,
-    db $EF, $EF, $1C, $28, $30, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $08, $2D, $EF, $22, $2C, $EF, $38, $34, $34, $34, $06, $4C, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $E9, $13, $21, $1A, $2D, $53, $EF, $02, $28, $30, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $05, $1E, $1E, $1D, $8E, $EF, $1B, $2E, $2D, $EF, $22, $2D, $EF, $22,
-    db $2C, $E9, $08, $2D, $EF, $22, $2C, $EF, $3B, $34, $34, $06, $4C, $EF, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $E9, $13, $21, $1A, $2D, $53, $EF, $02, $21, $22, $1C, $24, $1E, $27, $EF,
-    db $EF, $EF, $05, $1E, $1E, $1D, $8E, $EF, $1B, $2E, $2D, $EF, $22, $2D, $EF, $22,
-    db $2C, $E9, $1B, $1E, $2C, $2D, $EF, $2D, $28, $EF, $1F, $1E, $1E, $1D, $EF, $EF,
-    db $EF, $EF, $2D, $21, $1E, $26, $EF, $1F, $28, $1D, $1D, $1E, $2B, $EF, $EF, $EF,
-    db $EF, $E9, $1A, $2C, $EF, $26, $2E, $1C, $21, $EF, $1A, $2C, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $29, $28, $2C, $2C, $22, $1B, $25, $1E, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $08, $2D, $EF, $22, $2C, $EF, $39, $34, $34, $06, $4C, $EF, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $E9, $12, $1E, $1E, $EF, $32, $28, $2E, $EF, $25, $1A, $2D, $1E, $2B, $4C,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $13, $21, $1A, $2D, $EF, $30, $22, $25, $25, $EF, $29, $2B, $1E, $2F,
-    db $1E, $44, $27, $2D, $EF, $1A, $EF, $1C, $28, $30, $EF, $1F, $2B, $28, $26, $EF,
-    db $EF, $E9, $20, $1E, $2D, $2D, $22, $27, $20, $EF, $2C, $22, $1C, $24, $EF, $1F,
-    db $28, $2B, $37, $34, $1D, $1A, $32, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $08, $2D, $EF, $22, $2C, $EF, $36, $34, $34, $34, $06, $4C, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $E9, $2D, $28, $EF, $1B, $2E, $32, $EF, $22, $2D, $41, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $07, $28, $25, $1D, $EF, $28, $27, $8E, $EF, $08, $EF, $1C, $1A, $27,
-    db $4B, $2D, $2C, $1E, $25, $25, $EF, $32, $28, $2E, $EF, $1A, $EF, $1C, $28, $30,
-    db $4C, $E9, $18, $28, $2E, $EF, $1D, $28, $27, $4B, $2D, $EF, $21, $1A, $2F, $1E,
-    db $EF, $EF, $1E, $27, $28, $2E, $20, $21, $EF, $20, $2B, $1A, $2C, $2C, $EF, $EF,
-    db $EF, $E9, $29, $25, $1A, $27, $2D, $1E, $1D, $4C, $EF, $0F, $25, $1E, $1A, $2C,
-    db $1E, $EF, $1C, $28, $26, $1E, $EF, $1B, $1A, $1C, $24, $EF, $30, $21, $1E, $27,
-    db $EF, $E9, $32, $28, $2E, $EF, $29, $25, $1A, $27, $2D, $EF, $26, $28, $2B, $1E,
-    db $EF, $EF, $20, $2B, $1A, $2C, $2C, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $07, $28, $25, $1D, $EF, $28, $27, $8E, $EF, $08, $EF, $1C, $1A, $27,
-    db $4B, $2D, $2C, $1E, $25, $25, $EF, $32, $28, $2E, $EF, $1A, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $1C, $21, $22, $1C, $24, $1E, $27, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $18, $28, $2E, $EF, $1D, $28, $EF, $27, $28, $2D, $EF, $21, $1A, $2F,
-    db $1E, $E9, $1E, $27, $28, $2E, $20, $21, $EF, $20, $2B, $1A, $2C, $2C, $EF, $EF,
-    db $EF, $EF, $29, $25, $1A, $27, $2D, $1E, $1D, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $0F, $25, $1E, $1A, $2C, $1E, $EF, $1C, $28, $26, $1E, $EF, $1B, $1A,
-    db $1C, $24, $30, $21, $1E, $27, $EF, $32, $28, $2E, $EF, $29, $25, $1A, $27, $2D,
-    db $EF, $E9, $26, $28, $2B, $1E, $EF, $20, $2B, $1A, $2C, $2C, $4C, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $0F, $25, $1E, $1A, $2C, $1E, $EF, $27, $1A, $26, $1E, $EF, $2D, $21,
-    db $1E, $EF, $1C, $28, $30, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $EF, $EF, $EF, $EF, $8E, $EF, $22, $2C, $EF, $1A, $EF, $20, $28, $28,
-    db $1D, $EF, $27, $1A, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $07, $1E, $2B, $1E, $8E, $EF, $2D, $1A, $24, $1E, $EF, $2D, $21, $22,
-    db $2C, $EF, $1C, $28, $30, $EF, $1B, $1E, $25, $25, $EF, $1A, $2C, $EF, $1A, $EF,
-    db $EF, $E9, $20, $22, $1F, $2D, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $0D, $28, $30, $EF, $08, $EF, $30, $22, $25, $25, $EF, $2D, $1A, $24,
-    db $1E, $EF, $EF, $EF, $EF, $EF, $EF, $2D, $28, $EF, $32, $28, $2E, $2B, $EF, $EF,
-    db $EF, $E9, $1B, $1A, $2B, $27, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $25, $22, $24, $1E, $EF, $2D, $28, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $2C, $1E, $25, $25, $EF, $1A, $EF, $1C, $28, $30, $41, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $18, $1E, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0D, $28, $16, $21, $22, $1C, $21, $EF, $1C, $28, $30, $41, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $02, $21, $28, $28, $2C, $1E, $EF, $1A, $EF, $27, $1A, $26, $1E, $EF,
-    db $EF, $E9, $1A, $27, $1D, $EF, $29, $2B, $1E, $2C, $2C, $EF, $2D, $21, $1E, $EF,
-    db $EF, $EF, $00, $EF, $1B, $2E, $2D, $2D, $28, $27, $4C, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $08, $EF, $30, $22, $25, $25, $EF, $2D, $1A, $24, $1E, $EF, $2D, $21,
-    db $1E, $EF, $1C, $28, $30, $EF, $1F, $2B, $28, $26, $EF, $2D, $21, $1E, $EF, $EF,
-    db $EF, $E9, $1B, $1A, $2B, $27, $4C, $EF, $01, $2E, $2D, $EF, $1D, $28, $27, $4B,
-    db $2D, $EF, $25, $1E, $2D, $EF, $26, $1E, $EF, $1B, $2E, $32, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $1A, $27, $32, $26, $28, $2B, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $08, $EF, $30, $22, $25, $25, $EF, $2D, $1A, $24, $1E, $EF, $2D, $21,
-    db $1E, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $2D, $28, $EF, $32, $28, $2E,
-    db $2B, $E9, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $1C, $28, $28, $29, $4C, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF, $25, $22, $24, $1E,
-    db $EF, $EF, $2D, $28, $EF, $2C, $1E, $25, $25, $EF, $1A, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $1C, $21, $22, $1C, $24, $1E, $27, $41, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $18, $1E, $2C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $0D, $28, $16, $21, $22, $1C, $21, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $41,
-    db $EF, $EF, $0F, $25, $1E, $1A, $2C, $1E, $EF, $2C, $1E, $25, $1E, $1C, $2D, $EF,
-    db $1A, $E9, $27, $2E, $26, $1B, $1E, $2B, $EF, $1A, $27, $1D, $EF, $29, $2B, $1E,
-    db $2C, $2C, $2D, $21, $1E, $EF, $00, $EF, $1B, $2E, $2D, $2D, $28, $27, $4C, $EF,
-    db $EF, $E9, $08, $EF, $30, $22, $25, $25, $EF, $2D, $1A, $24, $1E, $EF, $2D, $21,
-    db $1E, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $1F, $2B, $28, $26, $EF, $EF,
-    db $EF, $E9, $2D, $21, $1E, $EF, $1C, $21, $22, $1C, $24, $1E, $27, $EF, $1C, $28,
-    db $28, $29, $01, $2E, $2D, $EF, $1D, $28, $27, $4B, $2D, $EF, $25, $1E, $2D, $EF,
-    db $EF, $E9, $26, $1E, $EF, $1B, $2E, $32, $EF, $1A, $27, $32, $26, $28, $2B, $1E,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $12, $1E, $25, $25, $22, $27, $20, $EF, $0F, $2B, $22, $1C, $1E, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $06, $4C, $EF,
-    db $EF, $EF, $08, $EF, $1C, $1A, $27, $4B, $2D, $EF, $1B, $2E, $32, $EF, $22, $2D,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $08, $EF, $30, $22, $25, $25, $EF, $20, $22, $2F, $1E, $EF, $32, $28,
-    db $2E, $EF, $EF, $EF, $EF, $EF, $EF, $06, $EF, $1F, $28, $2B, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $12, $1E, $25, $25, $EF, $EF, $0D, $28, $8D, $12, $1E, $25, $25,
-    db $EF, $EF
+    db $AB, $59, 
+
+    db "How are you     "
+    db "doing today?   ▽"
+
+    db "A cow costs 5000"
+    db "G. Would you   ▽"
+    db "like to buy one?"
+    db " Buy   Don't Buy"
+
+    db "Is that so?     "
+    db "                "
+    db "A chicken costs "
+    db "500G. Would you▽"
+    db "If you buy too  "
+    db "many animals at▽"
+    db "once, they will "
+    db "get upset.     ▽"
+    db "You should stop "
+    db "buying.         "
+
+    db "That<'s> Cow Medic-"
+    db "ine.Be sure to ▽"
+    db "face the cow    "
+    db "when using it. ▽"
+
+    db "It is 1000G.    "
+    db "Would you like ▽"
+
+    db "Thank You!      "
+    db "                "
+
+    db "That is a       "
+    db "M. Potion      ▽"
+    db "for breeding    "
+    db "cows.          ▽"
+    db "It is 4000G.    "
+    db "Would you like ▽"
+    db "That<'s> Cow       "
+    db "Feed, but it is▽"
+    db "It is 700G.     "
+    db "Would you like ▽"
+    db "That<'s> Chicken   "
+    db "Feed, but it is▽"
+    db "best to feed    "
+    db "them fodder    ▽"
+    db "as much as      "
+    db "possible       ▽"
+    db "It is 500G.     "
+
+    db "Would you like ▽"
+
+    db "See you later.  "
+    db "                "
+    db "That will preve-"
+    db "nt a cow from  ▽"
+    db "getting sick for"
+    db "30days.        ▽"
+    db "It is 2000G.    "
+    db "Would you like ▽"
+    db "to buy it?      "
+
+    db " Buy   Don't Buy"
+
+    db "Hold on, I can't"
+    db "sell you a cow.▽"
+    db "You don't have  "
+    db "enough grass   ▽"
+    db "planted. Please "
+    db "come back when ▽"
+    db "you plant more  "
+    db "grass.          "
+
+    db "Hold on, I can't"
+    db "sell you a     ▽"
+    db "chicken.        "
+    db "You do not have▽"
+    db "enough grass    "
+    db "planted.       ▽"
+    db "Please come back"
+    db "when you plant ▽"
+    db "more grass.     "
+    db "                "
+
+    db "Please name the "
+    db "cow.           ▽"
+    db "    , is a good "
+    db "name.          ▽"
+    db "Here, take this "
+    db "cow bell as a  ▽"
+    db "gift.           "
+    db "               ▽"
+    db "Now I will take "
+    db "     to your   ▽"
+    db "barn.           "
+    db "                "
+
+    db "Would you       "
+    db "like to        ▽"
+    db "sell a cow?     "
+    db " Yes          No"
+    db "Which cow?      "
+    db "Choose a name  ▽"
+    db "and press the   "
+    db "A button.      ▽"
+    db "I will take the "
+    db "cow from the   ▽"
+    db "barn. But don't "
+    db "let me buy     ▽"
+    db "anymore.        "
+    db "                "
+
+    db "I will take the "
+    db "chicken to your▽"
+    db "chicken coop.   "
+    db "                "
+
+    db "Would you like  "
+    db "to sell a      ▽"
+    db "chicken?        "
+    db " Yes          No"
+    db "Which chicken?  "
+    db "Please select a▽"
+    db "number and press"
+    db "the A button.  ▽"
+    db "I will take the "
+    db "chicken from   ▽"
+    db "the chicken coop"
+    db "But don't let  ▽"
+    db "me buy anymore. "
+    db "                "
+
+    db "Selling Price   "
+    db "           G.   "
+
+    db "I can't buy it. "
+    db "                "
+
+    db "I will give you "
+    db "     G for     ▽"
+    db "                "
+    db " Sell  No", $8D, "Sell  "
 
 ChurchTextPointerList:: ; 1bx620c
     dw Village_TextWindowClear
@@ -2265,102 +2292,98 @@ ChurchTextPointerList:: ; 1bx620c
     dw wVillageTextBuffer + $10
     db NAME_TEXT_LENGTH
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41,
-    dw Village_TextWindowClear
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4134
 
-    dw Label_01b_4021
-    dw ChurchMaria2Text
-    db $20, $80,
-    db $34, $40, $34, $41, 
+    text_block ChurchMaria2Text
+
     dw Village_TextWindowClear 
-
-    dw Label_01b_4021
+    dw PrepareTextBlock
     dw ChurchMaria3Text
-    db $20, $80, 
-    db $34, $40, $2D, $41,
-    db $74, $44, $46, $62, $1E, $63, $2B, $64, $67, $63, 
-    dw Village_TextWindowClear 
-
-    dw Label_01b_4021
-    dw PrayText
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear 
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    db $2D, $41,
+    db $74, $44, $46, $62, $1E, $63, $2B, $64, $67, $63, 
 
-    dw Label_01b_4021
-    db $CC, $64, $20, $80, $34, $40,
-    db $34, $41, 
-    dw Village_TextWindowClear 
+    text_block Pray1Text
+    text_block Pray2Text
 
-    dw Label_01b_4021
-    db $EC, $64, $20, $80, $34, $40, $23, $45, $2A, $45,
+    dw Village_TextWindowClear 
+    dw PrepareTextBlock
+    db $EC, $64, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    db $23, $45, $2A, $45,
     db $FF, $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
-    dw Village_TextWindowClear 
 
-    dw Label_01b_4021
-    db $6C, $68, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
+    dw PrepareTextBlock
+    db $6C, $68, 
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    db $34, $41, 
 
-    dw Label_01b_4021
+    dw Village_TextWindowClear 
+    dw PrepareTextBlock
     db $8C, $68,
-    db $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    db $23, $45, $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
     dw Village_TextWindowClear 
 
-    dw Label_01b_4021
-    db $6C, $67, $20, $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear 
+    dw PrepareTextBlock
+    db $6C, $67, $20, $80, 
+    dw VillagePrintCharacter
+    db $34, $41, 
 
-    dw Label_01b_4021
+    dw Village_TextWindowClear 
+    dw PrepareTextBlock
     db $8C,
     db $67, $20, $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw Village_TextWindowClear 
+    dw PrepareTextBlock
     db $AC, $67, $20, $80, $34,
     db $40, $34, $41, 
     dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $CC, $67, $20, $80, $34, $40, $34, $41
     dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $EC, $67, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
     db $24, $62, $EC, $46, $1F, $E5, $62, $7A, $62, $2A, $47, 
     dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $6C,
     db $67, $20, $80, $34, $40, $34, $41, 
     dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $0C, $68, $20, $80, $34,
     db $40, $34, $41, 
 
     dw Village_TextWindowClear 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $2C, $68, $20, $80, $34, $40, $34, $41, $E6,
     db $40, 
-    dw Label_01b_4021
+    dw PrepareTextBlock
 
     db $4C, $68, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
     db $24, $62, 
 
-    dw Village_TextWindowClear
-    dw Label_01b_4021
-    dw AskForFortune1Text
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41,
-
-    dw Village_TextWindowClear
-    dw Label_01b_4021
-    dw AskForFortune2Text
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, 
+    text_block AskForFortune1Text
+    text_block AskForFortune2Text
 
     dw Village_TextWindowClear 
     dw LoadTextString_Village
@@ -2371,80 +2394,78 @@ ChurchTextPointerList:: ; 1bx620c
     dw wVillageTextBuffer + $07
     db NAME_TEXT_LENGTH
 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db $80, $34, $40,
     db $34, $41, 
+
     dw Village_TextWindowClear
     db $21, $40, $6C, $65, $20, $80, $34, $40, $34, $41, $23, $45,
     db $2A, $45, $80, $45, $45, $B2, $63, $DF, $63, $05, $64, 
+
     dw Village_TextWindowClear 
     db $21, $40, $EC,
     db $66, $20, $80, $34, $40, $34, $41, 
+
     dw Village_TextWindowClear 
     db $21, $40, $0C, $67, $20, $80, $34,
     db $40, $34, $41, 
+
     dw Village_TextWindowClear 
     db $21, $40, $2C, $67, $20, $80, $34, $40, $34, $41, $79,
     db $47, 
+
     dw Village_TextWindowClear 
     db $85, $47, $21, $40, 
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db $80, $34, $40, $97, $47, $8D, $63,
     db $EB, $47, 
+
     dw Village_TextWindowClear 
     db $21, $40, $4C, $67, $20, $80, $34, $40, $23, $45, $2A, $45,
     db $FF, $8F, $46, $24, $62
 
     dw Village_TextWindowClear 
-    dw Label_01b_4021
+    dw PrepareTextBlock
     dw GoodFortuneText
     db VILLAGE_MAX_NUM_CHARACTERS,
     db $80, $34, $40, $34, $41, 
+
     dw Village_TextWindowClear
-
-    dw Label_01b_4021
+    dw PrepareTextBlock
     db $AC, $65, $20, $80, $34, $40, $34, $41, $70, $45
-    dw Village_TextWindowClear 
 
-    dw Label_01b_4021
+    dw Village_TextWindowClear 
+    dw PrepareTextBlock
     db $CC, $65, $20, $80, $34, $40, $23, $45, $2A, $45, $C8, $8F, $46,
     db $24, $62
-    dw Village_TextWindowClear 
 
-    dw Label_01b_4021
-    dw NormalFortune1Text
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, 
+    text_block NormalFortune1Text
+
     dw Village_TextWindowClear
     db $21, $40
     dw NormalFortune2Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db $80, $34, $40, $34, $41, $8F, $45, 
-    dw Village_TextWindowClear
 
-    dw Label_01b_4021
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
     dw NormalFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db $80, $8F, $46, $D4, $63, 
-    dw Village_TextWindowClear
-    db $21, $40, 
-    dw BadFortune1Text
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, 
+
+    text_block BadFortune1Text
+
     dw Village_TextWindowClear
     db $21, $40
     dw BadFortune2Text 
     db $20, $80, $34, $40, $34, $41, $92, $45
     dw Village_TextWindowClear 
     db $21, $40, $8C, $66, $20, $80, $8F, $46, $D4, $63
-    dw Village_TextWindowClear 
-    db $21, $40,
-    dw GoodLuckGoodFortuneText
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41
+    text_block GoodLuckGoodFortune1Text
+
     dw Village_TextWindowClear 
     db $21, $40, $CC, $66,
     db $20, $80, $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
@@ -2459,11 +2480,13 @@ ChurchMaria3Text:: ; 1bx648c
     db " Pray           "
     db " Fortune Telling"
 
-PrayText:: ; 1bx64ac
+Pray1Text:: ; 1bx64ac
     db "You really have "
     db "a righteous    ▽"
+Pray2Text:: ; 1bx64ac
     db "heart and soul. "
     db "Please come in ▽"
+Pray3Text:: ; 1bx64ac
     db "and join        "
     db "the service.    "
 
@@ -2508,9 +2531,10 @@ BadFortune3Text:: ; 1bx668c
     db "will happen for "
     db "you tomorrow.   "
 
-GoodLuckGoodFortuneText:: ; 1bx66ac
+GoodLuckGoodFortune1Text:: ; 1bx66ac
     db "Wishing you     "
     db "good luck and  ▽"
+GoodLuckGoodFortune2Text:: ; 1bx66cc
     db "good fortune.   "
     db "                "
 
@@ -2920,11 +2944,11 @@ Label_01b_something:
     ld h, b
     ld l, c
     push hl
-    ld a, [$cd70]
+    ld a, [wVillageCharacterPointer]
     ld e, a
-    ld a, [$cd71]
+    ld a, [wVillageCharacterPointer+1]
     ld d, a
-    ld a, [de]
+    ld a, [de] ; charmap character
     cp $af
     jr z, jr_01b_7bb0
 
@@ -2932,24 +2956,23 @@ jr_01b_7b61:
     push af
     inc de
     ld a, e
-    ld [$cd70], a
+    ld [wVillageCharacterPointer], a
     ld a, d
-    ld [$cd71], a
+    ld [wVillageCharacterPointer+1], a
     pop af
     ld c, a
     push bc
-    ld a, [$cd6f]
+    ld a, [wVillageTextTileNumber]
     push af
     inc a
-    ld [$cd6f], a
+    ld [wVillageTextTileNumber], a
     pop af
-    ld de, $99c2
-    cp $90
-    jr c, jr_01b_7b81
+    ld de, vBGMap0 + $1c2
+    cp $90 ; end of first line (tile number)
+    jr c, .printCharacter
+    ld de, vBGMap0 + $1f2
 
-    ld de, $99f2
-
-jr_01b_7b81:
+.printCharacter
     sub $80
     add e
     ld e, a
@@ -2972,17 +2995,16 @@ jr_01b_7b81:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [$cd6e]
+    ld a, [wVillageTextCharacterCounter]
     dec a
-    ld [$cd6e], a
-    jr z, jr_01b_7bab
+    ld [wVillageTextCharacterCounter], a
+    jr z, .finishedPrintingLine
 
     dec hl
     dec hl
     ret
 
-
-jr_01b_7bab:
+.finishedPrintingLine
     xor a
     ld [$cd98], a
     ret
@@ -2990,12 +3012,12 @@ jr_01b_7bab:
 
 jr_01b_7bb0:
     inc de
-    ld a, [$cd6f]
+    ld a, [wVillageTextTileNumber]
     inc a
-    ld [$cd6f], a
-    ld a, [$cd6e]
+    ld [wVillageTextTileNumber], a
+    ld a, [wVillageTextCharacterCounter]
     dec a
-    ld [$cd6e], a
+    ld [wVillageTextCharacterCounter], a
     jr z, jr_01b_7bc8
 
     ld a, [de]
