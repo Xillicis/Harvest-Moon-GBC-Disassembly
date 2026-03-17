@@ -4799,6 +4799,7 @@ Call_000_25ce:
     ld l, a
     ld a, [MBC3SRamBank]
     push af
+;;; I think this might have something to do with color....
     ld a, $1e
     ld [MBC3RomBank], a
     ld h, $00
