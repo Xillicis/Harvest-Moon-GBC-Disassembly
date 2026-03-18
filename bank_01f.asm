@@ -721,7 +721,7 @@ Call_01f_43e1:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     add a
     add l
     ld l, a
@@ -1114,7 +1114,7 @@ Jump_01f_44ff:
     ld a, $0d
     call Call_01f_4647
     ld a, [$cddf]
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     call Call_01f_463f
     ret
 
@@ -3015,7 +3015,7 @@ Call_01f_4ea0:
     ld h, b
     ld l, c
     xor a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ret
 
 
@@ -3029,7 +3029,7 @@ Call_01f_4ea0:
     ld h, b
     ld l, c
     ld a, [$cdba]
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ret
 
 
@@ -3039,7 +3039,7 @@ Call_01f_4ea0:
     ld [$cdb7], a
     ld a, $01
     ld [$cdb4], a
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld [$cdba], a
     ldh a, [$ff8b]
     bit 0, a
@@ -3048,7 +3048,7 @@ Call_01f_4ea0:
     bit 1, a
     jr nz, jr_01f_4f12
 
-    ld bc, $cd99
+    ld bc, wVillageCursorPositionFlag
     bit 4, a
     jr nz, jr_01f_4f21
 
@@ -3078,7 +3078,7 @@ jr_01f_4f12:
     xor a
     ld [$cdb4], a
     ld a, $04
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ld a, $51
     call Call_000_25cb
     ret
@@ -3216,7 +3216,7 @@ jr_01f_4fa4:
 
 
     push bc
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3227,7 +3227,7 @@ jr_01f_4fa4:
     cp $ff
     jr z, jr_01f_500e
 
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3479,7 +3479,7 @@ jr_01f_50f5:
     adc $6c
     adc $82
     adc $c5
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3490,7 +3490,7 @@ jr_01f_50f5:
     cp $ff
     jr z, jr_01f_51a6
 
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3574,7 +3574,7 @@ jr_01f_51a6:
     or c
     ld bc, $000b
     push bc
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3677,7 +3677,7 @@ jr_01f_524f:
     ld e, $28
     nop
     push bc
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -3827,7 +3827,7 @@ jr_01f_5322:
     ld [$cdb4], a
     ld a, $42
     call Call_000_25cb
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld [$cdb8], a
     inc hl
     inc hl
@@ -3848,12 +3848,12 @@ jr_01f_5334:
 
 
 jr_01f_5346:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr nz, jr_01f_5359
 
     inc a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -3866,12 +3866,12 @@ jr_01f_5359:
 
 
 jr_01f_535c:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01f_536e
 
     xor a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ld [$cd98], a
     ld a, $48
     call Call_000_25ce
@@ -3886,7 +3886,7 @@ jr_01f_536e:
     ld l, c
     ld a, $02
     ld [$cdb4], a
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld [$cdb6], a
     ldh a, [$ff8b]
     bit 0, a
@@ -3895,7 +3895,7 @@ jr_01f_536e:
     bit 1, a
     jr nz, jr_01f_53c6
 
-    ld bc, $cd99
+    ld bc, wVillageCursorPositionFlag
     bit 4, a
     jr nz, jr_01f_53c9
 
@@ -3915,7 +3915,7 @@ jr_01f_536e:
 
 jr_01f_539e:
     push hl
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld hl, $cd9c
     add l
     ld l, a
@@ -4003,7 +4003,7 @@ jr_01f_53f5:
     ld [bc], a
     jr jr_01f_53d1
 
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     add a
     ld hl, $541b
     add l
@@ -4073,7 +4073,7 @@ jr_01f_53f5:
 
 jr_01f_5458:
     push hl
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld b, a
     ld hl, $cece
     add l
@@ -4166,7 +4166,7 @@ Call_01f_54b2:
     ld b, a
     ld a, [$cdbd]
     add b
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ret
 
 
@@ -5690,7 +5690,7 @@ jr_01f_5bfe:
 
 
     push bc
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     ld [$cdbf], a
     ld a, $0c
     ld b, $01
@@ -5729,7 +5729,7 @@ Call_01f_5c2c:
 
     ld h, b
     ld l, c
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     cp $04
     jr z, jr_01f_5c3e
 

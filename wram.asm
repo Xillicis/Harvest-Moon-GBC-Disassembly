@@ -283,7 +283,7 @@ wVillageCharacterPointer:: dw ; 0xcd70
 
 ; This WRAM address spans 32 bytes for storing one menu of text (2 lines, 16 characters each line)
 UNION
-wVillageTextBuffer:: ds 32
+wVillageTextBuffer:: ds $20 ; 0xcd72
 NEXTU
 wcd72:: db
 wcd73:: db
@@ -297,6 +297,11 @@ wCatOrDogSelection:: db ; 0xcd7a
 wPetName:: ds 4 ; 0xcd7b
 ENDU
 
+ds 7
+
+; 0 - first option
+; 1 - second option
+wVillageCursorPositionFlag:: db 
 
 ;DEF hROMBankTemp EQU $ffa4
 ;

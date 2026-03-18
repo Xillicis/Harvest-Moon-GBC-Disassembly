@@ -13,6 +13,19 @@ MACRO text_block
     dw Label_01b_4134
 ENDM
 
+; Text blocks that contain the player's name
+MACRO text_block_player
+    dw Village_TextWindowClear 
+    dw LoadTextString_Village
+    dw \1
+    dw wVillageTextBuffer
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    dw sPlayerName
+    dw wVillageTextBuffer + \2
+    db NAME_TEXT_LENGTH
+ENDM
+
+
 SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
 
     db $1b ; Bank number
@@ -259,7 +272,7 @@ Label_01b_412d:
     ld h, b
     ld l, c
     xor a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     ret
 
 Label_01b_4134:
@@ -323,7 +336,7 @@ jr_01b_4167:
 
     push hl
     ld de, $9a02
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_4188
 
@@ -343,7 +356,7 @@ jr_01b_4188:
 jr_01b_4199:
     ld a, $42
     call Call_000_25cb
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     add a
     add l
     ld l, a
@@ -368,12 +381,12 @@ jr_01b_41ac:
 
 
 jr_01b_41b7:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr nz, jr_01b_41d4
 
     inc a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -391,12 +404,12 @@ jr_01b_41d4:
 
 
 jr_01b_41d7:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_41f4
 
     dec a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -955,14 +968,12 @@ Label_01b_4474:
 
 jr_01b_4494:
     push hl
-    ld de, $99c2
-    ld a, [$cd99]
+    ld de, vBGMap0 + $1c2 ; BG map address for top cursor position
+    ld a, [wVillageCursorPositionFlag]
     or a
-    jr z, jr_01b_44a1
-
-    ld de, $9a02
-
-jr_01b_44a1:
+    jr z, .gotPosition
+    ld de, vBGMap0 + $202 ; BG map address for bottom cursor position
+.gotPosition
     ld a, [$cd9a]
     ld b, a
     ld a, [$cd98]
@@ -977,7 +988,7 @@ jr_01b_44a1:
 jr_01b_44b4:
     ld a, $42
     call Call_000_25cb
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     add a
     add l
     ld l, a
@@ -1004,12 +1015,12 @@ jr_01b_44c7:
 
 
 jr_01b_44d4:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr nz, jr_01b_44f1
 
     inc a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -1027,12 +1038,12 @@ jr_01b_44f1:
 
 
 jr_01b_44f4:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_4511
 
     dec a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -1064,6 +1075,7 @@ Jump_01b_4514:
     ret
 
 
+Label_01b_4523:
     ld h, b
     ld l, c
     xor a
@@ -1138,7 +1150,7 @@ jr_01b_453b:
     inc b
 
 ; Getting a good fortune result increases energy by 10 and happiness by 10
-GoodFortuneTellingResult:
+GoodFortuneTellingResult: ; 1bx4570
     push bc
     ld a, [sPlayerMaxEnergy]
     ld d, a
@@ -1160,7 +1172,7 @@ GoodFortuneTellingResult:
     pop hl
     ret
 
-
+Label_01b_458f:
     ld h, b
     ld l, c
     ret
@@ -1590,7 +1602,7 @@ jr_01b_4754:
     pop hl
     ret
 
-
+Label_01b_4756:
     ld h, b
     ld l, c
     ld a, [$ba3e]
@@ -1624,7 +1636,7 @@ jr_01b_4762:
     pop hl
     ret
 
-
+Label_01b_4779:
     ld h, b
     ld l, c
     xor a
@@ -1649,7 +1661,7 @@ jr_01b_4762:
     pop hl
     ret
 
-
+Label_01b_4797:
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -1726,7 +1738,7 @@ jr_01b_47e4:
     ld l, a
     ret
 
-
+Label_01b_47eb:
     ld h, b
     ld l, c
     xor a
@@ -1753,7 +1765,7 @@ jr_01b_47e4:
 
     push hl
     ld de, $9a02
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_4817
 
@@ -1774,7 +1786,7 @@ jr_01b_4817:
 jr_01b_482a:
     ld a, $42
     call Call_000_25cb
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     add a
     add l
     ld l, a
@@ -1801,13 +1813,13 @@ jr_01b_4842:
 
 
 jr_01b_4848:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr nz, jr_01b_4865
 
 jr_01b_484e:
     inc a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -1825,12 +1837,12 @@ jr_01b_4865:
 
 
 jr_01b_4868:
-    ld a, [$cd99]
+    ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_4885
 
     dec a
-    ld [$cd99], a
+    ld [wVillageCursorPositionFlag], a
     xor a
     ld [$cd98], a
     ld a, $48
@@ -1850,7 +1862,9 @@ jr_01b_4886:
 
 
 Label_01b_4888:
-    db $E6, $40, $56, $47, $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
+    dw Village_TextWindowClear
+    dw Label_01b_4756
+    db $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
     db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
     db $A6, $48, $13, $41, $AB, $4A, $72, $CD, $20, $CB, $4A, $8E, $CD, $01, $8F, $46,
     db $9A, $48, $E6, $40, $21, $40, $CC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40,
@@ -1977,32 +1991,40 @@ ToolShop_CheeseMakerText::
     db "              ▽ "
     db "What can I do   "
     db "for you?      ▽ "
+Carpenter_ExpandHouse::
     db "I see, you want "
     db "to expand your ▽"
     db "house. Alright! "
     db "Tomorrow I will▽"
-    db $25, $1E, $2D, $EF, $32, $28, $2E, $EF, $24, $27, $28, $30, $EF, $2D, $21, $1E,
-    db $1C, $28, $2C, $2D, $EF, $1A, $27, $1D, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    db $26, $1A, $2D, $1E, $2B, $22, $1A, $25, $EF, $27, $1E, $1E, $1D, $1E, $1D, $EF,
-    db $1F, $28, $2B, $EF, $2D, $21, $1E, $EF, $23, $28, $1B, $4C, $EF, $EF, $EF, $EF,
-    db $0C, $1A, $2D, $1E, $2B, $22, $1A, $25, $41, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $E9,
-    db $08, $2D, $EF, $22, $2C, $EF, $2E, $2C, $1E, $1D, $EF, $1F, $28, $2B, $EF, $EF,
-    db $1E, $31, $29, $1A, $27, $2C, $22, $28, $27, $EF, $1A, $27, $1D, $EF, $EF, $E9,
-    db $1F, $28, $2B, $EF, $32, $28, $2E, $2B, $EF, $1F, $1E, $27, $1C, $1E, $4C, $EF,
-    db $39, $34, $EF, $0C, $1A, $2D, $1E, $2B, $22, $1A, $25, $2C, $EF, $EF, $EF, $E9,
-    db $1F, $28, $2B, $EF, $39, $34, $34, $06, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01, $2E, $32,
-    db $13, $21, $1E, $32, $EF, $1A, $2B, $1E, $EF, $1A, $EF, $25, $22, $2D, $2D, $44,
-    db $25, $1E, $EF, $21, $1E, $1A, $2F, $32, $8E, $EF, $08, $EF, $EF, $EF, $EF, $E9,
-    db $30, $22, $25, $25, $EF, $2D, $1A, $24, $1E, $EF, $2D, $21, $1E, $26, $EF, $EF,
-    db $2D, $28, $EF, $32, $28, $2E, $2B, $EF, $2B, $1A, $27, $1C, $21, $4C, $EF, $EF,
-    db $13, $21, $1E, $27, $EF, $1D, $28, $27, $4B, $2D, $EF, $30, $1A, $2C, $2D, $1E,
-    db $26, $32, $EF, $2D, $22, $26, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $07, $1A, $EF, $21, $1A, $EF, $21, $1A, $8E, $EF, $32, $28, $2E, $EF, $EF, $EF,
-    db $26, $2E, $2C, $2D, $EF, $1B, $1E, $EF, $23, $28, $24, $22, $27, $20, $4C, $E9,
-    db $16, $1E, $25, $25, $8E, $EF, $2C, $1E, $1E, $EF, $32, $1A, $4C, $EF, $EF, $EF,
-    db $13, $1A, $24, $1E, $EF, $1C, $1A, $2B, $1E, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
+    db "let you know the"
+    db "cost and       ▽"
+    db "material needed "
+    db "for the job.    "
+
+    db "Material?       "
+    db "               ▽"
+    db "It is used for  "
+    db "expansion and  ▽"
+    db "for your fence. "
+    db "50 Materials   ▽"
+    db "for 500G.       "
+    db " Buy   Don't Buy"
+
+Carpenter_BuyMaterials::
+    db "They are a litt-"
+    db "le heavy, I    ▽"
+    db "will take them  "
+    db "to your ranch.  "
+
+Carpenter_DontBuyMaterials::
+    db "Then don't waste"
+    db "my time.        "
+
+    db "Ha ha ha, you   "
+    db "must be joking.▽"
+
+    db "Well, see ya.   "
+    db "Take care.      "
     db $E6, $40, $21, $40, $7C, $52, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
     db $EA, $50, $E6, $40, $21, $40, $9C, $52, $20, $80, $34, $40, $34, $41, $E6, $40,
     db $21, $40, $BC, $52, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
@@ -2308,7 +2330,6 @@ ChurchTextPointerList:: ; 1bx620c
     dw sPlayerName
     dw wVillageTextBuffer + $10
     db NAME_TEXT_LENGTH
-
     dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
@@ -2326,27 +2347,25 @@ ChurchTextPointerList:: ; 1bx620c
     dw VillagePrintCharacter
     dw Label_01b_412d
     dw Label_01b_4474
-    db $46, $62, $1E, $63, $2B, $64, $67, $63, 
+    dw Option_Prayer
+    dw Option_Fortune
+    db $2B, $64, $67, $63, 
 
+Option_Prayer:
     text_block Pray1Text
     text_block Pray2Text
 
     dw Village_TextWindowClear 
     dw PrepareTextBlock
-    db $EC, $64, 
+    dw Pray3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
     dw VillagePrintCharacter
-    db $23, $45, $2A, $45,
+    dw Label_01b_4523
+    db $2A, $45,
     db $FF, $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    db $6C, $68, 
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    db $34, $41, 
+    text_block PrayersWillBeHeard1Text
 
     dw Village_TextWindowClear 
     dw PrepareTextBlock
@@ -2354,139 +2373,125 @@ ChurchTextPointerList:: ; 1bx620c
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
     dw VillagePrintCharacter
-    db $23, $45, $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
-    dw Village_TextWindowClear 
+    dw Label_01b_4523
+    db $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
 
+    text_block CowBlessing1Text
+    text_block CowBlessing2Text
+    text_block CowBlessing3Text
+    text_block CowBlessing4Text
+
+    dw Village_TextWindowClear 
     dw PrepareTextBlock
-    db $6C, $67, $20, $80, 
+    dw CowBlessing5Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
     dw VillagePrintCharacter
-    db $34, $41, 
-
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    db $8C,
-    db $67, $20, $80, $34, $40, $34, $41, 
-
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    db $AC, $67, $20, $80, $34,
-    db $40, $34, $41, 
-    dw Village_TextWindowClear 
-
-    dw PrepareTextBlock
-    db $CC, $67, $20, $80, $34, $40, $34, $41
-    dw Village_TextWindowClear 
-
-    dw PrepareTextBlock
-    db $EC, $67, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
+    dw Label_01b_4523
+    db $2A, $45, $FF, $8F, $46,
     db $24, $62, $EC, $46, $1F, $E5, $62, $7A, $62, $2A, $47, 
-    dw Village_TextWindowClear 
 
-    dw PrepareTextBlock
-    db $6C,
-    db $67, $20, $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear 
+    text_block CowBlessing1Text
+    text_block CowBlessing6Text
+    text_block CowBlessing7Text
 
+    dw Village_TextWindowClear
     dw PrepareTextBlock
-    db $0C, $68, $20, $80, $34,
-    db $40, $34, $41, 
-
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    db $2C, $68, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, 
-    dw PrepareTextBlock
-
-    db $4C, $68, $20, $80, $34, $40, $23, $45, $2A, $45, $FF, $8F, $46,
+    dw CowBlessing8Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4523
+    db $2A, $45, $FF, $8F, $46,
     db $24, $62, 
 
+Option_Fortune:
     text_block AskForFortune1Text
     text_block AskForFortune2Text
-
-    dw Village_TextWindowClear 
-    dw LoadTextString_Village
-    dw AskForFortune3Text
-    dw wVillageTextBuffer
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    dw sPlayerName
-    dw wVillageTextBuffer + $07
-    db NAME_TEXT_LENGTH
+    text_block_player AskForFortune3Text, 7
 
     dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40,
-    db $34, $41, 
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4134
 
-    dw Village_TextWindowClear
-    db $21, $40, $6C, $65, $20, $80, $34, $40, $34, $41, $23, $45,
+    text_block AskForFortune4Text
+    dw Label_01b_4523
     db $2A, $45, $80, $45, $45, $B2, $63, $DF, $63, $05, $64, 
 
-    dw Village_TextWindowClear 
-    db $21, $40, $EC,
-    db $66, $20, $80, $34, $40, $34, $41, 
+    text_block ListenToOrganText1
+    text_block ListenToOrganText2
 
     dw Village_TextWindowClear 
-    db $21, $40, $0C, $67, $20, $80, $34,
-    db $40, $34, $41, 
+    dw PrepareTextBlock
+    dw ListenToOrganText3
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4134
+    dw Label_01b_4779
 
     dw Village_TextWindowClear 
-    db $21, $40, $2C, $67, $20, $80, $34, $40, $34, $41, $79,
-    db $47, 
-
-    dw Village_TextWindowClear 
-    db $85, $47, $21, $40, 
+    db $85, $47, 
+    dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $97, $47, $8D, $63,
-    db $EB, $47, 
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4797
+    db $8D, $63,
+    dw Label_01b_47eb
 
     dw Village_TextWindowClear 
-    db $21, $40, $4C, $67, $20, $80, $34, $40, $23, $45, $2A, $45,
+    dw PrepareTextBlock
+    dw ListenToOrganText4
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    db $23, $45, $2A, $45,
     db $FF, $8F, $46, $24, $62
 
+    text_block GoodFortune1Text
+    text_block GoodFortune2Text
+    dw GoodFortuneTellingResult
+
     dw Village_TextWindowClear 
     dw PrepareTextBlock
-    dw GoodFortuneText
+    dw GoodFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, 
-
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
-    db $AC, $65, $20, $80, $34, $40, $34, $41, $70, $45
-
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    db $CC, $65, $20, $80, $34, $40, $23, $45, $2A, $45, $C8, $8F, $46,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_4523
+    db $2A, $45, $C8, $8F, $46,
     db $24, $62
 
     text_block NormalFortune1Text
-
-    dw Village_TextWindowClear
-    db $21, $40
-    dw NormalFortune2Text
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $34, $40, $34, $41, $8F, $45, 
+    text_block NormalFortune2Text
+    dw Label_01b_458f
 
     dw Village_TextWindowClear
     dw PrepareTextBlock
     dw NormalFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
-    db $80, $8F, $46, $D4, $63, 
+    db FIRST_TEXTBOX_TILE
+    db $8F, $46, $D4, $63, 
 
     text_block BadFortune1Text
+    text_block BadFortune2Text
+    dw BadFortuneTellingResult
 
-    dw Village_TextWindowClear
-    db $21, $40
-    dw BadFortune2Text 
-    db $20, $80, $34, $40, $34, $41, $92, $45
     dw Village_TextWindowClear 
     db $21, $40, $8C, $66, $20, $80, $8F, $46, $D4, $63
     text_block GoodLuckGoodFortune1Text
 
     dw Village_TextWindowClear 
-    db $21, $40, $CC, $66,
-    db $20, $80, $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
+    dw PrepareTextBlock
+    dw GoodLuckGoodFortune2Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    db $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
 
 ChurchMaria1Text:: ; 1bx644c
     db "Good Afternoon  "
@@ -2521,11 +2526,13 @@ AskForFortune4Text:: ; 1bx656c
     db "today is ....   "
     db "               ▽"
 
-GoodFortuneText:: ; 1bx658c
+GoodFortune1Text:: ; 1bx658c
     db "Your fortune    "
     db "looks great!   ▽"
+GoodFortune2Text:: ; 1bx65ac
     db "I feel something"
     db "good will      ▽"
+GoodFortune3Text:: ; 1bx65cc
     db "happen to you.  "
     db "                "
 
@@ -2556,35 +2563,48 @@ GoodLuckGoodFortune2Text:: ; 1bx66cc
     db "good fortune.   "
     db "                "
 
+ListenToOrganText1:: ; 1bx66ec
     db "Would you like  "
     db "to listen to   ▽"
+ListenToOrganText2:: ; 1bx670c
     db "the organ?      "
     db "It will put you▽"
+ListenToOrganText3:: ; 1bx672c
     db "in a good mood. "
     db "               ▽"
+ListenToOrganText4:: ; 1bx674c
     db "Please come     "
     db "again.         ▽"
 
+CowBlessing1Text:: ; 1bx676c
     db "I have heard and"
     db "understood your▽"
+CowBlessing2Text:: ; 1bx678c
     db "serious thoughts"
     db "Now, please go ▽"
+CowBlessing3Text:: ; 1bx67ac
     db "to your barn.   "
     db "               ▽"
+CowBlessing4Text:: ; 1bx67cc
     db "You will see a  "
     db "miracle there  ▽"
+CowBlessing5Text:: ; 1bx67ec
     db "by the          "
     db "Harvest Goddess."
+CowBlessing6Text:: ; 1bx680c
     db "serious thoughts"
     db "The Harvest    ▽"
+CowBlessing7Text:: ; 1bx682c
     db "Goddess will    "
     db "bless your cow.▽"
+CowBlessing8Text:: ; 1bx684c
     db "Your cow is now "
     db "protected!!     "
 
-PrayersWillBeHeardText::
+PrayersWillBeHeard1Text:: ; 1bx686c
     db "Some day your   "
     db "prayers will be▽"
+PrayersWillBeHeard2Text:: ; 1bx688c
     db "heard by the    "
     db "Harvest Goddess."
     
