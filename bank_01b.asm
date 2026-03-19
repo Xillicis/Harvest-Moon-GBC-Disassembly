@@ -1082,7 +1082,7 @@ Label_01b_4523:
     ld [$cd98], a
     ret
 
-
+Label_01b_452a:
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -1097,57 +1097,54 @@ Label_01b_4523:
     dec hl
     ret
 
-
 jr_01b_453b:
     inc hl
     ret
 
-
+Label_01b_453d:
     ld h, b
     ld l, c
     ld a, $01
     ld [$cd6b], a
     ret
 
-
+; Good fortune - 3 / 16
+; Normal fortune - 10 / 16
+; Bad forutne - 3 / 16
+GetFortune: ; 1bx4545
+; get random number from the data 
     ld a, [$cd98]
     and $0f
-    ld hl, $4560
+    ld hl, FortuneProbabilityTable
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
+; HL will point to either the good, bad, or normal fortune
     ld a, [hl]
     ld h, b
     ld l, c
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
-    ld a, [hl+]
+
+    ld a, [hli]
     ld h, [hl]
     ld l, a
     ret
 
+DEF GOOD_FORTUNE EQU 0
+DEF NORMAL_FORTUNE EQU 2
+DEF BAD_FORTUNE EQU 4
 
-    nop
-    inc b
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    nop
-    ld [bc], a
-    inc b
-    ld [bc], a
-    ld [bc], a
-    ld [bc], a
-    nop
-    ld [bc], a
-    ld [bc], a
-    inc b
+FortuneProbabilityTable: ; 1bx460
+    db GOOD_FORTUNE,   BAD_FORTUNE,    NORMAL_FORTUNE, NORMAL_FORTUNE
+    db NORMAL_FORTUNE, NORMAL_FORTUNE, GOOD_FORTUNE,   NORMAL_FORTUNE
+    db BAD_FORTUNE,    NORMAL_FORTUNE, NORMAL_FORTUNE, NORMAL_FORTUNE
+    db GOOD_FORTUNE,   NORMAL_FORTUNE, NORMAL_FORTUNE, BAD_FORTUNE
 
 ; Getting a good fortune result increases energy by 10 and happiness by 10
 GoodFortuneTellingResult: ; 1bx4570
@@ -1172,11 +1169,10 @@ GoodFortuneTellingResult: ; 1bx4570
     pop hl
     ret
 
-Label_01b_458f:
+NormalFortuneTellingResult: ; 1bx458f
     ld h, b
     ld l, c
     ret
-
 
 ; Getting a bad fortune result decreases energy by 10 and happiness by 10
 BadFortuneTellingResult: ; 1bx4592
@@ -1407,7 +1403,7 @@ jr_01b_4686:
     ld l, c
     ret
 
-
+Label_01b_468f:
     ld a, [bc]
     inc bc
     ld l, a
@@ -1972,6 +1968,7 @@ ToolShop_CheeseMakerText::
 
     db "See you later.  "
     db "                "
+
     db $E6, $40, $13, $41, $FC, $4E, $72, $CD, $20, $F4, $B8, $76, $CD, $04, $21, $40,
     db $72, $CD, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $1C, $4F, $20, $80,
     db $34, $40, $34, $41, $3D, $45, $8F, $46, $32, $4E, $E6, $40, $21, $40, $BC, $4F,
@@ -2025,6 +2022,7 @@ Carpenter_DontBuyMaterials::
 
     db "Well, see ya.   "
     db "Take care.      "
+
     db $E6, $40, $21, $40, $7C, $52, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
     db $EA, $50, $E6, $40, $21, $40, $9C, $52, $20, $80, $34, $40, $34, $41, $E6, $40,
     db $21, $40, $BC, $52, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
@@ -2051,57 +2049,76 @@ Carpenter_DontBuyMaterials::
     db $34, $41, $E6, $40, $21, $40, $7C, $55, $20, $80, $8F, $46, $33, $52, $E6, $40,
     db $21, $40, $FC, $52, $20, $80, $8F, $46, $33, $52, $E6, $40, $21, $40, $BC, $53,
     db $20, $80, $8F, $46, $33, $52, $E6, $40, $21, $40, $1C, $53, $20, $80, $8F, $46,
-    db $33, $52, $07, $22, $4C, $EF, $16, $28, $2E, $25, $1D, $EF, $32, $28, $2E, $EF,
-    db $EF, $EF, $25, $22, $24, $1E, $EF, $1A, $EF, $1D, $2B, $22, $27, $24, $41, $EF,
-    db $EF, $E9, $0E, $2B, $1A, $27, $20, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $22,
-    db $2C, $EF, $1A, $EF, $2C, $29, $1E, $1C, $22, $1A, $25, $2D, $32, $EF, $28, $1F,
-    db $EF, $E9, $2D, $21, $22, $2C, $EF, $2D, $28, $30, $27, $4C, $EF, $0F, $25, $1E,
-    db $1A, $44, $2C, $1E, $EF, $1E, $27, $23, $28, $32, $4C, $EF, $13, $21, $1E, $EF,
-    db $EF, $E9, $29, $2B, $22, $1C, $1E, $EF, $22, $2C, $EF, $37, $34, $34, $06, $4C,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $07, $1E, $2B, $1E, $EF, $32, $28, $2E, $EF, $20, $28, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $11, $1E, $1A, $25, $25, $32, $41, $EF, $08, $2D, $EF, $1A, $25, $25,
-    db $EF, $EF, $2D, $1A, $2C, $2D, $1E, $2C, $EF, $20, $28, $28, $1D, $4C, $EF, $EF,
-    db $EF, $EF, $13, $21, $1A, $2D, $EF, $22, $2C, $EF, $1A, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $2C, $29, $1E, $1C, $22, $1A, $25, $25, $32, $EF, $26, $1A, $1D, $1E,
-    db $EF, $E9, $00, $29, $29, $25, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $EF, $EF,
-    db $EF, $EF, $30, $21, $22, $1C, $21, $EF, $22, $2C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $2C, $1E, $25, $25, $22, $27, $20, $EF, $2A, $2E, $22, $2D, $1E, $EF,
-    db $EF, $EF, $30, $1E, $25, $25, $4C, $EF, $13, $21, $1E, $EF, $29, $2B, $22, $1C,
-    db $1E, $E9, $22, $2C, $EF, $39, $34, $34, $06, $4C, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $07, $1E, $2B, $1E, $EF, $32, $28, $2E, $EF, $20, $28, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $13, $21, $1A, $2D, $EF, $22, $2C, $EF, $16, $22, $25, $1D, $EF, $EF,
-    db $EF, $EF, $06, $2B, $1A, $29, $1E, $EF, $09, $2E, $22, $1C, $1E, $EF, $EF, $EF,
-    db $EF, $E9, $2D, $21, $1A, $2D, $EF, $30, $22, $25, $25, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $22, $27, $1C, $2B, $1E, $1A, $2C, $1E, $EF, $32, $28, $2E, $2B, $EF,
-    db $EF, $E9, $29, $28, $30, $1E, $2B, $4C, $EF, $13, $21, $1E, $EF, $1C, $28, $2C,
-    db $2D, $EF, $22, $2C, $EF, $37, $34, $34, $06, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $E9, $1F, $28, $2B, $EF, $35, $34, $EF, $1C, $2E, $29, $2C, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $13, $21, $1A, $2D, $53, $EF, $1A, $EF, $21, $22, $20, $21, $EF, $EF,
-    db $EF, $EF, $2A, $2E, $1A, $25, $22, $2D, $32, $EF, $06, $2B, $1E, $1E, $27, $EF,
-    db $EF, $E9, $13, $1E, $1A, $4C, $EF, $0E, $27, $1E, $EF, $1C, $2E, $29, $EF, $EF,
-    db $EF, $EF, $30, $22, $25, $25, $EF, $2C, $2E, $2B, $1E, $25, $32, $EF, $EF, $EF,
-    db $EF, $E9, $30, $1A, $24, $1E, $EF, $32, $28, $2E, $EF, $2E, $29, $40, $EF, $13,
-    db $21, $1E, $1C, $28, $2C, $2D, $EF, $22, $2C, $EF, $36, $34, $34, $06, $EF, $EF,
-    db $EF, $E9, $1F, $28, $2B, $EF, $35, $34, $EF, $1C, $2E, $29, $2C, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $13, $21, $1A, $2D, $53, $EF, $0C, $22, $25, $24, $EF, $30, $21, $22,
-    db $1C, $21, $30, $1A, $2C, $EF, $29, $2B, $28, $1D, $2E, $1C, $1E, $1D, $EF, $1A,
-    db $2D, $E9, $32, $28, $2E, $2B, $EF, $2B, $1A, $27, $1C, $21, $4C, $EF, $13, $21,
-    db $1E, $EF, $1C, $28, $2C, $2D, $EF, $22, $2C, $EF, $35, $34, $34, $06, $EF, $EF,
-    db $EF, $E9, $1F, $28, $2B, $EF, $35, $34, $EF, $1C, $2E, $29, $2C, $4C, $EF, $EF,
-    db $EF, $EF, $EF, $01, $2E, $32, $EF, $EF, $EF, $03, $28, $27, $4B, $2D, $EF, $01,
-    db $2E, $32, $18, $28, $2E, $EF, $1D, $28, $27, $4B, $2D, $EF, $21, $1A, $2F, $1E,
-    db $EF, $EF, $1E, $27, $28, $2E, $20, $21, $EF, $26, $28, $27, $1E, $32, $4C, $EF,
-    db $EF, $EF, $0B, $1E, $1A, $2F, $22, $27, $20, $41, $EF, $00, $2B, $1E, $EF, $32,
-    db $28, $2E, $2B, $1E, $1F, $2B, $1E, $2C, $21, $1E, $1D, $EF, $27, $28, $30, $41,
-    db $EF, $E9, $02, $28, $26, $1E, $EF, $1B, $1A, $1C, $24, $EF, $2C, $28, $28, $27,
-    db $4C, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $E6, $40, $21, $40, $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
+    db $33, $52, 
+JuiceBar_OrangeJuiceText::
+    db "Hi. Would you   "
+    db "like a drink?  ▽"
+    db "Orange Juice is "
+    db "a specialty of ▽"
+    db "this town. Plea-"
+    db "se enjoy. The  ▽"
+    db "price is 300G.  "
+    db " Buy   Don't Buy"
+JuiceBar_BuyText::
+    db "Here you go.    "
+    db "                "
+JuiceBar_DontBuyText::
+    db "Really? It all  "
+    db "tastes good.    "
+
+JuiceBar_AppleJuiceText::
+    db "That is a       "
+    db "specially made ▽"
+    db "Apple Juice     "
+    db "which is       ▽"
+    db "selling quite   "
+    db "well. The price▽"
+    db "is 500G.        "
+    db " Buy   Don't Buy"
+
+JuiceBar_AppleJuiceBuyText::
+    db "Here you go.    "
+    db "                "
+
+JuiceBar_WildGrapeJuiceText::
+    db "That is Wild    "
+    db "Grape Juice    ▽"
+    db "that will       "
+    db "increase your  ▽"
+    db "power. The cost "
+    db "is 300G        ▽"
+    db "for 10 cups.    "
+    db " Buy   Don't Buy"
+
+JuiceBar_GreenTeaText::
+    db "That<'s> a high    "
+    db "quality Green  ▽"
+    db "Tea. One cup    "
+    db "will surely    ▽"
+    db "wake you up! The"
+    db "cost is 200G   ▽"
+    db "for 10 cups.    "
+    db " Buy   Don't Buy"
+
+JuiceBar_MilkText::
+    db "That<'s> Milk which"
+    db "was produced at▽"
+    db "your ranch. The "
+    db "cost is 100G   ▽"
+    db "for 10 cups.    "
+    db " Buy   Don't Buy"
+
+JuiceBar_NotEnoughMoneyText::
+    db "You don't have  "
+    db "enough money.   "
+
+JuiceBar_LeavingText::
+    db "Leaving? Are you"
+    db "refreshed now? ▽"
+    db "Come back soon. "
+    db "                "
+
+    db $E6, $40, $21, $40, $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
     db $8F, $46, $AA, $55, $E6, $40, $21, $40, $8C, $5A, $20, $80, $34, $40, $34, $41,
     db $E6, $40, $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41, $68, $41, $CC, $55,
     db $60, $5A, $1B, $46, $36, $E8, $59, $F2, $45, $C4, $59, $85, $43, $88, $13, $A3,
@@ -2409,28 +2426,24 @@ Option_Fortune:
     text_block AskForFortune1Text
     text_block AskForFortune2Text
     text_block_player AskForFortune3Text, 7
-
     dw PrepareTextBlock
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
     dw VillagePrintCharacter
     dw Label_01b_4134
-
     text_block AskForFortune4Text
     dw Label_01b_4523
-    db $2A, $45, $80, $45, $45, $B2, $63, $DF, $63, $05, $64, 
+    dw Label_01b_452a
+    db FIRST_TEXTBOX_TILE
+    dw GetFortune
+    dw GoodFortuneResult
+    dw NormalFortuneResult
+    dw BadFortuneResult
 
     text_block ListenToOrganText1
     text_block ListenToOrganText2
-
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
-    dw ListenToOrganText3
-    db VILLAGE_MAX_NUM_CHARACTERS,
-    db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4134
+    text_block ListenToOrganText3
     dw Label_01b_4779
 
     dw Village_TextWindowClear 
@@ -2453,6 +2466,7 @@ Option_Fortune:
     db $23, $45, $2A, $45,
     db $FF, $8F, $46, $24, $62
 
+GoodFortuneResult:
     text_block GoodFortune1Text
     text_block GoodFortune2Text
     dw GoodFortuneTellingResult
@@ -2467,23 +2481,30 @@ Option_Fortune:
     db $2A, $45, $C8, $8F, $46,
     db $24, $62
 
+NormalFortuneResult:
     text_block NormalFortune1Text
     text_block NormalFortune2Text
-    dw Label_01b_458f
+    dw NormalFortuneTellingResult
 
     dw Village_TextWindowClear
     dw PrepareTextBlock
     dw NormalFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    db $8F, $46, $D4, $63, 
+    dw Label_01b_468f
+    db $D4, $63, 
 
+BadFortuneResult:
     text_block BadFortune1Text
     text_block BadFortune2Text
     dw BadFortuneTellingResult
 
     dw Village_TextWindowClear 
-    db $21, $40, $8C, $66, $20, $80, $8F, $46, $D4, $63
+    dw PrepareTextBlock
+    dw BadFortune3Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    db $8F, $46, $D4, $63
     text_block GoodLuckGoodFortune1Text
 
     dw Village_TextWindowClear 
@@ -2491,7 +2512,14 @@ Option_Fortune:
     dw GoodLuckGoodFortune2Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    db $34, $40, $23, $45, $2A, $45, $80, $3D, $45, $8F, $46, $48, $64, 
+    dw VillagePrintCharacter
+    dw Label_01b_4523
+    dw Label_01b_452a
+    db FIRST_TEXTBOX_TILE
+    dw Label_01b_453d
+Label_01b_6448:
+    dw Label_01b_468f
+    dw Label_01b_6448
 
 ChurchMaria1Text:: ; 1bx644c
     db "Good Afternoon  "
