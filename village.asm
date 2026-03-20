@@ -318,7 +318,7 @@ jr_01b_414f:
 jr_01b_4167:
     ret
 
-
+Label_01b_4168:
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -2023,98 +2023,169 @@ Carpenter_DontBuyMaterials::
     db "Well, see ya.   "
     db "Take care.      "
 
-    db $E6, $40, $21, $40, $7C, $52, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
-    db $EA, $50, $E6, $40, $21, $40, $9C, $52, $20, $80, $34, $40, $34, $41, $E6, $40,
-    db $21, $40, $BC, $52, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
-    db $DC, $52, $20, $80, $34, $40, $2D, $41, $68, $41, $18, $51, $70, $52, $85, $43,
-    db $2C, $01, $2B, $52, $D6, $45, $01, $8F, $46, $58, $52, $E6, $40, $21, $40, $3C,
-    db $53, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $5C, $53, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $7C, $53, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $9C, $53, $20, $80, $34, $40, $2D, $41, $68, $41, $5B, $51, $70,
-    db $52, $85, $43, $F4, $01, $2B, $52, $D6, $45, $00, $8F, $46, $64, $52, $E6, $40,
-    db $21, $40, $DC, $53, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $FC, $53,
-    db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $1C, $54, $20, $80, $34, $40,
-    db $34, $41, $E6, $40, $21, $40, $3C, $54, $20, $80, $34, $40, $2D, $41, $68, $41,
+    text_block JuiceBar_HelloText
+    dw Label_01b_453d
+    dw Label_01b_468f
+    db $EA, $50, 
+    text_block JuiceBar_OrangeJuice1Text
+    text_block JuiceBar_OrangeJuice2Text
+
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    dw JuiceBar_OrangeJuice3Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw VillagePrintCharacter
+    dw Label_01b_412d
+    dw Label_01b_4168
+    db $18, $51, $70, $52, $85, $43,
+    db $2C, $01, $2B, $52, $D6, $45, $01, $8F, $46, $58, $52, 
+
+    text_block JuiceBar_AppleJuice1Text
+    text_block JuiceBar_AppleJuice2Text
+    text_block JuiceBar_AppleJuice3Text
+
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    dw JuiceBar_AppleJuice4Text
+    db $20, $80, $34, $40, $2D, $41, $68, $41, $5B, $51, $70,
+    db $52, $85, $43, $F4, $01, $2B, $52, $D6, $45, $00, $8F, $46, $64, $52, 
+    text_block JuiceBar_WildGrapeJuice1Text
+    text_block JuiceBar_WildGrapeJuice2Text
+    text_block JuiceBar_WildGrapeJuice3Text
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    db $3C, $54, $20, $80, $34, $40, $2D, $41, $68, $41,
     db $9E, $51, $70, $52, $85, $43, $2C, $01, $2B, $52, $2D, $44, $CA, $B8, $0A, $8F,
-    db $46, $64, $52, $E6, $40, $21, $40, $5C, $54, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $7C, $54, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $9C,
-    db $54, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $BC, $54, $20, $80, $34,
+    db $46, $64, $52, 
+
+    text_block JuiceBar_GreenTea1Text
+    text_block JuiceBar_GreenTea2Text
+    text_block JuiceBar_GreenTea3Text
+
+    dw Village_TextWindowClear
+    db $21, $40, $BC, $54, $20, $80, $34,
     db $40, $2D, $41, $68, $41, $E3, $51, $70, $52, $85, $43, $C8, $00, $2B, $52, $2D,
-    db $44, $CB, $B8, $0A, $8F, $46, $58, $52, $E6, $40, $21, $40, $DC, $54, $20, $80,
-    db $34, $40, $34, $41, $E6, $40, $21, $40, $FC, $54, $20, $80, $34, $40, $34, $41,
-    db $E6, $40, $21, $40, $1C, $55, $20, $80, $34, $40, $2D, $41, $68, $41, $1C, $52,
+    db $44, $CB, $B8, $0A, $8F, $46, $58, $52, 
+
+    text_block JuiceBar_Milk1Text
+    text_block JuiceBar_Milk2Text
+
+    dw Village_TextWindowClear
+    db $21, $40, $1C, $55, $20, $80, $34, $40, $2D, $41, $68, $41, $1C, $52,
     db $70, $52, $85, $43, $64, $00, $2B, $52, $2D, $44, $CC, $B8, $0A, $8F, $46, $58,
-    db $52, $E6, $40, $21, $40, $3C, $55, $20, $80, $34, $40, $23, $45, $2A, $45, $FF,
-    db $3D, $45, $8F, $46, $3C, $52, $E6, $40, $21, $40, $5C, $55, $20, $80, $34, $40,
-    db $34, $41, $E6, $40, $21, $40, $7C, $55, $20, $80, $8F, $46, $33, $52, $E6, $40,
-    db $21, $40, $FC, $52, $20, $80, $8F, $46, $33, $52, $E6, $40, $21, $40, $BC, $53,
-    db $20, $80, $8F, $46, $33, $52, $E6, $40, $21, $40, $1C, $53, $20, $80, $8F, $46,
+    db $52, 
+
+    dw Village_TextWindowClear
+    db $21, $40, $3C, $55, $20, $80, $34, $40, $23, $45, $2A, $45, $FF,
+    db $3D, $45, $8F, $46, $3C, $52, 
+
+    text_block JuiceBar_Leaving1Text
+    dw Village_TextWindowClear
+    db $21, $40, 
+    dw JuiceBar_Leaving2Text
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw Label_01b_468f
+    db $33, $52
+
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    dw JuiceBar_BuyText
+    db VILLAGE_MAX_NUM_CHARACTERS,
+    db FIRST_TEXTBOX_TILE
+    dw Label_01b_468f
+    db $33, $52
+
+    dw Village_TextWindowClear
+    db $21, $40, $BC, $53,
+    db $20, $80, $8F, $46, $33, $52, 
+
+    dw Village_TextWindowClear
+    db $21, $40, $1C, $53, $20, $80, $8F, $46,
     db $33, $52, 
-JuiceBar_OrangeJuiceText::
+JuiceBar_HelloText:: ; 1b527c
     db "Hi. Would you   "
     db "like a drink?  ▽"
+JuiceBar_OrangeJuice1Text:: ; 1bx529c
     db "Orange Juice is "
     db "a specialty of ▽"
+JuiceBar_OrangeJuice2Text:: ; 1bx52bc
     db "this town. Plea-"
     db "se enjoy. The  ▽"
+JuiceBar_OrangeJuice3Text:: ; 1bx52dc
     db "price is 300G.  "
     db " Buy   Don't Buy"
-JuiceBar_BuyText::
+
+JuiceBar_BuyText:: ; 1bx52fc
     db "Here you go.    "
     db "                "
-JuiceBar_DontBuyText::
+
+JuiceBar_DontBuyText:: ; 1bx531c
     db "Really? It all  "
     db "tastes good.    "
 
-JuiceBar_AppleJuiceText::
+JuiceBar_AppleJuice1Text:: ; 1bx533c
     db "That is a       "
     db "specially made ▽"
+JuiceBar_AppleJuice2Text:: ; 1bx535c
     db "Apple Juice     "
     db "which is       ▽"
+JuiceBar_AppleJuice3Text:: ; 1bx537c
     db "selling quite   "
     db "well. The price▽"
+JuiceBar_AppleJuice4Text:: ; 1bx539c
     db "is 500G.        "
     db " Buy   Don't Buy"
 
-JuiceBar_AppleJuiceBuyText::
+JuiceBar_AppleJuiceBuyText:: ; 1bx53bc
     db "Here you go.    "
     db "                "
 
-JuiceBar_WildGrapeJuiceText::
+JuiceBar_WildGrapeJuice1Text:: ; 1bx53dc
     db "That is Wild    "
     db "Grape Juice    ▽"
+JuiceBar_WildGrapeJuice2Text:: ; 1bx53fc
     db "that will       "
     db "increase your  ▽"
+JuiceBar_WildGrapeJuice3Text:: ; 1bx541c
     db "power. The cost "
     db "is 300G        ▽"
+JuiceBar_WildGrapeJuice4Text:: ; 1bx543c
     db "for 10 cups.    "
     db " Buy   Don't Buy"
 
-JuiceBar_GreenTeaText::
+JuiceBar_GreenTea1Text:: ; 1bx545c
     db "That<'s> a high    "
     db "quality Green  ▽"
+JuiceBar_GreenTea2Text:: ; 1bx547c
     db "Tea. One cup    "
     db "will surely    ▽"
+JuiceBar_GreenTea3Text:: ; 1bx549c
     db "wake you up! The"
     db "cost is 200G   ▽"
+JuiceBar_GreenTea4Text:: ; 1bx54bc
     db "for 10 cups.    "
     db " Buy   Don't Buy"
 
-JuiceBar_MilkText::
+JuiceBar_Milk1Text:: ; 1bx54dc
     db "That<'s> Milk which"
     db "was produced at▽"
+JuiceBar_Milk2Text:: ; 1bx54fc
     db "your ranch. The "
     db "cost is 100G   ▽"
+JuiceBar_Milk3Text:: ; 1bx551c
     db "for 10 cups.    "
     db " Buy   Don't Buy"
 
-JuiceBar_NotEnoughMoneyText::
+JuiceBar_NotEnoughMoneyText:: ; 1bx553c
     db "You don't have  "
     db "enough money.   "
 
-JuiceBar_LeavingText::
+JuiceBar_Leaving1Text:: ; 1bx555c
     db "Leaving? Are you"
     db "refreshed now? ▽"
+JuiceBar_Leaving2Text:: ; 1bx557c
     db "Come back soon. "
     db "                "
 
