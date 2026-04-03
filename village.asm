@@ -1861,10 +1861,13 @@ Label_01b_4888:
     dw Village_TextWindowClear
     dw Label_01b_4756
     db $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
-    db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
+    db $CD, $04, 
+    dw PrepareTextBlock
+    db $72, $CD, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
     db $A6, $48, $13, $41, $AB, $4A, $72, $CD, $20, $CB, $4A, $8E, $CD, $01, $8F, $46,
     db $9A, $48, $E6, $40, $21, $40, $CC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40,
-    db $21, $40, $EC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $0C, $4B,
+    dw PrepareTextBlock
+    db $EC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $0C, $4B,
     db $20, $80, $34, $40, $2D, $41, $68, $41, $E4, $48, $73, $4A, $85, $43, $20, $03,
     db $3A, $4A, $F1, $43, $AD, $B8, $8F, $46, $5B, $4A, $E6, $40, $21, $40, $AC, $4B,
     db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC, $4B, $20, $80, $34, $40,
@@ -2189,17 +2192,41 @@ JuiceBar_Leaving2Text:: ; 1bx557c
     db "Come back soon. "
     db "                "
 
-    db $E6, $40, $21, $40, $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
-    db $8F, $46, $AA, $55, $E6, $40, $21, $40, $8C, $5A, $20, $80, $34, $40, $34, $41,
-    db $E6, $40, $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41, $68, $41, $CC, $55,
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    db $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
+    db $8F, $46, $AA, $55, 
+
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    db $8C, $5A, $20, $80, $34, $40, $34, $41,
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    db $AC, $5A, $20, $80, $34, $40, $2D, $41, $68, $41, $CC, $55,
     db $60, $5A, $1B, $46, $36, $E8, $59, $F2, $45, $C4, $59, $85, $43, $88, $13, $A3,
-    db $59, $6B, $47, $88, $13, $E6, $40, $21, $40, $CC, $5E, $20, $80, $34, $40, $34,
-    db $41, $48, $46, $8F, $46, $ED, $55, $E6, $40, $13, $41, $EC, $5E, $72, $CD, $20,
+    db $59, $6B, $47, $88, $13, 
+    dw Village_TextWindowClear
+    dw PrepareTextBlock
+    db $CC, $5E, $20, $80, $34, $40, $34,
+    db $41, $48, $46, $8F, $46, $ED, $55, 
+    dw Village_TextWindowClear
+
+    db $13, $41, $EC, $5E, $72, $CD, $20,
     db $2C, $CD, $72, $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $AB, $45, $34,
-    db $41, $D7, $43, $B3, $B8, $02, $2E, $56, $F1, $43, $B3, $B8, $E6, $40, $21, $40,
-    db $0C, $5F, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $2C, $5F, $20, $80,
-    db $34, $40, $34, $41, $E6, $40, $13, $41, $4C, $5F, $72, $CD, $20, $2C, $CD, $82,
-    db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
+    db $41, $D7, $43, $B3, $B8, $02, $2E, $56, $F1, $43, $B3, $B8, 
+    dw Village_TextWindowClear
+
+    db $21, $40,
+    db $0C, $5F, $20, $80, $34, $40, $34, $41, 
+    dw Village_TextWindowClear
+
+    db $21, $40, $2C, $5F, $20, $80,
+    db $34, $40, $34, $41, 
+    dw Village_TextWindowClear
+    db $13, $41, $4C, $5F, $72, $CD, $20, $2C, $CD, $82,
+    db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, 
+    dw Village_TextWindowClear
+    db $21, $40,
     db $6C, $5F, $20, $80, $8F, $46, $AB, $59, $E6, $40, $21, $40, $EC, $5A, $20, $80,
     db $34, $40, $34, $41, $E6, $40, $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41,
     db $68, $41, $70, $56, $60, $5A, $1B, $46, $24, $18, $5A, $11, $46, $C4, $59, $85,
@@ -2439,7 +2466,7 @@ ChurchTextPointerList:: ; 1bx620c
     dw Option_Fortune
     db $2B, $64, $67, $63, 
 
-Option_Prayer:
+Option_Prayer: ; 1bx6246
     text_block Pray1Text
     text_block Pray2Text
 
@@ -3022,27 +3049,68 @@ BroccoliSeedPriceText::
 GrassSeedPriceText::
     db "Grass Seeds     "
     db "1 bag is 500G.  "
-    db $21, $40, $A7, $78, $10, $80, $8F, $46, $11, $77, $21, $40, $B7, $78, $10, $80,
-    db $8F, $46, $11, $77, $0C, $1A, $2D, $1E, $2B, $22, $1A, $25, $EF, $EF, $EF, $EF,
-    db $EF, $EF, $EF, $EF, $07, $28, $26, $1E, $EF, $04, $31, $29, $1A, $27, $2C, $22,
-    db $28, $27, $EF, $EF, $21, $40, $03, $79, $10, $80, $8F, $46, $11, $77, $21, $40,
-    db $13, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $23, $79, $10, $80, $8F, $46,
-    db $11, $77, $21, $40, $33, $79, $10,
-    db $80, $8F, $46, $11, $77, $21, $40, $43, $79, $10, $80, $8F, $46, $11, $77, $21,
-    db $40, $53, $79, $10, $80, $8F, $46, $11, $77, 
+
+    dw PrepareTextBlock
+    db $A7, $78, $10, $80, $8F, $46, $11, $77, $21, $40, $B7, $78, $10, $80,
+    db $8F, $46, $11, $77, 
+    db "Material        "
+    db "Home Expansion  "
+
+    dw PrepareTextBlock
+    dw SprinklerMenuText
+    db $10, 
+    db FIRST_TEXTBOX_TILE
+    dw Label_01b_468f
+    db $11, $77
+
+    dw PrepareTextBlock
+    dw BrushMenuText
+    db $10, $80, $8F, $46, $11, $77
+
+    dw PrepareTextBlock
+    dw SaddlebagMenuText
+    db $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    dw MilkerMenuText
+    db $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    dw CheeseMakerMenuText
+    db $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    dw ButterMakerMenuText
+    db $10, $80, $8F, $46, $11, $77, 
+
+SprinklerMenuText:
     db "Sprinkler       "
+BrushMenuText:
     db "Brush           "
+SaddlebagMenuText:
     db "Saddlebag       "
+MilkerMenuText:
     db "Milker          "
+CheeseMakerMenuText:
     db "Cheese Maker    "
+ButterMakerMenuText:
     db "Butter Maker    "
-    db $21, $40, $BD, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $CD, $79, $10, $80,
-    db $8F, $46, $11, $77, $21, $40, $DD, $79, $10, $80, $8F, $46, $11, $77, $21, $40,
-    db $ED, $79, $10, $80, $8F, $46, $11, $77, $21, $40, $FD, $79, $10, $80, $8F, $46,
-    db $11, $77, $21, $40, $0D, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $1D, $7A,
-    db $10, $80, $8F, $46, $11, $77, $21,
-    db $40, $2D, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $3D, $7A, $10, $80, $8F,
-    db $46, $11, $77, 
+
+    dw PrepareTextBlock
+    db $BD, $79, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $CD, $79, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $DD, $79, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $ED, $79, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $FD, $79, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $0D, $7A, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $1D, $7A, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $2D, $7A, $10, $80, $8F, $46, $11, $77, 
+    dw PrepareTextBlock
+    db $3D, $7A, $10, $80, $8F, $46, $11, $77, 
 ; text
     db "Buy a cow       "
     db "Buy a chicken   "
@@ -3054,7 +3122,8 @@ GrassSeedPriceText::
     db "Sell a cow      "
     db "Sell a chicken  "
 
-    db $21, $40, $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
+    dw PrepareTextBlock
+    db $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
     db $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $9F, $7A, $10, $80, $8F, $46, $11,
     db $77, $21, $40, $AF, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $BF, $7A, $10,
     db $80, $8F, $46, $11, $77, 
