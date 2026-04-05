@@ -2941,7 +2941,7 @@ jr_00e_53cd:
     or a
     ret nz
 
-    ld a, $12
+    ld a, TIME_6_PM
     ld [sCurrentHour], a
     xor a
     ld [sCurrentMinute], a
@@ -2961,7 +2961,7 @@ jr_00e_53cd:
 
 Call_00e_541e:
     ld a, [sSpriteEventFlags+1]
-    bit 2, a
+    bit EVENT_DAY_AFTER_SAVING_SPRITE, a
     ret nz
 
     ld a, [$cc79]
@@ -2969,7 +2969,7 @@ Call_00e_541e:
     ret nz
 
     ld a, [sSpriteEventFlags+1]
-    bit 1, a
+    bit EVENT_BROKE_BOULDER_ON_SPRITE, a
     jr z, jr_00e_543b
 
     ld a, [wFreezePlayerInTextWindowOrInTown]
@@ -2995,7 +2995,7 @@ jr_00e_543b:
     ld a, $02
     ld [$ba0e], a
     ld a, [sSpriteEventFlags+1]
-    set 1, a
+    set EVENT_BROKE_BOULDER_ON_SPRITE, a
     ld [sSpriteEventFlags+1], a
     ld a, $e1
     call InitializeTextIDAndDisplay
@@ -3445,27 +3445,21 @@ jr_00e_5719:
     or a
     ret nz
 
+HotSpring_EnergyRecover: ; 0ex5725
     ld a, [sNumPowerBerriesEaten]
-    ld hl, $5737
+    ld hl, HotSpringHealAmounts
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ld a, [hl]
     ld b, a
-    call $1ae6
+    call UpdatePlayerEnergy
     ret
 
-
-    inc d
-    ld d, $18
-    ld a, [de]
-    inc e
-    ld e, $20
-    ld [hl+], a
-    inc h
-    ld h, $28
+HotSpringHealAmounts: ; 0ex5737
+    db $14, $16, $18, $1A, $1C, $1E, $20, $22, $24, $26, $28, 
 
 Jump_00e_5742:
     ld a, [wHeldObject]

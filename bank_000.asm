@@ -3309,22 +3309,18 @@ EnergyScaleForTirednessAnimations:
     db $5F, $3F, $20, $00
     db $64, $43, $21, $00
 
-; Separate data???
-    db $FA, $ED ;$B8, ;$80
-
-
-;;;;; Is this actual code? somehow jumps here?
-    cp b ; 00x1ae8
+UpdatePlayerEnergy: ; 00x1ae6
+    ld a, [sPlayerEnergy]
     add b
-    jr c, jr_000_1af7
+    jr c, .loadMaxEnergy
     ld [sPlayerEnergy], a
     ld b, a
     ld a, [sPlayerMaxEnergy]
     cp b
-    jr c, jr_000_1af7
+    jr c, .loadMaxEnergy
     ret
 
-jr_000_1af7:
+.loadMaxEnergy
     ld a, [sPlayerMaxEnergy]
     ld [sPlayerEnergy], a
     ret
@@ -3342,17 +3338,17 @@ Call_000_1afe:
 
 jr_000_1b0e:
     ld b, $1e
-    call $1ae6 ; BGB is saying this memory address is `undefined opcode`...
+    call UpdatePlayerEnergy
     ret
 
 jr_000_1b14:
     ld b, $14
-    call $1ae6
+    call UpdatePlayerEnergy
     ret
 
 jr_000_1b1a:
     ld b, $0a
-    call $1ae6
+    call UpdatePlayerEnergy
     ret
 
 Data_000_1b20:
