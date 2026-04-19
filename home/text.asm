@@ -308,13 +308,13 @@ LoadCharacterTileIntoVRAM:
     or a
     call z, InitializeTextData
     ld a, [hl]
-    cp "<DONE>"
+    cp '<DONE>'
     jr z, jr_000_37d7
-    cp "<PROMPT>"
+    cp '<PROMPT>'
     jp z, Jump_000_3804
-    cp " "
+    cp ' '
     jr z, .loadCharacter
-    cp "▽"
+    cp '▽'
     jr z, .loadCharacter
     cp $a0
     jr c, .loadCharacter
@@ -337,7 +337,7 @@ LoadCharacterTileIntoVRAM:
 
 .loadCharacter
     ld a, [hl]
-    cp " "
+    cp ' '
     jr z, .done
 
     ld c, a ; tile index (source)

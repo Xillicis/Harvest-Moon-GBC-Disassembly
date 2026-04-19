@@ -2714,32 +2714,20 @@ Call_00e_5285:
     ldh [$fff0], a
 
 Call_00e_52b9:
-    ld hl, $606e
-    ld a, $0f
-    call BankSwitchCallHL
+    callfar Label_00f_606e
     ret
-
 
 Call_00e_52c2:
-    ld hl, $6122
-    ld a, $0f
-    call BankSwitchCallHL
+    callfar Label_00f_6122
     ret
-
 
 Call_00e_52cb:
-    ld hl, $617c
-    ld a, $0f
-    call BankSwitchCallHL
+    callfar Label_00f_617c
     ret
-
 
 Call_00e_52d4:
-    ld hl, $60c8
-    ld a, $0f
-    call BankSwitchCallHL
+    callfar Label_00f_60c8
     ret
-
 
 Call_00e_52dd:
 jr_00e_52dd:

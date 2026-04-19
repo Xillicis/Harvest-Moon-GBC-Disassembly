@@ -2223,16 +2223,13 @@ jr_000_14d3:
     pop hl
     ret
 
+; I think these four functions or some kind of collision detection for the four different directions
 Call_000_14f9:
-    ld hl, $50c9
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_50c9
     ret
 
 Call_000_1502:
-    ld hl, $51a7
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_51a7
     ret
 
 Call_000_150b:
@@ -2240,9 +2237,7 @@ Call_000_150b:
     ret
 
 Call_000_1514:
-    ld hl, $53e2
-    ld a, $05
-    call BankSwitchCallHL
+    callfar Label_005_53e2
     ret
 
 LoadPlayerSpriteID: ; 00x151d
@@ -2532,317 +2527,49 @@ Call_000_16d1:
     ld [sCurrentlyHeldItem], a
     push hl
     push af
-    ld l, $8e
-    ld h, $6f
-    ld a, $20
-    call BankSwitchCallHL
+    callfar2 LoadItemPalette_TableJump
     pop af
     pop hl
     ld a, [sCurrentlyHeldItem]
     rst $08
 
-
-    pop bc
-    ld d, a
-    ld b, $ed
-    ld d, a
-    ld b, $19
-    ld e, b
-    ld b, $45
-    ld e, b
-    ld b, $71
-    ld e, b
-    ld b, $9d
-    ld e, b
-    ld b, $c9
-    ld e, b
-    ld b, $f5
-    ld e, b
-    ld b, $21
-    ld e, c
-    ld b, $4d
-    ld e, c
-    ld b, $79
-    ld e, c
-    ld b, $a5
-    ld e, c
-    ld b, $d1
-    ld e, c
-    ld b, $fd
-    ld e, c
-    ld b, $29
-    ld e, d
-    ld b, $55
-    ld e, d
-    ld b, $8c
-    ld e, d
-    ld b, $b8
-    ld e, d
-    ld b, $e4
-    ld e, d
-    ld b, $10
-    ld e, e
-    ld b, $3c
-    ld e, e
-    ld b, $68
-    ld e, e
-    ld b, $94
-    ld e, e
-    ld b, $c0
-    ld e, e
-    ld b, $17
-    ld e, h
-    ld b, $52
-    ld e, h
-    ld b, $8d
-    ld e, h
-    ld b, $c4
-    ld e, h
-    ld b, $fb
-    ld e, h
-    ld b, $f7
-    ld e, l
-    ld b, $75
-    ld e, [hl]
-    ld b, $f3
-    ld e, [hl]
-    ld b, $2a
-    ld e, a
-    ld b, $a8
-    ld e, a
-    ld b, $df
-    ld e, a
-    ld b, $5d
-    ld h, b
-    ld b, $94
-    ld h, b
-    ld b, $12
-    ld h, c
-    ld b, $49
-    ld h, c
-    ld b, $c7
-    ld h, c
-    ld b, $fe
-    ld h, c
-    ld b, $7c
-    ld h, d
-    ld b, $b7
-    ld h, d
-    ld b, $35
-    ld h, e
-    ld b, $b9
-    ld h, e
-    ld b, $4c
-    ld h, h
-    ld b, $4d
-    ld h, h
-    ld b, $4e
-    ld h, h
-    ld b, $4f
-    ld h, h
-    ld b, $cd
-    ld h, h
-    ld b, $4b
-    ld h, l
-    ld b, $c4
-    ld h, l
-    ld b, $42
-    ld h, [hl]
-    ld b, $c0
-    ld h, [hl]
-    ld b, $44
-    ld h, a
-    ld b, $87
-    ld h, a
-    ld b, $02
-    ld l, b
-    ld b, $03
-    ld l, b
-    ld b, $04
-    ld l, b
-    ld b, $05
-    ld l, b
-    ld b, $06
-    ld l, b
-    ld b, $3d
-    ld l, b
-    ld b, $bb
-    ld l, b
-    ld b, $f2
-    ld l, b
-    ld b, $29
-    ld l, c
-    ld b, $60
-    ld l, c
-    ld b, $db
-    ld l, c
-    ld b, $06
-    ld l, d
-    ld b, $31
-    ld l, d
-    ld b, $5c
-    ld l, d
-    ld b, $5c
-    ld l, d
-    ld b, $5c
-    ld l, d
-    ld b, $87
-    ld l, d
-    ld b, $be
-    ld l, d
-    ld b, $3c
-    ld l, e
-    ld b, $3d
-    ld l, e
-    ld b, $3e
-    ld l, e
-    ld b, $b9
-    ld l, e
-    ld b, $34
-    ld l, h
-    ld b, $60
-    ld l, h
-    ld b, $8c
-    ld l, h
-    ld b, $b8
-    ld l, h
-    ld b, $e4
-    ld l, h
-    ld b, $16
-    ld l, l
-    ld b, $42
-    ld l, l
-    ld b, $6e
-    ld l, l
-    ld b, $9a
-    ld l, l
-    ld b, $15
-    ld l, [hl]
-    ld b, $90
-    ld l, [hl]
-    ld b, $91
-    ld l, [hl]
-    ld b, $cb
-    ld l, [hl]
-    ld b, $47
-    ld l, a
-    ld b, $c5
-    ld l, a
-    ld b, $43
-    ld [hl], b
-    ld b, $c1
-    ld [hl], b
-    ld b, $3f
-    ld [hl], c
-    ld b, $bd
-    ld [hl], c
-    ld b, $3b
-    ld [hl], d
-    ld b, $67
-    ld [hl], d
-    ld b, $93
-    ld [hl], d
-    ld b, $bf
-    ld [hl], d
-    ld b, $eb
-    ld [hl], d
-    ld b, $17
-    ld [hl], e
-    ld b, $79
-    ld e, l
-    ld b, $43
-    ld [hl], e
-    ld b, $43
-    ld [hl], e
-    ld b, $7a
-    ld [hl], e
-    ld b, $b1
-    ld [hl], e
-    ld b, $e8
-    ld [hl], e
-    ld b, $1f
-    ld [hl], h
-    ld b, $9d
-    ld [hl], h
-    ld b, $1b
-    ld [hl], l
-    ld b, $99
-    ld [hl], l
-    ld b, $17
-    halt
-    ld b, $4e
-    halt
-    ld b, $cc
-    halt
-    ld b, $03
-    ld [hl], a
-    ld b, $3a
-    ld [hl], a
-    ld b, $18
-    ld a, b
-    ld [de], a
-    ld c, b
-    ld a, b
-    ld [de], a
-    ld a, b
-    ld a, b
-    ld [de], a
+Label_000_16e5:
+    db $C1, $57, $06, $ED, $57, $06, $19, $58, $06, $45, $58, $06, $71, $58, $06, $9D,
+    db $58, $06, $C9, $58, $06, $F5, $58, $06, $21, $59, $06, $4D, $59, $06, $79, $59,
+    db $06, $A5, $59, $06, $D1, $59, $06, $FD, $59, $06, $29, $5A, $06, $55, $5A, $06,
+    db $8C, $5A, $06, $B8, $5A, $06, $E4, $5A, $06, $10, $5B, $06, $3C, $5B, $06, $68,
+    db $5B, $06, $94, $5B, $06, $C0, $5B, $06, $17, $5C, $06, $52, $5C, $06, $8D, $5C,
+    db $06, $C4, $5C, $06, $FB, $5C, $06, $F7, $5D, $06, $75, $5E, $06, $F3, $5E, $06,
+    db $2A, $5F, $06, $A8, $5F, $06, $DF, $5F, $06, $5D, $60, $06, $94, $60, $06, $12,
+    db $61, $06, $49, $61, $06, $C7, $61, $06, $FE, $61, $06, $7C, $62, $06, $B7, $62,
+    db $06, $35, $63, $06, $B9, $63, $06, $4C, $64, $06, $4D, $64, $06, $4E, $64, $06,
+    db $4F, $64, $06, $CD, $64, $06, $4B, $65, $06, $C4, $65, $06, $42, $66, $06, $C0,
+    db $66, $06, $44, $67, $06, $87, $67, $06, $02, $68, $06, $03, $68, $06, $04, $68,
+    db $06, $05, $68, $06, $06, $68, $06, $3D, $68, $06, $BB, $68, $06, $F2, $68, $06,
+    db $29, $69, $06, $60, $69, $06, $DB, $69, $06, $06, $6A, $06, $31, $6A, $06, $5C,
+    db $6A, $06, $5C, $6A, $06, $5C, $6A, $06, $87, $6A, $06, $BE, $6A, $06, $3C, $6B,
+    db $06, $3D, $6B, $06, $3E, $6B, $06, $B9, $6B, $06, $34, $6C, $06, $60, $6C, $06,
+    db $8C, $6C, $06, $B8, $6C, $06, $E4, $6C, $06, $16, $6D, $06, $42, $6D, $06, $6E,
+    db $6D, $06, $9A, $6D, $06, $15, $6E, $06, $90, $6E, $06, $91, $6E, $06, $CB, $6E,
+    db $06, $47, $6F, $06, $C5, $6F, $06, $43, $70, $06, $C1, $70, $06, $3F, $71, $06,
+    db $BD, $71, $06, $3B, $72, $06, $67, $72, $06, $93, $72, $06, $BF, $72, $06, $EB,
+    db $72, $06, $17, $73, $06, $79, $5D, $06, $43, $73, $06, $43, $73, $06, $7A, $73,
+    db $06, $B1, $73, $06, $E8, $73, $06, $1F, $74, $06, $9D, $74, $06, $1B, $75, $06,
+    db $99, $75, $06, $17, $76, $06, $4E, $76, $06, $CC, $76, $06, $03, $77, $06, $3A,
+    db $77, $06, $18, $78, $12, $48, $78, $12, $78, $78, $12, 
 
 Call_000_1850:
     rst $08
-    adc d
-    ld [hl], e
-    ld [de], a
-    adc [hl]
-    ld [hl], e
-    ld [de], a
-    sub d
-    ld [hl], e
-    ld [de], a
-    sub [hl]
-    ld [hl], e
-    ld [de], a
-    sbc d
-    ld [hl], e
-    ld [de], a
-    sbc [hl]
-    ld [hl], e
-    ld [de], a
-    and d
-    ld [hl], e
-    ld [de], a
-    and [hl]
-    ld [hl], e
-    ld [de], a
-    xor d
-    ld [hl], e
-    ld [de], a
-    xor [hl]
-    ld [hl], e
-    ld [de], a
-    or d
-    ld [hl], e
-    ld [de], a
-    or [hl]
-    ld [hl], e
-    ld [de], a
-    cp d
-    ld [hl], e
-    ld [de], a
-    cp [hl]
-    ld [hl], e
-    ld [de], a
-    jp nz, $1273
 
-    add $73
-    ld [de], a
-    jp z, $1273
-
-    adc $73
-    ld [de], a
+Label_000_1851:
+    db $8A, $73, $12, $8E, $73, $12, $92, $73, $12, $96, $73, $12, $9A, $73, $12, $9E,
+    db $73, $12, $A2, $73, $12, $A6, $73, $12, $AA, $73, $12, $AE, $73, $12, $B2, $73,
+    db $12, $B6, $73, $12, $BA, $73, $12, $BE, $73, $12, $C2, $73, $12, $C6, $73, $12,
+    db $CA, $73, $12, $CE, $73, $12, 
 
 Call_000_1887:
     rst $08
+
     and $73
     ld [de], a
     ld [$1274], sp
@@ -3930,7 +3657,7 @@ jr_000_2157:
 
 JumpToFunctionInTable:
     ld l, a
-    ld h, $00
+    ld h, 0
     add hl, hl
     ld e, l
     ld d, h ; de = 2*a

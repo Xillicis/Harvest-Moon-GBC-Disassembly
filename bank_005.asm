@@ -2973,7 +2973,7 @@ Label_005_50c9:
     ld [wDominantFacingTileProperty], a
     ret
 
-
+Label_005_51a7: ; 05x51a7
     ld a, [wPlayerXPosition]
     sub $07
     ld l, a
@@ -3321,7 +3321,7 @@ Label_005_52f7:
     ld [wDominantFacingTileProperty], a
     ret
 
-
+Label_005_53e2:
     ld a, [wPlayerYPosition]
     add $03
     ld l, a

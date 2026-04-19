@@ -5472,7 +5472,7 @@ jr_00f_6068:
     ld [$cc16], a
     ret
 
-
+Label_00f_606e:
     ld a, [$c820]
     or a
     jr z, jr_00f_60bc
@@ -5527,7 +5527,7 @@ jr_00f_60c2:
     ld [wPlayerIsFacingSprite], a
     ret
 
-
+Label_00f_60c8:
     ld a, [$c820]
     or a
     jr z, jr_00f_6116
@@ -5583,7 +5583,7 @@ jr_00f_611c:
     ld [wPlayerIsFacingSprite], a
     ret
 
-
+Label_00f_6122:
     ld a, [$c820]
     or a
     jr z, jr_00f_6170
@@ -5639,7 +5639,7 @@ jr_00f_6176:
     ld [wPlayerIsFacingSprite], a
     ret
 
-
+Label_00f_617c:
     ld a, [$c820]
     or a
     jr z, jr_00f_61ca

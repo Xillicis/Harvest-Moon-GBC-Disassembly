@@ -2,6 +2,7 @@ Call_00e_457b:
 Jump_00e_457b:
     ld a, [wPlayerFacingDirection]
     rst $00
+
     add a
     ld b, l
     adc a
@@ -10,6 +11,7 @@ Jump_00e_457b:
     ld b, l
     sbc a
     ld b, l
+
     call Call_000_14f9
     call Call_00e_52b9
     jr jr_00e_45a5
@@ -39,11 +41,11 @@ jr_00e_45a5:
     jr nz, .interactOrUseItem
 
     ld a, [wDominantFacingTileID]
-    cp $08
+    cp ID_HOT_SPRING_SIGN
     jp z, PrintSignHotSpringText
-    cp $09
+    cp ID_DONT_THROW_SIGN
     jp z, PrintSignDontThrowText
-    cp $0a
+    cp ID_PICK_AX_SIGN
     jp z, PrintSignPickAx
 
 .interactOrUseItem
@@ -126,11 +128,11 @@ jr_00e_4631:
 ; an item on an interactable object (like a harvest sprite or Mushroom berry thing).
 Cave_UseItem_SpriteInteraction:
     ld a, [wDominantFacingTileID]
-    cp $08
+    cp ID_HOT_SPRING_SIGN
     jp z, PrintSignHotSpringText
-    cp $09
+    cp ID_DONT_THROW_SIGN
     jp z, PrintSignDontThrowText
-    cp $0a
+    cp ID_PICK_AX_SIGN
     jp z, PrintSignPickAx
 
     ld a, [sItemSlot]
@@ -266,17 +268,17 @@ PrintSignPickAx:
 
 Jump_00e_4733:
     ld a, [sSpriteEventFlags+1]
-    bit 2, a
+    bit EVENT_DAY_AFTER_SAVING_SPRITE, a
     jr nz, jr_00e_4741
 
     ld a, [sSpriteEventFlags+1]
-    or a
-    jp nz, Jump_00e_47d2
+    or a ; check if boulder on Sprite
+    jp nz, EarthquakeDay_TalkToSprite
 
 Jump_00e_4741:
 jr_00e_4741:
     ld a, [sSpriteTotalHappiness]
-    cp $0a
+    cp 10
     jp nc, Jump_00e_47fd
 
 TalkToHarvestSprite1:
@@ -359,14 +361,14 @@ jr_00e_47c7:
     call RST_TableJumpBankSwitch
     ret
 
-Jump_00e_47d2:
+EarthquakeDay_TalkToSprite: ; 0ex47d2
     ld a, [$cc79]
     cp $00
     jp nz, Jump_00e_4741
 
     ld a, [sSpriteEventFlags+1]
-    bit 1, a
-    jp nz, Jump_00e_47ed
+    bit EVENT_BROKE_BOULDER_ON_SPRITE, a
+    jp nz, .brokeTheBoulder
 
     ld a, $e0
     call InitializeTextIDAndDisplay
@@ -374,7 +376,7 @@ Jump_00e_47d2:
     call RST_TableJumpBankSwitch
     ret
 
-Jump_00e_47ed:
+.brokeTheBoulder
     ld a, $e1
     call InitializeTextIDAndDisplay
     ld a, $00
@@ -390,9 +392,9 @@ Jump_00e_47fd:
 
     set EVENT_SPRITE_GAVE_BERRY, a
     ld [sSpriteEventFlags], a
-    ld a, $c2
+    ld a, TEXT_C2
     call InitializeTextIDAndDisplay
-    ld a, $00
+    ld a, 0
     call RST_TableJumpBankSwitch
     jp TalkToHarvestSprite1
 
@@ -413,7 +415,7 @@ ImproveSickleCheck:
     ld [sSpriteEventFlags], a
     ld a, TEXT_SPRITE_OFFER_SICKLE_UPGRADE 
     call InitializeTextIDAndDisplay
-    ld a, $00
+    ld a, 0
     call RST_TableJumpBankSwitch
     jp TalkToHarvestSprite1
 

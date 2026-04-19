@@ -18,11 +18,11 @@ SECTION "ROM Bank $020", ROMX[$4000], BANK[$20]
 Data_020_4041:
     RGB 28,19,19, 5,5,0, 2,22,2, 29,0,0
 FarmToolOBJPalette: ; 20x4049
-    db $7C, $4E, $A5, $00, $79, $1E, $7F, $3B
-Data_020_4051:
-    db $7C, $4E, $A5, $00, $1F, $00, $FF, $7F
+    RGB 28,19,19, 5,5,0, 25,19,7, 31,27,14
+Data_020_4051: ; 20x4051
+    RGB 28,19,19, 5,5,0, 31,0,0, 31,31,31
 WateringCanOBJPalette: ; 20x4059
-    db $7C, $4E, $A5, $00, $40, $7E, $FF, $7F
+    RGB 28,19,19, 5,5,0, 0,18,31, 31,31,31
 Data_020_4061:
     db $7C, $4E, $A5, $00, $D8, $42, $FF, $7F
 Data_020_4069:
@@ -30,11 +30,11 @@ Data_020_4069:
 Data_020_4071:
     db $7C, $4E, $A5, $00, $A5, $07, $5F, $00
 MilkerOBJPalette: ; 20x4079
-    db $7C, $4E, $A5, $00, $5F, $42, $FF, $7F
+    RGB 28,19,19, 5,5,0, 31,18,16, 31,31,31
 Data_020_4081: ; 20x4081
     db $7C, $4E, $A5, $00, $D0, $29, $F8, $3E
 CutAutumnGrassOBJPalette: ; 20x4089
-    db $7C, $4E, $EC, $00, $96, $09, $BF, $06
+    RGB 28,19,19, 12,7,0, 22,12,2, 31,21,1
 Data_020_4091:
     db $7C, $4E, $A5, $00, $B4, $1D, $7F, $1B
 Data_020_4099:
@@ -50,7 +50,7 @@ Data_020_40b9:
 Data_020_40c1:
     db $7C, $4E, $A5, $00, $B3, $11, $9A, $0E
 SprinklerOBJPalette: ; 20x40c9
-    db $7C, $4E, $A5, $00, $DB, $02, $9F, $1B
+    RGB 28,19,19, 5,5,0, 27,22,0, 31,28,6
 PickedUpTurnipPalette: ; 20x40d1
     db $7C, $4E, $A5, $00, $40, $0A, $FF, $7F
 Data_020_40d9:
@@ -72,7 +72,7 @@ Data_020_4111:
 Data_020_4119:
     db $7C, $4E, $A5, $00, $B4, $1D, $FF, $7F
 SuperFarmToolOBJPalette: ; 20x4121
-    db $7C, $4E, $C6, $00, $DB, $02, $FF, $03
+    RGB 28,19,19, 6,6,0, 27,22,0, 31,31,0
 WaterDroppletOBJPalette: ; 20x4129
     db $7C, $4E, $A5, $00, $C7, $7F, $FF, $7F
 PickedUpStonePalette: ; 20x4131
@@ -1904,7 +1904,7 @@ LoadUsedItemOBJPalette: ; 20x6df4
     call SyncLoadSpritePalette3
     ret
 
-LoadItemPalette_TableJump:
+LoadItemPalette_TableJump: ; 20x6f8e
     ld a, [sCurrentlyHeldItem]
     rst $00
 

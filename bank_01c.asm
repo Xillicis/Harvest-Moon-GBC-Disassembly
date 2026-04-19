@@ -4441,7 +4441,7 @@ jr_01c_52c3:
     ld e, $1e
     or [hl]
     or [hl]
-    call c, Call_000_18a0
+    call c, $18a0
     add b
     dec b
     ld bc, $00fe
