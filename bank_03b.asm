@@ -72,7 +72,7 @@ jr_03b_4044:
     ld [$cd6f], a
     ld hl, $4001
     ld d, $31
-    call Call_000_095c
+    call QueueBankedTileCopyTo8000
     pop af
     ld b, a
     ld de, $99c2
@@ -151,7 +151,7 @@ jr_03b_40b3:
     push hl
     ld hl, $4001
     ld d, $31
-    call Call_000_095c
+    call QueueBankedTileCopyTo8000
     pop hl
     ld e, [hl]
     inc hl
@@ -1620,7 +1620,7 @@ jr_03b_4762:
     xor a
     ld [$cb68], a
     push hl
-    call Call_000_2527
+    call InitializeAudioEngine
     pop hl
     ret
 

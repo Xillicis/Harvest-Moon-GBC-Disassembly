@@ -1852,7 +1852,7 @@ jr_01d_49fc:
     push hl
     ld de, $9800
     call Call_01d_5145
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     ld a, [$dd00]
     or a
     jr z, jr_01d_4a23

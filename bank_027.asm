@@ -13053,7 +13053,7 @@ jr_027_787f:
     ld a, $83
     ld [wLCDCTempStorage], a
     call ZeroOutHL
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     call Call_000_2424
     call SafeTurnOffLCDDuringVBlank
     ld hl, $7976
@@ -13099,7 +13099,7 @@ jr_027_7912:
     ldh [rBGP], a
     ldh [rOBP0], a
     ldh [rOBP1], a
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     call Call_000_2424
     call SafeTurnOffLCDDuringVBlank
     ld hl, $7996

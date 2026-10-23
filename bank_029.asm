@@ -5453,7 +5453,7 @@ jr_029_5d34:
     jp hl
 
 
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     ld a, [$dd00]
     or a
     jr z, jr_029_5d5e
@@ -8343,7 +8343,7 @@ jr_029_6999:
     jr z, jr_029_6a00
 
     push bc
-    call Call_000_2527
+    call InitializeAudioEngine
     pop bc
     ld a, b
     call Call_000_25c5
@@ -8352,7 +8352,7 @@ jr_029_6999:
 
 jr_029_69f1:
     push bc
-    call Call_000_2527
+    call InitializeAudioEngine
     pop bc
     ld a, b
     call Call_000_25c8

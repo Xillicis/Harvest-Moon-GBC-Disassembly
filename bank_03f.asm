@@ -2288,7 +2288,7 @@ jr_03f_4ae1:
     pop hl
     ld a, [hl+]
     ld [$cdb5], a
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     ret
 
 
@@ -5643,7 +5643,7 @@ jr_03f_5b6b:
 
 
     push bc
-    call Call_000_2527
+    call InitializeAudioEngine
     ld a, $46
     call Call_000_25cb
     pop hl
@@ -9890,7 +9890,7 @@ jr_03f_6fb4:
     and $01
     jr z, jr_03f_6ff3
 
-    call Call_000_2527
+    call InitializeAudioEngine
     ld hl, $716e
     ld a, [$cb68]
     add a

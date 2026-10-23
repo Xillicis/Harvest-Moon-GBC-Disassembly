@@ -70,14 +70,14 @@ Start:
     ld hl, $dd00
     ld bc, $00ff
     call ZeroOutHL
-    call InitializeHRAM
+    call OAMDMARoutineTemplate
     xor a
     ldh [rBGP], a
     xor a
     ldh [rOBP0], a
     xor a
     ldh [rOBP1], a
-    call Call_000_2527
+    call InitializeAudioEngine
     ld a, $02
     ldh [$ff8d], a
     call SafeTurnOffLCDDuringVBlank
@@ -125,7 +125,7 @@ Jump_000_01b1:
     ld hl, wShadowOAM ; 0xc000 beginning of wram.
     ld bc, $1cff
     call ZeroOutHL
-    call InitializeHRAM
+    call OAMDMARoutineTemplate
     xor a
     ld [MBC3SRamBank], a
     ld a, [$dff7]
@@ -207,7 +207,7 @@ Jump_000_0217:
     pop af
     pop hl
     call Call_000_0061
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     ei
 
 Jump_000_026d:
@@ -226,7 +226,7 @@ ConditionalClearBGMap0_Bank1:
     ldh [c], a ; load VRAM1
     xor a
     ldh [$ffa4], a
-    call ClearBGMap0_duplicate
+    call FillBGMap0FromHRAM
     ld c, rVBK_c
     xor a
     ldh [c], a ; change back to VRAM0
@@ -464,12 +464,13 @@ ClearUnusedOAMEntries:
     ld bc, $0014
     jp ZeroOutHL
 
+; Returns `HL = wVRAMBlitCommandList + [$ff97]`
 GetVRAMCommandWritePointer:
     ld hl, wVRAMBlitCommandList
     ldh a, [$ff97]
     add l
     ld l, a
-    ld a, $00
+    ld a, 0
     adc h
     ld h, a
     ret
@@ -482,10 +483,9 @@ Call_000_0930:
     ret
 
     set 7, e
-    jr jr_000_093b
+    jr QueueHorizontalVRAMFill
 
-Call_000_093b:
-jr_000_093b:
+QueueHorizontalVRAMFill:
     call GetVRAMCommandWritePointer
     ld a, b
     ld [hl+], a
@@ -502,37 +502,37 @@ jr_000_093b:
     ldh [$ff97], a
     ret
 
-Call_000_0951:
+QueueVRAMByteWrite:
     push de
     ld d, a
     ld e, $01
     ld b, h
     ld c, l
-    call Call_000_093b
+    call QueueHorizontalVRAMFill
     pop de
     ret
 
-Call_000_095c:
+QueueBankedTileCopyTo8000:
     ld a, [MBC3SRamBank]
     push af
     ld a, d
     ld [MBC3RomBank], a
-    call Call_000_0994
+    call QueueTileCopyTo8000
     pop af
     ld [MBC3RomBank], a
     ret
 
-Call_000_096c:
+QueueBankedTileCopyTo9000:
     ld a, [MBC3SRamBank]
     push af
     ld a, d
     ld [MBC3RomBank], a
-    call Call_000_097c
+    call QueueTileCopyTo9000
     pop af
     ld [MBC3RomBank], a
     ret
 
-Call_000_097c:
+QueueTileCopyTo9000:
     ld a, c
     ld b, h
     ld c, l
@@ -553,7 +553,7 @@ Call_000_097c:
     ld de, $9000
     jr jr_000_09aa
 
-Call_000_0994:
+QueueTileCopyTo8000:
     ld a, c
     ld b, h
     ld c, l
@@ -868,7 +868,7 @@ Call_000_0ac1:
 .jr_000_0ad8
     push hl
     push bc
-    call Call_000_0951
+    call QueueVRAMByteWrite
     pop bc
     pop hl
     jr .loop
@@ -1209,7 +1209,7 @@ Jump_000_0ec5:
     ret
 
 Call_000_0ece:
-    call Call_000_2527
+    call InitializeAudioEngine
     ld a, [sCurrentWeather]
     cp RAINY_DAY
     jr z, jr_000_0f03
@@ -3812,7 +3812,7 @@ jr_000_222f:
     ldh [rP1], a
     ret
 
-InitializeHRAM: ; 0x2242
+OAMDMARoutineTemplate: ; 0x2242
     ld c, $80
     ld b, 10
     ld hl, Data_000_2250
@@ -3846,7 +3846,7 @@ SafeTurnOffLCDDuringVBlank:
     ldh [rIE], a
     ret
 
-Call_000_2273: ; 00x2273
+RestoreLCDCFromShadow: ; 00x2273
     ld a, [wLCDCTempStorage]
     ldh [rLCDC], a
     ret
@@ -3887,7 +3887,7 @@ ClearBGMap1:
     ld hl, $9fff
     jr BeginZeroing
 
-ClearBGMap0_duplicate:
+FillBGMap0FromHRAM:
     ld hl, $9bff
     ld bc, $0400
 .loop
@@ -3918,7 +3918,7 @@ BeginBlitting:
     dec a
     jr z, HorizontalFill
     dec a
-    jr z, VerticalFill
+    jr z, VerticalCopy
 ; fallthrough
 .verticalCopy
     ld a, [de]
@@ -3960,7 +3960,7 @@ HorizontalFill:
     jr nz, .fill
     jr ExecuteVRAMBlitCommands
 
-VerticalFill:
+VerticalCopy:
 .fill
     ld a, [de]
     ld [hl], a
@@ -4022,13 +4022,19 @@ BankedCopyHLtoDEBig:
     ld a, h
     pop hl
     push af
-    call Call_000_2334
+    call DecompressRLE
     pop af
     ld [MBC3RomBank], a
     ret
 
-Call_000_2334:
-jr_000_2334:
+; HL = compressed source
+; DE = destination
+; BC = number of output bytes
+;
+; Encoding:
+;   byte != $ff       -> emit that byte
+;   $ff, count, value -> emit value count times
+DecompressRLE:
     ld a, [hli]
     cp $ff
     jr z, jr_000_2341
@@ -4037,7 +4043,7 @@ jr_000_2334:
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_2334
+    jr nz, DecompressRLE
     ret
 
 jr_000_2341:
@@ -4070,7 +4076,7 @@ jr_000_2357:
     dec bc
     ld a, b
     or c
-    jr nz, jr_000_2334
+    jr nz, DecompressRLE
 
     ret
 
@@ -4390,7 +4396,7 @@ jr_000_250e:
 
     ret
 
-Call_000_2527:
+InitializeAudioEngine:
     ld bc, $0000
     call Call_000_2569
     ld a, $80

@@ -334,7 +334,7 @@ jr_006_41e2:
     jp hl
 
 
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     pop hl
     ret
 
@@ -3411,7 +3411,7 @@ jr_006_4ff2:
     ld [$cd6f], a
     ld hl, $4001
     ld d, $11
-    call Call_000_096c
+    call QueueBankedTileCopyTo9000
     pop af
     ld b, a
     ld de, $99c2

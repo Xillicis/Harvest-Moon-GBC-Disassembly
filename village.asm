@@ -97,7 +97,7 @@ jr_01b_4044:
     ld [wVillageTextTileNumber], a
     ld hl, TextFontTileset
     ld d, BANK(TextFontTileset)
-    call Call_000_095c
+    call QueueBankedTileCopyTo8000
     pop af
     ld b, a
     ld de, vBGMap0 + $1c2
@@ -174,7 +174,7 @@ jr_01b_40b3:
     push hl
     ld hl, $4001
     ld d, $11
-    call Call_000_095c
+    call QueueBankedTileCopyTo8000
     pop hl
     ld e, [hl]
     inc hl
@@ -1638,7 +1638,7 @@ Label_01b_4779:
     xor a
     ld [$cb68], a
     push hl
-    call Call_000_2527
+    call InitializeAudioEngine
     pop hl
     ret
 

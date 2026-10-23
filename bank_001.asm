@@ -4044,7 +4044,7 @@ Call_001_6b05:
     ld [$c7ca], a
     ld a, $10
     ld [$c7cb], a
-    call Call_000_2527
+    call InitializeAudioEngine
     ld a, $40
     call Call_000_25ce
     ret

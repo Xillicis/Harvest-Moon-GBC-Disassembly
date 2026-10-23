@@ -1703,7 +1703,7 @@ jr_007_7832:
     ld a, $83
     ld [wLCDCTempStorage], a
     call ZeroOutHL
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     call Call_000_2424
     call SafeTurnOffLCDDuringVBlank
     ld hl, $79f9
@@ -1801,7 +1801,7 @@ jr_007_78f0:
     ld a, $83
     ld [wLCDCTempStorage], a
     call ZeroOutHL
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     call Call_000_2424
     call SafeTurnOffLCDDuringVBlank
     ld hl, $79f9
@@ -1847,7 +1847,7 @@ jr_007_7983:
     ldh [rBGP], a
     ldh [rOBP0], a
     ldh [rOBP1], a
-    call Call_000_2273
+    call RestoreLCDCFromShadow
     call Call_000_2424
     call SafeTurnOffLCDDuringVBlank
     ld hl, $7a19
