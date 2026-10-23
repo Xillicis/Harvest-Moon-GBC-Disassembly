@@ -9922,7 +9922,7 @@ jr_03f_6fe1:
     jr nz, jr_03f_6feb
 
     ld a, b
-    call Call_000_25c8
+    call StartThreeAudioTracks
     jr jr_03f_6ff3
 
 jr_03f_6feb:

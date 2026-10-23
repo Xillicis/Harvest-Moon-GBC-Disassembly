@@ -44,7 +44,7 @@ SECTION "ROM Bank $027", ROMX[$4000], BANK[$27]
     cp $02
     call z, Call_027_432c
     ld a, $08
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ret
 
 

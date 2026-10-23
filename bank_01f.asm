@@ -10192,7 +10192,7 @@ jr_01f_710a:
     jr nz, jr_01f_7114
 
     ld a, b
-    call Call_000_25c8
+    call StartThreeAudioTracks
     jr jr_01f_711c
 
 jr_01f_7114:

@@ -9444,7 +9444,7 @@ jr_03d_6d1c:
     ld a, $03
     ldh [rIE], a
     ld a, $08
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ld a, $ff
     ld [wTextID], a
     xor a
@@ -10221,7 +10221,7 @@ jr_03d_7174:
     ld a, $03
     ldh [rIE], a
     ld a, $08
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ld a, $ff
     ld [wTextID], a
     xor a

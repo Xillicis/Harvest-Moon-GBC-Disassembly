@@ -8358,7 +8358,7 @@ Jump_009_6a4b:
     call InitializeAudioEngine
     pop bc
     ld a, b
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ret
 
 

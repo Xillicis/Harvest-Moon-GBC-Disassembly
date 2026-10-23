@@ -7546,7 +7546,7 @@ jr_02f_6c1a:
     ld a, $03
     ldh [rIE], a
     ld a, $1b
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ld hl, $c0a3
     inc hl
     ld a, $72

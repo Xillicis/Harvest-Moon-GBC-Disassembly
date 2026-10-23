@@ -1228,7 +1228,7 @@ PlaySeasonalOrWeatherAudio:
 
 PlaySpringAudio:
     ld a, $08
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ret
 
 PlaySummerAudio:
@@ -4509,7 +4509,7 @@ Call_000_25c5:
     call StartAudioTrack
 
 ; call 3x
-Call_000_25c8:
+StartThreeAudioTracks:
     call StartAudioTrack
 
 ; call 2x
@@ -7233,7 +7233,7 @@ jr_000_3fdc:
 
 
     ld a, $08
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ret
 
     db $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff

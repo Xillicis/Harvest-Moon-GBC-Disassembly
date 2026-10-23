@@ -8355,7 +8355,7 @@ jr_029_69f1:
     call InitializeAudioEngine
     pop bc
     ld a, b
-    call Call_000_25c8
+    call StartThreeAudioTracks
     ret
 
 
