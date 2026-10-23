@@ -6197,7 +6197,7 @@ Call_00f_64ca:
     ret nz
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

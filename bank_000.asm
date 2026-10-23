@@ -1243,12 +1243,12 @@ PlayAutumnAudio:
 
 PlayRainyWeatherAudio:
     ld a, $40
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 PlayWindyWeatherAudio:
     ld a, $41
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 Call_000_0f0f:
@@ -4506,18 +4506,18 @@ jr_000_25c0:
 
 ; call 4x
 Call_000_25c5:
-    call Call_000_25ce
+    call StartAudioTrack
 
 ; call 3x
 Call_000_25c8:
-    call Call_000_25ce
+    call StartAudioTrack
 
 ; call 2x
 Call_000_25cb:
-    call Call_000_25ce
+    call StartAudioTrack
 
 ; call 1x
-Call_000_25ce:
+StartAudioTrack:
     push bc
     push de
     push hl
@@ -7190,7 +7190,7 @@ Call_000_3fae:
     push de
     push bc
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     pop bc
     pop de
     pop hl

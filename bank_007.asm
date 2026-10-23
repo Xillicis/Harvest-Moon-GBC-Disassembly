@@ -306,7 +306,7 @@ Jump_007_41db:
     ld a, $24
     ld [$c90d], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

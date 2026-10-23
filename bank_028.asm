@@ -369,7 +369,7 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
     ret nz
 
     ld a, $58
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -386,7 +386,7 @@ SECTION "ROM Bank $028", ROMX[$4000], BANK[$28]
 
 jr_028_418d:
     ld a, $40
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1013,13 +1013,13 @@ jr_028_44f0:
     jr z, jr_028_44fd
 
     ld a, $2e
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
 jr_028_44fd:
     ld a, $2f
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1255,7 +1255,7 @@ jr_028_4612:
     ret nz
 
     ld a, $37
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
@@ -1347,7 +1347,7 @@ jr_028_468f:
 
 jr_028_46b7:
     ld a, $53
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1356,7 +1356,7 @@ jr_028_46b7:
     ret nz
 
     ld a, $3a
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
@@ -1559,7 +1559,7 @@ Jump_028_4804:
     ret nz
 
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
@@ -1718,7 +1718,7 @@ jr_028_48e7:
     ret nz
 
     ld a, $37
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
@@ -1795,7 +1795,7 @@ jr_028_4933:
 
 jr_028_4975:
     ld a, $3b
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz
@@ -2040,7 +2040,7 @@ jr_028_4aea:
 
 jr_028_4b19:
     ld a, $32
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wSTAT_HandlerIndex]
     cp $03
     ret z
@@ -2176,7 +2176,7 @@ Jump_028_4c1a:
     ret nz
 
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -2230,7 +2230,7 @@ jr_028_4c6d:
     ld a, $2c
     call $16d1
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ld a, $01
     ldh [$ffb7], a
@@ -2358,7 +2358,7 @@ jr_028_4d15:
     ld a, $2c
     call $16d1
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ld a, $01
     ldh [$ffb7], a
@@ -2489,7 +2489,7 @@ jr_028_4dbf:
     ld a, $2c
     call $16d1
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ld a, $01
     ldh [$ffb7], a
@@ -2617,7 +2617,7 @@ jr_028_4e68:
     ld a, $2c
     call $16d1
     ld a, $30
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ld a, $01
     ldh [$ffb7], a
@@ -2744,7 +2744,7 @@ Jump_028_4f10:
 
 jr_028_4f15:
     ld a, $3d
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -2757,7 +2757,7 @@ jr_028_4f15:
 
 jr_028_4f23:
     ld a, $3c
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -2773,7 +2773,7 @@ jr_028_4f23:
     dec a
     ld [sCurrentWaterInWateringCan], a
     ld a, $32
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $35
     call $16d1
     ld a, [wPlayerFacingDirection]
@@ -3050,7 +3050,7 @@ Jump_028_5083:
     ret nz
 
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3059,7 +3059,7 @@ Jump_028_5083:
     ret nz
 
     ld a, $3e
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3068,7 +3068,7 @@ Jump_028_5083:
     ret nz
 
     ld a, $3f
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3365,7 +3365,7 @@ Jump_028_5254:
     ld a, $59
     call $16d1
     ld a, $31
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -5654,13 +5654,13 @@ jr_028_5f17:
     jr z, jr_028_5f32
 
     ld a, $2e
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
 jr_028_5f32:
     ld a, $2f
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

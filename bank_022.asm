@@ -3849,7 +3849,7 @@ Call_022_54ff:
     jr nz, jr_022_5512
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_022_5512:
     ldh a, [$ff8a]

@@ -659,7 +659,7 @@ UseAnimalFeed:
     ld a, $18
     call RST_TableJumpBankSwitch
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $5a
     ld [wInputFreezeTimer], a
     ld hl, sInventory

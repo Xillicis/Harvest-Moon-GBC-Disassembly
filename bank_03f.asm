@@ -2924,7 +2924,7 @@ jr_03f_4e10:
     set 0, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
 
@@ -2942,7 +2942,7 @@ jr_03f_4e24:
     res 0, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
 
@@ -2960,7 +2960,7 @@ jr_03f_4e38:
     res 1, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
 
@@ -2978,7 +2978,7 @@ jr_03f_4e4c:
     set 1, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
 
@@ -3689,7 +3689,7 @@ jr_03f_5235:
     xor a
     ld [$cd98], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_03f_5248:
     dec hl
@@ -3706,7 +3706,7 @@ jr_03f_524b:
     ld [wVillageCursorPositionFlag], a
     ld [$cd98], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_03f_525d:
     dec hl
@@ -3793,7 +3793,7 @@ jr_03f_52b8:
 
 jr_03f_52c0:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
     ld a, [hl+]
@@ -3950,7 +3950,7 @@ jr_03f_536e:
 jr_03f_5375:
     call Call_03f_53a1
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd98], a
     ld a, [hl+]
@@ -9906,7 +9906,7 @@ jr_03f_6fb4:
     jr nz, jr_03f_6fd7
 
     ld a, b
-    call Call_000_25ce
+    call StartAudioTrack
     jr jr_03f_6ff3
 
 jr_03f_6fd7:

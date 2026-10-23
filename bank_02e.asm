@@ -1413,7 +1413,7 @@ jr_02e_48b3:
     ld a, $30
     ld [wHeldObject], a
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $07
@@ -1462,7 +1462,7 @@ jr_02e_48f8:
     ld a, $01
     ld [wHeldObject], a
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $09
@@ -1558,7 +1558,7 @@ jr_02e_4982:
     ld a, $3d
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -1573,7 +1573,7 @@ jr_02e_49b3:
     ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [sSpriteDailyHappiness]
@@ -1604,7 +1604,7 @@ Jump_02e_49e3:
     xor a
     ld [wHeldObject], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -1633,7 +1633,7 @@ Jump_02e_4a06:
     xor a
     ld [wHeldObject], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc19]
@@ -1658,7 +1658,7 @@ jr_02e_4a4a:
     ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [sSpriteDailyHappiness]
@@ -1709,7 +1709,7 @@ Jump_02e_4aa0:
     xor a
     ld [wHeldObject], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc19]
@@ -1730,7 +1730,7 @@ Jump_02e_4ad6:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $0a
@@ -2644,7 +2644,7 @@ Jump_02e_4fc4:
     ret nz
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3574,7 +3574,7 @@ jr_02e_54c4:
 
 jr_02e_54e4:
     ld a, $58
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3919,7 +3919,7 @@ jr_02e_5723:
     ld a, $01
     ld [$cc6f], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $22
     call RST_TableJumpBankSwitch
     ld a, $3d
@@ -3939,7 +3939,7 @@ Jump_02e_5741:
     xor a
     ld [$cc6f], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $23
     call RST_TableJumpBankSwitch
     ld a, $3e
@@ -4348,7 +4348,7 @@ Jump_02e_598e:
     jr nz, jr_02e_59a4
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_02e_59a4:
     ret
@@ -5222,7 +5222,7 @@ Jump_02e_5ec0:
     ld a, $32
     ld [wHeldObject], a
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     xor a
@@ -5298,7 +5298,7 @@ Jump_02e_5f4a:
     ld a, $18
     ld [wInputFreezeTimer], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [$cc72], a
     ld b, $02
@@ -5371,7 +5371,7 @@ Jump_02e_5ff3:
     jr nz, jr_02e_6009
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_02e_6009:
     ret
@@ -6148,7 +6148,7 @@ Jump_02e_64c2:
     jr nz, jr_02e_64d8
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_02e_64d8:
     ret

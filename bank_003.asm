@@ -1293,7 +1293,7 @@ jr_003_47ba:
     ld a, $61
     call $16d1
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $03
@@ -1316,7 +1316,7 @@ jr_003_4806:
     ld a, $64
     call $16d1
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $03
@@ -1415,7 +1415,7 @@ Jump_003_4865:
 
 jr_003_48b6:
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $03
@@ -2301,7 +2301,7 @@ Jump_003_4de5:
     ld a, $19
     call $16d1
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $03
@@ -2413,7 +2413,7 @@ Call_003_4e26:
     ld a, $33
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2446,7 +2446,7 @@ Call_003_4e26:
     ld a, $1c
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2458,7 +2458,7 @@ jr_003_4ecf:
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
 
 Jump_003_4ede:
     call Call_003_56a5
@@ -2600,7 +2600,7 @@ Call_003_4f86:
     ld a, $28
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2618,7 +2618,7 @@ jr_003_4fdb:
     ld a, $27
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     call Call_003_56a5
@@ -2671,7 +2671,7 @@ jr_003_4fdb:
     ld a, $26
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2689,7 +2689,7 @@ jr_003_5054:
     ld a, $25
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     call Call_003_56a5
@@ -2742,7 +2742,7 @@ jr_003_5054:
     ld a, $24
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2760,7 +2760,7 @@ jr_003_50ce:
     ld a, $23
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     call Call_003_56a5
@@ -2800,7 +2800,7 @@ jr_003_50ce:
     ld a, $5b
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2810,7 +2810,7 @@ jr_003_512a:
     ld a, $61
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     call Call_003_56a5
@@ -2837,7 +2837,7 @@ jr_003_512a:
     ld a, $5e
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ret
@@ -2847,7 +2847,7 @@ jr_003_516f:
     ld a, $64
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     call Call_003_56a5
@@ -2989,7 +2989,7 @@ jr_003_521a:
     jr nz, jr_003_5236
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_003_5236:
     ret

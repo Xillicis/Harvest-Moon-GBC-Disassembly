@@ -472,7 +472,7 @@ jr_030_42c2:
     ret nz
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

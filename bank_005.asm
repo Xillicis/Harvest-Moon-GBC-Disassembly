@@ -193,7 +193,7 @@ Call_005_413b:
     xor a
     ld [hl], a
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [wDominantFacingTileID]
     dec a
     ld h, $00
@@ -2776,7 +2776,7 @@ jr_005_4b1a:
 
 jr_005_5079:
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld hl, $5021
     jr jr_005_5086
 

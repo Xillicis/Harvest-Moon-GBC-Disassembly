@@ -398,7 +398,7 @@ jr_009_4194:
 
 jr_009_4225:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -2342,7 +2342,7 @@ jr_009_4c25:
     pop af
     ld [$cd30], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -2355,7 +2355,7 @@ jr_009_4c48:
     pop af
     ld [$cd30], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     inc hl
     inc hl
     ld a, [hl+]
@@ -2387,7 +2387,7 @@ jr_009_4c5e:
     pop af
     ld [$cd30], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -2400,7 +2400,7 @@ jr_009_4c80:
     pop af
     ld [$cd30], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     inc hl
     inc hl
     ld a, [hl+]
@@ -5578,7 +5578,7 @@ jr_009_5dfc:
     res 0, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd67], a
 
@@ -5596,7 +5596,7 @@ jr_009_5e10:
     set 0, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd67], a
 
@@ -5614,7 +5614,7 @@ jr_009_5e24:
     res 1, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd67], a
 
@@ -5632,7 +5632,7 @@ jr_009_5e38:
     set 1, a
     ld [bc], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd67], a
 
@@ -7725,7 +7725,7 @@ jr_009_6755:
     xor a
     ld [$cd67], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     inc hl
     inc hl
     ld a, [hl+]
@@ -7747,7 +7747,7 @@ jr_009_676e:
     xor a
     ld [$cd67], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     inc hl
     inc hl
     ld a, [hl+]
@@ -8370,7 +8370,7 @@ jr_009_6a54:
 
 jr_009_6a59:
     ld a, b
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

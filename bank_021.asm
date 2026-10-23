@@ -1027,7 +1027,7 @@ Jump_021_468e:
     jr nz, jr_021_46a1
 
     ld a, $34
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_021_46a1:
     ldh a, [$ff8a]
@@ -1159,7 +1159,7 @@ jr_021_4739:
     ld a, $24
     ld [$c90d], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1260,7 +1260,7 @@ jr_021_47de:
     ld a, $24
     ld [$c90d], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1360,7 +1360,7 @@ jr_021_4880:
     ld a, $24
     ld [$c90d], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -1461,7 +1461,7 @@ jr_021_4925:
     ld a, $24
     ld [$c90d], a
     ld a, $33
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -2837,7 +2837,7 @@ jr_021_5388:
 Jump_021_5396:
 jr_021_5396:
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ldh a, [$ffa4]
     ld h, $00
     ld l, a
@@ -2966,7 +2966,7 @@ Jump_021_5443:
     call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3245,7 +3245,7 @@ Call_021_55c5:
     ld a, $33
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3374,7 +3374,7 @@ jr_021_5667:
     xor a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3518,7 +3518,7 @@ jr_021_571e:
     xor a
     ld [wPlayerIsCarryingItem], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -3534,7 +3534,7 @@ Jump_021_5773:
     call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4036,7 +4036,7 @@ jr_021_5a82:
 
 jr_021_5a88:
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [$cb80], a
     ld a, $08
@@ -4112,7 +4112,7 @@ jr_021_5aef:
     ld a, $1c
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4143,7 +4143,7 @@ jr_021_5aef:
     ld a, $5c
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4174,7 +4174,7 @@ jr_021_5aef:
     ld a, $82
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4205,7 +4205,7 @@ jr_021_5aef:
     ld a, $11
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4236,7 +4236,7 @@ jr_021_5aef:
     ld a, $11
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4267,7 +4267,7 @@ jr_021_5aef:
     ld a, $11
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4298,7 +4298,7 @@ jr_021_5aef:
     ld a, $11
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4329,7 +4329,7 @@ jr_021_5aef:
     ld a, $11
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4360,7 +4360,7 @@ jr_021_5aef:
     ld a, $ec
     ld [wDominantFacingTileID], a
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -4550,7 +4550,7 @@ Jump_021_5dc3:
 Jump_021_5dd3:
 jr_021_5dd3:
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [$cb80], a
     ld a, [sCurrentHour]
@@ -4560,7 +4560,7 @@ jr_021_5dd3:
     ld a, [wHeldObject]
     call Call_000_1cff
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
 
 jr_021_5def:
     pop hl
@@ -4569,7 +4569,7 @@ jr_021_5def:
 
 Jump_021_5df1:
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [$cb80], a
     ld hl, $9800
@@ -5304,7 +5304,7 @@ Jump_021_6253:
     ld a, $18
     call RST_TableJumpBankSwitch
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $5a
     ld [wInputFreezeTimer], a
     ld hl, sInventory
@@ -6581,7 +6581,7 @@ Call_021_6998:
     ld [$c7cb], a
     call InitializeAudioEngine
     ld a, $40
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

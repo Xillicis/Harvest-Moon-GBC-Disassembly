@@ -1221,7 +1221,7 @@ Jump_001_543d:
 Jump_001_5458:
 jr_001_5458:
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ldh a, [$ffa4]
     ld h, $00
     ld l, a
@@ -1363,7 +1363,7 @@ Jump_001_5517:
     call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 

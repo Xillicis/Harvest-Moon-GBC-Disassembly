@@ -1125,7 +1125,7 @@ jr_01d_45f8:
     ld [$cd67], a
     ld [$cd68], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [$cd66], a
 
@@ -1148,7 +1148,7 @@ jr_01d_4618:
     ld [$cd67], a
     ld [$cd68], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [$cd66], a
 
@@ -1160,7 +1160,7 @@ jr_01d_4634:
 
 jr_01d_4637:
     ld a, $42
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd66]
     add a
     add l
@@ -2010,7 +2010,7 @@ jr_01d_4a9e:
 
 jr_01d_4ac9:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd65]
     sub $01
     jr nc, jr_01d_4ad7
@@ -2027,7 +2027,7 @@ jr_01d_4ad7:
 
 jr_01d_4ade:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd65]
     inc a
     cp $0d
@@ -2046,7 +2046,7 @@ jr_01d_4aec:
 Jump_01d_4af3:
 jr_01d_4af3:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd66]
     sub $01
     jr nc, jr_01d_4b01
@@ -2064,7 +2064,7 @@ jr_01d_4b01:
 Jump_01d_4b08:
 jr_01d_4b08:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd66]
     inc a
     cp $06
@@ -2177,7 +2177,7 @@ jr_01d_4b7d:
 Jump_01d_4b8a:
 jr_01d_4b8a:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld bc, $0b05
     ld a, [$cd69]
     cp $02
@@ -2228,7 +2228,7 @@ jr_01d_4b9b:
 
 jr_01d_4bce:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd65]
     sub $01
     jr nc, jr_01d_4bdc
@@ -2245,7 +2245,7 @@ jr_01d_4bdc:
 
 jr_01d_4be3:
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, [$cd65]
     inc a
     cp $0a
@@ -3040,7 +3040,7 @@ Jump_01d_4f64:
     ld a, $48
 
 jr_01d_4f6d:
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [hl], a
 
@@ -3058,7 +3058,7 @@ Jump_01d_4f76:
     jr nz, jr_01d_4f85
 
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [hl], a
 
@@ -3308,7 +3308,7 @@ jr_01d_50a3:
     jr z, jr_01d_50b1
 
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     xor a
     ld [hl], a
 
@@ -3326,7 +3326,7 @@ jr_01d_50b5:
     jr nz, jr_01d_50c4
 
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $01
     ld [hl], a
 
@@ -9651,7 +9651,7 @@ jr_01d_6f6f:
     ld a, $23
     call $16d1
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $23
@@ -9697,7 +9697,7 @@ jr_01d_702d:
     ld a, $23
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $01
@@ -9788,7 +9788,7 @@ jr_01d_70be:
     ld a, $19
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $04
@@ -10406,7 +10406,7 @@ jr_01d_740d:
     ld a, $1a
     ld [wInputFreezeTimer], a
     ld a, $35
-    call Call_000_25ce
+    call StartAudioTrack
     call Call_01d_7510
     ret
 
@@ -10434,7 +10434,7 @@ jr_01d_747a:
     ld a, $19
     call $16d1
     ld a, $36
-    call Call_000_25ce
+    call StartAudioTrack
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $01

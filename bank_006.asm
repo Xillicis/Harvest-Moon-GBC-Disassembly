@@ -443,7 +443,7 @@ jr_006_425e:
 jr_006_4270:
     ld [hl], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ret
 
@@ -466,7 +466,7 @@ jr_006_4278:
 jr_006_4289:
     ld [hl], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     pop hl
     ret
 
@@ -553,7 +553,7 @@ jr_006_4300:
     pop af
     ld [$cd6b], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
@@ -587,7 +587,7 @@ jr_006_432b:
     pop af
     ld [$cd6b], a
     ld a, $48
-    call Call_000_25ce
+    call StartAudioTrack
     ret
 
 
