@@ -2122,7 +2122,7 @@ Call_009_4b09:
 
 
     push bc
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     pop bc
     ld a, [bc]
     inc bc

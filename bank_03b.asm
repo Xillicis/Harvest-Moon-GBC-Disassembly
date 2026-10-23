@@ -88,7 +88,7 @@ jr_03b_406d:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -160,7 +160,7 @@ jr_03b_40b3:
     ld b, [hl]
     inc hl
     push hl
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -271,7 +271,7 @@ jr_03b_4125:
 
 Jump_03b_414f:
 jr_03b_414f:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -14080,7 +14080,7 @@ jr_03b_7b81:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e

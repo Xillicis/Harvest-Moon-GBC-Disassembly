@@ -355,7 +355,7 @@ Call_01f_41f2:
     ret
 
 
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, $0d
     ld a, $9a
     ld [hl+], a
@@ -5950,7 +5950,7 @@ jr_01f_5d44:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -6437,7 +6437,7 @@ jr_01f_5f93:
     ld b, a
 
 jr_01f_5fae:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e

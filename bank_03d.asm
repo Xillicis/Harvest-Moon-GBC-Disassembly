@@ -2816,7 +2816,7 @@ jr_03d_4dda:
 Call_03d_4e01:
     ld de, $984a
     ld bc, $cd6b
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -2901,7 +2901,7 @@ jr_03d_4e4e:
 
 
 Call_03d_4e6d:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, $8e
     ld [hl+], a
     ld a, $00
@@ -3437,7 +3437,7 @@ Call_03d_50cf:
     ld de, $cdd5
 
 jr_03d_50dc:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, $98
     ld [hl+], a
     ld a, $66

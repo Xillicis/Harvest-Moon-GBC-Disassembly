@@ -464,7 +464,7 @@ ClearUnusedOAMEntries:
     ld bc, $0014
     jp ZeroOutHL
 
-Call_000_0924:
+GetVRAMCommandWritePointer:
     ld hl, wVRAMBlitCommandList
     ldh a, [$ff97]
     add l
@@ -486,7 +486,7 @@ Call_000_0930:
 
 Call_000_093b:
 jr_000_093b:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, b
     ld [hl+], a
     ld a, c
@@ -577,7 +577,7 @@ jr_000_09aa:
     add hl, de
     ld d, h
     ld e, l
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, d
     ld [hl+], a
     ld a, e
@@ -811,7 +811,7 @@ Call_000_0a93:
     pop de
     pop hl
     push hl
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, b
     pop bc
     ld [hl], b
@@ -2638,6 +2638,7 @@ Call_000_18a0:
 
 Call_000_18d0:
     rst $08
+
     ld a, [hl+]
     ld [hl], a
     ld [de], a

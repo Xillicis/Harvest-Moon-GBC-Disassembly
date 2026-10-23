@@ -160,7 +160,7 @@ Call_026_410c:
     ld b, a
 
 jr_026_4121:
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e
@@ -737,7 +737,7 @@ jr_026_4407:
     jr z, jr_026_445a
 
     ld c, a
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld a, [$cd67]
     ld e, a
     ld a, [$cd68]
@@ -3367,7 +3367,7 @@ jr_026_4f62:
     ld a, $00
     adc d
     ld d, a
-    call Call_000_0924
+    call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
     ld [hl], e

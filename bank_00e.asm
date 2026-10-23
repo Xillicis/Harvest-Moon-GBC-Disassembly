@@ -5,12 +5,11 @@
 
 SECTION "ROM Bank $00e", ROMX[$4000], BANK[$e]
 
-    ld c, $7c
-    ld c, [hl]
-    rst $20
-    nop
-    ld [hl], e
-    ld de, $437d
+    db $0e ; bank number
+
+Data_00e_4001:
+    db $7C, $4E, $E7, $00, $73, $11, $7D, $43
+
     push hl
     push af
     ld l, $4d
@@ -19,7 +18,7 @@ SECTION "ROM Bank $00e", ROMX[$4000], BANK[$e]
     call BankSwitchCallHL
     pop af
     pop hl
-    ld hl, $4001
+    ld hl, Data_00e_4001
     ld c, $6a
     ld a, $b0
     ldh [c], a
@@ -57,11 +56,11 @@ jr_00e_4022:
     ld c, $0a
     ld de, $9000
     call DrawMaskedClippedTile
-    ld hl, $58e8
+    ld hl, Data_00a_58e8
     ld c, $0a
     ld de, $8000
     call DrawMaskedClippedTile
-    ld hl, $54e5
+    ld hl, Data_00a_54e5
     ld c, $0a
     ld de, $9800
     call DrawMaskedClippedTile
