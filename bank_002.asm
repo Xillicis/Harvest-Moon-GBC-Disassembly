@@ -3221,7 +3221,7 @@ jr_002_5271:
     ldh [rIF], a
     ld a, $03
     ldh [rIE], a
-    call Call_000_0ece
+    call PlaySeasonalOrWeatherAudio
     ret
 
 
@@ -3528,7 +3528,7 @@ jr_002_546c:
     and $08
     jr z, jr_002_5476
 
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 

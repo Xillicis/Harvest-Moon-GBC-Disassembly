@@ -391,7 +391,7 @@ jr_028_418d:
 
 
 jr_028_4193:
-    call Call_000_0ece
+    call PlaySeasonalOrWeatherAudio
     ret
 
 

@@ -858,7 +858,7 @@ Call_02e_4503:
 
 
 Jump_02e_4554:
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 

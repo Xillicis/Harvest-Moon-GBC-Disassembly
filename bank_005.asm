@@ -84,7 +84,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ldh [rIF], a
     ld a, $03
     ldh [rIE], a
-    call Call_000_0ece
+    call PlaySeasonalOrWeatherAudio
     call Call_000_3dfd
     ret
 
@@ -134,7 +134,7 @@ jr_005_410a:
     and $08
     jr z, jr_005_4114
 
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 

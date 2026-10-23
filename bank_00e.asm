@@ -879,7 +879,7 @@ Call_00e_4526:
 
 
 Jump_00e_4577:
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 INCLUDE "engine/cave/harvest_sprite_cave.asm"

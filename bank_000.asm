@@ -1208,7 +1208,7 @@ Jump_000_0ec5:
     call BankSwitchCallHL
     ret
 
-Call_000_0ece:
+PlaySeasonalOrWeatherAudio:
     call InitializeAudioEngine
     ld a, [sCurrentWeather]
     cp RAINY_DAY
@@ -2706,8 +2706,7 @@ StoreTilemapCellDataForPlayersCurrentPosition:
     callfar _StoreTilemapCellDataForPlayersCurrentPosition
     ret
 
-
-Call_000_1923:
+CycleSelectedInventorySlot:
     ld a, [wHeldObject]
     or a
     ret nz

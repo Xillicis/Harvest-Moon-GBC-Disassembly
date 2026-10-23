@@ -185,7 +185,7 @@ jr_021_4120:
     call RST_TableJumpBankSwitch
     call Call_021_725f
     call Call_021_6d1e
-    call Call_000_0ece
+    call PlaySeasonalOrWeatherAudio
     ld a, [$b89c]
     cp $01
     jr z, jr_021_418b
@@ -549,7 +549,7 @@ jr_021_43f9:
     and $08
     jr z, jr_021_4403
 
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 

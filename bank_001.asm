@@ -188,7 +188,7 @@ jr_001_4122:
     call RST_TableJumpBankSwitch
     call Call_001_737f
     call LoadTextBoxTilesIntoBGMap1
-    call Call_000_0ece
+    call PlaySeasonalOrWeatherAudio
     ld a, [$b89c]
     cp $01
     jr z, jr_001_418d
@@ -562,7 +562,7 @@ jr_001_4428:
     and $08
     jr z, jr_001_4432
 
-    call Call_000_1923
+    call CycleSelectedInventorySlot
     ret
 
 jr_001_4432:

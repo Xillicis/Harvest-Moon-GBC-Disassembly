@@ -114,11 +114,11 @@ ENDM
 
 Data_000_0066:
     HomeTablePointer $3fdf
-    HomeTablePointer Call_000_0ece
-    HomeTablePointer Call_000_0ece
-    HomeTablePointer Call_000_0ece
-    HomeTablePointer Call_000_0ece
-    HomeTablePointer Call_000_0ece
+    HomeTablePointer PlaySeasonalOrWeatherAudio
+    HomeTablePointer PlaySeasonalOrWeatherAudio
+    HomeTablePointer PlaySeasonalOrWeatherAudio
+    HomeTablePointer PlaySeasonalOrWeatherAudio
+    HomeTablePointer PlaySeasonalOrWeatherAudio
     HomeTablePointer Label_000_3fba
     db $be, $3f, $00
     db $c2, $3f, $00
