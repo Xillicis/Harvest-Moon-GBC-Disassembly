@@ -1212,44 +1212,41 @@ PlaySeasonalOrWeatherAudio:
     call InitializeAudioEngine
     ld a, [sCurrentWeather]
     cp RAINY_DAY
-    jr z, jr_000_0f03
+    jr z, PlayRainyWeatherAudio
     cp WINDY_DAY
-    jr z, jr_000_0f09
+    jr z, PlayWindyWeatherAudio
     ld a, [sCurrentSeason]
     cp SPRING
-    jr z, jr_000_0ef1
+    jr z, PlaySpringAudio
     cp SUMMER
-    jr z, jr_000_0ef7
+    jr z, PlaySummerAudio
     cp AUTUMN
-    jr z, jr_000_0efd
+    jr z, PlayAutumnAudio
     ld a, $13
     call Call_000_25c5
     ret
 
-Call_000_0ef1:
-jr_000_0ef1:
+PlaySpringAudio:
     ld a, $08
     call Call_000_25c8
     ret
 
-jr_000_0ef7:
+PlaySummerAudio:
     ld a, $0b
     call Call_000_25c5
     ret
 
-jr_000_0efd:
+PlayAutumnAudio:
     ld a, $0f
     call Call_000_25c5
     ret
 
-jr_000_0f03:
+PlayRainyWeatherAudio:
     ld a, $40
     call Call_000_25ce
     ret
 
-Call_000_0f09:
-Jump_000_0f09:
-jr_000_0f09:
+PlayWindyWeatherAudio:
     ld a, $41
     call Call_000_25ce
     ret

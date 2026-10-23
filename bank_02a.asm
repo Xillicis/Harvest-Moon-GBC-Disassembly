@@ -6583,7 +6583,7 @@ jr_02a_5ba5:
     ld h, [hl]
     ld a, a
     dec sp
-    call z, Call_000_0ef1
+    call z, $0ef1
     jp hl
 
 
