@@ -103,7 +103,7 @@ jr_030_40b9:
     ld a, $03
     ldh [rIE], a
     ld a, $2a
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 
@@ -3169,7 +3169,7 @@ Jump_030_4ff7:
 
 jr_030_5028:
     ld a, $2a
-    call Call_000_25c5
+    call StartFourAudioTracks
 
 jr_030_502d:
     inc [hl]

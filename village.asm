@@ -1740,7 +1740,7 @@ Label_01b_47eb:
     xor a
     ld [$cb68], a
     ld a, $54
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 

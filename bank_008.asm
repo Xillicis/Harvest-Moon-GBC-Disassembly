@@ -153,7 +153,7 @@ jr_008_41ee:
     ret z
 
     ld a, $37
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
@@ -167,7 +167,7 @@ jr_008_41ee:
 
 jr_008_422a:
     ld a, $43
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
@@ -181,7 +181,7 @@ jr_008_422a:
 
 jr_008_4245:
     ld a, $42
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
@@ -195,7 +195,7 @@ jr_008_4245:
 
 jr_008_4260:
     ld a, $45
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
@@ -209,7 +209,7 @@ jr_008_4260:
 
 jr_008_427b:
     ld a, $44
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerXPositionNearBoundary]
     sub $0a
     ld [$c64a], a
@@ -914,7 +914,7 @@ jr_008_4612:
     jr nz, jr_008_4648
 
     ld a, $31
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -931,13 +931,13 @@ jr_008_4648:
     dec a
     ld [$c611], a
     ld a, $2b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
 jr_008_4658:
     ld a, $30
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -973,7 +973,7 @@ jr_008_4658:
 
 jr_008_468f:
     ld a, $34
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -1067,7 +1067,7 @@ Jump_008_4722:
     ldh [$ffa4], a
     call Call_008_68c8
     ld a, $67
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     call Call_008_6c0b
     xor a
     ld [$cb45], a
@@ -1182,7 +1182,7 @@ jr_008_47e8:
     ldh [$ffa4], a
     call Call_008_69a4
     ld a, $33
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [$cb45], a
     ret
@@ -1192,7 +1192,7 @@ Jump_008_4801:
     ldh [$ffa4], a
     call Call_008_69a4
     ld a, $33
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [$cb45], a
     ret
@@ -1327,7 +1327,7 @@ Call_008_48b6:
     push de
     push hl
     ld a, $37
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld [$cb8c], a
@@ -1373,7 +1373,7 @@ Call_008_48b6:
     jr nz, jr_008_491d
 
     ld a, $31
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -1384,7 +1384,7 @@ Call_008_48b6:
 
 jr_008_491d:
     ld a, $30
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -1395,7 +1395,7 @@ jr_008_491d:
 
 jr_008_492f:
     ld a, $2b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -1414,7 +1414,7 @@ jr_008_492f:
     ret z
 
     ld a, $34
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $6545
     ld a, $01
     call BankSwitchCallHL
@@ -1691,7 +1691,7 @@ jr_008_4b15:
     ret z
 
     ld a, $36
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -1869,7 +1869,7 @@ Jump_008_4c16:
 jr_008_4c69:
     push hl
     ld a, $2c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $30
     call StartAudioTrack
     pop hl
@@ -1997,7 +1997,7 @@ Jump_008_4cf0:
 jr_008_4d11:
     push hl
     ld a, $2c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $30
     call StartAudioTrack
     pop hl
@@ -2128,7 +2128,7 @@ Jump_008_4d9a:
 jr_008_4dbb:
     push hl
     ld a, $2c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $30
     call StartAudioTrack
     pop hl
@@ -2256,7 +2256,7 @@ Jump_008_4e43:
 jr_008_4e64:
     push hl
     ld a, $2c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $30
     call StartAudioTrack
     pop hl
@@ -2415,7 +2415,7 @@ jr_008_4f1f:
     ld a, $32
     call StartAudioTrack
     ld a, $35
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_008_4f67
@@ -3003,7 +3003,7 @@ jr_008_524e:
 
 Jump_008_524f:
     ld a, $59
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $31
     call StartAudioTrack
     ret
@@ -3027,19 +3027,19 @@ Jump_008_524f:
     ret nz
 
     ld a, $3e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
 jr_008_5276:
     ld a, $40
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
 jr_008_527c:
     ld a, $3f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -7536,7 +7536,7 @@ jr_008_6b44:
 
 jr_008_6b66:
     ld a, $57
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -7559,7 +7559,7 @@ jr_008_6b6c:
 
 jr_008_6b8e:
     ld a, $56
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 

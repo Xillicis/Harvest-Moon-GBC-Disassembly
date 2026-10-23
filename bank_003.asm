@@ -936,7 +936,7 @@ jr_003_45c8:
 
 jr_003_45cf:
     ld a, $1c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [$cc20], a
     ret
@@ -1291,7 +1291,7 @@ jr_003_47ba:
     ld a, $29
     ld [wHeldObject], a
     ld a, $61
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $35
     call StartAudioTrack
     ld a, $1a
@@ -1314,7 +1314,7 @@ jr_003_4806:
     ld a, $2a
     ld [wHeldObject], a
     ld a, $64
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $35
     call StartAudioTrack
     ld a, $1a
@@ -1399,19 +1399,19 @@ Jump_003_4865:
     ld a, $21
     ld [wHeldObject], a
     ld a, $27
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     jr jr_003_48b6
 
     ld a, $22
     ld [wHeldObject], a
     ld a, $25
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     jr jr_003_48b6
 
     ld a, $23
     ld [wHeldObject], a
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
 
 jr_003_48b6:
     ld a, $35
@@ -2249,7 +2249,7 @@ jr_003_4da6:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $10
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $c62a
     ld a, [wPlayerXPositionNearBoundary]
     sub $00
@@ -2299,7 +2299,7 @@ Jump_003_4de5:
     ld a, $20
     ld [wHeldObject], a
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $35
     call StartAudioTrack
     ld a, $1a
@@ -2411,7 +2411,7 @@ Call_003_4e26:
     xor a
     ld [wHeldObject], a
     ld a, $33
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2444,7 +2444,7 @@ Call_003_4e26:
     xor a
     ld [wHeldObject], a
     ld a, $1c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2454,7 +2454,7 @@ Call_003_4e26:
 
 jr_003_4ecf:
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, $36
@@ -2598,7 +2598,7 @@ Call_003_4f86:
     jr z, jr_003_4fd0
 
     ld a, $28
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2616,7 +2616,7 @@ jr_003_4fd0:
 
 jr_003_4fdb:
     ld a, $27
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2669,7 +2669,7 @@ jr_003_4fdb:
     jr z, jr_003_5049
 
     ld a, $26
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2687,7 +2687,7 @@ jr_003_5049:
 
 jr_003_5054:
     ld a, $25
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2740,7 +2740,7 @@ jr_003_5054:
     jr z, jr_003_50c3
 
     ld a, $24
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2758,7 +2758,7 @@ jr_003_50c3:
 
 jr_003_50ce:
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2798,7 +2798,7 @@ jr_003_50ce:
     jr z, jr_003_512a
 
     ld a, $5b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2808,7 +2808,7 @@ jr_003_50ce:
 
 jr_003_512a:
     ld a, $61
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2835,7 +2835,7 @@ jr_003_512a:
     jr z, jr_003_516f
 
     ld a, $5e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -2845,7 +2845,7 @@ jr_003_512a:
 
 jr_003_516f:
     ld a, $64
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08

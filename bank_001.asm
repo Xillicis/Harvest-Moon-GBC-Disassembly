@@ -1636,7 +1636,7 @@ Label_001_56db:
     xor a
     ld [wHeldObject], a
     ld a, $33
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ret
@@ -2446,7 +2446,7 @@ jr_001_5b8d:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerFacingDirection]
     cp FACING_DOWN
     jr z, jr_001_5bb3
@@ -2508,7 +2508,7 @@ jr_001_5bf4:
     xor a
     ld [wHeldObject], a
     ld a, $1c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ret
@@ -2535,7 +2535,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $1e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $5c
@@ -2566,7 +2566,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $1d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $82
@@ -2597,7 +2597,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $20
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -2628,7 +2628,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $22
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -2659,7 +2659,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $6e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -2690,7 +2690,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $6f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -2721,7 +2721,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $70
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -2752,7 +2752,7 @@ jr_001_5bf4:
 
     call Call_001_5e78
     ld a, $6d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $ec

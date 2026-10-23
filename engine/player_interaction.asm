@@ -1013,7 +1013,7 @@ PlayerInteraction_A_Pressed:
     ld a, BUSH
     ld [wHeldObject], a
     ld a, $18
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wCollisionNoMovement], a
     ldh [$ffa4], a
@@ -1034,7 +1034,7 @@ PlayerInteraction_A_Pressed:
     ld a, STONE
     ld [wHeldObject], a
     ld a, $0f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ldh [$ffa4], a
     jp Jump_001_5458
@@ -1054,7 +1054,7 @@ PlayerInteraction_A_Pressed:
     ld a, FENCE_POST
     ld [wHeldObject], a
     ld a, $17
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ldh [$ffa4], a
     jp Jump_001_5458
@@ -1095,7 +1095,7 @@ jr_001_536f:
     ld a, $10
     ld [wHeldObject], a
     ld a, $1b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $02
     ldh [$ffa4], a
     jp Jump_001_5458
@@ -1112,7 +1112,7 @@ jr_001_538d:
     ld a, $11
     ld [wHeldObject], a
     ld a, $1a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $04
     ldh [$ffa4], a
     jp Jump_001_5458
@@ -1129,7 +1129,7 @@ PickUpTurnip:
     ld a, TURNIP
     ld [wHeldObject], a
     ld a, $1f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jp Jump_001_5458
@@ -1146,7 +1146,7 @@ PickUpPotato:
     ld a, POTATO
     ld [wHeldObject], a
     ld a, $21
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_001_5458
@@ -1163,7 +1163,7 @@ Jump_001_53e6:
     ld a, $14
     ld [wHeldObject], a
     ld a, $6a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_001_5458
@@ -1180,7 +1180,7 @@ Jump_001_5403:
     ld a, $15
     ld [wHeldObject], a
     ld a, $6b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_001_5458
@@ -1197,7 +1197,7 @@ Jump_001_5420:
     ld a, $16
     ld [wHeldObject], a
     ld a, $6c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_001_5458
@@ -1214,7 +1214,7 @@ Jump_001_543d:
     ld a, $17
     ld [wHeldObject], a
     ld a, $69
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $03
     ldh [$ffa4], a
 
@@ -1351,7 +1351,7 @@ Jump_001_5517:
     ld a, $03
     ld [wHeldObject], a
     ld a, $17
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wCollisionNoMovement], a
     ld a, $03

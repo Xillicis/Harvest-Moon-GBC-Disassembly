@@ -423,7 +423,7 @@ Call_027_428b:
     ld a, $28
     ld [$c60b], a
     ld a, $1f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ld [wPlayerIsCarryingItem], a
     ld a, $80

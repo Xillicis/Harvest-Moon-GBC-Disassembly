@@ -574,7 +574,7 @@ UseMedicine:
     ld a, $40
     ld [wInputFreezeTimer], a
     ld a, $5a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, sInventory
     ld a, [sItemSlot]
     add l

@@ -384,7 +384,7 @@ jr_005_427d:
     call RST_TableJumpBankSwitch
     pop bc
     ld a, b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, $c62a
     ld a, [wPlayerXPositionNearBoundary]
     sub $00

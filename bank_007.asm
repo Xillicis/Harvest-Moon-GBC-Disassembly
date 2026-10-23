@@ -439,7 +439,7 @@ Call_007_4298:
     ld a, $28
     ld [$c60b], a
     ld a, $1f
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     ld a, 1
     ld [wPlayerIsCarryingItem], a
     ld a, $80

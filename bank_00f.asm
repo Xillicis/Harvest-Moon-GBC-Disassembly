@@ -6091,7 +6091,7 @@ Call_00f_62dc:
     ld a, $03
     ldh [rIE], a
     ld a, $17
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $ff
     ld [wTextID], a
     xor a

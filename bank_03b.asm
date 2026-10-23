@@ -1722,7 +1722,7 @@ jr_03b_47e4:
     xor a
     ld [$cb68], a
     ld a, $54
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 

@@ -13446,7 +13446,7 @@ jr_02c_7ce8:
 
 
     ld a, $37
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld [$cb8c], a

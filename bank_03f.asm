@@ -58,7 +58,7 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     xor a
@@ -4038,7 +4038,7 @@ jr_03f_53d3:
 
     push bc
     ld a, $4d
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_03f_6713
     xor a
     ld [$cdb9], a
@@ -4051,7 +4051,7 @@ jr_03f_53d3:
     xor a
     ld [$d605], a
     ld a, $22
-    call Call_000_25c5
+    call StartFourAudioTracks
     pop hl
     ret
 
@@ -9930,7 +9930,7 @@ jr_03f_6feb:
     jr nz, jr_03f_6ff3
 
     ld a, b
-    call Call_000_25c5
+    call StartFourAudioTracks
 
 jr_03f_6ff3:
     ld hl, $716e

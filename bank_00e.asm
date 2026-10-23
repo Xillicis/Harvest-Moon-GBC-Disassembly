@@ -148,7 +148,7 @@ jr_00e_410d:
     ld a, $03
     ldh [rIE], a
     ld a, $26
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_000_3dfd
     ld a, [$b899]
     cp $01
@@ -851,7 +851,7 @@ Call_00e_4526:
 
 
     ld a, $56
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $1e
     ld [wInputFreezeTimer], a
     ld hl, sPlayerMoney
@@ -867,7 +867,7 @@ Call_00e_4526:
     inc a
     ld [sNumPowerBerriesEaten], a
     ld a, $37
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld [$cb8c], a
@@ -965,7 +965,7 @@ jr_00e_48d6:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $3c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $30
     ld [wHeldObject], a
     ld a, $35
@@ -1014,7 +1014,7 @@ jr_00e_491b:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $18
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ld [wHeldObject], a
     ld a, $35
@@ -1103,7 +1103,7 @@ jr_00e_49a5:
     xor a
     ld [wHeldObject], a
     ld a, $3d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -1114,7 +1114,7 @@ jr_00e_49d6:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $3c
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
@@ -1131,7 +1131,7 @@ jr_00e_49d6:
 
 jr_00e_49fd:
     ld a, $3c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     jp Jump_00e_4af9
 
 
@@ -1146,7 +1146,7 @@ Jump_00e_4a06:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $36
@@ -1174,7 +1174,7 @@ Jump_00e_4a29:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $41
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $36
@@ -1198,7 +1198,7 @@ jr_00e_4a6d:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $40
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld [wPlayerIsCarryingItem], a
@@ -1235,7 +1235,7 @@ jr_00e_4aa7:
     ld a, [$cc1a]
     ld [hl], a
     ld a, $40
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     jp Jump_00e_4af9
 
 
@@ -1250,7 +1250,7 @@ Jump_00e_4ac3:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $36
@@ -1491,7 +1491,7 @@ jr_00e_4c35:
     ret nz
 
     ld a, $76
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $76
     call Call_00e_549c
     ld hl, $5299
@@ -1680,7 +1680,7 @@ jr_00e_4d5d:
     ret nz
 
     ld a, $77
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $77
     call Call_00e_549c
     ld a, $78
@@ -2978,7 +2978,7 @@ jr_00e_543b:
     ret nz
 
     ld a, $31
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $02
     ld [$ba0e], a
     ld a, [sSpriteEventFlags+1]
@@ -3208,7 +3208,7 @@ jr_00e_5507:
     ld a, $03
     ldh [rIE], a
     ld a, $26
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_000_3dfd
     ret
 
@@ -4197,7 +4197,7 @@ Call_00e_5ad2:
     ld a, $03
     ldh [rIE], a
     ld a, $26
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_000_3dfd
     ret
 
@@ -4336,7 +4336,7 @@ jr_00e_5cbc:
     jr nz, jr_00e_5cd4
 
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $02
     ld [$cc98], a
     ret
@@ -4630,7 +4630,7 @@ jr_00e_5e61:
     ret nz
 
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -4780,7 +4780,7 @@ Jump_00e_5f0b:
     ld a, $03
     call RST_TableJumpBankSwitch
     ld a, $40
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $32
     ld [wHeldObject], a
     ld a, $35
@@ -4796,7 +4796,7 @@ Jump_00e_5f0b:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $4c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $00
     call LoadPlayerSpriteID
     xor a
@@ -4808,7 +4808,7 @@ Jump_00e_5f0b:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $4d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $00
     call LoadPlayerSpriteID
     xor a
@@ -5257,7 +5257,7 @@ Call_00e_616c:
     ld a, $03
     ldh [rIE], a
     ld a, $26
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_000_3dfd
     ld a, [$ba0b]
     cp $ff
@@ -6071,7 +6071,7 @@ jr_00e_669f:
     ld a, $03
     ldh [rIE], a
     ld a, $26
-    call Call_000_25c5
+    call StartFourAudioTracks
     call Call_000_3dfd
     ret
 

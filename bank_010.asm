@@ -111,7 +111,7 @@ jr_010_40c6:
     ld a, $03
     ldh [rIE], a
     ld a, $2a
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld hl, $40e2
     call SyncLoadSpritePalette7
     ret
@@ -1102,7 +1102,7 @@ Jump_010_5095:
     jr jr_010_50cb
 
     ld a, $2a
-    call Call_000_25c5
+    call StartFourAudioTracks
 
 jr_010_50cb:
     inc [hl]

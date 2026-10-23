@@ -86,7 +86,7 @@ jr_009_4073:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -4106,7 +4106,7 @@ Call_009_5435:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $c3
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -4204,7 +4204,7 @@ jr_009_55e0:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $54
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -4330,7 +4330,7 @@ Call_009_5680:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $22
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 
@@ -8347,7 +8347,7 @@ jr_009_69f2:
     call InitializeAudioEngine
     pop bc
     ld a, b
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 

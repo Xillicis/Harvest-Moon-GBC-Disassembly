@@ -2697,7 +2697,7 @@ jr_021_52ac:
     ld a, BUSH
     ld [wHeldObject], a
     ld a, $18
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wCollisionNoMovement], a
     ldh [$ffa4], a
@@ -2711,7 +2711,7 @@ jr_021_52c6:
     ld a, STONE
     ld [wHeldObject], a
     ld a, $0f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ldh [$ffa4], a
     jp Jump_021_5396
@@ -2724,7 +2724,7 @@ jr_021_52da:
     ld a, FENCE_POST
     ld [wHeldObject], a
     ld a, $17
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ldh [$ffa4], a
     jp Jump_021_5396
@@ -2767,7 +2767,7 @@ jr_021_5318:
     ld a, $10
     ld [wHeldObject], a
     ld a, $1b
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $02
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2776,7 +2776,7 @@ jr_021_5328:
     ld a, $11
     ld [wHeldObject], a
     ld a, $1a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $04
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2785,7 +2785,7 @@ jr_021_5338:
     ld a, $12
     ld [wHeldObject], a
     ld a, $1f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2794,7 +2794,7 @@ jr_021_5348:
     ld a, $13
     ld [wHeldObject], a
     ld a, $21
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2803,7 +2803,7 @@ jr_021_5358:
     ld a, $14
     ld [wHeldObject], a
     ld a, $6a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2812,7 +2812,7 @@ jr_021_5368:
     ld a, $15
     ld [wHeldObject], a
     ld a, $6b
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2821,7 +2821,7 @@ jr_021_5378:
     ld a, $16
     ld [wHeldObject], a
     ld a, $6c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $01
     ldh [$ffa4], a
     jr jr_021_5396
@@ -2830,7 +2830,7 @@ jr_021_5388:
     ld a, $17
     ld [wHeldObject], a
     ld a, $69
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $03
     ldh [$ffa4], a
 
@@ -2954,7 +2954,7 @@ Jump_021_5443:
     ld a, $03
     ld [wHeldObject], a
     ld a, $17
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wCollisionNoMovement], a
     ld a, $03
@@ -3243,7 +3243,7 @@ Call_021_55c5:
     xor a
     ld [wHeldObject], a
     ld a, $33
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ret
@@ -4044,7 +4044,7 @@ jr_021_5a88:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $32
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, [wPlayerFacingDirection]
     cp $00
     jr z, jr_021_5aae
@@ -4110,7 +4110,7 @@ jr_021_5aef:
     xor a
     ld [wHeldObject], a
     ld a, $1c
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ret
@@ -4137,7 +4137,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $1e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $5c
@@ -4168,7 +4168,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $1d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $82
@@ -4199,7 +4199,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $20
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -4230,7 +4230,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $22
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -4261,7 +4261,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $6e
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -4292,7 +4292,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $6f
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -4323,7 +4323,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $70
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $11
@@ -4354,7 +4354,7 @@ jr_021_5aef:
 
     call Call_021_5d73
     ld a, $6d
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     xor a
     ld [wHeldObject], a
     ld a, $ec
@@ -5211,7 +5211,7 @@ Jump_021_61bf:
     ld a, $40
     ld [wInputFreezeTimer], a
     ld a, $5a
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld hl, sInventory
     ld a, [sItemSlot]
     add l

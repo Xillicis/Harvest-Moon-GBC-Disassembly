@@ -58,7 +58,7 @@ SECTION "ROM Bank $03d", ROMX[$4000], BANK[$3d]
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $40
@@ -711,7 +711,7 @@ jr_03d_43cf:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $40
@@ -1392,7 +1392,7 @@ jr_03d_4726:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $04
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -4496,7 +4496,7 @@ jr_03d_571c:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $4d
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -9567,7 +9567,7 @@ jr_03d_6e12:
 
 
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $35
     call StartAudioTrack
     ld a, $1a
@@ -9613,7 +9613,7 @@ jr_03d_6ed0:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -9663,7 +9663,7 @@ jr_03d_6f12:
 
 jr_03d_6f2d:
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $20
     ld [wHeldObject], a
     ld a, $03
@@ -9704,7 +9704,7 @@ jr_03d_6f61:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -10307,7 +10307,7 @@ jr_03d_72a3:
     ret nz
 
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $20
     ld [wHeldObject], a
     ld a, $03
@@ -10341,7 +10341,7 @@ jr_03d_7310:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08

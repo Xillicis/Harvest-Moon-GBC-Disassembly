@@ -68,7 +68,7 @@ Jump_01d_402a:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $40
@@ -732,7 +732,7 @@ jr_01d_43e9:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $00
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $40
@@ -1364,7 +1364,7 @@ jr_01d_474d:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $04
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld hl, $5922
     ld c, $1d
     ld de, $8e00
@@ -4293,7 +4293,7 @@ jr_01d_576e:
     ld bc, $00a0
     call ZeroOutHL
     ld a, $4d
-    call Call_000_25c5
+    call StartFourAudioTracks
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $00
@@ -9649,7 +9649,7 @@ jr_01d_6f6f:
 
 
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $35
     call StartAudioTrack
     ld a, $1a
@@ -9695,7 +9695,7 @@ jr_01d_702d:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $23
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -9745,7 +9745,7 @@ jr_01d_706f:
 
 jr_01d_708a:
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $20
     ld [wHeldObject], a
     ld a, $03
@@ -9786,7 +9786,7 @@ jr_01d_70be:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08
@@ -10398,7 +10398,7 @@ jr_01d_740d:
     ret nz
 
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $20
     ld [wHeldObject], a
     ld a, $03
@@ -10432,7 +10432,7 @@ jr_01d_747a:
     ld a, $15
     call RST_TableJumpBankSwitch
     ld a, $19
-    call $16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $36
     call StartAudioTrack
     ld a, $08

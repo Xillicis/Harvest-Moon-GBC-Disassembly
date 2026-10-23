@@ -799,7 +799,7 @@ UpgradeAx:
 SpriteGivePowerBerry:
 ; I think this first part must call the animation...
     ld a, $37
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     ld a, $3c
     ld [wInputFreezeTimer], a
     ld [$cb8c], a

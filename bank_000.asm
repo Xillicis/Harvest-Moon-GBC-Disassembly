@@ -1152,7 +1152,7 @@ jr_000_0e66:
 
 jr_000_0e7b:
     ld a, $1c
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 jr_000_0e81:
@@ -1223,7 +1223,7 @@ PlaySeasonalOrWeatherAudio:
     cp AUTUMN
     jr z, PlayAutumnAudio
     ld a, $13
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 PlaySpringAudio:
@@ -1233,12 +1233,12 @@ PlaySpringAudio:
 
 PlaySummerAudio:
     ld a, $0b
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 PlayAutumnAudio:
     ld a, $0f
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 PlayRainyWeatherAudio:
@@ -2520,7 +2520,7 @@ Data_000_1659: ; 0x1659
     db $b5, $57, $06
     db $bb, $57, $06
 
-Call_000_16d1:
+SetHeldItemAndDispatchHandler:
     ld [sCurrentlyHeldItem], a
     push hl
     push af
@@ -2741,7 +2741,7 @@ CycleSelectedInventorySlot:
     cp NO_ITEM
     ret z
 
-    call Call_000_16d1
+    call SetHeldItemAndDispatchHandler
     ret
 
 
@@ -4504,20 +4504,13 @@ jr_000_25c0:
     ld [$d3a2], a
     ret
 
-; call 4x
-Call_000_25c5:
+StartFourAudioTracks:
     call StartAudioTrack
-
-; call 3x
 StartThreeAudioTracks:
     call StartAudioTrack
-
-; call 2x
 Call_000_25cb:
     call StartAudioTrack
-
-; call 1x
-StartAudioTrack:
+StartAudioTrack: ; 00x25ce
     push bc
     push de
     push hl
@@ -4593,8 +4586,8 @@ jr_000_2613:
     ld [hl], a
     pop af
     ld [MBC3RomBank], a
-    ld a, [$d39e]
-    inc a
+    ld a, [$d39e] ; entry selected at function entry
+    inc a ; next entry
     pop hl
     pop de
     pop bc
@@ -7228,7 +7221,7 @@ Label_000_3fda:
     ld a, $1b
 
 jr_000_3fdc:
-    call Call_000_25c5
+    call StartFourAudioTracks
     ret
 
 
