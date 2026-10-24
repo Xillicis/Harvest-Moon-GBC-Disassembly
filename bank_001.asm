@@ -34,33 +34,35 @@ InitializeFarmScene:
     ld [wSeasonPaletteID], a
     ld a, [sCurrentDayCounter]
     or a
-    jr nz, jr_001_4062
+    jr nz, .loadSeasonalTiles
 
     ld a, [sCurrentHour]
     cp TIME_6_AM
-    jr nc, jr_001_4062
-; Seems like some kind of special case when when we are at the
-; first day of the year... I think when the new year wraps around
-; we don't want to change the season "stuff" until we start the next day.
+    jr nc, .loadSeasonalTiles
+
+    ; While day counter is zero and before 6 AM
+    ; retain graphics from the previous season.
     ld a, [wSeasonPaletteID]
     or a
-    jr z, .spring
+    jr z, .wrapPreviousSeasonToWinter
     dec a
-    jr .previousSeason
-.spring
+    jr .storePreviousSeason
+
+.wrapPreviousSeasonToWinter
     ld a, WINTER
-.previousSeason
+.storePreviousSeason
     ld [wSeasonPaletteID], a
 
-jr_001_4062:
+.loadSeasonalTiles
     ld a, [wSeasonPaletteID]
     cp SUMMER
-    jr z, .summer
+    jr z, .loadSummerTiles
     cp AUTUMN
-    jr z, .autumn
+    jr z, .loadAutumnTiles
     cp WINTER
-    jr z, jr_001_40b9
-; Spring
+    jr z, .loadWinterTiles
+
+.loadSpringTiles
     ld hl, $4758
     ld c, $0b
     ld de, $8800
@@ -70,9 +72,9 @@ jr_001_4062:
     ld c, $0b
     ld de, $9000
     call DrawMaskedClippedTile
-    jr jr_001_40cf
+    jr .loadCommonSpriteTiles
 
-.summer
+.loadSummerTiles
     ld hl, $5457
     ld c, $0b
     ld de, $8800
@@ -81,9 +83,9 @@ jr_001_4062:
     ld c, $0b
     ld de, $9000
     call DrawMaskedClippedTile
-    jr jr_001_40cf
+    jr .loadCommonSpriteTiles
 
-.autumn
+.loadAutumnTiles
     ld hl, $6150
     ld c, $0b
     ld de, $8800
@@ -92,9 +94,9 @@ jr_001_4062:
     ld c, $0b
     ld de, $9000
     call DrawMaskedClippedTile
-    jr jr_001_40cf
+    jr .loadCommonSpriteTiles
 
-jr_001_40b9:
+.loadWinterTiles
     ld hl, $6dc8
     ld c, $0b
     ld de, $8800
@@ -104,41 +106,41 @@ jr_001_40b9:
     ld de, $9000
     call DrawMaskedClippedTile
 
-jr_001_40cf:
+.loadCommonSpriteTiles
     ld hl, $7195
     ld c, $14
     ld de, $8000
     call DrawMaskedClippedTile
     ld a, [$b8ea]
     cp $00
-    jr z, jr_001_4103
+    jr z, .checkPetType
 
     cp $02
-    jr z, jr_001_40eb
+    jr z, .jr_001_40eb
 
     cp $03
-    jr z, jr_001_40f8
+    jr z, .jr_001_40f8
+    jr .checkPetType
 
-    jr jr_001_4103
-
-jr_001_40eb:
+.jr_001_40eb
     ld hl, $7443
     ld c, $13
     ld de, $81d0
     call DrawMaskedClippedTile
-    jr jr_001_4103
+    jr .checkPetType
 
-jr_001_40f8:
+.jr_001_40f8
     ld hl, $76c1
     ld c, $13
     ld de, $81d0
     call DrawMaskedClippedTile
 
-jr_001_4103:
+.checkPetType
     ld a, [sCatOrDog]
     cp DOG
-    jr z, jr_001_4122
+    jr z, .initializeFarmState
 
+.loadCatSpriteTiles
     ld hl, $79a1
     ld c, $13
     ld de, $85a0
@@ -152,7 +154,7 @@ jr_001_4103:
     pop af
     pop hl
 
-jr_001_4122:
+.initializeFarmState
     ld a, $a8
     ld [$cb5c], a
     ld a, $d9
@@ -181,30 +183,34 @@ jr_001_4122:
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
     ld [wPlayerInFrontOfPet], a
+
+.initializeEntitiesAndMap
     call Call_001_6ce4
     call Call_001_7336
     call LoadHouseExpansionTileDataIntoSRAM
     ld a, $00
     call RST_TableJumpBankSwitch
-    call Call_001_737f
+    call InitializeFarmViewport
     call LoadTextBoxTilesIntoBGMap1
     call PlaySeasonalOrWeatherAudio
+
+.checkInitialEventFlag
     ld a, [$b89c]
     cp $01
-    jr z, jr_001_418d
+    jr z, .resetIdleStateAndConfigureDisplay
 
     ld a, [$b8ea]
     cp $00
-    jr z, jr_001_418d
+    jr z, .resetIdleStateAndConfigureDisplay
 
     ld a, $01
     ld [$b88d], a
 
-jr_001_418d:
+.resetIdleStateAndConfigureDisplay
     xor a
     ld [wPlayerIsInsideOrAtTown], a
-    ld [$cb7a], a
-    ld [$cb7b], a
+    ld [wPlayerIdleCounter], a
+    ld [wPlayerIdleCounter+1], a
     ld [$cb7c], a
     ld [$cb79], a
     ld [$cb7d], a
@@ -216,6 +222,8 @@ jr_001_418d:
     call BankSwitchCallHL
     pop af
     pop hl
+
+.configureDisplayInterrupts
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $40
@@ -229,23 +237,24 @@ jr_001_418d:
     call Call_001_72b0
     call Call_001_6e30
     call Call_000_3dfd
+
+.checkWeatherEffect
     ld a, [sCurrentWeather]
     cp RAINY_DAY
-    jr z, jr_001_41da
+    jr z, .initializeRainEffect
 
     cp WINDY_DAY
-    jr z, jr_001_41da
+    jr z, .initializeRainEffect
 
     cp SNOWY_DAY
-    jr z, jr_001_41de
+    jr z, .initializeSnowEffect
     ret
 
-jr_001_41da:
+.initializeRainEffect
     call Call_001_6b05
     ret
 
-
-jr_001_41de:
+.initializeSnowEffect
     call Call_001_6b3a
     ret
 
@@ -806,9 +815,9 @@ HandleWalkDown: ; 01x453f
 
 TryMovePlayerDown: ; 01x456f
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4592
@@ -819,7 +828,7 @@ TryMovePlayerDown: ; 01x456f
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_499d
     ret
@@ -855,10 +864,10 @@ HandleWalkUp: ; 01x4596
     ret nz
 
 TryMovePlayerUp: ; 01x45c6
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_45e9
@@ -869,7 +878,7 @@ TryMovePlayerUp: ; 01x45c6
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_499d
     ret
@@ -906,10 +915,10 @@ HandleWalkLeft:
     ret nz
 
 TryMovePlayerLeft:
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4643
@@ -920,7 +929,7 @@ TryMovePlayerLeft:
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_49d1
 
@@ -959,10 +968,10 @@ HandleWalkRight:
     ret nz
 
 TryMovePlayerRight: ; 01x467a
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_469d
@@ -973,7 +982,7 @@ TryMovePlayerRight: ; 01x467a
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_49d1
     ret
@@ -1064,10 +1073,10 @@ jr_001_46e3:
     or a
     ret nz
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4780
@@ -1078,7 +1087,7 @@ jr_001_46e3:
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_499d
 
@@ -1128,10 +1137,10 @@ jr_001_4745:
 jr_001_4780:
     call Call_001_6a09
     call MovePlayerUpOnePixel
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4796
@@ -1161,9 +1170,9 @@ Jump_001_479a:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4825
@@ -1174,7 +1183,7 @@ Jump_001_479a:
     and $01
     jp z, Jump_001_4983
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_499d
 
@@ -1223,9 +1232,9 @@ jr_001_47ea:
 jr_001_4825:
     call Call_001_6775
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_4838
@@ -1254,10 +1263,10 @@ Jump_001_483c:
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_48c7
@@ -1268,7 +1277,7 @@ Jump_001_483c:
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_49d1
 
@@ -1317,10 +1326,10 @@ jr_001_488c:
 jr_001_48c7:
     call TryBeginTravelToTown
     call MovePlayerLeftOnePixel
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_48dd
@@ -1349,10 +1358,10 @@ Jump_001_48e1:
     or a
     ret nz
 
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_496c
@@ -1363,7 +1372,7 @@ Jump_001_48e1:
     and $01
     jp z, Jump_001_49b7
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_001_49d1
 
@@ -1411,10 +1420,10 @@ jr_001_4931:
 
 jr_001_496c:
     call MovePlayerRightOnePixel
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_001_497f
@@ -1434,7 +1443,7 @@ Jump_001_4983:
     ret nz
 
 jr_001_4990:
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -1452,7 +1461,7 @@ Jump_001_499d:
     ret nz
 
 jr_001_49aa:
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -1470,7 +1479,7 @@ Jump_001_49b7:
     ret nz
 
 jr_001_49c4:
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -3857,11 +3866,11 @@ Call_001_6a09:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $3d
     jr nz, jr_001_6a29
 
-    ld a, [wSubordinateFacingTileID]
+    ld a, [wCollisionSample2TileID]
     cp $3d
     jr nz, jr_001_6a29
 
@@ -3873,7 +3882,7 @@ jr_001_6a29:
     cp $3e
     jr nz, jr_001_6a3e
 
-    ld a, [wSubordinateFacingTileID]
+    ld a, [wCollisionSample2TileID]
     cp $3e
     jr nz, jr_001_6a3e
 
@@ -3890,7 +3899,7 @@ jr_001_6a3e:
     cp $3f
     jr nz, jr_001_6a53
 
-    ld a, [wSubordinateFacingTileID]
+    ld a, [wCollisionSample2TileID]
     cp $3f
     jr nz, jr_001_6a53
 
@@ -3904,19 +3913,19 @@ jr_001_6a3e:
 
 
 jr_001_6a53:
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     and $40
     ret nz
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $40
     ret nz
 
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $40
     jr nz, jr_001_6a77
 
-    ld a, [wSubordinateFacingTileID]
+    ld a, [wCollisionSample2TileID]
     cp $40
     jr nz, jr_001_6a77
 
@@ -3998,12 +4007,12 @@ TryBeginTravelToTown: ; 01x6ad5
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [$cb2f]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1TileID]
     cp $13
     ret nz
 
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     cp $00
     ret nz
 
@@ -4145,29 +4154,29 @@ jr_001_6bce:
 
     xor a
     ld [$cb7c], a
-    ld [$cb7a], a
-    ld [$cb7b], a
+    ld [wPlayerIdleCounter], a
+    ld [wPlayerIdleCounter+1], a
     ret
 
 
 jr_001_6bde:
-    ld a, [$cb7a]
-    add $01
-    ld [$cb7a], a
-    ld a, [$cb7b]
+    ld a, [wPlayerIdleCounter]
+    add 1
+    ld [wPlayerIdleCounter], a
+    ld a, [wPlayerIdleCounter+1]
     adc $00
-    ld [$cb7b], a
+    ld [wPlayerIdleCounter+1], a
     cp $01
     ret nz
 
-    ld a, [$cb7a]
+    ld a, [wPlayerIdleCounter]
     cp $ff
     ret nz
 
     call Call_001_712d
     xor a
-    ld [$cb7a], a
-    ld [$cb7b], a
+    ld [wPlayerIdleCounter], a
+    ld [wPlayerIdleCounter+1], a
     ld a, [wPlayerFacingDirection]
     cp FACING_DOWN
     jr z, jr_001_6c2c
@@ -5435,12 +5444,12 @@ Call_001_7336:
 
 Call_001_7374:
     xor a
-    ld [wcb30], a
-    ld [wcb32], a
+    ld [wCollisionSample1Property], a
+    ld [wCollisionSample2Property], a
     ld [wDominantFacingTileProperty], a
     ret
 
-Call_001_737f:
+InitializeFarmViewport: ; 01x737f
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]

@@ -89,17 +89,20 @@ wMapChangeFreezeTimer:: db ; 0xc911
 ; Don't know if this actually freezes input, but functionally it stops you froming doing anything
 wInputFreezeTimer:: db ; 0xc912
 
-ds $21d
-;
+ds $21c
+
+
+wCollisionSample1TileID:: db ; 0xcb2f
 ; Since the player is not locked to a grid, the play can be facing two different tiles at one.
 ; If the player is facing up/down, then this ram address indicates whether there is an object on the left side.
 ; If the player is facing left/right, then this ram address indicates there is an object on the "down" side.
-wcb30:: db
+wCollisionSample1Property:: db ; 0xcb30
+
 ;; This address is used to store the object ID that is in the respective space.
 ;; Need to catalog all the possible IDs here.
-wSubordinateFacingTileID:: db ; 0xcb31
+wCollisionSample2TileID:: db ; 0xcb31
 ;; Same as the above, but regarding the "right" or "up" side object
-wcb32:: db ; 0xcb32
+wCollisionSample2Property:: db ; 0xcb32
 
 wDominantFacingTileID:: db ; 0xcb33
 ; Seems to be used to identify the different properties of the.
@@ -201,7 +204,11 @@ wTVBlinkingIndicator:: db ; 0xcb77
 ; A flag to indicate the TV is turned on
 wTVIsTurnedOn:: db ; 0xcb78
 
-ds 8
+ds 1
+
+wPlayerIdleCounter:: dw ; 0xcb7a
+
+ds 5
 
 ; This is zero if the player is outside at the farm.
 ; It is one if the player is inside or at town

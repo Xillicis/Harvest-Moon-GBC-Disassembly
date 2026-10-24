@@ -508,7 +508,7 @@ Call_007_4360:
     pop hl
     push hl
     push af
-    callfar2 Call_005_483e
+    callfar2 InitializeShedItemBGAttributes
     pop af
     pop hl
     ld c, $4f
@@ -546,7 +546,7 @@ Call_007_4360:
     ldh [$ff96], a
     ld a, $00
     ldh [$ff95], a
-    callfar Call_005_44a2
+    callfar LoadShedTextBoxTilemap
     ld a, $4a
     call LoadPlayerSpriteID
     ld a, $03

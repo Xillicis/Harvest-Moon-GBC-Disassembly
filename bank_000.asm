@@ -1253,10 +1253,10 @@ PlayWindyWeatherAudio:
 
 Call_000_0f0f:
     xor a
-    ld [$cb2f], a
-    ld [wcb30], a
-    ld [wSubordinateFacingTileID], a
-    ld [wcb32], a
+    ld [wCollisionSample1TileID], a
+    ld [wCollisionSample1Property], a
+    ld [wCollisionSample2TileID], a
+    ld [wCollisionSample2Property], a
     ld [wDominantFacingTileID], a
     ld [wDominantFacingTileProperty], a
     ld [$cb37], a
@@ -2220,21 +2220,20 @@ jr_000_14d3:
     pop hl
     ret
 
-; I think these four functions or some kind of collision detection for the four different directions
-ProbePlayerCollisionDown:
-    callfar Label_005_50c9
+ProbePlayerCollisionDown: ; 00x14f9
+    callfar _ProbePlayerCollisionDown
     ret
 
-Call_000_1502:
-    callfar Label_005_51a7
+ProbePlayerCollisionUp: ; 00x1502
+    callfar _ProbePlayerCollisionUp
     ret
 
-Call_000_150b:
-    callfar Label_005_52f7
+ProbePlayerCollisionLeft: ; 00x150b
+    callfar _ProbePlayerCollisionLeft
     ret
 
-Call_000_1514:
-    callfar Label_005_53e2
+ProbePlayerCollisionRight: ; 00x1514
+    callfar _ProbePlayerCollisionRight
     ret
 
 LoadPlayerSpriteID: ; 00x151d

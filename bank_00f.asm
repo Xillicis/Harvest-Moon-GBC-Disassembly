@@ -6298,10 +6298,10 @@ jr_00f_6586:
     cp $02
     jp z, Jump_00f_663c
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_65c0
@@ -6312,7 +6312,7 @@ jr_00f_6586:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6333,9 +6333,9 @@ jr_00f_65c0:
 
 Jump_00f_65d2:
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_65f5
@@ -6346,7 +6346,7 @@ Jump_00f_65d2:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6366,10 +6366,10 @@ jr_00f_65f5:
 
 
 Jump_00f_6607:
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_662a
@@ -6380,7 +6380,7 @@ Jump_00f_6607:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_6785
 
@@ -6400,10 +6400,10 @@ jr_00f_662a:
 
 
 Jump_00f_663c:
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_665f
@@ -6414,7 +6414,7 @@ Jump_00f_663c:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_6785
 
@@ -6439,9 +6439,9 @@ Jump_00f_6671:
     ld a, $01
     call RST_TableJumpBankSwitch
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_669e
@@ -6452,7 +6452,7 @@ Jump_00f_6671:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6475,10 +6475,10 @@ Jump_00f_66ad:
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_66da
@@ -6489,7 +6489,7 @@ Jump_00f_66ad:
     and $01
     jp z, Jump_00f_6797
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_67a0
 
@@ -6512,10 +6512,10 @@ Jump_00f_66e9:
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_6716
@@ -6526,7 +6526,7 @@ Jump_00f_66e9:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_6785
 
@@ -6549,10 +6549,10 @@ Jump_00f_6725:
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_00f_6752
@@ -6563,7 +6563,7 @@ Jump_00f_6725:
     and $01
     jp z, Jump_00f_678e
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_00f_6785
 

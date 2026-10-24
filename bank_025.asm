@@ -3402,9 +3402,9 @@ jr_025_501e:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -3420,9 +3420,9 @@ jr_025_501e:
     ld e, a
     add hl, de
     ld a, [hli]
-    ld [wSubordinateFacingTileID], a
+    ld [wCollisionSample2TileID], a
     ld a, [hli]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -3526,9 +3526,9 @@ Jump_025_516e:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -3544,9 +3544,9 @@ Jump_025_516e:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wSubordinateFacingTileID], a
+    ld [wCollisionSample2TileID], a
     ld a, [hl+]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -3581,16 +3581,16 @@ Jump_025_516e:
 
 
 Call_025_51ff:
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     and $80
     ret z
 
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $66
     jr nz, jr_025_5212
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3599,7 +3599,7 @@ jr_025_5212:
     jr nz, jr_025_521c
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3608,7 +3608,7 @@ jr_025_521c:
     jr nz, jr_025_5226
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3617,7 +3617,7 @@ jr_025_5226:
     jr nz, jr_025_5230
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3626,21 +3626,21 @@ jr_025_5230:
     ret nz
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
 Call_025_5239:
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     and $80
     ret z
 
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $83
     jr nz, jr_025_524c
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3649,7 +3649,7 @@ jr_025_524c:
     jr nz, jr_025_5256
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3658,7 +3658,7 @@ jr_025_5256:
     ret nz
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3747,9 +3747,9 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3767,9 +3767,9 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wSubordinateFacingTileID], a
+    ld [wCollisionSample2TileID], a
     ld a, [hl+]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
@@ -3878,9 +3878,9 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3898,9 +3898,9 @@ jr_025_5256:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [wSubordinateFacingTileID], a
+    ld [wCollisionSample2TileID], a
     ld a, [hl+]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]

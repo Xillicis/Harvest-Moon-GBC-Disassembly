@@ -14,7 +14,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     call BankSwitchCallHL
     pop af
     pop hl
-    call Call_005_483e
+    call InitializeShedItemBGAttributes
     xor a
     ld [wPetIsPresentOnMap], a
     ld [$c780], a
@@ -67,11 +67,11 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ld [$cb51], a
     ld a, $00
     ld [$cbe8], a
-    call $4514
+    call LoadShedPlayerSpawn
     call Call_000_123d
-    call Call_005_44a2
-    call Call_005_45b6
-    call $4514
+    call LoadShedTextBoxTilemap
+    call DrawAvailableShedItems
+    call LoadShedPlayerSpawn
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, $83
@@ -94,14 +94,13 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ld [$cb5a], a
     ld [$cb5b], a
     call Call_000_3cf8
-    call Call_005_40e2
+    call HandleShedPlayerInput
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
-    call Call_005_4355
+    call CheckShedExit
     ret
 
-
-Call_005_40e2:
+HandleShedPlayerInput:
     ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
@@ -118,9 +117,9 @@ Call_005_40e2:
     cp $ff
     ret nz
 
-    call Call_005_43bc
+    call UpdateShedMapTransition
     call Call_000_0e54
-    call Call_005_413b
+    call HandleShedItemInteraction
     ldh a, [$ff8a]
     and $02
     jr z, jr_005_410a
@@ -163,8 +162,7 @@ jr_005_4114:
     call RST_TableJumpBankSwitch
     ret
 
-
-Call_005_413b:
+HandleShedItemInteraction: ; 05x413b
     ldh a, [$ff8b]
     cp $01
     ret nz
@@ -310,7 +308,7 @@ jr_005_41df:
     jr nz, jr_005_4216
 
     ld a, [sInventory+1]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory+1], a
     ld a, $01
@@ -319,7 +317,7 @@ jr_005_41df:
 
 jr_005_4216:
     ld a, [sInventory]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory], a
     xor a
@@ -336,7 +334,7 @@ jr_005_4226:
     jr nz, jr_005_4244
 
     ld a, [sInventory]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory], a
     xor a
@@ -345,7 +343,7 @@ jr_005_4226:
 
 jr_005_4244:
     ld a, [sInventory+1]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory+1], a
     ld a, $01
@@ -358,7 +356,7 @@ jr_005_4255:
     jr nz, jr_005_426c
 
     ld a, [sInventory]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory], a
     xor a
@@ -367,7 +365,7 @@ jr_005_4255:
 
 jr_005_426c:
     ld a, [sInventory+1]
-    call Call_005_42af
+    call ReturnItemToShed
     ld a, b
     ld [sInventory+1], a
     ld a, $01
@@ -405,8 +403,12 @@ Jump_005_42a5:
     pop hl
     ret
 
-
-Call_005_42af:
+; Input: A = item ID, or NO_ITEM.
+; Marks the item available in the shed and restores its display.
+; Preserves BC.
+; Does not clear the inventory slot; the caller replaces it.
+; Requires a valid item ID: the lookup has no bounds check.
+ReturnItemToShed: ; 05x42af
     cp $ff
     ret z
 
@@ -542,8 +544,7 @@ Jump_005_4340:
     ld [wDestinationWarpID], a
     ret
 
-
-Call_005_4355:
+CheckShedExit: ; 05x4355
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
@@ -612,8 +613,7 @@ Call_005_43b3:
     call BankSwitchCallHL
     ret
 
-
-Call_005_43bc:
+UpdateShedMapTransition: ; 05x43bc
     ld a, [wMapChangeFreezeTimer]
     or a
     ret z
@@ -767,31 +767,34 @@ jr_005_446c:
     ld [$c7cb], a
     ret
 
-Call_005_44a2:
+LoadShedTextBoxTilemap: ; 05x44a2
     ld hl, vBGMap1
-    ld de, Data_005_44b0
+    ld de, ShedTextBoxTilemap
     ld b, $14
     ld c, $05
     call CopyTileDataToBGMap
     ret
 
-Data_005_44b0:
+ShedTextBoxTilemap: ; 05x44b0
     db $C0, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1, $C1
     db $C1, $C1, $C1, $C2, $C6, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD
     db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7, $C6, $CD, $CD, $CD, $CD, $CD, $CD, $CD
     db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7, $C6, $CD, $CD, $CD
     db $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $CD, $C7
     db $C3, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4, $C4
-    db $C4, $C4, $C4, $C5, $FA, $10, $C9
+    db $C4, $C4, $C4, $C5, 
 
-Label_005_4517:
+LoadShedPlayerSpawn: ; $4514
+    ld a, [$c910]
+
+LoadShedPlayerSpawnByIndex: ; $4517
     cp $01
     jr z, jr_005_4532
 
     cp $02
     jr z, jr_005_4544
 
-    ld hl, Data_005_4556
+    ld hl, ShedPlayerSpawnRecords
     ld de, $c600
     ld b, $20
     call CopyHLtoDE
@@ -825,7 +828,7 @@ jr_005_4544:
     ldh [$ff93], a
     ret
 
-Data_005_4556:
+ShedPlayerSpawnRecords: ; 05x4556
     db $01, $00, $FF, $00, $00, $08, $58, $00, $80, $00, $50, $64, $00, $03, $01, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
     db $01, $00, $FF, $00, $00, $08, $18, $00, $3D, $00, $10, $45, $00, $03, $01, $00
@@ -833,13 +836,13 @@ Data_005_4556:
     db $01, $00, $FF, $00, $00, $08, $58, $00, $2D, $00, $50, $35, $00, $00, $01, $00
     db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 
 
-Call_005_45b6:
-    ld b, $00
+DrawAvailableShedItems: ; 05x45b6
+    ld b, 0
     ld hl, sShedItemFlagList
 
 jr_005_45bb:
     ld a, [hl+]
-    cp $00
+    cp 0
     jr z, jr_005_4616
 
     ld a, b
@@ -957,7 +960,7 @@ Call_005_47ed:
     ld c, $4f
     ld a, $01
     ldh [c], a
-    ld hl, $4821
+    ld hl, ShedItemBGAttributeTable
     ld a, b
     add l
     ld l, a
@@ -992,6 +995,8 @@ Call_005_47ed:
     ret
 
 
+ShedItemBGAttributeTable: ; 05x4821
+; Convert this to raw data
     ld [bc], a
     ld [bc], a
     ld [bc], a
@@ -1020,7 +1025,7 @@ Call_005_47ed:
     dec b
     ld [bc], a
 
-Call_005_483e:
+InitializeShedItemBGAttributes: ; 05x483e
     ld b, $00
 
 jr_005_4840:
@@ -2847,7 +2852,7 @@ jr_005_50b5:
 
     ret
 
-Label_005_50c9:
+_ProbePlayerCollisionDown: ; 05x50c9
     ld a, [wPlayerXPosition]
     sub $07
     ld l, a
@@ -2929,9 +2934,9 @@ Label_005_50c9:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -2949,7 +2954,7 @@ Label_005_50c9:
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -2973,7 +2978,7 @@ Label_005_50c9:
     ld [wDominantFacingTileProperty], a
     ret
 
-Label_005_51a7: ; 05x51a7
+_ProbePlayerCollisionUp: ; 05x51a7
     ld a, [wPlayerXPosition]
     sub $07
     ld l, a
@@ -3051,9 +3056,9 @@ Label_005_51a7: ; 05x51a7
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     pop hl
     push hl
     ldh a, [$ffa5]
@@ -3071,7 +3076,7 @@ Label_005_51a7: ; 05x51a7
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     pop hl
     ldh a, [$ffa6]
     sla a
@@ -3095,27 +3100,26 @@ Label_005_51a7: ; 05x51a7
     ld [wDominantFacingTileProperty], a
     ld a, [wPlayerIsRidingHorse]
     or a
-    call nz, Call_005_5296
+    call nz, ApplyMountedOrCarryingCollisionRestrictions
     ld a, [wHeldObject]
     or a
-    call nz, Call_005_5296
+    call nz, ApplyMountedOrCarryingCollisionRestrictions
     ld a, [wPlayerHoldingPet]
     or a
-    call nz, Call_005_52d0
+    call nz, ApplyCarriedPetCollisionRestrictions
     ret
 
-
-Call_005_5296:
-    ld a, [wcb30]
+ApplyMountedOrCarryingCollisionRestrictions:
+    ld a, [wCollisionSample1Property]
     and $80
     ret z
 
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $66
     jr nz, jr_005_52a9
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3124,7 +3128,7 @@ jr_005_52a9:
     jr nz, jr_005_52b3
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3133,7 +3137,7 @@ jr_005_52b3:
     jr nz, jr_005_52bd
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3142,7 +3146,7 @@ jr_005_52bd:
     jr nz, jr_005_52c7
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3151,21 +3155,20 @@ jr_005_52c7:
     ret nz
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
-
-Call_005_52d0:
-    ld a, [wcb30]
+ApplyCarriedPetCollisionRestrictions:
+    ld a, [wCollisionSample1Property]
     and $80
     ret z
 
-    ld a, [$cb2f]
+    ld a, [wCollisionSample1TileID]
     cp $83
     jr nz, jr_005_52e3
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3174,7 +3177,7 @@ jr_005_52e3:
     jr nz, jr_005_52ed
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
@@ -3183,14 +3186,13 @@ jr_005_52ed:
     ret nz
 
     ld a, $01
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ret
 
 
     ret
 
-
-Label_005_52f7:
+_ProbePlayerCollisionLeft: ; 05x52f7
     ld a, [wPlayerYPosition]
     add $03
     ld l, a
@@ -3273,9 +3275,9 @@ Label_005_52f7:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3295,7 +3297,7 @@ Label_005_52f7:
     ld a, [hli]
     ld [$cb31], a
     ld a, [hli]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
@@ -3321,7 +3323,7 @@ Label_005_52f7:
     ld [wDominantFacingTileProperty], a
     ret
 
-Label_005_53e2:
+_ProbePlayerCollisionRight: ; 05x53e2
     ld a, [wPlayerYPosition]
     add $03
     ld l, a
@@ -3404,9 +3406,9 @@ Label_005_53e2:
     ld e, a
     add hl, de
     ld a, [hl+]
-    ld [$cb2f], a
+    ld [wCollisionSample1TileID], a
     ld a, [hl+]
-    ld [wcb30], a
+    ld [wCollisionSample1Property], a
     ldh a, [$ffa5]
     ld c, a
     ld a, [$b90c]
@@ -3426,7 +3428,7 @@ Label_005_53e2:
     ld a, [hl+]
     ld [$cb31], a
     ld a, [hl+]
-    ld [wcb32], a
+    ld [wCollisionSample2Property], a
     ldh a, [$ffa6]
     ld c, a
     ld a, [$b90c]
@@ -4412,16 +4414,15 @@ _StoreTilemapCellDataForPlayersCurrentPosition:
 Label_005_5b5f:
     ld a, [wPlayerFacingDirection]
     rst $00
-    ld l, h
-    ld e, e
-    nop
-    ld e, h
-    sub [hl]
-    ld e, h
-    inc l
-    ld e, l
+
+    dw GetDownMapCellPointerPair ; down
+    dw $5c00 ; up
+    dw $5c96 ; left
+    dw $5d2c ; right
+
     ret
 
+GetDownMapCellPointerPair: ; 05x5b6c
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -5033,7 +5034,7 @@ Label_005_5d2c:
     ld b, h
     ld c, l
     pop hl
-    call Call_005_69a7
+    call GetMapCellPointerAtPixelPosition
     inc hl
     inc hl
     ld a, [hl+]
@@ -6754,8 +6755,16 @@ Call_005_699f:
     ld [$c82b], a
     ret
 
+GetMapCellPointerAtPixelPosition: ; 05x69a7
+; Input:  HL = pixel X
+;         BC = pixel Y
+; Output: HL = address of the corresponding two-byte map cell
+;         Y is sampled with an additional +9 pixel offset.
 
-Call_005_69a7:
+; The Calculation:
+; mapBase
+; + floor((Y + 9) / 16) * rowStride
+; + floor(X / 16) * 2
     srl h
     rr l
     srl h

@@ -191,9 +191,9 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, -$0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -205,9 +205,9 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -219,9 +219,9 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4c6e
@@ -249,13 +249,13 @@ jr_001_4c6e:
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -263,13 +263,13 @@ jr_001_4c6e:
     ld hl, wPlayerYPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -277,13 +277,13 @@ jr_001_4c6e:
     ld hl, wPlayerYPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -311,13 +311,13 @@ Jump_001_4cf5:
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -325,13 +325,13 @@ Jump_001_4cf5:
     ld hl, wPlayerXPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -339,13 +339,13 @@ Jump_001_4cf5:
     ld hl, wPlayerXPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4d7e
@@ -372,13 +372,13 @@ jr_001_4d7e:
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -386,13 +386,13 @@ jr_001_4d7e:
     ld hl, wPlayerXPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -400,13 +400,13 @@ jr_001_4d7e:
     ld hl, wPlayerXPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -433,13 +433,13 @@ Jump_001_4e03:
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -447,13 +447,13 @@ Jump_001_4e03:
     ld hl, wPlayerXPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -461,13 +461,13 @@ Jump_001_4e03:
     ld hl, wPlayerXPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr nz, jr_001_4e8c
@@ -494,13 +494,13 @@ jr_001_4e8c:
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -508,13 +508,13 @@ jr_001_4e8c:
     ld hl, wPlayerXPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -522,13 +522,13 @@ jr_001_4e8c:
     ld hl, wPlayerXPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -603,13 +603,13 @@ PutPetDown:
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -617,13 +617,13 @@ PutPetDown:
     ld hl, wPlayerXPosition
     ld bc, $fff2
     call AddBCtoWordAtHL
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld hl, wPlayerXPosition
     ld bc, $000e
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -672,13 +672,13 @@ PutPetDown:
     ld hl, wPlayerXPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -686,13 +686,13 @@ PutPetDown:
     ld hl, wPlayerXPosition
     ld bc, $000e
     call AddBCtoWordAtHL
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld hl, wPlayerXPosition
     ld bc, $fff2
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -734,20 +734,20 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
 
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $02
     ret nz
@@ -755,20 +755,20 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $fff2
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $000e
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
 
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $02
     ret nz
@@ -776,20 +776,20 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld hl, wPlayerYPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
 
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $02
     ret nz
@@ -835,9 +835,9 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $fffc
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -859,9 +859,9 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz
@@ -883,9 +883,9 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $fff2
     call AddBCtoWordAtHL
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     ret nz

@@ -3038,8 +3038,8 @@ jr_002_50ec:
     ld [wTextID], a
     ld [wTVAnimationTimer], a
     ld [wTVIsTurnedOn], a
-    ld [$cb7a], a
-    ld [$cb7b], a
+    ld [wPlayerIdleCounter], a
+    ld [wPlayerIdleCounter+1], a
     ld [$cb7c], a
     ld [wPlayerIsRidingHorse], a
     ld [$cb82], a
@@ -3571,9 +3571,9 @@ Jump_002_549d:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_54d8
@@ -3584,7 +3584,7 @@ Jump_002_549d:
     and $01
     jp z, Jump_002_56f0
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5703
 
@@ -3608,10 +3608,10 @@ Jump_002_54dc:
     or a
     ret nz
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_5517
@@ -3622,7 +3622,7 @@ Jump_002_54dc:
     and $01
     jp z, Jump_002_56f0
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5703
 
@@ -3646,10 +3646,10 @@ Jump_002_551b:
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_5556
@@ -3660,7 +3660,7 @@ Jump_002_551b:
     and $01
     jp z, Jump_002_5716
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5729
 
@@ -3684,10 +3684,10 @@ Jump_002_555a:
     or a
     ret nz
 
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_5595
@@ -3698,7 +3698,7 @@ Jump_002_555a:
     and $01
     jp z, Jump_002_5716
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5729
 
@@ -3783,10 +3783,10 @@ jr_002_55da:
     or a
     ret nz
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_5626
@@ -3797,7 +3797,7 @@ jr_002_55da:
     and $01
     jp z, Jump_002_56f0
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5703
 
@@ -3824,9 +3824,9 @@ Jump_002_562d:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_5667
@@ -3837,7 +3837,7 @@ Jump_002_562d:
     and $01
     jp z, Jump_002_56f0
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5703
 
@@ -3863,10 +3863,10 @@ Jump_002_566e:
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_56a8
@@ -3877,7 +3877,7 @@ Jump_002_566e:
     and $01
     jp z, Jump_002_5716
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5729
 
@@ -3903,10 +3903,10 @@ Jump_002_56af:
     or a
     ret nz
 
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_002_56e9
@@ -3917,7 +3917,7 @@ Jump_002_56af:
     and $01
     jp z, Jump_002_5716
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_002_5729
 
@@ -3935,7 +3935,7 @@ Jump_002_56f0:
     and $01
     ret nz
 
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -3949,7 +3949,7 @@ Jump_002_5703:
     and $01
     ret nz
 
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -3963,7 +3963,7 @@ Jump_002_5716:
     and $01
     ret nz
 
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -7934,8 +7934,8 @@ jr_002_708f:
 
 Call_002_70a3:
     xor a
-    ld [wcb30], a
-    ld [wcb32], a
+    ld [wCollisionSample1Property], a
+    ld [wCollisionSample2Property], a
     ld [wDominantFacingTileProperty], a
     ret
 

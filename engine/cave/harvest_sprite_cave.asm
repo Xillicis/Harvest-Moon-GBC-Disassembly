@@ -16,15 +16,15 @@ Jump_00e_457b:
     call Call_00e_52b9
     jr jr_00e_45a5
 
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     call Call_00e_52c2
     jr jr_00e_45a5
 
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     call Call_00e_52cb
     jr jr_00e_45a5
 
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     call Call_00e_52d4
 
 jr_00e_45a5:

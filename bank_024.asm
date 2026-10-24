@@ -403,9 +403,9 @@ Jump_024_4306:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_433a
@@ -416,7 +416,7 @@ Jump_024_4306:
     and $01
     jp z, Jump_024_44f4
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_4507
 
@@ -438,10 +438,10 @@ Jump_024_433e:
     or a
     ret nz
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_4372
@@ -452,7 +452,7 @@ Jump_024_433e:
     and $01
     jp z, Jump_024_44f4
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_4507
 
@@ -474,10 +474,10 @@ Jump_024_4376:
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_43aa
@@ -488,7 +488,7 @@ Jump_024_4376:
     and $01
     jp z, Jump_024_451a
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_452d
 
@@ -510,10 +510,10 @@ Jump_024_43ae:
     or a
     ret nz
 
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_43e2
@@ -524,7 +524,7 @@ Jump_024_43ae:
     and $01
     jp z, Jump_024_451a
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_452d
 
@@ -591,10 +591,10 @@ jr_024_4411:
     or a
     ret nz
 
-    call Call_000_1502
-    ld a, [wcb30]
+    call ProbePlayerCollisionUp
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_4450
@@ -605,7 +605,7 @@ jr_024_4411:
     and $01
     jp z, Jump_024_44f4
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_4507
 
@@ -627,9 +627,9 @@ jr_024_4457:
     ret nz
 
     call ProbePlayerCollisionDown
-    ld a, [wcb30]
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_4485
@@ -640,7 +640,7 @@ jr_024_4457:
     and $01
     jr z, jr_024_44f4
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jp z, Jump_024_4507
 
@@ -661,10 +661,10 @@ jr_024_448c:
     or a
     ret nz
 
-    call Call_000_150b
-    ld a, [wcb30]
+    call ProbePlayerCollisionLeft
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_44b9
@@ -675,7 +675,7 @@ jr_024_448c:
     and $01
     jr z, jr_024_451a
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jr z, jr_024_452d
 
@@ -696,10 +696,10 @@ Jump_024_44c0:
     or a
     ret nz
 
-    call Call_000_1514
-    ld a, [wcb30]
+    call ProbePlayerCollisionRight
+    ld a, [wCollisionSample1Property]
     ld b, a
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     or b
     and $01
     jr z, jr_024_44ed
@@ -710,7 +710,7 @@ Jump_024_44c0:
     and $01
     jr z, jr_024_451a
 
-    ld a, [wcb32]
+    ld a, [wCollisionSample2Property]
     and $01
     jr z, jr_024_452d
 
@@ -729,7 +729,7 @@ jr_024_44f4:
     and $01
     ret nz
 
-    call Call_000_150b
+    call ProbePlayerCollisionLeft
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -743,7 +743,7 @@ Jump_024_4507:
     and $01
     ret nz
 
-    call Call_000_1514
+    call ProbePlayerCollisionRight
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -758,7 +758,7 @@ jr_024_451a:
     and $01
     ret nz
 
-    call Call_000_1502
+    call ProbePlayerCollisionUp
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
