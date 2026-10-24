@@ -3164,7 +3164,7 @@ Jump_030_4ff7:
     jr nz, jr_030_502d
 
     ld a, $44
-    call Call_000_25cb
+    call StartTwoAudioTracks
     jr jr_030_502d
 
 jr_030_5028:

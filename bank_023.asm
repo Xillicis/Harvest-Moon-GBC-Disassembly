@@ -2987,7 +2987,7 @@ jr_023_5220:
 
     xor a
     ld [$cc29], a
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -3296,7 +3296,7 @@ jr_023_53f7:
 
     xor a
     ld [$cc29], a
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -3446,7 +3446,7 @@ jr_023_54e0:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz

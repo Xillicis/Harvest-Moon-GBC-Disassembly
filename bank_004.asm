@@ -406,7 +406,7 @@ Jump_004_4313:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -630,7 +630,7 @@ jr_004_4464:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -777,7 +777,7 @@ jr_004_453a:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz

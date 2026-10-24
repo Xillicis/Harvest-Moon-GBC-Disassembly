@@ -481,7 +481,7 @@ jr_000_3871:
     ld a, $ff
     ld [wTempTextID], a
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 Call_000_387f:
@@ -496,7 +496,7 @@ jr_000_387f:
     ld a, $ff
     ld [wTempTextID], a
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 jr_000_389b:
@@ -514,7 +514,7 @@ jr_000_389b:
     ld a, [$cbea]
     ld [$b906], a
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 Call_000_38c1:
@@ -544,7 +544,7 @@ Call_000_38c1:
     ld [$cb57], a
     pop hl
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 Call_000_38fb:

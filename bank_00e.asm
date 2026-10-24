@@ -401,7 +401,7 @@ Jump_00e_42bb:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -582,7 +582,7 @@ Jump_00e_43d8:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -2286,7 +2286,7 @@ jr_00e_506e:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -3507,7 +3507,7 @@ Jump_00e_5794:
     cp $54
     ret nc
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -3567,7 +3567,7 @@ Jump_00e_57fc:
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -3737,7 +3737,7 @@ Jump_00e_58ff:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -3981,7 +3981,7 @@ jr_00e_5a38:
 jr_00e_5a3f:
     ld a, $02
     call RST_TableJumpBankSwitch
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -4365,7 +4365,7 @@ jr_00e_5ce3:
 
     call Call_00e_530d
     ld a, $44
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, $03
     ld [$cc98], a
     ret
@@ -4381,7 +4381,7 @@ Jump_00e_5cfc:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -4534,7 +4534,7 @@ Jump_00e_5df3:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -5027,7 +5027,7 @@ jr_00e_60c7:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -5376,7 +5376,7 @@ Jump_00e_633e:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -5557,7 +5557,7 @@ Jump_00e_645b:
     and $01
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -5812,7 +5812,7 @@ jr_00e_65a3:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]

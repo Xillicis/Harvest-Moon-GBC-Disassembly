@@ -355,7 +355,7 @@ jr_01b_4188:
 
 jr_01b_4199:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [wVillageCursorPositionFlag]
     add a
     add l
@@ -371,7 +371,7 @@ jr_01b_4199:
 
 jr_01b_41ac:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     ld a, [hl+]
@@ -478,7 +478,7 @@ jr_01b_423b:
     jr z, jr_01b_424a
 
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -487,7 +487,7 @@ jr_01b_423b:
 
 jr_01b_424a:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     ld a, [hl+]
@@ -722,7 +722,7 @@ Label_01b_434e:
 
     pop hl
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -732,7 +732,7 @@ Label_01b_434e:
 jr_01b_439b:
     call Call_01b_46b1
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     inc hl
     inc hl
@@ -747,7 +747,7 @@ jr_01b_439b:
     jr nc, jr_01b_43bf
 
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -759,7 +759,7 @@ jr_01b_439b:
 jr_01b_43bf:
     call Call_01b_46b1
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld h, b
     ld l, c
     inc hl
@@ -987,7 +987,7 @@ jr_01b_4494:
 
 jr_01b_44b4:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [wVillageCursorPositionFlag]
     add a
     add l
@@ -1003,7 +1003,7 @@ jr_01b_44b4:
 
 jr_01b_44c7:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     inc hl
@@ -1062,7 +1062,7 @@ jr_01b_4511:
 
 Jump_01b_4514:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     inc hl
@@ -1697,7 +1697,7 @@ jr_01b_47b1:
 
 jr_01b_47c3:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     ret
@@ -1781,7 +1781,7 @@ jr_01b_4817:
 
 jr_01b_482a:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [wVillageCursorPositionFlag]
     add a
     add l
@@ -1797,7 +1797,7 @@ jr_01b_482a:
 
 jr_01b_483d:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
 
 jr_01b_4842:
     inc hl

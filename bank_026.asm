@@ -473,7 +473,7 @@ jr_026_4289:
 
     push hl
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     ld a, [$cd6c]
     add a
@@ -491,7 +491,7 @@ jr_026_4289:
 jr_026_42a6:
     push hl
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     dec hl
     dec hl
@@ -598,7 +598,7 @@ jr_026_4335:
 jr_026_4336:
     push hl
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     dec hl
     dec hl
@@ -629,13 +629,13 @@ jr_026_4336:
     inc hl
     inc hl
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 
 jr_026_436d:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     dec hl
     dec hl
     ret

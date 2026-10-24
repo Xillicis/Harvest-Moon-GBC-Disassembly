@@ -187,7 +187,7 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, -$0008
     call AddBCtoWordAtHL
@@ -201,7 +201,7 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
@@ -215,7 +215,7 @@ JumpOffHorse:
     ld hl, wPlayerYPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
@@ -831,7 +831,7 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $0004
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fffc
     call AddBCtoWordAtHL
@@ -855,7 +855,7 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
@@ -879,7 +879,7 @@ PutPetDown:
     ld hl, wPlayerYPosition
     ld bc, $000e
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff2
     call AddBCtoWordAtHL

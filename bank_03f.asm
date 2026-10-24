@@ -2902,7 +2902,7 @@ jr_03f_4df7:
     xor a
     ld [$cdb4], a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 
@@ -2912,7 +2912,7 @@ jr_03f_4e01:
     ld a, $04
     ld [wVillageCursorPositionFlag], a
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 
@@ -3658,7 +3658,7 @@ jr_03f_5211:
     xor a
     ld [$cdb4], a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [wVillageCursorPositionFlag]
     ld [$cdb8], a
     inc hl
@@ -3670,7 +3670,7 @@ jr_03f_5223:
     xor a
     ld [$cdb4], a
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, $01
     ld [$cdb8], a
     ld a, [hl+]
@@ -3761,7 +3761,7 @@ jr_03f_528d:
     xor a
     ld [$cdb4], a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     inc hl
     inc hl
@@ -3770,7 +3770,7 @@ jr_03f_528d:
 
 jr_03f_52ac:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     dec hl
     dec hl
@@ -3923,7 +3923,7 @@ jr_03f_5347:
     ld a, b
     ld [$cdb6], a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     ret
@@ -3931,7 +3931,7 @@ jr_03f_5347:
 
 jr_03f_5366:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
 
 jr_03f_536b:
     dec hl
@@ -5276,7 +5276,7 @@ jr_03f_594a:
 
 jr_03f_59a6:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5645,7 +5645,7 @@ jr_03f_5b6b:
     push bc
     call InitializeAudioEngine
     ld a, $46
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     ret
 
@@ -9914,7 +9914,7 @@ jr_03f_6fd7:
     jr nz, jr_03f_6fe1
 
     ld a, b
-    call Call_000_25cb
+    call StartTwoAudioTracks
     jr jr_03f_6ff3
 
 jr_03f_6fe1:

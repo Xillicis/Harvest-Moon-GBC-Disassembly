@@ -1918,7 +1918,7 @@ Call_01d_4a41:
     jr nz, jr_01d_4a6f
 
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -1929,7 +1929,7 @@ Call_01d_4a41:
 
 jr_01d_4a6f:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld h, b
     ld l, c
     inc hl
@@ -2092,7 +2092,7 @@ jr_01d_4b1d:
 
     ld e, a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld hl, $cd6b
     ld a, [$cd67]
     cp $04
@@ -2118,7 +2118,7 @@ jr_01d_4b3a:
 
 
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
 
 jr_01d_4b50:
     ld a, b
@@ -2138,7 +2138,7 @@ jr_01d_4b50:
 Jump_01d_4b5d:
 jr_01d_4b5d:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [$cd67]
     or a
     jr z, jr_01d_4b7d
@@ -3072,7 +3072,7 @@ jr_01d_4f85:
 Jump_01d_4f89:
     pop de
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     ld a, [hl+]
     ld h, [hl]
@@ -3083,7 +3083,7 @@ Jump_01d_4f89:
 jr_01d_4f94:
     pop de
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     inc hl
@@ -3340,7 +3340,7 @@ jr_01d_50c4:
 Jump_01d_50c8:
     pop hl
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [$cd64]
     add a
     add l
@@ -3357,7 +3357,7 @@ Jump_01d_50c8:
 jr_01d_50dc:
     pop hl
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     inc hl

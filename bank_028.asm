@@ -1341,7 +1341,7 @@ jr_028_468f:
     call AddBCtoWordAtHL
     call Call_000_0f73
     ld a, $38
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 
@@ -1763,7 +1763,7 @@ jr_028_4933:
     ret nz
 
     ld a, $38
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [wSTAT_HandlerIndex]
     cp $01
     ret nz

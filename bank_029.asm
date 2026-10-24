@@ -427,7 +427,7 @@ jr_029_422f:
 
 jr_029_4239:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     dec hl
     dec hl
@@ -483,7 +483,7 @@ Jump_029_427c:
     call UpdatePlayerMoneyTileData
     pop hl
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [hl+]
     bit 7, a
     jr nz, jr_029_4293
@@ -2307,14 +2307,14 @@ jr_029_4bc5:
     xor a
     ld [$cd6b], a
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop hl
     ret
 
 
 jr_029_4bf7:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, $04
     add l
     ld l, a
@@ -5598,7 +5598,7 @@ jr_029_5df0:
 
 jr_029_5df3:
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, [$cd63]
     ld b, a
     ld a, [$cd64]
@@ -5625,7 +5625,7 @@ jr_029_5e05:
 
 Jump_029_5e13:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, $08
     add l
     ld l, a
@@ -7676,7 +7676,7 @@ jr_029_66cc:
     jr nz, jr_029_66e5
 
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
 
 jr_029_66de:
@@ -7691,7 +7691,7 @@ jr_029_66de:
 
 jr_029_66e5:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     dec hl
     dec hl
     ret
@@ -7699,7 +7699,7 @@ jr_029_66e5:
 
 jr_029_66ed:
     ld a, $51
-    call Call_000_25cb
+    call StartTwoAudioTracks
     inc hl
     inc hl
     inc hl
@@ -8361,7 +8361,7 @@ jr_029_69f1:
 
 jr_029_69fb:
     ld a, b
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ret
 
 

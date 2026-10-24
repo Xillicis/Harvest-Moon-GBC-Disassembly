@@ -15,7 +15,7 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
 ; 0x4011
     RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
 
-Label_001_4019:
+InitializeFarmScene:
     call ClearBGMap0
     call ClearBGMap1
     call ClearShadowOAMBuffer
@@ -261,7 +261,7 @@ jr_001_41de:
     call Call_001_43f3
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
-    call Call_001_6ba5
+    call UpdatePlayerIdleAnimation
     call Call_001_6b67
     call Call_001_6cd1
     call Call_001_78e7
@@ -291,13 +291,13 @@ Call_001_4224:
     jr z, jr_001_42ae
 
     cp $13
-    jr nc, jr_001_423d
+    jr nc, .jr_001_423d
 
     pop hl
     ret
 
-jr_001_423d:
-    call Call_001_67d1
+.jr_001_423d
+    call MovePlayerUpOnePixel
     ld a, [wDestinationWarpID]
     cp TOWN
     jp z, Jump_001_42cb
@@ -568,19 +568,19 @@ jr_001_4428:
 jr_001_4432:
     ldh a, [$ff8a]
     and $80
-    jp nz, Jump_001_453f
+    jp nz, HandleWalkDown
 
     ldh a, [$ff8a]
     and $40
-    jp nz, Jump_001_4596
+    jp nz, HandleWalkUp
 
     ldh a, [$ff8a]
     and $20
-    jp nz, Jump_001_45f0
+    jp nz, HandleWalkLeft
 
     ldh a, [$ff8a]
     and $10
-    jp nz, Jump_001_464a
+    jp nz, HandleWalkRight
 
     ld a, [wInputFreezeTimer]
     or a
@@ -609,19 +609,19 @@ jr_001_4466:
     jr z, jr_001_447d
     cp FACING_RIGHT
     jr z, jr_001_4481
-    call Call_001_45c6
+    call TryMovePlayerUp
     ret
 
 jr_001_447d:
-    call Call_001_4620
+    call TryMovePlayerLeft
     ret
 
 jr_001_4481:
-    call Call_001_467a
+    call TryMovePlayerRight
     ret
 
 jr_001_4485:
-    call Call_001_456f
+    call TryMovePlayerDown
     ret
 
 jr_001_4489:
@@ -641,15 +641,15 @@ jr_001_4495:
     jr z, jr_001_44a8
     cp FACING_RIGHT
     jr z, jr_001_44ac
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     ret
 
 jr_001_44a8:
-    call Call_001_682d
+    call MovePlayerLeftOnePixel
     ret
 
 jr_001_44ac:
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     ret
 
 jr_001_44b0:
@@ -778,7 +778,7 @@ jr_001_4536:
     ld [$cb82], a
     ret
 
-Jump_001_453f:
+HandleWalkDown: ; 01x453f
     ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
@@ -790,7 +790,7 @@ Jump_001_453f:
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
     or a
-    jr nz, jr_001_456f
+    jr nz, TryMovePlayerDown
 
     ld de, $0004
     call Call_001_44b4
@@ -804,9 +804,8 @@ Jump_001_453f:
     or a
     ret nz
 
-Call_001_456f:
-jr_001_456f:
-    call Call_000_14f9
+TryMovePlayerDown: ; 01x456f
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -829,7 +828,7 @@ jr_001_4592:
     call Call_001_6775
     ret
 
-Jump_001_4596:
+HandleWalkUp: ; 01x4596
     ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
@@ -841,7 +840,7 @@ Jump_001_4596:
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
     or a
-    jr nz, jr_001_45c6
+    jr nz, TryMovePlayerUp
 
     ld de, $00fc
     call Call_001_44b4
@@ -855,8 +854,7 @@ Jump_001_4596:
     or a
     ret nz
 
-Call_001_45c6:
-jr_001_45c6:
+TryMovePlayerUp: ; 01x45c6
     call Call_000_1502
     ld a, [wcb30]
     ld b, a
@@ -878,10 +876,10 @@ jr_001_45c6:
 
 jr_001_45e9:
     call Call_001_6a09
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     ret
 
-Jump_001_45f0:
+HandleWalkLeft:
     ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
@@ -893,7 +891,7 @@ Jump_001_45f0:
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
     or a
-    jr nz, jr_001_4620
+    jr nz, TryMovePlayerLeft
 
     ld de, $fc00
     call Call_001_44b4
@@ -907,8 +905,7 @@ Jump_001_45f0:
     or a
     ret nz
 
-Call_001_4620:
-jr_001_4620:
+TryMovePlayerLeft:
     call Call_000_150b
     ld a, [wcb30]
     ld b, a
@@ -931,12 +928,11 @@ jr_001_4620:
 
 
 jr_001_4643:
-    call Call_001_6ad5
-    call Call_001_682d
+    call TryBeginTravelToTown
+    call MovePlayerLeftOnePixel
     ret
 
-
-Jump_001_464a:
+HandleWalkRight:
     ld a, [wPlayerIsRidingHorse]
     or a
     jp nz, Jump_001_46a1
@@ -948,7 +944,7 @@ Jump_001_464a:
     call RST_TableJumpBankSwitch
     ld a, [$b88c]
     or a
-    jr nz, jr_001_467a
+    jr nz, TryMovePlayerRight
 
     ld de, $0400
     call Call_001_44b4
@@ -962,8 +958,7 @@ Jump_001_464a:
     or a
     ret nz
 
-Call_001_467a:
-jr_001_467a:
+TryMovePlayerRight: ; 01x467a
     call Call_000_1514
     ld a, [wcb30]
     ld b, a
@@ -984,7 +979,7 @@ jr_001_467a:
     ret
 
 jr_001_469d:
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     ret
 
 
@@ -1053,7 +1048,7 @@ jr_001_46e3:
 
     ld a, [wPlayerHoldingPet]
     or a
-    jp nz, Jump_001_4596
+    jp nz, HandleWalkUp
 
     ld a, $02
     call RST_TableJumpBankSwitch
@@ -1132,7 +1127,7 @@ jr_001_4745:
 
 jr_001_4780:
     call Call_001_6a09
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     call Call_000_1502
     ld a, [wcb30]
     ld b, a
@@ -1143,13 +1138,13 @@ jr_001_4780:
     ret
 
 jr_001_4796:
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     ret
 
 Jump_001_479a:
     ld a, [wPlayerHoldingPet]
     or a
-    jp nz, Jump_001_453f
+    jp nz, HandleWalkDown
 
     ld a, $02
     call RST_TableJumpBankSwitch
@@ -1165,7 +1160,7 @@ Jump_001_479a:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1227,7 +1222,7 @@ jr_001_47ea:
 
 jr_001_4825:
     call Call_001_6775
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1243,7 +1238,7 @@ jr_001_4838:
 Jump_001_483c:
     ld a, [wPlayerHoldingPet]
     or a
-    jp nz, Jump_001_45f0
+    jp nz, HandleWalkLeft
 
     ld a, $02
     call RST_TableJumpBankSwitch
@@ -1320,8 +1315,8 @@ jr_001_488c:
     ret
 
 jr_001_48c7:
-    call Call_001_6ad5
-    call Call_001_682d
+    call TryBeginTravelToTown
+    call MovePlayerLeftOnePixel
     call Call_000_150b
     ld a, [wcb30]
     ld b, a
@@ -1332,13 +1327,13 @@ jr_001_48c7:
     ret
 
 jr_001_48dd:
-    call Call_001_682d
+    call MovePlayerLeftOnePixel
     ret
 
 Jump_001_48e1:
     ld a, [wPlayerHoldingPet]
     or a
-    jp nz, Jump_001_464a
+    jp nz, HandleWalkRight
 
     ld a, $02
     call RST_TableJumpBankSwitch
@@ -1415,7 +1410,7 @@ jr_001_4931:
     ret
 
 jr_001_496c:
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     call Call_000_1514
     ld a, [wcb30]
     ld b, a
@@ -1426,7 +1421,7 @@ jr_001_496c:
     ret
 
 jr_001_497f:
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     ret
 
 Jump_001_4983:
@@ -1444,7 +1439,7 @@ jr_001_4990:
     and $01
     ret nz
 
-    call Call_001_682d
+    call MovePlayerLeftOnePixel
     ret
 
 Jump_001_499d:
@@ -1462,7 +1457,7 @@ jr_001_49aa:
     and $01
     ret nz
 
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     ret
 
 Jump_001_49b7:
@@ -1480,7 +1475,7 @@ jr_001_49c4:
     and $01
     ret nz
 
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     ret
 
 
@@ -1494,7 +1489,7 @@ Jump_001_49d1:
     ret nz
 
 jr_001_49de:
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -1538,7 +1533,7 @@ Call_001_49eb:
 
 jr_001_4a1e:
     push bc
-    call Call_001_67d1
+    call MovePlayerUpOnePixel
     pop bc
     dec b
     jr nz, jr_001_4a1e
@@ -1558,7 +1553,7 @@ jr_001_4a28:
 Jump_001_4a32:
 jr_001_4a32:
     push bc
-    call Call_001_682d
+    call MovePlayerLeftOnePixel
     pop bc
     dec b
     jr nz, jr_001_4a32
@@ -1568,7 +1563,7 @@ jr_001_4a32:
 Jump_001_4a3c:
 jr_001_4a3c:
     push bc
-    call UpdatePlayerXPosition
+    call MovePlayerRightOnePixel
     pop bc
     dec b
     jr nz, jr_001_4a3c
@@ -3421,7 +3416,7 @@ jr_001_67a7:
     ldh a, [$ff91]
     and $0f
     cp $00
-    call z, Call_001_7494
+    call z, UpdateFarmMapForScrollDown
 
 jr_001_67b8:
     ld a, [wPlayerYPosition]
@@ -3443,8 +3438,7 @@ jr_001_67ca:
 
     ret
 
-
-Call_001_67d1:
+MovePlayerUpOnePixel: ; 01x67d1
     ld a, $05
     ld [$c611], a
     xor a
@@ -3483,7 +3477,7 @@ jr_001_6803:
     ldh a, [$ff91]
     and $0f
     cp $0f
-    call z, Call_001_7445
+    call z, UpdateFarmMapForScrollUp
 
 jr_001_6814:
     ld a, [wPlayerYPosition]
@@ -3505,8 +3499,7 @@ jr_001_6826:
 
     ret
 
-
-Call_001_682d:
+MovePlayerLeftOnePixel:
     ld a, $05
     ld [$c611], a
     xor a
@@ -3560,7 +3553,7 @@ jr_001_6875:
     ldh a, [$ff93]
     and $0f
     cp $0f
-    call z, Call_001_74e3
+    call z, UpdateFarmMapForScrollLeft
 
 jr_001_6886:
     ld a, [wPlayerXPosition]
@@ -3585,7 +3578,7 @@ jr_001_6898:
 ; Seems like an a subroutine that updates the players position into a special WRAM address
 ; And also bifurcates when near the map boundary. My guess is when near the boundary,
 ; the camera stops scrolling?
-UpdatePlayerXPosition:
+MovePlayerRightOnePixel:
     ld a, $05
     ld [$c611], a
     xor a
@@ -3648,7 +3641,7 @@ UpdatePlayerXPosition:
     ldh a, [$ff93]
     and $0f
     cp $00
-    call z, Call_001_7538
+    call z, UpdateFarmMapForScrollRight
 
 .updatePlayerXPosition
     ld a, [wPlayerXPosition]
@@ -3863,7 +3856,7 @@ Call_001_6a09:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [$cb2f]
     cp $3d
     jr nz, jr_001_6a29
@@ -3872,7 +3865,7 @@ Call_001_6a09:
     cp $3d
     jr nz, jr_001_6a29
 
-    call Call_001_6a78
+    call BeginEnterHouse
     pop hl
     ret
 
@@ -3888,7 +3881,7 @@ jr_001_6a29:
     or a
     ret nz
 
-    call Call_001_6ab0
+    call BeginEnterCowBarn
     pop hl
     ret
 
@@ -3905,7 +3898,7 @@ jr_001_6a3e:
     or a
     ret nz
 
-    call Call_001_6abb
+    call BeginEnterChickenCoop
     pop hl
     ret
 
@@ -3931,7 +3924,7 @@ jr_001_6a53:
     or a
     ret nz
 
-    call Call_001_6ac6
+    call BeginEnterShed
     pop hl
     ret
 
@@ -3939,8 +3932,7 @@ jr_001_6a53:
 jr_001_6a77:
     ret
 
-
-Call_001_6a78:
+BeginEnterHouse: ; 01x6a78
     ld a, HOME
     ld [wDestinationWarpID], a
     ld a, $20
@@ -3955,7 +3947,7 @@ Call_001_6a78:
     or a
     jr z, .savePetPosition
 
-    ld a, $00
+    ld a, 0
     ld [sPetIsOutside], a
     ret
 
@@ -3970,21 +3962,21 @@ Call_001_6a78:
     ld [sPetYPosition+1], a
     ret
 
-Call_001_6ab0:
+BeginEnterCowBarn: ; 01x6ab0
     ld a, COW_BARN
     ld [wDestinationWarpID], a
     ld a, $20
     ld [wMapChangeFreezeTimer], a
     ret
 
-Call_001_6abb:
+BeginEnterChickenCoop: ; 01x6abb
     ld a, CHICKEN_COUP
     ld [wDestinationWarpID], a
     ld a, $20
     ld [wMapChangeFreezeTimer], a
     ret
 
-Call_001_6ac6:
+BeginEnterShed: ; 01x6ac6
     ld a, SHED
     ld [wDestinationWarpID], a
     ld a, $20
@@ -3993,7 +3985,7 @@ Call_001_6ac6:
     ld [$c910], a
     ret
 
-Call_001_6ad5:
+TryBeginTravelToTown: ; 01x6ad5
     ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
@@ -4112,7 +4104,7 @@ Call_001_6b67:
     ld [$cb79], a
     ret
 
-Call_001_6ba5:
+UpdatePlayerIdleAnimation: ; 01x6ba5
     ld a, [wPlayerIsRidingHorse]
     or a
     ret nz
@@ -4144,9 +4136,7 @@ Call_001_6ba5:
 
     cp $a1
     jr nc, jr_001_6bce
-
     ret
-
 
 jr_001_6bce:
     ldh a, [$ff8a]
@@ -4195,7 +4185,6 @@ jr_001_6bde:
     ld a, $e4
     ld [$cb7c], a
     ret
-
 
 jr_001_6c21:
     ld a, $a0
@@ -5571,7 +5560,7 @@ jr_001_73d2:
     ret
 
 
-Call_001_7445:
+UpdateFarmMapForScrollUp:
     ld de, $cb23
     call Call_001_75e1
     ld de, $cb25
@@ -5607,8 +5596,7 @@ jr_001_748b:
 
     ret
 
-
-Call_001_7494:
+UpdateFarmMapForScrollDown:
     ld de, $cb23
     call Call_001_75f8
     ld de, $cb25
@@ -5644,8 +5632,7 @@ jr_001_74da:
 
     ret
 
-
-Call_001_74e3:
+UpdateFarmMapForScrollLeft:
     ld de, $cb23
     call Call_001_75d4
     ld de, $cb25
@@ -5685,8 +5672,7 @@ jr_001_7529:
 
     ret
 
-
-Call_001_7538:
+UpdateFarmMapForScrollRight:
     ld de, $cb23
     call Call_001_75c7
     ld de, $cb25

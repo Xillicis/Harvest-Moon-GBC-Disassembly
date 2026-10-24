@@ -12,7 +12,7 @@ Jump_00e_457b:
     sbc a
     ld b, l
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     call Call_00e_52b9
     jr jr_00e_45a5
 

@@ -817,7 +817,7 @@ Jump_021_4510:
 
 Call_021_4547:
 jr_021_4547:
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1201,7 +1201,7 @@ Jump_021_478e:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1266,7 +1266,7 @@ jr_021_47de:
 
 jr_021_4819:
     call Call_021_6608
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wcb30]
     ld b, a
     ld a, [wcb32]
@@ -1550,7 +1550,7 @@ Jump_021_49c5:
     ret nz
 
 jr_021_49d2:
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -1861,7 +1861,7 @@ jr_021_4bd6:
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
@@ -1875,7 +1875,7 @@ jr_021_4bd6:
     ld hl, wPlayerYPosition
     ld bc, $0010
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff0
     call AddBCtoWordAtHL
@@ -1889,7 +1889,7 @@ jr_021_4bd6:
     ld hl, wPlayerYPosition
     ld bc, $0018
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $ffe8
     call AddBCtoWordAtHL
@@ -2509,7 +2509,7 @@ Jump_021_515d:
     ld hl, wPlayerYPosition
     ld bc, $0004
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fffc
     call AddBCtoWordAtHL
@@ -2535,7 +2535,7 @@ jr_021_518c:
     ld hl, wPlayerYPosition
     ld bc, $0008
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff8
     call AddBCtoWordAtHL
@@ -2561,7 +2561,7 @@ jr_021_51bb:
     ld hl, wPlayerYPosition
     ld bc, $000e
     call AddBCtoWordAtHL
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld hl, wPlayerYPosition
     ld bc, $fff2
     call AddBCtoWordAtHL
@@ -6392,7 +6392,7 @@ Call_021_689c:
     or a
     ret nz
 
-    call Call_000_14f9
+    call ProbePlayerCollisionDown
     ld a, [$cb2f]
     cp $3d
     jr nz, jr_021_68bc

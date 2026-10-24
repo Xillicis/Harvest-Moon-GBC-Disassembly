@@ -1098,7 +1098,7 @@ Jump_010_5095:
     jr nz, jr_010_50cb
 
     ld a, $44
-    call Call_000_25cb
+    call StartTwoAudioTracks
     jr jr_010_50cb
 
     ld a, $2a

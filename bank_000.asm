@@ -2221,7 +2221,7 @@ jr_000_14d3:
     ret
 
 ; I think these four functions or some kind of collision detection for the four different directions
-Call_000_14f9:
+ProbePlayerCollisionDown:
     callfar Label_005_50c9
     ret
 
@@ -2567,21 +2567,25 @@ Label_000_1851:
 Call_000_1887:
     rst $08
 
-    and $73
-    ld [de], a
-    ld [$1274], sp
-    ld a, [hl+]
-    ld [hl], h
-    ld [de], a
-    ld c, h
-    ld [hl], h
-    ld [de], a
-    ld l, [hl]
-    ld [hl], h
-    ld [de], a
-    sub b
-    ld [hl], h
-    ld [de], a
+; Beginning at $1888: ; incrementing by $22
+    dw $73e6
+    db $12
+
+    dw $7408
+    db $12
+
+    dw $742a
+    db $12
+
+    dw $744c
+    db $12
+
+    dw $746e
+    db $12
+
+    dw $7490
+    db $12
+
     or d
     ld [hl], h
     ld [de], a
@@ -2717,7 +2721,7 @@ CycleSelectedInventorySlot:
     ret nz
 
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     ld a, $38
     ld [wInputFreezeTimer], a
     ld a, PLAYER_ANIM_HOLD_UP_ITEM
@@ -4508,7 +4512,7 @@ StartFourAudioTracks:
     call StartAudioTrack
 StartThreeAudioTracks:
     call StartAudioTrack
-Call_000_25cb:
+StartTwoAudioTracks:
     call StartAudioTrack
 StartAudioTrack: ; 00x25ce
     push bc
@@ -7171,7 +7175,7 @@ Call_000_3fa2:
     push de
     push bc
     ld a, $42
-    call Call_000_25cb
+    call StartTwoAudioTracks
     pop bc
     pop de
     pop hl
