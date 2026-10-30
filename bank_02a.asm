@@ -6077,7 +6077,7 @@ jr_02a_597f:
     ld d, c
     ld l, $b2
     ld l, l
-    call $cc73
+    call wFishingCatchType
     ld [hl], e
     rst $38
     sbc e

@@ -8,11 +8,11 @@ SECTION "ROM Bank $001", ROMX[MBC3SRamBank], BANK[$1]
     db $01 ; bank number
 
 ; OBJ Color Palette data (not sure what colors these are associated to)
-; 0x4001
+FarmSpritePalette5: ; 0x4001
     RGB 28,19,19, 4,4,0, 18,13,14, 31,27,17
-; 0x4009
+FarmSpritePalette7: ; 0x4009
     RGB 28,19,19, 4,4,0, 22,11,3, 31,27,17
-; 0x4011
+FarmSpritePalette3: ; 0x4011
     RGB 28,19,19, 4,4,0, 31,11,1, 31,27,17
 
 InitializeFarmScene:
@@ -24,11 +24,11 @@ InitializeFarmScene:
     callfar2 UploadPetPalette
     pop af
     pop hl
-    ld hl, $4001
+    ld hl, FarmSpritePalette5
     call SyncLoadSpritePalette5
-    ld hl, $4009
+    ld hl, FarmSpritePalette7
     call SyncLoadSpritePalette7
-    ld hl, $4011
+    ld hl, FarmSpritePalette3
     call SyncLoadSpritePalette3
     ld a, [sCurrentSeason]
     ld [wSeasonPaletteID], a

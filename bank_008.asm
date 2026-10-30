@@ -3013,7 +3013,7 @@ Jump_008_524f:
     cp $01
     ret nz
 
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     or a
     ret z
 

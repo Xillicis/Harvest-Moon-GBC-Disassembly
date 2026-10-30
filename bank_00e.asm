@@ -72,7 +72,7 @@ jr_00e_4022:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -104,7 +104,7 @@ jr_00e_4022:
     ld [$c800], a
     ld [$c820], a
     call $5142
-    call Call_00e_5213
+    call LoadTextBoxTilemap_0E
     call Call_000_1275
     ld hl, $629e
     ld a, $0f
@@ -195,17 +195,17 @@ jr_00e_4158:
 
 jr_00e_4179:
     call Call_000_3cf8
-    call Call_00e_5480
+    call FinishPlayerAttackOnSprite
     call Call_00e_424f
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
     call Call_00e_5285
-    call Call_00e_5468
+    call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
-    call Call_00e_541e
+    call UpdateSpriteBoulderRescueEvent
     call $1e32
     call Call_00e_4b65
-    call Call_00e_44aa
+    call CheckCaveRoomTransition
     call Call_00e_54d1
     ret
 
@@ -345,7 +345,7 @@ Call_00e_424f:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_00e_42b5
 
@@ -743,7 +743,7 @@ jr_00e_44a3:
     ret
 
 
-Call_00e_44aa:
+CheckCaveRoomTransition: ; 0ex44aa:
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -830,26 +830,26 @@ jr_00e_4520:
 
 
 Call_00e_4526:
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret z
 
     dec a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     or a
     ret nz
 
-    ld a, [$cc97]
+    ld a, [wCaveRewardType]
     rst $00
-    dec sp
-    ld b, l
-    inc a
-    ld b, l
-    ld e, b
-    ld b, l
+
+    dw CaveReward_None
+    dw GiveCaveMoneyReward
+    dw GiveCavePowerBerryReward
+
+CaveReward_None: ; 0ex453b
     ret
 
-
+GiveCaveMoneyReward: ; 0ex453c
     ld a, $56
     call SetHeldItemAndDispatchHandler
     ld a, $1e
@@ -862,7 +862,7 @@ Call_00e_4526:
     call RST_TableJumpBankSwitch
     ret
 
-
+GiveCavePowerBerryReward: ; 0ex4558
     ld a, [sNumPowerBerriesEaten]
     inc a
     ld [sNumPowerBerriesEaten], a
@@ -892,7 +892,7 @@ Jump_00e_485c:
 
 Jump_00e_4862:
     ld a, $00
-    ld [$cc97], a
+    ld [wCaveRewardType], a
 
 jr_00e_4867:
     ld hl, $4001
@@ -901,9 +901,9 @@ jr_00e_4867:
     ld hl, $410d
     ld a, $0f
     call BankSwitchCallHL
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     add $27
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ret
 
 
@@ -913,7 +913,7 @@ Jump_00e_4880:
     ret nz
 
     ld a, $01
-    ld [$cc97], a
+    ld [wCaveRewardType], a
     jr jr_00e_4867
 
 Jump_00e_488d:
@@ -922,7 +922,7 @@ Jump_00e_488d:
     ret nz
 
     ld a, $02
-    ld [$cc97], a
+    ld [wCaveRewardType], a
     jr jr_00e_4867
 
 Jump_00e_489a:
@@ -946,9 +946,9 @@ Jump_00e_489a:
     ld [hl+], a
     ld a, b
     ld [hl], a
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     add $44
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ret
 
 Jump_00e_48c7:
@@ -1125,7 +1125,7 @@ jr_00e_49d6:
     ld a, [sSpriteDailyHappiness]
     set 1, a
     ld [sSpriteDailyHappiness], a
-    call Call_00e_5113
+    call FaceSpriteOppositePlayer
     ret
 
 
@@ -1209,7 +1209,7 @@ jr_00e_4a6d:
     ld a, [sSpriteDailyHappiness]
     set 1, a
     ld [sSpriteDailyHappiness], a
-    call Call_00e_5113
+    call FaceSpriteOppositePlayer
     ld a, [$cc19]
     ld [sItemSlot], a
     ld hl, sInventory
@@ -2382,8 +2382,7 @@ jr_00e_510c:
     call Call_00e_447e
     ret
 
-
-Call_00e_5113:
+FaceSpriteOppositePlayer: ; 0ex5113:
     ld a, [wPlayerFacingDirection]
     ld hl, $513e
     add l
@@ -2404,21 +2403,18 @@ Call_00e_5113:
     ld a, [sSpriteEventFlags+1]
     bit 0, a
     jr z, jr_00e_5138
-
     ret
-
 
 jr_00e_5138:
     ld a, $00
     call Call_000_18e6
     ret
 
+OppositeFacingDirectionTable: ; 0ex513e
+    db 3, 2, 1, 0
 
-    inc bc
-    ld [bc], a
-    ld bc, $2100
-    xor e
-    ld d, c
+
+    ld hl, $51ab
     ld a, [$cc7a]
     call LoadWordFromTableHL
     ld de, $c600
@@ -2564,17 +2560,16 @@ jr_00e_5210:
     nop
     nop
 
-Call_00e_5213:
+LoadTextBoxTilemap_0E: ; 0ex5213:
     ld hl, vBGMap1
-    ld de, $5221
+    ld de, TextBoxTilemap_0E
     ld b, $14
     ld c, $05
     call CopyTileDataToBGMap
     ret
 
-
+TextBoxTilemap_0E: ; 0ex5221
     jp nc, $d3d3
-
     db $d3
     db $d3
     db $d3
@@ -2664,7 +2659,7 @@ jr_00e_523f:
     sub $d6
     rst $10
 
-Call_00e_5285:
+Call_00e_5285: ; Update an C820 screen position
     ld hl, $c82a
     ldh a, [$ff93]
     ld b, a
@@ -2779,7 +2774,7 @@ Call_00e_530d:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret nz
 
@@ -2946,7 +2941,7 @@ jr_00e_53cd:
     ret
 
 
-Call_00e_541e:
+UpdateSpriteBoulderRescueEvent: ; 0ex541e:
     ld a, [sSpriteEventFlags+1]
     bit EVENT_DAY_AFTER_SAVING_SPRITE, a
     ret nz
@@ -2993,12 +2988,12 @@ jr_00e_543b:
     ret
 
 
-Call_00e_5468:
+UpdatePlayerIdleAnimationIfAllowed: ; 0ex5468:
     ld a, [wInputFreezeTimer]
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret nz
 
@@ -3012,7 +3007,7 @@ Call_00e_5468:
     ret
 
 
-Call_00e_5480:
+FinishPlayerAttackOnSprite: ; 0ex5480:
     ld a, [wPlayerAttackingSprite]
     or a
     ret z
@@ -3021,7 +3016,7 @@ Call_00e_5480:
     or a
     ret nz
 
-    call Call_00e_5113
+    call FaceSpriteOppositePlayer
     ld a, $be
     call InitializeTextIDAndDisplay
     xor a
@@ -3174,7 +3169,7 @@ jr_00e_5507:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -3186,15 +3181,15 @@ jr_00e_5507:
     ld a, $00
     ld [$b90e], a
     call Call_00e_5ad2
-    call Call_00e_5213
+    call LoadTextBoxTilemap_0E
     call Call_000_1291
     ld a, $00
     call RST_TableJumpBankSwitch
     xor a
     ld [$c820], a
-    ld [$cc6f], a
-    ld [$cc70], a
-    ld [$cc71], a
+    ld [wPlayerIsInHotSpring], a
+    ld [wHotSpringTransitionState], a
+    ld [wHotSpringTransitionCounter], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
@@ -3217,27 +3212,27 @@ jr_00e_5507:
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
-    ld a, [$cc6f]
+    ld a, [wPlayerIsInHotSpring]
     or a
     jr nz, jr_00e_55ee
 
     call Call_000_3cf8
 
 jr_00e_55ee:
-    call Call_00e_560d
-    call Call_00e_56a5
+    call HandleHotSpringPlayerInput
+    call UpdateHotSpringEntryExitAnimation
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
-    call Call_00e_5468
+    call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
     call $1e32
     call Call_00e_4b65
-    call Call_00e_44aa
+    call CheckCaveRoomTransition
     call Call_00e_54d1
     ret
 
 
-Call_00e_560d:
+HandleHotSpringPlayerInput: ; 0ex560d
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -3259,11 +3254,11 @@ Call_00e_560d:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_00e_5671
 
-    ld a, [$cc6f]
+    ld a, [wPlayerIsInHotSpring]
     or a
     jr nz, jr_00e_5677
 
@@ -3273,7 +3268,7 @@ Call_00e_560d:
 
     ldh a, [$ff8b]
     and $01
-    jp nz, Jump_00e_5742
+    jp nz, TryEnterHotSpring
 
     ldh a, [$ff8a]
     and $02
@@ -3308,23 +3303,23 @@ jr_00e_5671:
 jr_00e_5677:
     ldh a, [$ff8b]
     and $01
-    jp nz, Jump_00e_5771
+    jp nz, TryExitHotSpring
 
     ldh a, [$ff8a]
     and $80
-    jp nz, Jump_00e_5794
+    jp nz, TryMoveDownInHotSpring
 
     ldh a, [$ff8a]
     and $40
-    jp nz, Jump_00e_57b1
+    jp nz, TryMoveUpInHotSpring
 
     ldh a, [$ff8a]
     and $20
-    jp nz, Jump_00e_57c8
+    jp nz, TryMoveLeftInHotSpring
 
     ldh a, [$ff8a]
     and $10
-    jp nz, Jump_00e_57e5
+    jp nz, TryMoveRightInHotSpring
 
     ld a, [wInputFreezeTimer]
     or a
@@ -3334,13 +3329,12 @@ jr_00e_5677:
     call RST_TableJumpBankSwitch
     ret
 
-
-Call_00e_56a5:
+UpdateHotSpringEntryExitAnimation: ; 0ex56a5
     ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
-    ld a, [$cc70]
+    ld a, [wHotSpringTransitionState]
     or a
     ret z
 
@@ -3348,18 +3342,18 @@ Call_00e_56a5:
     or a
     jr z, jr_00e_5719
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     inc a
-    ld [$cc71], a
-    ld a, [$cc70]
+    ld [wHotSpringTransitionCounter], a
+    ld a, [wHotSpringTransitionState]
     cp $01
     jr nz, jr_00e_56ee
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     cp $1f
     ret c
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     bit 0, a
     ret z
 
@@ -3390,11 +3384,11 @@ jr_00e_56e7:
 
 
 jr_00e_56ee:
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     cp $1f
     ret c
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     bit 0, a
     ret z
 
@@ -3426,9 +3420,9 @@ jr_00e_5712:
 
 jr_00e_5719:
     xor a
-    ld [$cc70], a
-    ld [$cc71], a
-    ld a, [$cc6f]
+    ld [wHotSpringTransitionState], a
+    ld [wHotSpringTransitionCounter], a
+    ld a, [wPlayerIsInHotSpring]
     or a
     ret nz
 
@@ -3448,7 +3442,7 @@ HotSpring_EnergyRecover: ; 0ex5725
 HotSpringHealAmounts: ; 0ex5737
     db $14, $16, $18, $1A, $1C, $1E, $20, $22, $24, $26, $28, 
 
-Jump_00e_5742:
+TryEnterHotSpring: ; 0ex5742
     ld a, [wHeldObject]
     or a
     jr nz, jr_00e_574f
@@ -3464,7 +3458,7 @@ jr_00e_574f:
 
 jr_00e_5753:
     ld a, $01
-    ld [$cc6f], a
+    ld [wPlayerIsInHotSpring], a
     ld a, $33
     call StartAudioTrack
     ld a, $22
@@ -3472,19 +3466,19 @@ jr_00e_5753:
     ld a, $3d
     ld [wInputFreezeTimer], a
     ld a, $01
-    ld [$cc70], a
+    ld [wHotSpringTransitionState], a
     xor a
-    ld [$cc71], a
+    ld [wHotSpringTransitionCounter], a
     ret
 
 
-Jump_00e_5771:
+TryExitHotSpring: ; 0ex5771
     ld a, [wDominantFacingTileID]
     cp $40
     ret nz
 
     xor a
-    ld [$cc6f], a
+    ld [wPlayerIsInHotSpring], a
     ld a, $33
     call StartAudioTrack
     ld a, $23
@@ -3492,13 +3486,13 @@ Jump_00e_5771:
     ld a, $3e
     ld [wInputFreezeTimer], a
     ld a, $02
-    ld [$cc70], a
+    ld [wHotSpringTransitionState], a
     xor a
-    ld [$cc71], a
+    ld [wHotSpringTransitionCounter], a
     ret
 
 
-Jump_00e_5794:
+TryMoveDownInHotSpring: ; 0ex5794:
     ld a, $00
     ld [wPlayerFacingDirection], a
     ld a, $20
@@ -3516,7 +3510,7 @@ Jump_00e_5794:
     ret
 
 
-Jump_00e_57b1:
+TryMoveUpInHotSpring: ; 0ex57b1
     ld a, $03
     ld [wPlayerFacingDirection], a
     ld a, $20
@@ -3529,8 +3523,7 @@ Jump_00e_57b1:
     call Call_00e_5937
     ret
 
-
-Jump_00e_57c8:
+TryMoveLeftInHotSpring: ; 0ex57c8:
     ld a, $01
     ld [wPlayerFacingDirection], a
     ld a, $20
@@ -3547,8 +3540,7 @@ Jump_00e_57c8:
     call Call_00e_595f
     ret
 
-
-Jump_00e_57e5:
+TryMoveRightInHotSpring: ; 0ex57e5:
     ld a, $02
     ld [wPlayerFacingDirection], a
     ld a, $20
@@ -3560,7 +3552,6 @@ Jump_00e_57e5:
 
     call Call_00e_5992
     ret
-
 
 Jump_00e_57fc:
     ld a, $00
@@ -4153,7 +4144,7 @@ Call_00e_5ad2:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -4165,7 +4156,7 @@ Call_00e_5ad2:
     ld a, $00
     ld [$b90e], a
     call Call_00e_616c
-    call Call_00e_5213
+    call LoadTextBoxTilemap_0E
     call Call_000_12ad
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -4179,9 +4170,9 @@ Call_00e_5ad2:
     call BankSwitchCallHL
     xor a
     ld [$cc9a], a
-    ld [$cc72], a
-    ld [$cc73], a
-    ld [$cc74], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
+    ld [wFishingBiteTimer], a
     ld [$cc98], a
     ld [$cc99], a
     ld a, $40
@@ -4220,21 +4211,21 @@ jr_00e_5c05:
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     jr nz, jr_00e_5c15
 
     call Call_000_3cf8
 
 jr_00e_5c15:
-    call Call_00e_5480
-    call Call_00e_5c3a
-    call Call_00e_5e73
+    call FinishPlayerAttackOnSprite
+    call HandleGoddessPondPlayerInput
+    call UpdateFishingState
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
-    call Call_00e_5468
+    call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_5285
-    call Call_00e_44aa
+    call CheckCaveRoomTransition
     call Call_00e_54d1
     call Call_00e_41a1
     call $1e32
@@ -4242,7 +4233,7 @@ jr_00e_5c15:
     ret
 
 
-Call_00e_5c3a:
+HandleGoddessPondPlayerInput: ; 0ex5c3a
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -4280,7 +4271,7 @@ jr_00e_5c5a:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_00e_5cb6
 
@@ -4288,7 +4279,7 @@ jr_00e_5c5a:
     and $01
     jp nz, Jump_00e_5f95
 
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     ret nz
 
@@ -4634,8 +4625,8 @@ jr_00e_5e61:
     ret
 
 
-Call_00e_5e73:
-    ld a, [$cc72]
+UpdateFishingState: ; 0ex5e73
+    ld a, [wFishingState]
     or a
     ret z
 
@@ -4660,7 +4651,7 @@ Call_00e_5e73:
     ret nc
 
     ld a, $03
-    ld [$cc72], a
+    ld [wFishingState], a
     call GetNextRandomByte
     ldh a, [$ff9c]
     ld l, a
@@ -4675,19 +4666,19 @@ Call_00e_5e73:
     jr c, jr_00e_5ebf
 
     ld a, $01
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_00e_5eb9:
     ld a, $02
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_00e_5ebf:
     ld a, $03
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -4696,47 +4687,47 @@ jr_00e_5ec5:
     call RST_TableJumpBankSwitch
     ld a, $25
     ld [wInputFreezeTimer], a
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     or a
     jr nz, jr_00e_5f01
 
     xor a
-    ld [$cc72], a
-    ld [$cc74], a
+    ld [wFishingState], a
+    ld [wFishingBiteTimer], a
     ret
 
 
 jr_00e_5edd:
-    ld a, [$cc74]
+    ld a, [wFishingBiteTimer]
     or a
     jr nz, jr_00e_5eee
 
     ld a, $25
     call RST_TableJumpBankSwitch
     ld a, $80
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     ret
 
 
 jr_00e_5eee:
-    ld a, [$cc74]
+    ld a, [wFishingBiteTimer]
     dec a
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     or a
     ret nz
 
     ld a, $01
-    ld [$cc72], a
+    ld [wFishingState], a
     xor a
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_00e_5f01:
     ld a, $04
-    ld [$cc72], a
+    ld [wFishingState], a
     xor a
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     ret
 
 
@@ -4745,7 +4736,7 @@ Jump_00e_5f0b:
     or a
     ret nz
 
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     rst $00
     inc e
     ld e, a
@@ -4758,8 +4749,8 @@ Jump_00e_5f0b:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -4788,8 +4779,8 @@ Jump_00e_5f0b:
     ld a, $1a
     ld [wInputFreezeTimer], a
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -4800,8 +4791,8 @@ Jump_00e_5f0b:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -4812,8 +4803,8 @@ Jump_00e_5f0b:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -4847,7 +4838,7 @@ Jump_00e_5f95:
     cp $01
     jr nz, jr_00e_5ffd
 
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     jr nz, jr_00e_6038
 
@@ -4862,7 +4853,7 @@ Jump_00e_5f95:
     ld a, $36
     call StartAudioTrack
     ld a, $01
-    ld [$cc72], a
+    ld [wFishingState], a
     ld b, $02
     call CheckForNoEnergyAnimation
     ld b, $03
@@ -4891,7 +4882,7 @@ jr_00e_5ffd:
     jr nz, jr_00e_6034
 
     ld a, [wPlayerFacingDirection]
-    cp $03
+    cp FACING_UP
     jr nz, jr_00e_6034
 
     call StoreTilemapCellDataForPlayersCurrentPosition
@@ -4916,7 +4907,7 @@ jr_00e_6034:
 
 jr_00e_6038:
     ld a, $02
-    ld [$cc72], a
+    ld [wFishingState], a
     ret
 
 
@@ -4976,13 +4967,13 @@ jr_00e_607d:
 
 jr_00e_6080:
     ld a, [wPlayerFacingDirection]
-    cp $00
+    cp FACING_DOWN
     jr z, jr_00e_60c7
 
-    cp $01
+    cp FACING_LEFT
     jr z, jr_00e_60fe
 
-    cp $02
+    cp FACING_RIGHT
     jp z, Jump_00e_6135
 
     ld a, $02
@@ -5216,7 +5207,7 @@ Call_00e_616c:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -5227,8 +5218,8 @@ Call_00e_616c:
     ld [$b90d], a
     ld a, $00
     ld [$b90e], a
-    call Call_00e_6648
-    call Call_00e_5213
+    call InitializeMineRoom1Entities
+    call LoadTextBoxTilemap_0E
     call Call_000_12c9
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -5273,17 +5264,17 @@ Call_00e_616c:
     ld [$cb5a], a
     ld [$cb5b], a
     call Call_000_3cf8
-    call Call_00e_5480
-    call Call_00e_62d9
+    call FinishPlayerAttackOnSprite
+    call HandleMineRoom1PlayerInput
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
     call Call_00e_5285
-    call Call_00e_5468
+    call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
     call $1e32
     call Call_00e_4b65
     call Call_00e_62c8
-    call Call_00e_44aa
+    call CheckCaveRoomTransition
     call Call_00e_54d1
     ret
 
@@ -5302,7 +5293,7 @@ Call_00e_62c8:
     ret
 
 
-Call_00e_62d9:
+HandleMineRoom1PlayerInput: ; 0ex62d9
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -5324,7 +5315,7 @@ Call_00e_62d9:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_00e_6338
 
@@ -5367,7 +5358,7 @@ jr_00e_6338:
 
 
 Jump_00e_633e:
-    ld a, $00
+    ld a, FACING_DOWN
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -5403,7 +5394,7 @@ jr_00e_6373:
 
 
 Jump_00e_6377:
-    ld a, $01
+    ld a, FACING_LEFT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -5439,7 +5430,7 @@ jr_00e_63ac:
 
 
 Jump_00e_63b0:
-    ld a, $02
+    ld a, FACING_RIGHT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -5475,7 +5466,7 @@ jr_00e_63e5:
 
 
 Jump_00e_63e9:
-    ld a, $03
+    ld a, FACING_UP
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
@@ -5742,32 +5733,32 @@ Call_00e_6531:
     jr jr_00e_655c
 
 jr_00e_654b:
-    ld a, $00
+    ld a, FACING_DOWN
     jr jr_00e_6559
 
 jr_00e_654f:
-    ld a, $01
+    ld a, FACING_LEFT
     jr jr_00e_6559
 
 jr_00e_6553:
-    ld a, $02
+    ld a, FACING_RIGHT
     jr jr_00e_6559
 
 jr_00e_6557:
-    ld a, $03
+    ld a, FACING_UP
 
 jr_00e_6559:
     ld [wPlayerFacingDirection], a
 
 jr_00e_655c:
     ld a, [wPlayerFacingDirection]
-    cp $00
+    cp FACING_DOWN
     jr z, jr_00e_65a3
 
-    cp $01
+    cp FACING_LEFT
     jr z, jr_00e_65da
 
-    cp $02
+    cp FACING_RIGHT
     jp z, Jump_00e_6611
 
     ld a, $02
@@ -5908,8 +5899,7 @@ jr_00e_6641:
     call Call_00e_64f4
     ret
 
-
-Call_00e_6648:
+InitializeMineRoom1Entities: ; 0ex6648
     ld hl, $66a2
     ld de, $c820
     ld b, $10
@@ -6030,7 +6020,7 @@ jr_00e_669f:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -6041,8 +6031,8 @@ jr_00e_669f:
     ld [$b90d], a
     ld a, $00
     ld [$b90e], a
-    call Call_00e_67bb
-    call Call_00e_5213
+    call InitializeMineRoom2PlayerSpawn
+    call LoadTextBoxTilemap_0E
     call Call_000_12e5
     ld a, $00
     call RST_TableJumpBankSwitch
@@ -6084,16 +6074,15 @@ jr_00e_669f:
     call Call_00e_424f
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
-    call Call_00e_5468
+    call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
     call $1e32
     call Call_00e_4b65
-    call Call_00e_44aa
+    call CheckCaveRoomTransition
     call Call_00e_54d1
     ret
 
-
-Call_00e_67bb:
+InitializeMineRoom2PlayerSpawn: ; 0ex67bb
     ld hl, $67cf
     ld de, $c600
     ld b, $10
@@ -6129,7 +6118,7 @@ Call_00e_67bb:
     ld de, $00fa
     add hl, de
     ld bc, $8129
-    call Call_00e_7fe4
+    call FillMapCellBlock2x2
     ret
 
 
@@ -8407,7 +8396,7 @@ jr_00e_74d3:
     ld hl, $9800
     ld de, $018c
     add hl, de
-    call Call_00e_7f69
+    call WriteTilePattern4x4_68
     ret
 
 
@@ -8418,7 +8407,7 @@ jr_00e_74d3:
     ld hl, $9800
     ld de, $0022
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_751b:
     ld a, [$cc7c]
@@ -8428,7 +8417,7 @@ jr_00e_751b:
     ld hl, $9800
     ld de, $0024
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_752c:
     ld a, [$cc7c]
@@ -8438,7 +8427,7 @@ jr_00e_752c:
     ld hl, $9800
     ld de, $0026
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_753d:
     ld a, [$cc7c]
@@ -8448,7 +8437,7 @@ jr_00e_753d:
     ld hl, $9800
     ld de, $0028
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_754e:
     ld a, [$cc7c]
@@ -8458,7 +8447,7 @@ jr_00e_754e:
     ld hl, $9800
     ld de, $002a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_755f:
     ld a, [$cc7c]
@@ -8468,7 +8457,7 @@ jr_00e_755f:
     ld hl, $9800
     ld de, $002c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7570:
     ld a, [$cc7c]
@@ -8478,7 +8467,7 @@ jr_00e_7570:
     ld hl, $9800
     ld de, $002e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7581:
     ld a, [$cc7c]
@@ -8488,7 +8477,7 @@ jr_00e_7581:
     ld hl, $9800
     ld de, $0030
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7592:
     ld a, [$cc7d]
@@ -8498,7 +8487,7 @@ jr_00e_7592:
     ld hl, $9800
     ld de, $0032
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75a3:
     ld a, [$cc7d]
@@ -8508,7 +8497,7 @@ jr_00e_75a3:
     ld hl, $9800
     ld de, $0034
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75b4:
     ld a, [$cc7d]
@@ -8518,7 +8507,7 @@ jr_00e_75b4:
     ld hl, $9800
     ld de, $0036
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75c5:
     ld a, [$cc7d]
@@ -8528,7 +8517,7 @@ jr_00e_75c5:
     ld hl, $9800
     ld de, $0038
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75d6:
     ld a, [$cc7d]
@@ -8538,7 +8527,7 @@ jr_00e_75d6:
     ld hl, $9800
     ld de, $003a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75e7:
     ld a, [$cc7e]
@@ -8548,7 +8537,7 @@ jr_00e_75e7:
     ld hl, $9800
     ld de, $0062
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_75f8:
     ld a, [$cc7e]
@@ -8558,7 +8547,7 @@ jr_00e_75f8:
     ld hl, $9800
     ld de, $0064
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7609:
     ld a, [$cc7e]
@@ -8568,7 +8557,7 @@ jr_00e_7609:
     ld hl, $9800
     ld de, $0066
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_761a:
     ld a, [$cc7e]
@@ -8578,7 +8567,7 @@ jr_00e_761a:
     ld hl, $9800
     ld de, $0068
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_762b:
     ld a, [$cc7e]
@@ -8588,7 +8577,7 @@ jr_00e_762b:
     ld hl, $9800
     ld de, $006a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_763c:
     ld a, [$cc7e]
@@ -8598,7 +8587,7 @@ jr_00e_763c:
     ld hl, $9800
     ld de, $006c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_764d:
     ld a, [$cc7e]
@@ -8608,7 +8597,7 @@ jr_00e_764d:
     ld hl, $9800
     ld de, $006e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_765e:
     ld a, [$cc7e]
@@ -8618,7 +8607,7 @@ jr_00e_765e:
     ld hl, $9800
     ld de, $0070
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_766f:
     ld a, [$cc7f]
@@ -8628,7 +8617,7 @@ jr_00e_766f:
     ld hl, $9800
     ld de, $0072
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7680:
     ld a, [$cc7f]
@@ -8638,7 +8627,7 @@ jr_00e_7680:
     ld hl, $9800
     ld de, $0074
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7691:
     ld a, [$cc7f]
@@ -8648,7 +8637,7 @@ jr_00e_7691:
     ld hl, $9800
     ld de, $0076
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76a2:
     ld a, [$cc7f]
@@ -8658,7 +8647,7 @@ jr_00e_76a2:
     ld hl, $9800
     ld de, $0078
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76b3:
     ld a, [$cc7f]
@@ -8668,7 +8657,7 @@ jr_00e_76b3:
     ld hl, $9800
     ld de, $007a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76c4:
     ld a, [$cc80]
@@ -8678,7 +8667,7 @@ jr_00e_76c4:
     ld hl, $9800
     ld de, $00a2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76d5:
     ld a, [$cc80]
@@ -8688,7 +8677,7 @@ jr_00e_76d5:
     ld hl, $9800
     ld de, $00a4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76e6:
     ld a, [$cc80]
@@ -8698,7 +8687,7 @@ jr_00e_76e6:
     ld hl, $9800
     ld de, $00a6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_76f7:
     ld a, [$cc80]
@@ -8708,7 +8697,7 @@ jr_00e_76f7:
     ld hl, $9800
     ld de, $00a8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7708:
     ld a, [$cc80]
@@ -8718,7 +8707,7 @@ jr_00e_7708:
     ld hl, $9800
     ld de, $00aa
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7719:
     ld a, [$cc80]
@@ -8728,7 +8717,7 @@ jr_00e_7719:
     ld hl, $9800
     ld de, $00ac
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_772a:
     ld a, [$cc80]
@@ -8738,7 +8727,7 @@ jr_00e_772a:
     ld hl, $9800
     ld de, $00ae
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_773b:
     ld a, [$cc80]
@@ -8748,7 +8737,7 @@ jr_00e_773b:
     ld hl, $9800
     ld de, $00b0
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_774c:
     ld a, [$cc81]
@@ -8758,7 +8747,7 @@ jr_00e_774c:
     ld hl, $9800
     ld de, $00b2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_775d:
     ld a, [$cc81]
@@ -8768,7 +8757,7 @@ jr_00e_775d:
     ld hl, $9800
     ld de, $00b4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_776e:
     ld a, [$cc81]
@@ -8778,7 +8767,7 @@ jr_00e_776e:
     ld hl, $9800
     ld de, $00b6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_777f:
     ld a, [$cc81]
@@ -8788,7 +8777,7 @@ jr_00e_777f:
     ld hl, $9800
     ld de, $00b8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7790:
     ld a, [$cc81]
@@ -8798,7 +8787,7 @@ jr_00e_7790:
     ld hl, $9800
     ld de, $00ba
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77a1:
     ld a, [$cc82]
@@ -8808,7 +8797,7 @@ jr_00e_77a1:
     ld hl, $9800
     ld de, $00e2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77b2:
     ld a, [$cc82]
@@ -8818,7 +8807,7 @@ jr_00e_77b2:
     ld hl, $9800
     ld de, $00e4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77c3:
     ld a, [$cc82]
@@ -8828,7 +8817,7 @@ jr_00e_77c3:
     ld hl, $9800
     ld de, $00e6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77d4:
     ld a, [$cc82]
@@ -8838,7 +8827,7 @@ jr_00e_77d4:
     ld hl, $9800
     ld de, $00e8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77e5:
     ld a, [$cc82]
@@ -8848,7 +8837,7 @@ jr_00e_77e5:
     ld hl, $9800
     ld de, $00ea
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_77f6:
     ld a, [$cc82]
@@ -8858,7 +8847,7 @@ jr_00e_77f6:
     ld hl, $9800
     ld de, $00ec
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7807:
     ld a, [$cc82]
@@ -8868,7 +8857,7 @@ jr_00e_7807:
     ld hl, $9800
     ld de, $00ee
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7818:
     ld a, [$cc82]
@@ -8878,7 +8867,7 @@ jr_00e_7818:
     ld hl, $9800
     ld de, $00f0
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7829:
     ld a, [$cc83]
@@ -8888,7 +8877,7 @@ jr_00e_7829:
     ld hl, $9800
     ld de, $00f2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_783a:
     ld a, [$cc83]
@@ -8898,7 +8887,7 @@ jr_00e_783a:
     ld hl, $9800
     ld de, $00f4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_784b:
     ld a, [$cc83]
@@ -8908,7 +8897,7 @@ jr_00e_784b:
     ld hl, $9800
     ld de, $00f6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_785c:
     ld a, [$cc83]
@@ -8918,7 +8907,7 @@ jr_00e_785c:
     ld hl, $9800
     ld de, $00f8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_786d:
     ld a, [$cc83]
@@ -8928,7 +8917,7 @@ jr_00e_786d:
     ld hl, $9800
     ld de, $00fa
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_787e:
     ld a, [$cc84]
@@ -8938,7 +8927,7 @@ jr_00e_787e:
     ld hl, $9800
     ld de, $0122
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_788f:
     ld a, [$cc84]
@@ -8948,7 +8937,7 @@ jr_00e_788f:
     ld hl, $9800
     ld de, $0124
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78a0:
     ld a, [$cc84]
@@ -8958,7 +8947,7 @@ jr_00e_78a0:
     ld hl, $9800
     ld de, $0126
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78b1:
     ld a, [$cc84]
@@ -8968,7 +8957,7 @@ jr_00e_78b1:
     ld hl, $9800
     ld de, $0128
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78c2:
     ld a, [$cc84]
@@ -8978,7 +8967,7 @@ jr_00e_78c2:
     ld hl, $9800
     ld de, $012a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78d3:
     ld a, [$cc84]
@@ -8988,7 +8977,7 @@ jr_00e_78d3:
     ld hl, $9800
     ld de, $012c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78e4:
     ld a, [$cc84]
@@ -8998,7 +8987,7 @@ jr_00e_78e4:
     ld hl, $9800
     ld de, $012e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_78f5:
     ld a, [$cc84]
@@ -9008,7 +8997,7 @@ jr_00e_78f5:
     ld hl, $9800
     ld de, $0130
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7906:
     ld a, [$cc85]
@@ -9018,7 +9007,7 @@ jr_00e_7906:
     ld hl, $9800
     ld de, $0132
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7917:
     ld a, [$cc85]
@@ -9028,7 +9017,7 @@ jr_00e_7917:
     ld hl, $9800
     ld de, HeaderTitle
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7928:
     ld a, [$cc85]
@@ -9038,7 +9027,7 @@ jr_00e_7928:
     ld hl, $9800
     ld de, $0136
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7939:
     ld a, [$cc85]
@@ -9048,7 +9037,7 @@ jr_00e_7939:
     ld hl, $9800
     ld de, $0138
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_794a:
     ld a, [$cc85]
@@ -9058,7 +9047,7 @@ jr_00e_794a:
     ld hl, $9800
     ld de, $013a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_795b:
     ld a, [$cc86]
@@ -9068,7 +9057,7 @@ jr_00e_795b:
     ld hl, $9800
     ld de, $0162
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_796c:
     ld a, [$cc86]
@@ -9078,7 +9067,7 @@ jr_00e_796c:
     ld hl, $9800
     ld de, $0164
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_797d:
     ld a, [$cc86]
@@ -9088,7 +9077,7 @@ jr_00e_797d:
     ld hl, $9800
     ld de, $0166
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_798e:
     ld a, [$cc86]
@@ -9098,7 +9087,7 @@ jr_00e_798e:
     ld hl, $9800
     ld de, $0168
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_799f:
     ld a, [$cc86]
@@ -9108,7 +9097,7 @@ jr_00e_799f:
     ld hl, $9800
     ld de, $016a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_79b0:
     ld a, [$cc86]
@@ -9118,7 +9107,7 @@ jr_00e_79b0:
     ld hl, $9800
     ld de, $016c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_79c1:
     ld a, [$cc86]
@@ -9128,7 +9117,7 @@ jr_00e_79c1:
     ld hl, $9800
     ld de, $016e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_79d2:
     ld a, [$cc86]
@@ -9138,7 +9127,7 @@ jr_00e_79d2:
     ld hl, $9800
     ld de, $0170
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_79e3:
     ld a, [$cc87]
@@ -9148,7 +9137,7 @@ jr_00e_79e3:
     ld hl, $9800
     ld de, $0172
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_79f4:
     ld a, [$cc87]
@@ -9158,7 +9147,7 @@ jr_00e_79f4:
     ld hl, $9800
     ld de, $0174
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a05:
     ld a, [$cc87]
@@ -9168,7 +9157,7 @@ jr_00e_7a05:
     ld hl, $9800
     ld de, $0176
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a16:
     ld a, [$cc87]
@@ -9178,7 +9167,7 @@ jr_00e_7a16:
     ld hl, $9800
     ld de, $0178
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a27:
     ld a, [$cc87]
@@ -9188,7 +9177,7 @@ jr_00e_7a27:
     ld hl, $9800
     ld de, $017a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a38:
     ld a, [$cc88]
@@ -9198,7 +9187,7 @@ jr_00e_7a38:
     ld hl, $9800
     ld de, $01a2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a49:
     ld a, [$cc88]
@@ -9208,7 +9197,7 @@ jr_00e_7a49:
     ld hl, $9800
     ld de, $01a4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a5a:
     ld a, [$cc88]
@@ -9218,7 +9207,7 @@ jr_00e_7a5a:
     ld hl, $9800
     ld de, $01a6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a6b:
     ld a, [$cc88]
@@ -9228,7 +9217,7 @@ jr_00e_7a6b:
     ld hl, $9800
     ld de, $01a8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a7c:
     ld a, [$cc88]
@@ -9238,7 +9227,7 @@ jr_00e_7a7c:
     ld hl, $9800
     ld de, $01aa
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a8d:
     ld a, [$cc88]
@@ -9248,7 +9237,7 @@ jr_00e_7a8d:
     ld hl, $9800
     ld de, $01ac
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7a9e:
     ld a, [$cc88]
@@ -9258,7 +9247,7 @@ jr_00e_7a9e:
     ld hl, $9800
     ld de, $01ae
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7aaf:
     ld a, [$cc88]
@@ -9268,7 +9257,7 @@ jr_00e_7aaf:
     ld hl, $9800
     ld de, $01b0
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ac0:
     ld a, [$cc89]
@@ -9278,7 +9267,7 @@ jr_00e_7ac0:
     ld hl, $9800
     ld de, $01b2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ad1:
     ld a, [$cc89]
@@ -9288,7 +9277,7 @@ jr_00e_7ad1:
     ld hl, $9800
     ld de, $01b4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ae2:
     ld a, [$cc89]
@@ -9298,7 +9287,7 @@ jr_00e_7ae2:
     ld hl, $9800
     ld de, $01b6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7af3:
     ld a, [$cc89]
@@ -9308,7 +9297,7 @@ jr_00e_7af3:
     ld hl, $9800
     ld de, $01b8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b04:
     ld a, [$cc89]
@@ -9318,7 +9307,7 @@ jr_00e_7b04:
     ld hl, $9800
     ld de, $01ba
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b15:
     ld a, [$cc8a]
@@ -9328,7 +9317,7 @@ jr_00e_7b15:
     ld hl, $9800
     ld de, $01e2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b26:
     ld a, [$cc8a]
@@ -9338,7 +9327,7 @@ jr_00e_7b26:
     ld hl, $9800
     ld de, $01e4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b37:
     ld a, [$cc8a]
@@ -9348,7 +9337,7 @@ jr_00e_7b37:
     ld hl, $9800
     ld de, $01e6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b48:
     ld a, [$cc8a]
@@ -9358,7 +9347,7 @@ jr_00e_7b48:
     ld hl, $9800
     ld de, $01e8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b59:
     ld a, [$cc8a]
@@ -9368,7 +9357,7 @@ jr_00e_7b59:
     ld hl, $9800
     ld de, $01ea
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b6a:
     ld a, [$cc8a]
@@ -9378,7 +9367,7 @@ jr_00e_7b6a:
     ld hl, $9800
     ld de, $01ec
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b7b:
     ld a, [$cc8a]
@@ -9388,7 +9377,7 @@ jr_00e_7b7b:
     ld hl, $9800
     ld de, $01ee
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b8c:
     ld a, [$cc8a]
@@ -9398,7 +9387,7 @@ jr_00e_7b8c:
     ld hl, $9800
     ld de, $01f0
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7b9d:
     ld a, [$cc8b]
@@ -9408,7 +9397,7 @@ jr_00e_7b9d:
     ld hl, $9800
     ld de, $01f2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7bae:
     ld a, [$cc8b]
@@ -9418,7 +9407,7 @@ jr_00e_7bae:
     ld hl, $9800
     ld de, $01f4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7bbf:
     ld a, [$cc8b]
@@ -9428,7 +9417,7 @@ jr_00e_7bbf:
     ld hl, $9800
     ld de, $01f6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7bd0:
     ld a, [$cc8b]
@@ -9438,7 +9427,7 @@ jr_00e_7bd0:
     ld hl, $9800
     ld de, $01f8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7be1:
     ld a, [$cc8b]
@@ -9448,7 +9437,7 @@ jr_00e_7be1:
     ld hl, $9800
     ld de, $01fa
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7bf2:
     ld a, [$cc8c]
@@ -9458,7 +9447,7 @@ jr_00e_7bf2:
     ld hl, $9800
     ld de, $0222
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c03:
     ld a, [$cc8c]
@@ -9468,7 +9457,7 @@ jr_00e_7c03:
     ld hl, $9800
     ld de, $0224
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c14:
     ld a, [$cc8c]
@@ -9478,7 +9467,7 @@ jr_00e_7c14:
     ld hl, $9800
     ld de, $0226
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c25:
     ld a, [$cc8c]
@@ -9488,7 +9477,7 @@ jr_00e_7c25:
     ld hl, $9800
     ld de, $0228
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c36:
     ld a, [$cc8c]
@@ -9498,7 +9487,7 @@ jr_00e_7c36:
     ld hl, $9800
     ld de, $022a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c47:
     ld a, [$cc8c]
@@ -9508,7 +9497,7 @@ jr_00e_7c47:
     ld hl, $9800
     ld de, $022c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c58:
     ld a, [$cc8c]
@@ -9518,7 +9507,7 @@ jr_00e_7c58:
     ld hl, $9800
     ld de, $022e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c69:
     ld a, [$cc8c]
@@ -9528,7 +9517,7 @@ jr_00e_7c69:
     ld hl, $9800
     ld de, $0230
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c7a:
     ld a, [$cc8d]
@@ -9538,7 +9527,7 @@ jr_00e_7c7a:
     ld hl, $9800
     ld de, $0232
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c8b:
     ld a, [$cc8d]
@@ -9548,7 +9537,7 @@ jr_00e_7c8b:
     ld hl, $9800
     ld de, $0234
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7c9c:
     ld a, [$cc8d]
@@ -9558,7 +9547,7 @@ jr_00e_7c9c:
     ld hl, $9800
     ld de, $0236
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7cad:
     ld a, [$cc8d]
@@ -9568,7 +9557,7 @@ jr_00e_7cad:
     ld hl, $9800
     ld de, $0238
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7cbe:
     ld a, [$cc8d]
@@ -9578,7 +9567,7 @@ jr_00e_7cbe:
     ld hl, $9800
     ld de, $023a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ccf:
     ld a, [$cc8e]
@@ -9588,7 +9577,7 @@ jr_00e_7ccf:
     ld hl, $9800
     ld de, $0262
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ce0:
     ld a, [$cc8e]
@@ -9598,7 +9587,7 @@ jr_00e_7ce0:
     ld hl, $9800
     ld de, $0264
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7cf1:
     ld a, [$cc8e]
@@ -9608,7 +9597,7 @@ jr_00e_7cf1:
     ld hl, $9800
     ld de, $0266
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d02:
     ld a, [$cc8e]
@@ -9618,7 +9607,7 @@ jr_00e_7d02:
     ld hl, $9800
     ld de, $0268
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d13:
     ld a, [$cc8e]
@@ -9628,7 +9617,7 @@ jr_00e_7d13:
     ld hl, $9800
     ld de, $026a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d24:
     ld a, [$cc8e]
@@ -9638,7 +9627,7 @@ jr_00e_7d24:
     ld hl, $9800
     ld de, $026c
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d35:
     ld a, [$cc8e]
@@ -9648,7 +9637,7 @@ jr_00e_7d35:
     ld hl, $9800
     ld de, $026e
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d46:
     ld a, [$cc8e]
@@ -9658,7 +9647,7 @@ jr_00e_7d46:
     ld hl, $9800
     ld de, $0270
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d57:
     ld a, [$cc8f]
@@ -9668,7 +9657,7 @@ jr_00e_7d57:
     ld hl, $9800
     ld de, $0272
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d68:
     ld a, [$cc8f]
@@ -9678,7 +9667,7 @@ jr_00e_7d68:
     ld hl, $9800
     ld de, $0274
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d79:
     ld a, [$cc8f]
@@ -9688,7 +9677,7 @@ jr_00e_7d79:
     ld hl, $9800
     ld de, $0276
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d8a:
     ld a, [$cc8f]
@@ -9698,7 +9687,7 @@ jr_00e_7d8a:
     ld hl, $9800
     ld de, $0278
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7d9b:
     ld a, [$cc8f]
@@ -9708,7 +9697,7 @@ jr_00e_7d9b:
     ld hl, $9800
     ld de, $027a
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7dac:
     ld a, [$cc90]
@@ -9718,7 +9707,7 @@ jr_00e_7dac:
     ld hl, $9800
     ld de, $02a2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7dbd:
     ld a, [$cc90]
@@ -9728,7 +9717,7 @@ jr_00e_7dbd:
     ld hl, $9800
     ld de, $02a4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7dce:
     ld a, [$cc90]
@@ -9738,7 +9727,7 @@ jr_00e_7dce:
     ld hl, $9800
     ld de, $02a6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7ddf:
     ld a, [$cc90]
@@ -9748,7 +9737,7 @@ jr_00e_7ddf:
     ld hl, $9800
     ld de, $02a8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7df0:
     ld a, [$cc90]
@@ -9758,7 +9747,7 @@ jr_00e_7df0:
     ld hl, $9800
     ld de, $02aa
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e01:
     ld a, [$cc90]
@@ -9768,7 +9757,7 @@ jr_00e_7e01:
     ld hl, $9800
     ld de, $02ac
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e12:
     ld a, [$cc90]
@@ -9778,7 +9767,7 @@ jr_00e_7e12:
     ld hl, $9800
     ld de, $02ae
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e23:
     ld a, [$cc90]
@@ -9788,7 +9777,7 @@ jr_00e_7e23:
     ld hl, $9800
     ld de, $02b0
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e34:
     ld a, [$cc91]
@@ -9798,7 +9787,7 @@ jr_00e_7e34:
     ld hl, $9800
     ld de, $02b2
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e45:
     ld a, [$cc91]
@@ -9808,7 +9797,7 @@ jr_00e_7e45:
     ld hl, $9800
     ld de, $02b4
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e56:
     ld a, [$cc91]
@@ -9818,7 +9807,7 @@ jr_00e_7e56:
     ld hl, $9800
     ld de, $02b6
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e67:
     ld a, [$cc91]
@@ -9828,7 +9817,7 @@ jr_00e_7e67:
     ld hl, $9800
     ld de, $02b8
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e78:
     ld a, [$cc91]
@@ -9838,7 +9827,7 @@ jr_00e_7e78:
     ld hl, $9800
     ld de, $02ba
     add hl, de
-    call Call_00e_7eb8
+    call WriteTilePattern2x5_60
 
 jr_00e_7e89:
     ld a, [$cc79]
@@ -9858,7 +9847,7 @@ jr_00e_7e89:
     ld hl, $9800
     ld de, $002e
     add hl, de
-    call Call_00e_7f1a
+    call WriteTilePattern2x3_1C
     ret
 
 
@@ -9866,11 +9855,11 @@ jr_00e_7ead:
     ld hl, $9800
     ld de, $002e
     add hl, de
-    call Call_00e_7ef7
+    call WriteTilePattern2x3_A6
     ret
 
 
-Call_00e_7eb8:
+WriteTilePattern2x5_60:
     ld a, $60
     ld [hl+], a
     ld a, $61
@@ -9917,8 +9906,7 @@ Call_00e_7eb8:
     ld [hl], a
     ret
 
-
-Call_00e_7ef7:
+WriteTilePattern2x3_A6:
     ld a, $a6
     ld [hl+], a
     ld a, $a7
@@ -9946,7 +9934,7 @@ Call_00e_7ef7:
     ret
 
 
-Call_00e_7f1a:
+WriteTilePattern2x3_1C:
     ld a, $1c
     ld [hl+], a
     ld a, $1d
@@ -9986,7 +9974,7 @@ Call_00e_7f3d:
     ld hl, $9800
     ld de, $0258
     add hl, de
-    call Call_00e_7f69
+    call WriteTilePattern4x4_68
     ret
 
 
@@ -10002,11 +9990,10 @@ Call_00e_7f53:
     ld hl, $9800
     ld de, $02d4
     add hl, de
-    call Call_00e_7f69
+    call WriteTilePattern4x4_68
     ret
 
-
-Call_00e_7f69:
+WriteTilePattern4x4_68:
     ld a, $68
     ld [hl+], a
     ld a, $69
@@ -10059,7 +10046,6 @@ Call_00e_7f69:
     ld [hl], a
     ret
 
-
 Call_00e_7fb2:
     ld a, [$cc79]
     cp $03
@@ -10073,7 +10059,7 @@ Call_00e_7fb2:
     ld de, $016c
     add hl, de
     ld bc, $8127
-    call Call_00e_7fe4
+    call FillMapCellBlock2x2
     ret
 
 
@@ -10090,11 +10076,19 @@ Call_00e_7fcb:
     ld de, $01ac
     add hl, de
     ld bc, $8128
-    call Call_00e_7fe4
+    call FillMapCellBlock2x2
     ret
 
 
-Call_00e_7fe4:
+
+; Input:
+;   HL = top-left map-cell address
+;   C  = tile ID
+;   B  = property byte
+;
+; Writes BC little-endian into a 2x2 block of map cells.
+; Assumes a map row stride of $22 bytes (17 two-byte cells).
+FillMapCellBlock2x2: ; 0ex7fe4
     ld a, c
     ld [hl+], a
     ld a, b

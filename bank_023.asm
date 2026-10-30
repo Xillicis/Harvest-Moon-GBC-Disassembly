@@ -8587,7 +8587,7 @@ jr_023_73ab:
     ldh a, [$ffa4]
     ld hl, $73bb
     rst $00
-    jp $cc73
+    jp wFishingCatchType
 
 
     ld [hl], e

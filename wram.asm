@@ -255,13 +255,21 @@ ds 1 ; 0xcc6d
 ; 1 if the player is attacking the Sprites and 0 otherwise.
 wPlayerAttackingSprite:: db ; 0xcc6e
 
-ds 1 ; 0xcc6f
+wPlayerIsInHotSpring:: db ; 0xcc6f
 
-ds 1 ; 0xcc70
+wHotSpringTransitionState:: db ; 0xcc70
+wHotSpringTransitionCounter:: db ; 0xcc71
 
-ds 3
 
-ds 1 ; 0xcc74
+; Fishing States:
+;  0 - Inactive
+;  1 - Waiting for bite
+;  2 - Begin reeling
+;  3 - Bite window active
+;  4 - Finish reeling and deliver the result
+wFishingState:: db ; 0xcc72
+wFishingCatchType:: db ; 0xcc73
+wFishingBiteTimer:: db ; 0xcc74
 
 wPlayerIsFacingSprite:: db ; 0xcc75
 
@@ -270,8 +278,50 @@ wcc77:: db ; 0xcc77
 wcc78:: db ; 0xcc78
 wcc79:: db ; 0xcc79
 wcc7a:: db ; 0xcc7a
+wcc7b:: db ; 0xcc7b
+wcc7c:: db ; 0xcc7c
+wcc7d:: db ; 0xcc7d
+wcc7e:: db ; 0xcc7e
+wcc7f:: db ; 0xcc7f
 
-ds $4f
+wcc80:: db ; 0xcc80
+wcc81:: db ; 0xcc81
+wcc82:: db ; 0xcc82
+wcc83:: db ; 0xcc83
+wcc84:: db ; 0xcc84
+wcc85:: db ; 0xcc85
+wcc86:: db ; 0xcc86
+wcc87:: db ; 0xcc87
+wcc88:: db ; 0xcc88
+wcc89:: db ; 0xcc89
+wcc8a:: db ; 0xcc8a
+wcc8b:: db ; 0xcc8b
+wcc8c:: db ; 0xcc8c
+wcc8d:: db ; 0xcc8d
+wcc8e:: db ; 0xcc8e
+wcc8f:: db ; 0xcc8f
+
+wcc90:: db ; 0xcc90
+wcc91:: db ; 0xcc91
+wcc92:: db ; 0xcc92
+wcc93:: db ; 0xcc93
+wcc94:: db ; 0xcc94
+wcc95:: db ; 0xcc95
+
+wCaveRewardDelay:: db
+wCaveRewardType:: db
+
+wcc98:: db ; 0xcc98
+wcc99:: db ; 0xcc99
+wcc9a:: db ; 0xcc9a
+wcc9b:: db ; 0xcc9b
+wcc9c:: db ; 0xcc9c
+wcc9d:: db ; 0xcc9d
+wcc9e:: db ; 0xcc9e
+wcc9f:: db ; 0xcc9f
+
+
+ds $2a
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

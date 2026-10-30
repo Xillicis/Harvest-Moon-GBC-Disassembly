@@ -48,7 +48,7 @@ SECTION "ROM Bank $02e", ROMX[$4000], BANK[$2e]
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -324,7 +324,7 @@ Call_02e_422c:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_02e_4292
 
@@ -809,16 +809,16 @@ jr_02e_44fd:
 
 
 Call_02e_4503:
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret z
 
     dec a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     or a
     ret nz
 
-    ld a, [$cc97]
+    ld a, [wCaveRewardType]
     rst $00
     jr @+$47
 
@@ -1333,7 +1333,7 @@ Jump_02e_4839:
 
 Jump_02e_483f:
     ld a, $00
-    ld [$cc97], a
+    ld [wCaveRewardType], a
 
 jr_02e_4844:
     ld hl, $4001
@@ -1342,9 +1342,9 @@ jr_02e_4844:
     ld hl, $410d
     ld a, $2f
     call BankSwitchCallHL
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     add $27
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ret
 
 
@@ -1354,7 +1354,7 @@ Jump_02e_485d:
     ret nz
 
     ld a, $01
-    ld [$cc97], a
+    ld [wCaveRewardType], a
     jr jr_02e_4844
 
 Jump_02e_486a:
@@ -1363,7 +1363,7 @@ Jump_02e_486a:
     ret nz
 
     ld a, $02
-    ld [$cc97], a
+    ld [wCaveRewardType], a
     jr jr_02e_4844
 
 Jump_02e_4877:
@@ -1387,9 +1387,9 @@ Jump_02e_4877:
     ld [hl+], a
     ld a, b
     ld [hl], a
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     add $44
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ret
 
 
@@ -3238,7 +3238,7 @@ Call_02e_52ea:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret nz
 
@@ -3457,7 +3457,7 @@ Call_02e_5445:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     ret nz
 
@@ -3621,7 +3621,7 @@ jr_02e_54e4:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -3639,9 +3639,9 @@ jr_02e_54e4:
     call RST_TableJumpBankSwitch
     xor a
     ld [$c820], a
-    ld [$cc6f], a
-    ld [$cc70], a
-    ld [$cc71], a
+    ld [wPlayerIsInHotSpring], a
+    ld [wHotSpringTransitionState], a
+    ld [wHotSpringTransitionCounter], a
     ld a, $40
     ldh [rSTAT], a
     ld a, $66
@@ -3664,7 +3664,7 @@ jr_02e_54e4:
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
-    ld a, [$cc6f]
+    ld a, [wPlayerIsInHotSpring]
     or a
     jr nz, jr_02e_55be
 
@@ -3706,11 +3706,11 @@ Call_02e_55dd:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_02e_5641
 
-    ld a, [$cc6f]
+    ld a, [wPlayerIsInHotSpring]
     or a
     jr nz, jr_02e_5647
 
@@ -3787,7 +3787,7 @@ Call_02e_5675:
     or a
     ret nz
 
-    ld a, [$cc70]
+    ld a, [wHotSpringTransitionState]
     or a
     ret z
 
@@ -3795,18 +3795,18 @@ Call_02e_5675:
     or a
     jr z, jr_02e_56e9
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     inc a
-    ld [$cc71], a
-    ld a, [$cc70]
+    ld [wHotSpringTransitionCounter], a
+    ld a, [wHotSpringTransitionState]
     cp $01
     jr nz, jr_02e_56be
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     cp $1f
     ret c
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     bit 0, a
     ret z
 
@@ -3837,11 +3837,11 @@ jr_02e_56b7:
 
 
 jr_02e_56be:
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     cp $1f
     ret c
 
-    ld a, [$cc71]
+    ld a, [wHotSpringTransitionCounter]
     bit 0, a
     ret z
 
@@ -3873,9 +3873,9 @@ jr_02e_56e2:
 
 jr_02e_56e9:
     xor a
-    ld [$cc70], a
-    ld [$cc71], a
-    ld a, [$cc6f]
+    ld [wHotSpringTransitionState], a
+    ld [wHotSpringTransitionCounter], a
+    ld a, [wPlayerIsInHotSpring]
     or a
     ret nz
 
@@ -3917,7 +3917,7 @@ jr_02e_571f:
 
 jr_02e_5723:
     ld a, $01
-    ld [$cc6f], a
+    ld [wPlayerIsInHotSpring], a
     ld a, $33
     call StartAudioTrack
     ld a, $22
@@ -3925,9 +3925,9 @@ jr_02e_5723:
     ld a, $3d
     ld [wInputFreezeTimer], a
     ld a, $01
-    ld [$cc70], a
+    ld [wHotSpringTransitionState], a
     xor a
-    ld [$cc71], a
+    ld [wHotSpringTransitionCounter], a
     ret
 
 
@@ -3937,7 +3937,7 @@ Jump_02e_5741:
     ret nz
 
     xor a
-    ld [$cc6f], a
+    ld [wPlayerIsInHotSpring], a
     ld a, $33
     call StartAudioTrack
     ld a, $23
@@ -3945,9 +3945,9 @@ Jump_02e_5741:
     ld a, $3e
     ld [wInputFreezeTimer], a
     ld a, $02
-    ld [$cc70], a
+    ld [wHotSpringTransitionState], a
     xor a
-    ld [$cc71], a
+    ld [wHotSpringTransitionCounter], a
     ret
 
 
@@ -4592,7 +4592,7 @@ Call_02e_5aa2:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -4618,9 +4618,9 @@ Call_02e_5aa2:
     call BankSwitchCallHL
     xor a
     ld [$cc9a], a
-    ld [$cc72], a
-    ld [$cc73], a
-    ld [$cc74], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
+    ld [wFishingBiteTimer], a
     ld [$cc98], a
     ld [$cc99], a
     ld a, $40
@@ -4659,7 +4659,7 @@ jr_02e_5bba:
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     jr nz, jr_02e_5bca
 
@@ -4719,7 +4719,7 @@ jr_02e_5c0f:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_02e_5c6b
 
@@ -4727,7 +4727,7 @@ jr_02e_5c0f:
     and $01
     jp nz, Jump_02e_5f4a
 
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     ret nz
 
@@ -5074,7 +5074,7 @@ jr_02e_5e16:
 
 
 Call_02e_5e28:
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     ret z
 
@@ -5099,7 +5099,7 @@ Call_02e_5e28:
     ret nc
 
     ld a, $03
-    ld [$cc72], a
+    ld [wFishingState], a
     call GetNextRandomByte
     ldh a, [hRandomNumber]
     ld l, a
@@ -5114,19 +5114,19 @@ Call_02e_5e28:
     jr c, jr_02e_5e74
 
     ld a, $01
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_02e_5e6e:
     ld a, $02
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_02e_5e74:
     ld a, $03
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -5135,47 +5135,47 @@ jr_02e_5e7a:
     call RST_TableJumpBankSwitch
     ld a, $25
     ld [wInputFreezeTimer], a
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     or a
     jr nz, jr_02e_5eb6
 
     xor a
-    ld [$cc72], a
-    ld [$cc74], a
+    ld [wFishingState], a
+    ld [wFishingBiteTimer], a
     ret
 
 
 jr_02e_5e92:
-    ld a, [$cc74]
+    ld a, [wFishingBiteTimer]
     or a
     jr nz, jr_02e_5ea3
 
     ld a, $25
     call RST_TableJumpBankSwitch
     ld a, $80
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     ret
 
 
 jr_02e_5ea3:
-    ld a, [$cc74]
+    ld a, [wFishingBiteTimer]
     dec a
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     or a
     ret nz
 
     ld a, $01
-    ld [$cc72], a
+    ld [wFishingState], a
     xor a
-    ld [$cc73], a
+    ld [wFishingCatchType], a
     ret
 
 
 jr_02e_5eb6:
     ld a, $04
-    ld [$cc72], a
+    ld [wFishingState], a
     xor a
-    ld [$cc74], a
+    ld [wFishingBiteTimer], a
     ret
 
 
@@ -5184,7 +5184,7 @@ Jump_02e_5ec0:
     or a
     ret nz
 
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     rst $00
     pop de
     ld e, [hl]
@@ -5196,8 +5196,8 @@ Jump_02e_5ec0:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -5226,8 +5226,8 @@ Jump_02e_5ec0:
     ld a, $1a
     ld [wInputFreezeTimer], a
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -5238,8 +5238,8 @@ Jump_02e_5ec0:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -5250,8 +5250,8 @@ Jump_02e_5ec0:
     ld a, $00
     call LoadPlayerSpriteID
     xor a
-    ld [$cc72], a
-    ld [$cc73], a
+    ld [wFishingState], a
+    ld [wFishingCatchType], a
     ret
 
 
@@ -5285,7 +5285,7 @@ Jump_02e_5f4a:
     cp FENCE_POST_TILE
     jr nz, jr_02e_5fb2
 
-    ld a, [$cc72]
+    ld a, [wFishingState]
     or a
     jr nz, jr_02e_5fed
 
@@ -5300,7 +5300,7 @@ Jump_02e_5f4a:
     ld a, $36
     call StartAudioTrack
     ld a, $01
-    ld [$cc72], a
+    ld [wFishingState], a
     ld b, $02
     call CheckForNoEnergyAnimation
     ld b, $03
@@ -5356,7 +5356,7 @@ jr_02e_5fe9:
 
 jr_02e_5fed:
     ld a, $02
-    ld [$cc72], a
+    ld [wFishingState], a
     ret
 
 
@@ -5648,7 +5648,7 @@ Call_02e_6121:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22
@@ -5756,7 +5756,7 @@ Call_02e_6281:
     or a
     ret nz
 
-    ld a, [$cc96]
+    ld a, [wCaveRewardDelay]
     or a
     jr nz, jr_02e_62e0
 
@@ -6454,7 +6454,7 @@ jr_02e_6647:
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     xor a
-    ld [$cc96], a
+    ld [wCaveRewardDelay], a
     ld [$cc76], a
     ld [$cc77], a
     ld a, $22

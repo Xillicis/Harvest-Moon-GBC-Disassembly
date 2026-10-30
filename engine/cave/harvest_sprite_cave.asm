@@ -285,7 +285,7 @@ TalkToHarvestSprite1:
     ld a, [sSpriteDailyHappiness]
     set 0, a
     ld [sSpriteDailyHappiness], a
-    call Call_00e_5113
+    call FaceSpriteOppositePlayer
     ld a, [sSpriteEventFlags]
     bit EVENT_TALKED_TO_SPRITE_FIRST_TIME, a
     jr nz, jr_00e_4770

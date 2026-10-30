@@ -10915,7 +10915,7 @@ jr_012_7a39:
     ld a, [$c60b]
     sub $08
     ld [$c62b], a
-    ld a, [$cc73]
+    ld a, [wFishingCatchType]
     cp $01
     ret z
 

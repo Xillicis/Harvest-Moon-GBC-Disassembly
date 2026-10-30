@@ -5,7 +5,8 @@
 
 SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
 
-    inc b
+    db $04 ; bank number
+
     push hl
     push af
     ld l, $da
