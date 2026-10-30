@@ -1094,7 +1094,7 @@ jr_022_464f:
     jr z, jr_022_4665
 
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $02
     ld [sHouseExpansionFlag], a
     ret
@@ -1102,7 +1102,7 @@ jr_022_464f:
 
 jr_022_4665:
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $01
     ld [sHouseExpansionFlag], a
     ret
@@ -3685,7 +3685,7 @@ Jump_022_53e7:
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3726,7 +3726,7 @@ Jump_022_542d:
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3767,7 +3767,7 @@ Jump_022_5473:
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3808,7 +3808,7 @@ Jump_022_54b9:
     ld a, $01
     call RST_TableJumpBankSwitch
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3910,7 +3910,7 @@ jr_022_5547:
     ld a, $02
     call RST_TableJumpBankSwitch
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3950,7 +3950,7 @@ Jump_022_559a:
     ld a, $02
     call RST_TableJumpBankSwitch
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -3990,7 +3990,7 @@ Jump_022_55db:
     ld a, $02
     call RST_TableJumpBankSwitch
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -4030,7 +4030,7 @@ Jump_022_561c:
     ld a, $02
     call RST_TableJumpBankSwitch
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -8842,13 +8842,13 @@ Call_022_6f74:
 
 
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
 jr_022_6fa7:
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 

@@ -781,28 +781,28 @@ CopyTileDataToBGMap: ; 00x0a62
     pop bc
     ret
 
-jr_000_0a78:
+CopyTerminatedTextTilesToBGMap:
     ld a, [de]
     inc de
     cp $ff
     ret z
 
     cp $45
-    jr z, jr_000_0a88
+    jr z, .writeAboveCurrentPosition
 
     cp $43
-    jr z, jr_000_0a88
+    jr z, .writeAboveCurrentPosition
 
     ld [hl+], a
-    jr jr_000_0a78
+    jr CopyTerminatedTextTilesToBGMap
 
-jr_000_0a88:
+.writeAboveCurrentPosition
     ld bc, $ffe0
     add hl, bc
     ld [hl], a
     ld bc, $0020
     add hl, bc
-    jr jr_000_0a78
+    jr CopyTerminatedTextTilesToBGMap
 
 Call_000_0a93:
     push hl
@@ -825,7 +825,7 @@ Call_000_0a93:
 jr_000_0aa8:
     ld a, [de]
     cp $ff
-    jr z, jr_000_0ab9
+    jr z, .finishCommand
 
     inc de
     cp $45
@@ -837,7 +837,7 @@ jr_000_0aa8:
     ld [hl+], a
     jr jr_000_0aa8
 
-jr_000_0ab9:
+.finishCommand
     ld [hl], $00
     ldh a, [$ff97]
     add b
@@ -1273,41 +1273,41 @@ Call_000_0f0f:
     ld [wInteractingMapObjectID+1], a
     ret
 
-Call_000_0f47:
+AdjustPlayerHappiness: ; 00x0f47
     ld b, a
     and %10000000
-    jr nz, jr_000_0f5c
+    jr nz, .decreaseHappiness
 
     ld a, [sPlayerHappiness]
     add b
-    jr c, jr_000_0f56
+    jr c, .clampToMaximum
 
     ld [sPlayerHappiness], a
     ret
 
-jr_000_0f56:
+.clampToMaximum
     ld a, $ff
     ld [sPlayerHappiness], a
     ret
 
-jr_000_0f5c:
+.decreaseHappiness
     ld a, b
     bit 7, a
-    jr z, jr_000_0f63
+    jr z, .subtractMagnitude
 
     cpl
     inc a
 
-jr_000_0f63:
+.subtractMagnitude
     ld b, a
     ld a, [sPlayerHappiness]
     sub b
-    jr c, jr_000_0f6e
+    jr c, .clampToZero
 
     ld [sPlayerHappiness], a
     ret
 
-jr_000_0f6e:
+.clampToZero
     xor a
     ld [sPlayerHappiness], a
     ret
@@ -2806,7 +2806,7 @@ jr_000_19a6:
     ld h, a
     ret
 
-Call_000_19aa:
+CheckPlayerPetOverlap: ; 00x19aa
     ld a, [wPlayerIsRidingHorse]
     or a
     jr nz, jr_000_19f2
@@ -3544,22 +3544,29 @@ Data_000_1fd8:
     db $04, $04, $04, $04, $04, $00, $04, $04, $00, $00, $06, $06, $05, $05, $00, $00,
     db $00, $0A, $0E, $12, $0A, $1A
 
-Call_000_20de:
-Jump_000_20de:
+; HL = component sprite list
+; B  = base Y position
+; C  = base X position
+;
+; Each component:
+;   db yOffset, xOffset, tileID, attributes
+;
+; $80 in the yOffset position terminates the list.
+AppendMetaspriteToShadowOAM:
     xor a
     ldh [$ff9b], a
 
-Call_000_20e1:
+AppendMetaspriteToShadowOAMWithFlags: ; 00x20e1
     ld a, [$cb59]
     or a
-    jr nz, jr_000_20ef
+    jr nz, .lookupDynamicTileBase
 
     ld a, $ff
     ld [$cb1c], a
     xor a
-    jr jr_000_20fc
+    jr .prepareOAMWrite
 
-jr_000_20ef:
+.lookupDynamicTileBase
     ld a, [$cb1c]
     ld de, $20d8
     add e
@@ -3569,7 +3576,7 @@ jr_000_20ef:
     ld d, a
     ld a, [de]
 
-jr_000_20fc:
+.prepareOAMWrite
     ld [$cb13], a
     ld a, $10
     add b
@@ -3583,10 +3590,10 @@ jr_000_20fc:
     ld e, a
     ld d, $c0
 
-jr_000_210f:
+.nextComponent
     ld a, [hl]
     cp $80
-    jr z, jr_000_2157
+    jr z, .storeOAMWriteOffset
 
     ld a, [hl+]
     add b
@@ -3595,26 +3602,26 @@ jr_000_210f:
     ldh a, [$ff9b]
     bit 5, a
     ld a, [hl+]
-    jr z, jr_000_2123
+    jr z, .writeXPosition
 
     cpl
     inc a
     sub $08
 
-jr_000_2123:
+.writeXPosition
     add c
     ld [de], a
     inc e
     ld a, [$cb1c]
     cp $ff
-    jr nz, jr_000_2132
+    jr nz, .loadDynamicSpriteTile
 
     ld a, [hl+]
     ld [de], a
     inc e
-    jr jr_000_214c
+    jr .writeAttributes
 
-jr_000_2132:
+.loadDynamicSpriteTile
     ld a, [hl+]
     push af
     push bc
@@ -3634,7 +3641,7 @@ jr_000_2132:
     ld [$cb13], a
     inc e
 
-jr_000_214c:
+.writeAttributes
     ldh a, [$ff9b]
     xor [hl]
     ld [de], a
@@ -3642,9 +3649,9 @@ jr_000_214c:
     inc e
     ld a, e
     cp $a0
-    jr nz, jr_000_210f
+    jr nz, .nextComponent
 
-jr_000_2157:
+.storeOAMWriteOffset
     ld a, e
     ldh [$ff99], a
     ret
@@ -3653,7 +3660,7 @@ jr_000_2157:
     inc hl
     inc hl
     inc hl
-    jr jr_000_210f
+    jr .nextComponent
 
 JumpToFunctionInTable:
     ld l, a
@@ -6257,7 +6264,7 @@ Jump_000_3000:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20e1
+    call AppendMetaspriteToShadowOAMWithFlags
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
@@ -6311,7 +6318,7 @@ Jump_000_3017:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20e1
+    call AppendMetaspriteToShadowOAMWithFlags
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
@@ -6374,7 +6381,7 @@ jr_000_3070:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20e1
+    call AppendMetaspriteToShadowOAMWithFlags
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
@@ -6428,7 +6435,7 @@ Jump_000_30bd:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20e1
+    call AppendMetaspriteToShadowOAMWithFlags
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
@@ -6936,7 +6943,7 @@ Jump_000_3408:
 
 INCLUDE "home/text.asm"
 
-Call_000_3e1a:
+DrawSelectedInventoryItemIcon: ; 00x3e1a
     ld hl, vBGMap1 + $30
     call SyncToBlankPeriod
     ld a, $88
@@ -6970,28 +6977,28 @@ Call_000_3e1a:
     ld h, a
     ld a, [hl]
     cp NO_ITEM
-    jr nz, jr_000_3e66
+    jr nz, .findItemIconIndex
 
     ld b, $1f
-    jr jr_000_3e73
+    jr .loadIconGraphics
 
-jr_000_3e66:
+.findItemIconIndex
     ld c, a
     ld hl, Data_000_1b20
     ld b, $00
 
-jr_000_3e6c:
+.searchItemIDs
     ld a, [hli]
     cp c
-    jr z, jr_000_3e73
+    jr z, .loadIconGraphics
 
     inc b
-    jr jr_000_3e6c
+    jr .searchItemIDs
 
-jr_000_3e73:
+.loadIconGraphics
     ld a, b
     add a
-    ld hl, Data_000_3ebc
+    ld hl, InventoryItemIconGraphicsOffsets
     add l
     ld l, a
     ld a, $00
@@ -7010,44 +7017,42 @@ jr_000_3e73:
     ld de, $8880
     ld b, $08
 
-jr_000_3e95:
+.copyFirstEightTiles
     ld c, $10
 
-jr_000_3e97:
+.copyTileByte
     call SyncToBlankPeriod
     ld a, [hli]
     ld [de], a
     inc de
     dec c
-    jr nz, jr_000_3e97
+    jr nz, .copyTileByte
 
     dec b
-    jr nz, jr_000_3e95
+    jr nz, .copyFirstEightTiles
 
     ld de, $89f0
     ld b, $01
 
-jr_000_3ea8:
+.copyFinalTile
     ld c, $10
 
-jr_000_3eaa:
+.copyFinalTileByte
     call SyncToBlankPeriod
     ld a, [hli]
     ld [de], a
     inc de
-
-Call_000_3eb0:
     dec c
-    jr nz, jr_000_3eaa
+    jr nz, .copyFinalTileByte
 
     dec b
-    jr nz, jr_000_3ea8
+    jr nz, .copyFinalTile
 
     ldh a, [$ffa5]
     ld [MBC3RomBank], a
     ret
 
-Data_000_3ebc:
+InventoryItemIconGraphicsOffsets: ; 00_3ebc
     db $90, $00, $20, $01, $B0, $01, $40, $02, $60, $03, $F0, $03, $80, $04, $10, $05
     db $D0, $0B, $30, $0F, $00, $10, $D0, $02, $A0, $05, $30, $06, $F0, $0C, $60, $0C
     db $80, $0D, $C0, $06, $50, $07, $E0, $07, $70, $08, $00, $09, $90, $09, $20, $0A
@@ -7062,7 +7067,7 @@ EnableDisplay_GameplayMode:
     ld [wUnusedCB4C], a
     ret
 
-Call_000_3f0b:
+ClearAndShowTextWindow: ; 00x3f0b
     call ClearOldTextOnTextBox
     ld a, $07
     ldh [$ff96], a
@@ -7092,7 +7097,7 @@ Call_000_3f26:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -7110,7 +7115,7 @@ InitializeTextIDAndDisplay:
     ld [wFreezePlayerInTextWindowOrInTown], a
     ld [wTextBoxIsDisplayed], a
     ld [wPlayerInteractingInTextFlag], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     ret
 
 ; Temporarily switch ROM bank in D, then call SyncCopyTileToVRAM, then restore

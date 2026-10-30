@@ -11823,7 +11823,7 @@ jr_027_7111:
     xor a
     ld [$c76c], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -11917,13 +11917,13 @@ jr_027_7248:
     jr nz, jr_027_7275
 
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
 jr_027_7275:
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -12101,7 +12101,7 @@ jr_027_7373:
     ld a, $01
     ld [$b89a], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -12109,7 +12109,7 @@ jr_027_7389:
     xor a
     ld [$b89a], a
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -12263,7 +12263,7 @@ jr_027_7483:
     call AddSignedBCToHL
     call UpdatePlayerMoneyTileData
     ld a, $14
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -12271,7 +12271,7 @@ jr_027_74b3:
     xor a
     ld [$b88e], a
     ld a, $ec
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -12314,7 +12314,7 @@ Jump_027_74ea:
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [wTextCharacterCounter], a
@@ -12353,7 +12353,7 @@ jr_027_752a:
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [wTextNavigator], a

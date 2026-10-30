@@ -320,8 +320,23 @@ wcc9d:: db ; 0xcc9d
 wcc9e:: db ; 0xcc9e
 wcc9f:: db ; 0xcc9f
 
+wcca0:: db ; 0xcca0
+wcca1:: db ; 0xcca1
+wcca2:: db ; 0xcca2
+wcca3:: db ; 0xcca3
+wcca4:: db ; 0xcca4
+wcca5:: db ; 0xcca5
 
-ds $2a
+wRanchEvaluationState:: db ; 0xcca6
+wRanchEvaluationCounter:: db ; 0xcca7
+wRanchEvaluationGrades:: ds 5 ; 0xcca8
+
+wccad:: db ; 0xccad
+wccae:: db ; 0xccae
+wccaf:: db ; 0xccaf
+
+
+ds $1a
 
 wTempPlayerMoney:: ds 3 ; 0xccca
 

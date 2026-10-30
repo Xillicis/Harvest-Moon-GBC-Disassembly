@@ -9504,7 +9504,7 @@ jr_019_68de:
     ld h, [hl]
     ld sp, hl
     add $fd
-    jp nz, Jump_000_20de
+    jp nz, AppendMetaspriteToShadowOAM
 
     db $ec
     db $10
@@ -9572,7 +9572,7 @@ jr_019_68ff:
     dec bc
     ld sp, hl
     add $fd
-    jp nz, Jump_000_20de
+    jp nz, AppendMetaspriteToShadowOAM
 
     db $fd
     ld [bc], a
@@ -9632,7 +9632,7 @@ jr_019_68ff:
     ld h, a
     ld sp, hl
     add $fd
-    jp nz, Jump_000_20de
+    jp nz, AppendMetaspriteToShadowOAM
 
     ld l, h
     sub b

@@ -548,7 +548,7 @@ Call_01d_42db:
     ld b, [hl]
     ld h, d
     ld l, e
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -1177,14 +1177,14 @@ jr_01d_4637:
 Call_01d_464a:
     ld bc, $5c58
     ld hl, $54f3
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ld a, [$cd61]
     or a
     jr z, jr_01d_4662
 
     ld bc, $6c58
     ld hl, $5520
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
 
 jr_01d_4662:
     ld b, $5c
@@ -1197,7 +1197,7 @@ jr_01d_4662:
 jr_01d_466c:
     ld c, $33
     ld hl, $54e2
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -2280,7 +2280,7 @@ jr_01d_4bf8:
     add $03
     ld c, a
     ld hl, $4c14
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -3190,7 +3190,7 @@ Call_01d_4ffc:
 
 jr_01d_5007:
     ld hl, $500e
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -3204,13 +3204,13 @@ Call_01d_5013:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ld bc, $7070
     ld hl, $cd71
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -3251,7 +3251,7 @@ Call_01d_5051:
 
 jr_01d_505c:
     ld hl, $5063
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -3265,13 +3265,13 @@ Call_01d_5068:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ld bc, $626c
     ld hl, $cd71
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -3378,7 +3378,7 @@ Call_01d_50ea:
 
 jr_01d_50f5:
     ld hl, $50fc
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 

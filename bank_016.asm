@@ -14431,7 +14431,7 @@ jr_016_7efd:
     nop
     ld a, b
     nop
-    call z, Call_000_3eb0
+    call z, $3eb0
     ld [bc], a
     ld c, b
     ld c, b

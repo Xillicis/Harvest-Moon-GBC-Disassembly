@@ -192,7 +192,7 @@ Cave_UseItem_SpriteInteraction:
 .happinessCap
     ld [sSpriteTotalHappiness], a
     ld a, 10
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, 1
     ld [$ba0e], a
     ret

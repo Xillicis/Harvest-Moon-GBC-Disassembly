@@ -388,7 +388,7 @@ jr_000_37d7:
     ld a, [wTextID]
     cp $04
     jr nz, .endText
-    call Call_000_3e1a
+    call DrawSelectedInventoryItemIcon
 
 .endText
     ld a, $ff
@@ -812,7 +812,7 @@ jr_000_3ab9:
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     call Call_000_3fa2
@@ -896,7 +896,7 @@ Call_000_3b32:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -909,7 +909,7 @@ jr_000_3b54:
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     call Call_000_3fa2
@@ -1081,7 +1081,7 @@ Call_000_3c44:
     ld a, $03
     ld [wTextID], a
     ld [$cb57], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ret
@@ -1112,7 +1112,7 @@ jr_000_3c6d:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -1142,7 +1142,7 @@ jr_000_3cb2:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -1195,7 +1195,7 @@ jr_000_3d17:
     ld [$cb57], a
     xor a
     ld [$cb58], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     ret
 
 jr_000_3d41:
@@ -1224,7 +1224,7 @@ jr_000_3d41:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     xor a
     ld [$cb58], a
     ld [$cb57], a
@@ -1252,7 +1252,7 @@ jr_000_3d7b:
     ld [$cb16], a
     ld a, $00
     call RST_TableJumpBankSwitch
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     ld a, $00
     ld [wTextID], a
     ld a, $03
@@ -1324,7 +1324,7 @@ Call_000_3dfd:
 
     ld a, $04
     ld [wTextID], a
-    call Call_000_3f0b
+    call ClearAndShowTextWindow
     ld a, $01
     ld [wPlayerInteractingInTextFlag], a
     xor a

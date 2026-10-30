@@ -3097,8 +3097,8 @@ jr_030_4f2d:
     ld [hl], a
     xor a
     ld [$ccb6], a
-    ld [$cca6], a
-    ld [$cca7], a
+    ld [wRanchEvaluationState], a
+    ld [wRanchEvaluationCounter], a
     ret
 
 
@@ -3129,7 +3129,7 @@ Call_030_4fee:
     ret nz
 
 Jump_030_4ff7:
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     rst $00
     dec d
     ld d, b
@@ -3155,7 +3155,7 @@ Jump_030_4ff7:
     ld d, d
     dec l
     ld d, d
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     ld a, [hl]
     cp $30
     jr z, jr_030_5028
@@ -3184,13 +3184,13 @@ jr_030_502d:
     ret nz
 
     ld a, $01
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     xor a
-    ld [$cca7], a
+    ld [wRanchEvaluationCounter], a
     ret
 
 
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     inc [hl]
     ld a, [hl]
     cp $1e
@@ -3199,7 +3199,7 @@ jr_030_502d:
     xor a
     ld [hl], a
     ld a, $02
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -3231,7 +3231,7 @@ jr_030_5061:
     ld a, $c3
     call InitializeTextIDAndDisplay
     ld a, $03
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld hl, $b949
     ld a, [hl+]
     cp $ff
@@ -3384,20 +3384,20 @@ Call_030_512c:
     jr nz, jr_030_5152
 
     ld a, $04
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
 jr_030_5152:
     ld a, $06
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
     ld a, $c6
     call InitializeTextIDAndDisplay
     ld a, $05
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -3410,7 +3410,7 @@ jr_030_5152:
     ret z
 
     ld a, $06
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -3419,7 +3419,7 @@ jr_030_5152:
     or a
     jr nz, jr_030_519c
 
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     cp $06
     jp nz, Jump_030_4ff7
 
@@ -3437,19 +3437,19 @@ jr_030_5191:
 
 jr_030_5196:
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
 jr_030_519c:
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     cp $06
     jp nz, Jump_030_4ff7
 
     ld a, $c5
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -3462,12 +3462,12 @@ jr_030_519c:
     ret z
 
     ld a, $09
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     call ClearOldTextOnTextBox
     ret
 
 
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     ld a, [hl]
     inc [hl]
     ld a, [hl]
@@ -3526,7 +3526,7 @@ jr_030_5211:
     ld a, $c7
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld a, $01
     ld [$b8d1], a
     ret
@@ -3535,7 +3535,7 @@ jr_030_5211:
     ld a, $c8
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld a, $01
     ld [$b8d1], a
     ret
@@ -3571,17 +3571,17 @@ jr_030_524a:
     jr c, jr_030_526c
 
     ld a, $00
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
     jr jr_030_5271
 
 jr_030_5265:
     ld a, $02
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
     jr jr_030_5271
 
 jr_030_526c:
     ld a, $01
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
 
 jr_030_5271:
     ld b, $00
@@ -3613,17 +3613,17 @@ jr_030_527e:
     jr c, jr_030_52a0
 
     ld a, $00
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
     jr jr_030_52a5
 
 jr_030_5299:
     ld a, $02
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
     jr jr_030_52a5
 
 jr_030_52a0:
     ld a, $01
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
 
 jr_030_52a5:
     ld a, [$cc9c]
@@ -3638,7 +3638,7 @@ jr_030_52a5:
 
 jr_030_52b6:
     ld a, $00
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
     jr jr_030_52da
 
 Jump_030_52bd:
@@ -3655,13 +3655,13 @@ jr_030_52bd:
 
 jr_030_52ce:
     ld a, $01
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
     jr jr_030_52da
 
 Jump_030_52d5:
 jr_030_52d5:
     ld a, $02
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
 
 jr_030_52da:
     ld a, [$ba37]
@@ -3680,7 +3680,7 @@ jr_030_52da:
 
 jr_030_52f0:
     ld a, $00
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_030_5315
 
 jr_030_52f7:
@@ -3696,12 +3696,12 @@ jr_030_52f7:
 
 jr_030_5307:
     ld a, $01
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_030_5315
 
 jr_030_530e:
     ld a, $02
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_030_5315
 
 jr_030_5315:
@@ -3713,7 +3713,7 @@ jr_030_5315:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$ccac], a
+    ld [wRanchEvaluationGrades+4], a
     ret
 
 
@@ -3723,7 +3723,7 @@ jr_030_5315:
     ldh [$ffa5], a
     ldh [$ffa6], a
     ld b, $05
-    ld hl, $cca8
+    ld hl, wRanchEvaluationGrades
 
 jr_030_5335:
     ld a, [hl]
@@ -3851,12 +3851,12 @@ jr_030_5402:
 
 jr_030_5404:
     ld a, $0b
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_030_5412
 
 jr_030_540b:
     ld a, $0c
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_030_5412
 
 Jump_030_5412:
@@ -3907,12 +3907,12 @@ jr_030_5446:
 
 jr_030_5448:
     ld a, $0b
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_030_5456
 
 jr_030_544f:
     ld a, $0c
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_030_5456
 
 jr_030_5456:
@@ -4011,7 +4011,7 @@ Call_030_54ba:
     or b
     ret nz
 
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     rst $00
     dec d
     ld d, b
@@ -4026,7 +4026,7 @@ Call_030_54ba:
     ld a, $c9
     call InitializeTextIDAndDisplay
     ld a, $03
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -4039,17 +4039,17 @@ Call_030_54ba:
     ret z
 
     ld a, $04
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
     ld a, $05
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     call ClearOldTextOnTextBox
     ret
 
 
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     ld a, [hl]
     inc [hl]
     ld a, [hl]
@@ -4083,7 +4083,7 @@ Call_030_552b:
     ld a, [$ba4a]
     cpl
     inc a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     xor a
     ld [$ba4a], a
     ld b, $00
@@ -4111,7 +4111,7 @@ jr_030_554c:
     jr nz, jr_030_553e
 
     ld a, [$ba4a]
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -4119,7 +4119,7 @@ Call_030_555e:
     ld a, [$ba4b]
     cpl
     inc a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     xor a
     ld [$ba4b], a
     ld b, a
@@ -4168,7 +4168,7 @@ jr_030_5585:
     call DivideHLByA_16bit
     ld a, l
     ld [$ba4b], a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 

@@ -1172,7 +1172,7 @@ jr_028_45bb:
     dec b
     jr nz, jr_028_45bb
 
-    call Call_000_3e1a
+    call DrawSelectedInventoryItemIcon
     ret
 
 

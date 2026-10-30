@@ -623,7 +623,7 @@ Call_01f_4381:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -690,7 +690,7 @@ Call_01f_43ca:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -732,7 +732,7 @@ Call_01f_43e1:
     inc hl
     ld b, [hl]
     ld hl, $440d
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 

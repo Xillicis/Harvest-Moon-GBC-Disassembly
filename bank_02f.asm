@@ -7637,9 +7637,9 @@ jr_02f_6d44:
 jr_02f_6d5c:
     push bc
     ld a, $ce
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $ce
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     pop bc
     dec b
     jr nz, jr_02f_6d5c

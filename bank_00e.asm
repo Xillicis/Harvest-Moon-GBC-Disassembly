@@ -2937,7 +2937,7 @@ jr_00e_53cd:
     set 1, a
     ld [$b899], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 

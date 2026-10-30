@@ -954,15 +954,15 @@ Data_010_4eb4:
     db $00, $1F, $00, $1F, $00, $1F, $00, $1F, $00, $1F, $00, $1F, $00, $00, $1F, $00,
     db $1F, $00, $19, $00
 
-Label_010_4fa8:
+InitializeRanchEvaluationScene: ; 10x4fa8
     ld a, $01
     ld [wPlayerIsInsideOrAtTown], a
     ld a, [$ba49]
     or a
     jr nz, jr_010_4fbe
 
-    call Call_010_55c0
-    call Call_010_55f3
+    call RecalculateChickenHappinessBonus
+    call RecalculateCultivatedLandHappinessBonus
     ld a, $01
     ld [$ba49], a
 
@@ -1016,8 +1016,8 @@ jr_010_4fbe:
     ld [$cb5e], a
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
-    call Call_010_563c
-    call Call_010_5663
+    call InitializeEvaluationSceneActors
+    call LoadEvaluationTextBoxTilemap
     ld a, $83
     ld [wLCDCTempStorage], a
     ld a, $68
@@ -1033,8 +1033,8 @@ jr_010_4fbe:
     ld [hl], a
     xor a
     ld [$ccb6], a
-    ld [$cca6], a
-    ld [$cca7], a
+    ld [wRanchEvaluationState], a
+    ld [wRanchEvaluationCounter], a
     ret
 
 
@@ -1042,7 +1042,7 @@ jr_010_4fbe:
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
-    call Call_010_508c
+    call UpdateRanchEvaluationScene
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
     ret
@@ -1057,16 +1057,17 @@ jr_010_4fbe:
     ret
 
 
-Call_010_508c:
+UpdateRanchEvaluationScene: ; 10x508c
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or b
     ret nz
 
-Jump_010_5095:
-    ld a, [$cca6]
+DispatchRanchEvaluationState: ; 10x5095
+    ld a, [wRanchEvaluationState]
     rst $00
+
     or e
     ld d, b
     ldh [c], a
@@ -1117,14 +1118,14 @@ jr_010_50cb:
     ret nz
 
     ld a, $01
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     xor a
-    ld [$cca7], a
+    ld [wRanchEvaluationCounter], a
     ret
 
 
 jr_010_50e2:
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     inc [hl]
     ld a, [hl]
     cp $1e
@@ -1133,7 +1134,7 @@ jr_010_50e2:
     xor a
     ld [hl], a
     ld a, $02
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -1165,23 +1166,23 @@ jr_010_50ff:
     ld a, $c3
     call InitializeTextIDAndDisplay
     ld a, $03
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld hl, $b949
     ld a, [hl+]
     cp $ff
-    call z, Call_010_51ca
+    call z, ClearEmptyCowNameAndStats
     ld hl, $b95f
     ld a, [hl+]
     cp $ff
-    call z, Call_010_51ca
+    call z, ClearEmptyCowNameAndStats
     ld hl, $b975
     ld a, [hl+]
     cp $ff
-    call z, Call_010_51ca
+    call z, ClearEmptyCowNameAndStats
     ld hl, $b98b
     ld a, [hl+]
     cp $ff
-    call z, Call_010_51ca
+    call z, ClearEmptyCowNameAndStats
     xor a
     ldh [$ffa4], a
     ldh [$ffa5], a
@@ -1288,7 +1289,7 @@ Jump_010_51a8:
     ret
 
 
-Call_010_51ca:
+ClearEmptyCowNameAndStats: ; 10x51ca
     ld a, $af
     ld [hl+], a
     ld [hl+], a
@@ -1320,20 +1321,20 @@ Call_010_51ca:
     jr nz, jr_010_51f0
 
     ld a, $04
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
 jr_010_51f0:
     ld a, $06
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
     ld a, $c6
     call InitializeTextIDAndDisplay
     ld a, $05
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -1346,18 +1347,18 @@ jr_010_51f0:
     ret z
 
     ld a, $06
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
     call Call_010_52d2
-    call $53be
+    call SelectRanchEvaluationReward
     or a
     jr nz, jr_010_523a
 
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     cp $06
-    jp nz, Jump_010_5095
+    jp nz, DispatchRanchEvaluationState
 
     ld a, [$ccb6]
     or a
@@ -1373,19 +1374,19 @@ jr_010_522f:
 
 jr_010_5234:
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
 jr_010_523a:
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     cp $06
-    jp nz, Jump_010_5095
+    jp nz, DispatchRanchEvaluationState
 
     ld a, $c5
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -1398,12 +1399,12 @@ jr_010_523a:
     ret z
 
     ld a, $09
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     call ClearOldTextOnTextBox
     ret
 
 
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     ld a, [hl]
     inc [hl]
     ld a, [hl]
@@ -1459,7 +1460,7 @@ jr_010_52a6:
     ld a, $c7
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld a, $01
     ld [$b8d1], a
     ret
@@ -1468,7 +1469,7 @@ jr_010_52a6:
     ld a, $c8
     call InitializeTextIDAndDisplay
     ld a, $08
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ld a, $01
     ld [$b8d1], a
     ret
@@ -1504,17 +1505,17 @@ jr_010_52df:
     jr c, jr_010_5301
 
     ld a, $00
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
     jr jr_010_5306
 
 jr_010_52fa:
     ld a, $02
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
     jr jr_010_5306
 
 jr_010_5301:
     ld a, $01
-    ld [$cca8], a
+    ld [wRanchEvaluationGrades], a
 
 jr_010_5306:
     ld b, $00
@@ -1546,17 +1547,17 @@ jr_010_5313:
     jr c, jr_010_5335
 
     ld a, $00
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
     jr jr_010_533a
 
 jr_010_532e:
     ld a, $02
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
     jr jr_010_533a
 
 jr_010_5335:
     ld a, $01
-    ld [$cca9], a
+    ld [wRanchEvaluationGrades+1], a
 
 jr_010_533a:
     ld a, [$cc9c]
@@ -1571,7 +1572,7 @@ jr_010_533a:
 
 jr_010_534b:
     ld a, $00
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
     jr jr_010_536f
 
 Jump_010_5352:
@@ -1588,13 +1589,13 @@ jr_010_5352:
 
 jr_010_5363:
     ld a, $01
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
     jr jr_010_536f
 
 Jump_010_536a:
 jr_010_536a:
     ld a, $02
-    ld [$ccaa], a
+    ld [wRanchEvaluationGrades+2], a
 
 jr_010_536f:
     ld a, [$ba37]
@@ -1613,7 +1614,7 @@ jr_010_536f:
 
 jr_010_5385:
     ld a, $00
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_010_53aa
 
 jr_010_538c:
@@ -1629,34 +1630,36 @@ jr_010_538c:
 
 jr_010_539c:
     ld a, $01
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_010_53aa
 
 jr_010_53a3:
     ld a, $02
-    ld [$ccab], a
+    ld [wRanchEvaluationGrades+3], a
     jr jr_010_53aa
 
 jr_010_53aa:
     ld a, [$cbe8]
-    ld hl, $53bb
+    ld hl, EvaluationGradeByLevel
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
     ld a, [hl]
-    ld [$ccac], a
+    ld [wRanchEvaluationGrades+4], a
     ret
 
+EvaluationGradeByLevel: ; 53bb
+    db 2, 1, 0
 
-    ld [bc], a
-    ld bc, $af00
+SelectRanchEvaluationReward: ; 10x53be
+    xor a
     ldh [$ffa4], a
     ldh [$ffa5], a
     ldh [$ffa6], a
     ld b, $05
-    ld hl, $cca8
+    ld hl, wRanchEvaluationGrades
 
 jr_010_53ca:
     ld a, [hl]
@@ -1676,7 +1679,7 @@ jr_010_53ca:
     cp $05
     jr c, jr_010_53ec
 
-    call z, Call_010_54ac
+    call z, CheckRanchMasterEligibility
     or a
     jp z, Jump_010_54a7
 
@@ -1692,7 +1695,7 @@ jr_010_53ec:
     set 7, a
     ld [$ba0f], a
     ld a, $00
-    call Call_010_5502
+    call LoadEvaluationRewardTextData
     ld a, $01
     ld [sMapExpansionRightSide], a
     ld [$ccb6], a
@@ -1712,7 +1715,7 @@ jr_010_5412:
     set 6, a
     ld [$ba0f], a
     ld a, $01
-    call Call_010_5502
+    call LoadEvaluationRewardTextData
     ld a, $01
     ld [$b8bf], a
     jp Jump_010_54a7
@@ -1730,7 +1733,7 @@ jr_010_5432:
     set 5, a
     ld [$ba0f], a
     ld a, $02
-    call Call_010_5502
+    call LoadEvaluationRewardTextData
     ld a, $01
     ld [$b8bd], a
     jr jr_010_54a7
@@ -1747,7 +1750,7 @@ jr_010_5450:
     set 4, a
     ld [$ba0f], a
     ld a, $03
-    call Call_010_5502
+    call LoadEvaluationRewardTextData
     ld a, $01
     ld [$b8be], a
     jr jr_010_54a7
@@ -1784,12 +1787,12 @@ jr_010_5497:
 
 jr_010_5499:
     ld a, $0b
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_010_54a7
 
 jr_010_54a0:
     ld a, $0c
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_010_54a7
 
 Jump_010_54a7:
@@ -1804,7 +1807,7 @@ jr_010_54a9:
     ret
 
 
-Call_010_54ac:
+CheckRanchMasterEligibility: ; 10x54ac
     ld a, [sNumPowerBerriesEaten]
     cp 6
     jr c, jr_010_54db
@@ -1840,12 +1843,12 @@ jr_010_54db:
 
 jr_010_54dd:
     ld a, $0b
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_010_54eb
 
 jr_010_54e4:
     ld a, $0c
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     jr jr_010_54eb
 
 jr_010_54eb:
@@ -1864,13 +1867,11 @@ Call_010_54f0:
     ldh [$ffa4], a
     ret
 
-
 Call_010_54f6:
     ldh a, [$ffa5]
     inc a
     ldh [$ffa5], a
     ret
-
 
 Call_010_54fc:
     ldh a, [$ffa6]
@@ -1878,9 +1879,8 @@ Call_010_54fc:
     ldh [$ffa6], a
     ret
 
-
-Call_010_5502:
-    ld hl, $5523
+LoadEvaluationRewardTextData: ; 10x5502
+    ld hl, EvaluationRewardTextRecords
     ld c, a
     add a
     ld b, a
@@ -1901,7 +1901,7 @@ Call_010_5502:
     call CopyHLtoDE
     ret
 
-
+EvaluationRewardTextRecords: ; 0x5523
     xor a
     xor a
     xor a
@@ -1944,7 +1944,7 @@ Call_010_554f:
     or b
     ret nz
 
-    ld a, [$cca6]
+    ld a, [wRanchEvaluationState]
     rst $00
     or e
     ld d, b
@@ -1961,7 +1961,7 @@ Call_010_554f:
     ld a, $c9
     call InitializeTextIDAndDisplay
     ld a, $03
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
@@ -1974,17 +1974,17 @@ Call_010_554f:
     ret z
 
     ld a, $04
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     ret
 
 
     ld a, $05
-    ld [$cca6], a
+    ld [wRanchEvaluationState], a
     call ClearOldTextOnTextBox
     ret
 
 
-    ld hl, $cca7
+    ld hl, wRanchEvaluationCounter
     ld a, [hl]
     inc [hl]
     ld a, [hl]
@@ -2013,12 +2013,11 @@ Call_010_554f:
     ld [$ccc1], a
     ret
 
-
-Call_010_55c0:
+RecalculateChickenHappinessBonus: ; 10x55c0
     ld a, [$ba4a]
     cpl
     inc a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     xor a
     ld [$ba4a], a
     ld b, $00
@@ -2046,15 +2045,14 @@ jr_010_55e1:
     jr nz, jr_010_55d3
 
     ld a, [$ba4a]
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
-
-Call_010_55f3:
+RecalculateCultivatedLandHappinessBonus: ; 10x55f3
     ld a, [$ba4b]
     cpl
     inc a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     xor a
     ld [$ba4b], a
     ld b, a
@@ -2103,11 +2101,11 @@ jr_010_561a:
     call DivideHLByA_16bit
     ld a, l
     ld [$ba4b], a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
-Call_010_563c:
+InitializeEvaluationSceneActors: ; 10x563c
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -2134,7 +2132,7 @@ Call_010_563c:
     nop
     nop
 
-Call_010_5663:
+LoadEvaluationTextBoxTilemap: ; 10x5663
     ld hl, vBGMap1
     ld de, $5671
     ld b, $14

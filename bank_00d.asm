@@ -7891,7 +7891,7 @@ jr_00d_73f5:
     sub b
     ld hl, sp-$20
     ldh a, [rP1]
-    call c, Call_000_3eb0
+    call c, $3eb0
     db $ec
     ld a, [hl]
     call z, $001f

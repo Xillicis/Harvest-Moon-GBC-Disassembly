@@ -125,7 +125,7 @@ jr_023_4101:
 
     call Call_023_6334
     ld a, $1e
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -6278,7 +6278,7 @@ Jump_023_658b:
     inc a
     ld [$b945], a
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
 
 jr_023_65d5:
     ld a, [$b95f]
@@ -6318,7 +6318,7 @@ jr_023_65d5:
     inc a
     ld [$b945], a
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
 
 jr_023_661f:
     ld a, [$b975]
@@ -6358,7 +6358,7 @@ jr_023_661f:
     inc a
     ld [$b945], a
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
 
 jr_023_6669:
     ld a, [$b98b]
@@ -6398,7 +6398,7 @@ jr_023_6669:
     inc a
     ld [$b945], a
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     jp Jump_023_64a3
 
 
@@ -8976,7 +8976,7 @@ Call_023_75c5:
     ret nc
 
     ld a, $f6
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 

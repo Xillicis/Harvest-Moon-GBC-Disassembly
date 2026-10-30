@@ -808,7 +808,7 @@ HandleWalkDown: ; 01x453f
     ret nz
 
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -858,7 +858,7 @@ HandleWalkUp: ; 01x4596
     ret nz
 
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -909,7 +909,7 @@ HandleWalkLeft:
     ret nz
 
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -962,7 +962,7 @@ HandleWalkRight:
     ret nz
 
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1068,7 +1068,7 @@ jr_001_46e3:
     ret nz
 
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1117,7 +1117,7 @@ jr_001_4745:
 
     ld d, $00
     ld e, $e0
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1164,7 +1164,7 @@ Jump_001_479a:
     ret nz
 
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1216,7 +1216,7 @@ jr_001_47ea:
 
     ld d, $00
     ld e, $20
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1258,7 +1258,7 @@ Jump_001_483c:
     ret nz
 
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1310,7 +1310,7 @@ jr_001_488c:
 
     ld d, $e0
     ld e, $00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1353,7 +1353,7 @@ Jump_001_48e1:
     ret nz
 
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1405,7 +1405,7 @@ jr_001_4931:
 
     ld d, $20
     ld e, $00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -5174,7 +5174,7 @@ Call_001_712d:
 
 jr_001_716e:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld [wInputFreezeTimer], a
     ld a, $0d
     call Call_000_15cb
@@ -5203,7 +5203,7 @@ jr_001_716e:
 
 jr_001_71b1:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $07
     call Call_000_15cb
     ld a, [wPlayerXPosition]
@@ -5231,7 +5231,7 @@ jr_001_71b1:
 
 Jump_001_71f1:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $11
     call Call_000_15cb
     ld a, [wPlayerXPosition]
@@ -5381,7 +5381,7 @@ jr_001_72d6:
     ret nz
 
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $16
     call Call_000_15e4
     ld a, [wPlayerXPosition]

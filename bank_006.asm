@@ -137,7 +137,7 @@ jr_006_40e3:
     inc hl
     ld b, [hl]
     ld hl, $4107
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -197,7 +197,7 @@ Call_006_4136:
 
     ld bc, $0047
     ld hl, $4175
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
 
 jr_006_4157:
     pop hl
@@ -207,7 +207,7 @@ jr_006_4157:
 
     ld bc, $8848
     ld hl, $417e
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -2030,7 +2030,7 @@ jr_006_49db:
     ld l, a
     ld c, $30
     ld b, $68
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ld hl, $4a0d
     ld a, [$cdad]
     add a
@@ -2044,7 +2044,7 @@ jr_006_49db:
     ld l, a
     ld c, $50
     ld b, $68
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 

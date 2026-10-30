@@ -810,7 +810,7 @@ Jump_021_4510:
     ret nz
 
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -867,7 +867,7 @@ Jump_021_456e:
     ret nz
 
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -925,7 +925,7 @@ Jump_021_45cf:
     ret nz
 
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -983,7 +983,7 @@ Jump_021_4630:
     ret nz
 
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1095,7 +1095,7 @@ jr_021_46d7:
     ret nz
 
     ld de, $00fc
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1145,7 +1145,7 @@ jr_021_4739:
 
     ld d, $00
     ld e, $e0
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1196,7 +1196,7 @@ Jump_021_478e:
     ret nz
 
     ld de, $0004
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1250,7 +1250,7 @@ jr_021_47de:
 
     ld d, $00
     ld e, $20
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1296,7 +1296,7 @@ Jump_021_4830:
     ret nz
 
     ld de, $fc00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1350,7 +1350,7 @@ jr_021_4880:
 
     ld d, $e0
     ld e, $00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1397,7 +1397,7 @@ Jump_021_48d5:
     ret nz
 
     ld de, $0400
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1451,7 +1451,7 @@ jr_021_4925:
 
     ld d, $20
     ld e, $00
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, [wPlayerInFrontOfPet]
     or a
     ret nz
@@ -1851,7 +1851,7 @@ jr_021_4bd6:
     ld e, $18
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -1914,7 +1914,7 @@ jr_021_4c62:
     ld e, $e8
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -1977,7 +1977,7 @@ Jump_021_4ce9:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -2039,7 +2039,7 @@ jr_021_4d72:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -2101,7 +2101,7 @@ Jump_021_4df7:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -2163,7 +2163,7 @@ jr_021_4e80:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -3172,7 +3172,7 @@ Jump_021_5566:
     ld a, $00
     ld [$c813], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
@@ -7911,7 +7911,7 @@ Call_021_7032:
 
 jr_021_7066:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld [wInputFreezeTimer], a
     ld a, $0d
     call Call_000_15cb
@@ -7940,7 +7940,7 @@ jr_021_7066:
 
 jr_021_70a9:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $07
     call Call_000_15cb
     ld a, [wPlayerXPosition]
@@ -7968,7 +7968,7 @@ jr_021_70a9:
 
 Jump_021_70e9:
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $11
     call Call_000_15cb
     ld a, [wPlayerXPosition]
@@ -8118,7 +8118,7 @@ jr_021_71ce:
     ret nz
 
     ld a, $01
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $16
     call Call_000_15e4
     ld a, [wPlayerXPosition]

@@ -548,7 +548,7 @@ Call_03b_42b4:
 
     ld bc, $7081
     ld hl, $42db
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
 
 jr_03b_42c3:
     ld a, [$cd92]
@@ -559,7 +559,7 @@ jr_03b_42c3:
 
     ld bc, $7060
     ld hl, $42d6
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -615,7 +615,7 @@ Call_03b_4330:
     jr nz, jr_03b_433b
 
     ld hl, $4380
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 
@@ -631,7 +631,7 @@ jr_03b_433b:
     ld a, $00
     adc h
     ld h, a
-    call Call_000_20de
+    call AppendMetaspriteToShadowOAM
     ret
 
 

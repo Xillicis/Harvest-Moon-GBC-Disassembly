@@ -1063,7 +1063,7 @@ jr_02e_4671:
 jr_02e_4697:
     ld [sSpriteTotalHappiness], a
     ld a, 10
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ld a, $01
     ld [$ba0e], a
     ret
@@ -3401,7 +3401,7 @@ jr_02e_53aa:
     set 1, a
     ld [$b899], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 

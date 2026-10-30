@@ -177,7 +177,7 @@ JumpOffHorse:
     ld e, $18
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, 1
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -239,7 +239,7 @@ jr_001_4c6e:
     ld e, $e8
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -301,7 +301,7 @@ Jump_001_4cf5:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -362,7 +362,7 @@ jr_001_4d7e:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -423,7 +423,7 @@ Jump_001_4e03:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -484,7 +484,7 @@ jr_001_4e8c:
     ld e, $00
     xor a
     ld [wPlayerIsRidingHorse], a
-    call Call_000_19aa
+    call CheckPlayerPetOverlap
     ld a, $01
     ld [wPlayerIsRidingHorse], a
     ld a, [wPlayerInFrontOfPet]
@@ -1553,7 +1553,7 @@ Jump_001_5647:
     ld a, $00
     ld [$c813], a
     ld a, $0a
-    call Call_000_0f47
+    call AdjustPlayerHappiness
     ret
 
 
