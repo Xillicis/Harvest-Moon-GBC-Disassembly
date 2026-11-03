@@ -1087,7 +1087,7 @@ Call_000_0de8:
     call UpdateDayOfTheWeekTileData
     call UpdateSeasonTileData
     call Call_000_1002
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     callfar Call_008_456e
     xor a
     ld [$cb14], a
@@ -1312,35 +1312,35 @@ AdjustPlayerHappiness: ; 00x0f47
     ld [sPlayerHappiness], a
     ret
 
-Call_000_0f73:
+ClampAndFormatFencePostCount:
     ld a, [sNumberOfFencePosts+1]
     cp $ff
-    jr z, jr_000_0f9a
+    jr z, .clearUndeflow
 
     ld a, [sNumberOfFencePosts+1]
     cp $04
-    jr nc, jr_000_0f8e
+    jr nc, .clampTo999
     cp $03
-    jr c, jr_000_0fa1
+    jr c, .formatCount
 
     ld a, [sNumberOfFencePosts]
     cp $e8
-    jr nc, jr_000_0f8e
-    jr jr_000_0fa1
+    jr nc, .clampTo999
+    jr .formatCount
 
-jr_000_0f8e:
+.clampTo999 ; 0x3e7 = 999
     ld a, $e7
     ld [sNumberOfFencePosts], a
     ld a, $03
     ld [sNumberOfFencePosts+1], a
-    jr jr_000_0fa1
+    jr .formatCount
 
-jr_000_0f9a:
+.clearUndeflow
     xor a
     ld [sNumberOfFencePosts], a
     ld [sNumberOfFencePosts+1], a
 
-jr_000_0fa1:
+.formatCount
     xor a
     ld [$cccc], a
     ld a, [sNumberOfFencePosts]
@@ -4370,7 +4370,7 @@ Call_000_24ea:
     ld de, $8800
 
 Call_000_24fa:
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     xor a
     ldh [rSCY], a
     ldh [rSCX], a
@@ -6458,7 +6458,7 @@ Data_000_310a:
 ;   HL → ROM data stream (mask, pixel-values…)
 ;   DE → VRAM destination base (tile row address)
 ;   C  → ROM bank to use
-DrawMaskedClippedTile:
+DecompressGraphicsToVRAM:
     ld a, [MBC3SRamBank]
     push af
     ld a, c

@@ -151,7 +151,7 @@ InitializeMoreGameData: ; 1dx521e
     call UpdateDayOfTheWeekTileData
     call UpdateSeasonTileData
     call Call_000_1002
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld hl, $456e
     ld a, $08
     call BankSwitchCallHL

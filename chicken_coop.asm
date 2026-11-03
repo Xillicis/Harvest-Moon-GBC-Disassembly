@@ -7,6 +7,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
 
     db $04 ; bank number
 
+InitializeChickenCoopScene: ; 04x4001
     push hl
     push af
     ld l, $da
@@ -21,27 +22,27 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     call ClearBGMap0
     call ClearBGMap1
     call ClearShadowOAMBuffer
-    ld hl, $76c1
-    ld c, $04
+    ld hl, ChickenCoopBackgroundTiles1
+    ld c, BANK(ChickenCoopBackgroundTiles1)
     ld de, $8800
-    call DrawMaskedClippedTile
-    ld hl, $70b1
-    ld c, $04
+    call DecompressGraphicsToVRAM
+    ld hl, ChickenCoopBackgroundTiles2
+    ld c, BANK(ChickenCoopBackgroundTiles2)
     ld de, $9000
-    call DrawMaskedClippedTile
-    ld hl, $7b0c
-    ld c, $04
+    call DecompressGraphicsToVRAM
+    ld hl, ChickenCoopSpriteGraphics
+    ld c, BANK(ChickenCoopSpriteGraphics)
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $08
     ld [$cb5c], a
     ld a, $07
     ld [$cb5d], a
     ld [$cb5e], a
-    ld hl, $6f75
-    ld c, $04
+    ld hl, ChickenCoopBackgroundMap
+    ld c, BANK(ChickenCoopBackgroundMap)
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $24
     ldh [$ff91], a
     xor a
@@ -62,45 +63,45 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld [$b90e], a
     ld a, $00
     ld [$cc22], a
-    call Call_004_4736
+    call InitializeChickenCoopPlayerState
     call Call_000_1221
-    call Call_004_46c4
+    call LoadChickenCoopTextBoxTilemap
     ld a, $00
     call RST_TableJumpBankSwitch
-    call Call_004_6baf
-    ld a, [$b9a6]
+    call InitializeChickenCoopChickens
+    ld a, [sChickenFeedingFlags]
     bit 0, a
-    call nz, Call_004_5bda
-    ld a, [$b9a6]
+    call nz, DrawChickenFeedTrough0
+    ld a, [sChickenFeedingFlags]
     bit 1, a
-    call nz, Call_004_5bdf
-    ld a, [$b9a6]
+    call nz, DrawChickenFeedTrough1
+    ld a, [sChickenFeedingFlags]
     bit 2, a
-    call nz, Call_004_5be4
-    ld a, [$b9a6]
+    call nz, DrawChickenFeedTrough2
+    ld a, [sChickenFeedingFlags]
     bit 3, a
-    call nz, Call_004_5be9
-    ld a, [$b9a4]
+    call nz, DrawChickenFeedTrough3
+    ld a, [sChickenEggFlags]
     bit 0, a
-    call nz, Call_004_5c20
-    ld a, [$b9a4]
+    call nz, DrawChickenEgg0
+    ld a, [sChickenEggFlags]
     bit 1, a
-    call nz, Call_004_5c28
-    ld a, [$b9a4]
+    call nz, DrawChickenEgg1
+    ld a, [sChickenEggFlags]
     bit 2, a
-    call nz, Call_004_5c30
-    ld a, [$b9a4]
+    call nz, DrawChickenEgg2
+    ld a, [sChickenEggFlags]
     bit 3, a
-    call nz, Call_004_5c38
-    ld a, [$b9a4]
+    call nz, DrawChickenEgg3
+    ld a, [sChickenEggFlags]
     bit 4, a
     call nz, Call_004_5c5a
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     cp $00
-    call nz, Call_004_5cb8
+    call nz, DrawIncubatorContents
     ld a, [sChickenFeedFlag]
     or a
-    call nz, Call_004_5d01
+    call nz, DrawChickenFeedPickup
     xor a
     ld [$cc20], a
     ld [$cc16], a
@@ -131,22 +132,22 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld [$cb5a], a
     ld [$cb5b], a
     call Call_000_3cf8
-    call Call_004_429d
+    call HandleChickenCoopPlayerInput
     call Call_000_2d67
     call LoadCharacterTileIntoVRAM
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL
-    call Call_004_424d
-    call Call_004_4261
-    call Call_004_4275
-    call Call_004_4289
+    call UpdateChicken0ScreenPosition
+    call UpdateChicken1ScreenPosition
+    call UpdateChicken2ScreenPosition
+    call UpdateChicken3ScreenPosition
     ld a, [wFreezePlayerInTextWindowOrInTown]
     or a
     ret nz
 
     ld hl, $4157
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     rst $00
     ld e, a
     ld b, c
@@ -155,7 +156,7 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     sub $41
     ld de, $3e42
     nop
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9a7
     ld de, $ba28
     ld a, $0c
@@ -176,9 +177,9 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld b, $20
     call CopyHLtoDE
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9b3
     ld de, $ba28
     ld a, $0c
@@ -199,12 +200,12 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld b, $20
     call CopyHLtoDE
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ret
 
 
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9bf
     ld de, $ba28
     ld a, $0c
@@ -225,9 +226,9 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld b, $20
     call CopyHLtoDE
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9cb
     ld de, $ba28
     ld a, $0c
@@ -248,11 +249,12 @@ SECTION "ROM Bank $004", ROMX[$4000], BANK[$4]
     ld b, $20
     call CopyHLtoDE
     ld a, $00
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ret
 
-
-Call_004_424d:
+; screenX = worldX - scrollX
+; screenY = worldY - scrollY
+UpdateChicken0ScreenPosition: ; 04x424d
     ld hl, $c88a
     ldh a, [$ff93]
     ld b, a
@@ -266,8 +268,7 @@ Call_004_424d:
     ld [hl+], a
     ret
 
-
-Call_004_4261:
+UpdateChicken1ScreenPosition: ; 04x4261
     ld hl, $c8aa
     ldh a, [$ff93]
     ld b, a
@@ -281,8 +282,7 @@ Call_004_4261:
     ld [hl+], a
     ret
 
-
-Call_004_4275:
+UpdateChicken2ScreenPosition: ; 04x4275
     ld hl, $c8ca
     ldh a, [$ff93]
     ld b, a
@@ -296,8 +296,7 @@ Call_004_4275:
     ld [hl+], a
     ret
 
-
-Call_004_4289:
+UpdateChicken3ScreenPosition: ; 04x4289
     ld hl, $c8ea
     ldh a, [$ff93]
     ld b, a
@@ -311,8 +310,7 @@ Call_004_4289:
     ld [hl+], a
     ret
 
-
-Call_004_429d:
+HandleChickenCoopPlayerInput: ; 04x429d
     ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret nz
@@ -325,7 +323,7 @@ Call_004_429d:
     or a
     ret nz
 
-    call Call_004_4680
+    call UpdateChickenCoopExitTransition
     call Call_004_5562
     ld a, [wInputFreezeTimer]
     or a
@@ -334,59 +332,56 @@ Call_004_429d:
     xor a
     ld [$cc20], a
     ldh a, [$ff8b]
-    and $01
-    jr z, jr_004_42c5
+    and A_BUTTON
+    jr z, .checkRunButton
 
-    call Call_004_4c4a
+    call HandleChickenCoopInteraction
     ret
 
-
-jr_004_42c5:
+.checkRunButton
     ldh a, [$ff8a]
-    and $02
-    jr z, jr_004_42e2
+    and B_BUTTON
+    jr z, .checkInventoryButton
 
-    call Call_004_43f3
+    call HandleChickenCoopRunning
     ld a, [wPlayerAnimationIndex]
     and $01
-    jr z, jr_004_42e1
+    jr z, .doneRunning
 
     ld a, [$c605]
     cp $08
-    jr nz, jr_004_42e1
+    jr nz, .doneRunning
 
     ld a, $34
     call StartAudioTrack
 
-jr_004_42e1:
+.doneRunning
     ret
 
-
-jr_004_42e2:
+.checkInventoryButton
     ldh a, [$ff8b]
-    and $08
-    jr z, jr_004_42ec
+    and START
+    jr z, .checkDirectionalInput
 
     call CycleSelectedInventorySlot
     ret
 
-
-jr_004_42ec:
+.checkDirectionalInput
     ldh a, [$ff8a]
     and $80
-    jp nz, Jump_004_4313
+    jp nz, HandleChickenCoopMoveDown
 
     ldh a, [$ff8a]
     and $40
-    jp nz, Jump_004_434b
+    jp nz, HandleChickenCoopMoveUp
 
     ldh a, [$ff8a]
     and $20
-    jp nz, Jump_004_4383
+    jp nz, HandleChickenCoopMoveLeft
 
     ldh a, [$ff8a]
     and $10
-    jp nz, Jump_004_43bb
+    jp nz, HandleChickenCoopMoveRight
 
     ld a, [wInputFreezeTimer]
     or a
@@ -397,12 +392,12 @@ jr_004_42ec:
     ret
 
 
-Jump_004_4313:
-    ld a, $00
+HandleChickenCoopMoveDown: ; 04x4313:
+    ld a, FACING_DOWN
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call $4752
+    call CheckPlayerChickenCollisionDown
     ldh a, [$ffa4]
     or a
     ret nz
@@ -419,11 +414,11 @@ Jump_004_4313:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jp z, Jump_004_4501
+    jp z, TryChickenCoopWallSlideLeft
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_4514
+    jp z, TryChickenCoopWallSlideRight
 
     ret
 
@@ -433,12 +428,12 @@ jr_004_4347:
     ret
 
 
-Jump_004_434b:
-    ld a, $03
+HandleChickenCoopMoveUp: ; 04x434b
+    ld a, FACING_UP
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_004_488e
+    call CheckPlayerChickenCollisionUp
     ldh a, [$ffa4]
     or a
     ret nz
@@ -455,11 +450,11 @@ Jump_004_434b:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jp z, Jump_004_4501
+    jp z, TryChickenCoopWallSlideLeft
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_4514
+    jp z, TryChickenCoopWallSlideRight
 
     ret
 
@@ -468,13 +463,12 @@ jr_004_437f:
     call Call_004_4580
     ret
 
-
-Jump_004_4383:
-    ld a, $01
+HandleChickenCoopMoveLeft: ; 04x4383
+    ld a, FACING_LEFT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_004_49ca
+    call CheckPlayerCollisionLeft
     ldh a, [$ffa4]
     or a
     ret nz
@@ -491,11 +485,11 @@ Jump_004_4383:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jp z, Jump_004_4527
+    jp z, TryChickenCoopWallSlideUp
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_453a
+    jp z, TryChickenCoopWallSlideDown
 
     ret
 
@@ -504,13 +498,12 @@ jr_004_43b7:
     call Call_004_45ae
     ret
 
-
-Jump_004_43bb:
-    ld a, $02
+HandleChickenCoopMoveRight: ; 04x43bb
+    ld a, FACING_RIGHT
     ld [wPlayerFacingDirection], a
     ld a, $01
     call RST_TableJumpBankSwitch
-    call Call_004_4b06
+    call CheckPlayerChickenCollisionRight
     ldh a, [$ffa4]
     or a
     ret nz
@@ -527,21 +520,19 @@ Jump_004_43bb:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jp z, Jump_004_4527
+    jp z, TryChickenCoopWallSlideUp
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_453a
+    jp z, TryChickenCoopWallSlideDown
 
     ret
-
 
 jr_004_43ef:
     call Call_004_461e
     ret
 
-
-Call_004_43f3:
+HandleChickenCoopRunning: ; 04x43f3
     ldh a, [$ff8a]
     and $80
     jr nz, jr_004_440d
@@ -561,37 +552,37 @@ Call_004_43f3:
     jr jr_004_441e
 
 jr_004_440d:
-    ld a, $00
+    ld a, FACING_DOWN
     jr jr_004_441b
 
 jr_004_4411:
-    ld a, $01
+    ld a, FACING_LEFT
     jr jr_004_441b
 
 jr_004_4415:
-    ld a, $02
+    ld a, FACING_RIGHT
     jr jr_004_441b
 
 jr_004_4419:
-    ld a, $03
+    ld a, FACING_UP
 
 jr_004_441b:
     ld [wPlayerFacingDirection], a
 
 jr_004_441e:
     ld a, [wPlayerFacingDirection]
-    cp $00
+    cp FACING_DOWN
     jr z, jr_004_4464
 
-    cp $01
+    cp FACING_LEFT
     jr z, jr_004_4499
 
-    cp $02
+    cp FACING_RIGHT
     jp z, Jump_004_44cd
 
     ld a, $02
     call RST_TableJumpBankSwitch
-    call Call_004_488e
+    call CheckPlayerChickenCollisionUp
     ldh a, [$ffa4]
     or a
     ret nz
@@ -608,11 +599,11 @@ jr_004_441e:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jp z, Jump_004_4501
+    jp z, TryChickenCoopWallSlideLeft
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_4514
+    jp z, TryChickenCoopWallSlideRight
 
     ret
 
@@ -626,7 +617,7 @@ jr_004_445d:
 jr_004_4464:
     ld a, $02
     call RST_TableJumpBankSwitch
-    call $4752
+    call CheckPlayerChickenCollisionDown
     ldh a, [$ffa4]
     or a
     ret nz
@@ -643,11 +634,11 @@ jr_004_4464:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jr z, jr_004_4501
+    jr z, TryChickenCoopWallSlideLeft
 
     ld a, [wCollisionSample2Property]
     and $01
-    jp z, Jump_004_4514
+    jp z, TryChickenCoopWallSlideRight
 
     ret
 
@@ -661,7 +652,7 @@ jr_004_4492:
 jr_004_4499:
     ld a, $02
     call RST_TableJumpBankSwitch
-    call Call_004_49ca
+    call CheckPlayerCollisionLeft
     ldh a, [$ffa4]
     or a
     ret nz
@@ -678,11 +669,11 @@ jr_004_4499:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jr z, jr_004_4527
+    jr z, TryChickenCoopWallSlideUp
 
     ld a, [wCollisionSample2Property]
     and $01
-    jr z, jr_004_453a
+    jr z, TryChickenCoopWallSlideDown
 
     ret
 
@@ -696,7 +687,7 @@ jr_004_44c6:
 Jump_004_44cd:
     ld a, $02
     call RST_TableJumpBankSwitch
-    call Call_004_4b06
+    call CheckPlayerChickenCollisionRight
     ldh a, [$ffa4]
     or a
     ret nz
@@ -713,11 +704,11 @@ Jump_004_44cd:
     ld [wCollisionNoMovement], a
     ld a, b
     and $01
-    jr z, jr_004_4527
+    jr z, TryChickenCoopWallSlideUp
 
     ld a, [wCollisionSample2Property]
     and $01
-    jr z, jr_004_453a
+    jr z, TryChickenCoopWallSlideDown
 
     ret
 
@@ -727,9 +718,7 @@ jr_004_44fa:
     call Call_004_461e
     ret
 
-
-Jump_004_4501:
-jr_004_4501:
+TryChickenCoopWallSlideLeft: ; 04x4501
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -742,8 +731,7 @@ jr_004_4501:
     call Call_004_45ae
     ret
 
-
-Jump_004_4514:
+TryChickenCoopWallSlideRight: ; 04x4514
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -756,9 +744,7 @@ Jump_004_4514:
     call Call_004_461e
     ret
 
-
-Jump_004_4527:
-jr_004_4527:
+TryChickenCoopWallSlideUp: ; 04x4527
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -771,9 +757,7 @@ jr_004_4527:
     call Call_004_4580
     ret
 
-
-Jump_004_453a:
-jr_004_453a:
+TryChickenCoopWallSlideDown: ; 04x453a
     ld a, [wDominantFacingTileProperty]
     and $01
     ret nz
@@ -1031,7 +1015,7 @@ jr_004_4679:
     ret
 
 
-Call_004_4680:
+UpdateChickenCoopExitTransition: ; 04x4680
     ld a, [wHeldObject]
     or a
     ret nz
@@ -1042,9 +1026,10 @@ Call_004_4680:
 
     dec a
     ld [wMapChangeFreezeTimer], a
-    cp $00
+    cp 0
     jr z, jr_004_4694
 
+; discard the return address and exit to HL
     pop hl
     ret
 
@@ -1054,7 +1039,7 @@ jr_004_4694:
     cp $ff
     jr z, jr_004_46b1
 
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [hl]
     cp $ff
@@ -1076,14 +1061,15 @@ jr_004_46b1:
     ld [$c910], a
     ret
 
-Call_004_46c4:
+LoadChickenCoopTextBoxTilemap: ; 04x46c4
     ld hl, vBGMap1
-    ld de, $46d2
+    ld de, ChickenCoopTextBoxTilemap
     ld b, $14
     ld c, $05
     call CopyTileDataToBGMap
     ret
 
+ChickenCoopTextBoxTilemap: ; 04x46d2
 ; DATA
     and b
     and c
@@ -1150,26 +1136,19 @@ Call_004_46c4:
     and h
     and l
 
-Call_004_4736:
-    ld hl, $4742
+InitializeChickenCoopPlayerState: ; 04x4736
+    ld hl, ChickenCoopPlayerInitialState
     ld de, $c600
     ld b, $10
     call CopyHLtoDE
     ret
 
+ChickenCoopPlayerInitialState: ; 04x4742
+    db $01, $00, $ff, $00, $00, $08, $58, $00
+    db $80, $00, $50, $64, $00, $03, $01, $00
 
-    ld bc, rJOYP
-    nop
-    nop
-    ld [$0058], sp
-    add b
-    nop
-    ld d, b
-    ld h, h
-    nop
-    inc bc
-    ld bc, $fa00
-    ld b, $c6
+CheckPlayerChickenCollisionDown: ; $4752
+    ld a, [$c606]
     sub $08
     ld b, a
     ld a, [wPlayerXPosition]
@@ -1195,10 +1174,10 @@ Call_004_4736:
     ldh [hTemp], a
     ld a, [$b9a7]
     cp $01
-    jr z, jr_004_47b7
+    jr z, .checkChicken1
 
     cp $ff
-    jr z, jr_004_47b7
+    jr z, .checkChicken1
 
     ld a, [$c886]
     ldh [$ffa4], a
@@ -1214,31 +1193,31 @@ Call_004_4736:
     ldh [$ffa7], a
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_004_47b7
+    jr nc, .checkChicken1
 
     ldh a, [$ffa7]
     cp e
-    jr c, jr_004_47b7
+    jr c, .checkChicken1
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_004_47b7
+    jr nc, .checkChicken1
 
     ldh a, [$ffa5]
     cp b
-    jp nc, Jump_004_4889
+    jp nc, .found
 
-jr_004_47b7:
+.checkChicken1
     ld a, [$b9b3]
     ldh [$ffa9], a
     ld a, $01
     ldh [hTemp], a
     ld a, [$b9b3]
     cp $01
-    jr z, jr_004_47fc
+    jr z, .checkChicken2
 
     cp $ff
-    jr z, jr_004_47fc
+    jr z, .checkChicken2
 
     ld a, [$c8a6]
     ldh [$ffa4], a
@@ -1254,31 +1233,31 @@ jr_004_47b7:
     ldh [$ffa7], a
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_004_47fc
+    jr nc, .checkChicken2
 
     ldh a, [$ffa7]
     cp e
-    jr c, jr_004_47fc
+    jr c, .checkChicken2
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_004_47fc
+    jr nc, .checkChicken2
 
     ldh a, [$ffa5]
     cp b
-    jp nc, Jump_004_4889
+    jp nc, .found
 
-jr_004_47fc:
+.checkChicken2
     ld a, [$b9bf]
     ldh [$ffa9], a
     ld a, $02
     ldh [hTemp], a
     ld a, [$b9bf]
     cp $01
-    jr z, jr_004_4840
+    jr z, .checkChicken3
 
     cp $ff
-    jr z, jr_004_4840
+    jr z, .checkChicken3
 
     ld a, [$c8c6]
     ldh [$ffa4], a
@@ -1294,31 +1273,31 @@ jr_004_47fc:
     ldh [$ffa7], a
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_004_4840
+    jr nc, .checkChicken3
 
     ldh a, [$ffa7]
     cp e
-    jr c, jr_004_4840
+    jr c, .checkChicken3
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_004_4840
+    jr nc, .checkChicken3
 
     ldh a, [$ffa5]
     cp b
-    jr nc, jr_004_4889
+    jr nc, .found
 
-jr_004_4840:
+.checkChicken3
     ld a, [$b9cb]
     ldh [$ffa9], a
     ld a, $03
     ldh [hTemp], a
     ld a, [$b9cb]
     cp $01
-    jr z, jr_004_4884
+    jr z, .notFound
 
     cp $ff
-    jr z, jr_004_4884
+    jr z, .notFound
 
     ld a, [$c8e6]
     ldh [$ffa4], a
@@ -1334,34 +1313,33 @@ jr_004_4840:
     ldh [$ffa7], a
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_004_4884
+    jr nc, .notFound
 
     ldh a, [$ffa7]
     cp e
-    jr c, jr_004_4884
+    jr c, .notFound
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_004_4884
+    jr nc, .notFound
 
     ldh a, [$ffa5]
     cp b
-    jr nc, jr_004_4889
+    jr nc, .found
 
-jr_004_4884:
+.notFound
     ld a, $00
     ldh [$ffa4], a
     ret
 
-
-Jump_004_4889:
-jr_004_4889:
+.found ; 04x4889
     ld a, $01
     ldh [$ffa4], a
     ret
 
 
-Call_004_488e:
+;; Labeling follows the above subroutine. Need to modify...
+CheckPlayerChickenCollisionUp: ; 04x488e
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -1553,8 +1531,7 @@ jr_004_49c5:
     ldh [$ffa4], a
     ret
 
-
-Call_004_49ca:
+CheckPlayerCollisionLeft: ; 04x49ca
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -1746,8 +1723,7 @@ jr_004_4b01:
     ldh [$ffa4], a
     ret
 
-
-Call_004_4b06:
+CheckPlayerChickenCollisionRight: ; 04x4b06
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -1948,14 +1924,16 @@ jr_004_4c3d:
     cp c
     res 7, c
 
-Call_004_4c4a:
+HandleChickenCoopInteraction: ; 04x4c4a
     ld a, [wHeldObject]
     or a
     jp nz, Jump_004_4f75
 
-    ld hl, $4c58
+    ld hl, Label_004_4c58
     ld a, [wPlayerFacingDirection]
     rst $00
+
+Label_004_4c58:
     ld h, b
     ld c, h
     ld h, l
@@ -1964,38 +1942,38 @@ Call_004_4c4a:
     ld c, h
     ld l, a
     ld c, h
-    call $4752
-    jr jr_004_4c72
+    call CheckPlayerChickenCollisionDown
+    jr .checkChickenFound
 
-    call Call_004_49ca
-    jr jr_004_4c72
+    call CheckPlayerCollisionLeft
+    jr .checkChickenFound
 
-    call Call_004_4b06
-    jr jr_004_4c72
+    call CheckPlayerChickenCollisionRight
+    jr .checkChickenFound
 
-    call Call_004_488e
+    call CheckPlayerChickenCollisionUp
 
-jr_004_4c72:
+.checkChickenFound
     ldh a, [$ffa4]
     or a
-    jr z, jr_004_4cd8
+    jr z, CheckForChick
 
     ldh a, [$ffa9]
     ld [$cc4b], a
     ldh a, [hTemp]
     ld [$cc4a], a
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, $ff
     ld [hl], a
     ldh a, [hTemp]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $00
     ld [hl], a
     ld a, [$cc4b]
-    cp $03
-    jr z, jr_004_4cb6
+    cp 3
+    jr z, .pickUpChickenType3
 
     ld a, $27
     ld [wHeldObject], a
@@ -2009,8 +1987,7 @@ jr_004_4c72:
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4cb6:
+.pickUpChickenType3
     ld a, $28
     ld [wHeldObject], a
     ld a, $75
@@ -2023,20 +2000,13 @@ jr_004_4cb6:
     call RST_TableJumpBankSwitch
     ret
 
+ChickenObjectPointers: ; 04x4cd0
+    dw $c880
+    dw $c8a0
+    dw $c8c0
+    dw $c8e0
 
-    add b
-    ret z
-
-    and b
-    ret z
-
-    ret nz
-
-    ret z
-
-    ldh [$ffc8], a
-
-jr_004_4cd8:
+CheckForChick: ; 04x4cd8
     ld hl, $4cdf
     ld a, [wPlayerFacingDirection]
     rst $00
@@ -2047,32 +2017,35 @@ jr_004_4cd8:
     pop af
     ld c, h
     or $4c
-    call Call_004_5d32
-    jr jr_004_4cf9
+    call CheckPlayerChickCollisionDown
+    jr .checkChickFound
 
-    call Call_004_5f86
-    jr jr_004_4cf9
+    call CheckPlayerChickCollisionLeft
+    jr .checkChickFound
 
-    call Call_004_60b0
-    jr jr_004_4cf9
+    call CheckPlayerChickCollisionRight
+    jr .checkChickFound
 
-    call Call_004_5e5c
+    call CheckPlayerChickCollisionUp
 
-jr_004_4cf9:
+; [$ffa4] = 1
+; [hTemp] = chicken slot index
+; [$ffa9] = chicken type
+.checkChickFound
     ldh a, [$ffa4]
     or a
-    jr z, jr_004_4d39
+    jr z, .checkTextInteractionLock
 
     ldh a, [$ffa9]
     ld [$cc4b], a
     ldh a, [hTemp]
     ld [$cc4a], a
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, $ff
     ld [hl], a
     ldh a, [hTemp]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $00
     ld [hl], a
@@ -2089,14 +2062,13 @@ jr_004_4cf9:
     call RST_TableJumpBankSwitch
     ret
 
-
-jr_004_4d39:
+.checkTextInteractionLock
     ld a, [wPlayerInteractingInTextFlag]
     cp $00
-    jr z, jr_004_4d41
+    jr z, .checkMapObjectInteraction
     ret
 
-jr_004_4d41:
+.checkMapObjectInteraction
     ld a, [wCollisionNoMovement]
     or a
     jp z, NoObjectInteraction
@@ -2139,7 +2111,7 @@ jr_004_4d41:
     call Call_004_5889
     ld a, [de]
     cp $03
-    jp z, Jump_004_5038
+    jp z, FillChickenFeedTrough
 
     ld a, $04
     ld [$cc20], a
@@ -2177,48 +2149,48 @@ PickUpChickenFeed:
     ld hl, sInventory
     ld a, [sItemSlot]
     cp $02
-    jr z, jr_004_4e02
+    jr z, .chooseAvailableInventorySlot
 
     cp $01
-    jr z, jr_004_4ded
+    jr z, .useInventorySlot1
 
     ld a, [sInventory+1]
     cp NO_ITEM
-    jr z, jr_004_4ded
+    jr z, .useInventorySlot1
 
     ld a, [sInventory]
     ld [$cc21], a
-    call Call_004_6443
+    call ReturnDisplacedItemToShed
     ld a, CHICKEN_FEED
     ld [sInventory], a
     xor a
     ld [sItemSlot], a
-    jr jr_004_4e1b
+    jr .finishFeedPickup
 
-jr_004_4ded:
+.useInventorySlot1
     ld a, [sInventory+1]
     ld [$cc21], a
-    call Call_004_6443
+    call ReturnDisplacedItemToShed
     ld a, CHICKEN_FEED
     ld [sInventory+1], a
     ld a, $01
     ld [sItemSlot], a
-    jr jr_004_4e1b
+    jr .finishFeedPickup
 
-jr_004_4e02:
+.chooseAvailableInventorySlot
     ld a, [sInventory]
     cp $ff
-    jr nz, jr_004_4ded
+    jr nz, .useInventorySlot1
 
     ld a, [sInventory]
     ld [$cc21], a
-    call Call_004_6443
+    call ReturnDisplacedItemToShed
     ld a, $11
     ld [sInventory], a
     xor a
     ld [sItemSlot], a
 
-jr_004_4e1b:
+.finishFeedPickup
     xor a
     ld [sChickenFeedFlag], a
     ld [wDominantFacingTileProperty], a
@@ -2297,9 +2269,9 @@ Jump_004_4e5a:
 
 
 jr_004_4ea6:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 0, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $00
     ld [$cc18], a
     ld hl, $d91e
@@ -2309,9 +2281,9 @@ jr_004_4ea6:
     jr jr_004_4efa
 
 jr_004_4ebb:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 1, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $01
     ld [$cc18], a
     ld hl, $d8ce
@@ -2321,9 +2293,9 @@ jr_004_4ebb:
     jr jr_004_4efa
 
 jr_004_4ed0:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $02
     ld [$cc18], a
     ld hl, $d8ba
@@ -2333,10 +2305,10 @@ jr_004_4ed0:
     jr jr_004_4efa
 
 Jump_004_4ee5:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 3, a
     res 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $03
     ld [$cc18], a
     ld hl, $d920
@@ -2363,10 +2335,10 @@ jr_004_4efa:
 
 
 Jump_004_4f1d:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 3, a
     res 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $03
     ld [$cc18], a
     ld hl, $d920
@@ -2407,13 +2379,11 @@ NoObjectInteraction:
     ld [$cc20], a
     ret
 
-
 Jump_004_4f75:
-    call Call_004_4f79
+    call HandleChickenCoopHeldObjectAction
     ret
 
-
-Call_004_4f79:
+HandleChickenCoopHeldObjectAction: ; 04x4f79
     ld a, [wHeldObject]
     ld hl, $4f80
     rst $00
@@ -2562,109 +2532,107 @@ jr_004_5020:
     call Call_004_5889
     ld a, [de]
     cp $03
-    jr z, jr_004_5038
+    jr z, FillChickenFeedTrough
 
     ret
 
-
-Jump_004_5038:
-jr_004_5038:
+FillChickenFeedTrough: ; 04x5038
     ld a, [wPlayerFacingDirection]
     ld a, [wPlayerXPosition]
     cp $29
-    jr c, jr_004_504c
+    jr c, .jr_004_504c
 
     cp $39
-    jr c, jr_004_5071
+    jr c, .jr_004_5071
 
     cp $49
-    jr c, jr_004_5096
+    jr c, .jr_004_5096
 
-    jr jr_004_50bb
+    jr .jr_004_50bb
 
-jr_004_504c:
+.jr_004_504c:
     ld a, [wHeldObject]
     cp $20
-    jr z, jr_004_5062
+    jr z, .jr_004_5062
 
     ld a, $00
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 0, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_5062:
+.jr_004_5062:
     ld a, $00
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 0, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_5071:
+.jr_004_5071:
     ld a, [wHeldObject]
     cp $20
-    jr z, jr_004_5087
+    jr z, .jr_004_5087
 
     ld a, $01
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 1, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_5087:
+.jr_004_5087:
     ld a, $01
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 1, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_5096:
+.jr_004_5096:
     ld a, [wHeldObject]
     cp $20
-    jr z, jr_004_50ac
+    jr z, .jr_004_50ac
 
     ld a, $02
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 2, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_50ac:
+.jr_004_50ac:
     ld a, $02
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 2, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_50bb:
+.jr_004_50bb:
     ld a, [wHeldObject]
     cp $20
-    jr z, jr_004_50d1
+    jr z, .jr_004_50d1
 
     ld a, $03
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 3, a
-    ld [$b9a6], a
-    jr jr_004_50de
+    ld [sChickenFeedingFlags], a
+    jr .jr_004_50de
 
-jr_004_50d1:
+.jr_004_50d1:
     ld a, $03
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 3, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
-jr_004_50de:
+.jr_004_50de:
     ld a, [wHeldObject]
     cp $20
-    jr z, jr_004_50ed
+    jr z, .jr_004_50ed
 
     xor a
     ld [wHeldObject], a
@@ -2672,7 +2640,7 @@ jr_004_50de:
     ret
 
 
-jr_004_50ed:
+.jr_004_50ed:
     ld a, $04
     ld [$cc16], a
     xor a
@@ -2690,10 +2658,10 @@ jr_004_50ed:
     call Call_004_5889
     ld a, [de]
     cp $02
-    jr z, jr_004_5125
+    jr z, .jr_004_5125
 
     cp $09
-    jr z, jr_004_5125
+    jr z, .jr_004_5125
 
     ld a, $2a
     call SetHeldItemAndDispatchHandler
@@ -2704,7 +2672,7 @@ jr_004_50ed:
     ret
 
 
-jr_004_5125:
+.jr_004_5125:
     ld a, $29
     call SetHeldItemAndDispatchHandler
     ld a, $36
@@ -2717,7 +2685,7 @@ jr_004_5125:
     jp z, Jump_004_5467
 
     ld a, $04
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ld a, $00
     ld [$cc18], a
     ld a, [de]
@@ -2735,10 +2703,10 @@ jr_004_5125:
     call Call_004_5889
     ld a, [de]
     cp $02
-    jr z, jr_004_5176
+    jr z, .jr_004_5176
 
     cp $09
-    jr z, jr_004_5176
+    jr z, .jr_004_5176
 
     ld a, $72
     call SetHeldItemAndDispatchHandler
@@ -2749,7 +2717,7 @@ jr_004_5125:
     ret
 
 
-jr_004_5176:
+.jr_004_5176:
     ld a, $71
     call SetHeldItemAndDispatchHandler
     ld a, $36
@@ -2762,7 +2730,7 @@ jr_004_5176:
     jp z, Jump_004_5467
 
     ld a, $84
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ld a, $01
     ld [$cc18], a
     ld a, [de]
@@ -2795,7 +2763,7 @@ jr_004_5176:
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -2808,7 +2776,7 @@ jr_004_5176:
     ld a, $00
     ld [hl], a
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -2839,7 +2807,7 @@ jr_004_5176:
     ld e, a
     ld d, d
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -2855,10 +2823,10 @@ jr_004_5176:
     ld a, [hl]
     sub $07
     ld [hl], a
-    jr jr_004_527a
+    jr .jr_004_527a
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -2869,10 +2837,10 @@ jr_004_5176:
     ld a, [hl]
     sub $17
     ld [hl], a
-    jr jr_004_527a
+    jr .jr_004_527a
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -2883,10 +2851,10 @@ jr_004_5176:
     ld a, [hl]
     add $08
     ld [hl], a
-    jr jr_004_527a
+    jr .jr_004_527a
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -2903,10 +2871,10 @@ jr_004_5176:
     sub $07
     ld [hl], a
 
-Jump_004_527a:
-jr_004_527a:
+.Jump_004_527a:
+.jr_004_527a:
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $01
     ld [hl], a
@@ -2949,7 +2917,7 @@ jr_004_527a:
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -2962,7 +2930,7 @@ jr_004_527a:
     ld a, $00
     ld [hl], a
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $01
     ld [hl], a
@@ -2997,7 +2965,7 @@ jr_004_527a:
     ld h, l
     ld d, e
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -3013,11 +2981,11 @@ jr_004_527a:
     ld a, [hl]
     sub $07
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -3028,11 +2996,11 @@ jr_004_527a:
     ld a, [hl]
     sub $17
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -3043,11 +3011,11 @@ jr_004_527a:
     ld a, [hl]
     add $08
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -3063,7 +3031,7 @@ jr_004_527a:
     ld a, [hl]
     sub $07
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     call Call_004_61da
@@ -3089,7 +3057,7 @@ jr_004_527a:
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -3102,7 +3070,7 @@ jr_004_527a:
     ld a, $00
     ld [hl], a
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $01
     ld [hl], a
@@ -3135,7 +3103,7 @@ jr_004_527a:
     ld sp, $4954
     ld d, h
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -3151,11 +3119,11 @@ jr_004_527a:
     ld a, [hl]
     sub $07
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -3166,11 +3134,11 @@ jr_004_527a:
     ld a, [hl]
     sub $17
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $06
     add l
@@ -3181,11 +3149,11 @@ jr_004_527a:
     ld a, [hl]
     add $08
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
     ld a, [$cc4a]
-    ld hl, $4cd0
+    ld hl, ChickenObjectPointers
     call LoadWordFromTableHL
     ld a, $08
     add l
@@ -3201,7 +3169,7 @@ jr_004_527a:
     ld a, [hl]
     sub $07
     ld [hl], a
-    jp Jump_004_527a
+    jp .Jump_004_527a
 
 
 Jump_004_5467:
@@ -4518,20 +4486,19 @@ jr_004_5bd6:
     call Call_004_5af2
     ret
 
-
-Call_004_5bda:
+DrawChickenFeedTrough0: ; 04x5bda
     ld hl, $98a2
     jr jr_004_5bec
 
-Call_004_5bdf:
+DrawChickenFeedTrough1: ; 04x5bdf
     ld hl, $98a4
     jr jr_004_5bec
 
-Call_004_5be4:
+DrawChickenFeedTrough2: ; 04x5be4
     ld hl, $98a6
     jr jr_004_5bec
 
-Call_004_5be9:
+DrawChickenFeedTrough3: ; 04x5be9
     ld hl, $98a8
 
 jr_004_5bec:
@@ -4576,26 +4543,25 @@ Call_004_5c04:
     pop hl
     ret
 
-
-Call_004_5c20:
+DrawChickenEgg0: ; 04x5c20
     ld hl, $99ee
     ld a, $00
     ld b, a
     jr jr_004_5c3e
 
-Call_004_5c28:
+DrawChickenEgg1: ; 04x5c28
     ld hl, $9962
     ld a, $01
     ld b, a
     jr jr_004_5c3e
 
-Call_004_5c30:
+DrawChickenEgg2: ; 04x5c30
     ld hl, $9930
     ld a, $02
     ld b, a
     jr jr_004_5c3e
 
-Call_004_5c38:
+DrawChickenEgg3: ; 04x5c38
     ld hl, $99f0
     ld a, $03
     ld b, a
@@ -4680,10 +4646,9 @@ jr_004_5caf:
     ld [hl], a
     ret
 
-
-Call_004_5cb8:
+DrawIncubatorContents: ; 04x5cb8
     ld hl, $99d1
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     cp $80
     jr nc, jr_004_5cec
 
@@ -4734,8 +4699,7 @@ jr_004_5cec:
     ld [hl], a
     ret
 
-
-Call_004_5d01:
+DrawChickenFeedPickup: ; 04x5d01
     ld hl, sInventory
     ld a, [hli]
     cp CHICKEN_FEED
@@ -4770,7 +4734,7 @@ Call_004_5d01:
     ld [hl], a
     ret
 
-Call_004_5d32:
+CheckPlayerChickCollisionDown: ; 04x5d32
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -4948,8 +4912,7 @@ jr_004_5e57:
     ldh [$ffa4], a
     ret
 
-
-Call_004_5e5c:
+CheckPlayerChickCollisionUp: ; 04x5e5c
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -5127,8 +5090,7 @@ jr_004_5f81:
     ldh [$ffa4], a
     ret
 
-
-Call_004_5f86:
+CheckPlayerChickCollisionLeft: ; 04x5f86
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -5306,8 +5268,7 @@ jr_004_60ab:
     ldh [$ffa4], a
     ret
 
-
-Call_004_60b0:
+CheckPlayerChickCollisionRight: ; 04x60b0
     ld a, [wPlayerXPosition]
     sub $08
     ld b, a
@@ -5849,8 +5810,7 @@ Call_004_61da:
     pop hl
     ret
 
-
-Call_004_6443:
+ReturnDisplacedItemToShed: ; 04x6443
     ld a, [$cc21]
     cp $ff
     ret z
@@ -6124,7 +6084,7 @@ jr_004_65c9:
 
 jr_004_65ce:
     ld hl, $c880
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     add a
     add a
@@ -6659,7 +6619,7 @@ Call_004_6956:
     ld a, [$ba31]
     or b
     and $02
-    jr z, jr_004_69eb
+    jr z, .tryMoveDown
 
     ld a, [$ba2f]
     and $02
@@ -6667,11 +6627,11 @@ Call_004_6956:
 
     ld a, [$ba31]
     and $02
-    jp z, Jump_004_6a1b
+    jp z, .tryMoveRight
 
     ld a, [$ba33]
     and $02
-    jr z, jr_004_6a03
+    jr z, .tryMoveLeft
 
     ret
 
@@ -6681,7 +6641,7 @@ Call_004_6956:
     ld a, [$ba31]
     or b
     and $02
-    jr z, jr_004_6a03
+    jr z, .tryMoveLeft
 
     ld a, [$ba2f]
     and $02
@@ -6689,11 +6649,11 @@ Call_004_6956:
 
     ld a, [$ba31]
     and $02
-    jp z, Jump_004_6a33
+    jp z, .tryMoveUp
 
     ld a, [$ba33]
     and $02
-    jr z, jr_004_69eb
+    jr z, .tryMoveDown
 
     ret
 
@@ -6703,7 +6663,7 @@ Call_004_6956:
     ld a, [$ba31]
     or b
     and $02
-    jr z, jr_004_6a1b
+    jr z, .tryMoveRight
 
     ld a, [$ba2f]
     and $02
@@ -6711,11 +6671,11 @@ Call_004_6956:
 
     ld a, [$ba31]
     and $02
-    jr z, jr_004_69eb
+    jr z, .tryMoveDown
 
     ld a, [$ba33]
     and $02
-    jr z, jr_004_6a33
+    jr z, .tryMoveUp
 
     ret
 
@@ -6725,7 +6685,7 @@ Call_004_6956:
     ld a, [$ba31]
     or b
     and $02
-    jr z, jr_004_6a33
+    jr z, .tryMoveUp
 
     ld a, [$ba2f]
     and $02
@@ -6733,16 +6693,15 @@ Call_004_6956:
 
     ld a, [$ba31]
     and $02
-    jr z, jr_004_6a03
+    jr z, .tryMoveLeft
 
     ld a, [$ba33]
     and $02
-    jr z, jr_004_6a1b
+    jr z, .tryMoveRight
 
     ret
 
-
-jr_004_69eb:
+.tryMoveDown
     call Call_004_6a4b
     ldh a, [$ffa4]
     or a
@@ -6756,8 +6715,7 @@ jr_004_69eb:
     ld [$cc55], a
     ret
 
-
-jr_004_6a03:
+.tryMoveLeft
     call Call_004_6afd
     ldh a, [$ffa4]
     or a
@@ -6771,9 +6729,7 @@ jr_004_6a03:
     ld [$cc53], a
     ret
 
-
-Jump_004_6a1b:
-jr_004_6a1b:
+.tryMoveRight
     call Call_004_6b56
     ldh a, [$ffa4]
     or a
@@ -6787,9 +6743,7 @@ jr_004_6a1b:
     ld [$cc53], a
     ret
 
-
-Jump_004_6a33:
-jr_004_6a33:
+.tryMoveUp
     call Call_004_6aa4
     ldh a, [$ffa4]
     or a
@@ -7031,10 +6985,9 @@ jr_004_6baa:
     ldh [$ffa4], a
     ret
 
-
-Call_004_6baf:
+InitializeChickenCoopChickens:
     ld a, $00
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c88d], a
     ld a, [$b9a7]
@@ -7079,7 +7032,7 @@ Jump_004_6beb:
 
 jr_004_6bf5:
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8ad], a
     ld a, [$b9b3]
@@ -7123,7 +7076,7 @@ Jump_004_6c31:
 
 jr_004_6c3b:
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8cd], a
     ld a, [$b9bf]
@@ -7168,7 +7121,7 @@ Jump_004_6c77:
 
 jr_004_6c81:
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8ed], a
     ld a, [$b9cb]
@@ -7212,10 +7165,10 @@ Jump_004_6cbd:
     ld [$c8e1], a
 
 jr_004_6cc7:
-    call Call_004_424d
-    call Call_004_4261
-    call Call_004_4275
-    call Call_004_4289
+    call UpdateChicken0ScreenPosition
+    call UpdateChicken1ScreenPosition
+    call UpdateChicken2ScreenPosition
+    call UpdateChicken3ScreenPosition
     xor a
     ld [$c88e], a
     ld [$c8ae], a
@@ -7343,43 +7296,48 @@ Call_004_6da3:
     call Call_000_18d0
     ret
 
-Label_004_6da9:
+; $ff - Empty slot
+; $01 - chick
+; $02 - adult chicken
+; $03 - alternate adult chicken type
+; $00 - special/inactive state; not identified yet
+UpdateChickenDailyState: ; 04x6da9
     ld hl, $b9a7
     ld b, $00
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 4, a
     call nz, Call_004_6e37
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 5, a
     call nz, Call_004_6e37
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 6, a
     call nz, Call_004_6e37
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 7, a
     call nz, Call_004_6e37
     ld a, b
     cp $04
     call c, Call_004_6e7a
     xor a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $00
     ldh [$ffa5], a
     ld a, $00
     ldh [$ffa4], a
-    call Call_004_6ea4
+    call UpdateChickenGrowthAndEggProduction
     ld a, $01
     ldh [$ffa4], a
-    call Call_004_6ea4
+    call UpdateChickenGrowthAndEggProduction
     ld a, $02
     ldh [$ffa4], a
-    call Call_004_6ea4
+    call UpdateChickenGrowthAndEggProduction
     ld a, $03
     ldh [$ffa4], a
-    call Call_004_6ea4
+    call UpdateChickenGrowthAndEggProduction
     xor a
-    ld [$b9a6], a
-    ld hl, $b9a5
+    ld [sChickenFeedingFlags], a
+    ld hl, sChickenIncubationState
     ld a, [hl]
     cp $00
     ret z
@@ -7424,7 +7382,7 @@ jr_004_6e2d:
     xor a
     ld [hl+], a
     ld [hl], a
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ret
 
 Call_004_6e37:
@@ -7527,9 +7485,9 @@ jr_004_6e92:
     inc b
     jr jr_004_6e7a
 
-Call_004_6ea4:
+UpdateChickenGrowthAndEggProduction: ; 04x63a4
     ldh a, [$ffa4]
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [hl]
     cp $ff
@@ -7565,21 +7523,21 @@ Call_004_6ea4:
     ld l, [hl]
     ld [$ff6e], a
     ld l, [hl]
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 0, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 1, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, [$b9a3]
     or a
     ld a, $01
@@ -7588,19 +7546,19 @@ Call_004_6ea4:
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 3, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ldh a, [$ffa4]
-    ld hl, $6f37
+    ld hl, Label_004_6f37
     call LoadWordFromTableHL
     ld a, [hl]
     cp $03
     ret nz
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
@@ -7635,3320 +7593,62 @@ jr_004_6f2b:
     ld [hl], a
     ret
 
-
-    and a
-    cp c
-    or e
-    cp c
-    cp a
-    cp c
-    res 7, c
+Label_004_6f37:
+    db $A7, $B9, $B3, $B9, $BF, $B9, $CB, $B9
 
 Call_004_6f3f:
     ld a, [sCurrentHour]
-    cp $06
+    cp TIME_6_AM
     ret c
 
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 0, a
     jr z, jr_004_6f51
 
     set 4, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_004_6f51:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 1, a
     jr z, jr_004_6f5d
 
     set 5, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_004_6f5d:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 2, a
     jr z, jr_004_6f69
 
     set 6, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_004_6f69:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 3, a
     ret z
 
     set 7, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     ret
 
+ChickenCoopBackgroundMap: ; 04x6f75
+    INCBIN "gfx/chicken_coop/coop_bg_map.compressed.bin"
+ChickenCoopBackgroundMapEnd:
 
-    nop
-    inc b
-    ld l, e
-    inc bc
-    ld [bc], a
-    ld e, $00
-    inc bc
-    add hl, bc
-    ld [bc], a
-    ld bc, $1d21
-    nop
-    dec hl
-    ld [hl+], a
-    ld de, $020a
-    ld sp, $001d
-    ld [hl-], a
-    rrca
-    ld [bc], a
-    rrca
-    ld [bc], a
-    ld l, [hl]
-    rlca
-    ld b, $23
-    inc h
-    dec h
-    inc hl
-    nop
-    ld h, $41
-    inc de
-    nop
-    db $fd
-    ld b, d
-    dec bc
-    inc b
-    inc sp
-    inc [hl]
-    dec [hl]
-    ld b, a
-    ld c, b
-    ld l, b
-    rst $38
-    ld l, c
-    ld l, d
-    ld l, e
-    ld [hl], $13
-    inc de
-    dec bc
-    inc c
-    rst $28
-    ld d, b
-    ld d, c
-    ld d, d
-    db $10
-    dec bc
-    ld b, $43
-    ld b, h
-    ld b, l
-    rst $38
-    ld d, a
-    ld e, b
-    ld a, b
-    ld a, c
-    ld a, d
-    ld a, e
-    ld b, [hl]
-    inc de
-    ld a, a
-    inc de
-    dec de
-    inc e
-    ld h, b
-    ld h, c
-    ld h, d
-    jr nz, jr_004_6fd6
+ChickenCoopBackgroundTiles2: ; 04x70b1
+    INCBIN "gfx/chicken_coop/coop_tiles_9000.compressed.bin"
+ChickenCoopBackgroundTiles2End:
 
-    ld [$53db], sp
-    ld d, h
-    inc d
-    nop
-    ld d, [hl]
-    inc de
-    stop
-    ld [hl], b
+ChickenCoopBackgroundTiles1: ; 04x76c1
+    INCBIN "gfx/chicken_coop/coop_tiles_8800.compressed.bin"
+ChickenCoopBackgroundTiles1End:
 
-jr_004_6fd6:
-    ld [hl], c
-    cp e
-    ld [hl], d
-    jr nc, jr_004_6fe6
+ChickenCoopSpriteGraphics: ; 04x7b0c
+    INCBIN "gfx/chicken_coop/coop_sprite_tiles_8000.compressed.bin"
+ChickenCoopSpriteGraphicsEnd:
 
-    ld a, [bc]
-    dec d
-    ld d, $17
-    inc hl
-    nop
-    jr @-$60
-
-    ld bc, $6302
-
-jr_004_6fe6:
-    ld h, h
-    ld h, l
-    ld b, b
-    dec bc
-    inc c
-    ld h, b
-    inc bc
-    add hl, sp
-    or a
-    ld a, [hl-]
-    dec sp
-    inc a
-    ret nc
-
-    inc bc
-    dec bc
-    inc c
-    ld hl, $1304
-    db $fd
-    inc de
-    dec bc
-    ld c, $2c
-    inc de
-    inc de
-    ld e, c
-    ld e, d
-    ld e, e
-    cp a
-    ld e, h
-    inc de
-    add hl, hl
-    ld a, [hl+]
-    dec de
-    inc e
-    rrca
-    ld [bc], a
-    nop
-    ld a, c
-    ld bc, $03a1
-    and c
-    rlca
-    ld e, c
-    ld e, d
-    ld c, e
-    ld c, d
-    ret nz
-
-    ld [bc], a
-    ld [hl], h
-    ld b, b
-    inc c
-    dec bc
-    ld [de], a
-    ld e, h
-    ld [hl], b
-    add hl, bc
-    add hl, hl
-
-jr_004_7022:
-    ld a, [hl+]
-    dec hl
-    ld [hl], b
-    inc b
-    db $db
-    ld e, d
-    ld e, e
-    ld de, $1b02
-    dec l
-    dec bc
-    inc d
-    dec a
-    ld a, $ef
-    ccf
-    ld a, h
-    ld e, c
-    ld e, d
-    ld h, b
-    ld [bc], a
-    add hl, hl
-    inc l
-    ld e, c
-    xor $70
-    ld b, $13
-    dec c
-    dec e
-    dec bc
-    ld d, $4d
-    ld c, [hl]
-    ld c, a
-    ld a, c
-    ld a, l
-    inc de
-    ld b, $a1
-    inc b
-    inc de
-    inc de
-    ld c, $0f
-    dec bc
-    jr jr_004_7022
-
-    ld e, l
-    ld e, [hl]
-    ld e, a
-    ld a, [hl]
-    and l
-    dec bc
-    ld hl, $1e10
-    rra
-    ld e, $0b
-    ld a, [de]
-    ld l, h
-    ld l, l
-    ld l, [hl]
-    ld a, a
-    and b
-    dec bc
-    inc sp
-    ld [$1230], sp
-    db $db
-    ld l, $2f
-    ld a, [bc]
-    inc e
-    inc bc
-    ld [de], a
-    inc de
-    nop
-    ld [hl], e
-    ld [hl], h
-    inc bc
-    ld [hl], h
-    ld [hl], l
-    or h
-    nop
-    ld a, [bc]
-    ld [hl+], a
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    dec e
-    nop
-    nop
-    ld [$ff2d], sp
-    inc l
-    nop
-    adc l
-    ld a, h
-    dec hl
-    nop
-    rst $38
-    ld [hl-], a
-    ld [bc], a
-    inc de
-    nop
-    sbc $e3
-    ld [bc], a
-    pop hl
-    ld h, b
-    pop bc
-    ld a, h
-    ld hl, $c300
-    ld a, [hl]
-    rst $38
-    rst $38
-    ld a, [hl]
-    rst $38
-    nop
-    dec [hl]
-    dec [hl]
-    cp $fe
-    rst $38
-    or e
-    or e
-    ld a, [hl]
-    ld a, [hl]
-    rst $38
-    rst $00
-    ld b, a
-    dec sp
-    rst $38
-    add d
-    ld a, h
-    add e
-    ld a, l
-    dec [hl]
-    inc [hl]
-    rst $38
-    cp $ff
-    or e
-    or d
-    ld a, a
-    ld a, [hl]
-    rst $20
-    and $7f
-    ld a, a
-    rst $38
-    call z, Call_004_7fcc
-    ld a, a
-    ld bc, $01fe
-    cp $fd
-    add e
-    jr nz, jr_004_70fc
-
-jr_004_70fc:
-    rst $00
-    cp $ff
-    ld a, l
-    cp $ba
-    rst $38
-    rst $38
-    rst $00
-    nop
-    nop
-    add b
-    nop
-    ldh [rP1], a
-    sub a
-    ld hl, sp+$00
-    cp $40
-    nop
-    ldh [$ffc0], a
-    nop
-    dec c
-    add hl, bc
-    ld a, b
-    rst $38
-    add a
-    rst $08
-    ld c, b
-    add $42
-    db $ec
-    ld l, b
-    sbc $ff
-    ld a, [hl-]
-    or [hl]
-    ld [hl], c
-    or a
-    ld [hl], e
-    or a
-    ld [hl], e
-    ld e, $ff
-    pop hl
-    di
-    ld [de], a
-    ld [hl], c
-    ld d, b
-    dec sp
-    ld a, [de]
-    ld [hl], a
-    rst $38
-    ld c, [hl]
-    db $ed
-    call c, $1c2d
-    dec l
-    inc e
-
-jr_004_713a:
-    rst $38
-    rst $38
-    nop
-    ret nz
-
-    ld b, b
-    ldh [$ff60], a
-    db $f4
-    dec bc
-    or [hl]
-    rst $38
-    ld a, a
-    cp c
-    ld h, l
-    ldh [$ff1f], a
-    xor [hl]
-    ld a, l
-    rst $38
-    rst $38
-    nop
-    inc bc
-    ld [bc], a
-    inc bc
-    ld [bc], a
-    ccf
-    ret nz
-
-    rst $30
-    ld a, a
-    cp $9b
-    cp $cf
-    jr nc, jr_004_713a
-
-    cp $e2
-    ld a, [bc]
-    db $fc
-    ld b, b
-    ld b, $40
-    nop
-    ld a, a
-    add b
-    ld a, a
-    rst $38
-    nop
-    ld e, a
-    rst $38
-    and b
-    ld e, h
-    rst $38
-    ld sp, $69f1
-    jp hl
-
-
-    ld b, $ff
-    add [hl]
-    ret z
-
-    ld hl, sp+$45
-    rst $00
-    ret nc
-
-    ldh a, [$ffed]
-    rst $38
-    ld d, $cd
-    or $bd
-    or $8d
-    or [hl]
-    dec c
-    rst $38
-    sub [hl]
-    dec e
-    ld [hl], $8d
-    or $0d
-    ld d, $ff
-    rst $38
-    nop
-    ld e, l
-    cp [hl]
-    db $fd
-    cp [hl]
-    ld [hl], l
-    cp [hl]
-    ld a, c
-    rst $38
-    cp [hl]
-    pop de
-    cp [hl]
-    ld l, c
-    cp [hl]
-    push de
-    cp [hl]
-    or c
-    pop bc
-    ld a, $2b
-    nop
-    nop
-    db $10
-    db $f4
-    rrca
-    and e
-    dec b
-    dec b
-    rrca
-    rst $20
-    rst $20
-    cp $03
-    ld c, $95
-    ld [$4fb2], a
-    ld e, e
-    db $fc
-    jr c, @+$01
-
-    rst $00
-    jp z, $253d
-
-    jp c, Jump_004_77a9
-
-    ld [hl], e
-    rst $18
-    adc h
-    sub $4e
-    push de
-    ld c, l
-    ld b, e
-    nop
-    rst $18
-    ld b, b
-    rst $38
-    sub b
-    ld l, a
-    rst $38
-    nop
-    ld d, [hl]
-    ld l, [hl]
-    sub l
-    xor l
-    ei
-    sub $ee
-    ld b, c
-    nop
-    rst $38
-    nop
-    db $10
-    rst $28
-    rst $38
-    rst $38
-    nop
-    xor e
-    or a
-    ld a, [hl+]
-    ld [hl], $ab
-    or a
-    ld [$f6bf], a
-    db $eb
-    rst $30
-    rst $38
-    nop
-    ld [$0040], sp
-    ld l, e
-    rst $30
-    ld [hl], d
-    xor e
-    or d
-    ld b, e
-    nop
-    ei
-    ld [bc], a
-    add hl, bc
-    or $fb
-    rst $38
-    nop
-    ld b, c
-    rrca
-    or l
-    ld [hl], e
-    cp l
-    ld a, e
-    sbc l
-    rst $38
-    ld a, e
-    ld a, l
-    add e
-    inc sp
-    db $fc
-    add h
-    rst $38
-    xor l
-    db $fd
-    sbc h
-    ld hl, $af00
-    sbc [hl]
-    and a
-    sbc [hl]
-    cp $c1
-    rst $38
-    call nz, $113f
-    rst $38
-    ld sp, hl
-    ld a, a
-    rst $38
-    rrca
-    rst $28
-    or e
-    ld [hl], e
-    sbc e
-    ld h, [hl]
-    pop bc
-    dec c
-    ld e, b
-    or a
-    jr nc, @+$01
-
-    rst $08
-    ld l, l
-    cp [hl]
-    rst $18
-    jr nz, jr_004_7272
-
-    ld a, $77
-    rst $38
-    adc $01
-    cp $ff
-    nop
-    ld d, $ed
-    inc c
-    db $fd
-    di
-    inc bc
-    db $10
-    dec c
-    ld c, $fd
-    ld b, $0d
-    or $ff
-    dec c
-    or $fd
-    ld b, $80
-    add b
-    ld d, d
-    db $d3
-    rst $38
-    ld [$8588], sp
-    add a
-    dec de
-    ei
-    xor a
-    xor a
-    rst $38
-    sub h
-    ld e, a
-    ld c, b
-    ld hl, sp+$6d
-    halt
-    adc l
-    or [hl]
-    rst $38
-    ld l, l
-    halt
-    dec c
-    or $2d
-    ld [hl], $8d
-    sub [hl]
-    rst $18
-    ld c, l
-    or $4d
-    halt
-    ld l, c
-
-jr_004_7272:
-    add b
-    rrca
-    ld c, c
-    cp [hl]
-    rst $38
-    ld b, c
-    cp [hl]
-    ld b, e
-    cp h
-    ld b, l
-    cp [hl]
-    ld h, e
-    sbc h
-    rst $28
-    ld d, l
-    xor d
-    rst $38
-    nop
-    ld hl, $7d1b
-    cp $45
-    ld sp, hl
-    add $23
-    nop
-    ld bc, $8322
-    ld a, h
-    xor e
-    ld a, h
-    sub e
-    cp $44
-    nop
-    rst $38
-    nop
-    ret nc
-
-    ld b, b
-    rst $18
-    ld b, b
-    ret nc
-
-    ld bc, $214f
-    nop
-    add c
-    nop
-    ld [bc], a
-    ld [de], a
-    ld [hl], h
-    inc h
-    inc hl
-    ld c, $09
-    ld bc, $0e21
-    ccf
-    add hl, bc
-    nop
-    ld sp, hl
-    nop
-    add hl, bc
-    ldh a, [rNR42]
-    nop
-    add c
-    nop
-    rst $38
-    ld d, d
-    rst $28
-    rst $10
-    rst $28
-    rst $18
-    ldh [$ffbf], a
-    rst $08
-    rst $38
-    ld hl, sp+$3f
-    rst $20
-    ld a, a
-
-jr_004_72c7:
-    ret z
-
-    cp a
-    pop af
-    rst $18
-    rst $38
-    ld c, b
-    rst $30
-    ld l, l
-    rst $30
-    db $fd
-    rlca
-    rst $38
-    pop af
-    rst $38
-    adc l
-    ld a, [$f9c7]
-    ccf
-    cp $8f
-    pop af
-    ei
-    ld c, $ff
-    ld d, b
-    dec de
-    ldh [$ff0d], a
-
-jr_004_72e4:
-    db $fd
-    jr nz, jr_004_72c7
-
-    rst $38
-    db $ec
-    db $ec
-    jr jr_004_72e4
-
-    ld b, b
-    ret nz
-
-    inc h
-    rst $20
-    db $db
-    adc c
-    adc c
-    add c
-    ld a, [hl+]
-    ld bc, $0301
-    dec hl
-    dec hl
-    rst $38
-    db $db
-    db $eb
-    db $eb
-    and e
-    dec hl
-    inc b
-    inc b
-    ld bc, $302c
-    rst $38
-    rst $38
-    and e
-    cp a
-    inc e
-    rra
-    ld d, [hl]
-    ld d, a
-    inc bc
-    inc bc
-    cp a
-    rlca
-    rlca
-    inc bc
-    inc bc
-    inc l
-    cpl
-    add hl, bc
-    ld de, $ffd7
-    inc l
-    ld a, a
-    add b
-    sub l
-    ld [hl], l
-    rst $38
-    nop
-    add c
-    cp a
-    ld bc, $00ff
-    ei
-    ld a, a
-    db $e4
-    ld [bc], a
-    ld hl, $3a3d
-    ld b, b
-    ld de, $c0fd
-    ld [de], a
-    add hl, de
-    cp $63
-    and b
-    add hl, hl
-    pop hl
-    cpl
-    dec sp
-    ld bc, $01fe
-    ld bc, $fe01
-    ld b, c
-    ld [bc], a
-    ld bc, $0f85
-    cp b
-    dec b
-    db $10
-    add l
-    rrca
-    dec b
-    db $10
-    ret nc
-
-    ld c, a
-    jp nc, $0024
-
-    pop de
-    cp $20
-    nop
-    db $d3
-    ld c, a
-    ld d, d
-    rst $28
-    sub $ee
-    db $d3
-    rst $28
-    db $eb
-    ld d, $6e
-    sub e
-    ld b, b
-    nop
-    db $d3
-    db $eb
-    ld d, l
-    ld sp, hl
-    ld l, l
-    ld bc, $210d
-    nop
-    call z, $adf6
-    or a
-    ld l, d
-    rst $38
-    ld [hl], d
-    xor e
-    or e
-    add hl, bc
-    ldh a, [$ff29]
-    ldh a, [$ff89]
-    rst $38
-    ret nc
-
-    add hl, hl
-    ld [hl], b
-    xor c
-    ldh a, [$ffc9]
-    ret nc
-
-    jp hl
-
-
-    rst $38
-    ldh a, [$ff09]
-    ld d, b
-    rst $10
-    cpl
-    ld a, [$e79f]
-    rst $38
-    rra
-    db $fd
-    ld a, $f3
-    call z, $e3dc
-    rst $18
-    rst $38
-    rst $28
-    rst $18
-    rst $28
-    rst $08
-
-jr_004_739a:
-    ldh a, [c]
-    dec de
-    db $fd
-    rst $38
-    rst $38
-    ldh [$ffcf], a
-    jr c, jr_004_739a
-
-    inc c
-    rst $28
-    pop af
-    rst $28
-    rst $38
-    rst $30
-    rst $28
-    rst $30
-    ld a, [$70fa]
-    ldh a, [rLY]
-    rst $38
-    call nz, $f030
-    ld e, h
-    call c, $f838
-    ldh [$ffe7], a
-    ldh [rWave_a], a
-    ld a, [$3b2f]
-    dec bc
-    inc a
-    ld [de], a
-    inc de
-    inc c
-    rst $38
-    rrca
-    inc bc
-    inc bc
-    or h
-    or a
-    nop
-    ld bc, $df00
-    inc bc
-    ld [de], a
-    rra
-    jr nc, @+$39
-
-    and b
-    ld [de], a
-    nop
-    ld b, $ff
-    ld bc, $031d
-    cpl
-    dec de
-    dec a
-    dec de
-    ccf
-    rst $38
-    dec de
-    cpl
-    dec de
-    rra
-    nop
-    rst $38
-    rrca
-    rst $38
-    ei
-    rst $28
-    rst $38
-    or b
-    dec b
-    rst $18
-    rst $28
-    db $fd
-    rst $28
-    ld e, l
-    rst $38
-    rst $28
-    ld hl, sp+$00
-    rst $38
-
-jr_004_73f8:
-    ldh a, [rIE]
-    rst $30
-    rst $38
-    cp a
-    rst $30
-    xor e
-    rst $30
-    ei
-    rst $30
-    cp a
-    add b
-    nop
-    ld bc, $feef
-    and l
-    cp $e9
-    jr nz, jr_004_741d
-
-    cp l
-    cp $99
-    jp nz, $1102
-
-    ld a, l
-    ret nz
-
-    rra
-    pop bc
-    inc h
-    ld h, c
-    cpl
-    and c
-    inc [hl]
-    add e
-
-jr_004_741d:
-    ld a, h
-    cp b
-    ld hl, $5200
-    dec [hl]
-    ld [hl-], a
-    jr nc, jr_004_73f8
-
-    ld c, [hl]
-    db $d3
-    ld h, b
-    rrca
-    db $d3
-    ld a, c
-    ld c, a
-    add c
-    nop
-    pop bc
-    nop
-    sbc e
-    xor e
-    ld e, l
-    ld l, l
-    ld b, c
-    nop
-    rst $38
-    sbc [hl]
-    xor [hl]
-    db $dd
-    db $ed
-    sbc h
-    xor h
-    call c, $ffec
-    ld l, [hl]
-    halt
-    db $ed
-    push af
-    ld l, [hl]
-    halt
-    ld c, h
-    ld d, h
-    ei
-    ld l, $36
-    ld b, c
-    nop
-    dec c
-    dec d
-    ret
-
-
-    ret nc
-
-    ld c, c
-    rst $38
-    ld d, b
-    xor c
-    or b
-    ret
-
-
-    ret nc
-
-    xor c
-    or b
-    adc c
-    sbc a
-    sub b
-    xor c
-    or b
-    add hl, hl
-    jr nc, @+$11
-
-    inc de
-    dec bc
-    inc de
-    inc e
-    rst $38
-    db $fc
-    add b
-    add b
-    ld [$38ea], a
-    ld hl, sp+$10
-    ld a, a
-    ldh a, [$ffd0]
-    ret nc
-
-    db $fc
-    db $fc
-    cpl
-    rst $28
-    ld h, e
-    ld c, d
-    reti
-
-
-    add b
-    sbc a
-    ld b, d
-    inc b
-    ld c, h
-    ld b, $07
-    pop bc
-    ld hl, $4746
-    rst $38
-    jr jr_004_74a8
-
-    ld b, $07
-    ld bc, $0401
-    rlca
-    rst $30
-    dec [hl]
-    dec de
-    scf
-    and b
-    rrca
-    dec l
-    dec de
-    daa
-    dec de
-    rst $30
-    ld l, $1b
-    ld [hl], $20
-    nop
-    db $db
-    rst $28
-    di
-    rst $28
-    rst $38
-    ld [hl], a
-    rst $28
-    or $ef
-
-jr_004_74a8:
-    or d
-    rst $28
-    or l
-    rst $28
-    rst $28
-    ld [hl], l
-    rst $28
-    or e
-    rst $28
-    and c
-    rrca
-    xor d
-    rst $30
-    adc e
-    rst $38
-    rst $30
-    dec bc
-    rst $30
-    dec l
-    rst $30
-    xor [hl]
-    rst $30
-    xor l
-    db $fd
-    rst $30
-    jp nz, $0025
-
-    ld [bc], a
-    ld bc, $0305
-    dec bc
-    rst $38
-    rlca
-    rla
-    rrca
-    daa
-    rra
-    ld a, a
-    nop
-    cp a
-    rst $28
-    ld a, a
-    ccf
-    rst $38
-    cp a
-    ld h, $00
-    rst $38
-    nop
-    ld a, a
-    rst $38
-    rst $38
-    ld a, e
-    rst $38
-    ld l, a
-    rst $38
-    ld a, l
-    rst $38
-    ld a, d
-    rst $38
-    rst $38
-    ld [hl], l
-    rst $38
-    ld l, d
-    rst $38
-    rst $18
-    ld b, b
-    ret nz
-
-    rla
-    ld b, b
-    rst $18
-    ld e, a
-    ld hl, $df30
-    ld [hl+], a
-    jr nc, jr_004_74fc
-
-    ld b, d
-    ld d, e
-    nop
-    db $f4
-
-jr_004_74fc:
-    ld sp, $0c52
-    ld d, [hl]
-    ei
-    ldh [rOBP1], a
-    ei
-    ld a, [$02fb]
-    cpl
-    dec bc
-    ldh a, [c]
-    ei
-    ldh a, [c]
-    ld b, b
-    nop
-    ld [bc], a
-    rrca
-    inc de
-    dec bc
-    inc de
-    rst $38
-    ret nc
-
-    ret nc
-
-    ld a, d
-    ld a, [$ff1f]
-    xor $ef
-    ld a, a
-    ld b, l
-    rst $38
-    dec de
-    rst $38
-    ld h, b
-    rst $38
-    inc bc
-    ldh a, [$ff57]
-    rst $38
-    add b
-    add b
-    dec sp
-    dec sp
-    ld [bc], a
-    add d
-    pop af
-    pop af
-    rst $08
-    ld c, h
-    call z, $ff1f
-    sub b
-    inc l
-    ld b, b
-    ld e, e
-    ld [$ff08], sp
-    ld h, b
-    ld h, b
-    and b
-    and b
-    inc e
-    inc e
-    ldh [$ffe0], a
-    rst $38
-    adc a
-    rst $38
-    inc hl
-    inc hl
-    inc c
-    rrca
-    or e
-    or e
-    rst $38
-    rrca
-    rrca
-    jr jr_004_7570
-
-    nop
-    nop
-    jp nz, $d7f3
-
-    ret nc
-
-    rst $18
-    ld a, $60
-    rrca
-    dec a
-    ret nz
-
-    rrca
-    ld l, $1b
-    rst $38
-    inc h
-    dec de
-    inc [hl]
-    dec de
-    ld h, $1b
-    ld a, d
-    rst $28
-    rst $38
-    ldh a, [c]
-    rst $28
-    ld d, h
-    rst $28
-    ld d, l
-    rst $28
-
-jr_004_7570:
-    sub b
-    rst $28
-    rst $38
-    sub h
-    rst $28
-    add hl, sp
-    rst $28
-
-jr_004_7577:
-    or b
-    rst $28
-    cp d
-    rst $30
-    rst $38
-    xor c
-    rst $30
-    jr z, jr_004_7577
-
-    ld c, d
-    rst $30
-    ld c, b
-    rst $30
-    rst $38
-    dec c
-    rst $30
-    dec e
-    rst $30
-    ld [$2ff7], sp
-    rra
-    and e
-    daa
-    rra
-    ld c, c
-    nop
-    xor b
-    rrca
-    ld d, d
-    db $10
-    ld [hl], l
-    add d
-    rrca
-    ld a, d
-    rst $28
-    rst $38
-    db $f4
-    ld a, a
-    jp nc, Jump_004_5500
-
-    add b
-    ld a, a
-    dec h
-    cp a
-    ld e, $2d
-    ld e, $3d
-    ld e, $3f
-    jr nz, jr_004_75ad
-
-jr_004_75ad:
-    dec hl
-    rst $38
-    ld e, $23
-    ld e, $1f
-    nop
-    ld [bc], a
-    db $fd
-    cpl
-    rst $38
-    db $fd
-    ld l, a
-    db $fd
-    rst $28
-    db $fd
-    ld a, a
-    db $fd
-    ld [hl], a
-    rst $30
-    db $fd
-    ld [bc], a
-    db $fd
-    pop hl
-    ld b, e
-    and e
-    cp $b3
-    cp $df
-    cp e
-    cp $ff
-    cp $6b
-    ld [bc], a
-    ld [hl], $3f
-    ret nz
-
-    rst $38
-    ld a, a
-    sbc a
-    ld a, a
-    cp b
-    ld hl, sp+$70
-    ld a, [$f770]
-    ldh a, [c]
-    ld b, b
-    ret c
-
-    add b
-    ld e, a
-    db $fc
-    inc bc
-    db $ec
-    di
-    rst $38
-    or $f9
-    ld a, [$f27d]
-    cp l
-    ld a, [hl-]
-    dec b
-    rrca
-    ld a, $29
-    ld a, [hl-]
-    dec h
-    rrca
-    ld hl, $340b
-    rrca
-    ld [bc], a
-    dec bc
-    ld [hl], $ff
-    inc h
-    dec bc
-    dec h
-    ld a, [de]
-    ld l, $11
-    jr nc, jr_004_7615
-
-    db $fd
-    db $10
-    ld [hl+], a
-    nop
-    rrca
-    nop
-    rra
-    ldh [$fff0], a
-    rrca
-    rst $30
-    db $10
-    rst $28
-    jr nc, jr_004_7639
-
-jr_004_7615:
-    nop
-    rst $38
-    nop
-    ld hl, sp+$07
-    adc a
-    rrca
-    ldh a, [rNR23]
-    rst $30
-    dec h
-    nop
-    rrca
-    ld a, [de]
-    ld [bc], a
-    db $10
-    ld e, $ff
-    daa
-    inc e
-    dec l
-    dec de
-    ld a, [hl+]
-    rla
-    dec [hl]
-    rrca
-    ld a, a
-    ccf
-    nop
-    rst $38
-    add b
-    add b
-    ld a, a
-    ld a, a
-    or d
-    cpl
-
-jr_004_7639:
-    ld h, a
-    xor d
-    rst $38
-    ld e, l
-    ld d, d
-    ld e, a
-    ldh [c], a
-    ld l, a
-    nop
-    ret nc
-
-    ld b, b
-    ld [hl], b
-    db $fd
-    ld d, h
-    and d
-    ld h, l
-    ld h, b
-    nop
-    rra
-    nop
-    ret nz
-
-    ret nz
-
-    ret nz
-
-    dec b
-    ld h, c
-    ld b, e
-    ld [hl], h
-    db $e3
-    ld [hl-], a
-    and c
-    ld h, a
-    ldh [rWave_7], a
-    ldh [$ff6d], a
-    inc bc
-    inc bc
-    cp $05
-    ld h, e
-    db $fc
-    ld [hl], h
-    cp a
-    ld a, b
-    rst $18
-    ccf
-    rst $30
-    rst $38
-    rrca
-    rst $08
-    jr nc, jr_004_76cd
-
-    sbc a
-    ccf
-    ret nz
-
-    nop
-    rst $38
-    rst $38
-    halt
-    ld e, c
-    ldh [c], a
-    dec a
-    and $f9
-    jp c, $e5ff
-
-    or $09
-    inc e
-    db $e3
-    ld hl, sp+$07
-    nop
-    pop bc
-    rst $38
-    rrca
-    ld hl, $340b
-    rrca
-    ld [bc], a
-    dec bc
-    ld [hl], $02
-    ld [hl], l
-    add b
-    ld hl, sp-$01
-    ret nz
-
-    db $fc
-    ret c
-
-    cp h
-    ret c
-
-    db $fc
-    ret c
-
-    db $f4
-    xor d
-    ld b, d
-    nop
-    cp h
-    add d
-    nop
-    xor h
-    jr nz, jr_004_76a4
-
-    or h
-
-jr_004_76a4:
-    ld h, b
-    ld bc, $ff7c
-    ret c
-
-    inc l
-    ret c
-
-    ld h, h
-    ret c
-
-    ld l, h
-    ret c
-
-    inc a
-    cp $82
-    nop
-    inc l
-    ret c
-
-jr_004_76b5:
-    and h
-    ld e, b
-    ld [hl], h
-    adc b
-    inc c
-    dec de
-    ldh a, [rNR23]
-    ld [hl+], a
-    nop
-    ldh a, [rP1]
-    nop
-    ld [$2f00], sp
-    ld bc, $001f
-    rra
-    nop
-    rra
-    nop
-    rra
-
-jr_004_76cd:
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-
-jr_004_76dd:
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    ldh [$ff1f], a
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    and l
-    nop
-    ccf
-    nop
-    ld b, b
-    rst $38
-    nop
-    cp a
-    ccf
-    or b
-    ccf
-    xor a
-    jr nc, jr_004_76b5
-
-    sbc d
-    ld [hl+], a
-    nop
-    rst $38
-    jr nc, jr_004_7715
-
-    rst $38
-    rst $38
-
-jr_004_7715:
-    ld sp, $c300
-    ld [bc], a
-    db $fc
-    rst $38
-    nop
-    ld [bc], a
-    nop
-    db $fd
-    cp $0d
-    cp $f5
-    di
-    ld b, $15
-    ld [hl+], a
-    nop
-    ld h, e
-    ld [bc], a
-    xor a
-    jr nc, jr_004_76dd
-
-    jr nc, jr_004_774e
-
-    cp a
-    ccf
-    ld b, b
-    ccf
-    ccf
-    inc d
-    dec b
-    ld h, a
-    inc bc
-    ld h, e
-    ld [bc], a
-    rst $38
-    push af
-    ld b, $0d
-    ld c, $fd
-    cp $02
-    db $fc
-    jp $00fc
-
-
-    ld h, e
-    dec b
-    ld h, a
-    nop
-    ld h, e
-    inc b
-    ld h, a
-    nop
-
-jr_004_774e:
-    ld e, a
-    and b
-    rst $38
-    ld e, h
-    rst $38
-    ccf
-    ld hl, sp+$78
-    ldh a, [rSVBK]
-    ldh [rIE], a
-    ret nc
-
-    ldh [$ff60], a
-    ret nz
-
-    ldh [$ffc0], a
-    db $ed
-    ld d, $ff
-    call $bdf6
-    or $cd
-    halt
-    ld l, l
-    ld [hl], $ff
-    ld e, l
-    ld [hl], $2d
-    ld d, $2d
-    ld d, $e0
-    ret nz
-
-jr_004_7774:
-    rst $38
-    ld h, b
-    ret nc
-
-    ld h, b
-    ret c
-
-    ldh a, [$ffef]
-    jr jr_004_7774
-
-    cp a
-    rst $38
-    ld hl, sp-$4c
-    ld a, a
-    ld c, a
-    rst $38
-    ld b, b
-    ld bc, $ff56
-    dec l
-    sub $4d
-    or [hl]
-    db $ed
-    halt
-    db $ed
-    or $ef
-    ld c, l
-    or $cd
-    or $23
-    dec c
-    inc bc
-    nop
-    dec e
-    ld a, a
-    inc bc
-    ld [hl], a
-    rrca
-    cp a
-    ld l, a
-    rst $30
-    ld l, a
-    ld b, e
-    dec c
-    rst $38
-    rst $38
-    rra
-    rst $38
-    rst $18
-
-Jump_004_77a9:
-    rst $38
-    rst $18
-    rst $28
-    rst $18
-    ei
-    cp a
-    rst $18
-    ld b, e
-    inc c
-    rst $38
-    ld hl, sp-$01
-    ei
-    rst $38
-    rst $18
-    ei
-    push de
-    ei
-    db $fd
-    ei
-    inc hl
-    db $10
-    ret nz
-
-    nop
-    ld a, a
-    ld hl, sp-$40
-    cp $f0
-    rst $38
-    or $ef
-    nop
-    inc b
-    rst $38
-    rrca
-    nop
-    db $10
-    rrca
-    scf
-    ld [$173f], sp
-    cp a
-    ld a, a
-    ld a, $7f
-    ld b, $47
-    ld a, [hl-]
-    ld hl, $8012
-    ld a, [hl]
-    ld b, d
-    nop
-    sbc $80
-    rst $38
-    sbc $ff
-    cp $e1
-    ld bc, $77ff
-    ld [$57ff], sp
-    ld a, a
-    ld e, $9f
-    ld l, [hl]
-    rst $20
-    ld l, a
-    ld d, $9f
-    nop
-    ld b, $e1
-    ld bc, $009e
-    rst $38
-    rst $38
-    sbc [hl]
-    rst $38
-    cp $ff
-    cp $fe
-    db $fc
-    nop
-    rst $38
-    nop
-    ld bc, $0200
-    ld bc, $0007
-    rlca
-    ld a, a
-    inc bc
-    rrca
-    rlca
-    rla
-    rrca
-    rrca
-    rlca
-    pop bc
-    dec b
-    rst $38
-    jr nz, @-$3e
-
-    ldh [rP1], a
-    ldh a, [$ffe0]
-    ld a, [$fff0]
-    rst $38
-    add d
-    rst $38
-    ld a, [hl]
-    inc bc
-    nop
-    inc b
-    inc bc
-    rst $38
-    rrca
-    nop
-    rrca
-    rlca
-    ld a, a
-    rlca
-    rst $38
-    ld a, c
-    rst $38
-    rst $38
-    ld a, [hl]
-    rst $38
-    ld a, a
-    add b
-    nop
-    ld b, b
-    add b
-    rst $38
-    call c, $fe00
-    call c, $ecfe
-    rst $38
-    ldh [c], a
-    cp $20
-    inc b
-    ld a, [hl]
-    nop
-    nop
-    ld c, $00
-    ld de, $ff0e
-    cpl
-    db $10
-    ccf
-    rrca
-    ld a, a
-    ccf
-    ld a, a
-    cpl
-    ld a, c
-    cp a
-    ld [bc], a
-    inc c
-    ld h, c
-    ld a, [de]
-    add d
-    nop
-    rst $18
-    add d
-    nop
-    ld [$befd], sp
-    pop hl
-    ld bc, $003f
-    ccf
-    ld e, $7f
-    dec a
-    ei
-    cp a
-
-jr_004_7871:
-    ld l, l
-    ld bc, $3002
-    nop
-    ld a, b
-    jr nc, jr_004_7871
-
-    ld a, l
-    ld [hl], b
-    ret nz
-
-    dec b
-    ldh a, [c]
-    rst $38
-    and $ff
-    or $40
-    ld [$6fff], sp
-    cp [hl]
-    ld l, a
-    rst $10
-    ld l, a
-    rst $18
-    ld l, a
-    or $ff
-    ld l, a
-    or a
-    ld l, a
-    sbc [hl]
-    ld l, a
-    cp d
-    ld l, a
-    ei
-    rst $38
-    rst $18
-    cp d
-    rst $18
-    or [hl]
-    rst $18
-    rst $20
-    rst $18
-    db $ed
-    cp [hl]
-    ldh [rIF], a
-    rst $20
-    rst $18
-    db $eb
-    rst $18
-    rst $18
-    add b
-    rrca
-    rst $18
-    cp $a0
-    rrca
-    push de
-    ei
-    ld b, l
-    ei
-    dec b
-    ei
-    sub [hl]
-    ld e, a
-    ei
-    rst $38
-    or $fd
-    or $41
-    nop
-    xor a
-    add b
-    nop
-    rst $38
-    cp a
-    or $eb
-    or $ff
-
-jr_004_78c5:
-    ld b, a
-    rst $38
-    ld a, a
-    cp $21
-    nop
-    ld a, a
-    ccf
-    ccf
-    ld e, $5e
-    ld hl, $e731
-    nop
-    cp $fc
-    add c
-    dec c
-    and b
-    dec c
-    ld a, h
-    db $fc
-    jr c, jr_004_78c5
-
-    ld a, b
-    add b
-    add b
-    and c
-    inc d
-    db $e4
-
-jr_004_78e4:
-    ld bc, $205f
-    jr z, jr_004_78e4
-
-    db $10
-    stop
-    ld [bc], a
-    cp $fc
-    db $fc
-    ld hl, sp-$08
-    rst $38
-    ldh a, [$fff0]
-    ld b, b
-    ld h, b
-    add b
-    and b
-    ld b, b
-    ret nz
-
-    rst $18
-    nop
-    rra
-    rrca
-    ccf
-    rra
-    ld hl, $1f00
-    rrca
-    cp a
-    rrca
-    inc bc
-    dec bc
-    inc b
-    ld b, $00
-    db $e4
-    inc bc
-    db $fc
-    rst $38
-    cp $e0
-    db $fc
-    ldh a, [$fff4]
-    ld [$0008], sp
-    jp z, $0d60
-
-    ccf
-    db $e3
-    ld bc, $a303
-    ld [hl+], a
-    ld h, d
-    inc de
-    db $fc
-    ldh [$fffe], a
-    jr nz, jr_004_792c
-
-    nop
-    and b
-    ld b, b
-    ld b, b
-
-jr_004_792c:
-    nop
-    ld a, a
-    cpl
-    cp [hl]
-    ld b, $08
-    rrca
-    cpl
-    db $10
-    jr jr_004_7937
-
-jr_004_7937:
-    ld b, b
-    ld [de], a
-    cp $ff
-    cp $f4
-    db $fc
-    ldh a, [$fff0]
-    ldh [$ffe0], a
-    ret nz
-
-    push af
-    ret nz
-
-    pop bc
-    jr z, jr_004_7987
-
-    push hl
-    ld bc, $000f
-    ld a, [bc]
-    inc b
-    add hl, sp
-    inc b
-    nop
-    ld b, $e1
-    inc bc
-    ldh a, [$ffc0]
-    ldh [$ffc0], a
-    add hl, bc
-    pop hl
-
-jr_004_795a:
-    inc l
-    rst $38
-
-jr_004_795c:
-    reti
-
-
-    ld l, a
-    jp c, $f96f
-
-    ld l, a
-    db $db
-    ld l, a
-    ld [hl], a
-    push af
-    ld l, a
-    cp c
-    ldh [rIF], a
-    sub d
-    ld l, a
-    db $eb
-    ret nz
-
-    rrca
-    rst $38
-    push af
-    rst $18
-    ld h, l
-    rst $18
-    xor b
-    rst $18
-    ld a, [hl+]
-    rst $18
-    rst $38
-
-jr_004_7979:
-    jr nz, jr_004_795a
-
-    jr z, jr_004_795c
-
-    ld d, a
-    ei
-    ld d, [hl]
-    ei
-    rst $30
-    ld e, l
-    ei
-    inc d
-    jr nz, jr_004_7987
-
-jr_004_7987:
-    dec h
-    ei
-    and h
-    ei
-    rst $38
-    add [hl]
-    ei
-    ld l, a
-    or $ed
-    or $6f
-    or $ff
-    rst $18
-    or $4b
-    or $59
-    or $1b
-    or $7d
-    adc a
-    add hl, bc
-    jr nz, jr_004_79e1
-
-    ld a, a
-    ld [$778f], sp
-    dec c
-    jr nz, jr_004_7979
-
-    ld hl, $2933
-    ld [bc], a
-    inc hl
-    inc [hl]
-    ld b, [hl]
-    jr nz, @-$20
-
-    and $23
-    dec a
-    ld a, a
-    rst $18
-    dec c
-    adc a
-    ld [hl], l
-    ld a, a
-    rrca
-    db $eb
-    inc hl
-    cp $fc
-    cp a
-    rrca
-    nop
-    ld [hl], b
-    rrca
-    rst $30
-    ld c, b
-    nop
-    inc h
-    dec e
-    rst $28
-    sbc a
-    ld l, l
-    ld l, a
-    dec d
-    inc bc
-    inc h
-    ld e, $00
-    cp a
-    ld a, a
-    ld e, $fe
-    cp h
-    rst $38
-    cp [hl]
-    rst $38
-    ld a, [hl]
-    ld bc, $fa24
-    ld c, c
-    add hl, sp
-
-jr_004_79e1:
-    inc a
-    jr nz, jr_004_79e4
-
-jr_004_79e4:
-    ld b, d
-    inc a
-    xor c
-    ld d, [hl]
-    add b
-    rst $38
-    ld a, a
-
-jr_004_79eb:
-    sub b
-    ld l, a
-    ld b, e
-    inc a
-    ld hl, $1e1e
-    ldh a, [c]
-    inc d
-    dec sp
-    add b
-    ld [hl+], a
-    nop
-    rra
-    nop
-    ld a, b
-    nop
-    ret nc
-
-    ld l, a
-    rst $38
-    sbc d
-    ld l, a
-    ret nc
-
-    ld l, a
-    sub a
-    ld l, b
-    cp b
-    ld b, a
-    rst $38
-    ret nz
-
-jr_004_7a09:
-    ccf
-    jr nz, jr_004_79eb
-
-jr_004_7a0c:
-    sbc a
-    ldh [$ff72], a
-    rst $18
-    ld a, a
-    ld h, b
-    rst $18
-    ccf
-    ret nz
-
-    ldh [$ff1f], a
-    jr nz, @-$7e
-
-    nop
-    rst $38
-    jr nc, jr_004_7a0c
-
-    rst $38
-    nop
-    ld l, $fb
-    inc b
-    ei
-    rst $38
-    db $fc
-    inc bc
-    rlca
-    ld hl, sp+$0c
-    ei
-    inc c
-    ei
-    cp $40
-    inc [hl]
-    nop
-    adc e
-    or $19
-    or $0b
-    or $ff
-    jp hl
-
-
-    ld d, $1d
-    ldh [c], a
-    inc bc
-    db $fc
-    ld c, $fa
-    rst $28
-    ld hl, sp+$07
-    ld a, a
-    rrca
-    ld b, $20
-    rra
-    rra
-    rlca
-
-jr_004_7a49:
-    push af
-    rlca
-    dec b
-    jr nz, jr_004_7acc
-
-    nop
-    jr nz, jr_004_7a09
-
-    ld hl, sp-$80
-    ret nz
-
-    rrca
-    nop
-    adc a
-    ld [hl], a
-    rst $38
-    daa
-    ld [bc], a
-    ld b, b
-    jr jr_004_7a6b
-
-    ld [bc], a
-    db $e3
-    inc hl
-    ld a, a
-    rst $38
-    ld a, $be
-    ld e, l
-    rst $18
-    jr nz, jr_004_7a49
-
-    nop
-    dec e
-
-jr_004_7a6b:
-    adc e
-    cp $f8
-    jr nz, @+$24
-
-    ld a, h
-    push hl
-    inc hl
-    ret nz
-
-    ld b, h
-    dec c
-    inc h
-    ldh a, [$ffeb]
-    cp $ec
-    rlca
-    inc h
-    ld b, b
-    ldh [c], a
-    ld c, $83
-    ld a, h
-    sub b
-    ld b, e
-    ld l, a
-    ld b, b
-    ldh [rLY], a
-    dec b
-    rrca
-    db $e3
-    ld c, $07
-    rrca
-    ld bc, $3640
-    cp $c5
-    rrca
-    add h
-    ld a, b
-    add d
-    ld a, h
-    ld bc, $01fe
-    rst $38
-    cp $81
-    ld a, [hl]
-    add c
-    ld a, [hl]
-    ld b, d
-    inc a
-    inc a
-    ret nz
-
-    jr nz, jr_004_7ab7
-
-    ld hl, $e101
-    nop
-    inc bc
-    ld bc, $120d
-    ld bc, $c903
-    ld [hl], $7b
-    and c
-    ld e, [hl]
-    rlca
-
-jr_004_7ab7:
-    inc bc
-    add [hl]
-    ld a, b
-    add c
-    ld a, [hl]
-    inc hl
-    ld bc, $01fe
-    inc b
-    dec [hl]
-    dec [hl]
-    cp $fe
-    or e
-    or e
-    ld a, [hl]
-    rst $38
-    ld a, [hl]
-    rst $38
-    rst $00
-
-jr_004_7acc:
-    ld b, a
-    dec sp
-    add d
-    ld a, h
-    add e
-    rst $38
-    ld a, l
-    dec [hl]
-    inc [hl]
-    rst $38
-    cp $b3
-    or d
-    ld a, a
-    rst $38
-    ld a, [hl]
-    rst $20
-    and $7f
-    ld a, a
-    call z, Call_004_7fcc
-    push af
-    ld a, a
-    pop bc
-    ld b, $83
-    jr nz, jr_004_7aea
-
-jr_004_7aea:
-    rst $00
-    cp $ff
-    ld a, l
-    rrca
-    cp $ba
-    rst $38
-    rst $00
-    rrca
-    ld c, e
-    rrca
-    ld c, e
-    rrca
-    ld c, e
-    dec c
-    ld c, e
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    add hl, de
-    nop
-    nop
-    ld [$005f], sp
-    nop
-    stop
-    ld a, h
-    ld b, b
-    nop
-    jr c, @-$7c
-
-    nop
-    add b
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $010f
-    dec b
-    ld bc, $fb24
-    nop
-    ld a, [hl]
-    ld b, b
-    nop
-    ld l, $00
-    ld l, d
-    nop
-    ld [hl+], a
-    ldh a, [rIF]
-    ld bc, $010f
-    rrca
-    ld bc, $0100
-    ld d, [hl]
-    nop
-    ld h, $00
-    rlca
-    ld a, [hl+]
-    nop
-    ld e, d
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $010f
-    rrca
-    ld bc, $0ffc
-    ld bc, $0106
-    rrca
-    nop
-    jr jr_004_7b66
-
-    scf
-    ld [$38ff], sp
-    rla
-    ld h, c
-    ld a, $79
-    ld b, $7d
-    ld a, [hl-]
-    ld a, [$0e21]
-    add b
-
-jr_004_7b66:
-    ld b, d
-    nop
-    ld e, [hl]
-    add b
-    daa
-    sbc $31
-    db $fd
-    adc $e1
-    ld bc, $0877
-    cp b
-    ld d, a
-    ld h, c
-    ld e, $bf
-    pop af
-    ld l, [hl]
-    ld a, c
-    ld d, $f1
-    ld l, a
-    db $e3
-    ld bc, $ff9e
-    nop
-    ld h, c
-    sbc [hl]
-    ld d, c
-    cp [hl]
-    ld h, c
-    cp [hl]
-    and d
-    rst $38
-    db $fc
-    nop
-    nop
-    ld bc, $0300
-    ld bc, $ff07
-    nop
-    dec b
-    inc bc
-    ld a, [bc]
-    rlca
-    jr jr_004_7baa
-
-    ld [$07ff], sp
-    nop
-    nop
-    ret nz
-
-    nop
-    jr nz, @-$3e
-
-    ldh [rIE], a
-    nop
-    sub b
-    ldh [$ff0a], a
-
-jr_004_7baa:
-    ldh a, [$ff7d]
-    add d
-    add l
-    rst $38
-    ld a, [hl]
-    inc bc
-    nop
-    ld b, $03
-    rrca
-    nop
-    dec bc
-    rst $38
-    rlca
-    ld a, h
-    rlca
-    add h
-    ld a, e
-    cp d
-    ld a, l
-    adc h
-    rst $38
-    ld a, a
-    add b
-    nop
-    ld b, b
-    add b
-    call c, $2200
-    rst $30
-    call c, $ec12
-    pop hl
-    ld bc, $fe79
-    nop
-    nop
-    rst $38
-    ld c, $00
-    add hl, de
-    ld c, $3f
-    db $10
-    jr nc, jr_004_7beb
-
-    cp a
-    ld h, b
-    ccf
-    ld l, b
-    scf
-    add sp, $57
-    ld h, l
-    dec e
-    add d
-    ld a, a
-    nop
-    ld e, l
-    add d
-    dec l
-
-jr_004_7beb:
-    sbc $01
-    cp $e3
-    ld bc, $31ff
-    ld c, $61
-    ld a, $ea
-    ld d, l
-    ld a, c
-    daa
-    db $fd
-    jp hl
-
-
-    nop
-    ld [bc], a
-    ld [hl], b
-    nop
-    adc b
-    ld [hl], b
-    ld c, d
-    ldh a, [$ff9f]
-    adc l
-    ldh a, [c]
-    adc l
-    or $09
-    jr nz, jr_004_7c0b
-
-jr_004_7c0b:
-    rlca
-    inc c
-    ld h, b
-    rst $18
-    ccf
-    ld [hl], a
-    ld [$77e9], sp
-    dec bc
-    inc c
-    or c
-    adc $f0
-    add hl, hl
-    ld c, $21
-    ld [bc], a
-    ld b, e
-    inc hl
-    ld b, e
-    inc c
-    ld h, a
-    sbc [hl]
-    ld sp, $ffce
-    cp b
-    ld b, a
-    or b
-    ld a, a
-    or b
-    ld a, a
-    sub b
-    ld a, a
-    rst $38
-    ld c, b
-    ccf
-    ld hl, $7f1e
-    ld hl, $0031
-    rst $38
-    ld [bc], a
-    db $fc
-    rlca
-    ld hl, sp+$39
-    cp $41
-    cp $ff
-    ld [bc], a
-    db $fc
-    add h
-    ld a, b
-    ld hl, sp-$80
-    add b
-    nop
-    ei
-    ldh a, [$ff1f]
-    and $01
-    jr nz, jr_004_7c88
-
-    db $10
-    stop
-    rst $38
-    ld [hl+], a
-    db $fc
-    ld [bc], a
-    db $fc
-    inc b
-    ld hl, sp+$08
-    ldh a, [rIE]
-    or b
-    ld b, b
-    ldh [$ff80], a
-    ldh [rLCDC], a
-    ret nz
-
-    nop
-    rst $38
-    inc d
-    rrca
-    inc l
-    rra
-    jr z, jr_004_7c8b
-
-    ld a, [hl+]
-    dec e
-    rst $38
-    ld [de], a
-    dec c
-    ld c, $01
-    rrca
-    inc b
-    ld b, $00
-    rst $18
-    ld a, c
-    cp $e1
-    cp $01
-    ldh [$ff03], a
-    ld e, $e0
-    rst $38
-    inc c
-    ldh a, [$fffc]
-    ld [$0008], sp
-
-jr_004_7c88:
-    ld b, h
-    ccf
-    rst $38
-
-jr_004_7c8b:
-    ld b, b
-    ccf
-    jr nz, jr_004_7cae
-
-    jr jr_004_7c98
-
-    inc b
-    inc bc
-    ld sp, hl
-    inc bc
-    ldh [c], a
-    inc hl
-    db $e3
-
-jr_004_7c98:
-    ld bc, $e01c
-    ld [$f0f0], sp
-    rst $38
-    nop
-    ldh [rLCDC], a
-    ld b, b
-    nop
-    ld c, b
-    scf
-    adc h
-    ei
-    ld a, a
-    add c
-    jr nz, @+$0a
-
-    ld e, b
-    ccf
-
-jr_004_7cae:
-    jr nc, jr_004_7cbf
-
-    ccf
-    rst $38
-    db $10
-    jr jr_004_7cb5
-
-jr_004_7cb5:
-    ld a, c
-    add [hl]
-    push hl
-    ld a, [$dd06]
-    ld hl, sp+$21
-    ld b, $30
-
-jr_004_7cbf:
-    ret nz
-
-    ret nz
-
-    ldh [rNR52], a
-    call z, $fd3f
-    add b
-    ldh [c], a
-    ld bc, $0f32
-    rrca
-    nop
-    ld c, $04
-    rst $28
-    inc b
-    nop
-    ld de, $e1ee
-    inc bc
-    jr nc, jr_004_7c98
-
-    ld h, b
-
-jr_004_7cd9:
-    xor h
-    ret nz
-
-    add hl, bc
-    pop hl
-    jr z, jr_004_7d4f
-
-    rrca
-    dec b
-    inc c
-    ld [hl+], a
-    ld h, b
-    ld b, $07
-    and $06
-    inc c
-    add d
-    ld a, h
-    nop
-    inc c
-    ret nz
-
-    jr jr_004_7cd9
-
-    ld [hl], a
-    ldh a, [$ffba]
-    inc h
-    ld [bc], a
-    ld c, d
-    jr nz, @+$08
-
-    rrca
-    nop
-    add [hl]
-    ldh [c], a
-    dec c
-    ld bc, $06fc
-    ld [bc], a
-    push hl
-    rra
-    ld h, d
-    dec a
-    ld [hl], d
-    dec c
-    ld [$db75], a
-    ld [hl], e
-    rrca
-    db $eb
-    rra
-    ld [bc], a
-    db $fc
-    db $e3
-    ld de, $3ec9
-    rst $18
-    db $e3
-    ld e, l
-    rst $38
-    jr nz, @-$5e
-
-    nop
-    dec bc
-    ld h, $f8
-    rst $38
-    ld b, d
-    db $fc
-    ld b, e
-    db $fc
-    ld h, c
-    cp $b1
-    ld a, [hl]
-    rst $30
-    jp hl
-
-
-    sbc [hl]
-    sbc d
-    nop
-    add hl, bc
-    rrca
-    nop
-    ld a, b
-    rrca
-    rst $38
-    or a
-    ld c, b
-    cp b
-    ld d, a
-    ld h, d
-    dec e
-    ldh a, [c]
-    ld l, l
-    rst $30
-    ld e, d
-    dec [hl]
-    di
-    ld [bc], a
-    ld [hl+], a
-    ld e, $00
-    and c
-    ld e, $ff
-    ld d, d
-    cp h
-    ld h, c
-    cp [hl]
-    and c
-    ld a, [hl]
-    ld b, d
-    db $fc
-    ld l, $0d
-
-jr_004_7d4f:
-    inc d
-    ld b, d
-    db $fc
-    ld [hl+], a
-    ld [$4014], sp
-    rra
-    dec a
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    rra
-    nop
-    nop
-    rra
-    nop
-    rra
-    nop
-    ld d, $00
     rst $38
     rst $38
     rst $38

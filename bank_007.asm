@@ -39,11 +39,11 @@ SECTION "ROM Bank $007", ROMX[$4000], BANK[$7]
     ld hl, $4758
     ld c, $0b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4001
     ld c, $0b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     call Call_007_4275
     ld a, [$c90b]
     cp $00
@@ -422,7 +422,7 @@ Call_007_4298:
     ld hl, Label_007_75d2
     ld c, $07
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $a8
     ld [$cb5c], a
     ld a, $d9
@@ -468,7 +468,7 @@ Call_007_4308:
     ld hl, $76ab
     ld c, $07
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $a8
     ld [$cb5c], a
     ld a, $d9
@@ -527,15 +527,15 @@ Call_007_4360:
     ld hl, $717e
     ld c, $05
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6acc
     ld c, $05
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $69ed
     ld c, $05
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     call Call_007_4497
     ld a, $cd
     ld [$cb5c], a
@@ -1217,7 +1217,7 @@ Text_HouseExpansion:
     ld hl, sPlayerMoney
     ld bc, -5000
     call AddSignedBCToHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     call UpdatePlayerMoneyTileData
     ret
 
@@ -1228,7 +1228,7 @@ Text_HouseExpansion:
     ld hl, sPlayerMoney
     ld bc, -2500
     call AddSignedBCToHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     call UpdatePlayerMoneyTileData
     ret
 

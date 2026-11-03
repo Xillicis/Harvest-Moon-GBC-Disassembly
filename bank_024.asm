@@ -15,15 +15,15 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld hl, $769e
     ld c, $24
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7004
     ld c, $24
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7b5f
     ld c, $24
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $08
     ld [$cb5c], a
     ld a, $07
@@ -32,7 +32,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld hl, $6ec8
     ld c, $24
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $24
     ldh [$ff91], a
     xor a
@@ -59,34 +59,34 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld a, $00
     call RST_TableJumpBankSwitch
     call Call_024_6b02
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 0, a
     call nz, Call_024_5b8d
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 1, a
     call nz, Call_024_5b92
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 2, a
     call nz, Call_024_5b97
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 3, a
     call nz, Call_024_5b9c
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     bit 0, a
     call nz, Call_024_5bb4
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     bit 1, a
     call nz, Call_024_5bbc
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     bit 2, a
     call nz, Call_024_5bc4
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     bit 3, a
     call nz, Call_024_5bcc
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     bit 4, a
     call nz, Call_024_5be5
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     cp $00
     call nz, Call_024_5c3a
     ld a, [sChickenFeedFlag]
@@ -137,7 +137,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ret nz
 
     ld hl, $414a
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     rst $00
     ld d, d
     ld b, c
@@ -150,7 +150,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     inc b
     ld b, d
     ld a, $00
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9a7
     ld de, $ba28
     ld a, $0c
@@ -171,9 +171,9 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld b, $20
     call CopyHLtoDE
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9b3
     ld de, $ba28
     ld a, $0c
@@ -194,12 +194,12 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld b, $20
     call CopyHLtoDE
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ret
 
 
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9bf
     ld de, $ba28
     ld a, $0c
@@ -220,9 +220,9 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld b, $20
     call CopyHLtoDE
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld hl, $b9cb
     ld de, $ba28
     ld a, $0c
@@ -243,7 +243,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     ld b, $20
     call CopyHLtoDE
     ld a, $00
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ret
 
 
@@ -2308,9 +2308,9 @@ Jump_024_4e4d:
 
 
 jr_024_4e99:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 0, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $00
     ld [$cc18], a
     ld hl, $d91e
@@ -2320,9 +2320,9 @@ jr_024_4e99:
     jr jr_024_4eed
 
 jr_024_4eae:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 1, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $01
     ld [$cc18], a
     ld hl, $d8ce
@@ -2332,9 +2332,9 @@ jr_024_4eae:
     jr jr_024_4eed
 
 jr_024_4ec3:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $02
     ld [$cc18], a
     ld hl, $d8ba
@@ -2344,10 +2344,10 @@ jr_024_4ec3:
     jr jr_024_4eed
 
 Jump_024_4ed8:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 3, a
     res 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $03
     ld [$cc18], a
     ld hl, $d920
@@ -2374,10 +2374,10 @@ jr_024_4eed:
 
 
 Jump_024_4f10:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 3, a
     res 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $03
     ld [$cc18], a
     ld hl, $d920
@@ -2604,17 +2604,17 @@ jr_024_503f:
 
     ld a, $00
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 0, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_5055:
     ld a, $00
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 0, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_5064:
@@ -2624,17 +2624,17 @@ jr_024_5064:
 
     ld a, $01
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 1, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_507a:
     ld a, $01
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 1, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_5089:
@@ -2644,17 +2644,17 @@ jr_024_5089:
 
     ld a, $02
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 2, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_509f:
     ld a, $02
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 2, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_50ae:
@@ -2664,17 +2664,17 @@ jr_024_50ae:
 
     ld a, $03
     ld [$cc20], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 3, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     jr jr_024_50d1
 
 jr_024_50c4:
     ld a, $03
     ld [$cc18], a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     set 3, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_024_50d1:
     ld a, [wHeldObject]
@@ -2732,7 +2732,7 @@ jr_024_5118:
     jp z, Jump_024_545a
 
     ld a, $04
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ld a, $00
     ld [$cc18], a
     ld a, [de]
@@ -2777,7 +2777,7 @@ jr_024_5169:
     jp z, Jump_024_545a
 
     ld a, $84
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ld a, $01
     ld [$cc18], a
     ld a, [de]
@@ -4634,7 +4634,7 @@ jr_024_5c31:
 
 Call_024_5c3a:
     ld hl, $99d1
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     cp $80
     jr nc, jr_024_5c59
 
@@ -6040,7 +6040,7 @@ jr_024_651c:
 
 jr_024_6521:
     ld hl, $c880
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     add a
     add a
@@ -6949,7 +6949,7 @@ jr_024_6afd:
 
 Call_024_6b02:
     ld a, $00
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c88d], a
     ld a, [$b9a7]
@@ -6994,7 +6994,7 @@ Jump_024_6b3e:
 
 jr_024_6b48:
     ld a, $01
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8ad], a
     ld a, [$b9b3]
@@ -7039,7 +7039,7 @@ Jump_024_6b84:
 
 jr_024_6b8e:
     ld a, $02
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8cd], a
     ld a, [$b9bf]
@@ -7084,7 +7084,7 @@ Jump_024_6bca:
 
 jr_024_6bd4:
     ld a, $03
-    ld [$cc1f], a
+    ld [wCurrentChickenIndex], a
     ld a, $00
     ld [$c8ed], a
     ld a, [$b9cb]
@@ -7264,23 +7264,23 @@ Call_024_6cf6:
 
     ld hl, $b9a7
     ld b, $00
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 4, a
     call nz, Call_024_6d8a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 5, a
     call nz, Call_024_6d8a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 6, a
     call nz, Call_024_6d8a
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 7, a
     call nz, Call_024_6d8a
     ld a, b
     cp $04
     call c, Call_024_6dcd
     xor a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, $00
     ldh [$ffa5], a
     ld a, $00
@@ -7296,8 +7296,8 @@ Call_024_6cf6:
     ldh [$ffa4], a
     call Call_024_6df7
     xor a
-    ld [$b9a6], a
-    ld hl, $b9a5
+    ld [sChickenFeedingFlags], a
+    ld hl, sChickenIncubationState
     ld a, [hl]
     cp $00
     ret z
@@ -7342,7 +7342,7 @@ jr_024_6d80:
     xor a
     ld [hl+], a
     ld [hl], a
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ret
 
 
@@ -7497,21 +7497,21 @@ Call_024_6df7:
     ld l, [hl]
     ld d, d
     ld l, [hl]
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 0, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 1, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld a, [$b9a3]
     or a
     ld a, $01
@@ -7520,9 +7520,9 @@ Call_024_6df7:
     ret
 
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 3, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ldh a, [$ffa4]
     ld hl, $6e8a
     call LoadWordFromTableHL
@@ -7530,9 +7530,9 @@ Call_024_6df7:
     cp $03
     ret nz
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ret
 
 
@@ -7581,36 +7581,36 @@ Call_024_6e92:
     cp $06
     ret c
 
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 0, a
     jr z, jr_024_6ea4
 
     set 4, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_024_6ea4:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 1, a
     jr z, jr_024_6eb0
 
     set 5, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_024_6eb0:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 2, a
     jr z, jr_024_6ebc
 
     set 6, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
 
 jr_024_6ebc:
-    ld a, [$b9a6]
+    ld a, [sChickenFeedingFlags]
     bit 3, a
     ret z
 
     set 7, a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     ret
 
 

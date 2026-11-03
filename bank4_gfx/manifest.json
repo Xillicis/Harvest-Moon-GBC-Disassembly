@@ -1,0 +1,38 @@
+[
+  {
+    "name": "coop_bg_map",
+    "bank": 4,
+    "address": 28533,
+    "rom_offset": 77685,
+    "destination": 38912,
+    "compressed_bytes": 316,
+    "decompressed_bytes": 1024
+  },
+  {
+    "name": "coop_tiles_9000",
+    "bank": 4,
+    "address": 28849,
+    "rom_offset": 78001,
+    "destination": 36864,
+    "compressed_bytes": 1552,
+    "decompressed_bytes": 2048
+  },
+  {
+    "name": "coop_tiles_8800",
+    "bank": 4,
+    "address": 30401,
+    "rom_offset": 79553,
+    "destination": 34816,
+    "compressed_bytes": 1099,
+    "decompressed_bytes": 2048
+  },
+  {
+    "name": "coop_sprite_tiles_8000",
+    "bank": 4,
+    "address": 31500,
+    "rom_offset": 80652,
+    "destination": 32768,
+    "compressed_bytes": 716,
+    "decompressed_bytes": 2048
+  }
+]

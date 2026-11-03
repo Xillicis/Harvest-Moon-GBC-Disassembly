@@ -20,19 +20,19 @@ SECTION "ROM Bank $029", ROMX[$4000], BANK[$29]
     ld hl, $4651
     ld c, $3c
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4001
     ld c, $3c
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4cd7
     ld c, $3c
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $50db
     ld c, $3c
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -515,7 +515,7 @@ Jump_029_42a5:
 
 
     push bc
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, [sCurrentHour]
     cp TIME_5_AM
     jr z, jr_029_430b
@@ -3960,11 +3960,11 @@ Call_029_5404:
     ld hl, $57a0
     ld c, $3c
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $52e9
     ld c, $3c
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     pop hl
     ld e, [hl]
     inc hl
@@ -3976,7 +3976,7 @@ Call_029_5404:
     ld h, d
     ld l, e
     ld de, $9500
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     pop hl
     ld e, [hl]
     inc hl
@@ -3988,7 +3988,7 @@ Call_029_5404:
     ld h, d
     ld l, e
     ld de, $8a00
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     pop hl
     ld e, [hl]
     inc hl
@@ -4000,7 +4000,7 @@ Call_029_5404:
     ld h, d
     ld l, e
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $99a0
     ld de, vBGMap1
     ld b, $c0
@@ -4141,15 +4141,15 @@ jr_029_555e:
     ld hl, $76b8
     ld c, $26
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6cf2
     ld c, $3e
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7c1a
     ld c, $3c
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     xor a
     ldh [$ff93], a
     ldh [$ff91], a
@@ -4258,11 +4258,11 @@ Call_029_5627:
     ld hl, $6a55
     ld c, $29
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7b00
     ld c, $25
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $9980
     ld de, vBGMap1
     ld b, $c0
@@ -5122,7 +5122,7 @@ Jump_029_5ade:
 
 
 Jump_029_5b55:
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     and a
     jp z, Jump_029_5bac
 
@@ -5161,7 +5161,7 @@ jr_029_5b77:
     ld de, $98a6
     ld b, $08
     call CopyHLtoDE
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     and $7f
     call Call_000_3304
     ld hl, wDecimalDigitTileID+3
@@ -7403,7 +7403,7 @@ jr_029_6524:
     ld hl, $7b00
     ld c, $25
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $b949
     ld c, $16
     call Call_029_65d6
@@ -7823,7 +7823,7 @@ Call_029_6760:
     ld hl, $7b00
     ld c, $25
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $b9a7
     ld c, $0c
     call Call_029_65d6

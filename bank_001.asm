@@ -66,51 +66,51 @@ InitializeFarmScene:
     ld hl, $4758
     ld c, $0b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 ; loads the dirt tile into the BGMap1 I think...
     ld hl, $4001
     ld c, $0b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr .loadCommonSpriteTiles
 
 .loadSummerTiles
     ld hl, $5457
     ld c, $0b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4c1a
     ld c, $0b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr .loadCommonSpriteTiles
 
 .loadAutumnTiles
     ld hl, $6150
     ld c, $0b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $59fa
     ld c, $0b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr .loadCommonSpriteTiles
 
 .loadWinterTiles
     ld hl, $6dc8
     ld c, $0b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6612
     ld c, $0b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 
 .loadCommonSpriteTiles
     ld hl, $7195
     ld c, $14
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, [$b8ea]
     cp $00
     jr z, .checkPetType
@@ -126,14 +126,14 @@ InitializeFarmScene:
     ld hl, $7443
     ld c, $13
     ld de, $81d0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr .checkPetType
 
 .jr_001_40f8
     ld hl, $76c1
     ld c, $13
     ld de, $81d0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 
 .checkPetType
     ld a, [sCatOrDog]
@@ -144,7 +144,7 @@ InitializeFarmScene:
     ld hl, $79a1
     ld c, $13
     ld de, $85a0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     push hl
     push af
     ld l, $9d
@@ -1941,7 +1941,7 @@ Jump_001_5878:
     ld hl, sNumberOfFencePosts
     ld bc, $0002
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, $36
     call StartAudioTrack
     ret
@@ -6862,9 +6862,9 @@ jr_001_7c9e:
 Jump_001_7cb7:
     ld a, $02
     ld [$b89d], a
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 Jump_001_7cc4:
     ld a, [$cbf6]

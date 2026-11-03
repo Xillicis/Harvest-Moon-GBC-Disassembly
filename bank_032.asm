@@ -9634,9 +9634,9 @@ jr_032_6d1d:
     jr z, jr_032_6d3f
 
     xor a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     ld [$b948], a
-    ld [$b9a6], a
+    ld [sChickenFeedingFlags], a
     ld [$b953], a
     ld [$b969], a
     ld [$b97f], a
@@ -10183,7 +10183,7 @@ Call_032_6f78:
     or a
     jr nz, jr_032_6f95
 
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     or a
     jr z, jr_032_6f8e
 
@@ -10195,7 +10195,7 @@ Call_032_6f78:
 
 jr_032_6f8e:
     ld a, $84
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     jr jr_032_6f95
 
 jr_032_6f95:
@@ -10210,7 +10210,7 @@ jr_032_6f96:
     or a
     jr nz, jr_032_6fb3
 
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     or a
     jr z, jr_032_6fac
 
@@ -10222,7 +10222,7 @@ jr_032_6f96:
 
 jr_032_6fac:
     ld a, $04
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     jr jr_032_6fb3
 
 jr_032_6fb3:
@@ -10251,12 +10251,12 @@ jr_032_6fc1:
 
 
 Call_032_6fc5:
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     or a
     ret z
 
     dec a
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     or a
     jr z, jr_032_6fd4
 
@@ -10268,9 +10268,9 @@ jr_032_6fd4:
     or a
     jr nz, jr_032_6fe2
 
-    ld a, [$b9a5]
+    ld a, [sChickenIncubationState]
     inc a
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ret
 
 
@@ -10303,7 +10303,7 @@ jr_032_6ffd:
     ld b, a
     xor a
     ld [bc], a
-    ld [$b9a5], a
+    ld [sChickenIncubationState], a
     ret
 
 
@@ -10390,9 +10390,9 @@ Call_032_704d:
     or a
     jr nz, jr_032_706a
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 0, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 jr_032_706a:
     ld a, [$b9b3]
@@ -10409,9 +10409,9 @@ jr_032_706a:
     or a
     jr nz, jr_032_7087
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 1, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 jr_032_7087:
     ld a, [$b9bf]
@@ -10428,9 +10428,9 @@ jr_032_7087:
     or a
     jr nz, jr_032_70a4
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 jr_032_70a4:
     ld a, [$b9cb]
@@ -10451,15 +10451,15 @@ jr_032_70a4:
     cp $03
     jr z, jr_032_70ca
 
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 3, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
     jr jr_032_70d2
 
 jr_032_70ca:
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     set 4, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 jr_032_70d2:
     ret
@@ -11678,7 +11678,7 @@ Jump_032_7726:
     ret z
 
     ldh [$ffc8], a
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11706,7 +11706,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11734,7 +11734,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11762,7 +11762,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11790,7 +11790,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11818,7 +11818,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l
@@ -11846,7 +11846,7 @@ Jump_032_7726:
     ret
 
 
-    ld a, [$cc1f]
+    ld a, [wCurrentChickenIndex]
     add a
     ld hl, $7732
     add l

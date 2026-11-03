@@ -6039,15 +6039,15 @@ Call_02f_62dd:
     ld hl, $6d5c
     ld c, $30
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $65d3
     ld c, $30
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $78d3
     ld c, $30
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $1d
     ld [wFreezePlayerWhenEnteringNewMap], a
     ld a, $ff
@@ -7514,15 +7514,15 @@ jr_02f_6c1a:
     ld hl, $76dc
     ld c, $30
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7220
     ld c, $30
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7788
     ld c, $30
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $5fba
     ld a, $2d
     call BankSwitchCallHL

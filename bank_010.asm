@@ -22,11 +22,11 @@ Label_010_4001:
     ld hl, $6de8
     ld c, $10
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6691
     ld c, $10
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $40ea
     ld a, [$cc28]
     call LoadWordFromTableHL
@@ -40,25 +40,25 @@ Label_010_4001:
     ld hl, $496f
     ld c, $10
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_010_4063
 
     ld hl, $4c35
     ld c, $10
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_010_4063
 
     ld hl, $459d
     ld c, $10
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 
 jr_010_4063:
     ld hl, $44c4
     ld c, $10
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $66
     ld [$cb5c], a
     ld a, $04
@@ -1000,15 +1000,15 @@ jr_010_4fbe:
     ld hl, $6445
     ld c, $10
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6220
     ld c, $10
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $6a42
     ld c, $20
     ld de, $9800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, $00
     ld [$cb5c], a
     ld a, $77

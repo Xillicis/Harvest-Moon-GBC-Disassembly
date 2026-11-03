@@ -1339,7 +1339,7 @@ jr_028_468f:
     ld hl, sNumberOfFencePosts
     ld bc, $0006
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, $38
     call StartTwoAudioTracks
     ret
@@ -1782,7 +1782,7 @@ jr_028_4933:
     ld hl, sNumberOfFencePosts
     ld bc, $0006
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ret
 
 

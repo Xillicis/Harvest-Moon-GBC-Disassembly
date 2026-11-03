@@ -46,50 +46,50 @@ jr_021_402b:
     ld hl, $478a
     ld c, $2b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4001
     ld c, $2b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_021_4098
 
 jr_021_4052:
     ld hl, $54c8
     ld c, $2b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $4c4e
     ld c, $2b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_021_4098
 
 jr_021_406a:
     ld hl, $6205
     ld c, $2b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $5a75
     ld c, $2b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_021_4098
 
 jr_021_4082:
     ld hl, $6ec3
     ld c, $2b
     ld de, $8800
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $66c9
     ld c, $2b
     ld de, $9000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 
 jr_021_4098:
     ld hl, $7195
     ld c, $34
     ld de, $8000
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld a, [$b8ea]
     cp $00
     jr z, jr_021_40cc
@@ -106,14 +106,14 @@ jr_021_40b4:
     ld hl, $7443
     ld c, $33
     ld de, $81d0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     jr jr_021_40cc
 
 jr_021_40c1:
     ld hl, $7711
     ld c, $33
     ld de, $81d0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
 
 jr_021_40cc:
     ld a, [sCatOrDog]
@@ -123,7 +123,7 @@ jr_021_40cc:
     ld hl, $7a05
     ld c, $33
     ld de, $85a0
-    call DrawMaskedClippedTile
+    call DecompressGraphicsToVRAM
     ld hl, $7e94
     ld de, $8ae0
     ld b, $20
@@ -2964,7 +2964,7 @@ Jump_021_5443:
     ld hl, sNumberOfFencePosts
     ld bc, $fffe
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, $35
     call StartAudioTrack
     ret
@@ -3532,7 +3532,7 @@ Jump_021_5773:
     ld hl, sNumberOfFencePosts
     ld bc, $0002
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, $36
     call StartAudioTrack
     ret
@@ -9590,9 +9590,9 @@ jr_021_7b7e:
 Jump_021_7b97:
     ld a, $02
     ld [$b89d], a
-    ld a, [$b9a4]
+    ld a, [sChickenEggFlags]
     res 2, a
-    ld [$b9a4], a
+    ld [sChickenEggFlags], a
 
 Jump_021_7ba4:
     ld a, [$cbf6]

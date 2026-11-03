@@ -245,8 +245,13 @@ ds $8b
 ; If the player is reading a sign, TV, etc... then this flag is used
 ; to indicate that. Doesn't seem enabled when in the town shops.
 wPlayerInteractingInTextFlag:: db ; 0xcc1b
+wcc1c:: db
+wcc1d:: db
+wcc1e:: db
 
-ds $50
+wCurrentChickenIndex:: db ; 0xcc1f
+
+ds $4c
 
 ds 1 ; 0xcc6c
 

@@ -1361,7 +1361,7 @@ Jump_001_5517:
     ld hl, sNumberOfFencePosts
     ld bc, $fffe
     call AddBCtoWordAtHL
-    call Call_000_0f73
+    call ClampAndFormatFencePostCount
     ld a, $35
     call StartAudioTrack
     ret

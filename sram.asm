@@ -326,9 +326,9 @@ sb9a0::  db
 sb9a1::  db 
 sb9a2::  db 
 sb9a3::  db 
-sb9a4::  db 
-sb9a5::  db 
-sb9a6::  db 
+sChickenEggFlags:: db ; 0xb9a4
+sChickenIncubationState:: db ; 0xb9a5
+sChickenFeedingFlags:: db ; 0xb9a6
 sb9a7::  db 
 sb9a8::  db 
 sb9a9::  db 
