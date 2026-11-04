@@ -9643,7 +9643,7 @@ jr_003_7951:
     rst $20
     ld a, a
     ld a, a
-    call z, Call_003_7fcc
+    call z, $7fcc
     ld a, a
     rst $38
     sub l

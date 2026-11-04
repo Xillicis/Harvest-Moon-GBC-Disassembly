@@ -13202,7 +13202,7 @@ jr_01a_76d4:
     rst $20
     and $7f
     ld a, a
-    call z, Call_01a_7fcc
+    call z, $7fcc
     ld a, a
     ld bc, $01fe
     cp $83

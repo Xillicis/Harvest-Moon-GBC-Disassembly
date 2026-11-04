@@ -424,7 +424,7 @@ HandleChickenCoopMoveDown: ; 04x4313:
 
 
 jr_004_4347:
-    call Call_004_454d
+    call MovePlayerDownInChickenCoop
     ret
 
 
@@ -460,7 +460,7 @@ HandleChickenCoopMoveUp: ; 04x434b
 
 
 jr_004_437f:
-    call Call_004_4580
+    call MovePlayerUpInChickenCoop
     ret
 
 HandleChickenCoopMoveLeft: ; 04x4383
@@ -495,7 +495,7 @@ HandleChickenCoopMoveLeft: ; 04x4383
 
 
 jr_004_43b7:
-    call Call_004_45ae
+    call MovePlayerLeftInChickenCoop
     ret
 
 HandleChickenCoopMoveRight: ; 04x43bb
@@ -529,7 +529,7 @@ HandleChickenCoopMoveRight: ; 04x43bb
     ret
 
 jr_004_43ef:
-    call Call_004_461e
+    call MovePlayerRightInChickenCoop
     ret
 
 HandleChickenCoopRunning: ; 04x43f3
@@ -609,8 +609,8 @@ jr_004_441e:
 
 
 jr_004_445d:
-    call Call_004_4580
-    call Call_004_4580
+    call MovePlayerUpInChickenCoop
+    call MovePlayerUpInChickenCoop
     ret
 
 
@@ -644,8 +644,8 @@ jr_004_4464:
 
 
 jr_004_4492:
-    call Call_004_454d
-    call Call_004_454d
+    call MovePlayerDownInChickenCoop
+    call MovePlayerDownInChickenCoop
     ret
 
 
@@ -679,8 +679,8 @@ jr_004_4499:
 
 
 jr_004_44c6:
-    call Call_004_45ae
-    call Call_004_45ae
+    call MovePlayerLeftInChickenCoop
+    call MovePlayerLeftInChickenCoop
     ret
 
 
@@ -714,8 +714,8 @@ Jump_004_44cd:
 
 
 jr_004_44fa:
-    call Call_004_461e
-    call Call_004_461e
+    call MovePlayerRightInChickenCoop
+    call MovePlayerRightInChickenCoop
     ret
 
 TryChickenCoopWallSlideLeft: ; 04x4501
@@ -728,7 +728,7 @@ TryChickenCoopWallSlideLeft: ; 04x4501
     and $01
     ret nz
 
-    call Call_004_45ae
+    call MovePlayerLeftInChickenCoop
     ret
 
 TryChickenCoopWallSlideRight: ; 04x4514
@@ -741,7 +741,7 @@ TryChickenCoopWallSlideRight: ; 04x4514
     and $01
     ret nz
 
-    call Call_004_461e
+    call MovePlayerRightInChickenCoop
     ret
 
 TryChickenCoopWallSlideUp: ; 04x4527
@@ -754,7 +754,7 @@ TryChickenCoopWallSlideUp: ; 04x4527
     and $01
     ret nz
 
-    call Call_004_4580
+    call MovePlayerUpInChickenCoop
     ret
 
 TryChickenCoopWallSlideDown: ; 04x453a
@@ -767,11 +767,10 @@ TryChickenCoopWallSlideDown: ; 04x453a
     and $01
     ret nz
 
-    call Call_004_454d
+    call MovePlayerDownInChickenCoop
     ret
 
-
-Call_004_454d:
+MovePlayerDownInChickenCoop: ; 04x454d
     xor a
     ld [wCollisionNoMovement], a
     ld a, [wPlayerYPosition]
@@ -813,8 +812,7 @@ jr_004_4575:
     ld [wMapChangeFreezeTimer], a
     ret
 
-
-Call_004_4580:
+MovePlayerUpInChickenCoop: ; 04x4580
     xor a
     ld [wCollisionNoMovement], a
     ld a, [wPlayerYPosition]
@@ -850,8 +848,7 @@ jr_004_45a7:
 
     ret
 
-
-Call_004_45ae:
+MovePlayerLeftInChickenCoop: ; 04x45ae
     xor a
     ld [wCollisionNoMovement], a
     ld a, [wPlayerXPosition]
@@ -937,8 +934,7 @@ jr_004_4617:
 
     ret
 
-
-Call_004_461e:
+MovePlayerRightInChickenCoop: ; 04x461e
     xor a
     ld [wCollisionNoMovement], a
     ld a, [wPlayerXPosition]
@@ -1039,7 +1035,7 @@ jr_004_4694:
     cp $ff
     jr z, jr_004_46b1
 
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [hl]
     cp $ff
@@ -1962,7 +1958,7 @@ Label_004_4c58:
     ld [$cc4b], a
     ldh a, [hTemp]
     ld [$cc4a], a
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, $ff
     ld [hl], a
@@ -2040,7 +2036,7 @@ CheckForChick: ; 04x4cd8
     ld [$cc4b], a
     ldh a, [hTemp]
     ld [$cc4a], a
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, $ff
     ld [hl], a
@@ -2763,7 +2759,7 @@ FillChickenFeedTrough: ; 04x5038
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -2917,7 +2913,7 @@ FillChickenFeedTrough: ; 04x5038
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -3057,7 +3053,7 @@ FillChickenFeedTrough: ; 04x5038
     ld a, $08
     ld [wInputFreezeTimer], a
     ld a, [$cc4a]
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [$cc4b]
     ld [hl], a
@@ -6017,8 +6013,8 @@ jr_004_6564:
     cp $02
     jr nz, jr_004_6571
 
-    call Call_004_6601
-    call Call_004_6956
+    call ProbeCurrentChickenMapCollision
+    call MoveCurrentChickenWithCollision
 
 jr_004_6571:
     ld hl, $6578
@@ -6120,8 +6116,7 @@ jr_004_65ce:
     ld [$cc5d], a
     ret
 
-
-Call_004_6601:
+ProbeCurrentChickenMapCollision: ; 04x6601
     ld hl, $6608
     ld a, [$cc59]
     rst $00
@@ -6229,7 +6224,7 @@ Call_004_6601:
     ld de, $d800
     add hl, de
     ld a, [hli]
-    ld [sNumShipments], a
+    ld [sba30], a
     ld a, [hli]
     ld [$ba31], a
     pop hl
@@ -6348,7 +6343,7 @@ Call_004_6601:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [sNumShipments], a
+    ld [sba30], a
     ld a, [hl+]
     ld [$ba31], a
     ldh a, [$ffa6]
@@ -6467,7 +6462,7 @@ Call_004_6601:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [sNumShipments], a
+    ld [sba30], a
     ld a, [hl+]
     ld [$ba31], a
     ldh a, [$ffa6]
@@ -6581,7 +6576,7 @@ Call_004_6601:
     ld de, $d800
     add hl, de
     ld a, [hl+]
-    ld [sNumShipments], a
+    ld [sba30], a
     ld a, [hl+]
     ld [$ba31], a
     pop hl
@@ -6600,11 +6595,11 @@ Call_004_6601:
     ld [$ba33], a
     ret
 
-
-Call_004_6956:
+MoveCurrentChickenWithCollision: ; 04x6956
     ld hl, $695d
     ld a, [$cc59]
     rst $00
+
     ld h, l
     ld l, c
     add a
@@ -6702,7 +6697,7 @@ Call_004_6956:
     ret
 
 .tryMoveDown
-    call Call_004_6a4b
+    call CheckChickenPlayerCollisionDown
     ldh a, [$ffa4]
     or a
     ret nz
@@ -6716,7 +6711,7 @@ Call_004_6956:
     ret
 
 .tryMoveLeft
-    call Call_004_6afd
+    call CheckChickenPlayerCollisionLeft
     ldh a, [$ffa4]
     or a
     ret nz
@@ -6730,7 +6725,7 @@ Call_004_6956:
     ret
 
 .tryMoveRight
-    call Call_004_6b56
+    call CheckChickenPlayerCollisionRight
     ldh a, [$ffa4]
     or a
     ret nz
@@ -6744,7 +6739,7 @@ Call_004_6956:
     ret
 
 .tryMoveUp
-    call Call_004_6aa4
+    call CheckChickenPlayerCollisionUp
     ldh a, [$ffa4]
     or a
     ret nz
@@ -6757,8 +6752,7 @@ Call_004_6956:
     ld [$cc55], a
     ret
 
-
-Call_004_6a4b:
+CheckChickenPlayerCollisionDown: ; 04x6a4b
     ld a, [$ba28]
     cp $01
     jr z, jr_004_6a9a
@@ -6814,8 +6808,7 @@ jr_004_6a9f:
     ldh [$ffa4], a
     ret
 
-
-Call_004_6aa4:
+CheckChickenPlayerCollisionUp: ; 04x6aa4
     ld a, [$ba28]
     cp $01
     jr z, jr_004_6af3
@@ -6871,8 +6864,7 @@ jr_004_6af8:
     ldh [$ffa4], a
     ret
 
-
-Call_004_6afd:
+CheckChickenPlayerCollisionLeft: ; 04x6afd
     ld a, [$ba28]
     cp $01
     jr z, jr_004_6b4c
@@ -6928,8 +6920,7 @@ jr_004_6b51:
     ldh [$ffa4], a
     ret
 
-
-Call_004_6b56:
+CheckChickenPlayerCollisionRight: ; 04x6b56
     ld a, [$ba28]
     cp $01
     jr z, jr_004_6ba5
@@ -7306,19 +7297,19 @@ UpdateChickenDailyState: ; 04x6da9
     ld b, $00
     ld a, [sChickenFeedingFlags]
     bit 4, a
-    call nz, Call_004_6e37
+    call nz, ApplyFeedToNextAdultChicken
     ld a, [sChickenFeedingFlags]
     bit 5, a
-    call nz, Call_004_6e37
+    call nz, ApplyFeedToNextAdultChicken
     ld a, [sChickenFeedingFlags]
     bit 6, a
-    call nz, Call_004_6e37
+    call nz, ApplyFeedToNextAdultChicken
     ld a, [sChickenFeedingFlags]
     bit 7, a
-    call nz, Call_004_6e37
+    call nz, ApplyFeedToNextAdultChicken
     ld a, b
     cp $04
-    call c, Call_004_6e7a
+    call c, MarkRemainingAdultChickensUnfed
     xor a
     ld [sChickenEggFlags], a
     ld a, $00
@@ -7385,52 +7376,52 @@ jr_004_6e2d:
     ld [sChickenIncubationState], a
     ret
 
-Call_004_6e37:
+ApplyFeedToNextAdultChicken: ; 04x6e37
     ld a, b
     cp $04
     ret z
     ld d, h
     ld e, l
     ld c, b
-jr_004_6e3e:
+.findAdultChicken
     ld a, [hl]
     cp $02
-    jr z, jr_004_6e5a
+    jr z, .applyFeed
     cp $03
-    jr z, jr_004_6e5a
+    jr z, .applyFeed
     inc c
     ld a, c
     cp $04
-    jr z, jr_004_6e57
+    jr z, .noAdultFound
     ld a, $0c
     add l
     ld l, a
     ld a, $00
     adc h
     ld h, a
-    jr jr_004_6e3e
-jr_004_6e57:
+    jr .findAdultChicken
+.noAdultFound
     ld h, d
     ld l, e
     ret
-jr_004_6e5a:
+.applyFeed
     inc hl
     inc hl
     ld a, [hl]
     cp $00
-    jr z, jr_004_6e6e
+    jr z, .advanceToNextRecord
     dec hl
     inc [hl]
     ld a, [hl]
     cp $03
-    jr c, jr_004_6e6d
+    jr c, .advanceToStatusField
     xor a
     ld [hl+], a
     ld [hl], a
-    jr jr_004_6e6e
-jr_004_6e6d:
+    jr .advanceToNextRecord
+.advanceToStatusField
     inc hl
-jr_004_6e6e:
+.advanceToNextRecord
     inc hl
     inc hl
     inc hl
@@ -7444,19 +7435,17 @@ jr_004_6e6e:
     inc b
     ret
 
-
-Call_004_6e7a:
-jr_004_6e7a:
+MarkRemainingAdultChickensUnfed: ; 04x6e7a
     ld a, b
     cp $04
     ret z
 
     ld a, [hl]
     cp $02
-    jr z, jr_004_6e92
+    jr z, .markUnfed
 
     cp $03
-    jr z, jr_004_6e92
+    jr z, .markUnfed
 
     ld a, $0c
     add l
@@ -7465,9 +7454,9 @@ jr_004_6e7a:
     adc h
     ld h, a
     inc b
-    jr jr_004_6e7a
+    jr MarkRemainingAdultChickensUnfed
 
-jr_004_6e92:
+.markUnfed
     inc hl
     xor a
     ld [hl+], a
@@ -7483,11 +7472,11 @@ jr_004_6e92:
     inc hl
     inc hl
     inc b
-    jr jr_004_6e7a
+    jr MarkRemainingAdultChickensUnfed
 
-UpdateChickenGrowthAndEggProduction: ; 04x63a4
+UpdateChickenGrowthAndEggProduction: ; 04x6ea4
     ldh a, [$ffa4]
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [hl]
     cp $ff
@@ -7550,7 +7539,7 @@ UpdateChickenGrowthAndEggProduction: ; 04x63a4
     set 3, a
     ld [sChickenEggFlags], a
     ldh a, [$ffa4]
-    ld hl, Label_004_6f37
+    ld hl, ChickenRecordPointers
     call LoadWordFromTableHL
     ld a, [hl]
     cp $03
@@ -7593,7 +7582,7 @@ jr_004_6f2b:
     ld [hl], a
     ret
 
-Label_004_6f37:
+ChickenRecordPointers: ; 04x6f37
     db $A7, $B9, $B3, $B9, $BF, $B9, $CB, $B9
 
 Call_004_6f3f:
@@ -7649,557 +7638,5 @@ ChickenCoopSpriteGraphics: ; 04x7b0c
     INCBIN "gfx/chicken_coop/coop_sprite_tiles_8000.compressed.bin"
 ChickenCoopSpriteGraphicsEnd:
 
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-
-Call_004_7fcc:
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
-    rst $38
+; $ff padding
+ds $8000 - @, $ff

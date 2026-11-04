@@ -469,7 +469,7 @@ sba2c::  db
 sba2d::  db 
 sba2e::  db 
 sba2f::  db 
-sNumShipments::  db ; 0xba30
+sba30::  db ; 0xba30
 sba31::  db 
 sba32::  db 
 sba33::  db 
