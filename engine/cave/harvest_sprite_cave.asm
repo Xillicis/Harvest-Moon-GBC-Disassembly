@@ -388,7 +388,7 @@ EarthquakeDay_TalkToSprite: ; 0ex47d2
 Jump_00e_47fd:
     ld a, [sSpriteEventFlags]
     bit EVENT_SPRITE_GAVE_BERRY, a
-    jr nz, ImproveSickleCheck
+    jr nz, CheckSickleUpgradeOffer
 
     set EVENT_SPRITE_GAVE_BERRY, a
     ld [sSpriteEventFlags], a
@@ -402,7 +402,7 @@ Jump_00e_47fd:
     ret
 
 
-ImproveSickleCheck:
+CheckSickleUpgradeOffer:
     ld a, [sSpriteTotalHappiness]
     cp 30
     jp c, TalkToHarvestSprite1

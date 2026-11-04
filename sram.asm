@@ -62,7 +62,7 @@ sShedHoeFlag::  db  ; 0xb8a4
 sShedHammerFlag::  db  ; 0xb8a5
 sShedAxFlag::  db  ; 0xb8a6
 sShedSuperSickleFlag::  db ; 0xb8a7
-sShedSuperHoeFlag::  db 
+sShedSuperHoeFlag::  db  ; 0xb8a8
 sShedSuperHammerFlag::  db 
 sShedSuperAxFlag::  db 
 sShedCowMedicineFlag::  db 
@@ -477,8 +477,8 @@ sba34::  db
 sba35::  db 
 sba36::  db 
 sba37::  db 
-sba38::  db 
-sba39::  db 
+sSickleUpgradeHours:: db ; 0xba38
+sHoeUpgradeHours:: db ; 0xba39
 sba3a::  db 
 sba3b::  db 
 sba3c::  db 

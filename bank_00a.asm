@@ -84,12 +84,12 @@ ImproveSickleResponse:
 .removeSickleFromShed
     xor a
     ld [sShedSickleFlag], a
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 .respondNo
     ld a, $ff
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 Data_00a_54e5:

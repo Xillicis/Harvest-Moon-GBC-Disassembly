@@ -112,7 +112,7 @@ jr_009_4073:
     ld b, c
     ld c, h
     ld b, c
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -1413,7 +1413,7 @@ Call_009_46ed:
     call $1c65
     and c
     ld c, b
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -2717,7 +2717,7 @@ Call_009_4de0:
     inc e
     ld [hl-], a
     ld c, [hl]
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -2933,7 +2933,7 @@ jr_009_4ef4:
     inc e
     ccf
     ld c, a
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -3321,7 +3321,7 @@ jr_009_50e1:
     inc e
     dec [hl]
     ld d, c
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -3584,7 +3584,7 @@ jr_009_50e1:
     inc e
     add [hl]
     ld d, d
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
 
 jr_009_5260:
     ld a, [wFreezePlayerWhenEnteringNewMap]
@@ -4216,7 +4216,7 @@ jr_009_55e0:
     ret
 
 Label_009_5641:
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -4334,7 +4334,7 @@ Call_009_5680:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     call Call_009_5793
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
@@ -7493,7 +7493,7 @@ jr_009_6654:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -7854,7 +7854,7 @@ jr_009_67e5:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]

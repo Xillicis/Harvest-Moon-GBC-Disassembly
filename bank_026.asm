@@ -89,7 +89,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld b, l
     inc d
     ld [bc], a
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]
@@ -1844,7 +1844,7 @@ Call_026_4883:
     ld c, e
     ld b, [hl]
     nop
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]

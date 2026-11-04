@@ -89,7 +89,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a

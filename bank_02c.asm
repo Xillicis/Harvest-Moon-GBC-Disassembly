@@ -13412,13 +13412,13 @@ jr_02c_7cc0:
 jr_02c_7cc6:
     xor a
     ld [$b8a4], a
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 
 jr_02c_7cce:
     ld a, $ff
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 

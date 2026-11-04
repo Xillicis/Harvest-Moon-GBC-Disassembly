@@ -103,9 +103,9 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld [$cbe1], a
     ld a, [sCurrentYear]
     ld [$cbdd], a
-    call Call_002_43ff
+    call AdvanceCalendarByTimerHours
     call InitRealTimeClock
-    call Call_002_4464
+    call ClampTimerAdvanceToYearEnd
     ld a, [$cbe4]
     ld h, a
     ld a, [$cbe5]
@@ -134,7 +134,7 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     call Call_002_41e6
     ld a, [sCurrentHour]
     ld hl, $986f
-    call Call_002_4237
+    call DrawTimerReportHour
     ld de, $986b
     call Call_002_42b8
     call Call_002_4a15
@@ -163,7 +163,7 @@ jr_002_4170:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
@@ -299,8 +299,7 @@ Call_002_4224:
     ld [hl+], a
     ret
 
-
-Call_002_4237:
+DrawTimerReportHour: ; 02x4237
     ld de, $4258
     add a
     add a
@@ -486,10 +485,10 @@ Data_002_42ee:
 Call_002_430a:
     ld a, [sSpriteEventFlags]
     bit 7, a
-    call nz, Call_002_43a9
+    call nz, AdvanceSickleUpgradeProgress
     ld a, [sSpriteEventFlags]
     bit 6, a
-    call nz, Call_002_43d4
+    call nz, AdvanceHoeUpgradeProgress
     ld a, [sSpriteEventFlags+1]
     bit EVENT_BOULDER_ON_SPRITE, a
     ret z
@@ -589,8 +588,8 @@ jr_002_43a3:
     jr nc, jr_002_4383
     ret
 
-Call_002_43a9:
-    ld a, [$ba38]
+AdvanceSickleUpgradeProgress: ; 02x43a9
+    ld a, [sSickleUpgradeHours]
     cp $ff
     ret z
 
@@ -603,55 +602,52 @@ Call_002_43a9:
     cp 12
     jr nc, .setSuperSickle
 
-    ld a, [$ba38]
+    ld a, [sSickleUpgradeHours]
     add l
     cp $0c
     jr nc, .setSuperSickle
 
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 .setSuperSickle
     ld a, 1
     ld [sShedSuperSickleFlag], a
     ld a, $ff
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
-
-Call_002_43d4:
-    ld a, [$ba39]
+AdvanceHoeUpgradeProgress: ; 02x43d4
+    ld a, [sHoeUpgradeHours]
     cp $ff
     ret z
 
     ld a, [$cbe4]
     or a
-    jr nz, jr_002_43f4
+    jr nz, .completeUpgrade
 
     ld a, [$cbe5]
     ld l, a
     cp $18
-    jr nc, jr_002_43f4
+    jr nc, .completeUpgrade
 
-    ld a, [$ba39]
+    ld a, [sHoeUpgradeHours]
     add l
     cp $18
-    jr nc, jr_002_43f4
+    jr nc, .completeUpgrade
 
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
-
-jr_002_43f4:
+.completeUpgrade
     ld a, $01
-    ld [$b8a8], a
+    ld [sShedSuperHoeFlag], a
     ld a, $ff
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
-
-Call_002_43ff:
-    call Call_002_4848
+AdvanceCalendarByTimerHours: ; 02x43ff
+    call CalculateElapsedTimerHours
     ld a, [$cbe4]
     ld h, a
     ld a, [$cbe5]
@@ -704,8 +700,7 @@ jr_002_442e:
     ld [sCurrentYear], a
     ret
 
-
-Call_002_4464:
+ClampTimerAdvanceToYearEnd: ; 02x4464
     ld a, [$cbdd]
     ld b, a
     ld a, [sCurrentYear]
@@ -1342,8 +1337,8 @@ jr_002_4823:
     ld [sNextDayWeather], a
     ret
 
-
-Call_002_4848:
+; minutes = day × 1440 + hour × 60 + minute
+CalculateElapsedTimerHours: ; 02x4848
     ld a, [$b886]
     ld hl, $05a0
     call MultiplyHLByA_ReturnHigh
@@ -3233,7 +3228,7 @@ jr_002_5271:
     call BankSwitchCallHL
     pop af
     pop hl
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a

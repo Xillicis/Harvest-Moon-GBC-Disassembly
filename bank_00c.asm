@@ -765,12 +765,12 @@ UpgradeHoe:
 .jr_00c_7d1c
     xor a
     ld [sShedHoeFlag], a
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 .noSelected
     ld a, $ff
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 UpgradeAx:

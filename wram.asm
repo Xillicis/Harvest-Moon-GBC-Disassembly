@@ -310,8 +310,8 @@ wcc90:: db ; 0xcc90
 wcc91:: db ; 0xcc91
 wcc92:: db ; 0xcc92
 wcc93:: db ; 0xcc93
-wcc94:: db ; 0xcc94
-wcc95:: db ; 0xcc95
+wFacingCaveTileX:: db ; 0xcc94
+wFacingCaveTileY:: db ; 0xcc95
 
 wCaveRewardDelay:: db
 wCaveRewardType:: db

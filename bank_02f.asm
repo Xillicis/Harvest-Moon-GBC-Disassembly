@@ -30,7 +30,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ld a, [wPlayerYPosition]
     ld l, a
     ld a, [wPlayerYPosition+1]
@@ -50,7 +50,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ret
 
 
@@ -69,7 +69,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ld a, [wPlayerXPosition]
     sub $09
     ld l, a
@@ -85,7 +85,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ret
 
 
@@ -104,7 +104,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ld a, [wPlayerXPosition]
     add $08
     ld l, a
@@ -120,7 +120,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ret
 
 
@@ -137,7 +137,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ld a, [wPlayerYPosition]
     add $02
     ld l, a
@@ -153,11 +153,11 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ret
 
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     rst $00
     dec l
     ld b, c
@@ -191,7 +191,7 @@ SECTION "ROM Bank $02f", ROMX[$4000], BANK[$2f]
 
 
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld c, l
     ld b, c
@@ -676,7 +676,7 @@ jr_02f_43f0:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec hl
     ld b, h
@@ -1157,7 +1157,7 @@ jr_02f_46ce:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     add hl, bc
     ld b, a
@@ -1642,7 +1642,7 @@ jr_02f_49ac:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     rst $20
     ld c, c
@@ -2125,7 +2125,7 @@ jr_02f_4c8a:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     push bc
     ld c, h
@@ -2608,7 +2608,7 @@ jr_02f_4f68:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     and e
     ld c, a
@@ -3095,7 +3095,7 @@ jr_02f_5246:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     add c
     ld d, d
@@ -3578,7 +3578,7 @@ jr_02f_5524:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld e, a
     ld d, l
@@ -4062,7 +4062,7 @@ jr_02f_5802:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec a
     ld e, b
@@ -4547,7 +4547,7 @@ jr_02f_5ae0:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec de
     ld e, e
@@ -5029,7 +5029,7 @@ jr_02f_5dbe:
     jp Jump_02f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld sp, hl
     ld e, l
@@ -5422,11 +5422,11 @@ Jump_02f_601b:
     cp $03
     ret nz
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     cp $03
     ret nz
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     cp $05
     jr z, jr_02f_6046
 
@@ -5442,7 +5442,7 @@ Jump_02f_601b:
 jr_02f_6046:
     ld a, $04
     ld [$cc16], a
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     cp $05
     jr z, jr_02f_605d
 
@@ -6103,7 +6103,7 @@ Call_02f_62dd:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
@@ -7557,7 +7557,7 @@ jr_02f_6c1a:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a

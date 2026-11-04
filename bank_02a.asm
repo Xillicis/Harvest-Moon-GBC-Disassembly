@@ -4974,13 +4974,13 @@ jr_02a_54d1:
 jr_02a_54d7:
     xor a
     ld [sShedItemFlagList], a
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 
 jr_02a_54df:
     ld a, $ff
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
 
 jr_02a_54e4:
     ret

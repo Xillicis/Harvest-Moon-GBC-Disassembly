@@ -162,7 +162,7 @@ jr_00e_410d:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [$cc9a]
     or a
     jr z, jr_00e_4158
@@ -1292,13 +1292,13 @@ Call_00e_4b1b:
     cp $01
     jr z, jr_00e_4b43
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     dec a
     ld c, $40
     call Multiply8Bit
     ld d, h
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     ld c, $02
     call Multiply8Bit
     add hl, de
@@ -1312,13 +1312,13 @@ Call_00e_4b1b:
 
 
 jr_00e_4b43:
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     add $03
     ld c, $40
     call Multiply8Bit
     ld d, h
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     ld c, $02
     call Multiply8Bit
     add hl, de
@@ -1495,7 +1495,7 @@ jr_00e_4c35:
     ld a, $76
     call Call_00e_549c
     ld hl, $5299
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     add l
     ld l, a
     ld a, $00
@@ -1504,7 +1504,7 @@ jr_00e_4c35:
     ld a, [hl]
     ld [$c646], a
     ld hl, $52a9
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     add l
     ld l, a
     ld a, $00
@@ -2708,19 +2708,19 @@ Call_00e_5285: ; Update an C820 screen position
     ldh [$fff0], a
 
 Call_00e_52b9:
-    callfar Label_00f_606e
+    callfar CheckPlayerFacingHarvestSpriteDown
     ret
 
 Call_00e_52c2:
-    callfar Label_00f_6122
+    callfar CheckPlayerFacingHarvestSpriteLeft
     ret
 
 Call_00e_52cb:
-    callfar Label_00f_617c
+    callfar CheckPlayerFacingHarvestSpriteRight
     ret
 
 Call_00e_52d4:
-    callfar Label_00f_60c8
+    callfar CheckPlayerFacingHarvestSpriteUp
     ret
 
 Call_00e_52dd:
@@ -3208,7 +3208,7 @@ jr_00e_5507:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
@@ -4193,7 +4193,7 @@ Call_00e_5ad2:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [$cc9a]
     or a
     jr z, jr_00e_5c05
@@ -5259,7 +5259,7 @@ Call_00e_616c:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
@@ -6066,7 +6066,7 @@ jr_00e_669f:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a

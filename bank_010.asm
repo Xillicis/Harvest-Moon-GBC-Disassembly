@@ -133,7 +133,7 @@ jr_010_40c6:
     cp c
     adc e
     cp c
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     call Call_000_2d67
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
@@ -1038,7 +1038,7 @@ jr_010_4fbe:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a

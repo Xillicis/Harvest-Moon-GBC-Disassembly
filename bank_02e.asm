@@ -139,7 +139,7 @@ jr_02e_40e9:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [$cc9a]
     or a
     jr z, jr_02e_4134
@@ -1747,13 +1747,13 @@ Call_02e_4af8:
     cp $01
     jr z, jr_02e_4b20
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     dec a
     ld c, $40
     call Multiply8Bit
     ld d, h
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     ld c, $02
     call Multiply8Bit
     add hl, de
@@ -1767,13 +1767,13 @@ Call_02e_4af8:
 
 
 jr_02e_4b20:
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     add $03
     ld c, $40
     call Multiply8Bit
     ld d, h
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     ld c, $02
     call Multiply8Bit
     add hl, de
@@ -1947,7 +1947,7 @@ jr_02e_4c12:
     ld a, $76
     call Call_02e_5479
     ld hl, $5276
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     add l
     ld l, a
     ld a, $00
@@ -1956,7 +1956,7 @@ jr_02e_4c12:
     ld a, [hl]
     ld [$c646], a
     ld hl, $5286
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     add l
     ld l, a
     ld a, $00
@@ -3660,7 +3660,7 @@ jr_02e_54e4:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
@@ -4641,7 +4641,7 @@ Call_02e_5aa2:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [$cc9a]
     or a
     jr z, jr_02e_5bba
@@ -5700,7 +5700,7 @@ Call_02e_6121:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
@@ -6500,7 +6500,7 @@ jr_02e_6647:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a

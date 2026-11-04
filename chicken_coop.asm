@@ -127,7 +127,7 @@ InitializeChickenCoopScene: ; 04x4001
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a

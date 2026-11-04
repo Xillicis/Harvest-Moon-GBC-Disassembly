@@ -85,7 +85,7 @@ Call_03f_4092:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wFreezePlayerWhenEnteringNewMap]
     ld b, a
     ld a, [wPlayerIdleWhenExitingCurrentMap]

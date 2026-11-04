@@ -311,7 +311,7 @@ jr_038_414c:
     ld [hl], b
     add b
     ld hl, sp+$50
-    call c, $b8a8
+    call c, sShedSuperHoeFlag
     ld h, b
     or b
     ld h, b

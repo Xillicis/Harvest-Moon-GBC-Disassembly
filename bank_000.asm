@@ -1023,7 +1023,7 @@ Label_000_0c98:
 INCLUDE "home/add_array.asm"
 INCLUDE "home/rtc.asm"
 
-Call_000_0d90:
+CopyRTCSnapshotToSRAM: ; 0x0d90
     ld a, [$c902]
     ld [$b886], a
     ld a, [$c903]

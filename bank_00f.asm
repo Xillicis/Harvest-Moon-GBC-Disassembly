@@ -7,18 +7,15 @@ SECTION "ROM Bank $00f", ROMX[$4000], BANK[$f]
 
     db $0f ; bank number
 
-Data_00f_4001:
+GetFacingCaveTileCoordinates:
     ld a, [wPlayerFacingDirection]
     rst $00
-    dec c
-    ld b, b
-    ld c, [hl]
-    ld b, b
-    adc a
-    ld b, b
-    ret nc
+    dw .down
+    dw .left
+    dw .right
+    dw .up
 
-    ld b, b
+.down
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -32,7 +29,7 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ld a, [wPlayerYPosition]
     ld l, a
     ld a, [wPlayerYPosition+1]
@@ -52,10 +49,10 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ret
 
-
+.left
     ld a, [wPlayerYPosition]
     add $08
     ld l, a
@@ -71,7 +68,7 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ld a, [wPlayerXPosition]
     sub $09
     ld l, a
@@ -87,10 +84,10 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ret
 
-
+.right
     ld a, [wPlayerYPosition]
     add $08
     ld l, a
@@ -106,7 +103,7 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ld a, [wPlayerXPosition]
     add $08
     ld l, a
@@ -122,10 +119,10 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ret
 
-
+.up
     ld a, [wPlayerXPosition]
     ld l, a
     ld a, [wPlayerXPosition+1]
@@ -139,7 +136,7 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc94], a
+    ld [wFacingCaveTileX], a
     ld a, [wPlayerYPosition]
     add $02
     ld l, a
@@ -155,11 +152,11 @@ Data_00f_4001:
     srl h
     rr l
     ld a, l
-    ld [$cc95], a
+    ld [wFacingCaveTileY], a
     ret
 
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     rst $00
     dec l
     ld b, c
@@ -193,7 +190,7 @@ Data_00f_4001:
 
 
     ld e, l
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld c, l
     ld b, c
@@ -678,7 +675,7 @@ jr_00f_43f0:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec hl
     ld b, h
@@ -1159,7 +1156,7 @@ jr_00f_46ce:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     add hl, bc
     ld b, a
@@ -1644,7 +1641,7 @@ jr_00f_49ac:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     rst $20
     ld c, c
@@ -2127,7 +2124,7 @@ jr_00f_4c8a:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     push bc
     ld c, h
@@ -2610,7 +2607,7 @@ jr_00f_4f68:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     and e
     ld c, a
@@ -3097,7 +3094,7 @@ jr_00f_5246:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     add c
     ld d, d
@@ -3580,7 +3577,7 @@ jr_00f_5524:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld e, a
     ld d, l
@@ -4064,7 +4061,7 @@ jr_00f_5802:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec a
     ld e, b
@@ -4549,7 +4546,7 @@ jr_00f_5ae0:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     dec de
     ld e, e
@@ -5031,7 +5028,7 @@ jr_00f_5dbe:
     jp Jump_00f_601b
 
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     rst $00
     ld sp, hl
     ld e, l
@@ -5424,11 +5421,11 @@ Jump_00f_601b:
     cp $03
     ret nz
 
-    ld a, [$cc95]
+    ld a, [wFacingCaveTileY]
     cp $03
     ret nz
 
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     cp $05
     jr z, jr_00f_6046
 
@@ -5444,7 +5441,7 @@ Jump_00f_601b:
 jr_00f_6046:
     ld a, $04
     ld [$cc16], a
-    ld a, [$cc94]
+    ld a, [wFacingCaveTileX]
     cp $05
     jr z, jr_00f_605d
 
@@ -5472,10 +5469,10 @@ jr_00f_6068:
     ld [$cc16], a
     ret
 
-Label_00f_606e:
+CheckPlayerFacingHarvestSpriteDown: ; 0fx606e
     ld a, [$c820]
     or a
-    jr z, jr_00f_60bc
+    jr z, .notFacingSprite
 
     ld a, [$c826]
     sub $06
@@ -5503,34 +5500,34 @@ Label_00f_606e:
     ldh [$ffa7], a
     ldh a, [$ffa6]
     cp d
-    jr nc, jr_00f_60bc
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa7]
     cp d
-    jr c, jr_00f_60bc
+    jr c, .notFacingSprite
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_00f_60bc
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa5]
     cp b
-    jr nc, jr_00f_60c2
+    jr nc, .facingSprite
 
-jr_00f_60bc:
+.notFacingSprite
     ld a, 0
     ld [wPlayerIsFacingSprite], a
     ret
 
-jr_00f_60c2:
+.facingSprite
     ld a, 1
     ld [wPlayerIsFacingSprite], a
     ret
 
-Label_00f_60c8:
+CheckPlayerFacingHarvestSpriteUp: ; 0fx60c8
     ld a, [$c820]
     or a
-    jr z, jr_00f_6116
+    jr z, .notFacingSprite
 
     ld a, [$c826]
     sub $06
@@ -5558,35 +5555,34 @@ Label_00f_60c8:
     ldh [$ffa7], a
     ldh a, [$ffa7]
     cp e
-    jr c, jr_00f_6116
+    jr c, .notFacingSprite
 
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_00f_6116
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_00f_6116
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa5]
     cp b
-    jr nc, jr_00f_611c
+    jr nc, .facingSprite
 
-jr_00f_6116:
+.notFacingSprite
     ld a, 0
     ld [wPlayerIsFacingSprite], a
     ret
 
-
-jr_00f_611c:
+.facingSprite
     ld a, 1
     ld [wPlayerIsFacingSprite], a
     ret
 
-Label_00f_6122:
+CheckPlayerFacingHarvestSpriteLeft: ; 0fx6122
     ld a, [$c820]
     or a
-    jr z, jr_00f_6170
+    jr z, .notFacingSprite
 
     ld a, [$c826]
     sub $06
@@ -5614,35 +5610,34 @@ Label_00f_6122:
     ldh [$ffa7], a
     ldh a, [$ffa5]
     cp c
-    jr c, jr_00f_6170
+    jr c, .notFacingSprite
 
     ldh a, [$ffa4]
     cp c
-    jr nc, jr_00f_6170
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_00f_6170
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa7]
     cp d
-    jr nc, jr_00f_6176
+    jr nc, .facingSprite
 
-jr_00f_6170:
+.notFacingSprite
     ld a, 0
     ld [wPlayerIsFacingSprite], a
     ret
 
-
-jr_00f_6176:
+.facingSprite
     ld a, 1
     ld [wPlayerIsFacingSprite], a
     ret
 
-Label_00f_617c:
+CheckPlayerFacingHarvestSpriteRight: ; 0fx617c
     ld a, [$c820]
     or a
-    jr z, jr_00f_61ca
+    jr z, .notFacingSprite
 
     ld a, [$c826]
     sub $06
@@ -5670,26 +5665,26 @@ Label_00f_617c:
     ldh [$ffa7], a
     ldh a, [$ffa4]
     cp b
-    jr nc, jr_00f_61ca
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa5]
     cp b
-    jr c, jr_00f_61ca
+    jr c, .notFacingSprite
 
     ldh a, [$ffa6]
     cp e
-    jr nc, jr_00f_61ca
+    jr nc, .notFacingSprite
 
     ldh a, [$ffa7]
     cp d
-    jr nc, jr_00f_61d0
+    jr nc, .facingSprite
 
-jr_00f_61ca:
+.notFacingSprite
     ld a, 0
     ld [wPlayerIsFacingSprite], a
     ret
 
-jr_00f_61d0:
+.facingSprite
     ld a, 1
     ld [wPlayerIsFacingSprite], a
     ret
@@ -6109,11 +6104,11 @@ Call_00f_62dc:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
-    call Call_00f_64c2
+    call TickInputFreezeTimer
     call Call_00f_64ca
     ld a, [$ccb7]
     and $18
@@ -6144,8 +6139,7 @@ jr_00f_64b0:
     call BankSwitchCallHL
     ret
 
-
-Call_00f_64c2:
+TickInputFreezeTimer: ; 0fx64c2
     ld hl, wInputFreezeTimer
     ld a, [hl]
     or a
@@ -7615,7 +7609,7 @@ jr_00f_6c70:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a
@@ -8247,7 +8241,7 @@ Call_00f_7097:
     ld hl, $9a54
 
 jr_00f_709a:
-    call Call_00f_70b2
+    call Set2x2BGAttributesPalette4
     ld a, $a8
     ld [hl+], a
     ld a, $a9
@@ -8264,8 +8258,7 @@ jr_00f_709a:
     ld [hl], a
     ret
 
-
-Call_00f_70b2:
+Set2x2BGAttributesPalette4: ; 04x70b2
     push hl
     ld c, $4f
     ld a, $01
@@ -8413,13 +8406,15 @@ jr_00f_7131:
     nop
     nop
     nop
+
+UpdateScreenFadeIn: ; 0fx714c (is this correct address?)
     ld a, [$cd23]
     or a
     jr z, jr_00f_7159
 
     ld a, [$c0bb]
     or a
-    jp nz, Jump_00f_71cf
+    jp nz, UpdateCGBScreenFadeIn
 
 jr_00f_7159:
     ld a, [$dd00]
@@ -8500,8 +8495,7 @@ jr_00f_71a8:
     dec [hl]
     ret
 
-
-Jump_00f_71cf:
+UpdateCGBScreenFadeIn:
     ld a, [wFreezePlayerWhenEnteringNewMap]
     or a
     ret z
@@ -8526,7 +8520,7 @@ jr_00f_71e1:
     ld a, [wFreezePlayerWhenEnteringNewMap]
     dec a
     ld [wFreezePlayerWhenEnteringNewMap], a
-    jr z, jr_00f_7259
+    jr z, .restoreBufferedPalettes
 
     add a
     add a
@@ -8562,7 +8556,7 @@ jr_00f_71e1:
     ld b, $20
     inc c
 
-jr_00f_722d:
+.uploadBackgroundPalettes
     di
     call SyncToBlankPeriod
     ld a, [hl+]
@@ -8573,7 +8567,7 @@ jr_00f_722d:
     ldh [c], a
     ei
     dec b
-    jr nz, jr_00f_722d
+    jr nz, .uploadBackgroundPalettes
 
     inc c
     ld hl, $dd42
@@ -8585,7 +8579,7 @@ jr_00f_722d:
     ld b, $20
     inc c
 
-jr_00f_724a:
+.uploadObjectPalettes
     di
     call SyncToBlankPeriod
     ld a, [hl+]
@@ -8596,12 +8590,11 @@ jr_00f_724a:
     ldh [c], a
     ei
     dec b
-    jr nz, jr_00f_724a
+    jr nz, .uploadObjectPalettes
 
     ret
 
-
-jr_00f_7259:
+.restoreBufferedPalettes
     ld hl, $dd02
     call CGBBackgroundPaletteUpload
     ld hl, $dd42
@@ -8730,14 +8723,14 @@ jr_00f_72d2:
     cp l
     cp l
 
-Label_00f_72de:
+UpdateScreenFadeOut: ; 0fx72de
     ld a, [$cd23]
     or a
     jr z, jr_00f_72eb
 
     ld a, [$c0bb]
     or a
-    jp nz, Jump_00f_7370
+    jp nz, UpdateCGBScreenFadeOut
 
 jr_00f_72eb:
     ld a, [$dd00]
@@ -8827,8 +8820,7 @@ jr_00f_7349:
     dec [hl]
     ret
 
-
-Jump_00f_7370:
+UpdateCGBScreenFadeOut:
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret z
@@ -8853,7 +8845,7 @@ jr_00f_7382:
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     dec a
     ld [wPlayerIdleWhenExitingCurrentMap], a
-    jr z, jr_00f_740b
+    jr z, FinishFadeOut
 
     ld b, a
     ld a, $08
@@ -8892,7 +8884,7 @@ jr_00f_7382:
     ld b, $20
     inc c
 
-jr_00f_73d2:
+.uploadBackgroundPalettes
     di
     call SyncToBlankPeriod
     ld a, [hl+]
@@ -8903,7 +8895,7 @@ jr_00f_73d2:
     ldh [c], a
     ei
     dec b
-    jr nz, jr_00f_73d2
+    jr nz, .uploadBackgroundPalettes
 
     inc c
     ld hl, $dd42
@@ -8915,7 +8907,7 @@ jr_00f_73d2:
     ld b, $20
     inc c
 
-jr_00f_73ef:
+.uploadObjectPalettes
     di
     call SyncToBlankPeriod
     ld a, [hl+]
@@ -8926,32 +8918,30 @@ jr_00f_73ef:
     ldh [c], a
     ei
     dec b
-    jr nz, jr_00f_73ef
+    jr nz, .uploadObjectPalettes
 
     ret
 
-
-Call_00f_73fe:
+UploadBufferedCGBPalettes: ; 0fx73fe
     ld hl, $dd02
     call CGBBackgroundPaletteUpload
     ld hl, $dd42
     call BGPBackgroundPaletteUpload
     ret
 
-
-jr_00f_740b:
+FinishFadeOut:
     ld b, $40
     ld hl, $dd02
 
-jr_00f_7410:
+.fillPalettesWhite
     ld a, $ff
     ld [hl+], a
     ld a, $7f
     ld [hl+], a
     dec b
-    jr nz, jr_00f_7410
+    jr nz, .fillPalettesWhite
 
-    call Call_00f_73fe
+    call UploadBufferedCGBPalettes
     ld a, [$cb50]
     ld [wSTAT_HandlerIndex], a
     ld a, $01

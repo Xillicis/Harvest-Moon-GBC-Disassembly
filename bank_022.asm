@@ -152,7 +152,7 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     ld a, [wPlayerIdleWhenExitingCurrentMap]
     or a
     ret nz
@@ -614,7 +614,7 @@ jr_022_4395:
 
 
 Call_022_439b:
-    ld a, [$ba38]
+    ld a, [sSickleUpgradeHours]
     cp $ff
     ret z
 
@@ -627,12 +627,12 @@ Call_022_439b:
     cp $0c
     jr nc, jr_022_43bb
 
-    ld a, [$ba38]
+    ld a, [sSickleUpgradeHours]
     add l
     cp $0c
     jr nc, jr_022_43bb
 
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 
@@ -640,12 +640,12 @@ jr_022_43bb:
     ld a, 1
     ld [sShedSuperSickleFlag], a
     ld a, $ff
-    ld [$ba38], a
+    ld [sSickleUpgradeHours], a
     ret
 
 
 Call_022_43c6:
-    ld a, [$ba39]
+    ld a, [sHoeUpgradeHours]
     cp $ff
     ret z
 
@@ -658,20 +658,20 @@ Call_022_43c6:
     cp $18
     jr nc, jr_022_43e6
 
-    ld a, [$ba39]
+    ld a, [sHoeUpgradeHours]
     add l
     cp $18
     jr nc, jr_022_43e6
 
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 
 jr_022_43e6:
     ld a, $01
-    ld [$b8a8], a
+    ld [sShedSuperHoeFlag], a
     ld a, $ff
-    ld [$ba39], a
+    ld [sHoeUpgradeHours], a
     ret
 
 
@@ -3345,7 +3345,7 @@ jr_022_5191:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [$cb5a], a
     ld [$cb5b], a

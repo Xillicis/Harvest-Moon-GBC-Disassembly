@@ -139,7 +139,7 @@ jr_003_410e:
     ret
 
 
-    call Call_000_0d90
+    call CopyRTCSnapshotToSRAM
     xor a
     ld [wPlayerMovementXType], a
     ld [wPlayerMovementYType], a
