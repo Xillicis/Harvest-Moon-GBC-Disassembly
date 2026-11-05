@@ -43,32 +43,32 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     ld [$cbe7], a
     ld hl, Data_002_4973
     ld de, $9821
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_4985
     ld de, $9881
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_4997
     ld de, $98a1
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_49a9
     ld de, $98e1
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_49bb
     ld de, $9921
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_49cd
     ld de, $9961
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_49df
     ld de, $9981
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_49f1
     ld de, $99c1
-    call Call_002_41dc
+    call Copy18TileIDsWithOffset
     ld hl, Data_002_4a03
     ld de, $99e1
-    call Call_002_41dc
-    call Call_002_492a
+    call Copy18TileIDsWithOffset
+    call DrawTimerReportBorder
     ld hl, $9880
     ld a, $f4
     ld [hl], a
@@ -106,9 +106,9 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     call AdvanceCalendarByTimerHours
     call InitRealTimeClock
     call ClampTimerAdvanceToYearEnd
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     push hl
     ld b, h
@@ -118,31 +118,31 @@ SECTION "ROM Bank $002", ROMX[$4000], BANK[$2]
     pop hl
     push hl
     pop hl
-    call Call_002_4919
+    call RestoreEnergyAfter24TimerHours
     call Call_002_44f7
     call Call_002_4550
     call Call_002_4533
     call Call_002_4689
-    call Call_002_430a
+    call UpdateSpriteEventsAfterTimerAdvance
     call Call_002_4372
     ld hl, $9863
     ld a, [sCurrentDayCounter]
     inc a
-    call Call_002_4224
+    call DrawTwoDigitNumber
     ld a, [sCurrentSeason]
     ld hl, $9865
-    call Call_002_41e6
+    call DrawTimerReportSeason
     ld a, [sCurrentHour]
     ld hl, $986f
     call DrawTimerReportHour
     ld de, $986b
-    call Call_002_42b8
-    call Call_002_4a15
+    call DrawTimerReportWeekday
+    call SimulateFarmDuringTimerAdvance
     call Call_002_4b0a
-    call Call_002_4ee1
-    call Call_002_4e2f
-    call Call_002_4e52
-    call Call_002_4e70
+    call UpdateFarmTilesForSeasonAndWeather
+    call DrawTimerShipmentCount
+    call DrawTimerWateringDays
+    call DrawTimerFeedingDays
     ld a, $83
     ld [wLCDCTempStorage], a
     xor a
@@ -211,7 +211,7 @@ jr_002_4170:
     ld [$ba4d], a
     ret
 
-Call_002_41dc:
+Copy18TileIDsWithOffset: ; 02x41dc
     ld b, $12
 .loop
     ld a, [hl+]
@@ -222,7 +222,7 @@ Call_002_41dc:
     jr nz, .loop
     ret
 
-Call_002_41e6:
+DrawTimerReportSeason: ; 02x41e6
     ld de, $420c
     add a
     ld b, a
@@ -285,7 +285,7 @@ Call_002_41e6:
     add c
     add d
 
-Call_002_4224:
+DrawTwoDigitNumber: ; 02x4224
     push hl
     ld l, a
     ld h, $00
@@ -431,7 +431,7 @@ jr_002_42ac:
     dec [hl]
 
 ; This has something to do with loading stuff into VRAM
-Call_002_42b8:
+DrawTimerReportWeekday: ; 02x42b8
     push de
 ; compute total number of days passed in the year
     ld a, [sCurrentSeason]
@@ -482,9 +482,9 @@ Data_002_42ee:
     db $58, $59, $5A, $57, $5B, $5C, $5D, $5E, $5F, $60, $61, $62, $5B, $63, $64, $65
     db $66, $67, $68, $69, $54, $6A, $6B, $6C, $54, $55, $56, $57, 
 
-Call_002_430a:
+UpdateSpriteEventsAfterTimerAdvance: ; 02x430a
     ld a, [sSpriteEventFlags]
-    bit 7, a
+    bit EVENT_IMPROVE_SICKLE, a
     call nz, AdvanceSickleUpgradeProgress
     ld a, [sSpriteEventFlags]
     bit 6, a
@@ -499,11 +499,11 @@ Call_002_430a:
     bit EVENT_BROKE_BOULDER_ON_SPRITE, a
     ret nz
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
-    ld a, $18
+    ld a, 24
     call DivideHLByA_16bit
     ld a, h
     or l
@@ -527,11 +527,11 @@ jr_002_4337:
 
 
 jr_002_4351:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
-    ld a, $18
+    ld a, 24
     call DivideHLByA_16bit
     ld b, a
     ld a, [sCurrentHour]
@@ -550,11 +550,11 @@ jr_002_436c:
     ret
 
 Call_002_4372:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
-    ld a, $18
+    ld a, 24
     call DivideHLByA_16bit
     ld a, h
     or l
@@ -566,11 +566,11 @@ jr_002_4383:
     ret
 
 jr_002_4388:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
-    ld a, $18
+    ld a, 24
     call DivideHLByA_16bit
     ld b, a
     ld a, [sCurrentHour]
@@ -593,18 +593,18 @@ AdvanceSickleUpgradeProgress: ; 02x43a9
     cp $ff
     ret z
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, .setSuperSickle
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     cp 12
     jr nc, .setSuperSickle
 
     ld a, [sSickleUpgradeHours]
     add l
-    cp $0c
+    cp 12
     jr nc, .setSuperSickle
 
     ld [sSickleUpgradeHours], a
@@ -622,11 +622,11 @@ AdvanceHoeUpgradeProgress: ; 02x43d4
     cp $ff
     ret z
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, .completeUpgrade
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     cp $18
     jr nc, .completeUpgrade
@@ -648,9 +648,9 @@ AdvanceHoeUpgradeProgress: ; 02x43d4
 
 AdvanceCalendarByTimerHours: ; 02x43ff
     call CalculateElapsedTimerHours
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -744,12 +744,12 @@ jr_002_4482:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     sub l
-    ld [$cbe5], a
-    ld a, [$cbe4]
+    ld [wElapsedTimerHoursLo], a
+    ld a, [wElapsedTimerHoursHi]
     sbc h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, [sCurrentYear]
     dec a
     ld [sCurrentYear], a
@@ -768,12 +768,12 @@ jr_002_44d5:
     ld a, [sCurrentHour]
     sub $06
     ld b, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     sub b
-    ld [$cbe5], a
-    ld a, [$cbe4]
+    ld [wElapsedTimerHoursLo], a
+    ld a, [wElapsedTimerHoursHi]
     sbc $00
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
@@ -848,7 +848,7 @@ Call_002_4550:
     cp $02
     ret c
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jp nz, Jump_002_465d
 
@@ -890,28 +890,28 @@ jr_002_458f:
     ld a, $48
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jp nc, Jump_002_465d
 
     ld a, $30
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_45bc
 
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_45c2
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_45c8
 
@@ -955,21 +955,21 @@ jr_002_45e1:
     ld a, $30
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_465d
 
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_4603
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_4609
 
@@ -1007,14 +1007,14 @@ jr_002_4622:
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_465d
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_002_463a
 
@@ -1043,7 +1043,7 @@ Jump_002_4640:
 
 jr_002_4653:
     call Call_002_467e
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp b
     jr nc, jr_002_465d
 
@@ -1426,9 +1426,9 @@ jr_002_48d1:
     ld a, $0f
     call DivideHLByA_16bit
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
 
@@ -1451,9 +1451,9 @@ jr_002_48f1:
     ld a, $0f
     call DivideHLByA_16bit
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
 
@@ -1473,13 +1473,12 @@ jr_002_490d:
 
 jr_002_4910:
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
-
-Call_002_4919:
+RestoreEnergyAfter24TimerHours: ; 02x4919
     ld a, h
     or a
     jr nz, jr_002_4923
@@ -1494,7 +1493,7 @@ jr_002_4923:
     ld [sPlayerEnergy], a
     ret
 
-Call_002_492a:
+DrawTimerReportBorder: ; 02x492a
     ld a, $f1
     ld [$9800], a
     ld b, $12
@@ -1572,20 +1571,20 @@ Data_002_4a03:
     db $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $AF, $03, $1A, $32, $2C
     db $AF, $AF 
 
-Call_002_4a15:
-    call Call_002_4ea8
-    ld a, [$cbe4]
+SimulateFarmDuringTimerAdvance: ; 02x4a15
+    call CollectPendingShipmentPaymentAfterTimerAdvance
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
-    ld a, $18
+    ld a, 24
     call DivideHLByA_16bit
     ld a, l
     ld [$cbdc], a
     or a
     ret z
 
-    call Call_002_5002
+    call InitializeSpriteWorkDayCounter
     ld a, [$cbde]
     ldh [$ffa6], a
     ld a, [$cbdf]
@@ -1595,14 +1594,14 @@ Call_002_4a15:
     ret z
 
     ld e, a
-    jr jr_002_4a61
+    jr .beginDailyFarmScan
 
-Jump_002_4a40:
+.advanceSimulationDay
     ldh a, [$ffa7]
     inc a
     ldh [$ffa7], a
     cp $1e
-    jr nz, jr_002_4a53
+    jr nz, .updateSpriteWorkCounter
 
     xor a
     ldh [$ffa7], a
@@ -1611,138 +1610,138 @@ Jump_002_4a40:
     and $03
     ldh [$ffa6], a
 
-jr_002_4a53:
+.updateSpriteWorkCounter
     ld a, [$ccc6]
     dec a
     ld [$ccc6], a
     cp $ff
-    jr nz, jr_002_4a61
+    jr nz, .beginDailyFarmScan
 
-    call Call_002_5002
+    call InitializeSpriteWorkDayCounter
 
-jr_002_4a61:
+.beginDailyFarmScan
     xor a
     ldh [$ffa8], a
     push de
     ld hl, sMapObjectLocation
     ld bc, $0c40
 
-Jump_002_4a6b:
+.nextFarmObject
     ld a, [hli]
     ld e, a
     ld a, [hli]
     ld d, a
     and $40
-    jr z, jr_002_4aea
+    jr z, .finishFarmObject
 
     ld a, e
     and $f0
     cp $40
-    jr nz, jr_002_4a7f
+    jr nz, .jr_002_4a7f
 
-    call Call_002_4b1b
-    jr jr_002_4aea
+    call AdvanceGrassDuringTimerDay
+    jr .finishFarmObject
 
-jr_002_4a7f:
+.jr_002_4a7f
     ld a, [$ccc6]
     or a
-    jr z, jr_002_4aea
+    jr z, .finishFarmObject
 
     ld a, e
     and $f0
     cp $50
-    jr z, jr_002_4a92
+    jr z, .jr_002_4a92
 
     cp $60
-    jr z, jr_002_4a92
+    jr z, .jr_002_4a92
 
-    jr jr_002_4a97
+    jr .jr_002_4a97
 
-jr_002_4a92:
-    call Call_002_4c06
-    jr jr_002_4aea
+.jr_002_4a92
+    call AdvanceCrop50DuringTimerDay
+    jr .finishFarmObject
 
-jr_002_4a97:
+.jr_002_4a97
     cp $70
-    jr z, jr_002_4aa1
+    jr z, .jr_002_4aa1
 
     cp $80
-    jr z, jr_002_4aa1
+    jr z, .jr_002_4aa1
 
-    jr jr_002_4aa6
+    jr .jr_002_4aa6
 
-jr_002_4aa1:
+.jr_002_4aa1
     call Call_002_4c64
-    jr jr_002_4aea
+    jr .finishFarmObject
 
-jr_002_4aa6:
+.jr_002_4aa6
     cp $90
-    jr z, jr_002_4aac
+    jr z, .advanceTurnip
 
-    jr jr_002_4ab1
+    jr .jr_002_4ab1
 
-jr_002_4aac:
-    call Call_002_4b59
-    jr jr_002_4aea
+.advanceTurnip
+    call AdvanceTurnipDuringTimerDay
+    jr .finishFarmObject
 
-jr_002_4ab1:
+.jr_002_4ab1
     cp $a0
-    jr z, jr_002_4ab7
+    jr z, .advancePotato
 
-    jr jr_002_4abc
+    jr .jr_002_4abc
 
-jr_002_4ab7:
-    call Call_002_4bad
-    jr jr_002_4aea
+.advancePotato
+    call AdvancePotatoDuringTimerDay
+    jr .finishFarmObject
 
-jr_002_4abc:
+.jr_002_4abc
     cp $b0
-    jr z, jr_002_4ac2
+    jr z, .jr_002_4ac2
 
-    jr jr_002_4ac7
+    jr .jr_002_4ac7
 
-jr_002_4ac2:
+.jr_002_4ac2
     call Call_002_4cca
-    jr jr_002_4aea
+    jr .finishFarmObject
 
-jr_002_4ac7:
+.jr_002_4ac7
     cp $c0
-    jr z, jr_002_4acd
+    jr z, .jr_002_4acd
 
-    jr jr_002_4ad2
+    jr .jr_002_4ad2
 
-jr_002_4acd:
+.jr_002_4acd
     call Call_002_4d1f
-    jr jr_002_4aea
+    jr .finishFarmObject
 
-jr_002_4ad2:
+.jr_002_4ad2
     cp $d0
-    jr z, jr_002_4ad8
+    jr z, .jr_002_4ad8
 
-    jr jr_002_4add
+    jr .jr_002_4add
 
-jr_002_4ad8:
+.jr_002_4ad8
     call Call_002_4d78
-    jr jr_002_4aea
+    jr .finishFarmObject
 
-jr_002_4add:
+.jr_002_4add
     cp $e0
-    jr z, jr_002_4ae7
+    jr z, .jr_002_4ae7
 
     cp $f0
-    jr z, jr_002_4ae7
+    jr z, .jr_002_4ae7
 
-    jr jr_002_4aea
+    jr .finishFarmObject
 
-jr_002_4ae7:
+.jr_002_4ae7
     call Call_002_4dd1
 
-jr_002_4aea:
+.finishFarmObject
     dec bc
     ld a, b
     or c
     cp $00
-    jp nz, Jump_002_4a6b
+    jp nz, .nextFarmObject
 
     ldh a, [$ffa8]
     ld b, a
@@ -1754,7 +1753,7 @@ jr_002_4aea:
     ld [$cbe7], a
     pop de
     dec e
-    jp nz, Jump_002_4a40
+    jp nz, .advanceSimulationDay
 
     ret
 
@@ -1768,8 +1767,7 @@ Call_002_4b0a:
     call BankSwitchCallHL
     ret
 
-
-Call_002_4b1b:
+AdvanceGrassDuringTimerDay: ; 02x4b1b
     push hl
     push bc
     dec hl
@@ -1815,18 +1813,10 @@ Jump_002_4b45:
     jr jr_002_4b2e
     ret
 
+TurnipGrowthAttributes: ; 02x4b50
+    db $40, $48, $40, $48, $41, $49, $41, $49, $41
 
-    ld b, b
-    ld c, b
-    ld b, b
-    ld c, b
-    ld b, c
-    ld c, c
-    ld b, c
-    ld c, c
-    ld b, c
-
-Call_002_4b59:
+AdvanceTurnipDuringTimerDay: ; 02x4b59
     push hl
     push bc
     dec hl
@@ -1838,13 +1828,13 @@ Call_002_4b59:
     push de
     ld a, [hl]
     cp $98
-    jr z, jr_002_4b96
+    jr z, .harvest
 
     inc a
     ld [hl], a
     sub $90
     push hl
-    ld hl, $4b50
+    ld hl, TurnipGrowthAttributes
     add l
     ld l, a
     ld a, $00
@@ -1854,12 +1844,12 @@ Call_002_4b59:
     ld c, l
     ld a, [hl]
     and $08
-    jr nz, jr_002_4b82
+    jr nz, .applyWatering
 
     ld a, [hl]
-    jr jr_002_4b8f
+    jr .storeGrowthAttributes
 
-jr_002_4b82:
+.applyWatering
     ld a, $01
     ldh [$ffa8], a
     pop hl
@@ -1871,17 +1861,16 @@ jr_002_4b82:
     inc bc
     ld a, [bc]
 
-jr_002_4b8f:
+.storeGrowthAttributes
     pop hl
     inc hl
-    ld [hl-], a
+    ld [hld], a
     pop de
     pop bc
     pop hl
     ret
 
-
-jr_002_4b96:
+.harvest
     ld a, $11
     ld [hl+], a
     xor a
@@ -1903,8 +1892,7 @@ Jump_002_4ba5:
     pop hl
     ret
 
-
-Call_002_4bad:
+AdvancePotatoDuringTimerDay: ; 02x4bad
     push hl
     push bc
     dec hl
@@ -1986,7 +1974,7 @@ jr_002_4bea:
     ld c, c
     ld b, c
 
-Call_002_4c06:
+AdvanceCrop50DuringTimerDay: ; 02x4c06
     push hl
     push bc
     dec hl
@@ -2494,7 +2482,7 @@ jr_002_4e0e:
     ld c, c
     ld b, c
 
-Call_002_4e2f:
+DrawTimerShipmentCount: ; 02x4e2f
     ld a, [$cbe2]
     ld l, a
     ld a, [$cbe3]
@@ -2515,8 +2503,7 @@ Call_002_4e2f:
     ld [hl], a
     ret
 
-
-Call_002_4e52:
+DrawTimerWateringDays: ; 02x4e52
     ld a, [$cbe6]
     ld l, a
     ld a, [$cbe7]
@@ -2534,8 +2521,7 @@ Call_002_4e52:
     ld [hl], a
     ret
 
-
-Call_002_4e70:
+DrawTimerFeedingDays: ; 02x4e70
     ld a, [$ccc7]
     ld l, a
     ld h, $00
@@ -2580,13 +2566,12 @@ jr_002_4ea1:
 jr_002_4ea7:
     ret
 
-
-Call_002_4ea8:
-    ld a, [$cbe4]
+CollectPendingShipmentPaymentAfterTimerAdvance: ; 02x4ea8
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, jr_002_4ecb
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld b, a
     or a
     ret z
@@ -2627,7 +2612,7 @@ jr_002_4ecb:
 
 ; I think this might modify the different tiles to be modified by the weather.
 ; So, the planted seeds become automatically watered when it's raining.
-Call_002_4ee1:
+UpdateFarmTilesForSeasonAndWeather: ; 02x4ee1
     ld hl, sMapObjectLocation
     ld bc, $0c40
 
@@ -2657,7 +2642,7 @@ jr_002_4efb:
     jr jr_002_4f0a
 
 jr_002_4f05:
-    call Call_002_4fb0
+    call RemoveCrop50OutsideSummer
     jr jr_002_4f5d
 
 jr_002_4f0a:
@@ -2679,7 +2664,7 @@ jr_002_4f19:
     jr jr_002_4f24
 
 jr_002_4f1f:
-    call Call_002_4fc1
+    call RemoveTurnipOutsideSpring
     jr jr_002_4f5d
 
 jr_002_4f24:
@@ -2733,7 +2718,7 @@ jr_002_4f5a:
     call Call_002_4fee
 
 jr_002_4f5d:
-    call Call_002_4f68
+    call UpdateSoilMoistureForWeather
     dec bc
     ld a, b
     or c
@@ -2741,7 +2726,7 @@ jr_002_4f5d:
     jr nz, jr_002_4ee7
     ret
 
-Call_002_4f68:
+UpdateSoilMoistureForWeather: ; 02x4f68
     ld a, [sCurrentWeather]
     cp RAINY_DAY
     jr z, jr_002_4f89
@@ -2808,56 +2793,55 @@ jr_002_4fa3:
     pop hl
     ret
 
-Call_002_4fb0:
+RemoveCrop50OutsideSummer: ; 02x4fb0
     ld a, [sCurrentSeason]
     cp SUMMER
-    jr nz, jr_002_4ff7
+    jr nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fb8:
     ld a, [sCurrentSeason]
     cp SUMMER
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
-Call_002_4fc1:
+RemoveTurnipOutsideSpring: ; 02x4fc1
     ld a, [sCurrentSeason]
     cp SPRING
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fca:
     ld a, [sCurrentSeason]
     cp SPRING
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fd3:
     ld a, [sCurrentSeason]
     cp AUTUMN
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fdc:
     ld a, [sCurrentSeason]
     cp AUTUMN
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fe5:
     ld a, [sCurrentSeason]
     cp WINTER
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
 Call_002_4fee:
     ld a, [sCurrentSeason]
     cp WINTER
-    jp nz, Jump_002_4ff7
+    jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
-Jump_002_4ff7:
-jr_002_4ff7:
+ReplacePreviousFarmObjectWithPlowedSoil: ; 02x4ff7
     push hl
     push bc
     dec hl
@@ -2869,7 +2853,7 @@ jr_002_4ff7:
     pop hl
     ret
 
-Call_002_5002:
+InitializeSpriteWorkDayCounter: ; 02x5002
     ld a, [sSpriteTotalHappiness]
     cp 90
     jr nc, jr_002_5016

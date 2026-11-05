@@ -238,9 +238,109 @@ ds 1 ; 0xcb8d
 ds 1 ; 0xcb8e
 
 wThrowingSeedsAnimationTimer:: db ; 0xcb8f
+wcb90:: db ; 0xcb90
+wcb91:: db ; 0xcb91
+wcb92:: db ; 0xcb92
+wcb93:: db ; 0xcb93
+wcb94:: db ; 0xcb94
+wcb95:: db ; 0xcb95
+wcb96:: db ; 0xcb96
+wcb97:: db ; 0xcb97
+wcb98:: db ; 0xcb98
+wcb99:: db ; 0xcb99
+wcb9a:: db ; 0xcb9a
+wcb9b:: db ; 0xcb9b
+wcb9c:: db ; 0xcb9c
+wcb9d:: db ; 0xcb9d
+wcb9e:: db ; 0xcb9e
+wcb9f:: db ; 0xcb9f
+wcba0:: db ; 0xcba0
+wcba1:: db ; 0xcba1
+wcba2:: db ; 0xcba2
+wcba3:: db ; 0xcba3
+wcba4:: db ; 0xcba4
+wcba5:: db ; 0xcba5
+wcba6:: db ; 0xcba6
+wcba7:: db ; 0xcba7
+wcba8:: db ; 0xcba8
+wcba9:: db ; 0xcba9
+wcbaa:: db ; 0xcbaa
+wcbab:: db ; 0xcbab
+wcbac:: db ; 0xcbac
+wcbad:: db ; 0xcbad
+wcbae:: db ; 0xcbae
+wcbaf:: db ; 0xcbaf
 
-;ds $13e
-ds $8b
+wcbb0:: db ; 0xcbb0
+wcbb1:: db ; 0xcbb1
+wcbb2:: db ; 0xcbb2
+wcbb3:: db ; 0xcbb3
+wcbb4:: db ; 0xcbb4
+wcbb5:: db ; 0xcbb5
+wcbb6:: db ; 0xcbb6
+wcbb7:: db ; 0xcbb7
+wcbb8:: db ; 0xcbb8
+wcbb9:: db ; 0xcbb9
+wcbba:: db ; 0xcbba
+wcbbb:: db ; 0xcbbb
+wcbbc:: db ; 0xcbbc
+wcbbd:: db ; 0xcbbd
+wcbbe:: db ; 0xcbbe
+wcbbf:: db ; 0xcbbf
+
+wcbc0:: db ; 0xcbc0
+wcbc1:: db ; 0xcbc1
+wcbc2:: db ; 0xcbc2
+wcbc3:: db ; 0xcbc3
+wcbc4:: db ; 0xcbc4
+wcbc5:: db ; 0xcbc5
+wcbc6:: db ; 0xcbc6
+wcbc7:: db ; 0xcbc7
+wcbc8:: db ; 0xcbc8
+wcbc9:: db ; 0xcbc9
+wcbca:: db ; 0xcbca
+wcbcb:: db ; 0xcbcb
+wcbcc:: db ; 0xcbcc
+wcbcd:: db ; 0xcbcd
+wcbce:: db ; 0xcbce
+wcbcf:: db ; 0xcbcf
+
+wcbd0:: db ; 0xcbd0
+wcbd1:: db ; 0xcbd1
+wcbd2:: db ; 0xcbd2
+wcbd3:: db ; 0xcbd3
+wcbd4:: db ; 0xcbd4
+wcbd5:: db ; 0xcbd5
+wcbd6:: db ; 0xcbd6
+wcbd7:: db ; 0xcbd7
+wcbd8:: db ; 0xcbd8
+wcbd9:: db ; 0xcbd9
+wcbda:: db ; 0xcbda
+wcbdb:: db ; 0xcbdb
+wcbdc:: db ; 0xcbdc
+wcbdd:: db ; 0xcbdd
+wcbde:: db ; 0xcbde
+wcbdf:: db ; 0xcbdf
+
+wcbe0:: db ; 0xcbe0
+wcbe1:: db ; 0xcbe1
+wcbe2:: db ; 0xcbe2
+wcbe3:: db ; 0xcbe3
+wElapsedTimerHoursHi:: db ; 0xcbe4
+wElapsedTimerHoursLo:: db ; 0xcbe5
+wcbe6:: db ; 0xcbe6
+wcbe7:: db ; 0xcbe7
+wcbe8:: db ; 0xcbe8
+wcbe9:: db ; 0xcbe9
+wcbea:: db ; 0xcbea
+wcbeb:: db ; 0xcbeb
+wcbec:: db ; 0xcbec
+wcbed:: db ; 0xcbed
+wcbee:: db ; 0xcbee
+wcbef:: db ; 0xcbef
+
+
+ds $2b
 
 ; If the player is reading a sign, TV, etc... then this flag is used
 ; to indicate that. Doesn't seem enabled when in the town shops.

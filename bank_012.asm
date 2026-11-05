@@ -8259,9 +8259,9 @@ jr_012_6c99:
     xor a
     ld [$ccc7], a
     ld [$cc23], a
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -8693,9 +8693,9 @@ jr_012_6e91:
 
 
 Call_012_6e9b:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ret
 

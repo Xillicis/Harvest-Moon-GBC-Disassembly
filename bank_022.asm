@@ -106,9 +106,9 @@ SECTION "ROM Bank $022", ROMX[$4000], BANK[$22]
     call Call_022_43f1
     call InitRealTimeClock
     call Call_022_4456
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     push hl
     ld b, h
@@ -513,9 +513,9 @@ Call_022_42fc:
     bit 1, a
     ret nz
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -543,9 +543,9 @@ jr_022_433e:
 
 
 jr_022_4343:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -570,9 +570,9 @@ jr_022_435e:
 
 
 Call_022_4364:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -587,9 +587,9 @@ jr_022_4375:
 
 
 jr_022_437a:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -618,11 +618,11 @@ Call_022_439b:
     cp $ff
     ret z
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, jr_022_43bb
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     cp $0c
     jr nc, jr_022_43bb
@@ -649,11 +649,11 @@ Call_022_43c6:
     cp $ff
     ret z
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, jr_022_43e6
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     cp $18
     jr nc, jr_022_43e6
@@ -677,9 +677,9 @@ jr_022_43e6:
 
 Call_022_43f1:
     call Call_022_483a
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -774,12 +774,12 @@ jr_022_4474:
     ld a, $00
     adc h
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     sub l
-    ld [$cbe5], a
-    ld a, [$cbe4]
+    ld [wElapsedTimerHoursLo], a
+    ld a, [wElapsedTimerHoursHi]
     sbc h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, [sCurrentYear]
     dec a
     ld [sCurrentYear], a
@@ -799,12 +799,12 @@ jr_022_44c7:
     ld a, [sCurrentHour]
     sub $06
     ld b, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     sub b
-    ld [$cbe5], a
-    ld a, [$cbe4]
+    ld [wElapsedTimerHoursLo], a
+    ld a, [wElapsedTimerHoursHi]
     sbc $00
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, TIME_6_AM
     ld [sCurrentHour], a
     xor a
@@ -883,7 +883,7 @@ Call_022_4542:
     cp $02
     ret c
 
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jp nz, Jump_022_464f
 
@@ -925,28 +925,28 @@ jr_022_4581:
     ld a, $48
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jp nc, Jump_022_464f
 
     ld a, $30
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_45ae
 
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_45b4
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_45ba
 
@@ -990,21 +990,21 @@ jr_022_45d3:
     ld a, $30
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_464f
 
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_45f5
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_45fb
 
@@ -1042,14 +1042,14 @@ jr_022_4614:
     ld a, $18
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_464f
 
     ld a, $00
     add b
     ld c, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp c
     jr nc, jr_022_462c
 
@@ -1078,7 +1078,7 @@ Jump_022_4632:
 
 jr_022_4645:
     call Call_022_4670
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     cp b
     jr nc, jr_022_464f
 
@@ -1486,9 +1486,9 @@ jr_022_48c3:
     ld a, $0f
     call DivideHLByA_16bit
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
 
@@ -1511,9 +1511,9 @@ jr_022_48e3:
     ld a, $0f
     call DivideHLByA_16bit
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
 
@@ -1533,9 +1533,9 @@ jr_022_48ff:
 
 jr_022_4902:
     ld a, h
-    ld [$cbe4], a
+    ld [wElapsedTimerHoursHi], a
     ld a, l
-    ld [$cbe5], a
+    ld [wElapsedTimerHoursLo], a
     ret
 
 
@@ -1772,9 +1772,9 @@ jr_022_49cb:
 
 Call_022_4a07:
     call Call_022_4e9a
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     ld h, a
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld l, a
     ld a, $18
     call DivideHLByA_16bit
@@ -2781,11 +2781,11 @@ jr_022_4e99:
 
 
 Call_022_4e9a:
-    ld a, [$cbe4]
+    ld a, [wElapsedTimerHoursHi]
     or a
     jr nz, jr_022_4ebd
 
-    ld a, [$cbe5]
+    ld a, [wElapsedTimerHoursLo]
     ld b, a
     or a
     ret z
