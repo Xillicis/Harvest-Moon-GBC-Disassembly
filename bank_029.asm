@@ -2193,9 +2193,9 @@ Call_029_4aec:
     adc h
     ld h, a
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ld h, b
@@ -2301,9 +2301,9 @@ jr_029_4bc5:
     inc hl
     inc hl
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ld a, $42
@@ -2428,9 +2428,9 @@ jr_029_4c76:
     ld h, b
     ld l, c
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ret
@@ -3533,9 +3533,9 @@ jr_029_50b8:
 
     ld hl, $55f1
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     ld hl, $52d1
     ld a, l
     ld [$cd28], a
@@ -3548,9 +3548,9 @@ jr_029_50b8:
 
     ld hl, $4695
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     ld hl, $52d1
     ld a, l
     ld [$cd28], a
@@ -4173,9 +4173,9 @@ jr_029_555e:
     ld [$cd29], a
     ld de, $4695
     ld a, e
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, d
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ld [$cb5c], a

@@ -7068,7 +7068,7 @@ EnableDisplay_GameplayMode:
     ret
 
 ClearAndShowTextWindow: ; 00x3f0b
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld a, $07
     ldh [$ff96], a
     ld a, $68

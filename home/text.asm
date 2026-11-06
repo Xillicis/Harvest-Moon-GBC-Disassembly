@@ -246,7 +246,7 @@ TextPointerTable: ; 00x3421
     db $66, $54, $0A,
     db $59, $61, $10, 
 
-LoadCharacterTileIntoVRAM:
+UpdateTextEngine:
     ld a, [$cb14]
     or a
     ret nz
@@ -306,7 +306,7 @@ LoadCharacterTileIntoVRAM:
     add hl, de
     ld a, [wTextCharacterCounter]
     or a
-    call z, InitializeTextData
+    call z, ReadTextBlockHeader
     ld a, [hl]
     cp '<DONE>'
     jr z, jr_000_37d7
@@ -397,9 +397,9 @@ jr_000_37d7:
     ld [wTextNavigator], a
     ld [wTextNavigator+1], a
     ld [wTextCharacterCounter], a
-    ld a, [wTextPointer]
+    ld a, [wTextCallbackPointer]
     ld l, a
-    ld a, [wTextPointer+1]
+    ld a, [wTextCallbackPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
@@ -412,7 +412,7 @@ Jump_000_3804:
     or a
     jr z, jr_000_3813
 
-    call Call_000_396d
+    call HandleYesNoTextInput
     ldh a, [hROMBankTemp]
     ld [MBC3RomBank], a
     ret
@@ -422,15 +422,15 @@ jr_000_3813:
     and $01
     jr z, jr_000_3837
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld hl, wTextNavigator
     ld bc, $0001
     call AddBCtoWordAtHL
     xor a
     ld [wTextCharacterCounter], a
-    ld a, [wTextPointer]
+    ld a, [wTextCallbackPointer]
     ld l, a
-    ld a, [wTextPointer+1]
+    ld a, [wTextCallbackPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
@@ -565,7 +565,7 @@ Call_000_38fb:
     call Call_000_3f26
     ret
 
-InitializeTextData: ; 00x3913
+ReadTextBlockHeader: ; 00x3913
     ld a, [wTextNavigator]
     add 10 ;
     ld [wTextNavigator], a
@@ -579,19 +579,19 @@ InitializeTextData: ; 00x3913
     ld a, [hl+]
     ld [wNoTextBlockJump], a
     ld a, [hl+]
-    ld [$cb6c], a
+    ld [wYesCursorTileOffset], a
     ld a, [hl+]
-    ld [$cb6d], a
+    ld [wNoCursorTileOffset], a
     inc hl
     ld a, [hl+]
-    ld [wTextPointer], a
+    ld [wTextCallbackPointer], a
     ld a, [hl+]
-    ld [wTextPointer+1], a
+    ld [wTextCallbackPointer+1], a
     inc hl
     inc hl
     xor a
     ld [wYesOrNo], a
-    ld a, [$cb6d]
+    ld a, [wNoCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -601,7 +601,7 @@ InitializeTextData: ; 00x3913
     call SyncToBlankPeriod
     ld a, [$cb5c]
     ld [de], a
-    ld a, [$cb6c]
+    ld a, [wYesCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -613,12 +613,12 @@ InitializeTextData: ; 00x3913
     ld [de], a
     ret
 
-Call_000_396d:
+HandleYesNoTextInput: ; 00x396d
     ld a, [wYesOrNo]
     cp YES
-    jr z, jr_000_39a9
+    jr z, .yesSelected
 
-    ld a, [$cb6d]
+    ld a, [wNoCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -628,7 +628,7 @@ Call_000_396d:
     call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [de], a
-    ld a, [$cb6c]
+    ld a, [wYesCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -640,14 +640,14 @@ Call_000_396d:
     ld [de], a
     ldh a, [$ff8b]
     and $20
-    jr z, jr_000_39dd
+    jr z, .checkConfirm
     call Call_000_3fae
     xor a
     ld [wYesOrNo], a
-    jr jr_000_39dd
+    jr .checkConfirm
 
-jr_000_39a9:
-    ld a, [$cb6c]
+.yesSelected
+    ld a, [wYesCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -657,7 +657,7 @@ jr_000_39a9:
     call SyncToBlankPeriod
     ld a, [$cb5d]
     ld [de], a
-    ld a, [$cb6d]
+    ld a, [wNoCursorTileOffset]
     ld de, vBGMap1 + $22
     add e
     ld e, a
@@ -669,13 +669,13 @@ jr_000_39a9:
     ld [de], a
     ldh a, [$ff8b]
     and $10
-    jr z, jr_000_39dd
+    jr z, .checkConfirm
 
     ld a, NO
     ld [wYesOrNo], a
     call Call_000_3fae
 
-jr_000_39dd:
+.checkConfirm
     ldh a, [$ff8b]
     and $01
     ret z
@@ -700,20 +700,20 @@ jr_000_39dd:
     ld [wTextNavigator], a
     ld a, h
     ld [wTextNavigator+1], a
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     xor a
     ld [wTextCharacterCounter], a
 
 .callTextScript
-    ld a, [wTextPointer]
+    ld a, [wTextCallbackPointer]
     ld l, a
-    ld a, [wTextPointer+1]
+    ld a, [wTextCallbackPointer+1]
     ld h, a
     ld a, [MBC3SRamBank]
     call BankSwitchCallHL
     ret
 
-ClearOldTextOnTextBox:
+ClearTextBoxContents:
     ld a, [$cb5c]
     ld c, a
     ld hl, vBGMap1 + $22

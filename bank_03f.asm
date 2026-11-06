@@ -25,9 +25,9 @@ SECTION "ROM Bank $03f", ROMX[$4000], BANK[$3f]
     ld [$cd29], a
     ld hl, $5bd4
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     ld a, $df
     ld [$cb5c], a
     ld a, $e9
@@ -479,7 +479,7 @@ Call_03f_42cd:
     ld l, h
 
 Call_03f_42e4:
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
     ret nz
 
@@ -2822,9 +2822,9 @@ Call_03f_4d8f:
     ld h, b
     ld l, c
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ret
@@ -2926,7 +2926,7 @@ jr_03f_4e10:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
 
 jr_03f_4e21:
     dec hl
@@ -2944,7 +2944,7 @@ jr_03f_4e24:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
 
 jr_03f_4e35:
     dec hl
@@ -2962,7 +2962,7 @@ jr_03f_4e38:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
 
 jr_03f_4e49:
     dec hl
@@ -2980,7 +2980,7 @@ jr_03f_4e4c:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
 
 jr_03f_4e5d:
     dec hl
@@ -3687,7 +3687,7 @@ jr_03f_5235:
     inc a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
 
@@ -3704,7 +3704,7 @@ jr_03f_524b:
 
     xor a
     ld [wVillageCursorPositionFlag], a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
 
@@ -3795,7 +3795,7 @@ jr_03f_52c0:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -3844,11 +3844,11 @@ jr_03f_52e4:
     adc h
     ld h, a
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
 
 Jump_03f_52ff:
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ld h, b
@@ -3952,7 +3952,7 @@ jr_03f_5375:
     ld a, $48
     call StartAudioTrack
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5674,7 +5674,7 @@ jr_03f_5b6b:
     ret
 
 
-    ld hl, $cd6c
+    ld hl, wVillageScriptPointer
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -5692,10 +5692,10 @@ jr_03f_5b6b:
 
 
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
-    ld hl, $cd98
+    ld [wVillageScriptPointer+1], a
+    ld hl, wVillageScriptTickCounter
     inc [hl]
     ret
 
@@ -5789,7 +5789,7 @@ jr_03f_5c1b:
 
 jr_03f_5c45:
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -5812,7 +5812,7 @@ jr_03f_5c4a:
 jr_03f_5c62:
     pop hl
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -5906,7 +5906,7 @@ jr_03f_5cb1:
     ld h, b
     ld l, c
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -5916,7 +5916,7 @@ jr_03f_5cb1:
     and $03
     jr nz, jr_03f_5ce0
 
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     cp [hl]
     jr z, jr_03f_5ce0
 
@@ -6240,7 +6240,7 @@ jr_03f_5e6a:
     ld de, $9a11
     ld a, [$cd9b]
     ld b, a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
     jr nz, jr_03f_5e85
 

@@ -6133,7 +6133,7 @@ jr_00f_64ad:
 jr_00f_64b0:
     call Call_00f_68f5
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL
@@ -7616,7 +7616,7 @@ jr_00f_6c70:
     call Call_00f_6d58
     call Call_00f_6e23
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ret
 
 

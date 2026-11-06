@@ -492,7 +492,7 @@ Call_01d_4244:
     call nz, Call_01d_42c9
     ld de, $549f
     call Call_01d_42db
-    ld hl, $cd6d
+    ld hl, wVillageScriptPointer+1
     ld b, $03
     call Call_01d_434b
     dec hl
@@ -9543,7 +9543,7 @@ jr_01d_6e6c:
 
 
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_01d_6f51
     call Call_000_0e54
     call Call_01d_7145
@@ -10326,7 +10326,7 @@ jr_01d_72d1:
 
 
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_01d_73ef
     call Call_000_0e54
     call Call_01d_7518

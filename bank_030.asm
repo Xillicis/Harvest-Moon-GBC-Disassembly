@@ -3108,7 +3108,7 @@ jr_030_4f2d:
     ld [wPlayerMovementYType], a
     call Call_030_4fee
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ret
 
 
@@ -3117,7 +3117,7 @@ jr_030_4f2d:
     ld [wPlayerMovementYType], a
     call Call_030_54ba
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ret
 
 
@@ -3463,7 +3463,7 @@ jr_030_519c:
 
     ld a, $09
     ld [wRanchEvaluationState], a
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ret
 
 
@@ -4045,7 +4045,7 @@ Call_030_54ba:
 
     ld a, $05
     ld [wRanchEvaluationState], a
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ret
 
 

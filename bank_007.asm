@@ -141,21 +141,21 @@ Call_007_40e8:
     ld a, $05
     call BankSwitchCallHL
     call Call_007_4108
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
 
 Call_007_40f8:
     call Call_007_43fb
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
 
 Call_007_4100:
     call Call_007_4443
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
@@ -1195,7 +1195,7 @@ Text_HouseExpansion:
     jr .cantDoHouseExpansion
 
 .cantDoHouseExpansion
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld hl, wTextNavigator
     ld bc, 3 * TEXT_BLOCK_BYTE_LENGTH
     call AddBCtoWordAtHL
@@ -1436,7 +1436,7 @@ Label_007_7529:
     or a
     jr z, jr_007_7585
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld hl, wTextNavigator
     ld bc, $0081
     call AddBCtoWordAtHL
@@ -1456,7 +1456,7 @@ Jump_007_754d:
     or a
     jr nz, jr_007_757d
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
@@ -1496,7 +1496,7 @@ jr_007_758d:
     ret
 
 Label_007_7599:
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a

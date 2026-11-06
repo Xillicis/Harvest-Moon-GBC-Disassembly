@@ -186,7 +186,7 @@ jr_00e_4158:
 
     call Call_00e_53a8
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_00e_5285
     call Call_00e_539f
     call $1e32
@@ -198,7 +198,7 @@ jr_00e_4179:
     call FinishPlayerAttackOnSprite
     call Call_00e_424f
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_00e_5285
     call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
@@ -3222,7 +3222,7 @@ jr_00e_55ee:
     call HandleHotSpringPlayerInput
     call UpdateHotSpringEntryExitAnimation
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
     call $1e32
@@ -4222,7 +4222,7 @@ jr_00e_5c15:
     call HandleGoddessPondPlayerInput
     call UpdateFishingState
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_5285
     call CheckCaveRoomTransition
@@ -5267,7 +5267,7 @@ Call_00e_616c:
     call FinishPlayerAttackOnSprite
     call HandleMineRoom1PlayerInput
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_00e_5285
     call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
@@ -6073,7 +6073,7 @@ jr_00e_669f:
     call Call_000_3cf8
     call Call_00e_424f
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call UpdatePlayerIdleAnimationIfAllowed
     call Call_00e_41a1
     call $1e32

@@ -134,7 +134,7 @@ InitializeChickenCoopScene: ; 04x4001
     call Call_000_3cf8
     call HandleChickenCoopPlayerInput
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL

@@ -163,7 +163,7 @@ jr_02e_4134:
 
     call Call_02e_5385
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5262
     call Call_02e_537c
     call $1e32
@@ -175,7 +175,7 @@ jr_02e_4155:
     call Call_02e_545d
     call Call_02e_422c
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5262
     call Call_02e_5445
     call Call_02e_417d
@@ -3674,7 +3674,7 @@ jr_02e_55be:
     call Call_02e_55dd
     call Call_02e_5675
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5445
     call Call_02e_417d
     call $1e32
@@ -4670,7 +4670,7 @@ jr_02e_5bca:
     call Call_02e_5bef
     call Call_02e_5e28
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5445
     call Call_02e_5262
     call Call_02e_4487
@@ -5708,7 +5708,7 @@ Call_02e_6121:
     call Call_02e_545d
     call Call_02e_6281
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5262
     call Call_02e_5445
     call Call_02e_417d
@@ -6507,7 +6507,7 @@ jr_02e_6647:
     call Call_000_3cf8
     call Call_02e_422c
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_02e_5445
     call Call_02e_417d
     call $1e32

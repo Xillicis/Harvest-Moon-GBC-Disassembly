@@ -45,7 +45,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
     ld a, $01
     ld [$cd63], a
     xor a
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld [$cd6b], a
     ld [$cd6e], a
     xor a
@@ -105,7 +105,7 @@ SECTION "ROM Bank $026", ROMX[$4000], BANK[$26]
 
 
 Call_026_40d5:
-    ld hl, $cd6d
+    ld hl, wVillageScriptPointer+1
     inc [hl]
     ld a, [$cd6e]
     bit 0, a
@@ -126,7 +126,7 @@ jr_026_40e3:
     ld a, [hl+]
     ld h, [hl]
     ld l, a
-    ld a, [$cd6c]
+    ld a, [wVillageScriptPointer]
     add a
     add l
     ld l, a
@@ -152,7 +152,7 @@ Call_026_410c:
 
     ld de, $9c91
     ld b, $ae
-    ld a, [$cd6d]
+    ld a, [wVillageScriptPointer+1]
     bit 4, a
     jr nz, jr_026_4121
 
@@ -395,7 +395,7 @@ jr_026_4205:
     set 0, [hl]
     ld h, b
     ld l, c
-    ld a, [$cd6c]
+    ld a, [wVillageScriptPointer]
     add a
     add l
     ld l, a
@@ -427,8 +427,8 @@ jr_026_4205:
 jr_026_425e:
     push hl
     xor a
-    ld [$cd6d], a
-    ld hl, $cd6c
+    ld [wVillageScriptPointer+1], a
+    ld hl, wVillageScriptPointer
     ld a, [hl]
     inc a
     cp $06
@@ -451,8 +451,8 @@ jr_026_4270:
 jr_026_4278:
     push hl
     xor a
-    ld [$cd6d], a
-    ld hl, $cd6c
+    ld [wVillageScriptPointer+1], a
+    ld hl, wVillageScriptPointer
     ld a, [hl]
     sub $01
     jr nc, jr_026_4289
@@ -475,7 +475,7 @@ jr_026_4289:
     ld a, $42
     call StartTwoAudioTracks
     pop hl
-    ld a, [$cd6c]
+    ld a, [wVillageScriptPointer]
     add a
     add l
     ld l, a
@@ -529,14 +529,14 @@ jr_026_42a6:
 
 jr_026_42df:
     xor a
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     ld a, [$cd6b]
     cp c
     jr nc, jr_026_430a
 
     inc a
     push af
-    ld a, [$cd6c]
+    ld a, [wVillageScriptPointer]
     cp $04
     jr c, jr_026_42fc
 
@@ -547,7 +547,7 @@ jr_026_42df:
 
 jr_026_42fc:
     inc a
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
 
 jr_026_4300:
     pop af
@@ -563,14 +563,14 @@ jr_026_430a:
 
 jr_026_430b:
     xor a
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     ld a, [$cd6b]
     or a
     jr z, jr_026_4335
 
     dec a
     push af
-    ld a, [$cd6c]
+    ld a, [wVillageScriptPointer]
     or a
     jr nz, jr_026_4327
 
@@ -581,7 +581,7 @@ jr_026_430b:
 
 jr_026_4327:
     dec a
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
 
 jr_026_432b:
     pop af
@@ -647,7 +647,7 @@ jr_026_436d:
 Call_026_4376:
     call Call_026_43e5
     xor a
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld [$cd6b], a
     ld a, $01
     ld [$cd63], a
@@ -1692,9 +1692,9 @@ jr_026_4780:
     ld [$cd29], a
     ld hl, $4f25
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld hl, $cb14
     ld [hl+], a
@@ -3165,7 +3165,7 @@ jr_026_4e65:
 
 
 Call_026_4e75:
-    ld hl, $cd6c
+    ld hl, wVillageScriptPointer
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -3183,10 +3183,10 @@ Call_026_4e75:
 
 
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
-    ld hl, $cd98
+    ld [wVillageScriptPointer+1], a
+    ld hl, wVillageScriptTickCounter
     inc [hl]
     ret
 
@@ -3219,9 +3219,9 @@ Call_026_4e95:
     ld h, b
     ld l, c
     ld a, [hl+]
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, [hl+]
-    ld [$cd6d], a
+    ld [wVillageScriptPointer+1], a
     xor a
     ld [$cd6b], a
     ret
@@ -3394,7 +3394,7 @@ jr_026_4f62:
 
 jr_026_4f8b:
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -3417,7 +3417,7 @@ jr_026_4f90:
 jr_026_4fa8:
     pop hl
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 

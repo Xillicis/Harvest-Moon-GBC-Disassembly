@@ -94,7 +94,7 @@ UseSickle:
     ret z
 
     ld a, [wInteractingMapObjectID]
-    cp BUSH_INDEX
+    cp BUSH_TILE_ID
     jr z, .cutBush
 
     ld a, [wInteractingMapObjectID+1]
@@ -237,7 +237,7 @@ UseHammer:
     ret z
 
     ld a, [wInteractingMapObjectID]
-    cp STONE_INDEX
+    cp STONE_TILE_ID
     jr nz, .breakBigStone
 
     ld a, $01

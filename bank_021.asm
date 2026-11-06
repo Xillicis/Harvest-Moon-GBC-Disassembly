@@ -251,7 +251,7 @@ jr_021_41cf:
     call Call_000_3cf8
     call Call_021_43c4
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_021_6a38
     call Call_021_69fa
     call Call_021_6b64
@@ -2691,7 +2691,7 @@ jr_021_5273:
 
 jr_021_52ac:
     ld a, [wDominantFacingTileID]
-    cp BUSH_INDEX
+    cp BUSH_TILE_ID
     jr nz, jr_021_52c6
 
     ld a, BUSH

@@ -96,7 +96,7 @@ SECTION "ROM Bank $005", ROMX[$4000], BANK[$5]
     call Call_000_3cf8
     call HandleShedPlayerInput
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call CheckShedExit
     ret
 

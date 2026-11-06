@@ -150,7 +150,7 @@ jr_003_410e:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_003_4285
     ret
 
@@ -163,7 +163,7 @@ jr_003_4147:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_003_42d7
     ret
 
@@ -172,7 +172,7 @@ jr_003_415d:
     call Call_000_3cf8
     call Call_003_51ec
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ld hl, $6ba5
     ld a, $01
     call BankSwitchCallHL

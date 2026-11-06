@@ -132,21 +132,21 @@ Call_027_40db:
     ld a, $25
     call BankSwitchCallHL
     call Call_027_40fb
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
 
 Call_027_40eb:
     call Call_027_4398
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
 
 Call_027_40f3:
     call Call_027_43e0
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     pop hl
     ret
 
@@ -12033,7 +12033,7 @@ jr_027_72f5:
     jr jr_027_7310
 
 jr_027_7310:
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld hl, wTextNavigator
     ld bc, $0056
     call AddBCtoWordAtHL
@@ -12291,7 +12291,7 @@ jr_027_74b3:
     or a
     jr z, jr_027_7522
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld hl, wTextNavigator
     ld bc, $0081
     call AddBCtoWordAtHL
@@ -12310,7 +12310,7 @@ Jump_027_74ea:
     or a
     jr nz, jr_027_751a
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a
@@ -12349,7 +12349,7 @@ jr_027_752a:
     ret
 
 
-    call ClearOldTextOnTextBox
+    call ClearTextBoxContents
     ld a, $01
     ld [wTextID], a
     ld [$cb57], a

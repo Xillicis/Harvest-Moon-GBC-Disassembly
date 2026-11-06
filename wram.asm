@@ -181,9 +181,10 @@ wPlayerTextInputFlag:: db ; 0xcb69
 wYesTextBlockJump:: db ; 0xcb6a
 wNoTextBlockJump:: db ; 0xcb6b
 
-ds 1 ; 0xcb6c
-ds 1 ; 0xcb6d
-wTextPointer:: dw ; 0xcb6e
+wYesCursorTileOffset:: db ; 0xcb6c
+wNoCursorTileOffset:: db ; 0xcb6d
+
+wTextCallbackPointer:: dw ; 0xcb6e
 
 ds 1 ; 0xcb70
 
@@ -449,11 +450,10 @@ wDecimalDigitTileID:: ds 5 ; 0xcccd
 
 ds $9a
 
-wcd6c:: db
-wcd6d:: db
+wVillageScriptPointer:: dw
 
 wcd6e::
-wVillageTextCharacterCounter:: db
+wVillageTextChractersRemaining:: db
 wVillageTextTileNumber:: db ; 0xcd6f
 ; Stores a pointer to the specific character in wVillageTextBuffer
 wVillageCharacterPointer:: dw ; 0xcd70
@@ -474,8 +474,9 @@ wCatOrDogSelection:: db ; 0xcd7a
 wPetName:: ds 4 ; 0xcd7b
 ENDU
 
-ds 7
+ds 6
 
+wVillageScriptTickCounter:: db
 ; 0 - first option
 ; 1 - second option
 wVillageCursorPositionFlag:: db 

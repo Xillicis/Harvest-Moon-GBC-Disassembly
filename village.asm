@@ -4,19 +4,21 @@
 ; https://github.com/mattcurrie/mgbdis
 
 MACRO text_block 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+
+    dw VillageScript_PrepareText
     dw \1
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4134
+
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
 ENDM
 
 ; Text blocks that contain the player's name
 MACRO text_block_player
-    dw Village_TextWindowClear 
-    dw LoadTextString_Village
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_CopyTextAndInsertName
     dw \1
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
@@ -30,8 +32,8 @@ SECTION "ROM Bank $01b", ROMX[$4000], BANK[$1b]
 
     db $1b ; Bank number
 
-Label_01b_4001:
-    ld hl, $cd6c
+ExecuteVillageScriptCommand: ; 1bx4001
+    ld hl, wVillageScriptPointer
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -39,7 +41,7 @@ Label_01b_4001:
     ld d, [hl]
     ld e, a
     inc hl
-    ld bc, Label_01b_4014
+    ld bc, FinishVillageScriptComand
     push bc
     ld b, h
     ld c, l
@@ -47,16 +49,16 @@ Label_01b_4001:
     ld l, e
     jp hl
 
-Label_01b_4014:
+FinishVillageScriptComand: ; 1bx4014
     ld a, l
-    ld [$cd6c], a
+    ld [wVillageScriptPointer], a
     ld a, h
-    ld [$cd6d], a
-    ld hl, $cd98
+    ld [wVillageScriptPointer+1], a
+    ld hl, wVillageScriptTickCounter
     inc [hl]
     ret
 
-PrepareTextBlock: ; 1bx4021
+VillageScript_PrepareText: ; 1bx4021
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -64,12 +66,12 @@ PrepareTextBlock: ; 1bx4021
     ld a, [hl+]
     ld [wVillageCharacterPointer+1], a
     ld a, [hl+]
-    ld [wVillageTextCharacterCounter], a
+    ld [wVillageTextChractersRemaining], a
     ld a, [hl+]
     ld [wVillageTextTileNumber], a
     ret
 
-VillagePrintCharacter: ; 1bx4034
+VillageScript_PrintText: ; 1bx4034
     ld h, b
     ld l, c
     push hl
@@ -127,9 +129,9 @@ jr_01b_4044:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [wVillageTextCharacterCounter]
+    ld a, [wVillageTextChractersRemaining]
     dec a
-    ld [wVillageTextCharacterCounter], a
+    ld [wVillageTextChractersRemaining], a
     jr z, .finishedPrintingLine
 
     dec hl
@@ -138,7 +140,7 @@ jr_01b_4044:
 
 .finishedPrintingLine
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -147,9 +149,9 @@ jr_01b_409b:
     ld a, [wVillageTextTileNumber]
     inc a
     ld [wVillageTextTileNumber], a
-    ld a, [wVillageTextCharacterCounter]
+    ld a, [wVillageTextChractersRemaining]
     dec a
-    ld [wVillageTextCharacterCounter], a
+    ld [wVillageTextChractersRemaining], a
     jr z, jr_01b_40b3
 
     ld a, [de]
@@ -161,7 +163,7 @@ jr_01b_409b:
 jr_01b_40b3:
     pop hl
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -201,7 +203,7 @@ jr_01b_40b3:
     ret
 
 ; clear text window I think
-Village_TextWindowClear: ; 1bx40e6
+VillageScript_ClearTextBox: ; 1bx40e6
     push bc
     ld hl, $99c2 ; BG map address of beginning of text window
     ld b, $04
@@ -238,13 +240,13 @@ jr_01b_4101:
     pop hl
     ret
 
-LoadTextString_Village: ; 1bx4113
+VillageScript_CopyTextAndInsertName: ; 1bx4113
     ld h, b
     ld l, c
-    call LoadTextBuffer
+    call CopyVillageScriptDataBlock
 
 ; second time getting here seems to load sPlayerName pointer in DE.
-LoadTextBuffer: ; 1bx4118
+CopyVillageScriptDataBlock: ; 1bx4118
     ld a, [hl+]
     ld e, a
     ld a, [hl+]
@@ -268,14 +270,14 @@ LoadTextBuffer: ; 1bx4118
     pop hl
     ret
 
-Label_01b_412d:
+VillageScript_ResetChoice: ; 1bx412d
     ld h, b
     ld l, c
     xor a
     ld [wVillageCursorPositionFlag], a
     ret
 
-Label_01b_4134:
+VillageScript_WaitForAOrB: ; 1bx4134
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -286,15 +288,14 @@ Label_01b_4134:
     ld de, vBGMap0 + $211
     ld a, [$cd9b]
     ld b, a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
-    jr nz, jr_01b_414f
+    jr nz, VillageScript_QueueTileAndRepeat
 
     ld a, [$cd9b]
     ld b, a
 
-Jump_01b_414f:
-jr_01b_414f:
+VillageScript_QueueTileAndRepeat: ; 1bx414f
     call GetVRAMCommandWritePointer
     ld [hl], d
     inc hl
@@ -318,42 +319,42 @@ jr_01b_414f:
 jr_01b_4167:
     ret
 
-Label_01b_4168:
+VillageScript_HorizontalChoice2: ; 1bx4168
     ld h, b
     ld l, c
     ldh a, [$ff8b]
     bit 0, a
-    jr nz, jr_01b_4199
+    jr nz, .confirmSelection
 
     bit 1, a
-    jr nz, jr_01b_41ac
+    jr nz, .cancelToSecondOption
 
     bit 4, a
-    jr nz, jr_01b_41b7
+    jr nz, .selectRight
 
     bit 5, a
-    jr nz, jr_01b_41d7
+    jr nz, .selectLeft
 
     push hl
     ld de, $9a02
     ld a, [wVillageCursorPositionFlag]
     or a
-    jr z, jr_01b_4188
+    jr z, .drawCursor
 
     ld e, $08
 
-jr_01b_4188:
+.drawCursor
     ld a, [$cd9a]
     ld b, a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
-    jr z, jr_01b_414f
+    jr z, VillageScript_QueueTileAndRepeat
 
     ld a, [$cb5c]
     ld b, a
-    jr jr_01b_414f
+    jr VillageScript_QueueTileAndRepeat
 
-jr_01b_4199:
+.confirmSelection
     ld a, $42
     call StartTwoAudioTracks
     ld a, [wVillageCursorPositionFlag]
@@ -368,8 +369,7 @@ jr_01b_4199:
     ld l, a
     ret
 
-
-jr_01b_41ac:
+.cancelToSecondOption
     ld a, $51
     call StartTwoAudioTracks
     inc hl
@@ -379,31 +379,28 @@ jr_01b_41ac:
     ld l, a
     ret
 
-
-jr_01b_41b7:
+.selectRight
     ld a, [wVillageCursorPositionFlag]
     or a
-    jr nz, jr_01b_41d4
+    jr nz, .jr_01b_41d4
 
     inc a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $9a02
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
-
-jr_01b_41d4:
+.jr_01b_41d4
     dec hl
     dec hl
     ret
 
-
-jr_01b_41d7:
+.selectLeft
     ld a, [wVillageCursorPositionFlag]
     or a
     jr z, jr_01b_41f4
@@ -411,13 +408,13 @@ jr_01b_41d7:
     dec a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $9a08
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_41f4:
@@ -717,7 +714,7 @@ Label_01b_434e:
     ld a, [hl+]
     ld d, a
     push hl
-    call Call_01b_46a4
+    call CheckPlayerCanAffordDE
     jr nc, jr_01b_439b
 
     pop hl
@@ -743,7 +740,7 @@ jr_01b_439b:
     ld e, a
     ld a, [$cd97]
     ld d, a
-    call Call_01b_46a4
+    call CheckPlayerCanAffordDE
     jr nc, jr_01b_43bf
 
     ld a, $51
@@ -788,7 +785,7 @@ jr_01b_43bf:
 
     ld a, [hl+]
     push hl
-    call Call_01b_4699
+    call FindItemInFirstThreeInventorySlots
     pop hl
     jr z, jr_01b_43ed
 
@@ -838,7 +835,7 @@ jr_01b_43ed:
     push de
     ld a, [hl+]
     push hl
-    call Call_01b_4699
+    call FindItemInFirstThreeInventorySlots
     pop hl
     pop de
     ret z
@@ -857,7 +854,7 @@ jr_01b_43ed:
     push de
     ld a, [hl+]
     push hl
-    call Call_01b_4699
+    call FindItemInFirstThreeInventorySlots
     jr nz, jr_01b_4428
 
     ld [hl], $ff
@@ -942,7 +939,7 @@ jr_01b_446c:
     pop hl
     ret
 
-Label_01b_4474:
+VillageScript_VerticalChoice: ; 1bx4474
     ld h, b
     ld l, c
     ldh a, [$ff8b]
@@ -976,13 +973,13 @@ jr_01b_4494:
 .gotPosition
     ld a, [$cd9a]
     ld b, a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
-    jp z, Jump_01b_414f
+    jp z, VillageScript_QueueTileAndRepeat
 
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_44b4:
@@ -1022,13 +1019,13 @@ jr_01b_44d4:
     inc a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $99c2
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_44f1:
@@ -1045,13 +1042,13 @@ jr_01b_44f4:
     dec a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $9a02
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_4511:
@@ -1074,22 +1071,21 @@ Jump_01b_4514:
     ld l, a
     ret
 
-
-Label_01b_4523:
+VillageScript_ResetTickCounter: ; 1bx4523
     ld h, b
     ld l, c
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
-Label_01b_452a:
+VillageScript_WaitTicksOrButton: ; 1bx452a
     ld h, b
     ld l, c
     ldh a, [$ff8b]
     and $03
     jr nz, jr_01b_453b
 
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     cp [hl]
     jr z, jr_01b_453b
 
@@ -1113,7 +1109,7 @@ Label_01b_453d:
 ; Bad forutne - 3 / 16
 GetFortune: ; 1bx4545
 ; get random number from the data 
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     and $0f
     ld hl, FortuneProbabilityTable
     add l
@@ -1194,40 +1190,35 @@ BadFortuneTellingResult: ; 1bx4592
     pop hl
     ret
 
-
-Label_01b_45ab:
+VillageScript_Add20Happiness: ; 1bx45ab
     push bc
     ld a, [sPlayerHappiness]
-    add $14
-    jr nc, jr_01b_45b5
-
+    add 20
+    jr nc, .updateHappiness
     ld a, $ff
-
-jr_01b_45b5:
+.updateHappiness
     ld [sPlayerHappiness], a
     pop hl
     ret
 
-Label_01b_45ba:
+VillageScript_Subtract40Happiness: ; 1bx45ba
     push bc
     ld a, [sPlayerHappiness]
-    sub $28
-    jr nc, jr_01b_45c3
+    sub 40
+    jr nc, .updateHappiness
     xor a
-
-jr_01b_45c3:
+.updateHappiness
     ld [sPlayerHappiness], a
     pop hl
     ret
 
-Label_01b_45c8:
+VillageScript_Subtract20Happiness: ; 1bx45c8
     push bc
     ld a, [sPlayerHappiness]
-    sub $14
-    jr nc, jr_01b_45d1
+    sub 20
+    jr nc, .updateHappiness
     xor a
-
-jr_01b_45d1:
+.updateHappiness
     ld [sPlayerHappiness], a
     pop hl
     ret
@@ -1403,7 +1394,7 @@ jr_01b_4686:
     ld l, c
     ret
 
-Label_01b_468f:
+VillageScript_Jump: ; 1bx468f
     ld a, [bc]
     inc bc
     ld l, a
@@ -1417,7 +1408,7 @@ Label_01b_468f:
     sub l
     ld b, [hl]
 
-Call_01b_4699:
+FindItemInFirstThreeInventorySlots: ; 1bx4699
     ld hl, sInventory
     cp [hl]
     ret z
@@ -1430,8 +1421,7 @@ Call_01b_4699:
     cp [hl]
     ret
 
-
-Call_01b_46a4:
+CheckPlayerCanAffordDE: ; 1bx46a4
     push bc
     ld hl, sPlayerMoney
     ld a, [hl+]
@@ -1507,7 +1497,7 @@ jr_01b_46e8:
 
     ld a, $01
     ld [sPrayedFlag], a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     and b
     jr z, jr_01b_4703
 
@@ -1770,13 +1760,13 @@ Label_01b_47eb:
 jr_01b_4817:
     ld a, [$cd9a]
     ld b, a
-    ld a, [$cd98]
+    ld a, [wVillageScriptTickCounter]
     bit 4, a
-    jp z, Jump_01b_414f
+    jp z, VillageScript_QueueTileAndRepeat
 
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_482a:
@@ -1817,13 +1807,13 @@ jr_01b_484e:
     inc a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $9a02
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_4865:
@@ -1840,13 +1830,13 @@ jr_01b_4868:
     dec a
     ld [wVillageCursorPositionFlag], a
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ld a, $48
     call StartAudioTrack
     ld de, $9a0f
     ld a, [$cb5c]
     ld b, a
-    jp Jump_01b_414f
+    jp VillageScript_QueueTileAndRepeat
 
 
 jr_01b_4885:
@@ -1858,15 +1848,15 @@ jr_01b_4886:
 
 
 Label_01b_4888:
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
     dw Label_01b_4756
     db $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
     db $CD, $04, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $72, $CD, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
     db $A6, $48, $13, $41, $AB, $4A, $72, $CD, $20, $CB, $4A, $8E, $CD, $01, $8F, $46,
     db $9A, $48, $E6, $40, $21, $40, $CC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40,
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $EC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $0C, $4B,
     db $20, $80, $34, $40, $2D, $41, $68, $41, $E4, $48, $73, $4A, $85, $43, $20, $03,
     db $3A, $4A, $F1, $43, $AD, $B8, $8F, $46, $5B, $4A, $E6, $40, $21, $40, $AC, $4B,
@@ -2028,19 +2018,19 @@ Carpenter_DontBuyMaterials::
 
     text_block JuiceBar_HelloText
     dw Label_01b_453d
-    dw Label_01b_468f
+    dw VillageScript_Jump
     db $EA, $50, 
     text_block JuiceBar_OrangeJuice1Text
     text_block JuiceBar_OrangeJuice2Text
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw JuiceBar_OrangeJuice3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_412d
-    dw Label_01b_4168
+    dw VillageScript_PrintText
+    dw VillageScript_ResetChoice
+    dw VillageScript_HorizontalChoice2
     db $18, $51, $70, $52, $85, $43,
     db $2C, $01, $2B, $52, $D6, $45, $01, $8F, $46, $58, $52, 
 
@@ -2048,16 +2038,16 @@ Carpenter_DontBuyMaterials::
     text_block JuiceBar_AppleJuice2Text
     text_block JuiceBar_AppleJuice3Text
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw JuiceBar_AppleJuice4Text
     db $20, $80, $34, $40, $2D, $41, $68, $41, $5B, $51, $70,
     db $52, $85, $43, $F4, $01, $2B, $52, $D6, $45, $00, $8F, $46, $64, $52, 
     text_block JuiceBar_WildGrapeJuice1Text
     text_block JuiceBar_WildGrapeJuice2Text
     text_block JuiceBar_WildGrapeJuice3Text
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     db $3C, $54, $20, $80, $34, $40, $2D, $41, $68, $41,
     db $9E, $51, $70, $52, $85, $43, $2C, $01, $2B, $52, $2D, $44, $CA, $B8, $0A, $8F,
     db $46, $64, $52, 
@@ -2066,46 +2056,51 @@ Carpenter_DontBuyMaterials::
     text_block JuiceBar_GreenTea2Text
     text_block JuiceBar_GreenTea3Text
 
-    dw Village_TextWindowClear
-    db $21, $40, $BC, $54, $20, $80, $34,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $BC, $54, $20, $80, $34,
     db $40, $2D, $41, $68, $41, $E3, $51, $70, $52, $85, $43, $C8, $00, $2B, $52, $2D,
     db $44, $CB, $B8, $0A, $8F, $46, $58, $52, 
 
     text_block JuiceBar_Milk1Text
     text_block JuiceBar_Milk2Text
 
-    dw Village_TextWindowClear
-    db $21, $40, $1C, $55, $20, $80, $34, $40, $2D, $41, $68, $41, $1C, $52,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $1C, $55, $20, $80, $34, $40, $2D, $41, $68, $41, $1C, $52,
     db $70, $52, $85, $43, $64, $00, $2B, $52, $2D, $44, $CC, $B8, $0A, $8F, $46, $58,
     db $52, 
 
-    dw Village_TextWindowClear
-    db $21, $40, $3C, $55, $20, $80, $34, $40, $23, $45, $2A, $45, $FF,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $3C, $55, $20, $80, $34, $40, $23, $45, $2A, $45, $FF,
     db $3D, $45, $8F, $46, $3C, $52, 
 
     text_block JuiceBar_Leaving1Text
-    dw Village_TextWindowClear
-    db $21, $40, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw JuiceBar_Leaving2Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw Label_01b_468f
+    dw VillageScript_Jump
     db $33, $52
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw JuiceBar_BuyText
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw Label_01b_468f
+    dw VillageScript_Jump
     db $33, $52
 
-    dw Village_TextWindowClear
-    db $21, $40, $BC, $53,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $BC, $53,
     db $20, $80, $8F, $46, $33, $52, 
 
-    dw Village_TextWindowClear
-    db $21, $40, $1C, $53, $20, $80, $8F, $46,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $1C, $53, $20, $80, $8F, $46,
     db $33, $52, 
 JuiceBar_HelloText:: ; 1b527c
     db "Hi. Would you   "
@@ -2192,50 +2187,73 @@ JuiceBar_Leaving2Text:: ; 1bx557c
     db "Come back soon. "
     db "                "
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     db $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
     db $8F, $46, $AA, $55, 
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     db $8C, $5A, $20, $80, $34, $40, $34, $41,
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     db $AC, $5A, $20, $80, $34, $40, $2D, $41, $68, $41, $CC, $55,
     db $60, $5A, $1B, $46, $36, $E8, $59, $F2, $45, $C4, $59, $85, $43, $88, $13, $A3,
     db $59, $6B, $47, $88, $13, 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     db $CC, $5E, $20, $80, $34, $40, $34,
     db $41, $48, $46, $8F, $46, $ED, $55, 
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
 
     db $13, $41, $EC, $5E, $72, $CD, $20,
     db $2C, $CD, $72, $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $AB, $45, $34,
     db $41, $D7, $43, $B3, $B8, $02, $2E, $56, $F1, $43, $B3, $B8, 
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
 
     db $21, $40,
     db $0C, $5F, $20, $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
 
-    db $21, $40, $2C, $5F, $20, $80,
+    dw VillageScript_PrepareText
+    db $2C, $5F, $20, $80,
     db $34, $40, $34, $41, 
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
     db $13, $41, $4C, $5F, $72, $CD, $20, $2C, $CD, $82,
     db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, 
-    dw Village_TextWindowClear
-    db $21, $40,
-    db $6C, $5F, $20, $80, $8F, $46, $AB, $59, $E6, $40, $21, $40, $EC, $5A, $20, $80,
-    db $34, $40, $34, $41, $E6, $40, $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $6C, $5F, $20, $80, $8F, $46, $AB, $59,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $EC, $5A, $20, $80,
+    db $34, $40, $34, $41, 
+    dw VillageScript_ClearTextBox
+    db $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41,
     db $68, $41, $70, $56, $60, $5A, $1B, $46, $24, $18, $5A, $11, $46, $C4, $59, $85,
-    db $43, $F4, $01, $A3, $59, $6F, $46, $E6, $40, $21, $40, $6C, $60, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $8C, $60, $20, $80, $8F, $46, $AB, $59, $E6,
-    db $40, $21, $40, $4C, $5C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $AC,
-    db $5C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC, $5C, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $6C, $5C, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $8C, $5D, $20, $80, $34, $40, $2D, $41, $68, $41, $DB, $56, $60,
+    db $43, $F4, $01, $A3, $59, $6F, $46, 
+    dw VillageScript_ClearTextBox
+    db $21, $40, $6C, $60, $20, $80, $34,
+    db $40, $34, $41
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $8C, $60, $20, $80, $8F, $46, $AB, $59,
+    dw VillageScript_ClearTextBox
+    db $21, $40, $4C, $5C, $20, $80, $34, $40, $34, $41, 
+    dw VillageScript_ClearTextBox
+    db $21, $40, $AC,
+    db $5C, $20, $80, $34, $40, $34, $41,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $CC, $5C, $20, $80, $34,
+    db $40, $34, $41, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $6C, $5C, $20, $80, $34, $40, $34, $41,
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $8C, $5D, $20, $80, $34, $40, $2D, $41, $68, $41, $DB, $56, $60,
     db $5A, $85, $43, $BC, $02, $A3, $59, $F1, $43, $C0, $B8, $FB, $43, $46, $B9, $8F,
     db $46, $54, $5A, $E6, $40, $21, $40, $8C, $5C, $20, $80, $34, $40, $34, $41, $E6,
     db $40, $21, $40, $AC, $5C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC,
@@ -2437,31 +2455,31 @@ JuiceBar_Leaving2Text:: ; 1bx557c
     db " Sell  No", $8D, "Sell  "
 
 ChurchTextPointerList:: ; 1bx620c
-    dw Village_TextWindowClear
-    dw LoadTextString_Village
+    dw VillageScript_ClearTextBox
+    dw VillageScript_CopyTextAndInsertName
     dw ChurchMaria1Text
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     dw sPlayerName
     dw wVillageTextBuffer + $10
     db NAME_TEXT_LENGTH
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4134
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
 
     text_block ChurchMaria2Text
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw ChurchMaria3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_412d
-    dw Label_01b_4474
+    dw VillageScript_PrintText
+    dw VillageScript_ResetChoice
+    dw VillageScript_VerticalChoice
     dw Option_Prayer
     dw Option_Fortune
     db $2B, $64, $67, $63, 
@@ -2470,25 +2488,25 @@ Option_Prayer: ; 1bx6246
     text_block Pray1Text
     text_block Pray2Text
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw Pray3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
     db $2A, $45,
     db $FF, $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
 
     text_block PrayersWillBeHeard1Text
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     db $8C, $68,
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
     db $2A, $45, $FF, $8F, $46, $24, $62, $07, $47,
 
     text_block CowBlessing1Text
@@ -2496,13 +2514,13 @@ Option_Prayer: ; 1bx6246
     text_block CowBlessing3Text
     text_block CowBlessing4Text
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw CowBlessing5Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
     db $2A, $45, $FF, $8F, $46,
     db $24, $62, $EC, $46, $1F, $E5, $62, $7A, $62, $2A, $47, 
 
@@ -2510,13 +2528,13 @@ Option_Prayer: ; 1bx6246
     text_block CowBlessing6Text
     text_block CowBlessing7Text
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw CowBlessing8Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
     db $2A, $45, $FF, $8F, $46,
     db $24, $62, 
 
@@ -2524,15 +2542,15 @@ Option_Fortune:
     text_block AskForFortune1Text
     text_block AskForFortune2Text
     text_block_player AskForFortune3Text, 7
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4134
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
     text_block AskForFortune4Text
-    dw Label_01b_4523
-    dw Label_01b_452a
+    dw VillageScript_ResetTickCounter
+    dw VillageScript_WaitTicksOrButton
     db FIRST_TEXTBOX_TILE
     dw GetFortune
     dw GoodFortuneResult
@@ -2544,23 +2562,23 @@ Option_Fortune:
     text_block ListenToOrganText3
     dw Label_01b_4779
 
-    dw Village_TextWindowClear 
+    dw VillageScript_ClearTextBox 
     db $85, $47, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw wVillageTextBuffer
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
+    dw VillageScript_PrintText
     dw Label_01b_4797
     db $8D, $63,
     dw Label_01b_47eb
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw ListenToOrganText4
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
+    dw VillageScript_PrintText
     db $23, $45, $2A, $45,
     db $FF, $8F, $46, $24, $62
 
@@ -2569,13 +2587,13 @@ GoodFortuneResult:
     text_block GoodFortune2Text
     dw GoodFortuneTellingResult
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw GoodFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
     db $2A, $45, $C8, $8F, $46,
     db $24, $62
 
@@ -2584,12 +2602,12 @@ NormalFortuneResult:
     text_block NormalFortune2Text
     dw NormalFortuneTellingResult
 
-    dw Village_TextWindowClear
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
     dw NormalFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw Label_01b_468f
+    dw VillageScript_Jump
     db $D4, $63, 
 
 BadFortuneResult:
@@ -2597,26 +2615,26 @@ BadFortuneResult:
     text_block BadFortune2Text
     dw BadFortuneTellingResult
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw BadFortune3Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
     db $8F, $46, $D4, $63
     text_block GoodLuckGoodFortune1Text
 
-    dw Village_TextWindowClear 
-    dw PrepareTextBlock
+    dw VillageScript_ClearTextBox 
+    dw VillageScript_PrepareText
     dw GoodLuckGoodFortune2Text
     db VILLAGE_MAX_NUM_CHARACTERS,
     db FIRST_TEXTBOX_TILE
-    dw VillagePrintCharacter
-    dw Label_01b_4523
-    dw Label_01b_452a
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
+    dw VillageScript_WaitTicksOrButton
     db FIRST_TEXTBOX_TILE
     dw Label_01b_453d
 Label_01b_6448:
-    dw Label_01b_468f
+    dw VillageScript_Jump
     dw Label_01b_6448
 
 ChurchMaria1Text:: ; 1bx644c
@@ -2763,7 +2781,7 @@ PrayersWillBeHeard2Text:: ; 1bx688c
     db $E6, $40, $21, $40, $E8, $6D, $20, $80, $8F, $46, $3F, $6A, $E6, $40, $21, $40,
     db $68, $6B, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $88, $6B, $20, $80,
     db $8F, $46, $3F, $6A, $E6, $40, $21, $40, $A8, $6B, $20, $80, $34, $40, $34, $41,
-    dw Village_TextWindowClear
+    dw VillageScript_ClearTextBox
     db $21, $40, $C8, $6B, $20, $80, $8F, $46, $3F, $6A, 
 
     db "Ahh,     .      "
@@ -3050,33 +3068,33 @@ GrassSeedPriceText::
     db "Grass Seeds     "
     db "1 bag is 500G.  "
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $A7, $78, $10, $80, $8F, $46, $11, $77, $21, $40, $B7, $78, $10, $80,
     db $8F, $46, $11, $77, 
     db "Material        "
     db "Home Expansion  "
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw SprinklerMenuText
     db $10, 
     db FIRST_TEXTBOX_TILE
-    dw Label_01b_468f
+    dw VillageScript_Jump
     db $11, $77
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw BrushMenuText
     db $10, $80, $8F, $46, $11, $77
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw SaddlebagMenuText
     db $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw MilkerMenuText
     db $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw CheeseMakerMenuText
     db $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     dw ButterMakerMenuText
     db $10, $80, $8F, $46, $11, $77, 
 
@@ -3093,23 +3111,23 @@ CheeseMakerMenuText:
 ButterMakerMenuText:
     db "Butter Maker    "
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $BD, $79, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $CD, $79, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $DD, $79, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $ED, $79, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $FD, $79, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $0D, $7A, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $1D, $7A, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $2D, $7A, $10, $80, $8F, $46, $11, $77, 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $3D, $7A, $10, $80, $8F, $46, $11, $77, 
 ; text
     db "Buy a cow       "
@@ -3122,7 +3140,7 @@ ButterMakerMenuText:
     db "Sell a cow      "
     db "Sell a chicken  "
 
-    dw PrepareTextBlock
+    dw VillageScript_PrepareText
     db $7F, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $8F,
     db $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $9F, $7A, $10, $80, $8F, $46, $11,
     db $77, $21, $40, $AF, $7A, $10, $80, $8F, $46, $11, $77, $21, $40, $BF, $7A, $10,
@@ -3147,7 +3165,7 @@ ButterMakerMenuText:
     db $06, $2B, $1E, $1E, $27, $EF, $13, $1E, $1A, $EF, $EF, $EF, $EF, $EF, $EF, $EF,
     db $0C, $22, $25, $24, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF, $EF
 
-Label_01b_something:
+VillageScript_PrintTileIDs:
     ld h, b
     ld l, c
     push hl
@@ -3202,9 +3220,9 @@ jr_01b_7b61:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [wVillageTextCharacterCounter]
+    ld a, [wVillageTextChractersRemaining]
     dec a
-    ld [wVillageTextCharacterCounter], a
+    ld [wVillageTextChractersRemaining], a
     jr z, .finishedPrintingLine
 
     dec hl
@@ -3213,7 +3231,7 @@ jr_01b_7b61:
 
 .finishedPrintingLine
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 
@@ -3222,9 +3240,9 @@ jr_01b_7bb0:
     ld a, [wVillageTextTileNumber]
     inc a
     ld [wVillageTextTileNumber], a
-    ld a, [wVillageTextCharacterCounter]
+    ld a, [wVillageTextChractersRemaining]
     dec a
-    ld [wVillageTextCharacterCounter], a
+    ld [wVillageTextChractersRemaining], a
     jr z, jr_01b_7bc8
 
     ld a, [de]
@@ -3236,7 +3254,7 @@ jr_01b_7bb0:
 jr_01b_7bc8:
     pop hl
     xor a
-    ld [$cd98], a
+    ld [wVillageScriptTickCounter], a
     ret
 
 

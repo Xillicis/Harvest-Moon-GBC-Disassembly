@@ -140,7 +140,7 @@ jr_023_4101:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_023_4278
     ret
 
@@ -153,7 +153,7 @@ jr_023_413a:
 
     call Call_000_3cf8
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_023_42ca
     ret
 
@@ -162,7 +162,7 @@ jr_023_4150:
     call Call_000_3cf8
     call Call_023_51a6
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ld hl, $6a38
     ld a, $21
     call BankSwitchCallHL

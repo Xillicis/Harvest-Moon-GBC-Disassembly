@@ -2673,7 +2673,7 @@ jr_002_4f24:
     jr jr_002_4f2f
 
 jr_002_4f2a:
-    call Call_002_4fca
+    call RemovePotatoOutsideSpring
     jr jr_002_4f5d
 
 jr_002_4f2f:
@@ -2729,24 +2729,24 @@ jr_002_4f5d:
 UpdateSoilMoistureForWeather: ; 02x4f68
     ld a, [sCurrentWeather]
     cp RAINY_DAY
-    jr z, jr_002_4f89
+    jr z, .wetSoil
 
     cp WINDY_DAY
-    jr z, jr_002_4f89
+    jr z, .wetSoil
 
     cp SNOWY_DAY
-    jr z, jr_002_4f89
+    jr z, .wetSoil
 
     push hl
     push bc
     dec hl
     ld a, [hld]
     cp 0
-    jr nz, jr_002_4f98
+    jr nz, .done
 
     ld a, [hl]
     cp $12
-    jr nz, jr_002_4f98
+    jr nz, .done
 
     dec a
     ld [hl], a
@@ -2754,22 +2754,22 @@ UpdateSoilMoistureForWeather: ; 02x4f68
     pop hl
     ret
 
-jr_002_4f89:
+.wetSoil
     push hl
     push bc
     dec hl
     ld a, [hld]
     cp $00
-    jr nz, jr_002_4f98
+    jr nz, .done
 
     ld a, [hl]
     cp $11
-    jr nz, jr_002_4f98
+    jr nz, .done
 
     inc a
     ld [hl], a
 
-jr_002_4f98:
+.done
     pop bc
     pop hl
     ret
@@ -2811,7 +2811,7 @@ RemoveTurnipOutsideSpring: ; 02x4fc1
     jp nz, ReplacePreviousFarmObjectWithPlowedSoil
     ret
 
-Call_002_4fca:
+RemovePotatoOutsideSpring: ; 02x4fca
     ld a, [sCurrentSeason]
     cp SPRING
     jp nz, ReplacePreviousFarmObjectWithPlowedSoil
@@ -3220,10 +3220,10 @@ jr_002_5271:
     call Call_002_5356
     call Call_002_5913
     call Call_000_3cf8
-    call AnimateTV
+    call UpdateTVForecastAnimation
     call Call_002_5433
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     call Call_002_6694
     call Call_000_0ec5
     ret
@@ -4347,7 +4347,7 @@ Call_002_5913:
     cp CALENDAR_CLOCK
     jr z, jr_002_599c
     cp TELEVISION
-    jp z, TelevisionInteract
+    jp z, StartTVForecast
 
     ret z
 
@@ -4450,7 +4450,7 @@ DresserInteract:
     call RST_TableJumpBankSwitch
     ret
 
-TelevisionInteract:
+StartTVForecast:
     ld a, $00
     call RST_TableJumpBankSwitch
     ld a, [wTVIsTurnedOn]
@@ -4778,179 +4778,183 @@ jr_002_5c69:
     ld [$ba4c], a
     ret
 
-Data_002_5c71:
+TVSunnyFrames: ; 02x5c71
+.frame0
     db $00, $40, $01, $41, $02, $42, $03, $43, $10, $50, $11, $51, $12, $52, $13, $53
-Data_002_5c81:
+.frame1
     db $00, $40, $01, $41, $04, $42, $05, $43, $10, $50, $11, $51, $14, $52, $15, $53
-Data_002_5c91:
+.frame2
     db $00, $40, $01, $41, $06, $42, $07, $43, $10, $50, $11, $51, $16, $52, $17, $53
-Data_002_5ca1:
+.frame3
     db $20, $40, $21, $41, $24, $42, $25, $43, $30, $50, $31, $51, $34, $52, $35, $53
-Data_002_5cb1:
+.frame4
     db $22, $40, $23, $41, $24, $42, $25, $43, $32, $50, $33, $51, $34, $52, $35, $53
-Data_002_5cc1:
+TVIdleFrame: ; 02x5cc1
     db $58, $40, $59, $41, $5A, $42, $5B, $43, $68, $50, $69, $51, $6A, $52, $6B, $53
-Data_002_5cd1:
+TVRainyFrames: ; 02x5cd1
+.frame0
     db $00, $40, $01, $41, $02, $42, $03, $43, $10, $50, $11, $51, $12, $52, $13, $53
-Data_002_5ce1:
+.frame1
     db $00, $40, $01, $41, $04, $42, $05, $43, $10, $50, $11, $51, $14, $52, $15, $53
-Data_002_5cf1:
+.frame2
     db $00, $40, $01, $41, $06, $42, $07, $43, $10, $50, $11, $51, $16, $52, $17, $53
-Data_002_5d01:
+.frame3
     db $40, $40, $41, $41, $26, $42, $27, $43, $50, $50, $51, $51, $36, $52, $37, $53
-Data_002_5d11:
+.frame4
     db $42, $40, $43, $41, $26, $42, $27, $43, $52, $50, $53, $51, $36, $52, $37, $53
 Data_002_5d21:
     db $58, $40, $59, $41, $5A, $42, $5B, $43, $68, $50, $69, $51, $6A, $52, $6B, $53
-Data_002_5d31:
+TVSnowyFrames: ; 02x5d31
+.frame0
     db $00, $40, $01, $41, $02, $42, $03, $43, $10, $50, $11, $51, $12, $52, $13, $53
-Data_002_5d41:
+.frame1
     db $00, $40, $01, $41, $04, $42, $05, $43, $10, $50, $11, $51, $14, $52, $15, $53
-Data_002_5d51:
+.frame2
     db $00, $40, $01, $41, $06, $42, $07, $43, $10, $50, $11, $51, $16, $52, $17, $53
-Data_002_5d61:
+.frame3
     db $60, $40, $61, $41, $46, $42, $47, $43, $70, $50, $71, $51, $56, $52, $57, $53
-Data_002_5d71:
+.frame4
     db $60, $40, $61, $41, $46, $42, $47, $43, $70, $50, $71, $51, $56, $52, $57, $53
 Data_002_5d81:
     db $60, $40, $61, $41, $46, $42, $47, $43, $70, $50, $71, $51, $56, $52, $57, $53
 Data_002_5d91:
+.frame0
     db $00, $40, $01, $41, $02, $42, $03, $43, $10, $50, $11, $51, $12, $52, $13, $53
-Data_002_5da1:
+.frame1
     db $00, $40, $01, $41, $04, $42, $05, $43, $10, $50, $11, $51, $14, $52, $15, $53
-Data_002_5db1:
+.frame2
     db $00, $40, $01, $41, $06, $42, $07, $43, $10, $50, $11, $51, $16, $52, $17, $53
-Data_002_5dc1:
+.frame3
     db $62, $40, $63, $41, $66, $42, $67, $43, $72, $50, $73, $51, $76, $52, $77, $53
-Data_002_5dd1:
+.frame4
     db $64, $40, $65, $41, $66, $42, $67, $43, $74, $50, $75, $51, $76, $52, $77, $53
 Data_002_5de1:
     db $58, $40, $59, $41, $5A, $42, $5B, $43, $68, $50, $69, $51, $6A, $52, $6B, $53
-Data_002_5df1:
+TVWindyFrames: ; 02x5df1
+.frame0
     db $08, $40, $09, $41, $0A, $42, $0B, $43, $18, $50, $19, $51, $1A, $52, $1B, $53
-Data_002_5e01:
+.frame1
     db $28, $40, $29, $41, $2A, $42, $2B, $43, $38, $50, $39, $51, $3A, $52, $3B, $53
-Data_002_5e11:
+.frame2
     db $08, $40, $09, $41, $0A, $42, $0B, $43, $18, $50, $19, $51, $1A, $52, $1B, $53
-Data_002_5e21:
+.frame3
     db $28, $40, $29, $41, $2A, $42, $2B, $43, $38, $50, $39, $51, $3A, $52, $3B, $53
-Data_002_5e31:
+.frame4
     db $08, $40, $09, $41, $0A, $42, $0B, $43, $18, $50, $19, $51, $1A, $52, $1B, $53
 Data_002_5e41:
     db $58, $40, $59, $41, $5A, $42, $5B, $43, $68, $50, $69, $51, $6A, $52, $6B, $53 
 
-AnimateTV:
+UpdateTVForecastAnimation:
     ld a, [wTVAnimationTimer]
     or a
     ret z
 
     ld a, [wTVIsTurnedOn]
     or a
-    jr nz, jr_002_5e69
+    jr nz, .updateActiveTV
 ; TV is off now, so finish up.
     ld a, $ff
     ld [wTVBlinkingIndicator], a
     ld a, 0
     ld [wTVAnimationTimer], a
-    jp Jump_002_5ef1
+    jp TurnOffTVAndDrawIdleFrame
 
-jr_002_5e69:
+.updateActiveTV
     ld a, $10
     ld [wInputFreezeTimer], a
     ld a, [sCurrentWeather]
     cp WINDY_DAY
-    jr nz, jr_002_5e7a
+    jr nz, .selectTomorrowForecast
 
-    ld hl, Data_002_5df1
-    jr jr_002_5ea4
+    ld hl, TVWindyFrames
+    jr .advanceAnimationTimer
 
-jr_002_5e7a:
+.selectTomorrowForecast
     ld a, [sNextDayWeather]
     cp SUNNY_DAY
     jr nz, .notSunnyDay
-    ld hl, Data_002_5c71
-    jr jr_002_5ea4
+    ld hl, TVSunnyFrames
+    jr .advanceAnimationTimer
 
 .notSunnyDay
     cp RAINY_DAY
     jr nz, .notRainyDay
-    ld hl, Data_002_5cd1
-    jr jr_002_5ea4
+    ld hl, TVRainyFrames
+    jr .advanceAnimationTimer
 
 .notRainyDay
     cp SNOWY_DAY
     jr nz, .notSnowyDay
-    ld hl, $5d31
-    jr jr_002_5ea4
+    ld hl, TVSnowyFrames
+    jr .advanceAnimationTimer
 
 .notSnowyDay
     cp $04
-    jr nz, jr_002_5ea1
+    jr nz, .useWindyAnimation
 
     ld hl, $5d91
-    jr jr_002_5ea4
+    jr .advanceAnimationTimer
 
-jr_002_5ea1:
-    ld hl, $5df1
+.useWindyAnimation
+    ld hl, TVWindyFrames
 
-jr_002_5ea4:
+.advanceAnimationTimer
     ld a, [wTVBlinkingIndicator]
     ld b, a
     ld a, [wTVAnimationTimer]
     add b
     ld [wTVAnimationTimer], a
     cp $7f
-    jr z, jr_002_5ec4
+    jr z, .drawIntroFrame0
     cp $60
-    jr z, jr_002_5ec6
+    jr z, .drawIntroFrame1
     cp $50
-    jr z, jr_002_5ecc
+    jr z, .showTextAndDrawIntroFrame2
     cp $40
-    jr z, jr_002_5edb
+    jr z, .drawLoopFrame0
     cp $38
-    jr z, jr_002_5ee6
+    jr z, .drawLoopFrame1
     ret
 
-jr_002_5ec4:
-    jr jr_002_5efa
+.drawIntroFrame0
+    jr UploadTVFrameTiles
 
-jr_002_5ec6:
+.drawIntroFrame1
     ld bc, $0010
     add hl, bc
-    jr jr_002_5efa
+    jr UploadTVFrameTiles
 
-jr_002_5ecc:
+.showTextAndDrawIntroFrame2
     xor a
     ld [wInputFreezeTimer], a
     push hl
-    call LoadTVText
+    call DisplayTVForecastText
     pop hl
     ld bc, $0020
     add hl, bc
-    jr jr_002_5efa
+    jr UploadTVFrameTiles
 
-jr_002_5edb:
-    ld a, $ff
+.drawLoopFrame0
+    ld a, -1
     ld [wTVBlinkingIndicator], a
     ld bc, $0030
     add hl, bc
-    jr jr_002_5efa
+    jr UploadTVFrameTiles
 
-jr_002_5ee6:
-    ld a, $01
+.drawLoopFrame1
+    ld a, 1
     ld [wTVBlinkingIndicator], a
     ld bc, $0040
     add hl, bc
-    jr jr_002_5efa
+    jr UploadTVFrameTiles
 
-Jump_002_5ef1:
+TurnOffTVAndDrawIdleFrame: ; 02x5ef1
     xor a
     ld [wTVIsTurnedOn], a
-    ld hl, Data_002_5cc1
-    jr jr_002_5efa
+    ld hl, TVIdleFrame
+    jr UploadTVFrameTiles
 
-; Loads TV screen and maybe unloads it too?
-jr_002_5efa:
+UploadTVFrameTiles:
     ld d, h
     ld e, l
     ld c, $08
@@ -5000,7 +5004,7 @@ jr_002_5efa:
     jr nz, .outerLoop
     ret
 
-LoadTVText: ; 02x5f31
+DisplayTVForecastText: ; 02x5f31
     ld a, [sCurrentWeather]
     cp WINDY_DAY
     jp z, .stayInside

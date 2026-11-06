@@ -124,7 +124,7 @@ SECTION "ROM Bank $024", ROMX[$4000], BANK[$24]
     call Call_000_3cf8
     call Call_024_4290
     call Call_000_2d67
-    call LoadCharacterTileIntoVRAM
+    call UpdateTextEngine
     ld hl, $6a38
     ld a, $21
     call BankSwitchCallHL
