@@ -2189,94 +2189,264 @@ JuiceBar_Leaving2Text:: ; 1bx557c
 
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $6C, $5A, $20, $80, $34, $40, $34, $41, $3D, $45,
+    db $6C, $5A, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $34, $41, $3D, $45,
     db $8F, $46, $AA, $55, 
 
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $8C, $5A, $20, $80, $34, $40, $34, $41,
+    db $8C, $5A, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $34, $41,
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $AC, $5A, $20, $80, $34, $40, $2D, $41, $68, $41, $CC, $55,
+    db $AC, $5A, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $2D, $41, $68, $41, $CC, $55,
     db $60, $5A, $1B, $46, $36, $E8, $59, $F2, $45, $C4, $59, $85, $43, $88, $13, $A3,
     db $59, $6B, $47, $88, $13, 
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $CC, $5E, $20, $80, $34, $40, $34,
+    db $CC, $5E, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $34,
     db $41, $48, $46, $8F, $46, $ED, $55, 
     dw VillageScript_ClearTextBox
 
     db $13, $41, $EC, $5E, $72, $CD, $20,
-    db $2C, $CD, $72, $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $AB, $45, $34,
+    db $2C, $CD, $72, $CD, $04, $21, $40, $72, $CD, $20, $80, 
+    dw VillageScript_PrintText
+    db $AB, $45, $34,
     db $41, $D7, $43, $B3, $B8, $02, $2E, $56, $F1, $43, $B3, $B8, 
     dw VillageScript_ClearTextBox
 
     db $21, $40,
-    db $0C, $5F, $20, $80, $34, $40, $34, $41, 
+    db $0C, $5F, $20, $80, 
+    dw VillageScript_PrintText
+    db $34, $41, 
+
     dw VillageScript_ClearTextBox
 
     dw VillageScript_PrepareText
     db $2C, $5F, $20, $80,
-    db $34, $40, $34, $41, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     db $13, $41, $4C, $5F, $72, $CD, $20, $2C, $CD, $82,
-    db $CD, $04, $21, $40, $72, $CD, $20, $80, $34, $40, $34, $41, 
+    db $CD, $04, $21, $40, $72, $CD, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
     db $6C, $5F, $20, $80, $8F, $46, $AB, $59,
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
     db $EC, $5A, $20, $80,
-    db $34, $40, $34, $41, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     db $21, $40, $AC, $5A, $20, $80, $34, $40, $2D, $41,
     db $68, $41, $70, $56, $60, $5A, $1B, $46, $24, $18, $5A, $11, $46, $C4, $59, $85,
     db $43, $F4, $01, $A3, $59, $6F, $46, 
     dw VillageScript_ClearTextBox
-    db $21, $40, $6C, $60, $20, $80, $34,
-    db $40, $34, $41
+    db $21, $40, $6C, $60, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
     db $8C, $60, $20, $80, $8F, $46, $AB, $59,
     dw VillageScript_ClearTextBox
-    db $21, $40, $4C, $5C, $20, $80, $34, $40, $34, $41, 
+    db $21, $40, $4C, $5C, $20, $80
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     db $21, $40, $AC,
-    db $5C, $20, $80, $34, $40, $34, $41,
+    db $5C, $20, $80
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $CC, $5C, $20, $80, $34,
-    db $40, $34, $41, 
+    db $CC, $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
 
-    db $6C, $5C, $20, $80, $34, $40, $34, $41,
+    db $6C, $5C, $20, $80,
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
     dw VillageScript_ClearTextBox
     dw VillageScript_PrepareText
-    db $8C, $5D, $20, $80, $34, $40, $2D, $41, $68, $41, $DB, $56, $60,
+    db $8C, $5D, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $2D, $41, $68, $41, $DB, $56, $60,
     db $5A, $85, $43, $BC, $02, $A3, $59, $F1, $43, $C0, $B8, $FB, $43, $46, $B9, $8F,
-    db $46, $54, $5A, $E6, $40, $21, $40, $8C, $5C, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $AC, $5C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC,
-    db $5C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $EC, $5C, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $8C, $5D, $20, $80, $34, $40, $2D, $41, $68,
+    db $46, $54, $5A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $8C, $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $AC, $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $CC,
+    db $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $EC, $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $5D, $20, $80, 
+    dw VillageScript_PrintText
+    db $2D, $41, $68,
     db $41, $2F, $57, $60, $5A, $85, $43, $F4, $01, $A3, $59, $F1, $43, $C1, $B8, $FB,
-    db $43, $47, $B9, $8F, $46, $54, $5A, $E6, $40, $21, $40, $6C, $5B, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $8C, $5B, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $AC, $5B, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $8C,
-    db $5D, $20, $80, $34, $40, $2D, $41, $68, $41, $77, $57, $60, $5A, $85, $43, $E8,
-    db $03, $A3, $59, $F1, $43, $AB, $B8, $8F, $46, $54, $5A, $E6, $40, $21, $40, $EC,
-    db $5B, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $0C, $5C, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $2C, $5C, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $8C, $5D, $20, $80, $34, $40, $2D, $41, $68, $41, $BB, $57, $60,
-    db $5A, $85, $43, $A0, $0F, $A3, $59, $F1, $43, $B2, $B8, $8F, $46, $54, $5A, $E6,
-    db $40, $21, $40, $2C, $5D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $4C,
-    db $5D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $6C, $5D, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $8C, $5D, $20, $80, $34, $40, $2D, $41, $68,
+    db $43, $47, $B9, $8F, $46, $54, $5A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $6C, $5B, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $5B, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $AC, $5B, $20, $80,
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C,
+    db $5D, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $2D, $41, $68, $41, $77, $57, $60, $5A, $85, $43, $E8,
+    db $03, $A3, $59, $F1, $43, $AB, $B8, $8F, $46, $54, $5A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $EC,
+    db $5B, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $0C, $5C, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $2C, $5C, $20, $80
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $5D, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $2D, $41, $68, $41, $BB, $57, $60,
+    db $5A, $85, $43, $A0, $0F, $A3, $59, $F1, $43, $B2, $B8, $8F, $46, $54, $5A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $2C, $5D, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $4C,
+    db $5D, $20, $80,
+    dw VillageScript_PrintText
+
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $6C, $5D, $20, $80
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $5D, $20, $80, 
+    dw VillageScript_PrintText
+
+    db $2D, $41, $68,
     db $41, $FF, $57, $60, $5A, $85, $43, $D0, $07, $A3, $59, $F1, $43, $B1, $B8, $8F,
-    db $46, $54, $5A, $E6, $40, $21, $40, $8C, $5F, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $AC, $5F, $20, $80, $34, $40, $2D, $41, $F7, $47, $2B, $58, $60,
-    db $5A, $55, $46, $8F, $46, $2D, $58, $E6, $40, $21, $40, $CC, $5F, $20, $80, $34,
-    db $40, $34, $41, $E6, $40, $21, $40, $EC, $5F, $20, $80, $51, $7B, $34, $41, $3D,
+    db $46, $54, $5A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $5F, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $AC, $5F, $20, $80, 
+    dw VillageScript_PrintText
+    db $2D, $41, $F7, $47, $2B, $58, $60,
+    db $5A, $55, $46, $8F, $46, $2D, $58, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $CC, $5F, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $EC, $5F, $20, $80, $51, $7B, $34, $41, $3D,
     db $45, $8F, $46, $4B, $58, $E6, $40, $13, $41, $8C, $61, $72, $CD, $20, $CD, $CC,
     db $87, $CD, $01, $CE, $7B, $AC, $61, $21, $40, $72, $CD, $20, $80, $51, $7B, $8F,
     db $46, $69, $58, $E6, $40, $13, $41, $CC, $61, $72, $CD, $20, $4A, $B9, $8D, $CD,
