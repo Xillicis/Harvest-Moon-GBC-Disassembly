@@ -15,6 +15,21 @@ MACRO text_block
     dw VillageScript_WaitForAOrB
 ENDM
 
+; \1: Text to display.
+; Follow with two script pointers: first and second choices.
+MACRO text_block_choice
+    dw VillageScript_ClearTextBox
+
+    dw VillageScript_PrepareText
+    dw \1
+    db VILLAGE_MAX_NUM_CHARACTERS
+    db FIRST_TEXTBOX_TILE
+
+    dw VillageScript_PrintText
+    dw VillageScript_ResetChoice
+    dw VillageScript_HorizontalChoice2
+ENDM
+
 ; Text blocks that contain the player's name
 MACRO text_block_player
     dw VillageScript_ClearTextBox 
@@ -66,7 +81,7 @@ VillageScript_PrepareText: ; 1bx4021
     ld a, [hl+]
     ld [wVillageCharacterPointer+1], a
     ld a, [hl+]
-    ld [wVillageTextChractersRemaining], a
+    ld [wVillageTextCharactersRemaining], a
     ld a, [hl+]
     ld [wVillageTextTileNumber], a
     ret
@@ -129,9 +144,9 @@ jr_01b_4044:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [wVillageTextChractersRemaining]
+    ld a, [wVillageTextCharactersRemaining]
     dec a
-    ld [wVillageTextChractersRemaining], a
+    ld [wVillageTextCharactersRemaining], a
     jr z, .finishedPrintingLine
 
     dec hl
@@ -149,9 +164,9 @@ jr_01b_409b:
     ld a, [wVillageTextTileNumber]
     inc a
     ld [wVillageTextTileNumber], a
-    ld a, [wVillageTextChractersRemaining]
+    ld a, [wVillageTextCharactersRemaining]
     dec a
-    ld [wVillageTextChractersRemaining], a
+    ld [wVillageTextCharactersRemaining], a
     jr z, jr_01b_40b3
 
     ld a, [de]
@@ -707,6 +722,8 @@ Label_01b_434e:
     nop
     xor $00
     add b
+
+VillageScript_TryPay: ; 1bx4385
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -727,7 +744,7 @@ Label_01b_434e:
 
 
 jr_01b_439b:
-    call Call_01b_46b1
+    call SubtractDEFromPlayerMoney
     ld a, $42
     call StartTwoAudioTracks
     pop hl
@@ -754,7 +771,7 @@ jr_01b_439b:
 
 
 jr_01b_43bf:
-    call Call_01b_46b1
+    call SubtractDEFromPlayerMoney
     ld a, $42
     call StartTwoAudioTracks
     ld h, b
@@ -773,6 +790,7 @@ jr_01b_43bf:
     ret
 
 
+VillageScript_JumpIfItemOwned: ; 1bx43d7
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -803,7 +821,7 @@ jr_01b_43ed:
     ld l, a
     ret
 
-
+VillageScript_SetFlag: ; 1bx43f1
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -844,7 +862,7 @@ jr_01b_43ed:
     ld [de], a
     ret
 
-
+VillageScript_RemoveOwnedItem: ; 1bx4418
     ld h, b
     ld l, c
     ld a, [hl+]
@@ -1106,7 +1124,7 @@ Label_01b_453d:
 
 ; Good fortune - 3 / 16
 ; Normal fortune - 10 / 16
-; Bad forutne - 3 / 16
+; Bad fortune - 3 / 16
 GetFortune: ; 1bx4545
 ; get random number from the data 
     ld a, [wVillageScriptTickCounter]
@@ -1136,7 +1154,7 @@ DEF GOOD_FORTUNE EQU 0
 DEF NORMAL_FORTUNE EQU 2
 DEF BAD_FORTUNE EQU 4
 
-FortuneProbabilityTable: ; 1bx460
+FortuneProbabilityTable: ; 1bx4560
     db GOOD_FORTUNE,   BAD_FORTUNE,    NORMAL_FORTUNE, NORMAL_FORTUNE
     db NORMAL_FORTUNE, NORMAL_FORTUNE, GOOD_FORTUNE,   NORMAL_FORTUNE
     db BAD_FORTUNE,    NORMAL_FORTUNE, NORMAL_FORTUNE, NORMAL_FORTUNE
@@ -1433,10 +1451,9 @@ CheckPlayerCanAffordDE: ; 1bx46a4
     pop bc
     ret
 
-
-Call_01b_46b1:
+SubtractDEFromPlayerMoney: ; 1bx46b1
     push bc
-    ld b, $00
+    ld b, 0
     ld hl, sPlayerMoney
     ld a, [hl]
     sub e
@@ -1853,26 +1870,71 @@ Label_01b_4888:
     db $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
     db $CD, $04, 
     dw VillageScript_PrepareText
-    db $72, $CD, $20, $80, $34, $40, $34, $41, $3D, $45, $8F, $46,
-    db $A6, $48, $13, $41, $AB, $4A, $72, $CD, $20, $CB, $4A, $8E, $CD, $01, $8F, $46,
-    db $9A, $48, $E6, $40, $21, $40, $CC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40,
+    db $72, $CD, $20, $80, 
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+    db $3D, $45, $8F, $46,
+    db $A6, $48, $13, $41, 
+    dw ToolShop_SprinklerIsReady
+    db $72, $CD, $20, 
+    dw ToolShop_BrushText_Unknown
+    db $8E, $CD, $01, $8F, $46,
+    db $9A, $48, 
+
+
+    text_block ToolShop_BrushText1
+    text_block ToolShop_BrushText2
+    text_block_choice ToolShop_BrushText3
+    db $E4, $48, $73, $4A, 
+    dw VillageScript_TryPay
+    dw BRUSH_PRICE
+    dw $4A3A
+    dw VillageScript_SetFlag
+    db $AD, $B8, $8F, $46, $5B, $4A, 
+
+    text_block ToolShop_MilkerText1
+    text_block ToolShop_MilkerText2
+    text_block_choice ToolShop_MilkerText3
+    db $1C, $49, $73, $4A, 
+    dw VillageScript_TryPay
+    dw MILKER_PRICE
+    db $3A, $4A, 
+    dw VillageScript_SetFlag
+    db $AC, $B8, $8F, $46,
+    db $5B, $4A, 
+
+    text_block ToolShop_SprinklerText1
+    dw VillageScript_ClearTextBox
+    dw VillageScript_JumpIfItemOwned
+    db $AE, $B8, $0A, $49, $49, 
     dw VillageScript_PrepareText
-    db $EC, $4A, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $0C, $4B,
-    db $20, $80, $34, $40, $2D, $41, $68, $41, $E4, $48, $73, $4A, $85, $43, $20, $03,
-    db $3A, $4A, $F1, $43, $AD, $B8, $8F, $46, $5B, $4A, $E6, $40, $21, $40, $AC, $4B,
-    db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC, $4B, $20, $80, $34, $40,
-    db $34, $41, $E6, $40, $21, $40, $EC, $4B, $20, $80, $34, $40, $2D, $41, $68, $41,
-    db $1C, $49, $73, $4A, $85, $43, $08, $07, $3A, $4A, $F1, $43, $AC, $B8, $8F, $46,
-    db $5B, $4A, $E6, $40, $21, $40, $0C, $4C, $20, $80, $34, $40, $34, $41, $E6, $40,
-    db $D7, $43, $AE, $B8, $0A, $49, $49, $21, $40, $6C, $4C, $20, $80, $8F, $46, $5B,
-    db $49, $21, $40, $2C, $4C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $4C,
-    db $4C, $20, $80, $34, $40, $2D, $41, $68, $41, $65, $49, $73, $4A, $85, $43, $D0,
-    db $07, $3A, $4A, $F1, $43, $AF, $B8, $18, $44, $AE, $B8, $0A, $8F, $46, $5B, $4A,
-    db $E6, $40, $21, $40, $8C, $4C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
-    db $AC, $4C, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $CC, $4C, $20, $80,
-    db $34, $40, $34, $41, $E6, $40, $21, $40, $EC, $4C, $20, $80, $34, $40, $2D, $41,
-    db $68, $41, $AE, $49, $73, $4A, $85, $43, $30, $75, $3A, $4A, $F1, $43, $43, $B9,
+    dw ToolShop_SprinklerPriceChoiceText
+    db $20, $80
+    dw VillageScript_Jump
+    db $5B, $49
+    dw VillageScript_PrepareText
+    dw ToolShop_SprinklerTradeInPriceText
+    db $20, $80
+    dw VillageScript_PrintText
+    dw VillageScript_WaitForAOrB
+    text_block_choice ToolShop_SprinklerTradeInChoiceText
+    db $65, $49, $73, $4A, 
+    dw VillageScript_TryPay
+    dw SPRINKLER_PRICE
+    db $3A, $4A, 
+    dw VillageScript_SetFlag
+    db $AF, $B8, 
+    dw VillageScript_RemoveOwnedItem
+    db $AE, $B8, $0A, $8F, $46, $5B, $4A,
+
+    text_block ToolShop_ButterMakerText1
+    text_block ToolShop_ButterMakerText2
+    text_block ToolShop_ButterMakerText3
+    text_block_choice ToolShop_ButterMakerText4
+
+    db $AE, $49, $73, $4A, $85, $43, $30, $75, $3A, $4A, $F1, $43, $43, $B9,
     db $8F, $46, $5B, $4A, $E6, $40, $21, $40, $0C, $4D, $20, $80, $34, $40, $34, $41,
+
     db $E6, $40, $21, $40, $2C, $4D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
     db $4C, $4D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $6C, $4D, $20, $80,
     db $34, $40, $2D, $41, $68, $41, $F2, $49, $73, $4A, $85, $43, $30, $75, $3A, $4A,
@@ -1890,59 +1952,74 @@ Label_01b_4888:
     db "Hi     !What can"
     db "I do for you?  ▽"
 
+ToolShop_SprinklerIsReady:: ; 1bx4aab
     db "Hi! The Sprinkl-"
     db "er is ready!   ▽"
 
-ToolShop_BrushText::
+ToolShop_BrushText_Unknown:: ; 1bx4acb
     db $AF
+ToolShop_BrushText1:: ; 1bx4acc
     db "That<'s> a Brush   "
     db "used on cows.  ▽"
+ToolShop_BrushText2:: ; 1bx4aec
     db "It is specially "
     db "made. The cost ▽"
+ToolShop_BrushText3:: ; 1bx4b0c
     db "is 800G.        "
     db " Buy   Don't Buy"
 
-ToolShop_BuyBrushText::
+ToolShop_BuyBrushText1:: ; 1bx4b2c
     db "Thank you!      "
     db "               ▽"
+ToolShop_BuyBrushText2:: ; 1bx4b4c
     db "Be sure not to  "
     db "mistreat it.    "
 
-ToolShop_DontBuyBrushText::
+ToolShop_DontBuyBrushText1:: ; 1bx4b6c
     db "What! Are you   "
     db "sure?          ▽"
+ToolShop_DontBuyBrushText2:: ; 1bx4b8c
     db "I worked very   "
     db "hard on it...   "
 
-ToolShop_MilkerText::
+ToolShop_MilkerText1:: ; 1bx4bac
     db "That<'s> a Milker. "
     db "It is used to  ▽"
+ToolShop_MilkerText2:: ; 1bx4bcc
     db "milk a cow.     "
     db "The cost       ▽"
+ToolShop_MilkerText3:: ; 1bx4bec
     db "is 1800G.       "
     db " Buy   Don't Buy"
 
+ToolShop_SprinklerText1:: ; 1bx4c0c
     db "That<'s> a         "
     db "Sprinkler.     ▽"
+ToolShop_SprinklerTradeInPriceText:: ; 1bx4c2c
     db "It is 2000G     "
     db "along with     ▽"
+; I'm unsure why there are two texts for the cost of the sprinkler?
+ToolShop_SprinklerTradeInChoiceText:: ; 1bx4c4c
     db "A Water Can     "
     db " Buy   Don't Buy"
-
+ToolShop_SprinklerPriceChoiceText:: ; 1bx4c6c
     db "It is 2000G.    "
     db " Buy   Don't Buy"
 
-ToolShop_ButterMakerText::
+ToolShop_ButterMakerText1:: ; 1bx4c8c
     db "That<'s> a Butter  "
     db "Maker.         ▽"
+ToolShop_ButterMakerText2:: ; 1bx4c9c
     db "It should turn  "
     db "milk into      ▽"
+ToolShop_ButterMakerText3:: ; 1bx4cac
     db "butter.The cost "
     db "is 30000G,but  ▽"
+ToolShop_ButterMakerText4:: ; 1bx4cbc
     db "well worth it!  "
     db " Buy   Don't Buy"
 
-ToolShop_CheeseMakerText::
+ToolShop_CheeseMakerText:: ; 1bx4d0c
     db "That<'s> a Cheese  "
     db "Maker.         ▽"
     db "It should turn  "
@@ -1981,7 +2058,7 @@ ToolShop_CheeseMakerText::
     db "              ▽ "
     db "What can I do   "
     db "for you?      ▽ "
-Carpenter_ExpandHouse::
+Carpenter_ExpandHouse:: ; 1bx4f3c
     db "I see, you want "
     db "to expand your ▽"
     db "house. Alright! "
@@ -2000,13 +2077,13 @@ Carpenter_ExpandHouse::
     db "for 500G.       "
     db " Buy   Don't Buy"
 
-Carpenter_BuyMaterials::
+Carpenter_BuyMaterials:: ; 1bx503c
     db "They are a litt-"
     db "le heavy, I    ▽"
     db "will take them  "
     db "to your ranch.  "
 
-Carpenter_DontBuyMaterials::
+Carpenter_DontBuyMaterials:: ; 1bx507c
     db "Then don't waste"
     db "my time.        "
 
@@ -3390,9 +3467,9 @@ jr_01b_7b61:
     add $04
     ldh [$ff97], a
     pop hl
-    ld a, [wVillageTextChractersRemaining]
+    ld a, [wVillageTextCharactersRemaining]
     dec a
-    ld [wVillageTextChractersRemaining], a
+    ld [wVillageTextCharactersRemaining], a
     jr z, .finishedPrintingLine
 
     dec hl
@@ -3410,9 +3487,9 @@ jr_01b_7bb0:
     ld a, [wVillageTextTileNumber]
     inc a
     ld [wVillageTextTileNumber], a
-    ld a, [wVillageTextChractersRemaining]
+    ld a, [wVillageTextCharactersRemaining]
     dec a
-    ld [wVillageTextChractersRemaining], a
+    ld [wVillageTextCharactersRemaining], a
     jr z, jr_01b_7bc8
 
     ld a, [de]

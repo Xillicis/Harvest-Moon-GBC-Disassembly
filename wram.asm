@@ -453,7 +453,7 @@ ds $9a
 wVillageScriptPointer:: dw
 
 wcd6e::
-wVillageTextChractersRemaining:: db
+wVillageTextCharactersRemaining:: db
 wVillageTextTileNumber:: db ; 0xcd6f
 ; Stores a pointer to the specific character in wVillageTextBuffer
 wVillageCharacterPointer:: dw ; 0xcd70

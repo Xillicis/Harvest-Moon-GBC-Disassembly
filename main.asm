@@ -23,6 +23,8 @@ INCLUDE "constants/cave_constants.asm"
 INCLUDE "constants/time_constants.asm"
 INCLUDE "constants/text_constants.asm"
 INCLUDE "constants/event_constants.asm"
+INCLUDE "constants/village_constants.asm"
+
 
 
 ;INCLUDE "vram.asm"
