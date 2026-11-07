@@ -4013,9 +4013,9 @@ Call_03f_53a1:
     adc h
     ld h, a
     ld a, [hl]
-    ld [$cd92], a
+    ld [wVillagePurchaseQuantityLimit], a
     xor a
-    ld [$cd93], a
+    ld [wVillagePurchaseQuantity], a
     ld h, b
     ld l, c
     ret

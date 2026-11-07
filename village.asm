@@ -448,22 +448,22 @@ jr_01b_41f4:
     ld b, a
     ld a, $63
     sub b
-    ld [$cd92], a
+    ld [wVillagePurchaseQuantityLimit], a
     ld a, [hl+]
-    ld [$cd94], a
+    ld [wVillagePurchaseUnitPrice], a
     ld a, [hl+]
-    ld [$cd95], a
+    ld [wVillagePurchaseUnitPrice+1], a
     xor a
-    ld [$cd93], a
-    ld [$cd96], a
-    ld [$cd97], a
+    ld [wVillagePurchaseQuantity], a
+    ld [wVillagePurchaseTotalPrice], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ret
 
 
     push bc
-    call Call_01b_42b4
-    call Call_01b_42e0
-    call Call_01b_42f9
+    call DrawVillageQuantityArrows
+    call DrawVillagePurchaseQuantity
+    call DrawVillagePurchaseTotalPrice
     pop hl
     ldh a, [$ff8b]
     bit 0, a
@@ -485,7 +485,7 @@ jr_01b_41f4:
 
 
 jr_01b_423b:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_01b_424a
 
@@ -509,28 +509,28 @@ jr_01b_424a:
 
 
 jr_01b_4255:
-    ld a, [$cd92]
+    ld a, [wVillagePurchaseQuantityLimit]
     ld b, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     cp b
     jr nc, jr_01b_4281
 
     inc a
-    ld [$cd93], a
+    ld [wVillagePurchaseQuantity], a
     push hl
-    ld a, [$cd94]
+    ld a, [wVillagePurchaseUnitPrice]
     ld e, a
-    ld a, [$cd95]
+    ld a, [wVillagePurchaseUnitPrice+1]
     ld d, a
-    ld hl, $cd96
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
     add hl, de
     ld a, l
-    ld [$cd96], a
+    ld [wVillagePurchaseTotalPrice], a
     ld a, h
-    ld [$cd97], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ld a, $48
     call StartAudioTrack
     pop hl
@@ -542,18 +542,18 @@ jr_01b_4281:
 
 
 jr_01b_4284:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_01b_42b1
 
     dec a
-    ld [$cd93], a
+    ld [wVillagePurchaseQuantity], a
     push hl
-    ld a, [$cd94]
+    ld a, [wVillagePurchaseUnitPrice]
     ld e, a
-    ld a, [$cd95]
+    ld a, [wVillagePurchaseUnitPrice+1]
     ld d, a
-    ld hl, $cd96
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -564,9 +564,9 @@ jr_01b_4284:
     sbc d
     ld h, a
     ld a, l
-    ld [$cd96], a
+    ld [wVillagePurchaseTotalPrice], a
     ld a, h
-    ld [$cd97], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ld a, $48
     call StartAudioTrack
     pop hl
@@ -576,9 +576,8 @@ jr_01b_42b1:
     dec hl
     ret
 
-
-Call_01b_42b4:
-    ld a, [$cd93]
+DrawVillageQuantityArrows: ; 1bx42b4
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_01b_42c3
 
@@ -587,9 +586,9 @@ Call_01b_42b4:
     call AppendMetaspriteToShadowOAM
 
 jr_01b_42c3:
-    ld a, [$cd92]
+    ld a, [wVillagePurchaseQuantityLimit]
     ld b, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     cp b
     ret nc
 
@@ -610,43 +609,41 @@ jr_01b_42c3:
     nop
     add b
 
-Call_01b_42e0:
-    ld a, [$cd93]
+DrawVillagePurchaseQuantity: ; 1bx42e0
+    ld a, [wVillagePurchaseQuantity]
     call Call_000_3304
     ld a, [wDecimalDigitTileID+3]
     ld bc, $7068
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ld a, [wDecimalDigitTileID+4]
     ld bc, $7070
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ret
 
-
-Call_01b_42f9:
-    ld hl, $cd96
+DrawVillagePurchaseTotalPrice: ; 1bx42f9
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
     call Call_000_325c
     ld a, [wDecimalDigitTileID]
     ld bc, $8050
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ld a, [wDecimalDigitTileID+1]
     ld bc, $8058
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ld a, [wDecimalDigitTileID+2]
     ld bc, $8060
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ld a, [wDecimalDigitTileID+3]
     ld bc, $8068
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ld a, [wDecimalDigitTileID+4]
     ld bc, $8070
-    call Call_01b_4330
+    call DrawVillageNumberDigit
     ret
 
-
-Call_01b_4330:
+DrawVillageNumberDigit: ; 1bx4330
     cp $af
     jr nz, .jr_01b_433b
 
@@ -660,7 +657,7 @@ Call_01b_4330:
     add a
     add a
     add l
-    ld hl, Label_01b_434e
+    ld hl, VillageNumberDigitMetasprites
     add l
     ld l, a
     ld a, $00
@@ -669,7 +666,7 @@ Call_01b_4330:
     call AppendMetaspriteToShadowOAM
     ret
 
-Label_01b_434e:
+VillageNumberDigitMetasprites: ; 1bx434e
     nop
     nop
     ldh [c], a
@@ -753,9 +750,9 @@ jr_01b_439b:
     ret
 
 
-    ld a, [$cd96]
+    ld a, [wVillagePurchaseTotalPrice]
     ld e, a
-    ld a, [$cd97]
+    ld a, [wVillagePurchaseTotalPrice+1]
     ld d, a
     call CheckPlayerCanAffordDE
     jr nc, jr_01b_43bf
@@ -782,7 +779,7 @@ jr_01b_43bf:
     ld e, a
     ld a, [hl+]
     ld d, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     ld b, a
     ld a, [de]
     add b
@@ -1122,10 +1119,9 @@ Label_01b_453d:
     ld [$cd6b], a
     ret
 
-; Good fortune - 3 / 16
-; Normal fortune - 10 / 16
-; Bad fortune - 3 / 16
-GetFortune: ; 1bx4545
+; Select a fortune branch using the low four bits of the script counter.
+; Table entries: 3 good, 10 normal, 3 bad.
+VillageScript_SelectFortune: ; 1bx4545
 ; get random number from the data 
     ld a, [wVillageScriptTickCounter]
     and $0f
@@ -1867,7 +1863,9 @@ jr_01b_4886:
 Label_01b_4888:
     dw VillageScript_ClearTextBox
     dw Label_01b_4756
-    db $AA, $48, $13, $41, $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
+    db $AA, $48, 
+    dw VillageScript_CopyTextAndInsertName
+    db $8B, $4A, $72, $CD, $20, $F4, $B8, $75,
     db $CD, $04, 
     dw VillageScript_PrepareText
     db $72, $CD, $20, $80, 
@@ -1877,7 +1875,7 @@ Label_01b_4888:
     db $A6, $48, $13, $41, 
     dw ToolShop_SprinklerIsReady
     db $72, $CD, $20, 
-    dw ToolShop_BrushText_Unknown
+    dw VillageBlankCharacter
     db $8E, $CD, $01, $8F, $46,
     db $9A, $48, 
 
@@ -1888,9 +1886,11 @@ Label_01b_4888:
     db $E4, $48, $73, $4A, 
     dw VillageScript_TryPay
     dw BRUSH_PRICE
-    dw $4A3A
+    dw ToolShop_NotEnoughMoneyScript
     dw VillageScript_SetFlag
-    db $AD, $B8, $8F, $46, $5B, $4A, 
+    dw sShedBrushFlag
+    dw VillageScript_Jump
+    db $5B, $4A, 
 
     text_block ToolShop_MilkerText1
     text_block ToolShop_MilkerText2
@@ -1898,7 +1898,7 @@ Label_01b_4888:
     db $1C, $49, $73, $4A, 
     dw VillageScript_TryPay
     dw MILKER_PRICE
-    db $3A, $4A, 
+    dw ToolShop_NotEnoughMoneyScript
     dw VillageScript_SetFlag
     db $AC, $B8, $8F, $46,
     db $5B, $4A, 
@@ -1921,7 +1921,7 @@ Label_01b_4888:
     db $65, $49, $73, $4A, 
     dw VillageScript_TryPay
     dw SPRINKLER_PRICE
-    db $3A, $4A, 
+    dw ToolShop_NotEnoughMoneyScript
     dw VillageScript_SetFlag
     db $AF, $B8, 
     dw VillageScript_RemoveOwnedItem
@@ -1931,22 +1931,72 @@ Label_01b_4888:
     text_block ToolShop_ButterMakerText2
     text_block ToolShop_ButterMakerText3
     text_block_choice ToolShop_ButterMakerText4
+    db $AE, $49, $73, $4A, 
+    dw VillageScript_TryPay
+    db $30, $75, 
+    dw ToolShop_NotEnoughMoneyScript
+    db $F1, $43, $43, $B9,
+    db $8F, $46, $5B, $4A, 
 
-    db $AE, $49, $73, $4A, $85, $43, $30, $75, $3A, $4A, $F1, $43, $43, $B9,
-    db $8F, $46, $5B, $4A, $E6, $40, $21, $40, $0C, $4D, $20, $80, $34, $40, $34, $41,
+    text_block ToolShop_CheeseMakerText1
+    text_block ToolShop_CheeseMakerText2
+    text_block ToolShop_CheeseMakerText3
+    text_block_choice ToolShop_CheeseMakerText4
+    db $F2, $49, $73, $4A, 
+    dw VillageScript_TryPay
+    db $30, $75, 
+    dw ToolShop_NotEnoughMoneyScript
+    db $F1, $43, $44, $B9, $8F, $46, $5B, $4A, 
 
-    db $E6, $40, $21, $40, $2C, $4D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40,
-    db $4C, $4D, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $6C, $4D, $20, $80,
-    db $34, $40, $2D, $41, $68, $41, $F2, $49, $73, $4A, $85, $43, $30, $75, $3A, $4A,
-    db $F1, $43, $44, $B9, $8F, $46, $5B, $4A, $E6, $40, $21, $40, $8C, $4D, $20, $80,
-    db $34, $40, $34, $41, $E6, $40, $21, $40, $AC, $4D, $20, $80, $34, $40, $34, $41,
-    db $E6, $40, $21, $40, $CC, $4D, $20, $80, $34, $40, $2D, $41, $68, $41, $2A, $4A,
-    db $73, $4A, $85, $43, $C4, $09, $3A, $4A, $F1, $43, $C2, $B8, $C2, $46, $8F, $46,
-    db $5B, $4A, $E6, $40, $21, $40, $3C, $55, $20, $80, $34, $40, $23, $45, $2A, $45,
-    db $FF, $3D, $45, $8F, $46, $4B, $4A, $E6, $40, $21, $40, $EC, $4D, $20, $80, $8F,
-    db $46, $42, $4A, $E6, $40, $21, $40, $2C, $4B, $20, $80, $34, $40, $34, $41, $E6,
-    db $40, $21, $40, $4C, $4B, $20, $80, $8F, $46, $42, $4A, $E6, $40, $21, $40, $6C,
-    db $4B, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $8C, $4B, $20, $80, $8F,
+    text_block ToolShop_SaddlebagsText1
+    text_block ToolShop_SaddlebagsText2
+    text_block_choice ToolShop_SaddlebagsText3
+    db $2A, $4A,
+    db $73, $4A, 
+    dw VillageScript_TryPay
+    db $C4, $09, 
+    dw ToolShop_NotEnoughMoneyScript
+    db $F1, $43, $C2, $B8, $C2, $46, $8F, $46,
+    db $5B, $4A, 
+
+ToolShop_NotEnoughMoneyScript: ; 1bx4a3a
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    dw Village_NotEnoughMoneyText
+    db $20, $80, 
+
+ToolShop_PrintMessageAndWait: ; 1bx4a42
+    dw VillageScript_PrintText
+    dw VillageScript_ResetTickCounter
+    dw VillageScript_WaitTicksOrButton
+    db $ff
+    dw Label_01b_453d
+
+.loop ; 1bx4a4b
+    dw VillageScript_Jump
+    dw .loop
+
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+    db $EC, $4D, $20, $80, $8F,
+    db $46, $42, $4A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $2C, $4B, $20, $80, $34, $40, $34, $41, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $4C, $4B, $20, $80, $8F, $46, $42, $4A, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $6C,
+    db $4B, $20, $80, $34, $40, $34, $41, 
+    dw VillageScript_ClearTextBox
+    dw VillageScript_PrepareText
+
+    db $8C, $4B, $20, $80, $8F,
     db $46, $42, $4A, 
 
     db "Hi     !What can"
@@ -1956,7 +2006,7 @@ ToolShop_SprinklerIsReady:: ; 1bx4aab
     db "Hi! The Sprinkl-"
     db "er is ready!   ▽"
 
-ToolShop_BrushText_Unknown:: ; 1bx4acb
+VillageBlankCharacter:: ; 1bx4acb
     db $AF
 ToolShop_BrushText1:: ; 1bx4acc
     db "That<'s> a Brush   "
@@ -2019,20 +2069,26 @@ ToolShop_ButterMakerText4:: ; 1bx4cbc
     db "well worth it!  "
     db " Buy   Don't Buy"
 
-ToolShop_CheeseMakerText:: ; 1bx4d0c
+ToolShop_CheeseMakerText1:: ; 1bx4d0c
     db "That<'s> a Cheese  "
     db "Maker.         ▽"
+ToolShop_CheeseMakerText2:: ; 1bx4d2c
     db "It should turn  "
     db "milk into      ▽"
+ToolShop_CheeseMakerText3:: ; 1bx4d4c
     db "cheese.The cost "
     db "is 30000G,but  ▽"
+ToolShop_CheeseMakerText4:: ; 1bx4d6c
     db "well worth it!  "
     db " Buy   Don't Buy"
 
+ToolShop_SaddlebagsText1:: ; 1bx4d8c
     db "You can ship    "
     db "your crops from▽"
+ToolShop_SaddlebagsText2:: ; 1bx4dac
     db "the Saddlebag.  "
     db "The cost is    ▽"
+ToolShop_SaddlebagsText3:: ; 1bx4dcc
     db "2500G.          "
     db " Buy   Don't Buy"
 
@@ -2045,7 +2101,8 @@ ToolShop_CheeseMakerText:: ; 1bx4d0c
     db $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $DC, $4F, $20, $80, $34, $40,
     db $34, $41, $E6, $40, $21, $40, $FC, $4F, $20, $80, $34, $40, $34, $41, $E6, $40,
     db $21, $40, $1C, $50, $20, $80, $34, $40, $2D, $41, $68, $41, $6C, $4E, $8F, $4E,
-    db $85, $43, $F4, $01, $CF, $4E, $3F, $44, $38, $B9, $32, $E6, $40, $21, $40, $3C,
+    dw VillageScript_TryPay
+    db $F4, $01, $CF, $4E, $3F, $44, $38, $B9, $32, $E6, $40, $21, $40, $3C,
     db $50, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $5C, $50, $20, $80, $8F,
     db $46, $EF, $4E, $E6, $40, $21, $40, $7C, $50, $20, $80, $8F, $46, $EF, $4E, $E6,
     db $40, $21, $40, $3C, $4F, $20, $80, $34, $40, $34, $41, $E6, $40, $21, $40, $5C,
@@ -2253,7 +2310,7 @@ JuiceBar_Milk3Text:: ; 1bx551c
     db "for 10 cups.    "
     db " Buy   Don't Buy"
 
-JuiceBar_NotEnoughMoneyText:: ; 1bx553c
+Village_NotEnoughMoneyText:: ; 1bx553c
     db "You don't have  "
     db "enough money.   "
 
@@ -2742,8 +2799,9 @@ Option_Prayer: ; 1bx6246
     db FIRST_TEXTBOX_TILE
     dw VillageScript_PrintText
     dw VillageScript_ResetTickCounter
-    db $2A, $45,
-    db $FF, $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
+    dw VillageScript_WaitTicksOrButton
+    db $FF
+    db $CA, $46, $73, $62, $DE, $62, $EC, $46, $0F, $99, $62, $7A, $62, 
 
     text_block PrayersWillBeHeard1Text
 
@@ -2799,7 +2857,7 @@ Option_Fortune:
     dw VillageScript_ResetTickCounter
     dw VillageScript_WaitTicksOrButton
     db FIRST_TEXTBOX_TILE
-    dw GetFortune
+    dw VillageScript_SelectFortune
     dw GoodFortuneResult
     dw NormalFortuneResult
     dw BadFortuneResult

@@ -474,7 +474,11 @@ wCatOrDogSelection:: db ; 0xcd7a
 wPetName:: ds 4 ; 0xcd7b
 ENDU
 
-ds 6
+wVillagePurchaseQuantityLimit:: db ; 0xcd92
+wVillagePurchaseQuantity:: db ; 0xcd93
+
+wVillagePurchaseUnitPrice:: dw ; 0xcd94
+wVillagePurchaseTotalPrice:: dw ; 0xcd96
 
 wVillageScriptTickCounter:: db
 ; 0 - first option

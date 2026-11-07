@@ -67,7 +67,7 @@ sShedSuperHammerFlag::  db
 sShedSuperAxFlag::  db 
 sShedCowMedicineFlag::  db 
 sShedMilkerFlag::  db 
-sShedBrushFlag::  db 
+sShedBrushFlag::  db ; 0xb8ad
 sShedWateringCanFlag::  db ; 0xb8ae
 sShedSprinklerFlag::  db 
 sb8b0::  db 

@@ -412,15 +412,15 @@ jr_03b_41f4:
     ld b, a
     ld a, $63
     sub b
-    ld [$cd92], a
+    ld [wVillagePurchaseQuantityLimit], a
     ld a, [hl+]
-    ld [$cd94], a
+    ld [wVillagePurchaseUnitPrice], a
     ld a, [hl+]
-    ld [$cd95], a
+    ld [wVillagePurchaseUnitPrice+1], a
     xor a
-    ld [$cd93], a
-    ld [$cd96], a
-    ld [$cd97], a
+    ld [wVillagePurchaseQuantity], a
+    ld [wVillagePurchaseTotalPrice], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ret
 
 
@@ -449,7 +449,7 @@ jr_03b_41f4:
 
 
 jr_03b_423b:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_03b_424a
 
@@ -473,28 +473,28 @@ jr_03b_424a:
 
 
 jr_03b_4255:
-    ld a, [$cd92]
+    ld a, [wVillagePurchaseQuantityLimit]
     ld b, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     cp b
     jr nc, jr_03b_4281
 
     inc a
-    ld [$cd93], a
+    ld [wVillagePurchaseQuantity], a
     push hl
-    ld a, [$cd94]
+    ld a, [wVillagePurchaseUnitPrice]
     ld e, a
-    ld a, [$cd95]
+    ld a, [wVillagePurchaseUnitPrice+1]
     ld d, a
-    ld hl, $cd96
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
     add hl, de
     ld a, l
-    ld [$cd96], a
+    ld [wVillagePurchaseTotalPrice], a
     ld a, h
-    ld [$cd97], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ld a, $48
     call StartAudioTrack
     pop hl
@@ -506,18 +506,18 @@ jr_03b_4281:
 
 
 jr_03b_4284:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_03b_42b1
 
     dec a
-    ld [$cd93], a
+    ld [wVillagePurchaseQuantity], a
     push hl
-    ld a, [$cd94]
+    ld a, [wVillagePurchaseUnitPrice]
     ld e, a
-    ld a, [$cd95]
+    ld a, [wVillagePurchaseUnitPrice+1]
     ld d, a
-    ld hl, $cd96
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -528,9 +528,9 @@ jr_03b_4284:
     sbc d
     ld h, a
     ld a, l
-    ld [$cd96], a
+    ld [wVillagePurchaseTotalPrice], a
     ld a, h
-    ld [$cd97], a
+    ld [wVillagePurchaseTotalPrice+1], a
     ld a, $48
     call StartAudioTrack
     pop hl
@@ -542,7 +542,7 @@ jr_03b_42b1:
 
 
 Call_03b_42b4:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     or a
     jr z, jr_03b_42c3
 
@@ -551,9 +551,9 @@ Call_03b_42b4:
     call AppendMetaspriteToShadowOAM
 
 jr_03b_42c3:
-    ld a, [$cd92]
+    ld a, [wVillagePurchaseQuantityLimit]
     ld b, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     cp b
     ret nc
 
@@ -575,7 +575,7 @@ jr_03b_42c3:
     add b
 
 Call_03b_42e0:
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     call Call_000_3304
     ld a, [wDecimalDigitTileID+3]
     ld bc, $7068
@@ -587,7 +587,7 @@ Call_03b_42e0:
 
 
 Call_03b_42f9:
-    ld hl, $cd96
+    ld hl, wVillagePurchaseTotalPrice
     ld a, [hl+]
     ld h, [hl]
     ld l, a
@@ -716,9 +716,9 @@ jr_03b_439b:
     ret
 
 
-    ld a, [$cd96]
+    ld a, [wVillagePurchaseTotalPrice]
     ld e, a
-    ld a, [$cd97]
+    ld a, [wVillagePurchaseTotalPrice+1]
     ld d, a
     call Call_03b_46a4
     jr nc, jr_03b_43bf
@@ -745,7 +745,7 @@ jr_03b_43bf:
     ld e, a
     ld a, [hl+]
     ld d, a
-    ld a, [$cd93]
+    ld a, [wVillagePurchaseQuantity]
     ld b, a
     ld a, [de]
     add b
